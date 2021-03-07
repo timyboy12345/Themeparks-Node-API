@@ -1,6 +1,6 @@
 import { HttpService, Injectable, NotImplementedException } from '@nestjs/common';
-import { ThemePark } from '../../interfaces/park.interface';
-import { Poi } from '../../interfaces/poi.interface';
+import { ThemePark } from '../../_interfaces/park.interface';
+import { Poi } from '../../_interfaces/poi.interface';
 
 @Injectable()
 export class ThemeparkService {

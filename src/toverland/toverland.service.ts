@@ -1,9 +1,9 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { ThemeparkService } from '../services/themepark/themepark.service';
-import { Poi } from '../interfaces/poi.interface';
+import { ThemeparkService } from '../_services/themepark/themepark.service';
+import { Poi } from '../_interfaces/poi.interface';
 import { ToverlandRide } from './interfaces/toverland_ride.interface';
-import { PoiCategory } from '../interfaces/poiCategories.enum';
-import { ThemePark } from '../interfaces/park.interface';
+import { PoiCategory } from '../_interfaces/poiCategories.enum';
+import { ThemePark } from '../_interfaces/park.interface';
 import { ToverlandFoodAndDrink } from './interfaces/toverland_foodanddrink.interface';
 import { ConfigService } from '@nestjs/config';
 

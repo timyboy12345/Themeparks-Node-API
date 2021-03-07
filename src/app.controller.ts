@@ -1,11 +1,11 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
-import { ParksService } from './services/parks/parks.service';
-import { ThemePark } from './interfaces/park.interface';
-import { Poi } from './interfaces/poi.interface';
+import { ParksService } from './_services/parks/parks.service';
+import { ThemePark } from './_interfaces/park.interface';
+import { Poi } from './_interfaces/poi.interface';
 import { ApiOkResponse, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PoiDto } from './dtos/poi.dto';
-import { ParkDto } from './dtos/park.dto';
+import { PoiDto } from './_dtos/poi.dto';
+import { ParkDto } from './_dtos/park.dto';
 
 @ApiTags('Themeparks')
 @Controller()
@@ -56,8 +56,8 @@ export class AppController {
   async getParkPois(@Param() params): Promise<Poi[]> {
     const park = this.parksService.findPark(params.id, true);
 
-    return await park.getPois().then(value => {
-      return value.map((poi) => {
+    return await park.getPois().then(pois => {
+      return pois.map((poi) => {
         delete poi.original;
         return poi;
       });
@@ -83,6 +83,10 @@ export class AppController {
   async getParkRides(@Param() params): Promise<Poi[]> {
     const park = this.parksService.findPark(params.id, true);
 
-    return await park.getRides();
+    return await park.getRides().then(rides => {
+      return rides.map((ride) => {
+        delete ride.original;
+        return ride;
+      });    });
   }
 }

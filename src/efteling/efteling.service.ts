@@ -1,9 +1,9 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { ThemeparkService } from '../services/themepark/themepark.service';
-import { ThemePark } from '../interfaces/park.interface';
-import { Poi } from '../interfaces/poi.interface';
+import { ThemeparkService } from '../_services/themepark/themepark.service';
+import { ThemePark } from '../_interfaces/park.interface';
+import { Poi } from '../_interfaces/poi.interface';
 import { EftelingPoisResponse } from './interfaces/efteling_pois_response.interface';
-import { PoiCategory } from '../interfaces/poiCategories.enum';
+import { PoiCategory } from '../_interfaces/poiCategories.enum';
 
 @Injectable()
 export class EftelingService extends ThemeparkService {

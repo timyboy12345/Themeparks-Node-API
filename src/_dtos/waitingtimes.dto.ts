@@ -1,4 +1,4 @@
-import { WaitingTimesState } from '../interfaces/waitingtimes.interface';
+import { WaitingTimesState } from '../_interfaces/waitingtimes.interface';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class WaitingTimesDto {

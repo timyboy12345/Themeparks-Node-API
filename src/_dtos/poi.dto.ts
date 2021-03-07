@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { PoiOpeningTimeDto } from './poi_openingtime.dto';
-import { PoiCategory } from '../interfaces/poiCategories.enum';
+import { PoiCategory } from '../_interfaces/poiCategories.enum';
 import { WaitingTimesDto } from './waitingtimes.dto';
 import { ShowTimesDto } from './showtimes.dto';
 
