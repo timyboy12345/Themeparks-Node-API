@@ -71,4 +71,10 @@ export class EftelingService extends ThemeparkService {
       });
     });
   }
+
+  async getRides(): Promise<Poi[]> {
+    return this.getPois().then((pois) => {
+      return pois.filter(poi => poi.category == PoiCategory.ATTRACTION);
+    });
+  }
 }

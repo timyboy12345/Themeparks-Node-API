@@ -1,7 +1,6 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { EftelingController } from './efteling/efteling.controller';
 import { EftelingService } from './efteling/efteling.service';
 import { ThemeparkService } from './services/themepark/themepark.service';
 import { ParksService } from './services/parks/parks.service';
@@ -10,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [HttpModule, ConfigModule.forRoot()],
-  controllers: [AppController, EftelingController],
+  controllers: [AppController],
   providers: [AppService, EftelingService, ThemeparkService, ParksService, ToverlandService],
 })
 export class AppModule {
