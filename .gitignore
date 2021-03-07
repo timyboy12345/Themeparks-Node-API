@@ -35,3 +35,4 @@ lerna-debug.log*
 
 # Environments
 .env
+SERVER.md
