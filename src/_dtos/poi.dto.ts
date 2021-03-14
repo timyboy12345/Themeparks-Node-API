@@ -6,37 +6,53 @@ import { ShowTimesDto } from './showtimes.dto';
 
 export class PoiDto {
   @ApiProperty({
-    example: 'efteling'
+    example: 'efteling',
+    description: 'The ID of the poi, unique for this park',
   })
   id: string;
 
   @ApiProperty({
-    example: 'ATTRACTION'
+    example: 'ATTRACTION',
+    description: 'The category of POI',
   })
   category: PoiCategory;
 
   @ApiProperty({
-    example: 'ride'
+    example: 'ride',
+    description: 'The original category, as stated in the parks\'s API response',
   })
   original_category?: string;
 
   @ApiProperty({
-    example: 'Symbolica'
+    example: 'Symbolica',
+    description: 'The name of this POI',
   })
   title: string;
 
   @ApiProperty({
-    example: '<p>Beleef de familie-attractie Symbolica, een betoverend paleis waar de fantasie tot leven komt. Dwaal af in de geheime gangen en magische vertrekken en val van de ene verbazing in de andere.</p> <p>Duur: 7 minuten.</p>'
+    example: 'Paleis der Fantasie',
+    required: false,
+  })
+  subTitle: string;
+
+  @ApiProperty({
+    example: '<p>Beleef de familie-attractie Symbolica, een betoverend paleis waar de fantasie tot leven komt. Dwaal af in de geheime gangen en magische vertrekken en val van de ene verbazing in de andere.</p> <p>Duur: 7 minuten.</p>',
   })
   description?: string;
 
   @ApiProperty({
-    example: 'Reizenrijk'
+    example: 'Reizenrijk',
   })
   area?: string;
 
   @ApiProperty()
   createdAt?: string;
+
+  @ApiProperty()
+  location: {
+    lat: number,
+    lng: number
+  };
 
   @ApiProperty()
   entrance?: {

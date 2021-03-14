@@ -1,28 +1,43 @@
-import { HttpService, Injectable } from '@nestjs/common';
-import { ThemeparkService } from '../../_services/themepark/themepark.service';
+import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { PoiCategory } from '../../_interfaces/poiCategories.enum';
 import { ConfigService } from '@nestjs/config';
 import { WalibiHollandRide } from './interfaces/ride.interface';
+import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
-export class WalibiHollandService extends ThemeparkService {
+export class WalibiHollandService extends ThemeParkService {
   private _walibiHollandApiUrl: string;
 
   constructor(private httpService: HttpService,
               private readonly configService: ConfigService) {
     super();
 
-    this._walibiHollandApiUrl = this.configService.get("WALIBI_HOLLAND_API_URL");
+    this._walibiHollandApiUrl = this.configService.get<string>('WALIBI_HOLLAND_API_URL');
   }
 
   getInfo(): ThemePark {
     return {
       id: 'walibi_holland',
       name: 'Walibi Holland',
+      description: 'Walibi Holland is een attractiepark, gelegen in Biddinghuizen in de Nederlandse provincie Flevoland. Voorheen heette dit park Walibi World, daarvoor Six Flags Holland, daarvoor Walibi Flevo, terwijl het park startte als Flevohof.',
       countryCode: 'nl',
       image: 'https://www.walibi.nl/sites/default/files/styles/1280x711/public/content/editorial/2020-01/Goliath-ALG-04_0.jpg?itok=SGL1LdeZ',
+    };
+  }
+
+  getSupports(): ThemeParkSupports {
+    return {
+      supportsPois: true,
+      supportsRestaurantWaitTimes: false,
+      supportsRestaurants: false,
+      supportsRideWaitTimes: true,
+      supportsRides: true,
+      supportsShowTimes: false,
+      supportsShows: false,
     };
   }
 
@@ -41,18 +56,25 @@ export class WalibiHollandService extends ThemeparkService {
             image_url: imageUrls[0],
             description: ride.description,
             original: ride,
-            entrance: {
-              world: {
-                lat: ride.location.latitude,
-                lng: ride.location.longitude,
-              },
+            location: {
+              lat: ride.location.latitude,
+              lng: ride.location.longitude,
             },
-            images: imageUrls
+            images: imageUrls,
           };
 
           return r;
         });
       });
+  }
+
+  async getPois() {
+    const promises = [
+      this.getRides(),
+    ];
+    return []
+      .concat
+      .apply([], await Promise.all(promises));
   }
 
   private async request<T>(url: string) {
@@ -61,6 +83,10 @@ export class WalibiHollandService extends ThemeparkService {
     return this
       .httpService
       .get<T>(fullUrl)
-      .toPromise();
+      .toPromise()
+      .catch(reason => {
+        Sentry.captureException(reason);
+        throw new InternalServerErrorException();
+      });
   }
 }

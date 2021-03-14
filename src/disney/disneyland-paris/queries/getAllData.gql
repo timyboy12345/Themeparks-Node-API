@@ -1,0 +1,352 @@
+query activities($market: String!, $types: [String]) {
+    activities(market: $market, types: $types) {
+        contentType: __typename
+        entityType
+        contentId
+        id
+        url
+        pageLink {
+            ...pageLink
+        }
+        hideFunctionality
+        name
+        squareMediaMobile {
+            ...media
+        }
+        subType
+        location {
+            ...location
+        }
+        coordinates {
+            ...coordinates
+        }
+        closed
+        schedules {
+            language
+            startTime
+            endTime
+            date
+            status
+            closed
+        }
+        ... on Attraction {
+            age {
+                ...facet
+            }
+            height {
+                ...facet
+            }
+            interests {
+                ...facet
+            }
+            photopass
+            fastPass
+            singleRider
+            mobilityDisabilities {
+                ...facet
+            }
+            serviceAnimals {
+                ...facet
+            }
+            physicalConsiderations {
+                ...facet
+            }
+        }
+        ... on Restaurant {
+            cuisines {
+                ...facet
+            }
+            serviceTypes {
+                ...facet
+            }
+            price {
+                ...facet
+            }
+            drsApp
+            drs
+            diningPlans {
+                ...facet
+            }
+        }
+        ... on DinnerShow {
+            cuisines {
+                ...facet
+            }
+            serviceTypes {
+                ...facet
+            }
+            price {
+                ...facet
+            }
+            diningPlans {
+                ...facet
+            }
+            restaurants {
+                id
+                name
+                pageLink {
+                    ...pageLink
+                }
+            }
+        }
+        ... on DiningEvent {
+            cuisines {
+                ...facet
+            }
+            serviceTypes {
+                ...facet
+            }
+            price {
+                ...facet
+            }
+            diningPlans {
+                ...facet
+            }
+            restaurants {
+                id
+                name
+                pageLink {
+                    ...pageLink
+                }
+            }
+        }
+        ... on Shop {
+            keywords {
+                id
+                path
+                value
+            }
+            merchandises {
+                ...facet
+            }
+            mobilityDisabilities {
+                ...facet
+            }
+        }
+        ... on Entertainment {
+            openDate
+            endDate
+            interests {
+                ...facet
+            }
+            age {
+                ...facet
+            }
+            entertainmentTypes {
+                ...facet
+            }
+            mobilityDisabilities {
+                ...facet
+            }
+            relatedLocations {
+                type
+                poi {
+                    ...poi
+                }
+            }
+            photopass
+        }
+        ... on Recreation {
+            age {
+                ...facet
+            }
+            activityTypes {
+                ...facet
+            }
+            relatedLocations {
+                type
+                poi {
+                    ...poi
+                }
+            }
+        }
+        ... on Spa {
+            serviceTypes {
+                ...facet
+            }
+            interests {
+                ...facet
+            }
+            relatedLocations {
+                type
+                poi {
+                    ...poi
+                }
+            }
+        }
+        ... on Event {
+            openDate
+            endDate
+            interests {
+                ...facet
+            }
+            mobilityDisabilities {
+                ...facet
+            }
+            experienceTypes {
+                ...facet
+            }
+            age {
+                ...facet
+            }
+            relatedLocations {
+                type
+                poi {
+                    ...poi
+                }
+            }
+            associatedActivities {
+                url
+                contentId
+                containerTcmId
+                ... on Activity {
+                    id
+                    entityType
+                    urlFriendlyId
+                    pageLink {
+                        tcmId
+                        url
+                        title
+                        regions {
+                            ...region
+                        }
+                    }
+                    hideFunctionality
+                    name
+                    heroMediaMobile {
+                        ...media
+                    }
+                    squareMediaMobile {
+                        ...media
+                    }
+                    refurbishment
+                    closed
+                    schedules {
+                        language
+                        startTime
+                        endTime
+                        date
+                        status
+                        closed
+                    }
+                    ... on Entertainment {
+                        openDate
+                        endDate
+                    }
+                }
+            }
+        }
+        ... on Tour {
+            interests {
+                ...facet
+            }
+            mobilityDisabilities {
+                ...facet
+            }
+            experienceTypes {
+                ...facet
+            }
+            age {
+                ...facet
+            }
+            relatedLocations {
+                type
+                poi {
+                    ...poi
+                }
+            }
+        }
+        ... on GuestService {
+            guestServices {
+                ...facet
+            }
+            relatedLocations {
+                type
+                poi {
+                    ...poi
+                }
+            }
+            squareMedia {
+                ...media
+            }
+        }
+        ... on Sponsor {
+            listDescription
+            sponsorTypes {
+                ...facet
+            }
+        }
+        ... on Resort {
+            tier
+            tierDescription
+            disneyOwned
+            hotelBeingRefurbished
+            hotelCharacteristics {
+                ...facet
+            }
+            hotelTypes {
+                ...facet
+            }
+            hotelCategories {
+                ...facet
+            }
+            hotelParkDistances {
+                ...facet
+            }
+            hotelAmenities {
+                ...facet
+            }
+        }
+    }
+}
+fragment facet on Facet {
+    id
+    value
+    urlFriendlyId
+    iconFont
+}
+fragment location on Location {
+    id
+    value
+    urlFriendlyId
+    iconFont
+    pageLink {
+        ...pageLink
+    }
+}
+fragment poi on POI {
+    name
+    location {
+        ...location
+    }
+    subLocation {
+        ...location
+    }
+    coordinates {
+        ...coordinates
+    }
+    smallMedia {
+        ...media
+    }
+}
+fragment coordinates on MapCoordinates {
+    lat
+    lng
+    type
+}
+fragment media on Media {
+    url
+    alt
+}
+fragment pageLink on PageLink {
+    tcmId
+    title
+    regions {
+        ...region
+    }
+}
+fragment region on Region {
+    contentId
+    templateId
+    schemaId
+}

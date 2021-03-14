@@ -1,14 +1,16 @@
-import { HttpService, Injectable } from '@nestjs/common';
-import { ThemeparkService } from '../_services/themepark/themepark.service';
+import { HttpException, HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { Poi } from '../_interfaces/poi.interface';
 import { ToverlandRide } from './interfaces/toverland_ride.interface';
 import { PoiCategory } from '../_interfaces/poiCategories.enum';
 import { ThemePark } from '../_interfaces/park.interface';
 import { ToverlandFoodAndDrink } from './interfaces/toverland_foodanddrink.interface';
 import { ConfigService } from '@nestjs/config';
+import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
-export class ToverlandService extends ThemeparkService {
+export class ToverlandService extends ThemeParkService {
   private toverlandApiUrl: string;
   private toverlandApiToken: string;
 
@@ -17,15 +19,28 @@ export class ToverlandService extends ThemeparkService {
     super();
 
     this.toverlandApiUrl = configService.get<string>('TOVERLAND_API_URL');
-    this.toverlandApiToken = configService.get<string >('TOVERLAND_API_AUTHENTICATION');
+    this.toverlandApiToken = configService.get<string>('TOVERLAND_API_AUTHENTICATION');
   }
 
   getInfo(): ThemePark {
     return {
       id: 'toverland',
-      image: '',
-      countryCode: 'nl',
       name: 'Toverland',
+      description: 'Attractiepark Toverland, kortweg Toverland, is een deels overdekt attractiepark in het Nederlandse Sevenum. Het is een van de jongste attractieparken van Nederland.',
+      image: 'https://i.ytimg.com/vi/WeUzyKUqR4I/maxresdefault.jpg',
+      countryCode: 'nl',
+    };
+  }
+
+  getSupports(): ThemeParkSupports {
+    return {
+      supportsPois: true,
+      supportsRestaurantWaitTimes: false,
+      supportsRestaurants: true,
+      supportsRideWaitTimes: true,
+      supportsRides: true,
+      supportsShowTimes: false,
+      supportsShows: false,
     };
   }
 
@@ -40,35 +55,35 @@ export class ToverlandService extends ThemeparkService {
             image_url: ride.thumbnail,
             description: ride.description.en,
             original: ride,
-            entrance: {
-              world: {
-                lat: ride.latitude,
-                lng: ride.longitude,
-              },
+            location: {
+              lat: parseFloat(ride.latitude),
+              lng: parseFloat(ride.longitude),
             },
           };
 
           return r;
         });
+      })
+      .catch((reason) => {
+        throw new HttpException('Failed to fetch rides: ' + reason.toString(), 500);
       });
   }
 
-  async getRestaurants() {
-    return this.request<ToverlandFoodAndDrink[]>('/park/ride/operationInfo/list')
+  async getRestaurants(): Promise<Poi[]> {
+    return this
+      .request<ToverlandFoodAndDrink[]>('/park/foodAndDrinks/operationInfo/list')
       .then((axiosRidesData) => {
-        return axiosRidesData.data.map((ride) => {
+        return axiosRidesData.data.map((restaurant) => {
           const r: Poi = {
-            id: `${ride.last_status.id ?? ride.id}`,
+            id: `${restaurant.last_status.id ?? restaurant.id}`,
             category: PoiCategory.RESTAURANT,
-            title: ride.name,
-            image_url: ride.thumbnail,
-            description: ride.description.en,
-            original: ride,
-            entrance: {
-              world: {
-                lat: ride.latitude,
-                lng: ride.longitude,
-              },
+            title: restaurant.name,
+            image_url: restaurant.thumbnail,
+            description: restaurant.description.en,
+            original: restaurant,
+            location: {
+              lat: parseFloat(restaurant.latitude),
+              lng: parseFloat(restaurant.longitude),
             },
           };
 
@@ -89,7 +104,14 @@ export class ToverlandService extends ThemeparkService {
       .get<T>(fullUrl, {
         headers: headers,
       })
-      .toPromise();
+      .toPromise()
+      .then(value => {
+        return value;
+      })
+      .catch(reason => {
+        Sentry.captureException(reason);
+        throw new InternalServerErrorException();
+      });
   }
 
   async getPois(): Promise<Poi[]> {

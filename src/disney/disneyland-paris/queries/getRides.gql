@@ -1,0 +1,61 @@
+query($market: String) {
+    activities(market: $market, types: ["Attraction"]) {
+        id        contentType: __typename
+        entityType
+        contentId
+        id
+        url
+        pageLink {
+            ...pageLink
+        }
+        hideFunctionality
+        name
+        squareMediaMobile {
+            ...media
+        }
+        subType
+        location {
+            ...location
+        }
+        coordinates {
+            ...coordinates
+        }
+        closed
+        schedules {
+            language
+            startTime
+            endTime
+            date
+            status
+            closed
+        }
+
+        heroMedia {
+            url
+        }
+
+        ... on Attraction {
+            age {
+                ...facet
+            }
+            height {
+                ...facet
+            }
+            interests {
+                ...facet
+            }
+            photopass
+            fastPass
+            singleRider
+            mobilityDisabilities {
+                ...facet
+            }
+            serviceAnimals {
+                ...facet
+            }
+            physicalConsiderations {
+                ...facet
+            }
+        }
+    }
+}

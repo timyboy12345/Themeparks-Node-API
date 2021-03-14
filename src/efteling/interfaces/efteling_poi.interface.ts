@@ -10,13 +10,8 @@ export interface EftelingPoi {
     text: string,
     can_order: boolean,
     latlon: string,
-    targetgroups: [
-      string
-    ],
+    targetgroups: string[],
     language: string,
-
-    // Detailed image
-    string: string,
 
     // Quick View image
     image: string,

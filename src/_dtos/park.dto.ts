@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ThemeParkSupportsDto } from './park-supports.dto';
 
 export class ParkDto {
   @ApiProperty({
@@ -20,4 +21,7 @@ export class ParkDto {
     example: 'nl'
   })
   countryCode: string;
+
+  @ApiProperty()
+  supports?: ThemeParkSupportsDto;
 }

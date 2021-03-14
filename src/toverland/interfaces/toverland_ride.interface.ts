@@ -4,8 +4,8 @@ export interface ToverlandRide {
   'id': number,
   'name': string,
   'area_id': number,
-  'latitude': number,
-  'longitude': number,
+  'latitude': string,
+  'longitude': string,
   'short_description': ToverlandTranslatable,
   'description': ToverlandTranslatable;
   'thumbnail': string,

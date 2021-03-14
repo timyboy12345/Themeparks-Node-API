@@ -1,0 +1,2928 @@
+{
+  "wc": [
+    {
+      "uuid": "50f1ff59-eca9-4dd7-bc71-e4d145ec2c21",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.701630973592",
+        "lon": "4.5936135107622"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "f5bdecd7-4f6d-4591-910e-e3d4edfd798d",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_0.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.700511753097",
+        "lon": "4.5917436229465"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_0.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "022de27e-189e-4a1c-b207-464097c5eef3",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_1.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_1.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.699917958999",
+        "lon": "4.5902995174413"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_1.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_1.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "8c4d0e60-05ab-4e7b-b926-04b17deb9f08",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_2.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_2.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.699040571884",
+        "lon": "4.5885869433823"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_2.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_2.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "cadc862b-3056-4dcf-a008-c16d9612ed3e",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_3.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_3.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.698576703652",
+        "lon": "4.5889268037375"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_3.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_3.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "f7164b4a-cb19-4986-9164-f70ae7f213fd",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_4.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_4.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.696691645054",
+        "lon": "4.5872358583731"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_4.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_4.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "df5927ab-0f9b-4be6-b5fb-6dd9496bab54",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_5.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_5.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.698155635289",
+        "lon": "4.5922736071444"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_5.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_5.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "a55af10f-a175-4d91-9ed2-01bf7b876e7b",
+      "serviceCode": "WC",
+      "title": "Toilet",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_6.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_6.jpg"
+      },
+      "category": {
+        "id": "48f51461-6688-4851-8a80-7d47a8791d35",
+        "name": "Toiletten",
+        "weight": 22,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-faq.svg"
+        }
+      },
+      "location": {
+        "lat": "50.700158310255",
+        "lon": "4.5941895075517"
+      },
+      "additionalContent": [
+        {
+          "title": "Toilet",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_6.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_6.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    }
+  ],
+  "animals": [],
+  "entertainment": [
+    {
+      "uuid": "1341d86f-589d-4983-804a-289a10d01ad8",
+      "title": "4X4 Adventure",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_4220.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_4220.jpg"
+      },
+      "location": {
+        "lat": "50.697709109962",
+        "lon": "4.5917801994574"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "code": "haaz",
+      "additionalContent": [
+        {
+          "title": "De gitaarlegende",
+          "text": "<p><strong>Haaz, de gitaarlegende</strong></p>\r\n\r\n<p>Haaz is de grootste gitaarlegende aller tijden en speelt bij de groep W.A.B. Naast gitaarspelen, is hij ook dol op alles wat om auto’s draait.</p>\r\n\r\n<p><strong>Coole terreinwagens</strong></p>\r\n\r\n<p>Haaz heeft zijn eigen garage waarin hij zijn coole terreinwagens tentoonstelt. Jij mag zijn schatten uitproberen en een testritje maken in de pure natuur, wat een eer!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_4220.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_4220.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "a496bc9e-b83a-40b6-a10a-905595500003",
+      "title": "Bling Bling Madness",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_4223.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_4223.jpg"
+      },
+      "location": {
+        "lat": "50.697666424665",
+        "lon": "4.5924289107381"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "80 cm"
+        },
+        {
+          "title": "Max. lengte",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "Neem plaats in een mijnwagentje en rijd zo het avontuur binnen ! Wie weet ben jij wel diegene die alle Bling Bling vindt ?!\r\n\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_4223.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_4223.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "d2e00932-13f3-4792-bf35-13b037dbcd13",
+      "title": "Bubble Swirl",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4236.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4236.jpg"
+      },
+      "location": {
+        "lat": "50.697690347526",
+        "lon": "4.5920753469367"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "80 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "code": "fibi",
+      "additionalContent": [
+        {
+          "title": "Vliegende luchtballonnen",
+          "text": "<p><strong>Vliegende luchtballonnen</strong></p>\r\n\r\n<p>Houd je van vliegen? Waag dan je kans in een kleurrijke luchtballon en vlieg de blauwe lucht in.</p>\r\n\r\n<p><strong>Fibi, de watergeest</strong></p>\r\n\r\n<p>Fibi de watergeest vergezelt je tijdens de spannende vliegrit. Ze is ook de enige echte zangeres van de W.A.B en kan heel mooi zingen. Droom weg bij haar wondermooie stem!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4236.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4236.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "3edddcbb-7775-4568-aa36-7dbb7c4282eb",
+      "title": "Buzzsaw",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/walibi%201228.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/walibi%201228.jpg"
+      },
+      "location": {
+        "lat": "50.699044052251",
+        "lon": "4.588699076913"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "140 cm"
+        },
+        {
+          "title": "Max. lengte",
+          "value": "195 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Doorgedraaide machine",
+          "text": "<p><strong>Doorgedraaide machine</strong></p>\r\n\r\n<p>Kan jij deze doorgedraaide machine aan? Want deze spectaculaire attractie slingert je door het dolle heen in de lucht en boven water.</p>\r\n\r\n<p><strong>Vereiste</strong></p>\r\n\r\n<p>Immuun zijn tegen hoogtevrees en meerdere overkop wentelingen na elkaar.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/walibi%201228.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/walibi%201228.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "608e85a5-e1f0-4fb5-888e-935625ae63a0",
+      "title": "Calamity Mine",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/Calamity_MD01_.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/Calamity_MD01_.jpg"
+      },
+      "location": {
+        "lat": "50.698971651762",
+        "lon": "4.5874437307668"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "100 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "WBE-CALA-3",
+      "additionalContent": [
+        {
+          "title": "Zet je schrap voor...",
+          "text": "<p><strong>Zet je schrap voor...</strong></p>\r\n\r\n<p>Het treintje van de Calamity Mine vervoert je eerst 22 meter omhoog in een mijngang. Zet je al maar schrap voor de ongelooflijke reis door de rest van de goudmijn!</p>\r\n\r\n<p><strong>De goudmijn</strong></p>\r\n\r\n<p>De knarsende karretjes brengen de sfeer er goed in. Je steekt wankelende bruggen over, je raast onder een waterval door, je vliegt over een modderige rivier... Enkel voor de dapperste durvers dus!</p>\r\n\r\n<p><strong>Goudkoorts?</strong></p>\r\n\r\n<p>Heb je het virus van de goudkoorts te pakken gekregen? Niet erg! Beleef ontelbare keren dit ongelooflijke avontuur en voel je een echte goudzoeker!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/Calamity_MD01_.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/Calamity_MD01_.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "8e860dc5-118f-4af4-b030-269cd4bd8050",
+      "title": "Challenge of Tutankhamon",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/cot_16_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/cot_16_0.jpg"
+      },
+      "location": {
+        "lat": "50.695987330468",
+        "lon": "4.5868145952469"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "80 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "WBE-CHAL-5",
+      "additionalContent": [
+        {
+          "title": "Egyptische sfeer",
+          "text": "<p><strong>Egyptische sfeer</strong></p>\r\n\r\n<p>Heb je nog geen ervaring met Egyptische sferen? Ontdek er in deze unieke Egyptische tombe alles over. Let wel op, want jij en je team zijn niet de enige aanwezigen.</p>\r\n\r\n<p><strong>Gevaar om de hoek</strong></p>\r\n\r\n<p>De meest angstaanjagende monsters en mummies zitten verstopt op de onverwachtste plaatsen. En ze duiken pas op wanneer jij en je team eraan komen.</p>\r\n\r\n<p><strong>Gewapend of niet...</strong></p>\r\n\r\n<p>Gelukkig krijg je een laserwapen mee om je te verdedigen in deze unieke dark ride. Wie de meeste monsters kan raken, is de winnaar binnen het team. Wapen in aanslag en schieten maar!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/cot_16_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/cot_16_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "248241dd-5869-4f45-a1bb-fb3a28dcefbe",
+      "title": "Cobra",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2019-04/Cobra2019-1.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-04/Cobra2019-1.jpg"
+      },
+      "location": {
+        "lat": "50.70040042385",
+        "lon": "4.594022704944"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "130 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "code": "WBE-COBR-4",
+      "additionalContent": [
+        {
+          "title": "Wat gaat er komen?",
+          "text": "<p><strong>Wat gaat er komen?</strong></p>\r\n\r\n<p>Met zijn langzame start, houdt de Cobra de spanning erin gedurende enkele ogenblikken. Hij laat zijn prooi zo lang mogelijk wachten.</p>\r\n\r\n<p><strong>Ten aanval!</strong></p>\r\n\r\n<p>Op het moment dat je het niet verwacht, slaat de slang toe. Hij schiet vooruit en zwiert je wel drie keer overkop.</p>\r\n\r\n<p><strong>Verrassing...</strong></p>\r\n\r\n<p>Alsof dat nog niet genoeg is, beleef je dit sssssspannende avontuur opnieuw in achterwaartse beweging.<br />\r\n&nbsp;</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2019-04/Cobra2019-1.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-04/Cobra2019-1.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "5e879fdb-d12e-4942-a409-ca5aba066ce2",
+      "title": "Dalton Terror",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/dalton_paint-edit.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/dalton_paint-edit.jpg"
+      },
+      "location": {
+        "lat": "50.698753820207",
+        "lon": "4.5880014173797"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        },
+        {
+          "title": "Max. lengte",
+          "value": "195 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "code": "WBE-DALT-6",
+      "additionalContent": [
+        {
+          "title": "Stijgen in 'steil'",
+          "text": "<p><strong>Stijgen in 'steil'</strong></p>\r\n\r\n<p>Nietsvermoedend 77 m kaarsrecht omhoog, genietend van de frisse lucht, van steil gesproken... Alles rondom jou wordt steeds kleiner.</p>\r\n\r\n<p><strong>Schitterend uitzicht</strong></p>\r\n\r\n<p>Op het hoogste puntje geniet je enkele seconden van het schitterende uitzicht over heel het park. Tenminste, als je het aandurft om naar beneden te kijken.</p>\r\n\r\n<p><strong>Vrije val</strong></p>\r\n\r\n<p>Al gauw verandert genot, of juist de bibbers, in de thrill van je leven! Zet je schrap voor een vrije val aan 110 km/u!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/dalton_paint-edit.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/dalton_paint-edit.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "b0234080-3fc9-4b79-8361-21e0376ef3b4",
+      "title": "De Grote Carrousel",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/carrousel_0_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/carrousel_0_0.jpg"
+      },
+      "location": {
+        "lat": "50.70098352059",
+        "lon": "4.5923012495041"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Relaxtijd",
+          "text": "<p><strong>Relaxtijd</strong></p>\r\n\r\n<p>Wil je even zalig ontspannen met de hele familie? Dan is de grote Carrousel echt iets voor jullie.</p>\r\n\r\n<p><strong>Popelende paardjes</strong></p>\r\n\r\n<p>Klim op één van de paardjes die staan te popelen om met jou een rondje te maken. Of ga met z’n allen in een elegante koets zitten. Ontspanning en nostalgie verzekerd!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/carrousel_0_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/carrousel_0_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "e541249c-5d27-4005-a6a8-89b8989a5df6",
+      "title": "Dragon Boat",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2095.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2095.jpg"
+      },
+      "location": {
+        "lat": "50.697180082151",
+        "lon": "4.5892186558521"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Kan jij de woeste golven aan?",
+          "text": "<p><strong>Kan </strong><strong>jij</strong><strong> de </strong><strong>woeste</strong><strong> </strong><strong>golven</strong><strong> </strong><strong>aan</strong><strong>?</strong></p>\r\n\r\n<p>Hijs de zeilen, neem je roeispanen in de hand en vaar over de wilde zee. Trotseer de woeste golven.</p>\r\n\r\n<p><strong>Vikings</strong></p>\r\n\r\n<p>Voel je een dappere Viking en neem het op tegen de andere drakenboten op de zee.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2095.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2095.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "e508b0e2-7139-4085-9dbb-b358dc43a046",
+      "title": "Flash Back",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/Flash_Back_06.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/Flash_Back_06.jpg"
+      },
+      "location": {
+        "lat": "50.697935730837",
+        "lon": "4.5895600318909"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "90 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "WBE-FLAS-9",
+      "additionalContent": [
+        {
+          "title": "Wat is de Flash Back?",
+          "text": "<p><strong>Wat is de Flash Back?</strong></p>\r\n\r\n<p>De Flash Back is een andere benaming voor een lang parcours in een rustig kabbelend bootje, afgewisseld door hier en daar enkele verraderlijke bochten en korte maar krachtige afdalingen.</p>\r\n\r\n<p><strong>Verrassende wending</strong></p>\r\n\r\n<p>Plots maakt het bootje rechtsomkeer en gaat het achterwaarts verder. Op het juiste moment draait het bootje weer om want ...</p>\r\n\r\n<p><strong>Kers op de taart</strong></p>\r\n\r\n<p>Als afsluiter kom je oog in oog te staan met de steilste helling ooit gezien, roetsj je naar beneden en krijg je een onvermijdelijke douche cadeau!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/Flash_Back_06.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/Flash_Back_06.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "94095708-08a6-40e5-9dcd-fd16261749a6",
+      "title": "Het Vliegend Tapijt",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/dsc_0423.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/dsc_0423.jpg"
+      },
+      "location": {
+        "lat": "50.69996761268",
+        "lon": "4.5940017700195"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "90 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "tapis",
+      "additionalContent": [
+        {
+          "title": "Dromen komen uit",
+          "text": "<p><strong>Dromen komen uit</strong></p>\r\n\r\n<p>Droom je van een ritje op een vliegend tapijt? Walibi maakt je dromen waar.</p>\r\n\r\n<p><strong>Woestijnvlucht</strong></p>\r\n\r\n<p>Beleef deze ongelooflijke vlucht door de woestijn met de hele familie. Een lachwekkende sensatie waar je niet genoeg van krijgt!<br />\r\n&nbsp;</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/dsc_0423.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/dsc_0423.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "b020e1ad-bf04-42e9-9f81-fe815f0771f0",
+      "title": "Fun Pilot",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_358.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_358.JPG"
+      },
+      "location": {
+        "lat": "50.698295058418",
+        "lon": "4.5920509255957"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "90 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        },
+        {
+          "title": "Snelheid",
+          "value": "40"
+        },
+        {
+          "title": "Hoogte",
+          "value": "9,5"
+        },
+        {
+          "title": "Lengte",
+          "value": "190"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "code": "WBE-FUNP-44",
+      "additionalContent": [
+        {
+          "text": "<p>Word een echte piloot! Vlieg en ontdek deze nieuwe achtbaan voor kinderen.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_358.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_358.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "eaca8338-66b5-4865-b2e9-01efabe93552",
+      "title": "Fun Recorder",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4252.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4252.jpg"
+      },
+      "location": {
+        "lat": "50.69793591704",
+        "lon": "4.5917983662455"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "80 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "code": "walibi",
+      "additionalContent": [
+        {
+          "title": "Gevoel voor ritme",
+          "text": "<p><strong>Gevoel voor ritme</strong></p>\r\n\r\n<p>Beweeg op en neer op het ritme van de muziek die gecomponeerd werd doorWalibi zelf, leider van de groep W.A.B.</p>\r\n\r\n<p><strong>Mini-raket</strong></p>\r\n\r\n<p>Zweef vanuit jouw mini-raket door de lucht tussen de wolken aan matige snelheid.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4252.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4252.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "d245e46b-6078-4a67-9845-af4bb1510884",
+      "title": "Go Karting",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2101_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2101_0.jpg"
+      },
+      "location": {
+        "lat": "50.697324504506",
+        "lon": "4.5866406060609"
+      },
+      "status": "outOfOrder",
+      "waitingTime": 0,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "110 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Volle snelheid vooruit en trappen maar !&nbsp;Daar is de&nbsp;Go Karting voor gemaakt.&nbsp;Beleef&nbsp;plezier op dit gekke circuit.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2101_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2101_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "bae2400d-5efb-4619-a82f-f8cbc31603f5",
+      "title": "Gold River Adventure",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-05/IMG_20180422_150744.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-05/IMG_20180422_150744.jpg"
+      },
+      "location": {
+        "lat": "50.698341320467",
+        "lon": "4.587971314412"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Geniet van een kalme vaart door een prachtig groen decor. Deze attractie is geschikt om uit te waaien van alle sensatie, tot rust te komen of kennis te maken met verschillende watervogels.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-05/IMG_20180422_150744.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-05/IMG_20180422_150744.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "a60c2826-4871-4b5c-9336-4bee87d8f8b6",
+      "title": "Graffiti Shuttle",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4245.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4245.jpg"
+      },
+      "location": {
+        "lat": "50.697422417016",
+        "lon": "4.5919268495672"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "80 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "code": "zenko",
+      "additionalContent": [
+        {
+          "title": "Zenko en graffiti!",
+          "text": "<p><strong>Zenko en graffiti!</strong></p>\r\n\r\n<p>Zenko, topdrummer van de groep W.A.B, heeft zijn shuttle helemaal ingespoten met gele en blauwe graffiti, wellicht zijn favoriete kleuren.</p>\r\n\r\n<p><strong>Zenko als bestuurder?</strong></p>\r\n\r\n<p>Hold very tight ‘cause Zenko drives his flashy shuttle all by himself. So fasten your seat belt for this crazy flight!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4245.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4245.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "4dc753fa-4fdd-4858-a488-eb116a7ef846",
+      "title": "Guitar Riff",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/guitar_riff_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/guitar_riff_0.jpg"
+      },
+      "location": {
+        "lat": "50.699173883621",
+        "lon": "4.5898609578931"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "90 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Kleine broer van de Dalton Terror",
+          "text": "<p><strong>Kleine broer van de Dalton Terror</strong></p>\r\n\r\n<p>De Guitar Riff is de kleine broer van de Dalton Terror, en de allerkleinsten zijn er zot op!</p>\r\n\r\n<p><strong>Vrije val</strong></p>\r\n\r\n<p>Het bakje waar zes personen in kunnen, stijgt eerst langzaam omhoog tot aan de top van de gitaar. Na enkele ogenblikken in stilstand, volgt er een adembenemende vrije val. Durf jij deze stoere attractie aan?</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/guitar_riff_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/guitar_riff_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "a472c687-c767-4d3e-90e2-e3beaaad7318",
+      "title": "Het Paleis van de Geest",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_143.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_143.JPG"
+      },
+      "location": {
+        "lat": "50.69832153912",
+        "lon": "4.5925036682443"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "105 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "WBE-PALA-30",
+      "additionalContent": [
+        {
+          "text": "<p>De twee geesten Zanzar en Babas schrikken er niet voor terug om al hun krachten te gebruiken. Na een bezoek aan dit huis kan je de vloer niet meer van het plafond onderscheiden.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_143.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_143.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "ca06347b-a9ed-4892-ae3a-18c8abe4f90b",
+      "title": "Kids Airlines",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/skunx_airlines_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/skunx_airlines_0.jpg"
+      },
+      "location": {
+        "lat": "50.699313022999",
+        "lon": "4.5899607383568"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "90 cm"
+        },
+        {
+          "title": "Max. lengte",
+          "value": "140 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Piloot",
+          "text": "<p><strong>Piloot</strong></p>\r\n\r\n<p>Wat wil jij later worden? Piloot? Dan is deze attractie geknipt voor jou.</p>\r\n\r\n<p><strong>Eerste vliegervaring</strong></p>\r\n\r\n<p>Stap aan boord, neem je stuur vast en stijg op, en kies zelf hoe hoog je vliegt! Jouw eerste vliegervaring zit erop, je bent klaar om de beste piloot te worden.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/skunx_airlines_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/skunx_airlines_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "ed387c70-a6fc-4a14-a798-4270a761bcf0",
+      "title": "Little Swing",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/little_swing_1.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/little_swing_1.jpg"
+      },
+      "location": {
+        "lat": "50.699240495472",
+        "lon": "4.5896481657294"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "90 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Vrijheid",
+          "text": "<p><strong>Vrijheid</strong></p>\r\n\r\n<p>Vanuit de hangende stoeltjes ontdekken kinderen wat vrijheid is. Ze kunnen even op rust komen en genieten van een zacht briesje.</p>\r\n\r\n<p><strong>Voor de kleinste deugnieten</strong></p>\r\n\r\n<p>Little Swing is versierd met verbodsborden... Dat kan alleen maar een grap zijn van the SkunX. Enkel voor kleine deugnieten dus!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/little_swing_1.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/little_swing_1.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "4b255823-8ca8-4a78-964e-be98c7d404d9",
+      "title": "Weerwolf",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Loup_Garou_10.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Loup_Garou_10.jpg"
+      },
+      "location": {
+        "lat": "50.70063884814",
+        "lon": "4.590344896118"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "code": "WBE-LOUP-17",
+      "additionalContent": [
+        {
+          "title": "Houten constructie",
+          "text": "<p><strong>Houten constructie</strong></p>\r\n\r\n<p>Weerwolf, een unieke achtbaan die volledig uit hout bestaat. Dat zorgt voor het nodige krakende effect tijdens de rit vol afwisseling.</p>\r\n\r\n<p><strong>80 km/u</strong></p>\r\n\r\n<p>De rode en groene karretjes scheuren door de gierende bochten aan een continu snelheid van 80 km/u. Haren in de wind, krijsende gillen, en gekke bekken op de foto!</p>\r\n\r\n<p><strong>Heuvelachtig parcours</strong></p>\r\n\r\n<p>En we bijten de spits af met een afdaling die je de kick van je leven bezorgt, gevolgd door nog een tiental andere duizelingwekkende hellingen.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Loup_Garou_10.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Loup_Garou_10.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "8a81fc05-0714-4153-af3a-01e7a0fafb4b",
+      "title": "Melody Road",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/melody_road_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/melody_road_0.jpg"
+      },
+      "location": {
+        "lat": "50.700789547157",
+        "lon": "4.5918145716253"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "Neem plaats achter het stuur van een echte oldtimer. Kinderen vooraan, ouders achteraan... en gas geven maar.",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/melody_road_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/melody_road_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "8a65e7f6-d863-4b12-94cf-63062d024315",
+      "title": "W.A.B Mini Tour",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4262.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4262.jpg"
+      },
+      "location": {
+        "lat": "50.697945081095",
+        "lon": "4.5924412114368"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "W.A.B",
+          "text": "<p><strong>W.A.B</strong></p>\r\n\r\n<p>Maak een trip met dit treintje en ontmoet jouw grootste idolen van de muziekgroep W.A.B: Fibi, Walibi, Zenko en Haaz, ze zijn allemaal van de partij!</p>\r\n\r\n<p><strong>The SkunX Mini Tour?</strong></p>\r\n\r\n<p>Kijk goed uit je doppen want the SkunX zijn niet ver weg. Squad wil deze attractie maar al te graag omtoveren tot “The SkunX Mini Tour”.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4262.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4262.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "9870c92c-4f78-4fbb-a16b-f1d3848bd9fe",
+      "title": "Octopus",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-06/IMG_1663.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-06/IMG_1663.JPG"
+      },
+      "location": {
+        "lat": "50.697381131572",
+        "lon": "4.5869877934456"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "105 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Ten strijde met de Octopus",
+          "text": "<p><strong>Ten strijde met de Octopus</strong></p>\r\n\r\n<p>De Octopus neemt je in zijn tentakels, slingert je heen en weer, omhoog en omlaag, en draait ontelbare toeren in het rond. Durf jij deze strijd aan?</p>\r\n\r\n<p><strong>Desoriëntatie</strong></p>\r\n\r\n<p>Of je je nu verzet of niet, het noorden ben je toch kwijt. Las na deze attractie dus best een pauze in om je oriëntatie terug te vinden!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-06/IMG_1663.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-06/IMG_1663.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "ce4c529a-0ba2-4886-a38a-cfd384280f0b",
+      "title": "Poneys",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2058.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2058.jpg"
+      },
+      "location": {
+        "lat": "50.698244007004",
+        "lon": "4.5876246676917"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        },
+        {
+          "title": "Max. lengte",
+          "value": "140 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Cowboy in aantocht",
+          "text": "<p><strong>Cowboy in aantocht</strong></p>\r\n\r\n<p>Speel je thuis graag ‘cowboys en indianen’? Hier komt jouw spelletje tot leven! Je bent nu een echte cowboy. Beleef een waar avontuur!</p>\r\n\r\n<p><strong>Ponyritje</strong></p>\r\n\r\n<p>Om het avontuur helemaal compleet te maken, mag je een ongetemde pony uitkiezen. Maak een hels ritje door het indianendorp. Opgepast voor pijl en boog!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2058.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2058.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "552cbde6-9da2-42b4-8bd3-30444d380e32",
+      "title": "Popcorn Revenge",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_275_0.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_275_0.JPG"
+      },
+      "location": {
+        "lat": "50.700192344348",
+        "lon": "4.5941881269755"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "90 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "WBE-POPC-43",
+      "additionalContent": [
+        {
+          "text": "<p>Klaar voor avontuur?</p>\r\n\r\n<p>Ga op een meeslepende reis in de wereld van de cinema. Ontdek deze nieuwe attractie met het gezin en versla de popcorn.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_275_0.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/FG_190525_SCORPIX_WALIBI_275_0.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "103f95f6-b09b-4fa3-bb1c-39d04e0d4334",
+      "title": "Psyké Underground",
+      "video": "https://www.youtube.com/watch?v=XP1NFIt-J-g",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/13_07_walibi_psyche_40_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/13_07_walibi_psyche_40_0.jpg"
+      },
+      "location": {
+        "lat": "50.697839159829",
+        "lon": "4.5908283165277"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "130 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "140 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "code": "WBE-PSYK-40",
+      "additionalContent": [
+        {
+          "title": "De mythe is terug!",
+          "text": "<p><strong>De mythe is terug!</strong></p>\r\n\r\n<p>Ken je de Sirocco nog? Of eerder de Turbine? (Her)ontdek dan nu de Psyké Underground, een legendarische attractie!</p>\r\n\r\n<p><strong>In absolute duisternis...</strong></p>\r\n\r\n<p>Psyké Underground is volledig overdekt. Dit versterkt het adrenalinegevoel dubbel zo hard! Nergens anders ter wereld beleef je deze ervaring in absolute duisternis.</p>\r\n\r\n<p><strong>Katapult</strong></p>\r\n\r\n<p>Psyké Underground katapulteert je in minder dan 3 seconden naar meer dan 85 km/u in een helse looping op 45 meter hoogte. Mis deze unieke attractie zeker niet!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/13_07_walibi_psyche_40_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/13_07_walibi_psyche_40_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "62665731-16d7-4adc-a061-efd915295ef7",
+      "title": "PULSAR",
+      "video": "https://www.youtube.com/watch?v=XvCHzUJa2s0",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/pulsar_hp_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/pulsar_hp_0.jpg"
+      },
+      "location": {
+        "lat": "50.699364197673",
+        "lon": "4.590718033885"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "code": "WBE-PULS-41",
+      "additionalContent": [
+        {
+          "title": "Beste nieuwe attractie ter wereld",
+          "text": "<p><strong>Beste nieuwe attractie ter wereld</strong></p>\r\n\r\n<p>Gegarandeerd zorgt deze nieuwe attractie voor onvergetelijke momenten die je graag deelt met familie of vrienden.</p>\r\n\r\n<p><strong>100 km/u</strong></p>\r\n\r\n<p>Bereid je voor op een waanzinnige rit van 70 seconden. Drie keer word je heen en weer gekatapulteerd, terwijl het steeds sneller gaat.</p>\r\n\r\n<p><strong>Enorme splash</strong></p>\r\n\r\n<p>Ben je nieuwsgierig en niet bang van een beetje water? Maak je dan klaar voor dit spetterend nieuw avontuur!</p>\r\n\r\n<p><strong>45 meter hoog</strong></p>\r\n\r\n<p>Duik het water in met een loodrechte vrije val vanop 45 meter hoogte.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/pulsar_hp_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/pulsar_hp_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "e3ce6448-59ea-495e-9800-e4b35a494d44",
+      "title": "Radja River",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/tn_radja_md01.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/tn_radja_md01.jpg"
+      },
+      "location": {
+        "lat": "50.699666973944",
+        "lon": "4.5939303345339"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "105 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "140 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "WBE-RADJ-24",
+      "additionalContent": [
+        {
+          "title": "Wildwaterrivier",
+          "text": "<p><strong>Wildwaterrivier</strong></p>\r\n\r\n<p>De Radja River, een wilde rivier, vol scherpe bochten, plotse watervallen en ... verraderlijke draaikolken. Als je van avontuur houdt, mag je deze attractie voor geen geld van de wereld missen.</p>\r\n\r\n<p><strong>Met 12 in een boot</strong></p>\r\n\r\n<p>Maak je geen zorgen, je hoeft dit heldhaftig avontuur niet alleen mee te maken. Je krijgt een ronde opblaasboot met 12 zitjes. Dat belooft niets anders dan sensatie en opwinding.</p>\r\n\r\n<p><strong>Rafting</strong></p>\r\n\r\n<p>Minutenlang raften op de Radja River met familie en vrienden. Houd je stevig vast want hier gaan we! Nattigheid gegarandeerd!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/tn_radja_md01.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/tn_radja_md01.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "2ccb39b3-d63c-4d66-8e2b-3d14ab3d9a36",
+      "title": "Salsa y Fiesta",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2077.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2077.jpg"
+      },
+      "location": {
+        "lat": "50.696852403252",
+        "lon": "4.5882999409348"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "90 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "Draaien, draaien en nog eens draaien op z'n exotisch...dat is Salsa Y Fiësta! Mensen met een zwakke maag blijven beter aan de kant staan!",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_2077.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_2077.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "84f26f93-0603-4cd1-b1d4-57dbfe4a637b",
+      "title": "Spinning Taxi",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/squad_taxi_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/squad_taxi_0.jpg"
+      },
+      "location": {
+        "lat": "50.699068855379",
+        "lon": "4.5897159808488"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Taxichauffeur?",
+          "text": "<p><strong>Taxichauffeur?</strong></p>\r\n\r\n<p>Laat je je graag vervoeren of neem je liever zelf het stuur in handen? Aan jou de keuze. Let wel op want er zou een verkeersagent in de buurt zijn.</p>\r\n\r\n<p><strong>Gordel vastgeklikt!</strong></p>\r\n\r\n<p>Klik je gordel maar goed vast want deze raceauto’s brengen je naar een drukke baan waar je soms onverwachte bochten zal moeten maken. Wees dus op je hoede!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/squad_taxi_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/squad_taxi_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "1e5d0c9f-d9ba-4a81-973e-4221b4448248",
+      "title": "Spinning Vibe",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/spinning_vibe_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/spinning_vibe_0.jpg"
+      },
+      "location": {
+        "lat": "50.699582835804",
+        "lon": "4.590240085446"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "Spinning Vibe is een leuke attractie voor iedereen die graag lekker heen en weer slingert. In deze attractie kan je alle uithoeken van het park zien.",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/spinning_vibe_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/spinning_vibe_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "bfa3ae8c-7332-4cc7-a3a3-8f6be1e2bf82",
+      "title": "Tchou-tchou Express",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/skunx_tour_2.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/skunx_tour_2.jpg"
+      },
+      "location": {
+        "lat": "50.698917526005",
+        "lon": "4.5893895086228"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Minitrein",
+          "text": "<p><strong>Minitrein</strong></p>\r\n\r\n<p>De allerkleinste spruiten zullen zich helemaal thuisvoelen in de Tchou-tchou Express. In het hartje van de muzikale wereld van de groep loopt het treinspoor.</p>\r\n\r\n<p><strong>Rustig tochtje</strong></p>\r\n\r\n<p>De trein maakt een rustig tochtje door een klein dorp met gezellige huisjes. Bestemd voor de allerjongste levensgenietertjes.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/skunx_tour_2.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/skunx_tour_2.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "77d871b6-d95e-4ea9-b095-581c2daa2370",
+      "title": "Tiki-Trail",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_1722.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_1722.JPG"
+      },
+      "location": {
+        "lat": "50.69766114556",
+        "lon": "4.5871630345202"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Wil je graag een mooi overzicht van Exotic World ? Of liever klimmen en klauteren over en rond funcoaster Tiki-Waka? Test dan zeker Tiki-Trail uit !</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_1722.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_1722.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "a259f1ba-5a2e-4d06-84c2-752b02c47cac",
+      "title": "Tiki-Waka",
+      "video": "https://www.youtube.com/watch?v=TWmjtvmI0l4",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/W18-TIKIWAKA_5784-2_3.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/W18-TIKIWAKA_5784-2_3.jpg"
+      },
+      "location": {
+        "lat": "50.696948291523",
+        "lon": "4.5870793287187"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "100 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "code": "WBE-TIKI-42",
+      "additionalContent": [
+        {
+          "title": "Exotische fun !",
+          "text": "<p><strong>Exotische fun !</strong></p>\r\n\r\n<p>Klaar voor een krankzinnige rit met het hele gezin op een exotisch circuit ? Wil je graag kriebels voelen en de gekste bekken trekken? Beleef dan Tiki-Waka, de nieuwe familie-achtbaan in Walibi.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2019-06/W18-TIKIWAKA_5784-2_3.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-06/W18-TIKIWAKA_5784-2_3.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "028a0f58-7a32-42a8-92ba-e5a3bd87af04",
+      "title": "Tree House",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4274.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4274.jpg"
+      },
+      "location": {
+        "lat": "50.697841653931",
+        "lon": "4.5921062792765"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "80 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "105 cm"
+        }
+      ],
+      "category": {
+        "id": "49f680ca-c966-48aa-8d6c-c11c47c179a0",
+        "name": "Kids",
+        "weight": 69,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "100 % speelplezier",
+          "text": "<p><strong>100 % speelplezier</strong></p>\r\n\r\n<p>In deze gigantische boomhut kan elke speelvogel zich 100 % uitleven. De kindjes worden vergezeld door W.A.B, maar ook Squad is nooit ver weg om iemand een loer te draaien.</p>\r\n\r\n<p><strong>Verfrissing</strong></p>\r\n\r\n<p>Op hete zomerdagen, wordt de grote waterspeeltuin uiteraard in gang gezet. Zo kunnen de kleine padvinders zich lekker verfrissen.</p>\r\n\r\n<p><strong>Bericht aan mama en papa</strong></p>\r\n\r\n<p>Mama en papa, jullie kunnen op beide oren slapen, jullie kleine spruiten kunnen in alle veiligheid zot doen en spelen tot ze bekaf zijn.</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/img_4274.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/img_4274.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "9b7a4232-4a4f-406e-a576-d2219fa971b9",
+      "title": "Tuf Tuf Club",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/tuf_tuf_club_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/tuf_tuf_club_0.jpg"
+      },
+      "location": {
+        "lat": "50.699638032477",
+        "lon": "4.5893937349319"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "140 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Verkeersregels?",
+          "text": "<p><strong>Verkeersregels?</strong></p>\r\n\r\n<p>In de Tuf Tuf Club bestaan er geen verkeersregels. De auto’s zijn gemaakt om te botsen, profiteer er dus maar van.</p>\r\n\r\n<p><strong>Veel botsplezier!</strong></p>\r\n\r\n<p>Kies je een slachtoffer uit om op te knallen of waag je in een kettingbotsing. Botsplezier alom!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/tuf_tuf_club_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/tuf_tuf_club_0.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "79e5693c-859e-44c1-a77f-cd0c0547bb17",
+      "title": "Vampire",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/vampire_02.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/vampire_02.jpg"
+      },
+      "location": {
+        "lat": "50.702147695467",
+        "lon": "4.59188040839"
+      },
+      "status": "closed",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [
+        {
+          "title": "min unaccompanied heigh",
+          "value": "130 cm"
+        },
+        {
+          "title": "Max. lengte",
+          "value": "195 cm"
+        }
+      ],
+      "category": {
+        "id": "77ba3ff6-787a-4879-be67-e52f0057f010",
+        "name": "Thrills",
+        "weight": 45,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-thrill.svg"
+        }
+      },
+      "code": "WBE-VAMP-34",
+      "additionalContent": [
+        {
+          "title": "Voeten in de lucht",
+          "text": "<p><strong>Voeten in de lucht</strong></p>\r\n\r\n<p>Ooit al eens in de lucht gehangen? Dat gevoel krijg je in deze unieke attractie. Laat je voeten maar eens lekker uitwaaien in deze heuse vampiertocht.</p>\r\n\r\n<p><strong>Bloederige toeren</strong></p>\r\n\r\n<p>Een paar bloeddorstige loopings en een drietal omwentelingen om je as aan ongeziene snelheden... zuigen al het bloed uit je lijf.</p>\r\n\r\n<p><strong>Gouden raad</strong></p>\r\n\r\n<p>Schoenen met losse veters laat je beter uit. Of zorg dat je schoenen strak vastzitten.</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/vampire_02.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/vampire_02.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "b4c33fc3-b122-43ca-b6d4-0559a08e3220",
+      "title": "Wave Swinger",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/wave_swinger_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/wave_swinger_0.jpg"
+      },
+      "location": {
+        "lat": "50.700329551406",
+        "lon": "4.5912042401803"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "waitingTimeDescription": "no q-time",
+      "parameters": [
+        {
+          "title": "min accompanied heigh",
+          "value": "105 cm"
+        },
+        {
+          "title": "min unaccompanied heigh",
+          "value": "120 cm"
+        }
+      ],
+      "category": {
+        "id": "aa1236c0-162a-4fe3-99cf-1d1924376d14",
+        "name": "Familie",
+        "weight": 63,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-kids-family.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "title": "Schommeldraaimolen",
+          "text": "<p><strong>Schommeldraaimolen</strong></p>\r\n\r\n<p>Een combinatie van een schommel en een draaimolen, zo kan je de Wave Swinger het beste beschrijven.</p>\r\n\r\n<p><strong>Kriebels in je buik</strong></p>\r\n\r\n<p>Zit je goed vastgeklikt want deze duizelingwekkende draaimolen zwiert je in het rond en gaat op en neer. Ook de kriebels in je buik zullen niet ontbreken!</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-03/wave_swinger_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-03/wave_swinger_0.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "restaurant": [
+    {
+      "uuid": "e5087b97-4882-4473-86a8-7618609aeb0c",
+      "title": "Cook House Club",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0401.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0401.JPG"
+      },
+      "location": {
+        "lat": "50.698964814541",
+        "lon": "4.5889194524864"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Een snelle hap voor vooraleer je cowboys trotseert ? In de Cook House Club heb je een uitgebreid assortiment aan kleine snacks, sandwiches, dranken en smoothies.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0401.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0401.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "f8af1e0c-70b0-4e10-8bf9-e7df87913257",
+      "title": "Country Cantina",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0398%20%281%29.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0398%20%281%29.JPG"
+      },
+      "location": {
+        "lat": "50.698771008207",
+        "lon": "4.5891689907497"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "2e5d2018-9fd2-4d6d-a045-b56b379495df",
+        "name": "Restaurant",
+        "weight": 79,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-restaurant-food.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Echte cowboys houden halt in de selfservice Country Cantina om hun buik te vullen met heerlijke ribbetjes, steaks en Belgische gerechten.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0398%20%281%29.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0398%20%281%29.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "b01ba635-c371-4628-8049-ac8e4d65c4c3",
+      "title": "Crêpes Remix",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0513.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0513.JPG"
+      },
+      "location": {
+        "lat": "50.69849815632",
+        "lon": "4.5891949975939"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Op zoek naar iets zoets? Probeer onze heerlijke pannenkoeken, donuts of muffins. Een mooie zicht op PULSAR wordt er gratis bijgegeven.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0513.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0513.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "5e29d7c3-2cf0-4265-b267-09289ddb36cb",
+      "title": "Dalton Burger",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/MIC_0130.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/MIC_0130.jpg"
+      },
+      "location": {
+        "lat": "50.698951880326",
+        "lon": "4.5881871719096"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "2e5d2018-9fd2-4d6d-a045-b56b379495df",
+        "name": "Restaurant",
+        "weight": 79,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-restaurant-food.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Een lekkere burger, nuggets of salades eten in het hart van de Western ? Hiervoor kan je terecht in de Dalton Burger.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/MIC_0130.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/MIC_0130.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "81c895f8-3700-48e5-b1d4-5fea38e5895d",
+      "title": "Delhi'Cious",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2019-04/delhicious.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-04/delhicious.jpg"
+      },
+      "location": {
+        "lat": "50.700099739304",
+        "lon": "4.5938732969705"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "2e5d2018-9fd2-4d6d-a045-b56b379495df",
+        "name": "Restaurant",
+        "weight": 79,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-restaurant-food.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Dompel jezelf onder in de wereld van Karma World en geniet van heerlijke Indiase gerechten: Chicken Tikka-Masala, Bombay Chicken en nog veel meer. Geniet ook van het sublieme terras van het restaurant met uitzicht op het meer.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2019-04/delhicious.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-04/delhicious.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "d6bc2745-244d-4516-8439-59fe9baeec69",
+      "title": "Fun O'Clock",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2019-03/FunOClock.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-03/FunOClock.jpg"
+      },
+      "isNew": true,
+      "location": {
+        "lat": "50.698099701512",
+        "lon": "4.5920723516049"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Fun O'Clock&nbsp;is het lievelingsterras van zowel kinderen als ouders. In het hart van Fun World, een kinderparadijs waar alle attracties op kindermaat zijn. Je kan er een ijsje eten of iets drinken en tegelijkertijd je kinderen in het oog houden.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2019-03/FunOClock.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2019-03/FunOClock.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "2eb04b12-9af7-4b8c-9cc0-c4121e8deb10",
+      "title": "Ice Cream Song",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0408.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0408.JPG"
+      },
+      "location": {
+        "lat": "50.698900660672",
+        "lon": "4.5887619320338"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Op zoek naar afkoeling ?&nbsp;Kom langs bij Ice Cream Song, waar je een lekker ijsje en milkshake kan krijgen.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0408.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0408.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "f054b2a3-7282-45ea-9019-47e7010695fb",
+      "title": "Java's Coffee Corner",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0065.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0065.JPG"
+      },
+      "location": {
+        "lat": "50.70138990831",
+        "lon": "4.5930202073403"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Niets beter dan een lekker ontbijt en koffie bij aankomst in het park. Bij Java's Coffee Corner kan je uiteraard koffie maar ook koffiekoeken en onze heerlijke wafels verkrijgen.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0065.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0065.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "8517493a-de22-42ce-a78f-846d668faffe",
+      "title": "La Terrasse",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0004.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0004.JPG"
+      },
+      "location": {
+        "lat": "50.700679127735",
+        "lon": "4.5920508632807"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "54c8262b-24a4-401d-823d-82e3547486e4",
+        "name": "Frituur",
+        "weight": 67,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-burger-fries.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Dit&nbsp;aangename terras is de ideale plaats om even tot rust te komen. Hier serveren wij de beste Belgische bieren met een portie frieten, een mitraillette of een hot-dog.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0004.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0004.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "4dc7690e-86f5-4d8f-8fab-e9217e1764ea",
+      "title": "Pizza Solo",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/MIC_4403.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/MIC_4403.jpg"
+      },
+      "location": {
+        "lat": "50.699958025867",
+        "lon": "4.5905831584134"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "2e5d2018-9fd2-4d6d-a045-b56b379495df",
+        "name": "Restaurant",
+        "weight": 79,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-restaurant-food.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Zin om lekker te tafelen op een Italiaanse Piazza ? Geniet van onze overheerlijke pasta’s, pizza’s en salades in ons Italiaans restaurant.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/MIC_4403.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/MIC_4403.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "fa38692a-8fc0-4b83-82ad-fa4c8fd0928d",
+      "title": "Rock Sandwich",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0448.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0448.JPG"
+      },
+      "location": {
+        "lat": "50.697704675153",
+        "lon": "4.5902520418167"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "54c8262b-24a4-401d-823d-82e3547486e4",
+        "name": "Frituur",
+        "weight": 67,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-burger-fries.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Iets nodig om van Psyké Underground te bekomen&nbsp;? Je kan een kebab, hamburger, pastabeker of een ijsje eten op de grote terras van de Rock Sandwich.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0448.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0448.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "d3bed750-637c-4317-9ae9-3d6c538c78e8",
+      "title": "Slush Ice Factory",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0503.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0503.JPG"
+      },
+      "location": {
+        "lat": "50.698737656345",
+        "lon": "4.5883424580986"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Wat afkoeling nodig&nbsp;? Bij Slush Ice Factory hebben we ijzig koude slushs.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0503.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0503.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "29c8e1c6-9744-4f0f-8834-7ccc7edb3670",
+      "title": "Star Saloon",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0423.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0423.JPG"
+      },
+      "location": {
+        "lat": "50.698805639229",
+        "lon": "4.5882113563405"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "bab9db95-9938-4fe9-aedc-2a5a208f53ce",
+        "name": "Barbecue",
+        "weight": 13,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-bbq.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Tegenover de Dalton Terror vind je een gezellige bar, de Star Saloon. Cowboys komen hier naartoe voor een frisse pint en een lekker&nbsp;worstenbroodje.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0423.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0423.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "0bcd6957-0c95-4163-8e96-b74f01db7f1a",
+      "title": "Sweet Star",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0373.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0373.JPG"
+      },
+      "location": {
+        "lat": "50.700537038492",
+        "lon": "4.5915728615792"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Een lekkere wafel of ijsje om je hongerige maag te stillen ? Bij Sweet Star is alles klaar om je vlug te bedienen !</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0373.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0373.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "db26972c-e758-4472-a6e1-029cf31a4201",
+      "title": "Swing Fries",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/swing_fries.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/swing_fries.jpg"
+      },
+      "location": {
+        "lat": "50.701446287464",
+        "lon": "4.5932421705696"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "54c8262b-24a4-401d-823d-82e3547486e4",
+        "name": "Frituur",
+        "weight": 67,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-burger-fries.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Honger ? Bij Swing Fries kan je heel wat eten: panini’s, hamburgers, mitraillette, ijsjes maar is vooral de ideale plaats om heerlijke frieten te eten !</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/swing_fries.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/swing_fries.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "da6ea2d2-b7bf-4847-8c38-78c6ef1d89e2",
+      "title": "Tiki-Bar",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_1690.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_1690.jpg"
+      },
+      "location": {
+        "lat": "50.696843268775",
+        "lon": "4.5874395804206"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "6b8b51df-21c6-4049-b8a2-7c2346504da0",
+        "name": "Snacks & drinks",
+        "weight": 106,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-hot-dog.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Dorst gekregen van de exotische sfeer van Exotic World ? De cocktails en smoothies van de Tiki-Bar zullen voor afkoeling zorgen. Heb je daarna nog een hongertje ? Proef dan zeker van onze heerlijke muffins en nachos.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_1690.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_1690.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "6e38ccb3-31c4-4938-a74c-064ba06386e0",
+      "title": "Western Fries",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0497.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0497.JPG"
+      },
+      "location": {
+        "lat": "50.698073235419",
+        "lon": "4.5875239939255"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "54c8262b-24a4-401d-823d-82e3547486e4",
+        "name": "Frituur",
+        "weight": 67,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-burger-fries.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Een hamburger met frietjes of een snack eten met een achtbaan recht boven je hoofd ? Bij de Western Fries eet je onder de racende karretjes van Tiki-Waka !&nbsp;</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/DSC_0497.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/DSC_0497.JPG"
+          }
+        }
+      ]
+    }
+  ],
+  "shop": [
+    {
+      "uuid": "b7f52588-790e-4197-a714-ca406cb2b7b9",
+      "title": "Bagagedepot",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Consigne%20%285%29.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Consigne%20%285%29.JPG"
+      },
+      "location": {
+        "lat": "50.701719098007",
+        "lon": "4.593302479168"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "0832bbdf-f198-4c7b-bc4b-d35a0bf6c0ff",
+        "name": "Shop",
+        "weight": 92,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-sac-shopping.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Geen zin om je bagage de hele dag mee te zeulen? Dan vind je opbergruimte in het bagagedepot.&nbsp;</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Consigne%20%285%29.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Consigne%20%285%29.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "220f9359-b15c-488d-abfd-2e0688b8131f",
+      "title": "Candy’s star",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-08/Candy-Star-%284%29-crop.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-08/Candy-Star-%284%29-crop.jpg"
+      },
+      "location": {
+        "lat": "50.698852082615",
+        "lon": "4.5886719347428"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "0832bbdf-f198-4c7b-bc4b-d35a0bf6c0ff",
+        "name": "Shop",
+        "weight": 92,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-sac-shopping.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Zin in suiker ? Candy’s Star biedt een zeer uitgebreid aanbod aan snoep en ander lekkers, gaande van suikerspinnen over zuurtjes tot chips !</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-08/Candy-Star-%284%29-crop.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-08/Candy-Star-%284%29-crop.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "95c6f956-e100-4554-9882-f61b74b5c2a6",
+      "title": "Fab Store",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Fab%20Store%20%283%29.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Fab%20Store%20%283%29.JPG"
+      },
+      "location": {
+        "lat": "50.70013515931",
+        "lon": "4.5904429520613"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "0832bbdf-f198-4c7b-bc4b-d35a0bf6c0ff",
+        "name": "Shop",
+        "weight": 92,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-sac-shopping.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>De shop aan de 4D-cinema biedt verschillende Walibi artikelen aan, evenals een uitgebreid gamma aan snoep en dranken. Ideaal om de filmervaring vast te houden !</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Fab%20Store%20%283%29.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Fab%20Store%20%283%29.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "09f1a4e5-ee13-4352-9f62-54468f34ea09",
+      "title": "Megamix",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/M%C3%A9gamix%20%2825%29.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/M%C3%A9gamix%20%2825%29.JPG"
+      },
+      "location": {
+        "lat": "50.701600182024",
+        "lon": "4.5930986312828"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "0832bbdf-f198-4c7b-bc4b-d35a0bf6c0ff",
+        "name": "Shop",
+        "weight": 92,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-sac-shopping.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>Zin in suiker? Megamix beidt je een grote keuze aan zoetigheden en snoepgoed aan, gaande van zuurtjes over suikerspin tot chips.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/M%C3%A9gamix%20%2825%29.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/M%C3%A9gamix%20%2825%29.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "f6a9bc87-939e-457b-ba32-1fb080e855ca",
+      "title": "W.A.B Shop",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_1575.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_1575.JPG"
+      },
+      "location": {
+        "lat": "50.701711505232",
+        "lon": "4.5937248681923"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "0832bbdf-f198-4c7b-bc4b-d35a0bf6c0ff",
+        "name": "Shop",
+        "weight": 92,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-sac-shopping.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>De grootste winkel aan de ingang van het park biedt je verschillende producten aan&nbsp;: kleren, kopjes, speelgoeden, snoepjes, ...</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/IMG_1575.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/IMG_1575.JPG"
+          }
+        }
+      ]
+    },
+    {
+      "uuid": "d186cf99-efc6-48f4-af75-2b6f3626f95b",
+      "title": "Western Shop",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Lucky%20%20%2826%29.JPG",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Lucky%20%20%2826%29.JPG"
+      },
+      "location": {
+        "lat": "50.698741512718",
+        "lon": "4.588330887282"
+      },
+      "status": "open",
+      "waitingTime": -10,
+      "attractionID": "",
+      "parameters": [],
+      "category": {
+        "id": "0832bbdf-f198-4c7b-bc4b-d35a0bf6c0ff",
+        "name": "Shop",
+        "weight": 92,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-sac-shopping.svg"
+        }
+      },
+      "additionalContent": [
+        {
+          "text": "<p>In de Western Shop kan je verschillende western-artikelen krijgen : cowboyhoeden, geweren, … Een selectie Walibi artikelen is eveneens beschikbaar.</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/entertainment/2018-07/Lucky%20%20%2826%29.JPG",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/entertainment/2018-07/Lucky%20%20%2826%29.JPG"
+          }
+        }
+      ]
+    }
+  ],
+  "show": [],
+  "service": [
+    {
+      "uuid": "da72656c-8a4a-46d5-baa8-0ed6638a1ca3",
+      "serviceCode": "CashMachine",
+      "title": "Geldautomaat",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_7.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_7.jpg"
+      },
+      "category": {
+        "id": "011e87eb-9c93-4caf-aedf-c9ce0d2c3902",
+        "name": "CashMachine",
+        "weight": 3,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-cash-point.svg"
+        }
+      },
+      "location": {
+        "lat": "50.701655707695",
+        "lon": "4.5932344843379"
+      },
+      "additionalContent": [
+        {
+          "title": "Geldautomaat",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_7.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_7.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "d9a7887f-7c03-4012-b249-a23e54294424",
+      "serviceCode": "Lockers",
+      "title": "Bagagedepot",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_9.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_9.jpg"
+      },
+      "category": {
+        "id": "fe96d3f8-4e41-4ba6-b675-f29da05fb8d7",
+        "name": "Lockers",
+        "weight": 13,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-bagage-room.svg"
+        }
+      },
+      "location": {
+        "lat": "50.701703524842",
+        "lon": "4.5933269610576"
+      },
+      "additionalContent": [
+        {
+          "title": "Bagagedepot",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_9.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_9.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "15f47120-3031-4c34-84fa-4df72f336978",
+      "serviceCode": "Reception",
+      "title": "Infobureau",
+      "description": "<p>Info, verloren voorwerpen, klachten</p>\r\n",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_8.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_8.jpg"
+      },
+      "category": {
+        "id": "09f7bd45-4683-47c2-a2fc-d5c7e8187fd0",
+        "name": "Reception",
+        "weight": 19,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-infos.svg"
+        }
+      },
+      "location": {
+        "lat": "50.702006055408",
+        "lon": "4.5935755245681"
+      },
+      "additionalContent": [
+        {
+          "title": "Infobureau",
+          "text": "<p>Info, verloren voorwerpen, klachten</p>\r\n",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_8.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_8.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "uuid": "e4e928ef-275d-4c71-a29d-ecc7210b4999",
+      "serviceCode": "FirstAid",
+      "title": "EHBO",
+      "image": {
+        "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_6_0.jpg",
+        "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_6_0.jpg"
+      },
+      "category": {
+        "id": "61083817-d58a-4732-8dd0-14fbf6677d72",
+        "name": "FirstAid",
+        "weight": 10,
+        "icon": {
+          "iconType": "svg",
+          "imageUrl": "https://www.walibi.be/themes/custom/walibi_red/html/svg/spritesrc/icon-medical.svg"
+        }
+      },
+      "location": {
+        "lat": "50.698578198603",
+        "lon": "4.5875280669377"
+      },
+      "additionalContent": [
+        {
+          "title": "EHBO",
+          "image": {
+            "url": "https://www.walibi.be/sites/default/files/content/service/2018-10/no_picture_6_0.jpg",
+            "thumbnailUrl": "https://www.walibi.be/sites/default/files/styles/400x100pc/public/content/service/2018-10/no_picture_6_0.jpg"
+          }
+        }
+      ],
+      "status": "open"
+    }
+  ]
+}

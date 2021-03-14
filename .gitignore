@@ -25,6 +25,8 @@ lerna-debug.log*
 *.launch
 .settings/
 *.sublime-workspace
+.graphqlconfig
+schema.graphql
 
 # IDE - VSCode
 .vscode/*

@@ -1,0 +1,2273 @@
+{
+  "code": 0,
+  "result": {
+    "attractions": [
+      {
+        "title": "L\u0027A\u00e9rolaf",
+        "order": "0",
+        "code": "313251",
+        "changed": "1601381211",
+        "translations": {
+          "fr": "313242",
+          "es": "313245",
+          "nl": "313248",
+          "en": "313251"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/aerolaf_sylvain_cambon_2018-2023_23.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/aerolaf_sylvain_cambon_2018-2023_29.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/aerolaf_sylvain_cambon_2018-2023_20.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/aerolaf_sylvain_cambon_2018-2023_18.jpg"
+        ],
+        "description": "\u003Cp\u003ENEW\u00a0: Located in the Viking area, in the heart of the Park, this new generation rotating bar- offers a unique and dizzying experience. Once the visitor has chosen and paid for his drink at the foot of the bar, he leaves for a 35 meters high journey with his head in the clouds.\u003C\/p\u003E\n\u003Cp style=\u0022text-align: center;\u0022\u003E\n\u003Ciframe allowfullscreen=\u0022\u0022 frameborder=\u00220\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/_898CMNlMM8\u0022 width=\u0022560\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "latitude": "49.131324000000",
+        "longitude": "2.572304000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/aerolaf_sylvain_cambon_2018-2023_29.jpg?itok=57R87YaT",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/aerolaf_sylvain_cambon_2018-2023_29.jpg?itok=vqgcvYtT",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/aerolaf_sylvain_cambon_2018-2023_29.jpg?itok=eWdhc3MU",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/aerolaf_sylvain_cambon_2018-2023_29.jpg?itok=WAC2Gxpa",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "105"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "34"
+      },
+      {
+        "title": "L\u0027Aventure Ast\u00e9rix",
+        "order": "0",
+        "code": "207881",
+        "changed": "1601385231",
+        "translations": {
+          "fr": "207878",
+          "en": "207881",
+          "es": "207884",
+          "nl": "207887"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-089-9079.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-098-9104.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-105-9133.jpg"
+        ],
+        "description": "\u003Cp\u003EAs a tribute to the two authors Ren\u00e9 Goscinny and Albert Uderzo, this exhibition traces the story of the Asterix comic strip and shows how the characters evolved through the generations. Long-time fans will be delighted by the reconstruction of the authors\u2019 office where the project was conceived, the original comic strip pages and the life-size characters you meet as you wander through the exhibition.\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "The Ast\u00e9rix Adventure: An immersive journey through the Ast\u00e9rix cartoon ",
+        "latitude": "49.133942000000",
+        "longitude": "2.571957000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast-098-9104.jpg?itok=pyU-SUdN",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast-098-9104.jpg?itok=Wc5IMD18",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast-098-9104.jpg?itok=Kd6umbhL",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast-098-9104.jpg?itok=yFTBgrwb",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-romain.png",
+            "label": "Univers",
+            "value": "L\u2019Empire Romain"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "50"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "20"
+      },
+      {
+        "title": "Attention Menhir !",
+        "order": "0",
+        "code": "207857",
+        "changed": "1601381548",
+        "translations": {
+          "fr": "207809",
+          "en": "207857",
+          "es": "207860",
+          "nl": "207866"
+        },
+        "new": true,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_3356.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/obelix_village_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_3601.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/am_0.jpg"
+        ],
+        "description": "\u003Cp\u003EFor the first time in its history, the Park is offering an animated film in 4D, in a brand new 300-seat theatre, \u003Cstrong\u003ELes Studios Id\u00e9fix.\u003C\/strong\u003E First wander through the Camp of Totorum, then sit yourself down in the dynamic seats and experience a \u003Cstrong\u003Eunique story\u003C\/strong\u003E full of twists and surprises, \u003Cstrong\u003Einspired by the cartoon\u003C\/strong\u003E:\u00a0 pop-out effects, water, wind, smells\u2026The illusion is complete in every sense..\u003C\/p\u003E\n\u003Cp style=\u0022text-align: center;\u0022\u003E\n\u003Ciframe allowfullscreen=\u0022\u0022 frameborder=\u00220\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/1D-zq2ajp2Y\u0022 width=\u0022560\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "The new 4D attraction at Parc Ast\u00e9rix ",
+        "latitude": "49.133900000000",
+        "longitude": "2.568300000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/obelix-header_1.jpg?itok=b8XQGPZi",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/obelix-header_1.jpg?itok=L3nzxobX",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/obelix-header_1.jpg?itok=AwC5UAfR",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/obelix-header_1.jpg?itok=k3ROmaLW",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-temps.png",
+            "label": "Univers",
+            "value": "A travers le temps"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "50"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "17"
+      },
+      {
+        "title": "Mission perdue",
+        "order": "0",
+        "code": "113562",
+        "changed": "1604307895",
+        "translations": {
+          "fr": "113319",
+          "es": "113550",
+          "en": "113562",
+          "nl": "204849"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/peur-0065_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_7181r.jpg"
+        ],
+        "description": "\u003Cp\u003EEmbark an expedition to the stars in search of a crew lost on a strange planet. A close encounter of the third kind. For real. 3D Experience.\u00a0\u003Cbr \/\u003E(Not recommended for under 12s)\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "An expedition into space for a close encounter of the third kind.",
+        "latitude": "49.133353000000",
+        "longitude": "2.568466000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/peur-0076_0.jpg?itok=QLpDSQ0i",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/peur-0076_0.jpg?itok=sD3pB5A6",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/peur-0076_0.jpg?itok=pT72WzSa",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/peur-0076_0.jpg?itok=uT7zYq1c",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-temps.png",
+            "label": "Univers",
+            "value": "A travers le temps"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": null
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "44"
+      },
+      {
+        "title": "P\u00e9gase Express",
+        "order": "-20",
+        "code": "92223",
+        "changed": "1601384979",
+        "translations": {
+          "fr": "92214",
+          "es": "92220",
+          "en": "92223",
+          "nl": "125415"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/_syl3438.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/pegase_express_cambon_2017-2020_4_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/pegase_express_cambon_2017-2020_11_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/pegase_express_cambon_2017-2020_23_0.jpg"
+        ],
+        "description": "\u003Cdiv\u003EAccording to the legend, Pegasus the winged horse was transformed by Zeus into a constellation that shines brightly in the firmament.\u003Cbr \/\u003EHere in the park, Pegasus whisks lucky visitors on a mythical, and somewhat eventful, journey.\u00a0\u003C\/div\u003E\n\u003Cdiv\u003E\u00a0\u003C\/div\u003E\n\u003Cdiv\u003EP\u00e9gase Express is a high-speed train journey on a crazy and eventful 1-kilometre long circuit.\u003Cbr \/\u003EThere\u2019s no loop the loop, but plenty of fabulous twists and turns and sensational ups and downs.\u00a0\u003C\/div\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "The new mythical attraction",
+        "latitude": "49.133610000000",
+        "longitude": "2.573820000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/pegase_cambon_2017-_2020_4.jpg?itok=crigLkZR",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/pegase_cambon_2017-_2020_4.jpg?itok=zaI7Z-YX",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/pegase_cambon_2017-_2020_4.jpg?itok=zqhYjm1I",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/pegase_cambon_2017-_2020_4.jpg?itok=VcF6S7pt",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-grece.png",
+            "label": "Univers",
+            "value": "La Gr\u00e8ce Antique"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "100"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "19"
+      },
+      {
+        "title": "Discob\u00e9lix",
+        "order": "-18",
+        "code": "63778",
+        "changed": "1601386155",
+        "translations": {
+          "fr": "63760",
+          "es": "63761",
+          "en": "63778",
+          "nl": "125510"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_9354_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/attrac-016-1916_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/attrac-038-7241_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/attrac-040-7246_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/attrac-052-1959_0.jpg"
+        ],
+        "description": "\u003Cp\u003EAs everyone knows, Obelix fell into a cauldron of magic potion when he was little... That\u2019s where he got his legendary strength. So when he decides to toss a giant discus, it turns and turns, unstoppable, creating a cycle of perpetual motion that\u2019s almost godly. Climb aboard for a trip that can only be described as... superhuman!\u003C\/p\u003E\n\u003Cp\u003E\u003Ciframe width=\u0022560\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/XbmPjcKmVAw\u0022 frameborder=\u00220\u0022 allowfullscreen=\u0022\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n\u003Cp\u003E\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "What happens when Obelix has a go at the discus throw? A whirlwind adventure, that\u2019s what!\u00a0",
+        "latitude": "49.131570000000",
+        "longitude": "2.573440000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/webservices\/discobelixcambon2016-2021_6.jpg?itok=mxjUgOmX",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/webservices\/discobelixcambon2016-2021_6.jpg?itok=uc-0wSm1",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/webservices\/discobelixcambon2016-2021_6.jpg?itok=_Z5jhT04",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/webservices\/discobelixcambon2016-2021_6.jpg?itok=nW0YSBTg",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-grece.png",
+            "label": "Univers",
+            "value": "La Gr\u00e8ce Antique"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "33"
+      },
+      {
+        "title": "Petit Ch\u00eane Play Area",
+        "order": "0",
+        "code": "63767",
+        "changed": "1601380304",
+        "translations": {
+          "fr": "63763",
+          "es": "63766",
+          "en": "63767",
+          "nl": "125609"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/foretidefix-29_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/foretidefix-67_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_7540_0.jpg"
+        ],
+        "description": "\u003Cp\u003EIn this play area, children can explore little Gallic cabins to learn more about the forest. With slides, crazy wild boars to ride and all manner of games, this Petit Ch\u00eane is full of surprises!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Nature lovers, mount your trusty boar to discover the wildlife of the area! ",
+        "latitude": "49.134127000000",
+        "longitude": "2.570867000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/foretidefix-52_petit_chene_12_0.jpg?itok=9xfh7VNn",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/foretidefix-52_petit_chene_12_0.jpg?itok=5HBNnXX3",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/foretidefix-52_petit_chene_12_0.jpg?itok=bLeNPS2Z",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/foretidefix-52_petit_chene_12_0.jpg?itok=bjSy2n0_",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "50"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "13"
+      },
+      {
+        "title": "Panoramix Play Area",
+        "order": "0",
+        "code": "63765",
+        "changed": "1601380253",
+        "translations": {
+          "fr": "63762",
+          "es": "63764",
+          "en": "63765",
+          "nl": "125606"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_7488.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_7458.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_7465.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_7475.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_7480.jpg"
+        ],
+        "description": "\u003Cp\u003EPanoramix has developed a great new way to travel through the forest. On this astonishing pathway through the trees young Gauls will encounter all sorts of animals. Get climbing!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Come, young Gauls: venture into La For\u00eat d\u2019Id\u00e9fix and meet all the druid\u2019s friends!",
+        "latitude": "49.133954000000",
+        "longitude": "2.571500000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/hd-dsc_7488.jpg?itok=FB-FJsjf",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/hd-dsc_7488.jpg?itok=ODcZ5qeh",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/hd-dsc_7488.jpg?itok=dIg5GPzb",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/hd-dsc_7488.jpg?itok=tj5-r4zD",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "50"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "12"
+      },
+      {
+        "title": "Les Chaudrons",
+        "order": "0",
+        "code": "649",
+        "changed": "1605013202",
+        "translations": {
+          "fr": "648",
+          "en": "649",
+          "es": "650",
+          "nl": "125543"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4184_1.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4235_1.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4177_1.jpg"
+        ],
+        "description": "\u003Cp\u003ETo start with, you\u2019ll feel tiny. If Obelix fell into one of these pots, they must really be enormous (no offense to our standing stone deliveryman intended). Next, you\u2019ll start to feel the strange effects of the potion: lightheadedness, euphoria and giggling fits... Now that\u2019s magic!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Will you experience the same side effects as Obelix when you fall into a cauldron of magic potion?",
+        "latitude": "49.134452000000",
+        "longitude": "2.568306000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_4177_1.jpg?itok=S1RaFIhZ",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_4177_1.jpg?itok=LyKMdUKU",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_4177_1.jpg?itok=DiximGyj",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_4177_1.jpg?itok=x6a7PiNV",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "90"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "12"
+      },
+      {
+        "title": "SOS Num\u00e9robis",
+        "order": "0",
+        "code": "599",
+        "changed": "1601381314",
+        "translations": {
+          "fr": "70",
+          "en": "599",
+          "es": "600",
+          "nl": "125525"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/dsc_0079_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/dsc_0097_0.jpg"
+        ],
+        "description": "\u003Cp\u003EThe train leaving from SOS Num\u00e9robis will be departing from platform six. With its tight turns, ups and downs, this medium-sized roller coaster is all about speed and will delight little kids and big kids alike! These Egyptians sure are crazy...\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Are you sitting comfortably? Num\u00e9robis is driving this train, and we\u2019re about to set off!",
+        "latitude": "49.134852000000",
+        "longitude": "2.567254000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/jk17-26_103.jpg?itok=yuSl0Qnm",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/jk17-26_103.jpg?itok=1h826eO6",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/jk17-26_103.jpg?itok=NWGUndBg",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/jk17-26_103.jpg?itok=DAgLnNwH",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-egypte.png",
+            "label": "Univers",
+            "value": "Egypte"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "90"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "14"
+      },
+      {
+        "title": "Hydrolix",
+        "order": "0",
+        "code": "2495",
+        "changed": "1582555145",
+        "translations": {
+          "fr": "2485",
+          "en": "2495",
+          "es": "2496",
+          "nl": "125582"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/foretidefix-59_hydrolix_3_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/parcasterix2015-468_0.jpg"
+        ],
+        "description": "\u003Cp\u003EClimb aboard your little boat and sail up the river to its source! Thanks to Hydrolix\u2019s invention, it\u2019s finally possible. Of course, it wouldn\u2019t be any fun without a few surprises... Splish splash!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "With this incredible invention, you can keep your head above the water whilst you sail upstream...",
+        "latitude": "49.134430000000",
+        "longitude": "2.571310000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/parcasterix2015-464_0.jpg?itok=zmsKipIs",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/parcasterix2015-464_0.jpg?itok=gW4yhnjb",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/parcasterix2015-464_0.jpg?itok=bMsnvjd_",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/parcasterix2015-464_0.jpg?itok=lCqC-0An",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "80"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "100"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "6"
+      },
+      {
+        "title": "L\u0027Hydre de Lerne",
+        "order": "0",
+        "code": "640",
+        "changed": "1601385519",
+        "translations": {
+          "fr": "639",
+          "en": "640",
+          "es": "641",
+          "nl": "125552"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/vl0617053_1.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/jk17-26_204.jpg"
+        ],
+        "description": "\u003Cp\u003EImagine the bravery it must have taken to face L\u0027Hydre de Lerne, a dangerous monster with seven heads. Now it\u2019s your turn! Once it\u2019s got you in its tentacled clutches, L\u0027Hydre will lift you up and whirl you around to daze you... The life of a demigod is no cakewalk!\u003C\/p\u003E\n\u003Cp\u003E\u003Ciframe width=\u0022560\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/bicC53NSamQ\u0022 frameborder=\u00220\u0022 allowfullscreen=\u0022\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n\u003Cp\u003E\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "It takes brains as well as brawn to confront a seven-headed monster. Charge!",
+        "latitude": "49.132711000000",
+        "longitude": "2.573762000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/vl0617052_0.jpg?itok=PNAMfJK_",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/vl0617052_0.jpg?itok=_SeMoOHH",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/vl0617052_0.jpg?itok=BrJSgH6s",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/vl0617052_0.jpg?itok=w7GMGuYA",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-grece.png",
+            "label": "Univers",
+            "value": "La Gr\u00e8ce Antique"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "100"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "25"
+      },
+      {
+        "title": "A\u00e9rodynamix",
+        "order": "0",
+        "code": "2491",
+        "changed": "1580812622",
+        "translations": {
+          "fr": "2483",
+          "en": "2491",
+          "es": "2492",
+          "nl": "125576"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/_dsc2036_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/foretidefix-34-petit-chene-aerodynamix-5bis_0.jpg"
+        ],
+        "description": "\u003Cp\u003EIn this funny contraption, your willpower alone will keep you airborne. Pedal as hard as you can and you\u2019ve made it: you\u2019re flying!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "This druid is a genius: he created an attraction that will give you wings. Prepare for take-off! ",
+        "latitude": "49.134040000000",
+        "longitude": "2.570870000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/webservices\/aero.jpg?itok=_4V-sS4A",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/webservices\/aero.jpg?itok=EnYhhsP5",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/webservices\/aero.jpg?itok=3Sf8WHuk",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/webservices\/aero.jpg?itok=Ft4ydLy3",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "90"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "8"
+      },
+      {
+        "title": "Les Petits Drakkars",
+        "order": "0",
+        "code": "634",
+        "changed": "1601385894",
+        "translations": {
+          "fr": "13",
+          "en": "634",
+          "es": "635",
+          "nl": "125561"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2689.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2688.jpg"
+        ],
+        "description": "\u003Cp\u003EBudding Vikings, this is the attraction for you! Board! Starboard! Brave the turbulent waters and hold your course. Back on dry land, you\u2019ll have tons of stories to tell about your adventures. Just think how they\u2019ll envy you... A real pirate!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "The rebellious sea is rising... Brave the storm aboard these famous dragon-headed Viking ships.",
+        "latitude": "49.132070000000",
+        "longitude": "2.571220000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_2687.jpg?itok=BDftrc-o",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_2687.jpg?itok=zfMBL5bH",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_2687.jpg?itok=z8bWUfwo",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_2687.jpg?itok=-sLI8arc",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "30"
+      },
+      {
+        "title": "Etamine",
+        "order": "0",
+        "code": "2487",
+        "changed": "1580812577",
+        "translations": {
+          "fr": "2486",
+          "en": "2487",
+          "es": "2488",
+          "nl": "125573"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2657.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2659.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2645.jpg"
+        ],
+        "description": "\u003Cp\u003EEtamine\u2019s busy concocting her potions, and she needs your help mixing them. Stir, stir, stir - not long to go now! And in return for your time, Etamine will have you howling with laughter!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "What\u2019s the secret behind a good potion? Mix it well, and stir, stir, stir...",
+        "latitude": "49.133740000000",
+        "longitude": "2.571360000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_2659.jpg?itok=Ok90uBzJ",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_2659.jpg?itok=1GoqwoUe",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_2659.jpg?itok=9wzQJhtA",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_2659.jpg?itok=XNP8wmRF",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "80"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "105"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "7"
+      },
+      {
+        "title": "Nationale 7",
+        "order": "0",
+        "code": "629",
+        "changed": "1605013243",
+        "translations": {
+          "fr": "628",
+          "en": "629",
+          "es": "630",
+          "nl": "125534"
+        },
+        "new": false,
+        "point_photo": true,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4503.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4528.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4476.jpg"
+        ],
+        "description": "\u003Cp\u003EOn Nationale 7 it\u2019s the kids\u2019 turn to take the wheel in these brightly coloured rattle traps. Let\u2019s hit the road! On this highway to the holidays, you\u2019ll discover a series of funny, unpredictable scenes. Take your time and enjoy the ride! Luckily, out here there\u2019s no need to choose between driving and having fun... Just watch out for the speed cameras!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Whether you\u2019re on a paved trail or a tarmacked road, steer clear of traffic jams...",
+        "latitude": "49.133900000000",
+        "longitude": "2.568730000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_4476.jpg?itok=YedGsc58",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_4476.jpg?itok=PtjVLQa3",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_4476.jpg?itok=PUqt-UZ1",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_4476.jpg?itok=FVV7r1JH",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-temps.png",
+            "label": "Univers",
+            "value": "A travers le temps"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "25"
+      },
+      {
+        "title": "Les Petits Chars tamponneurs",
+        "order": "0",
+        "code": "680",
+        "changed": "1580813501",
+        "translations": {
+          "fr": "679",
+          "en": "680",
+          "es": "681",
+          "nl": "125600"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0591.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0459.jpg"
+        ],
+        "description": "\u003Cp\u003EYou\u2019ve always dreamed of this, and now you can really do it! Hold off the Roman invader behind the wheel of one of these Gallic bumper cars. This power struggle is a great opportunity to let off steam and have fun, without getting hurt!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "These cars run on magic potion... Repelling the Romans will be a piece of cake with these!",
+        "latitude": "49.134485000000",
+        "longitude": "2.570098000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_0591.jpg?itok=SFWqsgvy",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_0591.jpg?itok=un0aiHxw",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_0591.jpg?itok=MaXkW20H",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_0591.jpg?itok=r9NS0bUV",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "90"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "10"
+      },
+      {
+        "title": "Epidema\u00efs Croisi\u00e8re",
+        "order": "0",
+        "code": "623",
+        "changed": "1601385595",
+        "translations": {
+          "fr": "622",
+          "en": "623",
+          "es": "624",
+          "nl": "125546"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/dsc_0119_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/epidemais_knaub_2017-2022_3.jpg"
+        ],
+        "description": "\u003Cp\u003EOff we go! This pleasant cruise around the indomitable village will introduce you to the main characters from Asterix\u2019s adventures... As well as a Roman garrison in total uproar! Is it the one from Compendium or Totorum? No time to wonder: fighting comes first!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Let\u2019s push the boat out! It sure is nice to take a little break between battles.",
+        "latitude": "49.134610000000",
+        "longitude": "2.570860000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/epidemais_knaub_2017-2022_2.jpg?itok=ESIAXm1t",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/epidemais_knaub_2017-2022_2.jpg?itok=-LHSFNPu",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/epidemais_knaub_2017-2022_2.jpg?itok=a30KcGzX",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/epidemais_knaub_2017-2022_2.jpg?itok=fpTHQwYB",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "28"
+      },
+      {
+        "title": "L\u0027Escadrille des As",
+        "order": "0",
+        "code": "674",
+        "changed": "1580810544",
+        "translations": {
+          "fr": "673",
+          "en": "674",
+          "es": "675",
+          "nl": "125594"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2716.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2750.jpg"
+        ],
+        "description": "\u003Cp\u003EFire your engines, check the oil levels and open the throttle. Away we go! Aboard these little old-world planes, young pilots rise into the air in a patrol formation worthy of the greatest aviators of all time. The sky is yours!\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "The sky isn\u2019t going to fall on your head! Why not go to meet it yourself?  ",
+        "latitude": "49.132279000000",
+        "longitude": "2.570653000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_2716.jpg?itok=iTtTb8jA",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_2716.jpg?itok=KzO3KI8K",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_2716.jpg?itok=A3_mPQQF",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_2716.jpg?itok=kA7Ymgsy",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "90"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "2"
+      },
+      {
+        "title": "Le Carrousel de C\u00e9sar",
+        "order": "0",
+        "code": "617",
+        "changed": "1601386083",
+        "translations": {
+          "fr": "616",
+          "en": "617",
+          "es": "618",
+          "nl": "125567"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_5301.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_5109.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_5100.jpg"
+        ],
+        "description": "\u003Cp\u003ESelect your steed: a horse, Obelix\u2019s trousers, or a legionary\u2019s back. Whichever you choose, hold on tight because we\u2019re about to go! How many times will the carrousel spin round? Only Caesar knows!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Come, see, and above all, have a blast: Emperor Julius Caesar is in charge!",
+        "latitude": "49.134683000000",
+        "longitude": "2.572177000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_5100.jpg?itok=MTL_IF_S",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_5100.jpg?itok=yCzPaktv",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_5100.jpg?itok=KheMsaWs",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_5100.jpg?itok=iekokHKn",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-romain.png",
+            "label": "Univers",
+            "value": "L\u2019Empire Romain"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "32"
+      },
+      {
+        "title": "Le Petit Train",
+        "order": "0",
+        "code": "668",
+        "changed": "1580826996",
+        "translations": {
+          "fr": "667",
+          "en": "668",
+          "es": "669",
+          "nl": "125588"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_2645_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_2651_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_2653_0.jpg"
+        ],
+        "description": "\u003Cp\u003EIt\u2019s common knowledge that the druids know all the secrets of the forest and find the precious ingredients for their potions there. This little train takes our youngest visitors on a mini-tour to meet the Druids. Perhaps they\u2019ll learn the recipe for magic potion...?\u003C\/p\u003E\n\u003Cp style=\u0022text-align: center;\u0022\u003E\n\u003Ciframe allowfullscreen=\u0022\u0022 frameborder=\u00220\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/WtJ85vnklBM\u0022 width=\u0022560\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "The druids draw their magic powers from the forest. This journey is full of enchanted promise...",
+        "latitude": "49.134336000000",
+        "longitude": "2.571959000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/img_2660_0.jpg?itok=u6ePnNak",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/img_2660_0.jpg?itok=Vz1Rjg0T",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/img_2660_0.jpg?itok=Mhatvu3a",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/img_2660_0.jpg?itok=7fB6ptdm",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-romain.png",
+            "label": "Univers",
+            "value": "L\u2019Empire Romain"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "100"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "9"
+      },
+      {
+        "title": "Le Grand Splatch",
+        "order": "0",
+        "code": "611",
+        "changed": "1601385276",
+        "translations": {
+          "fr": "26",
+          "en": "611",
+          "es": "612",
+          "nl": "125528"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_0987_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_0992_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_1416_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_1422_0.jpg"
+        ],
+        "description": "\u003Cp\u003E\u201cYou can\u2019t play water games without getting your helmet wet,\u201d as the old saying goes, and Le Grand Splatch is the perfect example! Drift along a river surrounded by greenery and filled with aquatic effects to discover the Gallic spirit for yourself. And the grand finale? Oh, just a little 11-metre drop!\u003C\/p\u003E\n\u003Cp\u003E\u003Ciframe allowfullscreen=\u0022\u0022 frameborder=\u00220\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/X-g72ZvmHak\u0022 width=\u0022560\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n\u003Cp\u003E\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "This boat trip isn\u2019t as calm as it looks... Be prepared to get wet!",
+        "latitude": "49.134710000000",
+        "longitude": "2.571180000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/webservices\/img_0992.jpg?itok=N4l-6C_A",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/webservices\/img_0992.jpg?itok=yzYxHV-_",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/webservices\/img_0992.jpg?itok=ANPbGEk-",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/webservices\/img_0992.jpg?itok=d6jVzzMi",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "100"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "22"
+      },
+      {
+        "title": "La Gal\u00e8re",
+        "order": "0",
+        "code": "662",
+        "changed": "1601380709",
+        "translations": {
+          "fr": "661",
+          "en": "662",
+          "es": "663",
+          "nl": "125501"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-195-9523.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-190-9504.jpg"
+        ],
+        "description": "\u003Cp\u003EAboard this swinging ship, the waves are your worst enemy. Hopefully you won\u2019t end up shipwrecked... but the boat is reeling dangerously! Back and forth, back and forth... Just don\u2019t abandon ship!\u003C\/p\u003E\n\u003Cp style=\u0022text-align: center;\u0022\u003E\n\u003Ciframe allowfullscreen=\u0022\u0022 frameborder=\u00220\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/iuNs5ij1-Tc\u0022 width=\u0022560\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "As an enormous tempest rages all around, only your courage will stop the boat from rocking!",
+        "latitude": "49.132560000000",
+        "longitude": "2.571042000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast-190-9504.jpg?itok=9IRkKTrH",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast-190-9504.jpg?itok=CDM-CrYv",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast-190-9504.jpg?itok=34xey_jX",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast-190-9504.jpg?itok=f88cDeSC",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "35"
+      },
+      {
+        "title": "Romus et Rapidus",
+        "order": "0",
+        "code": "607",
+        "changed": "1601385548",
+        "translations": {
+          "fr": "69",
+          "en": "607",
+          "es": "608",
+          "nl": "125522"
+        },
+        "new": false,
+        "point_photo": true,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/romus_cambon_2017-2020_10.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/romus_cambon_2017-2020_3_0.jpg"
+        ],
+        "description": "\u003Cp\u003EFeel like taking a trip? Next stop: Rome! Just make sure you\u2019re ready for a bit of rocking and rolling on your raft. The Gauls have sabotaged this scenic journey, which will soon turn into a shower for the brave souls who dared to come along. Laughs and splashes guaranteed!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Apparently, when in Rome, the best way to travel is by river... But it\u2019s not plain sailing!",
+        "latitude": "49.134297000000",
+        "longitude": "2.572472000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/romus_cambon_2017-2020_4_0.jpg?itok=Yj-869j1",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/romus_cambon_2017-2020_4_0.jpg?itok=0Py3nNyg",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/romus_cambon_2017-2020_4_0.jpg?itok=Ny6rhW1u",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/romus_cambon_2017-2020_4_0.jpg?itok=fd36a4R9",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-romain.png",
+            "label": "Univers",
+            "value": "L\u2019Empire Romain"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "100"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "140"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "26"
+      },
+      {
+        "title": "Menhir Express",
+        "order": "-5",
+        "code": "652",
+        "changed": "1601385054",
+        "translations": {
+          "fr": "651",
+          "en": "652",
+          "es": "653",
+          "nl": "125516"
+        },
+        "new": false,
+        "point_photo": true,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/menhir_cambon_2017-2020_2.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/menhir_cambon_2017-2020_3.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/menhir_cambon_2017-2020_1.jpg"
+        ],
+        "description": "\u003Cp\u003EReady to take over the helm from Obelix? Are you sure? Because delivering standing stones is far from relaxing. Board your floating menhir and follow its course to reach your destination. But watch out! Whirlwinds, eddies, pitching, lurching and jets of water are all part of the journey. Just what you needed to clear your mind... before the final 13-metre drop! Smile, you\u2019re on camera... and soaked to the skin!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "Your mission: to steer a floating menhir to safety... whilst staying dry. Impossible?",
+        "latitude": "49.134516000000",
+        "longitude": "2.569263000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/menhir_cambon_2017-2020_3.jpg?itok=RJcpRq8i",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/menhir_cambon_2017-2020_3.jpg?itok=5hMjngIY",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/menhir_cambon_2017-2020_3.jpg?itok=T7AlwjGU",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/menhir_cambon_2017-2020_3.jpg?itok=Xb0qy-t0",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "100"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "21"
+      },
+      {
+        "title": "Tonnerre de Zeus",
+        "order": "0",
+        "code": "601",
+        "changed": "1601381107",
+        "translations": {
+          "fr": "10",
+          "en": "601",
+          "es": "602",
+          "nl": "125492"
+        },
+        "new": false,
+        "point_photo": true,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_6179_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/pa-0084_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/pa-0100_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/zeus_0.jpg"
+        ],
+        "description": "\u003Cp\u003ESet off on a stunning circuit 30 metres high and reaching over 80kmph! Thunder along at the speed of lightning through ups, downs, spirals, humps and break-neck turns, all under the mocking gaze of Zeus himself.\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "Here\u2019s a challenge from Zeus: can you handle a dizzying descent from Olympia?",
+        "latitude": "49.131390000000",
+        "longitude": "2.572950000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/webservices\/pa-0084.jpg?itok=eNk4KdtE",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/webservices\/pa-0084.jpg?itok=ObJO3BcP",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/webservices\/pa-0084.jpg?itok=DaXPpywt",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/webservices\/pa-0084.jpg?itok=JP2Xl9Xv",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-grece.png",
+            "label": "Univers",
+            "value": "La Gr\u00e8ce Antique"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "130"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "140"
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "41"
+      },
+      {
+        "title": "Vikings Play Area",
+        "order": "0",
+        "code": "4854",
+        "changed": "1601380220",
+        "translations": {
+          "fr": "4848",
+          "en": "4854",
+          "es": "4855",
+          "nl": "125603"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_9260_0_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_2401_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_2402_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_2414_0.jpg"
+        ],
+        "description": "\u003Cp style=\u0022margin-left:-9.0pt;\u0022\u003EYou\u2019d better have your sea legs if you want to be a real Viking! And that\u2019s not all... On land as well as on the waves, Vikings are valiant warriors with bags of courage. A lesser known fact is that they love having fun on board a Viking drekar or in a big Viking house!\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Welcome, young Vikings: this is the play area for you!",
+        "latitude": "49.131677000000",
+        "longitude": "2.572316000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/img_2411_0.jpg?itok=6rFeNQN6",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/img_2411_0.jpg?itok=oewS_akk",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/img_2411_0.jpg?itok=LAcAU09x",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/img_2411_0.jpg?itok=H2x6KoWe",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "50"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "11"
+      },
+      {
+        "title": "L\u0027Oxyg\u00e9narium",
+        "order": "0",
+        "code": "646",
+        "changed": "1601385325",
+        "translations": {
+          "fr": "645",
+          "en": "646",
+          "es": "647",
+          "nl": "125513"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4606.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4555.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_4576.jpg"
+        ],
+        "description": "\u003Cp\u003EClimb up to the very tops of the trees and take a deep breath of fresh air. Now that your brain is nice and oxygenated, you\u2019re ready to fully appreciate the 195-metre descent in a gigantic circular raft. Breath-taking!\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "At the top of this incredible invention, there\u2019s no chance you\u2019ll be short of air!",
+        "latitude": "49.133681000000",
+        "longitude": "2.567735000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_4576.jpg?itok=dFB-4C6a",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_4576.jpg?itok=hUEksZR6",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_4576.jpg?itok=xzjALMnc",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_4576.jpg?itok=DhmOn_nY",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-temps.png",
+            "label": "Univers",
+            "value": "A travers le temps"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "100"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "23"
+      },
+      {
+        "title": "Lavomatix",
+        "order": "0",
+        "code": "2493",
+        "changed": "1580812282",
+        "translations": {
+          "fr": "2484",
+          "en": "2493",
+          "es": "2494",
+          "nl": "125585"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0916.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0844.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0806.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0757.jpg"
+        ],
+        "description": "\u003Cp\u003ELavomatix has plenty of good intentions, but does he have the good inventions to go with them? Participate in a frantic race, driving a wooden laundry basket. There\u2019s not much purpose to it, except to make you laugh! Hey! Did someone say \u201cweird\u201d?\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "This crazy inventor\u2019s attraction is squeaky clean and full of fun...",
+        "latitude": "49.134180000000",
+        "longitude": "2.570980000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_0757.jpg?itok=LbLiK_A0",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_0757.jpg?itok=Ifv-lEnu",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_0757.jpg?itok=-FRWYwiv",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_0757.jpg?itok=qez3QuQa",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "80"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "4"
+      },
+      {
+        "title": "Le Vol d\u0027Icare",
+        "order": "0",
+        "code": "637",
+        "changed": "1601385442",
+        "translations": {
+          "fr": "636",
+          "en": "637",
+          "es": "638",
+          "nl": "125519"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/icare_cambon_2017-2020_2.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/icare_cambon_2017-2020_1.jpg"
+        ],
+        "description": "\u003Cp\u003EO great Sun! Aboard this weird winged contraption, let yourself be lifted skyward, closer and closer to our magnificent star. Then, to avoid getting burnt, begin your descent, which promises to be an exhilarating adventure for riders big and small.\u003C\/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EThis attraction is closed until 2017 season.\u003C\/strong\u003E\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Head for the sun! Up, up and up... The descent will bring you out in a cold sweat!",
+        "latitude": "49.133004000000",
+        "longitude": "2.573816000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/icare_cambon_2017-2020_2.jpg?itok=IA8eGNOh",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/icare_cambon_2017-2020_2.jpg?itok=5qplVY8I",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/icare_cambon_2017-2020_2.jpg?itok=xXjVSjdx",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/icare_cambon_2017-2020_2.jpg?itok=bBWS1Kze",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-grece.png",
+            "label": "Univers",
+            "value": "La Gr\u00e8ce Antique"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "100"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "24"
+      },
+      {
+        "title": "Enigmatix",
+        "order": "-10",
+        "code": "2489",
+        "changed": "1580812313",
+        "translations": {
+          "fr": "2482",
+          "en": "2489",
+          "es": "2490",
+          "nl": "125579"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_1144.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_1154.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_1191.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_1138.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_1273.jpg"
+        ],
+        "description": "\u003Cp\u003ETake a comfy seat in this carrier designed by Enigmatix the druid. A series of gentle rises and falls will then begin... Watch out for the side effects: laughter, screams and butterflies in your tummy!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Roll up for a unique experience which will take you high... and low. Laughter guaranteed!",
+        "latitude": "49.133890000000",
+        "longitude": "2.571080000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast_1138.jpg?itok=yO7aPgC8",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast_1138.jpg?itok=uGcLR2R_",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast_1138.jpg?itok=dLot_24t",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast_1138.jpg?itok=8tq6Abje",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "90"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "5"
+      },
+      {
+        "title": "La Petite Temp\u00eate",
+        "order": "0",
+        "code": "632",
+        "changed": "1601381351",
+        "translations": {
+          "fr": "631",
+          "en": "632",
+          "es": "633",
+          "nl": "125555"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_1228_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_1260-2_0.jpg"
+        ],
+        "description": "\u003Cp\u003EThe little sailors rush to the helms of their boats to brave the tempest. Rising and falling, it\u2019s hard to sail on such a choppy sea! Meanwhile, the boats are turning round at crazy speeds. Luckily, Obelix is there to keep an eye on things and make sure you keep your sea legs!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "All hands on deck! Stay on course and try your best to withstand this violent storm.",
+        "latitude": "49.134900000000",
+        "longitude": "2.568330000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/img_1269_0.jpg?itok=H9WUhKtq",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/img_1269_0.jpg?itok=fPIyfCQ9",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/img_1269_0.jpg?itok=T-IXufSL",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/img_1269_0.jpg?itok=gZvcI-BX",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "90"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "16"
+      },
+      {
+        "title": "OzIris",
+        "order": "-15",
+        "code": "804",
+        "changed": "1601380771",
+        "translations": {
+          "fr": "25",
+          "en": "804",
+          "es": "805",
+          "nl": "125486"
+        },
+        "new": false,
+        "point_photo": true,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hd-dsc_5593_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/oziris_cussot_2012-2022_7.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/oziris_cussot_2012-2022_6.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/pslp-2014-351_0.jpg"
+        ],
+        "description": "\u003Cp\u003EOn OzIris, our inverted coaster, you\u2019ll find yourself zipping along at over 90kmph, 40 metres off the ground! With vertical loops, sidewinders and hairpin turns... you\u2019ll be lost for words (not to mention hieroglyphics)!\u003C\/p\u003E\n\u003Cp style=\u0022text-align: center;\u0022\u003E\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "With your feet dangling below you and your head in the clouds, you\u2019re not going to land any time soon!",
+        "latitude": "49.134050000000",
+        "longitude": "2.567020000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/webservices\/hd-dsc_5593.jpg?itok=jj3ag8vI",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/webservices\/hd-dsc_5593.jpg?itok=A29q84QR",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/webservices\/hd-dsc_5593.jpg?itok=LgZvLi6W",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/webservices\/hd-dsc_5593.jpg?itok=oyYNmNQo",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-egypte.png",
+            "label": "Univers",
+            "value": "Egypte"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "37"
+      },
+      {
+        "title": "La Rivi\u00e8re d\u0027Elis",
+        "order": "0",
+        "code": "626",
+        "changed": "1601385859",
+        "translations": {
+          "fr": "625",
+          "en": "626",
+          "es": "627",
+          "nl": "125549"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_1607_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_1626_0.jpg"
+        ],
+        "description": "\u003Cp\u003EDo just what Asterix and Obelix did in their time, and set off for Ancient Greece to meet a host of mythological characters and Greek gods. Seated comfortably in your boat, explore the Mediterranean gardens along the Elis and be transported to a magical world.\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Take your seat in a little boat and enjoy a divine tour of the Gardens of Olympia.",
+        "latitude": "49.132303000000",
+        "longitude": "2.573467000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/img_1622_0.jpg?itok=oQT3-hf9",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/img_1622_0.jpg?itok=6RrvpBkU",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/img_1622_0.jpg?itok=0pae7J1J",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/img_1622_0.jpg?itok=PNKo9Vqj",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-grece.png",
+            "label": "Univers",
+            "value": "La Gr\u00e8ce Antique"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "29"
+      },
+      {
+        "title": "Le Mini Carrousel",
+        "order": "0",
+        "code": "677",
+        "changed": "1580811802",
+        "translations": {
+          "fr": "676",
+          "en": "677",
+          "es": "678",
+          "nl": "125597"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_2608_0.jpg"
+        ],
+        "description": "\u003Cp\u003EThis mini-carrousel will delight our youngest visitors. A horse, a swan, a camel or a colourful carriage? There\u2019s something special for every young Gaul! After a few turns, they\u2019ll become real knights, princesses, soldiers and adventurers. It\u2019s a dream come true!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Knights and princesses will always find the perfect steed here. Charge!",
+        "latitude": "49.132426000000",
+        "longitude": "2.570693000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/img_2611_0.jpg?itok=YRrRzw9g",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/img_2611_0.jpg?itok=ioeGj3vC",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/img_2611_0.jpg?itok=pw0VF1S6",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/img_2611_0.jpg?itok=MvMFtD9E",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "70"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "3"
+      },
+      {
+        "title": "Les Espions de C\u00e9sar",
+        "order": "0",
+        "code": "620",
+        "changed": "1601384945",
+        "translations": {
+          "fr": "619",
+          "en": "620",
+          "es": "621",
+          "nl": "125531"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/foretidefix-34_petit_chene_aerodynamix_1_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/foretidefix-60_espion_petit_chene_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/parcasterix2015-249_0.jpg"
+        ],
+        "description": "\u003Cp\u003EThis perilous mission is reserved for the most valiant soldiers of the Roman legion! At the controls of your pedal-driven chariot, fly over the village of indomitable Gauls and try to steal the secret recipe for Panoramix\u2019s magic potion. It\u2019s no easy feat, and if you get caught, the park will deny all knowledge of this mission to Caesar\u2019s glory...\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Outwit the vigilant Gauls and steal their magic potion recipe... Godspeed!",
+        "latitude": "49.134248000000",
+        "longitude": "2.571662000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/parcasterix2015-311_0.jpg?itok=ZDUCgH70",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/parcasterix2015-311_0.jpg?itok=_YyBOA9q",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/parcasterix2015-311_0.jpg?itok=6vJ_miNM",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/parcasterix2015-311_0.jpg?itok=9TirSjB_",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-romain.png",
+            "label": "Univers",
+            "value": "L\u2019Empire Romain"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "90"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "18"
+      },
+      {
+        "title": "Les Petites Chaises Volantes",
+        "order": "0",
+        "code": "671",
+        "changed": "1580810399",
+        "translations": {
+          "fr": "670",
+          "en": "671",
+          "es": "672",
+          "nl": "125591"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/dsc_5929_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/dsc_5930_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/dsc_5980_0.jpg"
+        ],
+        "description": "\u003Cp\u003EAboard Les Petites Chaises Volantes, our young Gauls will transform into professional acrobats. Are they ready for a taste of this pleasant feeling of weightlessness? They\u2019ll soon find out as they fly through the air!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Whether they\u2019re big or small, Les Chaises Volantes will always leave your head spinning!",
+        "latitude": "49.131889000000",
+        "longitude": "2.571267000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/dsc_5922_0_0.jpg?itok=urMUOXsy",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/dsc_5922_0_0.jpg?itok=AlFXADp2",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/dsc_5922_0_0.jpg?itok=fe-OzJnN",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/dsc_5922_0_0.jpg?itok=WbmHrYlO",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Young Gauls"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "80"
+          }
+        ],
+        "experience": "Young Gauls",
+        "mapid": "1"
+      },
+      {
+        "title": "Les Chevaux du Roy",
+        "order": "0",
+        "code": "614",
+        "changed": "1601386051",
+        "translations": {
+          "fr": "613",
+          "en": "614",
+          "es": "615",
+          "nl": "125564"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-076-9024.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-068-8984.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-060-8943.jpg"
+        ],
+        "description": "\u003Cp\u003EThis magnificent carrousel with two levels of wooden horses transports visitors of all ages back in time. In the Middle Ages, the Gauls never missed a chance to have fun; now, their medieval shields and coats of arms have been revised and updated to make you smile.\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Hear ye, hear ye, noblefolk! Prepare for a weird and wonderful trip back in time!",
+        "latitude": "49.133135000000",
+        "longitude": "2.569213000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast-068-8984.jpg?itok=WTXX-r3r",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast-068-8984.jpg?itok=rhJA6ahD",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast-068-8984.jpg?itok=5gM3WWDT",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast-068-8984.jpg?itok=3dGOjNGa",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Fun for all the family"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-temps.png",
+            "label": "Univers",
+            "value": "A travers le temps"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "50"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Fun for all the family",
+        "mapid": "31"
+      },
+      {
+        "title": "Les Chaises Volantes",
+        "order": "0",
+        "code": "665",
+        "changed": "1601380737",
+        "translations": {
+          "fr": "664",
+          "en": "665",
+          "es": "666",
+          "nl": "125507"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-220-8800.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-214-8769.jpg"
+        ],
+        "description": "\u003Cp\u003EYour steed? A chair. Its special power? Flying. Get ready for a unique experience. As the ride begins to turn, you\u2019ll feel your feet leave the ground, and as it picks up speed, you\u2019ll climb higher and higher. By Toutatis, you\u2019re flying!\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Lift off and use centrifugal forces to defy the laws of gravity. ",
+        "latitude": "49.133783000000",
+        "longitude": "2.568033000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast-207-8739.jpg?itok=hZRFelmA",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast-207-8739.jpg?itok=024zmxeu",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast-207-8739.jpg?itok=y_N49umC",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast-207-8739.jpg?itok=1dGRHnN_",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-temps.png",
+            "label": "Univers",
+            "value": "A travers le temps"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "120"
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "36"
+      },
+      {
+        "title": "La Trace du Hourra",
+        "order": "0",
+        "code": "609",
+        "changed": "1601380819",
+        "translations": {
+          "fr": "12",
+          "en": "609",
+          "es": "610",
+          "nl": "125498"
+        },
+        "new": false,
+        "point_photo": true,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0128.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0141.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0433.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_0198.jpg"
+        ],
+        "description": "\u003Cp\u003EFreewheel to your heart\u2019s content in an authentic Gallic bobsleigh! Experience an incomparable feeling of lightness as you glide along at 60kmph on La Trace du Hourra, and enjoy a new thrill with every turn. Who\u2019d have thought you\u2019d find a slip-sliding ride like this in Gaul?\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "Experience sliding like never before aboard this Gallic bobsleigh... Incredible!",
+        "latitude": "49.135060000000",
+        "longitude": "2.568900000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/webservices\/ast_0128.jpg?itok=iipY_va8",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/webservices\/ast_0128.jpg?itok=NJnrBHXl",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/webservices\/ast_0128.jpg?itok=QPJ7pf2l",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/webservices\/ast_0128.jpg?itok=KN6ojlSr",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-gaule.png",
+            "label": "Univers",
+            "value": "Bienvenue chez les gaulois"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": "120"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "130"
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "38"
+      },
+      {
+        "title": "Le Cheval de Troie",
+        "order": "0",
+        "code": "659",
+        "changed": "1601381078",
+        "translations": {
+          "fr": "658",
+          "en": "659",
+          "es": "660",
+          "nl": "125504"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-140-9250.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast-173-9353.jpg"
+        ],
+        "description": "\u003Cp\u003EYou need to arm yourself with courage to go down in history. Especially when it involves confronting Le Cheval de Troie! Up on this platform, 12 metres off the ground, you have one objective as you buck and reel to and fro: to hold on tight! Don\u2019t worry, though: once you get used to the turbulence, you\u2019re in for more laughs than screams!\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": false,
+        "summary": "Twelve metres off the ground, place your blind faith in an unruly steed...",
+        "latitude": "49.133469000000",
+        "longitude": "2.573258000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/attractions\/haut\/ast-140-9250.jpg?itok=XF8yN-xX",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/attractions\/haut\/ast-140-9250.jpg?itok=lmY5-S1w",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/attractions\/haut\/ast-140-9250.jpg?itok=poSBQ4fA",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/attractions\/haut\/ast-140-9250.jpg?itok=q5-61pKg",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-grece.png",
+            "label": "Univers",
+            "value": "La Gr\u00e8ce Antique"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "140"
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "40"
+      },
+      {
+        "title": "Goudurix",
+        "order": "0",
+        "code": "603",
+        "changed": "1601380944",
+        "translations": {
+          "fr": "11",
+          "en": "603",
+          "es": "604",
+          "nl": "125495"
+        },
+        "new": false,
+        "point_photo": false,
+        "acces_pass_peur": false,
+        "slider_images": [
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/hiiboux-231_0.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/ast_2902.jpg",
+          "https:\/\/www.parcasterix.fr\/sites\/default\/files\/images\/attractions\/img_8193_0.jpg"
+        ],
+        "description": "\u003Cp\u003EIt all begins with a gentle climb, perfect for admiring the scenery... But that won\u2019t last long! After plunging back to earth at over 75kmph and racing through seven loops, each one crazier than the last, you won\u2019t know which way is up! They don\u2019t call Goudurix one of the most head-spinning coasters in Europe for nothing... Viking\u2019s honour!\u003C\/p\u003E\n\u003Cp\u003E\u003Ciframe allowfullscreen=\u0022\u0022 frameborder=\u00220\u0022 height=\u0022315\u0022 src=\u0022https:\/\/www.youtube.com\/embed\/RXCy4QJgjjs\u0022 width=\u0022560\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E\n\u003Cp\u003E\u00a0\u003C\/p\u003E\n",
+        "best": false,
+        "coupe_file": true,
+        "summary": "Are you a real risk-taker? Then you\u2019ll love this roller coaster and every one of its seven loops!",
+        "latitude": "49.132082000000",
+        "longitude": "2.570900000000",
+        "header": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/webservice-640x480\/public\/images\/webservices\/hiiboux-231.jpg?itok=narIGWDM",
+        "thumbnail": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/medium\/public\/images\/webservices\/hiiboux-231.jpg?itok=F0RnCctb",
+        "thumbnail_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice160x200\/public\/images\/webservices\/hiiboux-231.jpg?itok=Lkr0f1kx",
+        "header_v2": "https:\/\/www.parcasterix.fr\/sites\/default\/files\/styles\/manualcropwebservice640x500\/public\/images\/webservices\/hiiboux-231.jpg?itok=YL1dFsF9",
+        "feature": [
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-sensations-fortes.png",
+            "label": "Experience",
+            "value": "Thrillseekers"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-univers-vikings.png",
+            "label": "Univers",
+            "value": "Les Vikings"
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimum",
+            "value": null
+          },
+          {
+            "icon": "https:\/\/www.parcasterix.fr\/sites\/default\/modules\/asterix_webservices\/pictos\/picto-taille.png",
+            "label": "Taille Minimale Non Accompagn\u00e9",
+            "value": "140"
+          }
+        ],
+        "experience": "Thrillseekers",
+        "mapid": "39"
+      }
+    ],
+    "date": 1615669027
+  },
+  "msg": ""
+}
