@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
 import { PortaVenturaPoi } from '../interfaces/porta-ventura-poi.interface';
-import { PoiCategory } from '../../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class PortaVenturaTransferService {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { DisneylandParisAttraction } from '../interfaces/disneyland-paris-attraction.interface';
-import { PoiCategory } from '../../../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
 
 @Injectable()

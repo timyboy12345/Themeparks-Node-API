@@ -6,7 +6,7 @@ import { ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
-import { PoiCategory } from '../../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { DisneylandParisAttraction } from './interfaces/disneyland-paris-attraction.interface';
 
 
@@ -35,12 +35,13 @@ export class DisneylandParisService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: true,
+      supportsPoiLocations: true,
     };
   }
 

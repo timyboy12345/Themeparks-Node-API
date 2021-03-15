@@ -1,4 +1,4 @@
-import { EftelingPoi } from './efteling_poi.interface';
+import { EftelingPoi } from './efteling-poi.interface';
 
 export interface EftelingPoisResponse {
   'status': {

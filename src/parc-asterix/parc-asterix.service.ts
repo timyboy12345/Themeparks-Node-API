@@ -34,12 +34,13 @@ export class ParcAsterixService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: true,
+      supportsPoiLocations: true,
     };
   }
 

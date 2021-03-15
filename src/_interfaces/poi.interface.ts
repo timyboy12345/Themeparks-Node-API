@@ -1,5 +1,5 @@
-import { PoiOpeningTime } from './poiOpeningtimes.interface';
-import { PoiCategory } from './poiCategories.enum';
+import { PoiOpeningTime } from './poi-openingtimes.interface';
+import { PoiCategory } from './poi-categories.enum';
 import { WaitingTimes } from './waitingtimes.interface';
 import { ShowTimes } from './showtimes.interface';
 import { RideCategory } from './ride-category.interface';
@@ -40,10 +40,10 @@ export interface Poi {
       lng: number
     }
   };
-  maxAge?: string;
-  maxSize?: string;
-  minAge?: number;
   minSize?: number;
+  maxSize?: number;
+  minAge?: number;
+  maxAge?: number;
   minSizeEscort?: number;
   tags?: string[];
   image_url?: string;

@@ -1,10 +1,10 @@
 import { HttpException, HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { Poi } from '../_interfaces/poi.interface';
-import { ToverlandRide } from './interfaces/toverland_ride.interface';
-import { PoiCategory } from '../_interfaces/poiCategories.enum';
+import { ToverlandRide } from './interfaces/toverland-ride.interface';
+import { PoiCategory } from '../_interfaces/poi-categories.enum';
 import { ThemePark } from '../_interfaces/park.interface';
-import { ToverlandFoodAndDrink } from './interfaces/toverland_foodanddrink.interface';
+import { ToverlandFoodAndDrink } from './interfaces/toverland-foodanddrink.interface';
 import { ConfigService } from '@nestjs/config';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import * as Sentry from '@sentry/node';
@@ -35,12 +35,13 @@ export class ToverlandService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: true,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: false,
+      supportsPoiLocations: true,
     };
   }
 

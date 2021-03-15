@@ -22,6 +22,7 @@ import { PortaventuraService } from './portaventura/portaventura.service';
 import { PortaVenturaTransferService } from './portaventura/portaventura-transfer/porta-ventura-transfer.service';
 import { FerrariLandService } from './portaventura/ferrariland.service';
 import { BellewaerdeService } from './bellewaerde/bellewaerde.service';
+import { DippieDoeService } from './dippiedoe/dippie-doe.service';
 
 @Module({
   imports: [
@@ -32,7 +33,7 @@ import { BellewaerdeService } from './bellewaerde/bellewaerde.service';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, EftelingService, ThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiBelgiumTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService],
+  providers: [AppService, EftelingService, ThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiBelgiumTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService, DippieDoeService],
 })
 export class AppModule {
 }

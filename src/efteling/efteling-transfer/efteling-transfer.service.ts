@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
-import { EftelingPoi } from '../interfaces/efteling_poi.interface';
-import { PoiCategory } from '../../_interfaces/poiCategories.enum';
+import { EftelingPoi } from '../interfaces/efteling-poi.interface';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { ConfigService } from '@nestjs/config';
+import { RideCategory } from '../../_interfaces/ride-category.interface';
 
 @Injectable()
 export class EftelingTransferService {
@@ -40,6 +41,9 @@ export class EftelingTransferService {
       case 'fairytale':
         c = PoiCategory.UNDEFINED;
         break;
+      case 'fotopunt':
+        c = PoiCategory.PHOTO_SHOP;
+        break;
       default:
         break;
     }
@@ -61,7 +65,7 @@ export class EftelingTransferService {
     // Select a high quality image from images, otherwise get fallback low quality image
     const image = images.length > 0 ? images[0] : `${imgUrl}${eftelingPoi.fields.image}`;
 
-    return {
+    const poi: Poi = {
       id: eftelingPoi.id,
       category: c,
       title: eftelingPoi.fields.name,
@@ -70,12 +74,52 @@ export class EftelingTransferService {
       original: eftelingPoi,
       image_url: image,
       area: eftelingPoi.fields.empire,
-      location: {
-        lat: lat,
-        lng: lng,
-      },
       images: images,
     };
+
+    if (lat !== 0 && lng !== 0) {
+      poi.location = {
+        lat: lat,
+        lng: lng,
+      };
+    }
+
+    if (c === PoiCategory.ATTRACTION) {
+      if (eftelingPoi.fields.targetgroups) {
+        if (eftelingPoi.fields.targetgroups.includes('whole-family')) {
+          poi.rideCategory = RideCategory.FAMILY;
+        } else if (eftelingPoi.fields.targetgroups.includes('youngest-ones')) {
+          poi.rideCategory = RideCategory.KIDS;
+        } else if (eftelingPoi.fields.targetgroups.includes('thrillseekers')) {
+          poi.rideCategory = RideCategory.THRILL;
+        } else {
+          poi.rideCategory = RideCategory.UNDEFINED;
+        }
+      }
+
+      if (eftelingPoi.fields.properties && eftelingPoi.fields.properties.length > 0) {
+        eftelingPoi.fields.properties.forEach(property => {
+          if (property.includes('minimum')) {
+            poi.minSize = parseInt(property.split('minimum')[1]);
+          }
+
+          if (property.includes('childrentwelveyears2')) {
+            poi.maxAge = 12;
+          }
+
+          if (property.includes('undersupervision')) {
+            // If a dash is included, there is a minimum length, otherwise supervision is needed from 0-x
+            if (property.includes('-')) {
+              poi.minSizeEscort = parseInt(property.split('undersupervision')[0].split('-')[1]);
+            } else {
+              poi.minSizeEscort = parseInt(property.split('undersupervision')[0]);
+            }
+          }
+        });
+      }
+    }
+
+    return poi;
   }
 
   public EftelingPoisToPois(eftelingPois: EftelingPoi[]): Poi[] {

@@ -1,4 +1,4 @@
-import { PhantasialandTranslatable } from './phantasialand_translatable.interface';
+import { PhantasialandTranslatable } from './phantasialand-translatable.interface';
 
 export interface PhantasialandPoi {
   'poiNumber': number,

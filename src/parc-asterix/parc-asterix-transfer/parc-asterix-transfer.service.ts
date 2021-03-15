@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ParcAsterixAttraction } from '../interfaces/parc-asterix-attraction.interface';
-import { PoiCategory } from '../../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../_interfaces/ride-category.interface';
 import { ParcAsterixRestaurant } from '../interfaces/parc-asterix-restaurant.interface';
 import { ParcAsterixShow } from '../interfaces/parc-asterix-show.interface';
@@ -36,8 +36,8 @@ export class ParcAsterixTransferService {
       images: parcAsterixPoi.slider_images,
       image_url: parcAsterixPoi.slider_images.length > 0 ? parcAsterixPoi.slider_images[0] : parcAsterixPoi.thumbnail,
       location: {
-        lat: parcAsterixPoi.latitude,
-        lng: parcAsterixPoi.longitude,
+        lat: parseFloat(parcAsterixPoi.latitude),
+        lng: parseFloat(parcAsterixPoi.longitude),
       },
       rideCategory: rideCategory,
       fastpass: parcAsterixPoi.coupe_file,
@@ -58,8 +58,8 @@ export class ParcAsterixTransferService {
       category: PoiCategory.RESTAURANT,
       original: parcAsterixPoi,
       location: {
-        lat: parcAsterixPoi.latitude,
-        lng: parcAsterixPoi.longitude,
+        lat: parseFloat(parcAsterixPoi.latitude),
+        lng: parseFloat(parcAsterixPoi.longitude),
       },
     };
   }
@@ -77,8 +77,8 @@ export class ParcAsterixTransferService {
       category: PoiCategory.SHOW,
       original: parcAsterixPoi,
       location: {
-        lat: parcAsterixPoi.latitude,
-        lng: parcAsterixPoi.longitude,
+        lat: parseFloat(parcAsterixPoi.latitude),
+        lng: parseFloat(parcAsterixPoi.longitude),
       },
     };
   }

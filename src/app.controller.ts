@@ -178,11 +178,4 @@ export class AppController {
       });
     });
   }
-
-  @Get('/exception')
-  async getException() {
-    const e = new Error();
-    Sentry.captureException(e);
-    return new InternalServerErrorException();
-  }
 }

@@ -4,7 +4,7 @@ export interface ParcAsterixRestaurant {
   "changed": number,
   "summary": string,
   "description": string,
-  "latitude": number,
-  "longitude": number,
+  "latitude": string,
+  "longitude": string,
   "mapid": string
 }

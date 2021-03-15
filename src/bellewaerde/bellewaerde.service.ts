@@ -5,10 +5,10 @@ import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 
 import * as BellewaerdePoiData from './data/bellewaerde-pois.json';
 import { Poi } from '../_interfaces/poi.interface';
-import { PoiCategory } from '../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../_interfaces/poi-categories.enum';
 
 @Injectable()
-export class BellewaerdeService extends ThemeParkService{
+export class BellewaerdeService extends ThemeParkService {
   getInfo(): ThemePark {
     return {
       id: 'bellewaerde',
@@ -16,19 +16,20 @@ export class BellewaerdeService extends ThemeParkService{
       description: 'Bellewaerde is een pret- en dierenpark bij Ieper, gelegen in de Belgische provincie West-Vlaanderen. Het park is in handen van het Franse Compagnie des Alpes, waar de Walibiparken ook deel van uitmaken. Bellewaerde telt 54 hectare grond en is vooral beroemd om zijn vele dieren en de aandacht voor thematisering.',
       image: 'https://www.toerismewesthoek.be/sites/westtoer_2015/files/styles/route_main_image_lightbox/public/win_synced_photos/bellewaerde_-33500-0.jpg?itok=jjWx2sC_',
       countryCode: 'be',
-    }
+    };
   }
 
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
-      supportsShows: true
-    }
+      supportsShows: true,
+      supportsPoiLocations: false,
+    };
   }
 
   async getPois(): Promise<Poi[]> {
@@ -36,22 +37,22 @@ export class BellewaerdeService extends ThemeParkService{
       let category: PoiCategory;
 
       switch (poi.type) {
-        case "Attractions":
+        case 'Attractions':
           category = PoiCategory.ATTRACTION;
           break;
-        case "Resto":
+        case 'Resto':
           category = PoiCategory.RESTAURANT;
           break;
-        case "Shops":
+        case 'Shops':
           category = PoiCategory.SHOP;
           break;
-        case "POI":
+        case 'POI':
           category = PoiCategory.SERVICE;
           break;
-        case "SHOW":
+        case 'SHOW':
           category = PoiCategory.SHOW;
           break;
-        case "Dieren":
+        case 'Dieren':
           category = PoiCategory.ANIMAL;
           break;
         default:
@@ -64,8 +65,8 @@ export class BellewaerdeService extends ThemeParkService{
         title: poi.name,
         category: category,
         original: poi,
-      }
-    })
+      };
+    });
   }
 
   async getRides(): Promise<Poi[]> {

@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { Poi } from '../_interfaces/poi.interface';
 import { PhantasialandTransferService } from './phantasialand-transfer/phantasialand-transfer.service';
-import { PoiCategory } from '../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class PhantasialandService extends ThemeParkService {
@@ -35,12 +35,13 @@ export class PhantasialandService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: true,
+      supportsPoiLocations: true,
     };
   }
 

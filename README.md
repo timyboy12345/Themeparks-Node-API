@@ -12,17 +12,18 @@ In the table below you will find the parks that are currently supported and the 
 
 | Park | Ride Support | Restaurants Support | Shows Support |
 | ------------- | ------------- | ------------- | ------------- |
-| Bellewaerde | Yes | Yes | Yes  |
-| Disneyland Paris | Yes | Yes | Yes  |
-| Disneyland Studios Park | Yes | Yes | Yes  |
-| Efteling | Yes | Yes | No  |
-| Parc Asterix | Yes | Yes | Yes  |
-| Phantasialand | Yes | Yes | Yes  |
-| Portaventura Park | Yes | Yes | No  |
-| Ferrariland | Yes | Yes | No  |
-| Toverland | Yes | Yes | No  |
-| Walibi Holland | Yes | No | No |
-| Walibi Holland | Yes | Yes | Yes |
+| 🇫🇷 Bellewaerde | Yes | Yes | Yes  |
+| 🇫🇷 Disneyland Paris | Yes | Yes | Yes  |
+| 🇫🇷 Disneyland Studios Park | Yes | Yes | Yes  |
+| 🇫🇷 Parc Asterix | Yes | Yes | Yes  |
+| 🇩🇪 Phantasialand | Yes | Yes | Yes  |
+| 🇪🇸 Portaventura Park | Yes | Yes | No  |
+| 🇪🇸 Ferrariland | Yes | Yes | No  |
+| 🇳🇱 Efteling | Yes | Yes | No  |
+| 🇳🇱 Toverland | Yes | Yes | No  |
+| 🇳🇱 Walibi Holland | Yes | No | No |
+| 🇳🇱 Walibi Holland | Yes | Yes | Yes |
+| 🇳🇱 DippieDoe | Yes | No | No |
 
 
 ## Description

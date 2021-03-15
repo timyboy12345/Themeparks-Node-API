@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { WalibiBelgiumEntertainment } from '../interfaces/walibi-belgium-entertainment.interface';
-import { PoiCategory } from '../../../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { WalibiBelgiumEntertainmentsResponse } from '../interfaces/walibi-belgium-entertainments-response.interface';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
 

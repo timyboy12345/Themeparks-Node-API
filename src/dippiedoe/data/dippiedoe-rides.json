@@ -1,0 +1,135 @@
+[
+  {
+    "id": "tuimelaar",
+    "title": "Tuimelaar",
+    "description": "Lekker rondjes draaien in je favoriete voertuig.",
+    "area": "Binnen",
+    "minLength": null,
+    "minLengthAlone": 90,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1391"
+  },
+  {
+    "id": "stormtoren",
+    "title": "Stormtoren",
+    "description": "Een vrije val! Op deze bank ga je hard van boven naar beneden, durf jij?!",
+    "area": "Binnen",
+    "minLength": 90,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/195"
+  },
+  {
+    "id": "ballenbaai",
+    "title": "Ballenbaai",
+    "description": "Rollenbollen tussen de ballen in de Mini Ballenbaai.",
+    "area": "Binnen",
+    "minAge": 0,
+    "maxAge": 3,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/196"
+  },
+  {
+    "id": "dreumesbaai",
+    "title": "Dreumesbaai",
+    "description": "De allerkleinsten kunnen lekker spelen in deze prachtige Dreumesbaai.",
+    "area": "Binnen",
+    "minAge": 0,
+    "maxAge": 3,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1399"
+  },
+  {
+    "id": "klauter_kajuit",
+    "title": "Klauter Kajuit",
+    "description": "Eindeloos rondkruipen, klimmen en klauteren.",
+    "area": "Binnen",
+    "minAge": 4,
+    "maxAge": 12,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/895"
+  },
+  {
+    "id": "grote_golf",
+    "title": "Grote Golf",
+    "description": "Klim helemaal naar het dak en suis in vliegende vaart over de superlange glijbaan naar beneden! ",
+    "area": "Binnen",
+    "minLength": null,
+    "minLengthAlone": 140,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/207"
+  },
+  {
+    "id": "dolle_pier",
+    "title": "Dolle Pier",
+    "description": "Leuke kinderachtbaan. Stap in deze snelle stoomtrein, voel de kriebels in je buik én geniet van de wind door je haren!\nMinimum leeftijd: 5",
+    "area": "Buiten",
+    "minLength": 95,
+    "minAge": 5,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1421"
+  },
+  {
+    "id": "strandkussen",
+    "title": "Strandkussen",
+    "description": "Lachen, gieren en brullen.... Jong én oud heeft plezier op deze nieuwe airtrampoline van maar liefst 26x10 meter",
+    "area": "buiten",
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1810"
+  },
+  {
+    "id": "klimkasteel",
+    "title": "Klimkasteel",
+    "description": "Lekker klimmen, klauteren en glijden.",
+    "area": "Buiten",
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/994"
+  },
+  {
+    "id": "tyfoon",
+    "title": "Tyfoon",
+    "description": "Een achtbaan voor durfallen! De orkaandrempel wordt opgezocht in deze spectaculaire rit!",
+    "area": "Buiten",
+    "minLength": 125,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/203"
+  },
+  {
+    "id": "het_schoeprad",
+    "title": "Het Schoeprad",
+    "description": "Rond en rond naar de wolken.",
+    "area": "Buiten",
+    "minLength": 105,
+    "minLengthAlone": 130,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/205"
+  },
+  {
+    "id": "speelduin",
+    "title": "Speelduin",
+    "description": "Lekker spelen in het zand.\nOok staat hier o.a. een familieschommel en een loopton.",
+    "area": "Buiten",
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/992"
+  },
+  {
+    "id": "dolle_dobber",
+    "title": "Dolle Dobber",
+    "description": "Op en neer over de golven in de Dolle Dobber.",
+    "area": "Buiten",
+    "minLength": 75,
+    "minLengthAlone": 105,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1372"
+  },
+  {
+    "id": "de_draaikolk",
+    "title": "De Draaikolk",
+    "description": "Voel je als een vogel in de lucht! Hoger en hoger… Hou je goed vast! ",
+    "area": "Buiten",
+    "minLength": 90,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/134"
+  },
+  {
+    "id": "piraten_golf",
+    "title": "Piraten Golf",
+    "description": "Golf door de wereld van piraten en vind de schat met goud!",
+    "area": "Buiten",
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/132"
+  },
+  {
+    "id": "de_slinger_sloep",
+    "title": "De Slinger Sloep",
+    "description": "Slinger op en neer over de golven.",
+    "area": "Buiten",
+    "minLength": 120,
+    "minLengthAlone": 140,
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/204"
+  }
+]

@@ -7,7 +7,7 @@ import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../_interfaces/poi.interface';
 import { WalibiBelgiumTransferService } from './walibi-belgium-transfer/walibi-belgium-transfer.service';
 import { WalibiBelgiumEntertainmentsResponse } from './interfaces/walibi-belgium-entertainments-response.interface';
-import { PoiCategory } from '../../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class WalibiBelgiumService extends ThemeParkService {
@@ -36,12 +36,13 @@ export class WalibiBelgiumService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
-      supportsShows: true
+      supportsShows: true,
+      supportsPoiLocations: true,
     }
   }
 

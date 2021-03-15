@@ -1,4 +1,4 @@
-import { ToverlandTranslatable } from './toverland_translatable.interface';
+import { ToverlandTranslatable } from './toverland-translatable.interface';
 
 export interface ToverlandFoodAndDrink {
   'id': 8,

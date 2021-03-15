@@ -2,9 +2,9 @@ import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/c
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { Poi } from '../../_interfaces/poi.interface';
-import { PoiCategory } from '../../_interfaces/poiCategories.enum';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { ConfigService } from '@nestjs/config';
-import { WalibiHollandRide } from './interfaces/ride.interface';
+import { WalibiHollandRide } from './interfaces/walibi-holland-ride.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import * as Sentry from '@sentry/node';
 
@@ -32,12 +32,13 @@ export class WalibiHollandService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: false,
       supportsRideWaitTimes: true,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: false,
+      supportsPoiLocations: false,
     };
   }
 

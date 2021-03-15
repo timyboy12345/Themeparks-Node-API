@@ -2,8 +2,8 @@ import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/c
 import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { ThemePark } from '../_interfaces/park.interface';
 import { Poi } from '../_interfaces/poi.interface';
-import { EftelingPoisResponse } from './interfaces/efteling_pois_response.interface';
-import { PoiCategory } from '../_interfaces/poiCategories.enum';
+import { EftelingPoisResponse } from './interfaces/efteling-pois-response.interface';
+import { PoiCategory } from '../_interfaces/poi-categories.enum';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import * as Sentry from '@sentry/node';
@@ -34,12 +34,13 @@ export class EftelingService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantWaitTimes: false,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: false,
+      supportsPoiLocations: true,
     };
   }
 

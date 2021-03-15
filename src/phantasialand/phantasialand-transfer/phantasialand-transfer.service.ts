@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
-import { PhantasialandPoi } from '../interfaces/phantasialand_poi.interface';
-import { PoiCategory } from '../../_interfaces/poiCategories.enum';
+import { PhantasialandPoi } from '../interfaces/phantasialand-poi.interface';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class PhantasialandTransferService {
