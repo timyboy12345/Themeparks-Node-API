@@ -1,5 +1,4 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import * as Sentry from '@sentry/node';
@@ -7,10 +6,10 @@ import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../_interfaces/poi.interface';
 import { WalibiBelgiumTransferService } from './walibi-belgium-transfer/walibi-belgium-transfer.service';
 import { WalibiBelgiumEntertainmentsResponse } from './interfaces/walibi-belgium-entertainments-response.interface';
-import { PoiCategory } from '../../_interfaces/poi-categories.enum';
+import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class WalibiBelgiumService extends ThemeParkService {
+export class WalibiBelgiumService extends ThroughPoisThemeParkService {
   private readonly _walibiBelgiumApiUrl: string;
   private readonly _walibiBelgiumApiToken: string;
 
@@ -43,30 +42,14 @@ export class WalibiBelgiumService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsPoiLocations: true,
-    }
+      supportsShops: true,
+      supportsShopOpeningTimes: false,
+    };
   }
 
   async getPois(): Promise<Poi[]> {
     return this.request<WalibiBelgiumEntertainmentsResponse>('/entertainments?_format=json').then(axiosEntertainmentsData => {
       return this.walibiBelgiumTransferService.WalibiBelgiumEntertainmentResponseToPois(axiosEntertainmentsData.data);
-    })
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this.getPois().then((pois) => {
-      return pois.filter(poi => [PoiCategory.RESTAURANT, PoiCategory.SNACKBAR].includes(poi.category));
-    });
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this.getPois().then((pois) => {
-      return pois.filter(poi => poi.category === PoiCategory.ATTRACTION);
-    });
-  }
-
-  async getShows(): Promise<Poi[]> {
-    return this.getPois().then((pois) => {
-      return pois.filter(poi => poi.category === PoiCategory.SHOW);
     });
   }
 

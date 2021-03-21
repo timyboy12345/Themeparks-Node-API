@@ -1,15 +1,14 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { ThemePark } from '../_interfaces/park.interface';
 import * as Sentry from '@sentry/node';
 import { ConfigService } from '@nestjs/config';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { Poi } from '../_interfaces/poi.interface';
 import { PhantasialandTransferService } from './phantasialand-transfer/phantasialand-transfer.service';
-import { PoiCategory } from '../_interfaces/poi-categories.enum';
+import { ThroughPoisThemeParkService } from '../_services/themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class PhantasialandService extends ThemeParkService {
+export class PhantasialandService extends ThroughPoisThemeParkService {
   private readonly _phantasialandApiUrl: string;
   private readonly _phantasialandApiToken: string;
 
@@ -42,6 +41,8 @@ export class PhantasialandService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsPoiLocations: true,
+      supportsShops: true,
+      supportsShopOpeningTimes: false,
     };
   }
 
@@ -49,18 +50,6 @@ export class PhantasialandService extends ThemeParkService {
     return this
       .request<any[]>('pois?filter[where][seasons][like]=%25SUMMER%25&compact=true')
       .then((axiosRidesData) => this.phantasialandTransferService.PhantasialandPoisToPois(axiosRidesData.data));
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.ATTRACTION));
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.RESTAURANT));
-  }
-
-  async getShows(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.SHOW));
   }
 
   private async request<T>(url: String) {

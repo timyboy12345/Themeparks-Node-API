@@ -1,16 +1,15 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { ThemePark } from '../_interfaces/park.interface';
 import { Poi } from '../_interfaces/poi.interface';
 import { EftelingPoisResponse } from './interfaces/efteling-pois-response.interface';
-import { PoiCategory } from '../_interfaces/poi-categories.enum';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import * as Sentry from '@sentry/node';
 import { EftelingTransferService } from './efteling-transfer/efteling-transfer.service';
+import { ThroughPoisThemeParkService } from '../_services/themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class EftelingService extends ThemeParkService {
+export class EftelingService extends ThroughPoisThemeParkService {
   private _eftelingApiURl: string;
 
   public constructor(private httpService: HttpService,
@@ -39,8 +38,10 @@ export class EftelingService extends ThemeParkService {
       supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
-      supportsShows: false,
+      supportsShows: true,
       supportsPoiLocations: true,
+      supportsShops: true,
+      supportsShopOpeningTimes: false,
     };
   }
 
@@ -49,18 +50,6 @@ export class EftelingService extends ThemeParkService {
       return value.data.hits.hit.map<Poi>((eftelingPoi) => {
         return this.eftelingTransferService.EftelingPoiToPoi(eftelingPoi);
       });
-    })
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this.getPois().then((pois) => {
-      return pois.filter(poi => poi.category == PoiCategory.ATTRACTION);
-    });
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this.getPois().then((pois) => {
-      return pois.filter(poi => poi.category == PoiCategory.RESTAURANT);
     });
   }
 

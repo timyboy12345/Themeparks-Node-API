@@ -39,6 +39,8 @@ export class WalibiHollandService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: false,
       supportsPoiLocations: false,
+      supportsShops: false,
+      supportsShopOpeningTimes: false,
     };
   }
 

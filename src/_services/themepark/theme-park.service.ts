@@ -55,4 +55,15 @@ export class ThemeParkService {
         return shows.find(show => show.id === id);
       })
   }
+
+  async getShops(): Promise<Poi[]> {
+    throw new NotImplementedException();
+  }
+
+  async getShop(id: string): Promise<Poi> {
+    return await this.getShops()
+      .then((shops) => {
+        return shops.find(shop => shop.id === id);
+      })
+  }
 }

@@ -9,4 +9,6 @@ export interface DippieDoeRide {
   maxAge?: number,
   minLengthAlone?: number,
   image_url?: string,
+  lat?: number;
+  lng?: number;
 }

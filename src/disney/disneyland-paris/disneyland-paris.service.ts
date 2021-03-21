@@ -1,17 +1,15 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ConfigService } from '@nestjs/config';
 import { gql, request } from 'graphql-request';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
-import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { DisneylandParisAttraction } from './interfaces/disneyland-paris-attraction.interface';
-
+import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class DisneylandParisService extends ThemeParkService {
+export class DisneylandParisService extends ThroughPoisThemeParkService {
   private readonly _disneyLandParis: string;
 
   constructor(private readonly httpService: HttpService,
@@ -42,6 +40,8 @@ export class DisneylandParisService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsPoiLocations: true,
+      supportsShops: true,
+      supportsShopOpeningTimes: false,
     };
   }
 
@@ -51,18 +51,6 @@ export class DisneylandParisService extends ThemeParkService {
       .then((disneyLandParisPois: DisneylandParisAttraction[]) =>
         this.disneylandParisTransferService
           .DisneylandParisPoisToPois(disneyLandParisPois.filter(poi => poi.location.id === 'P1')));
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.ATTRACTION));
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.RESTAURANT));
-  }
-
-  async getShows(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.SHOW));
   }
 
   private request<T>(): Promise<any> {

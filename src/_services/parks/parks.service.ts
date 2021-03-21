@@ -12,6 +12,8 @@ import { PortaventuraService } from '../../portaventura/portaventura.service';
 import { FerrariLandService } from '../../portaventura/ferrariland.service';
 import { BellewaerdeService } from '../../bellewaerde/bellewaerde.service';
 import { DippieDoeService } from '../../dippiedoe/dippie-doe.service';
+import { HolidayParkService } from '../../holiday-park/holiday-park.service';
+import { HellendoornService } from '../../hellendoorn/hellendoorn.service';
 
 @Injectable()
 export class ParksService {
@@ -28,7 +30,9 @@ export class ParksService {
               private readonly _portaVenturaService: PortaventuraService,
               private readonly _ferrariLandService: FerrariLandService,
               private readonly _bellewaerdeService: BellewaerdeService,
-              private readonly _dippieDoeService: DippieDoeService) {
+              private readonly _dippieDoeService: DippieDoeService,
+              private readonly _holidayParkService: HolidayParkService,
+              private readonly _hellendoornService: HellendoornService) {
     this._parks = [];
     this._parks.push(_eftelingService);
     this._parks.push(_toverlandService);
@@ -42,6 +46,8 @@ export class ParksService {
     this._parks.push(_ferrariLandService);
     this._parks.push(_bellewaerdeService);
     this._parks.push(_dippieDoeService);
+    this._parks.push(_holidayParkService);
+    this._parks.push(_hellendoornService);
   }
 
   public getParks() {

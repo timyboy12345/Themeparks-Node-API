@@ -6,9 +6,10 @@ import { Poi } from '../_interfaces/poi.interface';
 import * as DippieDoeRidesData from './data/dippiedoe-rides.json';
 import { PoiCategory } from '../_interfaces/poi-categories.enum';
 import { DippieDoeRide } from './interfaces/dippie-doe-ride.interface';
+import { ThroughPoisThemeParkService } from '../_services/themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class DippieDoeService extends ThemeParkService {
+export class DippieDoeService extends ThroughPoisThemeParkService {
   getInfo(): ThemePark {
     return {
       id: 'dippiedoe',
@@ -21,7 +22,7 @@ export class DippieDoeService extends ThemeParkService {
 
   getSupports(): ThemeParkSupports {
     return {
-      supportsPoiLocations: false,
+      supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: false,
@@ -29,6 +30,8 @@ export class DippieDoeService extends ThemeParkService {
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: false,
+      supportsShops: false,
+      supportsShopOpeningTimes: false,
     };
   }
 
@@ -48,13 +51,13 @@ export class DippieDoeService extends ThemeParkService {
         minSize: ride.minLength,
         maxSize: ride.maxLength,
         minSizeEscort: ride.minLengthAlone,
+        location: {
+          lat: ride.lat,
+          lng: ride.lng
+        }
       };
 
       return r;
     });
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this.getPois();
   }
 }

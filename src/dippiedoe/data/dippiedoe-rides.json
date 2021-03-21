@@ -6,7 +6,9 @@
     "area": "Binnen",
     "minLength": null,
     "minLengthAlone": 90,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1391"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1391",
+    "lat": 51.499473,
+    "lng": 5.433761
   },
   {
     "id": "stormtoren",
@@ -14,7 +16,9 @@
     "description": "Een vrije val! Op deze bank ga je hard van boven naar beneden, durf jij?!",
     "area": "Binnen",
     "minLength": 90,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/195"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/195",
+    "lat": 51.499453,
+    "lng": 5.433847
   },
   {
     "id": "ballenbaai",
@@ -59,14 +63,18 @@
     "area": "Buiten",
     "minLength": 95,
     "minAge": 5,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1421"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1421",
+    "lat": 51.499810,
+    "lng": 5.434604
   },
   {
     "id": "strandkussen",
     "title": "Strandkussen",
     "description": "Lachen, gieren en brullen.... Jong én oud heeft plezier op deze nieuwe airtrampoline van maar liefst 26x10 meter",
     "area": "buiten",
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1810"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1810",
+    "lat": 51.499813,
+    "lng": 5.435323
   },
   {
     "id": "klimkasteel",
@@ -81,7 +89,9 @@
     "description": "Een achtbaan voor durfallen! De orkaandrempel wordt opgezocht in deze spectaculaire rit!",
     "area": "Buiten",
     "minLength": 125,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/203"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/203",
+    "lat": 51.500625,
+    "lng": 5.437968
   },
   {
     "id": "het_schoeprad",
@@ -90,7 +100,9 @@
     "area": "Buiten",
     "minLength": 105,
     "minLengthAlone": 130,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/205"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/205",
+    "lat": 51.500568,
+    "lng": 5.436514
   },
   {
     "id": "speelduin",
@@ -106,7 +118,9 @@
     "area": "Buiten",
     "minLength": 75,
     "minLengthAlone": 105,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1372"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/1372",
+    "lat": 51.500091,
+    "lng": 5.436058
   },
   {
     "id": "de_draaikolk",
@@ -114,14 +128,18 @@
     "description": "Voel je als een vogel in de lucht! Hoger en hoger… Hou je goed vast! ",
     "area": "Buiten",
     "minLength": 90,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/134"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/134",
+    "lat":51.500401,
+    "lng": 5.436107
   },
   {
     "id": "piraten_golf",
     "title": "Piraten Golf",
     "description": "Golf door de wereld van piraten en vind de schat met goud!",
     "area": "Buiten",
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/132"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/132",
+    "lat": 51.500451,
+    "lng": 5.437635
   },
   {
     "id": "de_slinger_sloep",
@@ -130,6 +148,8 @@
     "area": "Buiten",
     "minLength": 120,
     "minLengthAlone": 140,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/204"
+    "image_url": "https://www.dippiedoe.nl/nl/files/large/204",
+    "lat": 51.500692,
+    "lng": 5.437238
   }
 ]

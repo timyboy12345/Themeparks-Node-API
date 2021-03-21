@@ -80,7 +80,7 @@ export class AppController {
         delete poi.original;
         return poi;
       });
-    });
+    }) ?? [];
   }
 
   @Get('park/:id/rides')
@@ -112,7 +112,7 @@ export class AppController {
         delete ride.original;
         return ride;
       });
-    });
+    }) ?? [];
   }
 
   @Get('park/:id/restaurants')
@@ -140,11 +140,11 @@ export class AppController {
     }
 
     return await park.getRestaurants().then(restaurants => {
-      return restaurants.map((ride) => {
-        delete ride.original;
-        return ride;
+      return restaurants.map((restaurant) => {
+        delete restaurant.original;
+        return restaurant;
       });
-    });
+    }) ?? [];
   }
 
   @Get('park/:id/shows')
@@ -172,9 +172,41 @@ export class AppController {
     }
 
     return await park.getShows().then(shows => {
-      return shows.map((ride) => {
-        delete ride.original;
-        return ride;
+      return shows.map((show) => {
+        delete show.original;
+        return show;
+      });
+    }) ?? []
+  }
+
+  @Get('park/:id/shops')
+  @UseInterceptors(CacheInterceptor)
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    description: 'The park id',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'All shops of a specific theme park',
+    isArray: true,
+    type: PoiDto,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'The requested park could not be found',
+  })
+  async getParkShops(@Param() params): Promise<Poi[]> {
+    const park = this.parksService.findPark(params.id, true);
+
+    if (!park.getFullInfo().supports.supportsShops) {
+      throw new BadRequestException('This park does not support shops');
+    }
+
+    return await park.getShops().then(shops => {
+      return shops.map((shop) => {
+        delete shop.original;
+        return shop;
       });
     });
   }

@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { ThemePark } from '../_interfaces/park.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
-
 import * as BellewaerdePoiData from './data/bellewaerde-pois.json';
 import { Poi } from '../_interfaces/poi.interface';
 import { PoiCategory } from '../_interfaces/poi-categories.enum';
+import { ThroughPoisThemeParkService } from '../_services/themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class BellewaerdeService extends ThemeParkService {
+export class BellewaerdeService extends ThroughPoisThemeParkService {
   getInfo(): ThemePark {
     return {
       id: 'bellewaerde',
@@ -29,6 +28,8 @@ export class BellewaerdeService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsPoiLocations: false,
+      supportsShops: true,
+      supportsShopOpeningTimes: false,
     };
   }
 
@@ -67,17 +68,5 @@ export class BellewaerdeService extends ThemeParkService {
         original: poi,
       };
     });
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.ATTRACTION));
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.RESTAURANT));
-  }
-
-  async getShows(): Promise<Poi[]> {
-    return this.getPois().then(pois => pois.filter(poi => poi.category === PoiCategory.SHOW));
   }
 }
