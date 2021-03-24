@@ -1,12 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HolidayParkService } from './holiday-park.service';
+import { HolidayParkTransferService } from './holiday-park-transfer/holiday-park-transfer.service';
+import { HttpModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
 describe('HolidayParkService', () => {
   let service: HolidayParkService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [HolidayParkService],
+      imports: [HttpModule, ConfigModule.forRoot()],
+      providers: [HolidayParkService, HolidayParkTransferService],
     }).compile();
 
     service = module.get<HolidayParkService>(HolidayParkService);

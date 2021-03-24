@@ -63,17 +63,17 @@ export class HolidayParkService extends ThemeParkService {
 
   async getRides(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(value => this.holidayParkTransferService.HolidayParkAttractionsResponseToPois(value.data)));
-    return await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(value => this.holidayParkTransferService.HolidayParkAttractionsResponseToPois(value.data));
+    return await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(r => this.holidayParkTransferService.transferRidesToPois(r.data));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkPageResponseInterface>('page').then(value => this.holidayParkTransferService.HolidayParkRestaurantsResponseToPois(value.data)));
-    return await this.request<HolidayParkPageResponseInterface>('page').then(value => this.holidayParkTransferService.HolidayParkRestaurantsResponseToPois(value.data));
+    return await this.request<HolidayParkPageResponseInterface>('page').then(r => this.holidayParkTransferService.transferRestaurantsToPois(r.data));
   }
 
   async getShops(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkPageResponseInterface>('page').then(value => this.holidayParkTransferService.HolidayParkShopsResponseToPois(value.data)));
-    return await this.request<HolidayParkPageResponseInterface>('page').then(value => this.holidayParkTransferService.HolidayParkShopsResponseToPois(value.data));
+    return await this.request<HolidayParkPageResponseInterface>('page').then(r => this.holidayParkTransferService.transferShopsToPois(r.data));
   }
 
   // async getShows(): Promise<Poi[]> {

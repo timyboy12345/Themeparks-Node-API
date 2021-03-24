@@ -46,10 +46,8 @@ export class EftelingService extends ThroughPoisThemeParkService {
   }
 
   getPois(): Promise<Poi[]> {
-    return this.request().then(value => {
-      return value.data.hits.hit.map<Poi>((eftelingPoi) => {
-        return this.eftelingTransferService.EftelingPoiToPoi(eftelingPoi);
-      });
+    return this.request().then(poisResponse => {
+      return poisResponse.data.hits.hit.map(pois => this.eftelingTransferService.transferPoiToPoi(pois));
     });
   }
 

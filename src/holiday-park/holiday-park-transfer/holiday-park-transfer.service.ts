@@ -5,10 +5,11 @@ import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { HolidayParkAttractionsResponseInterface } from '../interfaces/holiday-park-attractions-response.interface';
 import { RideCategory } from '../../_interfaces/ride-category.interface';
 import { HolidayParkPageResponseInterface } from '../interfaces/holiday-park-page-response.interface';
+import { TransferService } from '../../_services/transfer/transfer.service';
 
 @Injectable()
-export class HolidayParkTransferService {
-  public HolidayParkAttractionToPoi(holidayParkAttraction: HolidayParkAttraction): Poi {
+export class HolidayParkTransferService extends TransferService {
+  public transferPoiToPoi(holidayParkAttraction: HolidayParkAttraction): Poi {
     let category: PoiCategory;
 
     switch (holidayParkAttraction.type) {
@@ -56,38 +57,34 @@ export class HolidayParkTransferService {
     return poi;
   }
 
-  public HolidayParkAttractionsToPois(holidayParkAttractions: HolidayParkAttraction[]): Poi[] {
-    return holidayParkAttractions.map(holidayParkAttraction => this.HolidayParkAttractionToPoi(holidayParkAttraction));
-  }
-
-  public HolidayParkAttractionsResponseToPois(holidayParkAttractionsResponse: HolidayParkAttractionsResponseInterface): Poi[] {
+  public transferRidesToPois(responseInterface: HolidayParkAttractionsResponseInterface): Poi[] {
     const pois: HolidayParkAttraction[] = [];
 
-    for (let key in holidayParkAttractionsResponse.en.attraction) {
-      pois.push(holidayParkAttractionsResponse.en.attraction[key]);
+    for (let key in responseInterface.en.attraction) {
+      pois.push(responseInterface.en.attraction[key]);
     }
 
-    return pois.map(holidayParkAttraction => this.HolidayParkAttractionToPoi(holidayParkAttraction));
+    return pois.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
   }
 
-  public HolidayParkShopsResponseToPois(holidayParkAttractionsResponse: HolidayParkPageResponseInterface): Poi[] {
+  public transferShopsToPois(responseInterface: HolidayParkPageResponseInterface): Poi[] {
     const pois: HolidayParkAttraction[] = [];
 
-    for (let key in holidayParkAttractionsResponse.en.shop) {
-      pois.push(holidayParkAttractionsResponse.en.shop[key]);
+    for (let key in responseInterface.en.shop) {
+      pois.push(responseInterface.en.shop[key]);
     }
 
-    return pois.map(holidayParkAttraction => this.HolidayParkAttractionToPoi(holidayParkAttraction));
+    return pois.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
   }
 
-  public HolidayParkRestaurantsResponseToPois(holidayParkAttractionsResponse: HolidayParkPageResponseInterface): Poi[] {
+  public transferRestaurantsToPois(responseInterface: HolidayParkPageResponseInterface): Poi[] {
     const pois: HolidayParkAttraction[] = [];
 
-    for (let key in holidayParkAttractionsResponse.en.food) {
-      pois.push(holidayParkAttractionsResponse.en.food[key]);
+    for (let key in responseInterface.en.food) {
+      pois.push(responseInterface.en.food[key]);
     }
 
-    return pois.map(holidayParkAttraction => this.HolidayParkAttractionToPoi(holidayParkAttraction));
+    return pois.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
   }
 
   // public HolidayParkShowsResponseToPois(holidayParkAttractionsResponse: HolidayParkPageResponseInterface): Poi[] {

@@ -49,7 +49,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
   async getPois(): Promise<Poi[]> {
     return this
       .request<any[]>('pois?filter[where][seasons][like]=%25SUMMER%25&compact=true')
-      .then((axiosRidesData) => this.phantasialandTransferService.PhantasialandPoisToPois(axiosRidesData.data));
+      .then((axiosRidesData) => this.phantasialandTransferService.transferPoisToPois(axiosRidesData.data));
   }
 
   private async request<T>(url: String) {

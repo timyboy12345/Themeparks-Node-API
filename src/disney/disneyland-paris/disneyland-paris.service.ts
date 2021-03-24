@@ -50,7 +50,7 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       .request()
       .then((disneyLandParisPois: DisneylandParisAttraction[]) =>
         this.disneylandParisTransferService
-          .DisneylandParisPoisToPois(disneyLandParisPois.filter(poi => poi.location.id === 'P1')));
+          .transferPoisToPois(disneyLandParisPois.filter(poi => poi.location.id === 'P1')));
   }
 
   private request<T>(): Promise<any> {

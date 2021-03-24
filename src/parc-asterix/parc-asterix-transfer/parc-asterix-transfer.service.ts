@@ -5,10 +5,11 @@ import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../_interfaces/ride-category.interface';
 import { ParcAsterixRestaurant } from '../interfaces/parc-asterix-restaurant.interface';
 import { ParcAsterixShow } from '../interfaces/parc-asterix-show.interface';
+import { TransferService } from '../../_services/transfer/transfer.service';
 
 @Injectable()
-export class ParcAsterixTransferService {
-  public ParcAsterixAttractionToPoi(parcAsterixPoi: ParcAsterixAttraction): Poi {
+export class ParcAsterixTransferService extends TransferService {
+  public transferRideToPoi(parcAsterixPoi: ParcAsterixAttraction): Poi {
     let rideCategory: RideCategory;
 
     switch (parcAsterixPoi.experience) {
@@ -45,11 +46,7 @@ export class ParcAsterixTransferService {
     };
   }
 
-  public ParcAsterixAttractionsToPois(parcAsterixPois: ParcAsterixAttraction[]): Poi[] {
-    return parcAsterixPois.map(parcAsterixPoi => this.ParcAsterixAttractionToPoi(parcAsterixPoi));
-  }
-
-  public ParcAsterixRestaurantToPoi(parcAsterixPoi: ParcAsterixRestaurant): Poi {
+  public transferRestaurantToPoi(parcAsterixPoi: ParcAsterixRestaurant): Poi {
     return {
       id: parcAsterixPoi.code + '',
       title: parcAsterixPoi.title,
@@ -64,11 +61,7 @@ export class ParcAsterixTransferService {
     };
   }
 
-  public ParcAsterixRestaurantsToPois(parcAsterixPois: ParcAsterixRestaurant[]): Poi[] {
-    return parcAsterixPois.map(parcAsterixPoi => this.ParcAsterixRestaurantToPoi(parcAsterixPoi));
-  }
-
-  public ParcAsterixShowToPoi(parcAsterixPoi: ParcAsterixShow): Poi {
+  public transferShowToPoi(parcAsterixPoi: ParcAsterixShow): Poi {
     return {
       id: parcAsterixPoi.code + '',
       title: parcAsterixPoi.title,
@@ -81,9 +74,5 @@ export class ParcAsterixTransferService {
         lng: parseFloat(parcAsterixPoi.longitude),
       },
     };
-  }
-
-  public ParcAsterixShowsToPois(parcAsterixPois: ParcAsterixShow[]): Poi[] {
-    return parcAsterixPois.map(parcAsterixShow => this.ParcAsterixShowToPoi(parcAsterixShow));
   }
 }

@@ -3,6 +3,7 @@ import { PoiCategory } from './poi-categories.enum';
 import { WaitingTimes } from './waitingtimes.interface';
 import { ShowTimes } from './showtimes.interface';
 import { RideCategory } from './ride-category.interface';
+import { Translation } from './translation.interface';
 
 export interface Poi {
   id: string;
@@ -10,8 +11,14 @@ export interface Poi {
   rideCategory?: RideCategory;
   original_category?: string;
   title: string;
+  localizedTitles?: Translation;
+  localizedTitle?: string;
   subTitle?: string;
+  localizedSubtitles?: Translation;
+  localizedSubtitle?: string;
   description?: string;
+  localizedDescriptions?: Translation;
+  localizedDescription?: string;
   area?: string;
   createdAt?: string;
   location?: {
@@ -48,6 +55,7 @@ export interface Poi {
   tags?: string[];
   image_url?: string;
   website_url?: string;
+  translatedWebsiteUrl?: Translation;
   fastpass?: boolean;
   singlerider?: boolean;
   featured?: boolean;

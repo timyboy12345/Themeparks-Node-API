@@ -50,21 +50,21 @@ export class ParcAsterixService extends ThemeParkService {
     return this
       .request<ParcAsterixAttractionsResponseInterface>('attractions.json')
       .then(attractionsResponse =>
-        this.parcAsterixTransferService.ParcAsterixAttractionsToPois(attractionsResponse.data.result.attractions));
+        this.parcAsterixTransferService.transferRidesToPois(attractionsResponse.data.result.attractions));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
       .request<ParcAsterixRestaurantsResponseInterface>('restaurants.json')
       .then(restaurantsResponse =>
-        this.parcAsterixTransferService.ParcAsterixRestaurantsToPois(restaurantsResponse.data.result.restaurants));
+        this.parcAsterixTransferService.transferRestaurantsToPois(restaurantsResponse.data.result.restaurants));
   }
 
   async getShows(): Promise<Poi[]> {
     return this
       .request<ParcAsterixShowsResponseInterface>('shows.json')
       .then(showsResponse =>
-        this.parcAsterixTransferService.ParcAsterixShowsToPois(showsResponse.data.result.shows));
+        this.parcAsterixTransferService.transferShowsToPois(showsResponse.data.result.shows));
   }
 
   async getPois(): Promise<Poi[]> {

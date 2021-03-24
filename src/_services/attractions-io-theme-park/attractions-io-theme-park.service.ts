@@ -105,13 +105,18 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
       });
   }
 
-  public getFileItems(file: any): Poi[] {
+  public getFileItems(file: any, default_locale = ' en-GB'): Poi[] {
     return file.Item.map((item: AttractionsIoItemInterface) => {
       let category: PoiCategory = this.getCategory(item.Category);
 
       const poi: Poi = {
         id: item._id + '',
-        title: item.Name['en-GB'],
+        title: item.Name[default_locale],
+        localizedTitles: {
+          en: item.Name['en-GB'],
+          nl: item.Name['nl-NL'],
+          de: item.Name['de-DE'],
+        },
         description: item.Summary ? item.Summary['en-GB'] : undefined,
         category: category,
         original: item,
@@ -121,6 +126,14 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
         minAge: item.MinimumAgeRequirement ?? undefined,
         maxAge: item.MaximumAgeRequirement ?? undefined,
       };
+
+      if (item.Summary) {
+        poi.localizedDescriptions = {
+          en: item.Summary['en-GB'],
+          nl: item.Summary['nl-NL'],
+          de: item.Summary['de-DE'],
+        };
+      }
 
       if (item.Location) {
         const lat = parseFloat(item.Location.split(',')[0]);

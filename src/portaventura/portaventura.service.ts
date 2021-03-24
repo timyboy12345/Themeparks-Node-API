@@ -47,7 +47,7 @@ export class PortaventuraService extends ThemeParkService {
   async getPois(): Promise<Poi[]> {
     const promises = [
       this.getRides(),
-      this.getRestaurants()
+      this.getRestaurants(),
     ];
     return []
       .concat
@@ -58,14 +58,14 @@ export class PortaventuraService extends ThemeParkService {
     return this
       .request<PortaVenturaPoi[]>('atraccion')
       .then((portaVenturaRidesResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(portaVenturaRidesResponse.data)));
+        this.portaVenturaTransferService.transferPoisToPois(portaVenturaRidesResponse.data.filter(p => p.parque_id))));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
       .request<PortaVenturaPoi[]>('restaurante')
       .then((portaVenturaRestaurantsResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(portaVenturaRestaurantsResponse.data.filter(p => p.parque_id))));
+        this.portaVenturaTransferService.transferPoisToPois(portaVenturaRestaurantsResponse.data.filter(p => p.parque_id))));
   }
 
   private request<T>(url: string) {

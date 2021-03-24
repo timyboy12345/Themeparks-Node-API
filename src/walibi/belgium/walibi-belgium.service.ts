@@ -6,10 +6,10 @@ import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../_interfaces/poi.interface';
 import { WalibiBelgiumTransferService } from './walibi-belgium-transfer/walibi-belgium-transfer.service';
 import { WalibiBelgiumEntertainmentsResponse } from './interfaces/walibi-belgium-entertainments-response.interface';
-import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
+import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 
 @Injectable()
-export class WalibiBelgiumService extends ThroughPoisThemeParkService {
+export class WalibiBelgiumService extends ThemeParkService {
   private readonly _walibiBelgiumApiUrl: string;
   private readonly _walibiBelgiumApiToken: string;
 
@@ -48,8 +48,39 @@ export class WalibiBelgiumService extends ThroughPoisThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
+    const promises = [
+      this.getRides(),
+      this.getShops(),
+      this.getShows(),
+      this.getRestaurants(),
+    ];
+
+    return []
+      .concat
+      .apply([], await Promise.all(promises));
+  }
+
+  async getRides(): Promise<Poi[]> {
     return this.request<WalibiBelgiumEntertainmentsResponse>('/entertainments?_format=json').then(axiosEntertainmentsData => {
-      return this.walibiBelgiumTransferService.WalibiBelgiumEntertainmentResponseToPois(axiosEntertainmentsData.data);
+      return this.walibiBelgiumTransferService.transferShowsToPois(axiosEntertainmentsData.data.entertainment);
+    });
+  }
+
+  async getShops(): Promise<Poi[]> {
+    return this.request<WalibiBelgiumEntertainmentsResponse>('/entertainments?_format=json').then(axiosEntertainmentsData => {
+      return this.walibiBelgiumTransferService.transferShowsToPois(axiosEntertainmentsData.data.shop);
+    });
+  }
+
+  async getShows(): Promise<Poi[]> {
+    return this.request<WalibiBelgiumEntertainmentsResponse>('/entertainments?_format=json').then(axiosEntertainmentsData => {
+      return this.walibiBelgiumTransferService.transferShowsToPois(axiosEntertainmentsData.data.show);
+    });
+  }
+
+  async getRestaurants(): Promise<Poi[]> {
+    return this.request<WalibiBelgiumEntertainmentsResponse>('/entertainments?_format=json').then(axiosEntertainmentsData => {
+      return this.walibiBelgiumTransferService.transferShowsToPois(axiosEntertainmentsData.data.restaurant);
     });
   }
 

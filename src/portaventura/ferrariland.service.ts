@@ -58,14 +58,14 @@ export class FerrariLandService extends ThemeParkService {
     return this
       .request<PortaVenturaPoi[]>('atraccion')
       .then((ferrariLandRidesResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(ferrariLandRidesResponse.data)));
+        this.portaVenturaTransferService.transferPoisToPois(ferrariLandRidesResponse.data)));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
       .request<PortaVenturaPoi[]>('restaurante')
       .then((ferrariLandRestaurantsResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(ferrariLandRestaurantsResponse.data)));
+        this.portaVenturaTransferService.transferPoisToPois(ferrariLandRestaurantsResponse.data)));
   }
 
   private request<T>(url: string) {

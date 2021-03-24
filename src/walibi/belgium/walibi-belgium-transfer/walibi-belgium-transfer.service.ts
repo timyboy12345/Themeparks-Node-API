@@ -4,10 +4,11 @@ import { WalibiBelgiumEntertainment } from '../interfaces/walibi-belgium-enterta
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { WalibiBelgiumEntertainmentsResponse } from '../interfaces/walibi-belgium-entertainments-response.interface';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
+import { TransferService } from '../../../_services/transfer/transfer.service';
 
 @Injectable()
-export class WalibiBelgiumTransferService {
-  public WalibiBelgiumEntertainmentToPoi(entertainment: WalibiBelgiumEntertainment): Poi {
+export class WalibiBelgiumTransferService extends TransferService{
+  public transferPoiToPoi(entertainment: WalibiBelgiumEntertainment): Poi {
     let category: PoiCategory = PoiCategory.UNDEFINED;
     let rideCategory: RideCategory = null;
 
@@ -73,17 +74,7 @@ export class WalibiBelgiumTransferService {
     return poi;
   }
 
-  public WalibiBelgiumEntertainmentsToPois(entertainments: WalibiBelgiumEntertainment[]): Poi[] {
-    return entertainments.map(poi => this.WalibiBelgiumEntertainmentToPoi(poi));
-  }
-
-  public WalibiBelgiumEntertainmentResponseToPois(response: WalibiBelgiumEntertainmentsResponse): Poi[] {
-    let pois: Poi[] = [];
-
-    for (const i in response) {
-      pois = pois.concat(this.WalibiBelgiumEntertainmentsToPois(response[i]));
-    }
-
-    return pois;
+  public transferShowsToPois(shows: WalibiBelgiumEntertainment[]): Poi[] {
+    return super.transferPoisToPois(shows);
   }
 }

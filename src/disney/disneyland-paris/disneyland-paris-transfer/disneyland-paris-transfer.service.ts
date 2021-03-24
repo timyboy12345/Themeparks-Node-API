@@ -3,10 +3,11 @@ import { Poi } from '../../../_interfaces/poi.interface';
 import { DisneylandParisAttraction } from '../interfaces/disneyland-paris-attraction.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
+import { TransferService } from '../../../_services/transfer/transfer.service';
 
 @Injectable()
-export class DisneylandParisTransferService {
-  public DisneylandParisPoiToPoi(disneylandParisPoi: DisneylandParisAttraction): Poi {
+export class DisneylandParisTransferService extends TransferService {
+  public transferPoiToPoi(disneylandParisPoi: DisneylandParisAttraction): Poi {
     let c: PoiCategory;
 
     switch (disneylandParisPoi.entityType) {
@@ -91,9 +92,5 @@ export class DisneylandParisTransferService {
     }
 
     return poi;
-  }
-
-  public DisneylandParisPoisToPois(disneylandParisPois: DisneylandParisAttraction[]): Poi[] {
-    return disneylandParisPois.map(disneylandParisPoi => this.DisneylandParisPoiToPoi(disneylandParisPoi));
   }
 }

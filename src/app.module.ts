@@ -28,6 +28,7 @@ import { HolidayParkService } from './holiday-park/holiday-park.service';
 import { HolidayParkTransferService } from './holiday-park/holiday-park-transfer/holiday-park-transfer.service';
 import { AttractionsIoThemeParkService } from './_services/attractions-io-theme-park/attractions-io-theme-park.service';
 import { HellendoornService } from './hellendoorn/hellendoorn.service';
+import { TransferService } from './_services/transfer/transfer.service';
 
 @Module({
   imports: [
@@ -38,7 +39,7 @@ import { HellendoornService } from './hellendoorn/hellendoorn.service';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, EftelingService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiBelgiumTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService, DippieDoeService, HolidayParkService, HolidayParkTransferService, AttractionsIoThemeParkService, HellendoornService],
+  providers: [AppService, EftelingService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiBelgiumTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService, DippieDoeService, HolidayParkService, HolidayParkTransferService, AttractionsIoThemeParkService, HellendoornService, TransferService],
 })
 export class AppModule {
 }

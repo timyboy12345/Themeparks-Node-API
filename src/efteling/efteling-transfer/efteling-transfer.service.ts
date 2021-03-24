@@ -4,13 +4,17 @@ import { EftelingPoi } from '../interfaces/efteling-poi.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { ConfigService } from '@nestjs/config';
 import { RideCategory } from '../../_interfaces/ride-category.interface';
+import { TransferService } from '../../_services/transfer/transfer.service';
 
 @Injectable()
-export class EftelingTransferService {
-  constructor(private readonly configService: ConfigService) {
-  }
+export class EftelingTransferService extends TransferService {
 
-  public EftelingPoiToPoi(eftelingPoi: EftelingPoi): Poi {
+
+  // constructor(private readonly configService: ConfigService) {
+  //   super();
+  // }
+
+  transferPoiToPoi(eftelingPoi: EftelingPoi): Poi {
     let c: PoiCategory = PoiCategory.UNDEFINED;
 
     switch (eftelingPoi.fields.category) {
@@ -52,7 +56,8 @@ export class EftelingTransferService {
     const lng = parseFloat(eftelingPoi.fields.latlon.split(',')[1]);
 
     // Get the URL where the images are located
-    const imgUrl = this.configService.get('EFTELING_MEDIA_URL');
+    // const imgUrl = this.configService.get('EFTELING_MEDIA_URL');
+    const imgUrl = 'https://efteling.com';
 
     const images = [];
     for (let i = 1; i <= 5; i++) {
@@ -120,9 +125,5 @@ export class EftelingTransferService {
     }
 
     return poi;
-  }
-
-  public EftelingPoisToPois(eftelingPois: EftelingPoi[]): Poi[] {
-    return eftelingPois.map(eftelingPoi => this.EftelingPoiToPoi(eftelingPoi));
   }
 }
