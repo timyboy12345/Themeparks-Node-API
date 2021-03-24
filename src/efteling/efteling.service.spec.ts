@@ -20,9 +20,9 @@ describe('EftelingService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should return all rides', async () => {
-    const pois = await service.getPois();
-
-    expect(Array.isArray(pois)).toBe(true);
-  })
+  // it('should return all rides', async () => {
+  //   const pois = await service.getPois();
+  //
+  //   expect(Array.isArray(pois)).toBe(true);
+  // })
 });
