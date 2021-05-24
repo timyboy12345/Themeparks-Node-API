@@ -105,6 +105,10 @@ export class EftelingService extends ThroughPoisThemeParkService {
       .toPromise()
       .then(value => {
         return value;
+      })
+      .catch(e => {
+        Sentry.captureException(e);
+        throw new InternalServerErrorException(e);
       });
   }
 }
