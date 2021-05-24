@@ -1,7 +1,7 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { gql, request } from 'graphql-request';
-import { ThemePark } from '../../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
@@ -27,6 +27,7 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       description: 'Disneyland Paris, eerst Euro Disney Resort en daarna Disneyland Resort Paris, is een attractiepark- en recreatiecomplex in Marne-la-Vallée, een stad in de banlieue van de Franse hoofdstad Parijs.',
       countryCode: 'fr',
       image: 'https://www.sortiraparis.com/images/80/87950/484853-visuels-disneyland-paris-chateau.jpg',
+      parkType: ParkType.THEMEPARK
     };
   }
 

@@ -1,7 +1,7 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { ConfigService } from '@nestjs/config';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { Poi } from '../_interfaces/poi.interface';
 import { HolidayParkTransferService } from './holiday-park-transfer/holiday-park-transfer.service';
@@ -31,6 +31,7 @@ export class HolidayParkService extends ThemeParkService {
       description: 'Holiday Park is een attractiepark gelegen in Haßloch in de Duitse deelstaat Rijnland-Palts. Het maakt sinds 2010 deel uit van de pretparken van de Plopsa-groep.',
       image: 'https://www.holidaypark.de/sites/default/files/public/brand/logos/Holiday%20Park.jpg',
       countryCode: 'de',
+      parkType: ParkType.THEMEPARK
     };
   }
 

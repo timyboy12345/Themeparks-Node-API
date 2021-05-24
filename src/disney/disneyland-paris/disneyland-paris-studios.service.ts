@@ -1,7 +1,7 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
-import { ThemePark } from '../../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { gql, request } from 'graphql-request';
@@ -27,6 +27,7 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       description: 'Het Walt Disney Studios Park is een attractiepark in Frankrijk en is onderdeel van Disneyland Paris. Het is het tweede attractiepark binnen dit resort, dat geopend werd op 16 maart 2002. Het park ligt in het westen van het resort, pal naast de entree van het Disneyland Park.',
       countryCode: 'fr',
       image: 'https://www.magicontheweb.com/wp-content/uploads/2020/09/waltdisneystudiospark.jpg',
+      parkType: ParkType.THEMEPARK
     };
   }
 

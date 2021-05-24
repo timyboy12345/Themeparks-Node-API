@@ -1,4 +1,4 @@
-export interface WalibiBelgiumEntertainment {
+export interface WalibiEntertainment {
   'uuid': string,
   'serviceCode': string,
   'title': string,

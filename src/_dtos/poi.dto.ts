@@ -73,15 +73,8 @@ export class PoiDto {
     required: false,
   })
   entrance?: {
-    id?: string,
-    world?: {
-      lat: number,
-      lng: number
-    },
-    map?: {
-      lat: number,
-      lng: number
-    }
+    lat: number,
+    lng: number
   };
 
   @ApiProperty({
@@ -89,15 +82,8 @@ export class PoiDto {
     required: false,
   })
   exit?: {
-    id?: string,
-    world?: {
-      lat: number,
-      lng: number
-    },
-    map?: {
-      lat: number,
-      lng: number
-    }
+    lat: number,
+    lng: number
   };
 
   @ApiProperty({

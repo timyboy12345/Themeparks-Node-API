@@ -4,6 +4,7 @@ import { WaitingTimes } from './waitingtimes.interface';
 import { ShowTimes } from './showtimes.interface';
 import { RideCategory } from './ride-category.interface';
 import { Translation } from './translation.interface';
+import { PoiMenuItemInterface } from './poi-menu-item.interface';
 
 export interface Poi {
   id: string;
@@ -26,26 +27,12 @@ export interface Poi {
     lng: number
   },
   entrance?: {
-    id?: string,
-    world?: {
-      lat: number,
-      lng: number
-    },
-    map?: {
-      lat: number,
-      lng: number
-    }
+    lat: number,
+    lng: number
   };
   exit?: {
-    id?: string,
-    world?: {
-      lat: number,
-      lng: number
-    },
-    map?: {
-      lat: number,
-      lng: number
-    }
+    lat: number,
+    ln: number
   };
   minSize?: number;
   maxSize?: number;
@@ -63,6 +50,8 @@ export interface Poi {
 
   images?: string[];
 
+  currentWaitTime?: number;
+
   waitingTimes?: WaitingTimes;
 
   showTimes?: ShowTimes;
@@ -70,4 +59,6 @@ export interface Poi {
   openingTimes?: PoiOpeningTime[];
 
   original: any;
+
+  menuItems?: PoiMenuItemInterface[];
 }

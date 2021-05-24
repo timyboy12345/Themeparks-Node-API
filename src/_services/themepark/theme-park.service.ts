@@ -1,4 +1,4 @@
-import { HttpService, Injectable, NotImplementedException } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
@@ -6,11 +6,11 @@ import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 @Injectable()
 export class ThemeParkService {
   getInfo(): ThemePark {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get theme park info");
   }
 
   getSupports(): ThemeParkSupports {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get theme park supports");
   }
 
   getFullInfo() {
@@ -20,11 +20,11 @@ export class ThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get POIs");
   }
 
   async getRestaurants(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get restaurants");
   }
 
   async getRestaurant(id: string): Promise<Poi> {
@@ -35,7 +35,7 @@ export class ThemeParkService {
   }
 
   async getRides(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get rides");
   }
 
   async getRide(id: string): Promise<Poi> {
@@ -46,7 +46,7 @@ export class ThemeParkService {
   }
 
   async getShows(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get rides");
   }
 
   async getShow(id: string): Promise<Poi> {
@@ -57,7 +57,7 @@ export class ThemeParkService {
   }
 
   async getShops(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get shops");
   }
 
   async getShop(id: string): Promise<Poi> {

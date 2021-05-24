@@ -3,7 +3,7 @@ import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { Poi } from '../_interfaces/poi.interface';
 import { ToverlandRide } from './interfaces/toverland-ride.interface';
 import { PoiCategory } from '../_interfaces/poi-categories.enum';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ToverlandFoodAndDrink } from './interfaces/toverland-foodanddrink.interface';
 import { ConfigService } from '@nestjs/config';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
@@ -29,6 +29,7 @@ export class ToverlandService extends ThemeParkService {
       description: 'Attractiepark Toverland, kortweg Toverland, is een deels overdekt attractiepark in het Nederlandse Sevenum. Het is een van de jongste attractieparken van Nederland.',
       image: 'https://i.ytimg.com/vi/WeUzyKUqR4I/maxresdefault.jpg',
       countryCode: 'nl',
+      parkType: ParkType.THEMEPARK
     };
   }
 

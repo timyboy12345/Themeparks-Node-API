@@ -17,7 +17,7 @@ import { HellendoornService } from '../../hellendoorn/hellendoorn.service';
 import { ConfigModule} from '@nestjs/config';
 import { HttpModule } from '@nestjs/common';
 import { EftelingTransferService } from '../../efteling/efteling-transfer/efteling-transfer.service';
-import { WalibiBelgiumTransferService } from '../../walibi/belgium/walibi-belgium-transfer/walibi-belgium-transfer.service';
+import { WalibiTransferService } from '../../walibi/walibi-transfer/walibi-transfer.service';
 import { PhantasialandTransferService } from '../../phantasialand/phantasialand-transfer/phantasialand-transfer.service';
 import { DisneylandParisTransferService } from '../../disney/disneyland-paris/disneyland-paris-transfer/disneyland-paris-transfer.service';
 import { ParcAsterixTransferService } from '../../parc-asterix/parc-asterix-transfer/parc-asterix-transfer.service';
@@ -28,7 +28,7 @@ describe('ParksService', () => {
   let service: ParksService;
 
   const parkServices: any[] = [EftelingService, ToverlandService, WalibiHollandService, WalibiBelgiumService, PhantasialandService, DisneylandParisService, DisneylandParisStudiosService, ParcAsterixService, PortaventuraService, FerrariLandService, BellewaerdeService, DippieDoeService, HolidayParkService, HellendoornService];
-  const transferServices: any[] = [EftelingTransferService, WalibiBelgiumTransferService, PhantasialandTransferService, DisneylandParisTransferService, ParcAsterixTransferService, PortaVenturaTransferService, HolidayParkTransferService];
+  const transferServices: any[] = [EftelingTransferService, WalibiTransferService, PhantasialandTransferService, DisneylandParisTransferService, ParcAsterixTransferService, PortaVenturaTransferService, HolidayParkTransferService];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({

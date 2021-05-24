@@ -2,9 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
 import { EftelingPoi } from '../interfaces/efteling-poi.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
-import { ConfigService } from '@nestjs/config';
 import { RideCategory } from '../../_interfaces/ride-category.interface';
 import { TransferService } from '../../_services/transfer/transfer.service';
+import * as moment from 'moment';
+import { ShowTime, ShowTimes } from '../../_interfaces/showtimes.interface';
+import {
+  EftelingOpeningTimesAttraction,
+  EftelingOpeningTimesAttractionShowTimes,
+} from '../interfaces/efteling-openingstimes-response.interface';
 
 @Injectable()
 export class EftelingTransferService extends TransferService {
@@ -125,5 +130,29 @@ export class EftelingTransferService extends TransferService {
     }
 
     return poi;
+  }
+
+  transferShowTimesToShowTimes(showTimes: EftelingOpeningTimesAttraction): ShowTimes {
+    return {
+      todayShowTimes: [],
+      pastShowTimes: showTimes.PastShowTimes.map(this.transferShowTimeToShowTime),
+      duration: showTimes.ShowDuration,
+      allShowTimes: [],
+      otherDateShowTimes: [],
+      currentDate: moment().format(),
+      futureShowTimes: showTimes.ShowTimes.map(this.transferShowTimeToShowTime),
+    };
+  }
+
+  transferShowTimeToShowTime(showTime: EftelingOpeningTimesAttractionShowTimes): ShowTime {
+    return {
+      duration: null,
+      from: moment(showTime.StartDateTime).format(),
+      to: moment(showTime.EndDateTime).format(),
+      edition: showTime.Edition,
+      fromTime: moment(showTime.StartDateTime).format('HH:mm:ss'),
+      toTime: moment(showTime.EndDateTime).format('HH:mm:ss'),
+      isPassed: moment(showTime.StartDateTime).isAfter(),
+    };
   }
 }

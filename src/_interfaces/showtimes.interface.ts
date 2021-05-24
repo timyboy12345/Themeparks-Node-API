@@ -13,6 +13,7 @@ export interface ShowTime {
   from: string;
   fromTime: string;
   to?: string;
+  toTime?: string;
   duration?: number;
   isPassed?: boolean;
   edition?: string;

@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WalibiBelgiumService } from './walibi-belgium.service';
-import { WalibiBelgiumTransferService } from './walibi-belgium-transfer/walibi-belgium-transfer.service';
+import { WalibiTransferService } from '../walibi-transfer/walibi-transfer.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
@@ -10,7 +10,7 @@ describe('BelgiumService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [WalibiBelgiumService, WalibiBelgiumTransferService],
+      providers: [WalibiBelgiumService, WalibiTransferService],
     }).compile();
 
     service = module.get<WalibiBelgiumService>(WalibiBelgiumService);

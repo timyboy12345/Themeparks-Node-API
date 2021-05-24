@@ -44,12 +44,20 @@ export class PhantasialandTransferService extends TransferService {
         break;
     }
 
+    let entrance = undefined;
+    if (poi.entrance) {
+      entrance = {
+        lat: poi.entrance.world.lat,
+        lng: poi.entrance.world.lng,
+      }
+    }
+
     return {
       id: poi.id + '',
       title: poi.title.en,
       subTitle: poi.tagline.en,
       description: poi.description.en,
-      entrance: poi.entrance,
+      entrance: entrance,
       area: poi.area,
       location: {
         lat: poi.entrance.world.lat,

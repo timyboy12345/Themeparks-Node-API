@@ -1,10 +1,11 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
+import { ShowTime, ShowTimes } from '../../_interfaces/showtimes.interface';
 
 @Injectable()
 export class TransferService {
   public transferPoiToPoi(poi: any): Poi {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not transfer POI to POI");
   }
 
   public transferPoisToPois(pois: any[]) {
@@ -12,34 +13,42 @@ export class TransferService {
   }
 
   public transferRideToPoi(ride: any): Poi {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not transfer ride to POI");
   }
 
   public transferRidesToPois(rides: any): Poi[] {
-    return rides.map(this.transferRideToPoi);
+    return rides.map(rides => this.transferRideToPoi(rides));
   }
 
-  public transferRestaurantToPoi(ride: any): Poi {
-    throw new NotImplementedException();
+  public transferRestaurantToPoi(restaurant: any): Poi {
+    throw new NotImplementedException("Could not transfer restaurant to POI");
   }
 
   public transferRestaurantsToPois(restaurants: any): Poi[] {
-    return restaurants.map(this.transferRestaurantToPoi);
+    return restaurants.map(restaurants => this.transferRestaurantToPoi(restaurants));
   }
 
-  public transferShowToPoi(ride: any): Poi {
-    throw new NotImplementedException();
+  public transferShowToPoi(show: any): Poi {
+    throw new NotImplementedException("Could not transfer show to POI");
   }
 
   public transferShowsToPois(shows: any): Poi[] {
-    return shows.map(this.transferShowToPoi);
+    return shows.map(shows => this.transferShowToPoi(shows));
   }
 
-  public transferShopToPoi(ride: any): Poi {
-    throw new NotImplementedException();
+  public transferShopToPoi(shop: any): Poi {
+    throw new NotImplementedException("Could not transfer shop to POI");
   }
 
   public transferShopsToPois(shops: any): Poi[] {
-    return shops.map(this.transferShopToPoi);
+    return shops.map(shops => this.transferShopToPoi(shops));
+  }
+
+  public transferShowTimesToShowTimes(showTimes: any): ShowTimes {
+    throw new NotImplementedException("Could not transfer show time to POI show time");
+  }
+
+  public transferShowTimeToShowTime(showTime: any): ShowTime {
+    throw new NotImplementedException("Could not transfer show time to POI show time");
   }
 }
