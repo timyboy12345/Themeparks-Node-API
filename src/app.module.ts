@@ -37,17 +37,22 @@ import { SfOverTexasService } from './sixflags/parks/sf-over-texas/sf-over-texas
 import { SixFlagsGeneralParkService } from './sixflags/parks/six-flags-general-park/six-flags-general-park.service';
 import { CacheService } from './_services/cache/cache.service';
 import { SixflagsTransferService } from './sixflags/sixflags-transfer/sixflags-transfer.service';
+import { ToverlandTransferService } from './toverland/toverland-transfer/toverland-transfer.service';
 
 @Module({
   imports: [
     HttpModule,
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      cache: false,
+      ignoreEnvFile: false,
+    }),
     CacheModule.register({
       ttl: 60 * 5,
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, EftelingService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService, DippieDoeService, HolidayParkService, HolidayParkTransferService, AttractionsIoThemeParkService, HellendoornService, TransferService, LegolandDeutschlandService, WalibiService, SixflagsService, CompanyService, SfOverTexasService, SixFlagsGeneralParkService, CacheService, SixflagsTransferService],
+  providers: [AppService, EftelingService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService, DippieDoeService, HolidayParkService, HolidayParkTransferService, AttractionsIoThemeParkService, HellendoornService, TransferService, LegolandDeutschlandService, WalibiService, SixflagsService, CompanyService, SfOverTexasService, SixFlagsGeneralParkService, CacheService, SixflagsTransferService, ToverlandTransferService],
 })
 export class AppModule {
 }

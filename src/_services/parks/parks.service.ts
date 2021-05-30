@@ -18,6 +18,8 @@ import { LegolandDeutschlandService } from '../../legoland/legoland-deutschland/
 import { CompanyService } from '../company/company.service';
 import { SixflagsService } from '../../sixflags/sixflags.service';
 
+import * as Sentry from '@sentry/node';
+
 @Injectable()
 export class ParksService {
   private readonly _parks: ThemeParkService[];
@@ -64,7 +66,12 @@ export class ParksService {
     let parks = this._parks;
 
     for (let i = 0; i < this._companies.length; i++) {
-      const p = await this._companies[i].getParkServices();
+      const p = await this._companies[i].getParkServices()
+        .catch(reason => {
+          Sentry.captureException(reason);
+          return [];
+        });
+
       parks = parks.concat(p);
     }
 

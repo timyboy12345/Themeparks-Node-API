@@ -2,12 +2,13 @@ import { HttpException, HttpService, Injectable, InternalServerErrorException } 
 import { ThemeParkService } from '../_services/themepark/theme-park.service';
 import { Poi } from '../_interfaces/poi.interface';
 import { ToverlandRide } from './interfaces/toverland-ride.interface';
-import { PoiCategory } from '../_interfaces/poi-categories.enum';
 import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ToverlandFoodAndDrink } from './interfaces/toverland-foodanddrink.interface';
 import { ConfigService } from '@nestjs/config';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import * as Sentry from '@sentry/node';
+import { ToverlandTransferService } from './toverland-transfer/toverland-transfer.service';
+import { ToverlandShow } from './interfaces/toverland-show.interface';
 
 @Injectable()
 export class ToverlandService extends ThemeParkService {
@@ -15,7 +16,8 @@ export class ToverlandService extends ThemeParkService {
   private toverlandApiToken: string;
 
   constructor(private readonly httpService: HttpService,
-              private readonly configService: ConfigService) {
+              private readonly configService: ConfigService,
+              private readonly toverlandTransferService: ToverlandTransferService) {
     super();
 
     this.toverlandApiUrl = configService.get<string>('TOVERLAND_API_URL');
@@ -36,12 +38,12 @@ export class ToverlandService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
-      supportsRestaurantOpeningTimes: false,
+      supportsRestaurantOpeningTimes: true,
       supportsRestaurants: true,
       supportsRideWaitTimes: true,
       supportsRides: true,
-      supportsShowTimes: false,
-      supportsShows: false,
+      supportsShowTimes: true,
+      supportsShows: true,
       supportsPoiLocations: true,
       supportsShops: false,
       supportsShopOpeningTimes: false,
@@ -51,24 +53,10 @@ export class ToverlandService extends ThemeParkService {
   async getRides(): Promise<Poi[]> {
     return this.request<ToverlandRide[]>('/park/ride/operationInfo/list')
       .then((axiosRidesData) => {
-        return axiosRidesData.data.map((ride) => {
-          const r: Poi = {
-            id: `${ride.last_status.ride_id ?? ride.id}`,
-            category: PoiCategory.ATTRACTION,
-            title: ride.name,
-            image_url: ride.thumbnail,
-            description: ride.description.en,
-            original: ride,
-            location: {
-              lat: parseFloat(ride.latitude),
-              lng: parseFloat(ride.longitude),
-            },
-          };
-
-          return r;
-        });
+        return this.toverlandTransferService.transferRidesToPois(axiosRidesData.data);
       })
       .catch((reason) => {
+        Sentry.captureException(reason);
         throw new HttpException('Failed to fetch rides: ' + reason.toString(), 500);
       });
   }
@@ -77,23 +65,23 @@ export class ToverlandService extends ThemeParkService {
     return this
       .request<ToverlandFoodAndDrink[]>('/park/foodAndDrinks/operationInfo/list')
       .then((axiosRidesData) => {
-        return axiosRidesData.data.map((restaurant) => {
-          const r: Poi = {
-            id: `${restaurant.last_status.id ?? restaurant.id}`,
-            category: PoiCategory.RESTAURANT,
-            title: restaurant.name,
-            image_url: restaurant.thumbnail,
-            description: restaurant.description.en,
-            original: restaurant,
-            location: {
-              lat: parseFloat(restaurant.latitude),
-              lng: parseFloat(restaurant.longitude),
-            },
-          };
-
-          return r;
-        });
+        return this.toverlandTransferService.transferRestaurantsToPois(axiosRidesData.data);
+      })
+      .catch(e => {
+        Sentry.captureException(e);
+        throw new HttpException('Failed to fetch restaurants: ' + e.toString(), 500);
       });
+  }
+
+  async getShows(): Promise<Poi[]> {
+    return this.request<ToverlandShow[]>('/park/show/operationInfo/list')
+      .then((axiosShowsData) => {
+        return this.toverlandTransferService.transferShowsToPois(axiosShowsData.data);
+      })
+      .catch(e => {
+        Sentry.captureException(e);
+        throw new HttpException('Failed to fetch shows: ' + e.toString(), 500);
+      })
   }
 
   private async request<T>(url: string) {
@@ -122,6 +110,7 @@ export class ToverlandService extends ThemeParkService {
     const promises = [
       this.getRides(),
       this.getRestaurants(),
+      this.getShows(),
     ];
 
     return []

@@ -40,7 +40,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsRestaurants: true,
       supportsRideWaitTimes: true,
       supportsRides: true,
-      supportsShowTimes: false,
+      supportsShowTimes: true,
       supportsShows: true,
       supportsPoiLocations: true,
       supportsShops: true,
@@ -66,11 +66,11 @@ export class EftelingService extends ThroughPoisThemeParkService {
                 return {
                   comments: ot.Description,
                   date: moment().format('YYYY-MM-DD'),
-                  open: moment(ot.HourFrom).format(),
-                  close: moment(ot.HourTo).format(),
-                  openTime: moment(ot.HourFrom).format('HH:mm:ss'),
-                  closeTime: moment(ot.HourTo).format('HH:mm:ss'),
-                  isPassed: moment(ot.HourFrom).isAfter(),
+                  open: moment.parseZone(ot.HourFrom).format(),
+                  close: moment.parseZone(ot.HourTo).format(),
+                  openTime: moment.parseZone(ot.HourFrom).format('HH:mm:ss'),
+                  closeTime: moment.parseZone(ot.HourTo).format('HH:mm:ss'),
+                  isPassed: moment.parseZone(ot.HourFrom).isAfter(),
                 };
               });
             }

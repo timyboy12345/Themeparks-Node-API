@@ -133,26 +133,28 @@ export class EftelingTransferService extends TransferService {
   }
 
   transferShowTimesToShowTimes(showTimes: EftelingOpeningTimesAttraction): ShowTimes {
+    const shows = showTimes.PastShowTimes.concat(showTimes.ShowTimes);
+
     return {
-      todayShowTimes: [],
-      pastShowTimes: showTimes.PastShowTimes.map(this.transferShowTimeToShowTime),
+      todayShowTimes: shows.map(this.transferShowTimeToShowTime),
+      pastShowTimes: shows.map(this.transferShowTimeToShowTime).filter(st => st.isPassed),
       duration: showTimes.ShowDuration,
-      allShowTimes: [],
+      allShowTimes: shows.map(this.transferShowTimeToShowTime),
       otherDateShowTimes: [],
       currentDate: moment().format(),
-      futureShowTimes: showTimes.ShowTimes.map(this.transferShowTimeToShowTime),
+      futureShowTimes: shows.map(this.transferShowTimeToShowTime).filter(st => !st.isPassed),
     };
   }
 
   transferShowTimeToShowTime(showTime: EftelingOpeningTimesAttractionShowTimes): ShowTime {
     return {
       duration: null,
-      from: moment(showTime.StartDateTime).format(),
-      to: moment(showTime.EndDateTime).format(),
+      from: moment.parseZone(showTime.StartDateTime).format(),
+      to: moment.parseZone(showTime.EndDateTime).format(),
       edition: showTime.Edition,
-      fromTime: moment(showTime.StartDateTime).format('HH:mm:ss'),
-      toTime: moment(showTime.EndDateTime).format('HH:mm:ss'),
-      isPassed: moment(showTime.StartDateTime).isAfter(),
+      fromTime: moment.parseZone(showTime.StartDateTime).format('HH:mm:ss'),
+      toTime: moment.parseZone(showTime.EndDateTime).format('HH:mm:ss'),
+      isPassed: moment.parseZone(showTime.StartDateTime).isBefore(),
     };
   }
 }
