@@ -38,6 +38,11 @@ import { SixFlagsGeneralParkService } from './sixflags/parks/six-flags-general-p
 import { CacheService } from './_services/cache/cache.service';
 import { SixflagsTransferService } from './sixflags/sixflags-transfer/sixflags-transfer.service';
 import { ToverlandTransferService } from './toverland/toverland-transfer/toverland-transfer.service';
+import { ScheduleModule } from '@nestjs/schedule';
+import { WaitTimeScheduleService } from './schedules/waittimes/wait-time-schedule.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { WaitTime } from './database/wait-time/wait-time.entity';
+import { WaitTimeModule } from './database/wait-time/wait-time.module';
 
 @Module({
   imports: [
@@ -50,9 +55,21 @@ import { ToverlandTransferService } from './toverland/toverland-transfer/toverla
     CacheModule.register({
       ttl: 60 * 5,
     }),
+    ScheduleModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: '95.179.187.20',
+      port: 3306,
+      username: 'drankidee_local',
+      password: 'Zeilboot123',
+      database: 'tpvue_dev',
+      entities: [WaitTime],
+      synchronize: true,
+    }),
+    WaitTimeModule,
   ],
   controllers: [AppController],
-  providers: [AppService, EftelingService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService, DippieDoeService, HolidayParkService, HolidayParkTransferService, AttractionsIoThemeParkService, HellendoornService, TransferService, LegolandDeutschlandService, WalibiService, SixflagsService, CompanyService, SfOverTexasService, SixFlagsGeneralParkService, CacheService, SixflagsTransferService, ToverlandTransferService],
+  providers: [AppService, EftelingService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ToverlandService, WalibiHollandService, EftelingTransferService, PhantasialandService, ErrorService, PhantasialandTransferService, WalibiBelgiumService, WalibiTransferService, DisneylandParisService, DisneylandParisTransferService, DisneylandParisStudiosService, ParcAsterixService, ParcAsterixTransferService, PortaventuraService, PortaVenturaTransferService, FerrariLandService, BellewaerdeService, DippieDoeService, HolidayParkService, HolidayParkTransferService, AttractionsIoThemeParkService, HellendoornService, TransferService, LegolandDeutschlandService, WalibiService, SixflagsService, CompanyService, SfOverTexasService, SixFlagsGeneralParkService, CacheService, SixflagsTransferService, ToverlandTransferService, WaitTimeScheduleService],
 })
 export class AppModule {
 }
