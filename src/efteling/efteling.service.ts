@@ -1,6 +1,6 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../_interfaces/park.interface';
-import { Poi } from '../_interfaces/poi.interface';
+import { Poi, PoiStatus } from '../_interfaces/poi.interface';
 import { EftelingPoisResponse } from './interfaces/efteling-pois-response.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
@@ -57,6 +57,22 @@ export class EftelingService extends ThroughPoisThemeParkService {
           const poi = pois.find(p => p.id.replace('-nl', '') === attractionInfo.Id);
 
           if (poi) {
+            if (attractionInfo.State) {
+              switch (attractionInfo.State) {
+                case 'Geopend':
+                case 'open':
+                  poi.state = PoiStatus.OPEN;
+                  break;
+                case '':
+                  poi.state = PoiStatus.CLOSED_TODAY;
+                  break;
+                case 'Gesloten':
+                case 'nognietopen':
+                  poi.state = PoiStatus.CLOSED;
+                  break;
+              }
+            }
+
             if (attractionInfo.WaitingTime) {
               poi.currentWaitTime = parseInt(attractionInfo.WaitingTime);
             }

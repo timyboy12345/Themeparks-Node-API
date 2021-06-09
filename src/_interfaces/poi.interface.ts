@@ -52,6 +52,8 @@ export interface Poi {
 
   currentWaitTime?: number;
 
+  state?: PoiStatus;
+
   waitingTimes?: WaitingTimes;
 
   showTimes?: ShowTimes;
@@ -61,4 +63,13 @@ export interface Poi {
   original: any;
 
   menuItems?: PoiMenuItemInterface[];
+}
+
+export enum PoiStatus {
+  OPEN = 'OPEN',
+  CLOSED = 'CLOSED',
+  CLOSED_TODAY = 'CLOSED_TODAY',
+  DOWN = 'DOWN',
+  MAINTENANCE = 'MAINTENANCE',
+  UNDEFINED = 'UNDEFINED'
 }
