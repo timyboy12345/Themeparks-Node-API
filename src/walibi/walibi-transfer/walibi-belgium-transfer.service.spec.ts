@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WalibiBelgiumTransferService } from './walibi-belgium-transfer.service';
+import { WalibiTransferService } from './walibi-transfer.service';
 
 describe('WalibiBelgiumTransferService', () => {
-  let service: WalibiBelgiumTransferService;
+  let service: WalibiTransferService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WalibiBelgiumTransferService],
+      providers: [WalibiTransferService],
     }).compile();
 
-    service = module.get<WalibiBelgiumTransferService>(WalibiBelgiumTransferService);
+    service = module.get<WalibiTransferService>(WalibiTransferService);
   });
 
   it('should be defined', () => {

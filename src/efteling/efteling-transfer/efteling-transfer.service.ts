@@ -2,15 +2,24 @@ import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
 import { EftelingPoi } from '../interfaces/efteling-poi.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
-import { ConfigService } from '@nestjs/config';
 import { RideCategory } from '../../_interfaces/ride-category.interface';
+import { TransferService } from '../../_services/transfer/transfer.service';
+import * as moment from 'moment';
+import { ShowTime, ShowTimes } from '../../_interfaces/showtimes.interface';
+import {
+  EftelingOpeningTimesAttraction,
+  EftelingOpeningTimesAttractionShowTimes,
+} from '../interfaces/efteling-openingstimes-response.interface';
 
 @Injectable()
-export class EftelingTransferService {
-  constructor(private readonly configService: ConfigService) {
-  }
+export class EftelingTransferService extends TransferService {
 
-  public EftelingPoiToPoi(eftelingPoi: EftelingPoi): Poi {
+
+  // constructor(private readonly configService: ConfigService) {
+  //   super();
+  // }
+
+  transferPoiToPoi(eftelingPoi: EftelingPoi): Poi {
     let c: PoiCategory = PoiCategory.UNDEFINED;
 
     switch (eftelingPoi.fields.category) {
@@ -52,7 +61,8 @@ export class EftelingTransferService {
     const lng = parseFloat(eftelingPoi.fields.latlon.split(',')[1]);
 
     // Get the URL where the images are located
-    const imgUrl = this.configService.get('EFTELING_MEDIA_URL');
+    // const imgUrl = this.configService.get('EFTELING_MEDIA_URL');
+    const imgUrl = 'https://efteling.com';
 
     const images = [];
     for (let i = 1; i <= 5; i++) {
@@ -122,7 +132,29 @@ export class EftelingTransferService {
     return poi;
   }
 
-  public EftelingPoisToPois(eftelingPois: EftelingPoi[]): Poi[] {
-    return eftelingPois.map(eftelingPoi => this.EftelingPoiToPoi(eftelingPoi));
+  transferShowTimesToShowTimes(showTimes: EftelingOpeningTimesAttraction): ShowTimes {
+    const shows = showTimes.PastShowTimes.concat(showTimes.ShowTimes);
+
+    return {
+      todayShowTimes: shows.map(this.transferShowTimeToShowTime),
+      pastShowTimes: shows.map(this.transferShowTimeToShowTime).filter(st => st.isPassed),
+      duration: showTimes.ShowDuration,
+      allShowTimes: shows.map(this.transferShowTimeToShowTime),
+      otherDateShowTimes: [],
+      currentDate: moment().format(),
+      futureShowTimes: shows.map(this.transferShowTimeToShowTime).filter(st => !st.isPassed),
+    };
+  }
+
+  transferShowTimeToShowTime(showTime: EftelingOpeningTimesAttractionShowTimes): ShowTime {
+    return {
+      duration: null,
+      from: moment.parseZone(showTime.StartDateTime).format(),
+      to: moment.parseZone(showTime.EndDateTime).format(),
+      edition: showTime.Edition,
+      fromTime: moment.parseZone(showTime.StartDateTime).format('HH:mm:ss'),
+      toTime: moment.parseZone(showTime.EndDateTime).format('HH:mm:ss'),
+      isPassed: moment.parseZone(showTime.StartDateTime).isBefore(),
+    };
   }
 }

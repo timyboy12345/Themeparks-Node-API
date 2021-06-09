@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../_services/themepark/theme-park.service';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../_interfaces/poi.interface';
@@ -26,6 +26,7 @@ export class FerrariLandService extends ThemeParkService {
       description: 'Ferrari Land is een Spaans themapark gelegen in het resort PortAventura World in Salou. Het is gewijd aan Ferrari en Italië. Met een oppervlakte van 60.000 m² Ferrari Land ligt naast PortAventura Park, een pretpark uit 1995',
       countryCode: 'es',
       image: 'https://nl.letsgodigital.org/uploads/2018/03/pretpark-ferrari-land.jpg',
+      parkType: ParkType.THEMEPARK
     };
   }
 
@@ -58,14 +59,14 @@ export class FerrariLandService extends ThemeParkService {
     return this
       .request<PortaVenturaPoi[]>('atraccion')
       .then((ferrariLandRidesResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(ferrariLandRidesResponse.data)));
+        this.portaVenturaTransferService.transferPoisToPois(ferrariLandRidesResponse.data)));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
       .request<PortaVenturaPoi[]>('restaurante')
       .then((ferrariLandRestaurantsResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(ferrariLandRestaurantsResponse.data)));
+        this.portaVenturaTransferService.transferPoisToPois(ferrariLandRestaurantsResponse.data)));
   }
 
   private request<T>(url: string) {

@@ -2,10 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
 import { PortaVenturaPoi } from '../interfaces/porta-ventura-poi.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
+import { TransferService } from '../../_services/transfer/transfer.service';
 
 @Injectable()
-export class PortaVenturaTransferService {
-  public PortaVenturaPoiToPoi(portaVenturaPoi: PortaVenturaPoi): Poi {
+export class PortaVenturaTransferService extends TransferService {
+  public transferPoiToPoi(portaVenturaPoi: PortaVenturaPoi): Poi {
     let category: PoiCategory;
 
     switch (portaVenturaPoi.tipo) {
@@ -33,9 +34,5 @@ export class PortaVenturaTransferService {
       area: portaVenturaPoi.text_zona,
       original: portaVenturaPoi,
     };
-  }
-
-  public PortaVenturaPoisToPois(portaVenturaPois: PortaVenturaPoi[]): Poi[] {
-    return portaVenturaPois.map(portaVenturaPoi => this.PortaVenturaPoiToPoi(portaVenturaPoi));
   }
 }

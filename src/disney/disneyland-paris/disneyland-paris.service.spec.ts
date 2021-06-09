@@ -1,12 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DisneylandParisService } from './disneyland-paris.service';
+import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
+import { HttpModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
 describe('DisneylandParisService', () => {
   let service: DisneylandParisService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [DisneylandParisService],
+      imports: [HttpModule, ConfigModule.forRoot()],
+      providers: [DisneylandParisService, DisneylandParisTransferService],
     }).compile();
 
     service = module.get<DisneylandParisService>(DisneylandParisService);

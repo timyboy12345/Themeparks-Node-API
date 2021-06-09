@@ -1,0 +1,54 @@
+import { Injectable, NotImplementedException } from '@nestjs/common';
+import { Poi } from '../../_interfaces/poi.interface';
+import { ShowTime, ShowTimes } from '../../_interfaces/showtimes.interface';
+
+@Injectable()
+export class TransferService {
+  public transferPoiToPoi(poi: any): Poi {
+    throw new NotImplementedException("Could not transfer POI to POI");
+  }
+
+  public transferPoisToPois(pois: any[]) {
+    return pois.map(poi => this.transferPoiToPoi(poi));
+  }
+
+  public transferRideToPoi(ride: any): Poi {
+    throw new NotImplementedException("Could not transfer ride to POI");
+  }
+
+  public transferRidesToPois(rides: any): Poi[] {
+    return rides.map(rides => this.transferRideToPoi(rides));
+  }
+
+  public transferRestaurantToPoi(restaurant: any): Poi {
+    throw new NotImplementedException("Could not transfer restaurant to POI");
+  }
+
+  public transferRestaurantsToPois(restaurants: any): Poi[] {
+    return restaurants.map(restaurants => this.transferRestaurantToPoi(restaurants));
+  }
+
+  public transferShowToPoi(show: any): Poi {
+    throw new NotImplementedException("Could not transfer show to POI");
+  }
+
+  public transferShowsToPois(shows: any): Poi[] {
+    return shows.map(shows => this.transferShowToPoi(shows));
+  }
+
+  public transferShopToPoi(shop: any): Poi {
+    throw new NotImplementedException("Could not transfer shop to POI");
+  }
+
+  public transferShopsToPois(shops: any): Poi[] {
+    return shops.map(shops => this.transferShopToPoi(shops));
+  }
+
+  public transferShowTimesToShowTimes(showTimes: any): ShowTimes {
+    throw new NotImplementedException("Could not transfer show time to POI show time");
+  }
+
+  public transferShowTimeToShowTime(showTime: any): ShowTime {
+    throw new NotImplementedException("Could not transfer show time to POI show time");
+  }
+}

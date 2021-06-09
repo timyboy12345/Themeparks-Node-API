@@ -1,19 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ConfigService } from '@nestjs/config';
 
 const Sentry = require("@sentry/node");
-// or use es6 import statements
-// import * as Sentry from '@sentry/node';
 
-const Tracing = require("@sentry/tracing");
-// or use es6 import statements
-// import * as Tracing from '@sentry/tracing';
-
-const s = new ConfigService();
 Sentry.init({
-  dsn: s.get('SENTRY_URL'),
+  dsn: 'https://23fa5a724def4d8bbc58845111e300b2@o324258.ingest.sentry.io/5668770',
 
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control

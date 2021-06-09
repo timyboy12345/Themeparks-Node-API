@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../_services/themepark/theme-park.service';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../_interfaces/poi.interface';
@@ -26,6 +26,7 @@ export class PortaventuraService extends ThemeParkService {
       description: 'PortAventura World is een Spaans resort met een oppervlakte van 119 hectare gelegen in Salou en Vila-seca bestaand uit onder andere diverse hotels, twee attractieparken, een waterpark, een congrescentrum en een RV park.',
       countryCode: 'es',
       image: 'https://nl.letsgodigital.org/uploads/2017/11/pretpark-portaventura-salou.jpg',
+      parkType: ParkType.THEMEPARK
     };
   }
 
@@ -47,7 +48,7 @@ export class PortaventuraService extends ThemeParkService {
   async getPois(): Promise<Poi[]> {
     const promises = [
       this.getRides(),
-      this.getRestaurants()
+      this.getRestaurants(),
     ];
     return []
       .concat
@@ -58,14 +59,14 @@ export class PortaventuraService extends ThemeParkService {
     return this
       .request<PortaVenturaPoi[]>('atraccion')
       .then((portaVenturaRidesResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(portaVenturaRidesResponse.data)));
+        this.portaVenturaTransferService.transferPoisToPois(portaVenturaRidesResponse.data.filter(p => p.parque_id))));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
       .request<PortaVenturaPoi[]>('restaurante')
       .then((portaVenturaRestaurantsResponse =>
-        this.portaVenturaTransferService.PortaVenturaPoisToPois(portaVenturaRestaurantsResponse.data.filter(p => p.parque_id))));
+        this.portaVenturaTransferService.transferPoisToPois(portaVenturaRestaurantsResponse.data.filter(p => p.parque_id))));
   }
 
   private request<T>(url: string) {

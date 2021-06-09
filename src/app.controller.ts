@@ -4,8 +4,7 @@ import {
   Controller,
   Get,
   Inject,
-  InternalServerErrorException,
-  Param,
+  Param, Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { AppService } from './_services/app.service';
@@ -15,7 +14,6 @@ import { Poi } from './_interfaces/poi.interface';
 import { ApiOkResponse, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PoiDto } from './_dtos/poi.dto';
 import { ParkDto } from './_dtos/park.dto';
-import * as Sentry from '@sentry/node';
 import { Cache } from 'cache-manager';
 
 @ApiTags('Themeparks')
@@ -32,14 +30,13 @@ export class AppController {
   }
 
   @Get('parks')
+  @UseInterceptors(CacheInterceptor)
   @ApiOkResponse({
     type: ParkDto,
     isArray: true,
   })
-  getParks() {
-    return this.parksService.getParks().map(park => {
-      return park.getFullInfo();
-    });
+  async getParks() {
+    return (await this.parksService.getParks()).map(park => park.getFullInfo());
   }
 
   @Get('park/:id')
@@ -47,8 +44,8 @@ export class AppController {
   @ApiOkResponse({
     type: ParkDto,
   })
-  getPark(@Param() params): ThemePark {
-    return this.parksService.findPark(params.id, true).getFullInfo();
+  async getPark(@Param() params): Promise<ThemePark> {
+    return (await this.parksService.findPark(params.id, true)).getFullInfo();
   }
 
   @Get('park/:id/pois')
@@ -68,8 +65,8 @@ export class AppController {
     status: 404,
     description: 'The requested park could not be found',
   })
-  async getParkPois(@Param() params): Promise<Poi[]> {
-    const park = this.parksService.findPark(params.id, true);
+  async getParkPois(@Param() params, @Query() query): Promise<Poi[]> {
+    const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsPois) {
       throw new BadRequestException('This park does not support pois');
@@ -77,7 +74,10 @@ export class AppController {
 
     return await park.getPois().then(pois => {
       return pois.map((poi) => {
-        delete poi.original;
+        if (!query.includeOriginal) {
+          delete poi.original;
+        }
+
         return poi;
       });
     }) ?? [];
@@ -100,8 +100,8 @@ export class AppController {
     status: 404,
     description: 'The requested park could not be found',
   })
-  async getParkRides(@Param() params): Promise<Poi[]> {
-    const park = this.parksService.findPark(params.id, true);
+  async getParkRides(@Param() params, @Query() query): Promise<Poi[]> {
+    const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsRides) {
       throw new BadRequestException('This park does not support rides');
@@ -109,7 +109,10 @@ export class AppController {
 
     return await park.getRides().then(rides => {
       return rides.map((ride) => {
-        delete ride.original;
+        if (!query.includeOriginal) {
+          delete ride.original;
+        }
+
         return ride;
       });
     }) ?? [];
@@ -133,7 +136,7 @@ export class AppController {
     description: 'The requested park could not be found',
   })
   async getParkRestaurants(@Param() params): Promise<Poi[]> {
-    const park = this.parksService.findPark(params.id, true);
+    const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsRestaurants) {
       throw new BadRequestException('This park does not support restaurants');
@@ -165,7 +168,7 @@ export class AppController {
     description: 'The requested park could not be found',
   })
   async getParkShows(@Param() params): Promise<Poi[]> {
-    const park = this.parksService.findPark(params.id, true);
+    const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsShows) {
       throw new BadRequestException('This park does not support shows');
@@ -176,7 +179,7 @@ export class AppController {
         delete show.original;
         return show;
       });
-    }) ?? []
+    }) ?? [];
   }
 
   @Get('park/:id/shops')
@@ -197,7 +200,7 @@ export class AppController {
     description: 'The requested park could not be found',
   })
   async getParkShops(@Param() params): Promise<Poi[]> {
-    const park = this.parksService.findPark(params.id, true);
+    const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsShops) {
       throw new BadRequestException('This park does not support shops');

@@ -1,12 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PhantasialandService } from './phantasialand.service';
+import { PhantasialandTransferService } from './phantasialand-transfer/phantasialand-transfer.service';
+import { HttpModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
 describe('PhantasialandService', () => {
   let service: PhantasialandService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PhantasialandService],
+      imports: [HttpModule, ConfigModule.forRoot()],
+      providers: [PhantasialandService, PhantasialandTransferService],
     }).compile();
 
     service = module.get<PhantasialandService>(PhantasialandService);

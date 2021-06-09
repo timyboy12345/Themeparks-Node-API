@@ -3,14 +3,14 @@ import { ToverlandTranslatable } from './toverland-translatable.interface';
 export interface ToverlandRide {
   'id': number,
   'name': string,
-  'area_id': number,
+  'area_id': string,
   'latitude': string,
   'longitude': string,
   'short_description': ToverlandTranslatable,
   'description': ToverlandTranslatable;
   'thumbnail': string,
-  'minLength': number,
-  'supervision': any,
+  'minLength'?: string,
+  'supervision'?: string,
   'header_description': ToverlandTranslatable;
   'last_status': {
     'ride_id': number,
@@ -24,5 +24,11 @@ export interface ToverlandRide {
     'ride_id': number,
     'waiting_time': number
   },
-  'opening_times': []
+  'opening_times': ToverlandRideOpeningTime[]
+}
+
+export interface ToverlandRideOpeningTime {
+  ride_id: string,
+  'start': string,
+  'end': string
 }

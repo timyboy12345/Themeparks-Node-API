@@ -2,11 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
 import { PhantasialandPoi } from '../interfaces/phantasialand-poi.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
+import { LocalizedDataInterface } from '../../_interfaces/localized-data.interface';
+import { TransferService } from '../../_services/transfer/transfer.service';
 
 @Injectable()
-export class PhantasialandTransferService {
-  public PhantasialandPoiToPoi(poi: PhantasialandPoi): Poi {
-    let c = PoiCategory.UNDEFINED;
+export class PhantasialandTransferService extends TransferService {
+  public transferPoiToPoi(poi: PhantasialandPoi): Poi {
+    let c: PoiCategory;
 
     switch (poi.category) {
       case 'ATTRACTIONS':
@@ -42,12 +44,20 @@ export class PhantasialandTransferService {
         break;
     }
 
+    let entrance = undefined;
+    if (poi.entrance) {
+      entrance = {
+        lat: poi.entrance.world.lat,
+        lng: poi.entrance.world.lng,
+      }
+    }
+
     return {
       id: poi.id + '',
       title: poi.title.en,
       subTitle: poi.tagline.en,
       description: poi.description.en,
-      entrance: poi.entrance,
+      entrance: entrance,
       area: poi.area,
       location: {
         lat: poi.entrance.world.lat,
@@ -64,7 +74,7 @@ export class PhantasialandTransferService {
     };
   }
 
-  public PhantasialandPoisToPois(pois: PhantasialandPoi[]): Poi[] {
-    return pois.map(poi => this.PhantasialandPoiToPoi(poi));
+  public getLocalizedData(poi: PhantasialandPoi): LocalizedDataInterface {
+    return {};
   }
 }

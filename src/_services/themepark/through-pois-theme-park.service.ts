@@ -10,7 +10,7 @@ export class ThroughPoisThemeParkService extends ThemeParkService {
       return this.getPois().then(pois => pois.filter(p => p.category === PoiCategory.ATTRACTION));
     }
 
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get all rides");
   }
 
   async getShows(): Promise<Poi[]> {
@@ -18,7 +18,7 @@ export class ThroughPoisThemeParkService extends ThemeParkService {
       return this.getPois().then(pois => pois.filter(p => p.category === PoiCategory.SHOW));
     }
 
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get all shows");
   }
 
   async getRestaurants(): Promise<Poi[]> {
@@ -26,7 +26,7 @@ export class ThroughPoisThemeParkService extends ThemeParkService {
       return this.getPois().then(pois => pois.filter(p => [PoiCategory.RESTAURANT, PoiCategory.SNACKBAR].includes(p.category)));
     }
 
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get all restaurants");
   }
 
   async getShops(): Promise<Poi[]> {
@@ -34,6 +34,6 @@ export class ThroughPoisThemeParkService extends ThemeParkService {
       return this.getPois().then(pois => pois.filter(p => p.category === PoiCategory.SHOP));
     }
 
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get all shops");
   }
 }

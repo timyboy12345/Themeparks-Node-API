@@ -3,6 +3,8 @@ import { PoiCategory } from './poi-categories.enum';
 import { WaitingTimes } from './waitingtimes.interface';
 import { ShowTimes } from './showtimes.interface';
 import { RideCategory } from './ride-category.interface';
+import { Translation } from './translation.interface';
+import { PoiMenuItemInterface } from './poi-menu-item.interface';
 
 export interface Poi {
   id: string;
@@ -10,8 +12,14 @@ export interface Poi {
   rideCategory?: RideCategory;
   original_category?: string;
   title: string;
+  localizedTitles?: Translation;
+  localizedTitle?: string;
   subTitle?: string;
+  localizedSubtitles?: Translation;
+  localizedSubtitle?: string;
   description?: string;
+  localizedDescriptions?: Translation;
+  localizedDescription?: string;
   area?: string;
   createdAt?: string;
   location?: {
@@ -19,26 +27,12 @@ export interface Poi {
     lng: number
   },
   entrance?: {
-    id?: string,
-    world?: {
-      lat: number,
-      lng: number
-    },
-    map?: {
-      lat: number,
-      lng: number
-    }
+    lat: number,
+    lng: number
   };
   exit?: {
-    id?: string,
-    world?: {
-      lat: number,
-      lng: number
-    },
-    map?: {
-      lat: number,
-      lng: number
-    }
+    lat: number,
+    ln: number
   };
   minSize?: number;
   maxSize?: number;
@@ -48,12 +42,15 @@ export interface Poi {
   tags?: string[];
   image_url?: string;
   website_url?: string;
+  translatedWebsiteUrl?: Translation;
   fastpass?: boolean;
   singlerider?: boolean;
   featured?: boolean;
   photoPoint?: boolean;
 
   images?: string[];
+
+  currentWaitTime?: number;
 
   waitingTimes?: WaitingTimes;
 
@@ -62,4 +59,6 @@ export interface Poi {
   openingTimes?: PoiOpeningTime[];
 
   original: any;
+
+  menuItems?: PoiMenuItemInterface[];
 }

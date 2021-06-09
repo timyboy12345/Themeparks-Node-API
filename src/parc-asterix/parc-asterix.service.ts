@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../_services/themepark/theme-park.service';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../_interfaces/poi.interface';
@@ -28,6 +28,7 @@ export class ParcAsterixService extends ThemeParkService {
       description: 'Parc Astérix is een Frans attractiepark in Plailly, ongeveer 35 km ten noorden van Parijs. Het is gebaseerd op de stripverhalen van Asterix en Obelix van Albert Uderzo en René Goscinny. Het park werd in 1989 geopend en is erg populair. Het complex omvat het pretpark en een themahotel: het "Hotel des Trois Hiboux".',
       image: 'https://www.parcasterix.fr/sites/default/files/1440_579_3_0.jpg',
       countryCode: 'fr',
+      parkType: ParkType.THEMEPARK
     };
   }
 
@@ -50,21 +51,21 @@ export class ParcAsterixService extends ThemeParkService {
     return this
       .request<ParcAsterixAttractionsResponseInterface>('attractions.json')
       .then(attractionsResponse =>
-        this.parcAsterixTransferService.ParcAsterixAttractionsToPois(attractionsResponse.data.result.attractions));
+        this.parcAsterixTransferService.transferRidesToPois(attractionsResponse.data.result.attractions));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
       .request<ParcAsterixRestaurantsResponseInterface>('restaurants.json')
       .then(restaurantsResponse =>
-        this.parcAsterixTransferService.ParcAsterixRestaurantsToPois(restaurantsResponse.data.result.restaurants));
+        this.parcAsterixTransferService.transferRestaurantsToPois(restaurantsResponse.data.result.restaurants));
   }
 
   async getShows(): Promise<Poi[]> {
     return this
       .request<ParcAsterixShowsResponseInterface>('shows.json')
       .then(showsResponse =>
-        this.parcAsterixTransferService.ParcAsterixShowsToPois(showsResponse.data.result.shows));
+        this.parcAsterixTransferService.transferShowsToPois(showsResponse.data.result.shows));
   }
 
   async getPois(): Promise<Poi[]> {

@@ -14,10 +14,16 @@ import { BellewaerdeService } from '../../bellewaerde/bellewaerde.service';
 import { DippieDoeService } from '../../dippiedoe/dippie-doe.service';
 import { HolidayParkService } from '../../holiday-park/holiday-park.service';
 import { HellendoornService } from '../../hellendoorn/hellendoorn.service';
+import { LegolandDeutschlandService } from '../../legoland/legoland-deutschland/legoland-deutschland.service';
+import { CompanyService } from '../company/company.service';
+import { SixflagsService } from '../../sixflags/sixflags.service';
+
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class ParksService {
   private readonly _parks: ThemeParkService[];
+  private readonly _companies: CompanyService[];
 
   constructor(private readonly _eftelingService: EftelingService,
               private readonly _toverlandService: ToverlandService,
@@ -32,7 +38,9 @@ export class ParksService {
               private readonly _bellewaerdeService: BellewaerdeService,
               private readonly _dippieDoeService: DippieDoeService,
               private readonly _holidayParkService: HolidayParkService,
-              private readonly _hellendoornService: HellendoornService) {
+              private readonly _hellendoornService: HellendoornService,
+              private readonly _legolandDeutschlandService: LegolandDeutschlandService,
+              private readonly _sixflagsService: SixflagsService) {
     this._parks = [];
     this._parks.push(_eftelingService);
     this._parks.push(_toverlandService);
@@ -48,14 +56,31 @@ export class ParksService {
     this._parks.push(_dippieDoeService);
     this._parks.push(_holidayParkService);
     this._parks.push(_hellendoornService);
+    this._parks.push(_legolandDeutschlandService);
+
+    this._companies = [];
+    this._companies.push(_sixflagsService);
   }
 
-  public getParks() {
-    return this._parks;
+  public async getParks(): Promise<ThemeParkService[]> {
+    let parks = this._parks;
+
+    for (let i = 0; i < this._companies.length; i++) {
+      const p = await this._companies[i].getParkServices()
+        .catch(reason => {
+          Sentry.captureException(reason);
+          return [];
+        });
+
+      parks = parks.concat(p);
+    }
+
+    return parks;
   }
 
-  public findPark(id: string, throwError = false) {
-    const park = this.getParks().find(park => park.getInfo().id == id);
+  public async findPark(id: string, throwError = false): Promise<ThemeParkService> {
+    const parks = await this.getParks();
+    const park = parks.find(park => park.getFullInfo().id == id);
 
     if (park == null && throwError) {
       throw new HttpException('Park not found', 404);

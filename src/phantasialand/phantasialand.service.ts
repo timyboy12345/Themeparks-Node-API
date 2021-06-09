@@ -1,5 +1,5 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import * as Sentry from '@sentry/node';
 import { ConfigService } from '@nestjs/config';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
@@ -28,6 +28,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       description: 'Phantasialand is een attractiepark in het Duitse Brühl ten zuidwesten van Keulen. Het attractiepark is begonnen als sprookjespark en inmiddels uitgegroeid tot een van de best bezochte attractieparken van Europa.',
       countryCode: 'de',
       image: 'https://static.phlcdn.de/files/uploads/themenpark/images/sommer/berlin/ga_keyvisual_berlin.jpg',
+      parkType: ParkType.THEMEPARK
     };
   }
 
@@ -49,7 +50,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
   async getPois(): Promise<Poi[]> {
     return this
       .request<any[]>('pois?filter[where][seasons][like]=%25SUMMER%25&compact=true')
-      .then((axiosRidesData) => this.phantasialandTransferService.PhantasialandPoisToPois(axiosRidesData.data));
+      .then((axiosRidesData) => this.phantasialandTransferService.transferPoisToPois(axiosRidesData.data));
   }
 
   private async request<T>(url: String) {

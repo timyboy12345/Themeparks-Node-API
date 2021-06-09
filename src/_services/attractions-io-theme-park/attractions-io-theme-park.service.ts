@@ -1,15 +1,15 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { HttpService, Injectable, NotImplementedException } from '@nestjs/common';
 import { ThemeParkService } from '../themepark/theme-park.service';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 import { Poi } from '../../_interfaces/poi.interface';
 import { AttractionsIoItemInterface } from '../../_interfaces/attractions-io/attractions-io-item.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
+import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
 
 @Injectable()
 export class AttractionsIoThemeParkService extends ThemeParkService {
   private readonly _attractionsIoApiUrl: string;
-  private readonly _attractionsIoApiInstallationBody: string;
 
   private _tempToken: string;
 
@@ -18,39 +18,34 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
     super();
 
     this._attractionsIoApiUrl = 'https://api.attractions.io/v1';
-    this._attractionsIoApiInstallationBody = '\n' +
-      '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n' +
-      'Content-Disposition: form-data; name="device_identifier"\n' +
-      '\n' +
-      '6FE3A85A-B6EF-4D19-A199-15EE46386BB6\n' +
-      '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n' +
-      'Content-Disposition: form-data; name="user_identifier"\n' +
-      '\n' +
-      'D1982D4C-FF0C-4FE8-BDA3-2DE392E54544\n' +
-      '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n' +
-      'Content-Disposition: form-data; name="app_version"\n' +
-      '\n' +
-      '1.2\n' +
-      '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n' +
-      'Content-Disposition: form-data; name="app_build"\n' +
-      '\n' +
-      '23\n' +
-      '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc--\n' +
-      '\n';
+  }
+
+  public getApiKey(): string {
+    throw new NotImplementedException("Could not get API key");
+  }
+
+  public getInstallationRequestBody(): string {
+    throw new NotImplementedException("Could not get installation request body");
   }
 
   private async getTempToken() {
     return this._tempToken ?? await this.getToken();
   }
 
+  public getAppDetails(): AttractionsIoAppDetailsInterface {
+    throw new NotImplementedException("Could not get app details");
+  }
+
   protected async getToken(): Promise<string> {
+    const settings = this.getAppDetails();
+
     const headers = {
-      'Authorization': 'Attractions-Io api-key="3acb983d-a451-4700-b607-aac8ab1bedee"',
-      'User-Agent': 'Avonturenpark/23 CFNetwork/1220.1 Darwin/20.3.0',
-      'Occasio-Platform-Version': '14.4',
-      'Occasio-Platform': 'iOS',
-      'Occasio-App-Build': '23',
-      'Content-Type': 'multipart/form-data; boundary=s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc',
+      'Authorization': `Attractions-Io api-key="${this.getApiKey()}"`,
+      'User-Agent': settings.userAgent,
+      'Occasio-Platform-Version': settings.platformVersion,
+      'Occasio-Platform': settings.platform,
+      'Occasio-App-Build': settings.appBuild,
+      'Content-Type': settings.contentType,
     };
 
     const config: AxiosRequestConfig = { headers: headers };
@@ -58,60 +53,67 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
     return await this.httpService
       .post(
         this._attractionsIoApiUrl + '/installation',
-        this._attractionsIoApiInstallationBody,
+        this.getInstallationRequestBody(),
         config,
       )
       .toPromise()
       .then(value => {
         this._tempToken = value.data.token;
         return this._tempToken;
+      })
+      .catch((reason: AxiosError) => {
+        console.error(reason.response.data);
+        throw reason;
       });
   }
 
   protected async getData() {
-    const token = await this.getToken();
+    const token = await this.getTempToken();
+    const settings = this.getAppDetails();
 
     const headers = {
-      'Authorization': 'Attractions-Io api-key="3acb983d-a451-4700-b607-aac8ab1bedee", installation-token="' + token + '"',
-      'User-Agent': 'Avonturenpark/23 CFNetwork/1220.1 Darwin/20.3.0',
-      'Occasio-Platform-Version': '14.4',
-      'Occasio-Platform': 'iOS',
-      'Occasio-App-Build': '23',
-      'Content-Type': 'multipart/form-data; boundary=s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc',
-      'Date': '2021-03-15',
+      'Authorization': `Attractions-Io api-key="${this.getApiKey()}", installation-token="${token}"`,
+      'Date': settings.latestUpdate,
+      'User-Agent': settings.userAgent
     };
 
     const config: AxiosRequestConfig = {
       headers: headers,
       params: {
-        'version': '2021-03-05T20:10:46%2B01:00',
+        'version': settings.latestUpdate,
       },
     };
 
     return await this.httpService
-      .post(
+      .get(
         this._attractionsIoApiUrl + '/data',
-        null,
         config,
       )
       .toPromise()
       .then((value) => {
+        console.log("SUCCESS");
         console.log(value);
         console.log(value.data);
       })
       .catch((reason: AxiosError) => {
+        console.error("FAILED");
+        console.log(`${reason.response.status} / ${reason.response.statusText}`);
         console.log(reason.response.data);
-        console.log(reason.config.headers);
       });
   }
 
-  public getFileItems(file: any): Poi[] {
+  public getFileItems(file: any, default_locale = ' en-GB'): Poi[] {
     return file.Item.map((item: AttractionsIoItemInterface) => {
       let category: PoiCategory = this.getCategory(item.Category);
 
       const poi: Poi = {
         id: item._id + '',
-        title: item.Name['en-GB'],
+        title: item.Name[default_locale],
+        localizedTitles: {
+          en: item.Name['en-GB'],
+          nl: item.Name['nl-NL'],
+          de: item.Name['de-DE'],
+        },
         description: item.Summary ? item.Summary['en-GB'] : undefined,
         category: category,
         original: item,
@@ -121,6 +123,14 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
         minAge: item.MinimumAgeRequirement ?? undefined,
         maxAge: item.MaximumAgeRequirement ?? undefined,
       };
+
+      if (item.Summary) {
+        poi.localizedDescriptions = {
+          en: item.Summary['en-GB'],
+          nl: item.Summary['nl-NL'],
+          de: item.Summary['de-DE'],
+        };
+      }
 
       if (item.Location) {
         const lat = parseFloat(item.Location.split(',')[0]);

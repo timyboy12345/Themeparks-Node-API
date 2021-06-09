@@ -1,24 +1,10 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ThemeParkService } from '../../_services/themepark/theme-park.service';
-import { ThemePark } from '../../_interfaces/park.interface';
-import { Poi } from '../../_interfaces/poi.interface';
-import { PoiCategory } from '../../_interfaces/poi-categories.enum';
-import { ConfigService } from '@nestjs/config';
-import { WalibiHollandRide } from './interfaces/walibi-holland-ride.interface';
+import { Injectable} from '@nestjs/common';
+import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
-import * as Sentry from '@sentry/node';
+import { WalibiService } from '../walibi.service';
 
 @Injectable()
-export class WalibiHollandService extends ThemeParkService {
-  private _walibiHollandApiUrl: string;
-
-  constructor(private httpService: HttpService,
-              private readonly configService: ConfigService) {
-    super();
-
-    this._walibiHollandApiUrl = this.configService.get<string>('WALIBI_HOLLAND_API_URL');
-  }
-
+export class WalibiHollandService extends WalibiService {
   getInfo(): ThemePark {
     return {
       id: 'walibi_holland',
@@ -26,6 +12,7 @@ export class WalibiHollandService extends ThemeParkService {
       description: 'Walibi Holland is een attractiepark, gelegen in Biddinghuizen in de Nederlandse provincie Flevoland. Voorheen heette dit park Walibi World, daarvoor Six Flags Holland, daarvoor Walibi Flevo, terwijl het park startte als Flevohof.',
       countryCode: 'nl',
       image: 'https://www.walibi.nl/sites/default/files/styles/1280x711/public/content/editorial/2020-01/Goliath-ALG-04_0.jpg?itok=SGL1LdeZ',
+      parkType: ParkType.THEMEPARK
     };
   }
 
@@ -33,63 +20,18 @@ export class WalibiHollandService extends ThemeParkService {
     return {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: false,
+      supportsRestaurants: true,
       supportsRideWaitTimes: true,
       supportsRides: true,
       supportsShowTimes: false,
-      supportsShows: false,
-      supportsPoiLocations: false,
-      supportsShops: false,
+      supportsShows: true,
+      supportsPoiLocations: true,
+      supportsShops: true,
       supportsShopOpeningTimes: false,
     };
   }
 
-  async getRides(): Promise<Poi[]> {
-    return this.request<WalibiHollandRide[]>('/rides')
-      .then((axiosRidesData) => {
-        return axiosRidesData.data.map((ride) => {
-          const imageUrls = ride.images.map((img, i) => {
-            return `https://cache.walibifastlane.nl/api/api/guest/rides/${ride.id}/images/${i}?v=${img}`;
-          });
-
-          const r: Poi = {
-            id: `${ride.id}`,
-            category: PoiCategory.ATTRACTION,
-            title: ride.name,
-            image_url: imageUrls[0],
-            description: ride.description,
-            original: ride,
-            location: {
-              lat: ride.location.latitude,
-              lng: ride.location.longitude,
-            },
-            images: imageUrls,
-          };
-
-          return r;
-        });
-      });
-  }
-
-  async getPois() {
-    const promises = [
-      this.getRides(),
-    ];
-    return []
-      .concat
-      .apply([], await Promise.all(promises));
-  }
-
-  private async request<T>(url: string) {
-    const fullUrl = this._walibiHollandApiUrl + url;
-
-    return this
-      .httpService
-      .get<T>(fullUrl)
-      .toPromise()
-      .catch(reason => {
-        Sentry.captureException(reason);
-        throw new InternalServerErrorException();
-      });
+  getLocale(): string {
+    return "nl";
   }
 }

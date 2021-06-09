@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ThemeParkService } from '../_services/themepark/theme-park.service';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import { Poi } from '../_interfaces/poi.interface';
 import * as DippieDoeRidesData from './data/dippiedoe-rides.json';
@@ -17,6 +16,7 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
       description: 'DippieDoe is een pretpark gelegen bij recreatiegebied Aquabest, Best, Noord-Brabant, Nederland. De attracties in het park staan zowel binnen als buiten. Het park richt zich vooral op families met kinderen tot 12 jaar. Attractiepark DippieDoe is het attractiepark in Brabant voor kinderen t/m 12 jaar!',
       image: 'https://media.insiders.nl/vib/files/image/dolle-dobber_1770787802.jpeg',
       countryCode: 'nl',
+      parkType: ParkType.THEMEPARK
     };
   }
 

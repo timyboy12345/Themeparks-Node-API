@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ThemePark } from '../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../_interfaces/park.interface';
 import { ThemeParkSupports } from '../_interfaces/park-supports.interface';
 import * as BellewaerdePoiData from './data/bellewaerde-pois.json';
 import { Poi } from '../_interfaces/poi.interface';
@@ -15,6 +15,7 @@ export class BellewaerdeService extends ThroughPoisThemeParkService {
       description: 'Bellewaerde is een pret- en dierenpark bij Ieper, gelegen in de Belgische provincie West-Vlaanderen. Het park is in handen van het Franse Compagnie des Alpes, waar de Walibiparken ook deel van uitmaken. Bellewaerde telt 54 hectare grond en is vooral beroemd om zijn vele dieren en de aandacht voor thematisering.',
       image: 'https://www.toerismewesthoek.be/sites/westtoer_2015/files/styles/route_main_image_lightbox/public/win_synced_photos/bellewaerde_-33500-0.jpg?itok=jjWx2sC_',
       countryCode: 'be',
+      parkType: ParkType.THEMEPARK
     };
   }
 
