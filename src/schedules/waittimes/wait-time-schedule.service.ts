@@ -22,6 +22,8 @@ export class WaitTimeScheduleService {
           if (park.getSupports().supportsRideWaitTimes) {
             this.logger.debug(` - ${park.getInfo().name} supports wait times`);
 
+            const date = moment().format('YYYY-MM-DD HH:mm:ss');
+
             park.getRides()
               .then((rides) => {
                 rides.forEach((ride) => {
@@ -30,7 +32,7 @@ export class WaitTimeScheduleService {
                     wait: ride.currentWaitTime,
                     status: ride.currentWaitTime ? 'open' : 'closed',
                     park_id: park.getInfo().id,
-                    date: moment().format('YYYY-MM-DD HH:mm:ss'),
+                    date: date,
                   })
                     .catch(reason => {
                       this.logger.error(`Could not insert waitTime for ${ride.title}: ${reason}`);

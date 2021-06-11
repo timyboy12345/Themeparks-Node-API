@@ -37,7 +37,8 @@ export class WaitTimeService {
       ride_id: waitTime.ride_id,
       park_id: waitTime.park_id,
       status: waitTime.status,
-      wait: waitTime.wait
+      wait: waitTime.wait,
+      date: waitTime.date
     })
   }
 }
