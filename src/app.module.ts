@@ -6,7 +6,7 @@ import { ThemeParkService } from './_services/themepark/theme-park.service';
 import { ThroughPoisThemeParkService } from './_services/themepark/through-pois-theme-park.service';
 import { ParksService } from './_services/parks/parks.service';
 import { ToverlandService } from './toverland/toverland.service';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { WalibiHollandService } from './walibi/holland/walibi-holland.service';
 import { EftelingTransferService } from './efteling/efteling-transfer/efteling-transfer.service';
 import { PhantasialandService } from './phantasialand/phantasialand.service';
@@ -56,15 +56,20 @@ import { WaitTimeModule } from './database/wait-time/wait-time.module';
       ttl: 60 * 5,
     }),
     ScheduleModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: '95.179.187.20',
-      port: 3306,
-      username: 'drankidee_local',
-      password: 'Zeilboot123',
-      database: 'tpvue_dev',
-      entities: [WaitTime],
-      synchronize: true,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      // @ts-ignore
+      useFactory: async (configService: ConfigService) => ({
+        type: configService.get('DATABASE_TYPE'),
+        host: configService.get('DATABASE_HOST'),
+        port: configService.get('DATABASE_PORT'),
+        username: configService.get('DATABASE_USERNAME'),
+        password: configService.get('DATABASE_PASSWORD'),
+        database: configService.get('DATABASE_DATABASE'),
+        entities: [WaitTime],
+        synchronize: true,
+      }),
     }),
     WaitTimeModule,
   ],

@@ -16,4 +16,7 @@ export class WaitTime {
 
   @Column({ nullable: false, default: 'open' })
   status: string;
+
+  @Column({ nullable: false, type: 'datetime' })
+  date: string;
 }

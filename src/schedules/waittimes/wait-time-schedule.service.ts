@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { ParksService } from '../../_services/parks/parks.service';
 import { WaitTimeService } from '../../database/wait-time/wait-time.service';
+import * as moment from 'moment';
 
 @Injectable()
 export class WaitTimeScheduleService {
@@ -29,17 +30,21 @@ export class WaitTimeScheduleService {
                     wait: ride.currentWaitTime,
                     status: ride.currentWaitTime ? 'open' : 'closed',
                     park_id: park.getInfo().id,
-                  });
+                    date: moment().format('YYYY-MM-DD HH:mm:ss'),
+                  })
+                    .catch(reason => {
+                      this.logger.error(`Could not insert waitTime for ${ride.title}: ${reason}`);
+                    });
                 });
               })
               .catch(reason => {
-                this.logger.error(`Could not retrieve rides: ${reason}`);
+                this.logger.error(`Could not retrieve rides for ${park.getInfo().name} (${park.getInfo().id}): ${reason}`);
               });
           }
         });
       })
       .catch(reason => {
-        this.logger.error(`Could not retrieve parks: ${reason}`)
+        this.logger.error(`Could not retrieve parks: ${reason}`);
       });
   }
 }

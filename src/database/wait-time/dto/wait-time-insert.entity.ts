@@ -3,4 +3,5 @@ export interface WaitTimeInsertEntity {
   ride_id: string,
   status: string,
   wait?: number,
+  date: string,
 }
