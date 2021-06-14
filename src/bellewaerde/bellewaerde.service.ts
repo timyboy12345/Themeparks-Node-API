@@ -31,6 +31,9 @@ export class BellewaerdeService extends ThroughPoisThemeParkService {
       supportsPoiLocations: false,
       supportsShops: true,
       supportsShopOpeningTimes: false,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsRideWaitTimesHistory: false
     };
   }
 

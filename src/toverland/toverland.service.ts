@@ -31,7 +31,8 @@ export class ToverlandService extends ThemeParkService {
       description: 'Attractiepark Toverland, kortweg Toverland, is een deels overdekt attractiepark in het Nederlandse Sevenum. Het is een van de jongste attractieparken van Nederland.',
       image: 'https://i.ytimg.com/vi/WeUzyKUqR4I/maxresdefault.jpg',
       countryCode: 'nl',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
+      timezone: 'Europe/Amsterdam'
     };
   }
 
@@ -47,6 +48,9 @@ export class ToverlandService extends ThemeParkService {
       supportsPoiLocations: true,
       supportsShops: false,
       supportsShopOpeningTimes: false,
+      supportsRideWaitTimesHistory: true,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false
     };
   }
 

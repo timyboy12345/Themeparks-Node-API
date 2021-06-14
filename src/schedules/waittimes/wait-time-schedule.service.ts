@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { ParksService } from '../../_services/parks/parks.service';
 import { WaitTimeService } from '../../database/wait-time/wait-time.service';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class WaitTimeScheduleService {
@@ -17,16 +17,22 @@ export class WaitTimeScheduleService {
     this.logger.debug('Parks:');
 
     this.parksService.getParks()
-      .then((parks) => {
+      .then(async (parks) => {
         for (let i = 0; i < parks.length; i++) {
           const park = parks[i];
 
           if (park.getSupports().supportsRideWaitTimes) {
             this.logger.debug(` - ${park.getInfo().name} supports wait times`);
 
-            const date = moment().format('YYYY-MM-DD HH:mm:ss');
+            let date;
 
-            park.getRides()
+            if (park.getInfo().timezone) {
+              date = moment().tz(park.getInfo().timezone).format('YYYY-MM-DD HH:mm:ss')
+            } else {
+              date = moment().format('YYYY-MM-DD HH:mm:ss');
+            }
+
+            await park.getRides()
               .then(async (rides) => {
                 for (let r = 0; r < rides.length; r++) {
                   const ride = rides[r];
@@ -43,7 +49,7 @@ export class WaitTimeScheduleService {
                     });
                 }
 
-                this.logger.debug(`  - Inserted ${rides.length} rides for ${park.getInfo().name}`);
+                this.logger.debug(`   - Inserted ${rides.length} rides for ${park.getInfo().name}`);
               })
               .catch(reason => {
                 this.logger.error(`Could not retrieve rides for ${park.getInfo().name} (${park.getInfo().id}): ${reason}`);

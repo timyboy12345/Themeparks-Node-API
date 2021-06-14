@@ -54,7 +54,7 @@ export interface Poi {
 
   state?: PoiStatus;
 
-  waitingTimes?: WaitingTimes;
+  waitingTimes?: WaitingTimes[];
 
   showTimes?: ShowTimes;
 

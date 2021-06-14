@@ -4,7 +4,6 @@ import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../../_interfaces/poi.interface';
-import { SixflagsService } from '../../sixflags.service';
 
 @Injectable()
 export class SfOverTexasService extends ThemeParkService {
@@ -42,6 +41,9 @@ export class SfOverTexasService extends ThemeParkService {
       supportsShops: false,
       supportsShowTimes: false,
       supportsShows: false,
+      supportsRideWaitTimesHistory: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false
     };
   }
 

@@ -30,6 +30,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       image: 'https://traveltrade.visitbrabant.com/uploads/cache/medium/uploads/media/5cac5f21d23d9/kopfoto-pardoes-en-pardijn-hartenhof-npf2017-5760x3840px-z-nr-16193.jpg',
       countryCode: 'nl',
       parkType: ParkType.THEMEPARK,
+      timezone: 'Europe/Amsterdam'
     };
   }
 
@@ -45,6 +46,9 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsPoiLocations: true,
       supportsShops: true,
       supportsShopOpeningTimes: true,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsRideWaitTimesHistory: true
     };
   }
 

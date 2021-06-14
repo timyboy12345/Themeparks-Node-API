@@ -3,7 +3,6 @@ import { AttractionsIoThemeParkService } from '../../_services/attractions-io-th
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { Poi } from '../../_interfaces/poi.interface';
-import * as data from '../../hellendoorn/data/records.json';
 import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
 
 @Injectable()
@@ -31,6 +30,9 @@ export class LegolandDeutschlandService extends AttractionsIoThemeParkService {
       supportsShops: false,
       supportsShowTimes: false,
       supportsShows: false,
+      supportsRideWaitTimesHistory: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false
     };
   }
 

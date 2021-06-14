@@ -43,6 +43,9 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       supportsPoiLocations: true,
       supportsShops: true,
       supportsShopOpeningTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false
     };
   }
 

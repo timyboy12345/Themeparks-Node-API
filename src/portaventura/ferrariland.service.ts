@@ -42,6 +42,9 @@ export class FerrariLandService extends ThemeParkService {
       supportsPoiLocations: true,
       supportsShops: false,
       supportsShopOpeningTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false
     };
   }
 

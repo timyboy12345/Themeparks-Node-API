@@ -32,6 +32,9 @@ export class HellendoornService extends AttractionsIoThemeParkService {
       supportsShops: true,
       supportsShowTimes: false,
       supportsShows: true,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsRideWaitTimesHistory: false
     };
   }
 

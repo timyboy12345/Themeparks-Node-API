@@ -28,6 +28,9 @@ export class WalibiBelgiumService extends WalibiService {
       supportsPoiLocations: true,
       supportsShops: true,
       supportsShopOpeningTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false
     };
   }
 
