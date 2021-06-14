@@ -12,22 +12,26 @@ export class WaitTimeScheduleService {
               private readonly waitTimeService: WaitTimeService) {
   }
 
-  @Cron(CronExpression.EVERY_MINUTE)
-  handleCron() {
+  @Cron(CronExpression.EVERY_5_MINUTES)
+  async handleCron() {
     this.logger.debug('Parks:');
 
     this.parksService.getParks()
       .then((parks) => {
-        parks.forEach(park => {
+        for (let i = 0; i < parks.length; i++) {
+          const park = parks[i];
+
           if (park.getSupports().supportsRideWaitTimes) {
             this.logger.debug(` - ${park.getInfo().name} supports wait times`);
 
             const date = moment().format('YYYY-MM-DD HH:mm:ss');
 
             park.getRides()
-              .then((rides) => {
-                rides.forEach((ride) => {
-                  this.waitTimeService.insert({
+              .then(async (rides) => {
+                for (let r = 0; r < rides.length; r++) {
+                  const ride = rides[r];
+
+                  await this.waitTimeService.insert({
                     ride_id: ride.id,
                     wait: ride.currentWaitTime,
                     status: ride.currentWaitTime ? 'open' : 'closed',
@@ -37,13 +41,15 @@ export class WaitTimeScheduleService {
                     .catch(reason => {
                       this.logger.error(`Could not insert waitTime for ${ride.title}: ${reason}`);
                     });
-                });
+                }
+
+                this.logger.debug(`  - Inserted ${rides.length} rides for ${park.getInfo().name}`);
               })
               .catch(reason => {
                 this.logger.error(`Could not retrieve rides for ${park.getInfo().name} (${park.getInfo().id}): ${reason}`);
               });
           }
-        });
+        }
       })
       .catch(reason => {
         this.logger.error(`Could not retrieve parks: ${reason}`);

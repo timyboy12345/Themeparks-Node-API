@@ -76,7 +76,7 @@ export class EftelingTransferService extends TransferService {
     const image = images.length > 0 ? images[0] : `${imgUrl}${eftelingPoi.fields.image}`;
 
     const poi: Poi = {
-      id: eftelingPoi.id,
+      id: eftelingPoi.id.replace('-nl', ''),
       category: c,
       title: eftelingPoi.fields.name,
       subTitle: eftelingPoi.fields.subtitle,
