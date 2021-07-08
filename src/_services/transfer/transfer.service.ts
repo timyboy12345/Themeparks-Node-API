@@ -1,6 +1,7 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ShowTime, ShowTimes } from '../../_interfaces/showtimes.interface';
+import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 
 @Injectable()
 export class TransferService {
@@ -50,5 +51,9 @@ export class TransferService {
 
   public transferShowTimeToShowTime(showTime: any): ShowTime {
     throw new NotImplementedException("Could not transfer show time to POI show time");
+  }
+
+  public transferOpeningTimesToOpeningTimes(openingTimes: any): ThemeParkOpeningTimes[] {
+    throw new NotImplementedException("Could not transfer opening times to opening times");
   }
 }

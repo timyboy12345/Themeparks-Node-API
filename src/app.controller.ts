@@ -17,6 +17,7 @@ import { ParkDto } from './_dtos/park.dto';
 import { Cache } from 'cache-manager';
 import { WaitingTimes } from './_interfaces/waitingtimes.interface';
 import { WaitTimeService } from './database/wait-time/wait-time.service';
+import { ThemeParkOpeningTime, ThemeParkOpeningTimes } from './_interfaces/park-openingtimes.interface';
 
 @ApiTags('Themeparks')
 @Controller()
@@ -30,25 +31,6 @@ export class AppController {
   @Get('')
   getHello(): Object {
     return this.appService.getHello();
-  }
-
-  @Get('parks')
-  @UseInterceptors(CacheInterceptor)
-  @ApiOkResponse({
-    type: ParkDto,
-    isArray: true,
-  })
-  async getParks() {
-    return (await this.parksService.getParks()).map(park => park.getFullInfo());
-  }
-
-  @Get('park/:id')
-  @UseInterceptors(CacheInterceptor)
-  @ApiOkResponse({
-    type: ParkDto,
-  })
-  async getPark(@Param() params): Promise<ThemePark> {
-    return (await this.parksService.findPark(params.id, true)).getFullInfo();
   }
 
   @Get('park/:id/pois')
@@ -146,6 +128,7 @@ export class AppController {
     const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsRideWaitTimesHistory) {
+      return this.getParkRides(params, query);
       throw new BadRequestException('This park does not wait time history');
     }
 
@@ -267,5 +250,32 @@ export class AppController {
         return shop;
       });
     });
+  }
+
+  @Get('park/:id/openingtimes')
+  @UseInterceptors(CacheInterceptor)
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    description: 'The park id',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'All shops of a specific theme park',
+    isArray: true,
+    type: PoiDto,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'The requested park could not be found',
+  })
+  async getParkOpeningTimes(@Param() params): Promise<ThemeParkOpeningTimes[]> {
+    const park = await this.parksService.findPark(params.id, true);
+
+    if (!park.getFullInfo().supports.supportsShops) {
+      throw new BadRequestException('This park does not support shops');
+    }
+
+    return await park.getOpeningTimes();
   }
 }

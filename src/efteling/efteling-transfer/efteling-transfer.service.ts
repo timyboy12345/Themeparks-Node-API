@@ -8,13 +8,12 @@ import * as moment from 'moment';
 import { ShowTime, ShowTimes } from '../../_interfaces/showtimes.interface';
 import {
   EftelingOpeningTimesAttraction,
-  EftelingOpeningTimesAttractionShowTimes,
+  EftelingOpeningTimesAttractionShowTimes, EftelingOpeningTimesResponse,
 } from '../interfaces/efteling-openingstimes-response.interface';
+import { ThemeParkOpeningTime, ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 
 @Injectable()
 export class EftelingTransferService extends TransferService {
-
-
   // constructor(private readonly configService: ConfigService) {
   //   super();
   // }
@@ -156,5 +155,23 @@ export class EftelingTransferService extends TransferService {
       toTime: moment.parseZone(showTime.EndDateTime).format('HH:mm:ss'),
       isPassed: moment.parseZone(showTime.StartDateTime).isBefore(),
     };
+  }
+
+  transferOpeningTimesToOpeningTimes(openingTimes: EftelingOpeningTimesResponse): ThemeParkOpeningTimes[] {
+    return openingTimes.OpeningHours.map((date) => {
+      const day = moment.parseZone(date.Date);
+
+      return {
+        date: day.format(),
+        openingTimes: date.OpeningHours.map(ot => {
+          return {
+            open: ot.Open,
+            openTime: ot.Open,
+            close: ot.Close,
+            closeTime: ot.Close,
+          }
+        })
+      }
+    })
   }
 }

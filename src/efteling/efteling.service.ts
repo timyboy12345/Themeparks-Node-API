@@ -9,6 +9,7 @@ import { EftelingTransferService } from './efteling-transfer/efteling-transfer.s
 import { ThroughPoisThemeParkService } from '../_services/themepark/through-pois-theme-park.service';
 import { EftelingOpeningTimesResponse } from './interfaces/efteling-openingstimes-response.interface';
 import * as moment from 'moment';
+import { ThemeParkOpeningTimes } from '../_interfaces/park-openingtimes.interface';
 
 @Injectable()
 export class EftelingService extends ThroughPoisThemeParkService {
@@ -57,7 +58,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       const pois = poisResponse.data.hits.hit.map(pois => this.eftelingTransferService.transferPoiToPoi(pois));
 
       return this.getWaitTimes().then(waitTimes => {
-        waitTimes.data.AttractionInfo.forEach(attractionInfo => {
+        waitTimes.AttractionInfo.forEach(attractionInfo => {
           const poi = pois.find(p => p.id.replace('-nl', '') === attractionInfo.Id);
 
           if (poi) {
@@ -124,7 +125,23 @@ export class EftelingService extends ThroughPoisThemeParkService {
       .get<EftelingOpeningTimesResponse>('https://api.efteling.com/app/wis/')
       .toPromise()
       .then(value => {
-        return value;
+        return value.data;
+      })
+      .catch(e => {
+        Sentry.captureException(e);
+        throw new InternalServerErrorException(e);
+      });
+  }
+
+  async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
+    const year = '2021';
+    const month = '06';
+
+    return this.httpService
+      .get<EftelingOpeningTimesResponse>(`https://api.efteling.com/service/cached/getpoiinfo/nl/${year}/${month}`)
+      .toPromise()
+      .then(value => {
+        return this.eftelingTransferService.transferOpeningTimesToOpeningTimes(value.data);
       })
       .catch(e => {
         Sentry.captureException(e);
