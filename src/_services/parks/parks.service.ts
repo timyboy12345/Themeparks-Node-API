@@ -1,22 +1,22 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../themepark/theme-park.service';
-import { EftelingService } from '../../efteling/efteling.service';
-import { ToverlandService } from '../../toverland/toverland.service';
-import { WalibiHollandService } from '../../walibi/holland/walibi-holland.service';
-import { PhantasialandService } from '../../phantasialand/phantasialand.service';
-import { WalibiBelgiumService } from '../../walibi/belgium/walibi-belgium.service';
-import { DisneylandParisService } from '../../disney/disneyland-paris/disneyland-paris.service';
-import { DisneylandParisStudiosService } from '../../disney/disneyland-paris/disneyland-paris-studios.service';
-import { ParcAsterixService } from '../../parc-asterix/parc-asterix.service';
-import { PortaventuraService } from '../../portaventura/portaventura.service';
-import { FerrariLandService } from '../../portaventura/ferrariland.service';
-import { BellewaerdeService } from '../../bellewaerde/bellewaerde.service';
-import { DippieDoeService } from '../../dippiedoe/dippie-doe.service';
-import { HolidayParkService } from '../../holiday-park/holiday-park.service';
-import { HellendoornService } from '../../hellendoorn/hellendoorn.service';
-import { LegolandDeutschlandService } from '../../legoland/legoland-deutschland/legoland-deutschland.service';
+import { EftelingService } from '../../parks/efteling/efteling.service';
+import { ToverlandService } from '../../parks/toverland/toverland.service';
+import { WalibiHollandService } from '../../parks/walibi/holland/walibi-holland.service';
+import { PhantasialandService } from '../../parks/phantasialand/phantasialand.service';
+import { WalibiBelgiumService } from '../../parks/walibi/belgium/walibi-belgium.service';
+import { DisneylandParisService } from '../../parks/disney/disneyland-paris/disneyland-paris.service';
+import { DisneylandParisStudiosService } from '../../parks/disney/disneyland-paris/disneyland-paris-studios.service';
+import { ParcAsterixService } from '../../parks/parc-asterix/parc-asterix.service';
+import { PortaventuraService } from '../../parks/portaventura/portaventura/portaventura.service';
+import { FerrariLandService } from '../../parks/portaventura/ferrariland/ferrariland.service';
+import { BellewaerdeService } from '../../parks/bellewaerde/bellewaerde.service';
+import { DippieDoeService } from '../../parks/dippiedoe/dippie-doe.service';
+import { HolidayParkService } from '../../parks/holiday-park/holiday-park.service';
+import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service';
+import { LegolandDeutschlandService } from '../../parks/legoland/legoland-deutschland/legoland-deutschland.service';
 import { CompanyService } from '../company/company.service';
-import { SixflagsService } from '../../sixflags/sixflags.service';
+import { SixflagsService } from '../../parks/sixflags/sixflags.service';
 
 import * as Sentry from '@sentry/node';
 
