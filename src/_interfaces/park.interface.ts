@@ -8,7 +8,6 @@ export interface ThemePark {
   countryCode: string;
   supports?: ThemeParkSupports;
   parkType: ParkType;
-  timezone?: string;
 }
 
 export enum ParkType {

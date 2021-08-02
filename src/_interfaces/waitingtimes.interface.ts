@@ -1,8 +1,14 @@
-import { PoiStatus } from './poi.interface';
-
 export interface WaitingTimes {
   ride_id: string;
   date?: string;
-  state: PoiStatus;
-  wait?: number;
+  state: WaitingTimesState;
+  wait: number;
+  original: any;
+}
+
+export enum WaitingTimesState {
+  OPEN = 'Open',
+  CLOSED = 'Closed',
+  MAINTENANCE = 'Maintenance',
+  DOWN = 'Down',
 }

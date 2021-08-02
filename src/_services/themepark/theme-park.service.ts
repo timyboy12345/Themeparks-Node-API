@@ -2,7 +2,6 @@ import { Injectable, NotImplementedException } from '@nestjs/common';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
-import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 
 @Injectable()
 export class ThemeParkService {
@@ -66,9 +65,5 @@ export class ThemeParkService {
       .then((shops) => {
         return shops.find(shop => shop.id === id);
       })
-  }
-
-  async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
-    throw new NotImplementedException("Could not get opening times");
   }
 }
