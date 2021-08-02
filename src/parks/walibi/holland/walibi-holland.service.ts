@@ -21,7 +21,7 @@ export class WalibiHollandService extends WalibiService {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
-      supportsRideWaitTimes: true,
+      supportsRideWaitTimes: false,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: true,
