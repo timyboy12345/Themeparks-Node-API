@@ -1,5 +1,5 @@
-import { WaitingTimesState } from '../_interfaces/waitingtimes.interface';
 import { ApiProperty } from '@nestjs/swagger';
+import { PoiStatus } from '../_interfaces/poi.interface';
 
 export class WaitingTimesDto {
   @ApiProperty()
@@ -9,7 +9,7 @@ export class WaitingTimesDto {
   date?: string;
 
   @ApiProperty()
-  state: WaitingTimesState;
+  state: PoiStatus;
 
   @ApiProperty()
   wait: number;
