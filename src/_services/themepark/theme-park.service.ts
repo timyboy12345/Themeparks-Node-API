@@ -47,7 +47,7 @@ export class ThemeParkService {
   }
 
   async getShows(): Promise<Poi[]> {
-    throw new NotImplementedException("Could not get rides");
+    throw new NotImplementedException("Could not get shows");
   }
 
   async getShow(id: string): Promise<Poi> {

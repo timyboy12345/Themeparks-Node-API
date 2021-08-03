@@ -3,16 +3,19 @@ import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import * as BellewaerdePoiData from './data/bellewaerde-pois.json';
 import { Poi } from '../../_interfaces/poi.interface';
-import { PoiCategory } from '../../_interfaces/poi-categories.enum';
-import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
 import * as Sentry from '@sentry/node';
 import { BellewaerdeApiResponseItemInterface } from './interfaces/bellewaerde-api-response.interface';
 import * as moment from 'moment';
 import { ShowTime } from '../../_interfaces/showtimes.interface';
+import { ThemeParkService } from '../../_services/themepark/theme-park.service';
+import { BellewaerdeRidesResponseInterface } from './interfaces/bellewaerde-rides-response.interface';
+import { BellewaerdeTransferService } from './bellewaerde-transfer/bellewaerde-transfer.service';
+import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 
 @Injectable()
-export class BellewaerdeService extends ThroughPoisThemeParkService {
-  constructor(private readonly httpService: HttpService) {
+export class BellewaerdeService extends ThemeParkService {
+  constructor(private readonly httpService: HttpService,
+              private readonly belleWaerdeTransferService: BellewaerdeTransferService) {
     super();
   }
 
@@ -31,13 +34,13 @@ export class BellewaerdeService extends ThroughPoisThemeParkService {
     return {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: true,
+      supportsRestaurants: false,
       supportsRideWaitTimes: true,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: true,
       supportsPoiLocations: false,
-      supportsShops: true,
+      supportsShops: false,
       supportsShopOpeningTimes: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
@@ -47,43 +50,18 @@ export class BellewaerdeService extends ThroughPoisThemeParkService {
 
   async getPois(): Promise<Poi[]> {
     const waitTimes = await this.getWaitTimes();
+    const data = await this.getRideData();
 
-    const data: Poi[] = BellewaerdePoiData.map(poi => {
-      let category: PoiCategory;
+    const pois = this.belleWaerdeTransferService.transferPoisToPois(data.markers);
 
-      switch (poi.type.toUpperCase()) {
-        case 'ATTRACTIONS':
-          category = PoiCategory.ATTRACTION;
-          break;
-        case 'RESTO':
-          category = PoiCategory.RESTAURANT;
-          break;
-        case 'SHOPS':
-          category = PoiCategory.SHOP;
-          break;
-        case 'POI':
-          category = PoiCategory.SERVICE;
-          break;
-        case 'SHOW':
-          category = PoiCategory.SHOW;
-          break;
-        case 'DIEREN':
-          category = PoiCategory.ANIMAL;
-          break;
-        default:
-          category = PoiCategory.UNDEFINED;
-          break;
+    pois.forEach(poi => {
+      const r = BellewaerdePoiData.find(p => p.name.toLowerCase() === poi.title.toLowerCase());
+      if (r) {
+        poi.id = `${r.code}`;
       }
+    })
 
-      return {
-        id: poi.code + '',
-        title: poi.name,
-        category: category,
-        original: poi,
-      };
-    });
-
-    data.forEach(poi => {
+    pois.forEach(poi => {
       const poiData = waitTimes.find(w => w.id === poi.id);
 
       if (poiData) {
@@ -116,7 +94,30 @@ export class BellewaerdeService extends ThroughPoisThemeParkService {
       }
     });
 
-    return data;
+    return pois;
+  }
+
+  private async getRideData() {
+    return this.httpService
+      .get<BellewaerdeRidesResponseInterface>('https://www.bellewaerde.be/nl/entertainment_list/61/json')
+      .toPromise()
+      .then(value => {
+        return value.data;
+      })
+      .catch(e => {
+        Sentry.captureException(e);
+        throw new InternalServerErrorException(e);
+      });
+  }
+
+  async getRides(): Promise<Poi[]> {
+    const rides = await this.getPois();
+    return rides.filter(r => r.category === PoiCategory.ATTRACTION);
+  }
+
+  async getShows(): Promise<Poi[]> {
+    const rides = await this.getPois();
+    return rides.filter(r => r.category === PoiCategory.SHOW);
   }
 
   private async getWaitTimes() {

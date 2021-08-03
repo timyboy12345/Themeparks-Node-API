@@ -34,10 +34,18 @@ export interface Poi {
     lat: number,
     ln: number
   };
+
+  /**
+   * The minimum length that rides need to be to ride alone
+   */
   minSize?: number;
   maxSize?: number;
   minAge?: number;
   maxAge?: number;
+
+  /**
+   * The length that riders with parents are allowed to ride (in cm)
+   */
   minSizeEscort?: number;
   tags?: string[];
   image_url?: string;
