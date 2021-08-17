@@ -12,7 +12,7 @@ export class WalibiBelgiumService extends WalibiService {
       description: 'Walibi Belgium is een pretpark in de Belgische gemeente Waver.',
       image: 'https://www.walibi.be/sites/default/files/styles/1280x711/public/content/editorial/2020-06/W18-TIKIWAKA_0629-1.jpg?itok=69V5PXVt',
       countryCode: 'be',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -30,7 +30,8 @@ export class WalibiBelgiumService extends WalibiService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
+      supportsOpeningTimes: false,
+      supportsAnimals: true,
     };
   }
 

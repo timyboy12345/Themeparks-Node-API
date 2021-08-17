@@ -45,12 +45,24 @@ export class BellewaerdeService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: false,
+      supportsAnimals: true,
     };
   }
 
   async getPois(): Promise<Poi[]> {
-    const waitTimes = await this.getWaitTimes();
+    const promises = [
+      this.getRides(),
+      this.getAnimals()
+    ];
+
+    return []
+      .concat
+      .apply([], await Promise.all(promises));
+  }
+
+  async getRides(): Promise<Poi[]> {
     const data = await this.getRideData();
+    const waitTimes = await this.getWaitTimes();
 
     const pois = this.belleWaerdeTransferService.transferPoisToPois(data.markers);
 
@@ -59,7 +71,7 @@ export class BellewaerdeService extends ThemeParkService {
       if (r) {
         poi.id = `${r.code}`;
       }
-    })
+    });
 
     pois.forEach(poi => {
       const poiData = waitTimes.find(w => w.id === poi.id);
@@ -79,7 +91,7 @@ export class BellewaerdeService extends ThemeParkService {
               from: timeStamp.format(),
               fromTime: show.start,
               duration: parseInt(show.duration),
-              isPassed: timeStamp.isBefore()
+              isPassed: timeStamp.isBefore(),
             };
           });
 
@@ -97,6 +109,16 @@ export class BellewaerdeService extends ThemeParkService {
     return pois;
   }
 
+  async getShows(): Promise<Poi[]> {
+    const rides = await this.getPois();
+    return rides.filter(r => r.category === PoiCategory.SHOW);
+  }
+
+  async getAnimals(): Promise<Poi[]> {
+    const animals = await this.getAnimalData();
+    return this.belleWaerdeTransferService.transferPoisToPois(animals.markers);
+  }
+
   private async getRideData() {
     return this.httpService
       .get<BellewaerdeRidesResponseInterface>('https://www.bellewaerde.be/nl/entertainment_list/61/json')
@@ -110,14 +132,17 @@ export class BellewaerdeService extends ThemeParkService {
       });
   }
 
-  async getRides(): Promise<Poi[]> {
-    const rides = await this.getPois();
-    return rides.filter(r => r.category === PoiCategory.ATTRACTION);
-  }
-
-  async getShows(): Promise<Poi[]> {
-    const rides = await this.getPois();
-    return rides.filter(r => r.category === PoiCategory.SHOW);
+  private async getAnimalData() {
+    return this.httpService
+      .get<BellewaerdeRidesResponseInterface>('https://www.bellewaerde.be/nl/entertainment_list/109/json')
+      .toPromise()
+      .then(value => {
+        return value.data;
+      })
+      .catch(e => {
+        Sentry.captureException(e);
+        throw new InternalServerErrorException(e);
+      });
   }
 
   private async getWaitTimes() {

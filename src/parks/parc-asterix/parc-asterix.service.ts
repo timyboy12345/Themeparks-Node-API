@@ -46,8 +46,8 @@ export class ParcAsterixService extends ThemeParkService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
-    };
+      supportsOpeningTimes: false,
+ supportsAnimals: true    };
   }
 
   async getRides(): Promise<Poi[]> {

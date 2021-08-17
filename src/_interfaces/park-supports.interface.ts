@@ -22,5 +22,8 @@ export interface ThemeParkSupports {
 
   // Opening Times
   supportsOpeningTimes: boolean;
-  supportsOpeningTimesHistory: boolean
+  supportsOpeningTimesHistory: boolean;
+
+  // Animals
+  supportsAnimals: boolean;
 }

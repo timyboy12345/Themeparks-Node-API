@@ -31,7 +31,7 @@ export class HolidayParkService extends ThemeParkService {
       description: 'Holiday Park is een attractiepark gelegen in Haßloch in de Duitse deelstaat Rijnland-Palts. Het maakt sinds 2010 deel uit van de pretparken van de Plopsa-groep.',
       image: 'https://www.holidaypark.de/sites/default/files/public/brand/logos/Holiday%20Park.jpg',
       countryCode: 'de',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -49,7 +49,8 @@ export class HolidayParkService extends ThemeParkService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
+      supportsOpeningTimes: false,
+      supportsAnimals: true,
     };
   }
 
@@ -57,7 +58,7 @@ export class HolidayParkService extends ThemeParkService {
     const promises = [
       this.getRides(),
       this.getRestaurants(),
-      this.getShops()
+      this.getShops(),
     ];
 
     return []
@@ -65,6 +66,7 @@ export class HolidayParkService extends ThemeParkService {
       .apply([], await Promise.all(promises));
   }
 
+  // TODO: Find out if locations still work
   async getRides(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(value => this.holidayParkTransferService.HolidayParkAttractionsResponseToPois(value.data)));
     return await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(r => this.holidayParkTransferService.transferRidesToPois(r.data));
@@ -80,6 +82,7 @@ export class HolidayParkService extends ThemeParkService {
     return await this.request<HolidayParkPageResponseInterface>('page').then(r => this.holidayParkTransferService.transferShopsToPois(r.data));
   }
 
+  // TODO: Find out if shows can be implemented
   // async getShows(): Promise<Poi[]> {
   //   return await this.request<HolidayParkPageResponseInterface>("show").then(value => this.holidayParkTransferService.)
   // }

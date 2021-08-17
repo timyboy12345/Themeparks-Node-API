@@ -43,8 +43,8 @@ export class SfOverTexasService extends ThemeParkService {
       supportsShows: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
-    };
+      supportsOpeningTimes: false,
+ supportsAnimals: true    };
   }
 
   async getPois(): Promise<Poi[]> {

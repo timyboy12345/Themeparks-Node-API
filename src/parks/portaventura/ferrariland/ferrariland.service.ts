@@ -44,8 +44,8 @@ export class FerrariLandService extends ThemeParkService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
-    };
+      supportsOpeningTimes: false,
+ supportsAnimals: true    };
   }
 
   async getPois(): Promise<Poi[]> {
