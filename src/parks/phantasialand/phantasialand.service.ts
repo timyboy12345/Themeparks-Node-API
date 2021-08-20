@@ -28,7 +28,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       description: 'Phantasialand is een attractiepark in het Duitse Brühl ten zuidwesten van Keulen. Het attractiepark is begonnen als sprookjespark en inmiddels uitgegroeid tot een van de best bezochte attractieparken van Europa.',
       countryCode: 'de',
       image: 'https://static.phlcdn.de/files/uploads/themenpark/images/sommer/berlin/ga_keyvisual_berlin.jpg',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -46,7 +46,8 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
+      supportsOpeningTimes: false,
+      supportsAnimals: true,
     };
   }
 

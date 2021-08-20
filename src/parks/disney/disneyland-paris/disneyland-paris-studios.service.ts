@@ -27,7 +27,7 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       description: 'Het Walt Disney Studios Park is een attractiepark in Frankrijk en is onderdeel van Disneyland Paris. Het is het tweede attractiepark binnen dit resort, dat geopend werd op 16 maart 2002. Het park ligt in het westen van het resort, pal naast de entree van het Disneyland Park.',
       countryCode: 'fr',
       image: 'https://www.magicontheweb.com/wp-content/uploads/2020/09/waltdisneystudiospark.jpg',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -44,8 +44,9 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       supportsShops: true,
       supportsShopOpeningTimes: false,
       supportsOpeningTimes: false,
+      supportsAnimals: true,
       supportsOpeningTimesHistory: false,
-      supportsRideWaitTimesHistory: false
+      supportsRideWaitTimesHistory: false,
     };
   }
 
@@ -72,7 +73,7 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
         'Restaurant',
         'Shop',
         'Spa',
-        'Tour'
+        'Tour',
       ],
     };
 
@@ -178,4 +179,5 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
     return request(this._disneyLandParis, query, variables).then((activitiesResponse) => {
       return activitiesResponse.activities;
     });
-  }}
+  }
+}

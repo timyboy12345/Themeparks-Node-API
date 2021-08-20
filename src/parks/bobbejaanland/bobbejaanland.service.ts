@@ -29,6 +29,7 @@ export class BobbejaanlandService extends ThroughPoisThemeParkService {
     return {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimes: false,
+      supportsAnimals: true,
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimes: false,
       supportsRestaurants: true,

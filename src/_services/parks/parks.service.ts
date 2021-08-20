@@ -20,6 +20,7 @@ import { SixflagsService } from '../../parks/sixflags/sixflags.service';
 
 import * as Sentry from '@sentry/node';
 import { BobbejaanlandService } from '../../parks/bobbejaanland/bobbejaanland.service';
+import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-panne/plopsaland-de-panne.service';
 
 @Injectable()
 export class ParksService {
@@ -42,7 +43,8 @@ export class ParksService {
               private readonly _hellendoornService: HellendoornService,
               private readonly _legolandDeutschlandService: LegolandDeutschlandService,
               private readonly _sixflagsService: SixflagsService,
-              private readonly _bobbejaanlandService: BobbejaanlandService) {
+              private readonly _bobbejaanlandService: BobbejaanlandService,
+              private readonly _plopsalandeDePanneService: PlopsalandDePanneService) {
     this._parks = [];
     this._parks.push(_eftelingService);
     this._parks.push(_toverlandService);
@@ -60,6 +62,7 @@ export class ParksService {
     this._parks.push(_hellendoornService);
     this._parks.push(_legolandDeutschlandService);
     this._parks.push(_bobbejaanlandService);
+    this._parks.push(_plopsalandeDePanneService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);

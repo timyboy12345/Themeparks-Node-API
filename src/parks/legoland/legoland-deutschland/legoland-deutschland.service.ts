@@ -32,8 +32,8 @@ export class LegolandDeutschlandService extends AttractionsIoThemeParkService {
       supportsShows: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
-    };
+      supportsOpeningTimes: false,
+ supportsAnimals: true    };
   }
 
   getInstallationRequestBody(): string {

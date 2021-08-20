@@ -49,7 +49,8 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
       supportsShows: true,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
+      supportsOpeningTimes: false,
+      supportsAnimals: true,
     };
   }
 

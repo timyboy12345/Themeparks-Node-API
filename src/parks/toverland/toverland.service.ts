@@ -50,8 +50,8 @@ export class ToverlandService extends ThemeParkService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: true,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
-    };
+      supportsOpeningTimes: false,
+ supportsAnimals: true    };
   }
 
   async getRides(): Promise<Poi[]> {

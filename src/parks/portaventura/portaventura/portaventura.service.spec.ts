@@ -10,7 +10,7 @@ describe('PortaventuraService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [PortaventuraService, PortaventuraService, PortaVenturaTransferService],
+      providers: [PortaventuraService, PortaVenturaTransferService],
     }).compile();
 
     service = module.get<PortaventuraService>(PortaventuraService);

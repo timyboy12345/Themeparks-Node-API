@@ -68,6 +68,17 @@ export class ThemeParkService {
       })
   }
 
+  async getAnimals(): Promise<Poi[]> {
+    throw new NotImplementedException("Could not get animals");
+  }
+
+  async getAnimal(id: string): Promise<Poi> {
+    return await this.getAnimals()
+      .then((animals) => {
+        return animals.find(animal => animal.id === id);
+      })
+  }
+
   async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
     throw new NotImplementedException("Could not get opening times");
   }

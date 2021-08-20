@@ -16,7 +16,7 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
       description: 'DippieDoe is een pretpark gelegen bij recreatiegebied Aquabest, Best, Noord-Brabant, Nederland. De attracties in het park staan zowel binnen als buiten. Het park richt zich vooral op families met kinderen tot 12 jaar. Attractiepark DippieDoe is het attractiepark in Brabant voor kinderen t/m 12 jaar!',
       image: 'https://media.insiders.nl/vib/files/image/dolle-dobber_1770787802.jpeg',
       countryCode: 'nl',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -34,7 +34,8 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false
+      supportsOpeningTimes: false,
+      supportsAnimals: true,
     };
   }
 
@@ -56,8 +57,8 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
         minSizeEscort: ride.minLengthAlone,
         location: {
           lat: ride.lat,
-          lng: ride.lng
-        }
+          lng: ride.lng,
+        },
       };
 
       return r;

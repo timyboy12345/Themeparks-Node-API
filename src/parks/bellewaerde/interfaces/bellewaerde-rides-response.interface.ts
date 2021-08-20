@@ -57,4 +57,5 @@ export enum BellewaerdeRidesResponseCategory {
   Spannend = 'Spannend',
   Kids = 'Kids',
   Duizelig = 'Duizelig',
+  Dieren = 'Dieren',
 }
