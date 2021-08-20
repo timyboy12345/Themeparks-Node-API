@@ -3,11 +3,9 @@ import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { PlopsalandDePanneTokenInterface } from './interfaces/plopsaland-de-panne-token.interface';
 import { Poi } from '../../../_interfaces/poi.interface';
-// import { PlopsalandDePanneWaitTimesResponseInterface } from './interfaces/plopsaland-de-panne-wait-times-response.interface';
-// import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import {
-  PlopsalandDePanneAttractionDetailsResponseInterface
-} from './interfaces/plopsaland-de-panne-attraction-details-response.interface';
+  PlopsalandDePanneDetailsResponseInterface
+} from './interfaces/plopsaland-de-panne-details-response.interface';
 import { PlopsalandDePanneTransferService } from './plopsaland-de-panne-transfer/plopsaland-de-panne-transfer.service';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 
@@ -22,8 +20,8 @@ export class PlopsalandDePanneService extends ThemeParkService {
     return {
       id: 'plopsaland-de-panne',
       name: 'Plopsalande de Panne',
-      image: '',
-      description: '',
+      image: 'https://www.plopsalanddepanne.be/sites/default/files/public/brand/logos/Plopsaland%20De%20Panne.jpg',
+      description: 'Plopsaland De Panne is een themapark van Studio 100 in de Belgische plaats De Panne, aan de Noordzeekust en de Franse grens. De kusttram heeft een halte voor de ingang. Het themapark is genoemd naar de kinderprogramma\'s Kabouter Plop en Samson en Gert van Studio 100.',
       countryCode: 'be',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Brussels',
@@ -38,30 +36,22 @@ export class PlopsalandDePanneService extends ThemeParkService {
       supportsPois: true,
       supportsPoiLocations: false,
       supportsShopOpeningTimes: false,
-      supportsShops: false,
+      supportsShops: true,
       supportsRides: true,
-      supportsShows: false,
-      supportsRestaurants: false,
-      supportsRideWaitTimes: false,
+      supportsShows: true,
+      supportsRestaurants: true,
+      supportsRideWaitTimes: true,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimesHistory: true,
     };
   }
-
-  // private async getRideLocations() {
-  //   const token = await this.getToken();
-  //
-  //   if (!token) {
-  //     return;
-  //   }
-  //
-  //   const url = `https://www.plopsalanddepanne.be/nl/api/v1.0/locations/plopsaland-de-panne?access_token=${token.accessToken}`;
-  // }
 
   async getPois(): Promise<Poi[]> {
     const promises = [
       this.getRides(),
+      this.getShops(),
+      this.getRestaurants()
     ];
 
     return []
@@ -76,36 +66,46 @@ export class PlopsalandDePanneService extends ThemeParkService {
     return this.transferService.transferPoisToPois(plopsaPois);
   }
 
-  // private async getRideWaitTimes(): Promise<Poi[]> {
-  //   const token = await this.getToken();
-  //
-  //   if (!token) {
-  //     return;
-  //   }
-  //
-  //   const url = `https://www.plopsalanddepanne.be/nl/api/v1.0/waitingTime/plopsaland-de-panne/attraction?access_token=${token.accessToken}`;
-  //
-  //   return this
-  //     .httpService
-  //     .get<PlopsalandDePanneWaitTimesResponseInterface>(url)
-  //     .toPromise()
-  //     .then(response => {
-  //       return response.data.nl.map(ride => {
-  //         const poi: Poi = {
-  //           id: ride.id,
-  //           title: ride.name,
-  //           category: PoiCategory.ATTRACTION,
-  //           original: ride,
-  //           currentWaitTime: parseInt(ride.currentWaitingTime),
-  //           minSize: ride.minheight,
-  //         };
-  //
-  //         return poi;
-  //       });
-  //     });
-  // }
+  async getShops(): Promise<Poi[]> {
+    const response = await this.getFoodAndShop();
 
-  private async getAttractionDetails(): Promise<PlopsalandDePanneAttractionDetailsResponseInterface> {
+    const plopsaPois = Object.keys(response.nl.shop).map((key) => response.nl.shop[key]);
+    return this.transferService.transferPoisToPois(plopsaPois);
+  }
+
+  async getRestaurants(): Promise<Poi[]> {
+    const response = await this.getFoodAndShop();
+
+    const plopsaPois = Object.keys(response.nl.food).map((key) => response.nl.food[key]);
+    return this.transferService.transferPoisToPois(plopsaPois);
+  }
+
+  async getShows(): Promise<Poi[]> {
+    const response = await this.getEvent();
+
+    const plopsaPois = Object.keys(response.nl.event).map((key) => response.nl.event[key]);
+    return this.transferService.transferPoisToPois(plopsaPois);
+  }
+
+  private async getFoodAndShop() {
+    const token = await this.getToken();
+
+    if (!token) {
+      return;
+    }
+
+    const url = `https://www.plopsalanddepanne.be/nl/api/v1.0/details/all/plopsaland-de-panne/page?access_token=${token.accessToken}`;
+
+    return this
+      .httpService
+      .get<PlopsalandDePanneDetailsResponseInterface>(url)
+      .toPromise()
+      .then(response => {
+        return response.data;
+      });
+  }
+
+  private async getAttractionDetails(): Promise<PlopsalandDePanneDetailsResponseInterface> {
     const token = await this.getToken();
 
     if (!token) {
@@ -116,7 +116,25 @@ export class PlopsalandDePanneService extends ThemeParkService {
 
     return this
       .httpService
-      .get<PlopsalandDePanneAttractionDetailsResponseInterface>(url)
+      .get<PlopsalandDePanneDetailsResponseInterface>(url)
+      .toPromise()
+      .then(response => {
+        return response.data;
+      });
+  }
+
+  private async getEvent(): Promise<PlopsalandDePanneDetailsResponseInterface> {
+    const token = await this.getToken();
+
+    if (!token) {
+      return;
+    }
+
+    const url = `https://www.plopsalanddepanne.be/nl/api/v1.0/details/all/plopsaland-de-panne/event?access_token=${token.accessToken}`;
+
+    return this
+      .httpService
+      .get<PlopsalandDePanneDetailsResponseInterface>(url)
       .toPromise()
       .then(response => {
         return response.data;

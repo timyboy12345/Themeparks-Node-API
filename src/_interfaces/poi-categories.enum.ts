@@ -20,4 +20,6 @@ export enum PoiCategory {
   ANIMAL = 'ANIMAL',
   SMOKING_AREA = 'SMOKING_AREA',
   SLIDE = 'SLIDE',
+  ATM = 'ATM',
+  MEET_AND_GREET = 'MEET_AND_GREET'
 }

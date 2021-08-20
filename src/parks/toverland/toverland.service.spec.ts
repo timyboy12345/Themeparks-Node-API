@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ToverlandService } from './toverland.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ToverlandTransferService } from './toverland-transfer/toverland-transfer.service';
 
 describe('ToverlandService', () => {
   let service: ToverlandService;
@@ -9,7 +10,7 @@ describe('ToverlandService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [ToverlandService],
+      providers: [ToverlandService, ToverlandTransferService],
     }).compile();
 
     service = module.get<ToverlandService>(ToverlandService);

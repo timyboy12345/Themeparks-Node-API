@@ -10,7 +10,7 @@ describe('FerrarilandService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [FerrariLandService, PortaVenturaTransferService, PortaVenturaTransferService],
+      providers: [FerrariLandService, PortaVenturaTransferService],
     }).compile();
 
     service = module.get<FerrariLandService>(FerrariLandService);

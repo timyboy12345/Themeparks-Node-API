@@ -1,20 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ParksController } from './parks.controller';
+import { ParkController } from './park.controller';
+import { CacheModule } from '@nestjs/common';
 import { ParksService } from '../../_services/parks/parks.service';
 import { ParksModule } from '../../parks/parks.module';
-import { CacheModule } from '@nestjs/common';
 
-describe('ParksController', () => {
-  let controller: ParksController;
+describe('ParkController', () => {
+  let controller: ParkController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ParksController],
+      controllers: [ParkController],
       providers: [ParksService],
-      imports: [ParksModule, CacheModule.register({ ttl: 0 })],
+      imports: [CacheModule.register({ ttl: 0 }), ParksModule],
     }).compile();
 
-    controller = module.get<ParksController>(ParksController);
+    controller = module.get<ParkController>(ParkController);
   });
 
   it('should be defined', () => {

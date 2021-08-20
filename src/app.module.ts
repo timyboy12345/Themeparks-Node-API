@@ -9,7 +9,6 @@ import { ErrorService } from './_services/error/error.service';
 import { AttractionsIoThemeParkService } from './_services/attractions-io-theme-park/attractions-io-theme-park.service';
 import { TransferService } from './_services/transfer/transfer.service';
 import { CompanyService } from './_services/company/company.service';
-import { CacheService } from './_services/cache/cache.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { WaitTimeScheduleService } from './schedules/waittimes/wait-time-schedule.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -53,7 +52,7 @@ import { DatabaseModule } from './database/database.module';
     DatabaseModule
   ],
   controllers: [AppController],
-  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AttractionsIoThemeParkService, TransferService, CompanyService, CacheService, WaitTimeScheduleService, LegolandDeutschlandService],
+  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AttractionsIoThemeParkService, TransferService, CompanyService, WaitTimeScheduleService, LegolandDeutschlandService],
 })
 export class AppModule {
 }
