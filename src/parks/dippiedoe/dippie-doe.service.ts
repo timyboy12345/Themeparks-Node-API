@@ -52,9 +52,9 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
         area: ride.area,
         minAge: ride.minAge,
         maxAge: ride.maxAge,
-        minSize: ride.minLength,
+        minSize: ride.minLengthAlone || ride.minLength,
         maxSize: ride.maxLength,
-        minSizeEscort: ride.minLengthAlone,
+        minSizeWithEscort: ride.minLength,
         location: {
           lat: ride.lat,
           lng: ride.lng,

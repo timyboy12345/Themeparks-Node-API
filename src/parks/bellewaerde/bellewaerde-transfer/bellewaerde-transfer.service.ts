@@ -57,7 +57,7 @@ export class BellewaerdeTransferService extends TransferService {
     ride.image_url = "https://www.bellewaerde.be" + poi.imgUrl;
 
     ride.minSize = poi.heightAlone;
-    ride.minSizeEscort = poi.heightAdult;
+    ride.minSizeWithEscort = poi.heightAdult;
 
     return ride;
   }

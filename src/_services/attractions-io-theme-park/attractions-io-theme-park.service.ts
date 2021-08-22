@@ -118,7 +118,7 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
         category: category,
         original: item,
         minSize: item.MinimumHeightRequirement ? item.MinimumHeightRequirement * 100 : undefined,
-        minSizeEscort: item.MinimumUnaccompaniedHeightRequirement ? item.MinimumUnaccompaniedHeightRequirement : undefined,
+        minSizeWithEscort: item.MinimumUnaccompaniedHeightRequirement ? item.MinimumUnaccompaniedHeightRequirement : undefined,
         maxSize: item.MaximumHeightRequirement ? item.MaximumHeightRequirement * 100 : undefined,
         minAge: item.MinimumAgeRequirement ?? undefined,
         maxAge: item.MaximumAgeRequirement ?? undefined,

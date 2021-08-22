@@ -50,7 +50,7 @@ export class PlopsalandDePanneTransferService extends TransferService {
     }
 
     if (poi.minHeightSupervised) {
-      p.minSizeEscort = parseInt(poi.minHeightSupervised);
+      p.minSizeWithEscort = parseInt(poi.minHeightSupervised);
     }
 
     if (poi.maxHeight) {

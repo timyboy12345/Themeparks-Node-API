@@ -119,9 +119,9 @@ export class EftelingTransferService extends TransferService {
           if (property.includes('undersupervision')) {
             // If a dash is included, there is a minimum length, otherwise supervision is needed from 0-x
             if (property.includes('-')) {
-              poi.minSizeEscort = parseInt(property.split('undersupervision')[0].split('-')[1]);
+              poi.minSizeWithEscort = parseInt(property.split('undersupervision')[0].split('-')[1]);
             } else {
-              poi.minSizeEscort = parseInt(property.split('undersupervision')[0]);
+              poi.minSizeWithEscort = parseInt(property.split('undersupervision')[0]);
             }
           }
         });

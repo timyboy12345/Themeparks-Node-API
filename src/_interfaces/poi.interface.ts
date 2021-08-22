@@ -46,7 +46,7 @@ export interface Poi {
   /**
    * The length that riders with parents are allowed to ride (in cm)
    */
-  minSizeEscort?: number;
+  minSizeWithEscort?: number;
   tags?: string[];
   image_url?: string;
   website_url?: string;
