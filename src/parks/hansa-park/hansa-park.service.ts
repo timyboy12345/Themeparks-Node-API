@@ -19,8 +19,8 @@ export class HansaParkService extends ThroughPoisThemeParkService {
   getInfo(): ThemePark {
     return {
       name: 'Hansa Park',
-      image: '',
-      description: '',
+      description: 'Hansa-Park is een attractiepark, gelegen bij Sierksdorf in de Duitse deelstaat Sleeswijk-Holstein. Het park werd geopend op 15 mei 1977 onder de naam "Hansaland". In 1987 werd het park omgedoopt tot Hansa-Park. Van 1973 tot 1976 was op dezelfde locatie het eerste Duitse Legoland.',
+      image: 'https://www.looopings.nl/img/foto/21/0425wowhans.jpg',
       countryCode: 'de',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Berlin',
