@@ -7,12 +7,11 @@ on:
       - main
       - v*
       - test
+      - dev
   pull_request:
     branches:
       - master
-      - test
       - main
-      - v*
 
 jobs:
   build:

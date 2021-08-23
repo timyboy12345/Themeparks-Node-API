@@ -1,0 +1,55 @@
+on:
+  push:
+    branches:
+      - master
+      - main
+      - feature/hansa-park
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 10.x, 12.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Copy .env file from secrets
+        run: ${{ secrets.PRODUCTION_ENV_FILE }} >> .env
+      - run: npm ci
+      - run: npm test
+  deploy:
+    needs:
+      - test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Copy .env file from secrets
+        run: ${{ secrets.PRODUCTION_ENV_FILE }} >> .env
+      - name: Install NPM packages
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Publish files
+        run: scp -r dist/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/tp.arendz.nl/dist
+      - name: Restart Themeparks App
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            pm2 reload 2
+
