@@ -22,8 +22,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Copy .env file from secrets
-        run: echo "${{ secrets.PRODUCTION_ENV_FILE }}" >> ./.env
+      - name: Copy .env file
+        run: 'echo "$ENV_FILE" > ./.env'
+        shell: bash
+        env:
+          ENV_FILE: ${{ secrets.PRODUCTION_ENV_FILE }}
       - run: npm ci
       - run: npm test
   deploy:
@@ -35,8 +38,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Copy .env file from secrets
-        run: echo "${{ secrets.PRODUCTION_ENV_FILE }}" >> .env
+      - name: Copy .env file
+        run: 'echo "$ENV_FILE" > ./.env'
+        shell: bash
+        env:
+          ENV_FILE: ${{ secrets.PRODUCTION_ENV_FILE }}
       - name: Install NPM packages
         run: npm ci
       - name: Build
@@ -44,7 +50,7 @@ jobs:
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Add Server To Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Publish files
