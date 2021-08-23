@@ -44,7 +44,7 @@ export class BellewaerdeService extends ThemeParkService {
       supportsShopOpeningTimes: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimesHistory: true,
       supportsAnimals: true,
     };
   }

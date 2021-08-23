@@ -120,22 +120,22 @@ export class ToverlandTransferService extends TransferService {
       switch (poi.supervision) {
         case "6":
           r.minSize = undefined;
-          r.minSizeEscort = 120;
+          r.minSizeWithEscort = 120;
           break;
         case "30":
           r.minSize = undefined;
-          r.minSizeEscort = 100;
+          r.minSizeWithEscort = 100;
           break;
         case "32":
-          r.minSizeEscort = 120;
+          r.minSizeWithEscort = 120;
           r.minSize = 100;
           break;
         case "33":
-          r.minSizeEscort = 110;
+          r.minSizeWithEscort = 110;
           r.minSize = 90;
           break;
         case "34":
-          r.minSizeEscort = 120;
+          r.minSizeWithEscort = 120;
           r.minSize = 90;
           break;
         default:

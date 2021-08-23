@@ -21,7 +21,7 @@ export class WaitTimeScheduleService {
         for (let i = 0; i < parks.length; i++) {
           const park = parks[i];
 
-          if (park.getSupports().supportsRideWaitTimes) {
+          if (park.getSupports().supportsRideWaitTimesHistory) {
             this.logger.debug(` - ${park.getInfo().name} supports wait times`);
 
             let date;

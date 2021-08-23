@@ -1,19 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PhantasialandService } from './phantasialand.service';
-import { PhantasialandTransferService } from './phantasialand-transfer/phantasialand-transfer.service';
+import { HansaParkService } from './hansa-park.service';
+import { HansaParkTransferService } from './hansa-park-transfer/hansa-park-transfer.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-describe('PhantasialandService', () => {
-  let service: PhantasialandService;
+describe('HansaParkService', () => {
+  let service: HansaParkService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      providers: [HansaParkService, HansaParkTransferService],
       imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [PhantasialandService, PhantasialandTransferService],
     }).compile();
 
-    service = module.get<PhantasialandService>(PhantasialandService);
+    service = module.get<HansaParkService>(HansaParkService);
   });
 
   it('should be defined', () => {

@@ -4,10 +4,11 @@ import { ThemePark } from '../../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../../../_interfaces/poi.interface';
-import { AxiosError } from 'axios';
+import { AxiosBasicCredentials, AxiosError } from 'axios';
 import { SixflagsMapResponseInterface } from '../../interfaces/sixflags-map-response.interface';
 import { SixflagsTransferService } from '../../sixflags-transfer/sixflags-transfer.service';
 import { PoiCategory } from '../../../../_interfaces/poi-categories.enum';
+import { SixflagsTokenResponseInterface } from '../../interfaces/sixflags-token-response.interface';
 
 @Injectable()
 export class SixFlagsGeneralParkService extends ThemeParkService {
@@ -85,14 +86,42 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
   private async request<T>(url: string): Promise<T> {
     const fullUrl = this.configService.get('SIXFLAGS_API_URL') + '/' + url;
 
+    const token = await this.getToken();
     const headers = {
-      Authorization: `Bearer ${this._sixflagsApiToken}`,
+      Authorization: `Bearer ${token}`,
     };
 
     return this.httpService.get<T>(fullUrl, { headers: headers })
       .toPromise()
       .then(value => {
         return value.data;
+      })
+      .catch((reason: AxiosError) => {
+        console.log(reason.response.data);
+        console.log(reason.request.headers);
+        return null;
+      });
+  }
+
+  private async getToken(): Promise<string> {
+    const fullUrl = this.configService.get('SIXFLAGS_AUTH_URL');
+
+    const headers = {
+      Authorization: `Bearer ${this._sixflagsApiToken}`,
+    };
+
+    const auth: AxiosBasicCredentials = {
+      username: this.configService.get('SIXFLAGS_AUTH_USERNAME'),
+      password: this.configService.get('SIXFLAGS_AUTH_PASSWORD'),
+    };
+
+    const body = 'grant_type=client_credentials&scope=mobileApp';
+
+    return this.httpService
+      .post<SixflagsTokenResponseInterface>(fullUrl, body, { headers: headers, auth: auth })
+      .toPromise()
+      .then(value => {
+        return value.data.access_token;
       })
       .catch((reason: AxiosError) => {
         console.log(reason.response.data);

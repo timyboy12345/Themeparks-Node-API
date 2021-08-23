@@ -26,7 +26,7 @@ export class PortaventuraService extends ThemeParkService {
       description: 'PortAventura World is een Spaans resort met een oppervlakte van 119 hectare gelegen in Salou en Vila-seca bestaand uit onder andere diverse hotels, twee attractieparken, een waterpark, een congrescentrum en een RV park.',
       countryCode: 'es',
       image: 'https://nl.letsgodigital.org/uploads/2017/11/pretpark-portaventura-salou.jpg',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -45,7 +45,8 @@ export class PortaventuraService extends ThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
- supportsAnimals: true    };
+      supportsAnimals: true,
+    };
   }
 
   async getPois(): Promise<Poi[]> {

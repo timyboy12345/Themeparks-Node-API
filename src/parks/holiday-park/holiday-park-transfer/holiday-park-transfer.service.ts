@@ -41,7 +41,7 @@ export class HolidayParkTransferService extends TransferService {
       original: holidayParkAttraction,
       minSize: parseInt(holidayParkAttraction.minHeight),
       maxSize: parseInt(holidayParkAttraction.maxHeight),
-      minSizeEscort: parseInt(holidayParkAttraction.minHeightSupervised),
+      minSizeWithEscort: parseInt(holidayParkAttraction.minHeightSupervised),
     };
 
     if (poi.category === PoiCategory.ATTRACTION) {

@@ -7,18 +7,19 @@ on:
       - main
       - v*
       - test
+      - dev
+      - feature/**
   pull_request:
     branches:
       - master
-      - test
       - main
-      - v*
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         node-version: [ 10.x, 12.x ]
 
@@ -34,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         node-version: [ 10.x, 12.x ]
 
@@ -43,7 +45,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Move .env file
-        run: cp .env.test .env
+      - name: Copy .env file
+        run: 'echo "$ENV_FILE" > ./.env'
+        shell: bash
+        env:
+          ENV_FILE: ${{ secrets.PRODUCTION_ENV_FILE }}
       - run: npm ci
       - run: npm test
