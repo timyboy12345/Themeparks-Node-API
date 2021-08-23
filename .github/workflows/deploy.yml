@@ -1,3 +1,5 @@
+name: Deploy
+
 on:
   push:
     branches:
@@ -21,7 +23,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Copy .env file from secrets
-        run: ${{ secrets.PRODUCTION_ENV_FILE }} >> .env
+        run: echo ${{ secrets.PRODUCTION_ENV_FILE }} >> ./.env
       - run: npm ci
       - run: npm test
   deploy:
@@ -34,11 +36,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Copy .env file from secrets
-        run: ${{ secrets.PRODUCTION_ENV_FILE }} >> .env
+        run: echo ${{ secrets.PRODUCTION_ENV_FILE }} >> .env
       - name: Install NPM packages
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Add Server To Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Publish files
         run: scp -r dist/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/tp.arendz.nl/dist
       - name: Restart Themeparks App
