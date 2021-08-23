@@ -32,7 +32,7 @@ export class ToverlandService extends ThemeParkService {
       image: 'https://i.ytimg.com/vi/WeUzyKUqR4I/maxresdefault.jpg',
       countryCode: 'nl',
       parkType: ParkType.THEMEPARK,
-      timezone: 'Europe/Amsterdam'
+      timezone: 'Europe/Amsterdam',
     };
   }
 
@@ -51,7 +51,8 @@ export class ToverlandService extends ThemeParkService {
       supportsRideWaitTimesHistory: true,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
- supportsAnimals: true    };
+      supportsAnimals: true,
+    };
   }
 
   async getRides(): Promise<Poi[]> {
@@ -85,7 +86,7 @@ export class ToverlandService extends ThemeParkService {
       .catch(e => {
         Sentry.captureException(e);
         throw new HttpException('Failed to fetch shows: ' + e.toString(), 500);
-      })
+      });
   }
 
   private async request<T>(url: string) {

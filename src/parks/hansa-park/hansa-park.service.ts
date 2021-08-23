@@ -1,4 +1,4 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
@@ -6,6 +6,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { HansaParkTransferService } from './hansa-park-transfer/hansa-park-transfer.service';
 import { HansaParkDataResponseInterface } from './interfaces/hansa-park-data-response.interface';
 import { ConfigService } from '@nestjs/config';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class HansaParkService extends ThroughPoisThemeParkService {
@@ -61,15 +62,14 @@ export class HansaParkService extends ThroughPoisThemeParkService {
 
     const url = `${baseUrl}/attractions/?locale=${locale}&orderBy=${order}&orderDir=ASC&key=${key}`;
 
-    return new Promise((resolve, reject) => {
-      return this.httpService.get<HansaParkDataResponseInterface>(url)
-        .toPromise()
-        .then(value => {
-          resolve(value.data);
-        })
-        .catch(reason => {
-          reject(reason);
-        });
-    });
+    return this.httpService.get<HansaParkDataResponseInterface>(url)
+      .toPromise()
+      .then(value => {
+        return value.data;
+      })
+      .catch(e => {
+        Sentry.captureException(e);
+        throw new InternalServerErrorException(e);
+      });
   }
 }
