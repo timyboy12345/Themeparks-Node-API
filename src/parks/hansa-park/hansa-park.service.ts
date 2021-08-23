@@ -56,7 +56,7 @@ export class HansaParkService extends ThroughPoisThemeParkService {
   async getData(): Promise<HansaParkDataResponseInterface> {
     const locale = 'en';
     const order = 'name';
-    const key = 'ef1feceffbb0284b3e2cc353dc5ad483';
+    const key = this.configService.get('HANSA_PARK_API_KEY');
     const baseUrl = this.configService.get('HANSA_PARK_API_URL');
 
     const url = `${baseUrl}/attractions/?locale=${locale}&orderBy=${order}&orderDir=ASC&key=${key}`;
