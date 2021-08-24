@@ -51,7 +51,7 @@ export class DisneylandParisTransferService extends TransferService {
       title: disneylandParisPoi.name,
       website_url: disneylandParisPoi.url,
       fastpass: disneylandParisPoi.fastPass,
-      singlerider: disneylandParisPoi.singleRider,
+      singleRider: disneylandParisPoi.singleRider,
       original: disneylandParisPoi,
       original_category: disneylandParisPoi.entityType,
     };
