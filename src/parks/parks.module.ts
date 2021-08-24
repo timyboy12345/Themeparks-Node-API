@@ -16,9 +16,11 @@ import { BobbejaanlandModule } from './bobbejaanland/bobbejaanland.module';
 import { PlopsalandDePanneModule } from './plopsaland/plopsaland-de-panne/plopsaland-de-panne.module';
 import { EuropaParkModule } from './europa-park/europa-park.module';
 import { HansaParkModule } from './hansa-park/hansa-park.module';
+import { OuwehandsDierenparkModule } from './ouwehands-dierenpark/ouwehands-dierenpark.module';
+import { WildlandsModule } from './wildlands/wildlands.module';
 
 @Module({
-  imports: [HttpModule, EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule],
-  exports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule]
+  imports: [HttpModule, EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule],
+  exports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule]
 })
 export class ParksModule {}

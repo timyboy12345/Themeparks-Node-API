@@ -22,6 +22,8 @@ import * as Sentry from '@sentry/node';
 import { BobbejaanlandService } from '../../parks/bobbejaanland/bobbejaanland.service';
 import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-panne/plopsaland-de-panne.service';
 import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
+import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouwehands-dierenpark.service';
+import { WildlandsService } from '../../parks/wildlands/wildlands.service';
 
 @Injectable()
 export class ParksService {
@@ -45,8 +47,10 @@ export class ParksService {
               private readonly _legolandDeutschlandService: LegolandDeutschlandService,
               private readonly _sixflagsService: SixflagsService,
               private readonly _bobbejaanlandService: BobbejaanlandService,
-              private readonly _plopsalandeDePanneService: PlopsalandDePanneService,
-              private readonly _hansaParkService: HansaParkService) {
+              private readonly _plopsalandDePanneService: PlopsalandDePanneService,
+              private readonly _hansaParkService: HansaParkService,
+              private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
+              private readonly _wildlandsService: WildlandsService) {
     this._parks = [];
     this._parks.push(_eftelingService);
     this._parks.push(_toverlandService);
@@ -64,8 +68,10 @@ export class ParksService {
     this._parks.push(_hellendoornService);
     this._parks.push(_legolandDeutschlandService);
     this._parks.push(_bobbejaanlandService);
-    this._parks.push(_plopsalandeDePanneService);
+    this._parks.push(_plopsalandDePanneService);
     this._parks.push(_hansaParkService);
+    this._parks.push(_ouwehandsDierenparkService);
+    this._parks.push(_wildlandsService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
