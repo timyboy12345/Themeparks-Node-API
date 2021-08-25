@@ -36,10 +36,12 @@ export class DisneylandParisTransferService extends TransferService {
       case 'events':
         c = PoiCategory.EVENT;
         break;
+      case 'resorts':
+        c = PoiCategory.HOTEL;
+        break;
       case 'recreation':
       case 'spa':
       case 'sponsor':
-      case 'resort':
       default:
         c = PoiCategory.UNDEFINED;
         break;

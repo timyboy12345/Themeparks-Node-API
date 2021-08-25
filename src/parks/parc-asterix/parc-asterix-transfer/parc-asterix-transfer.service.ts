@@ -5,7 +5,7 @@ import { RideCategory } from '../../../_interfaces/ride-category.interface';
 import { TransferService } from '../../../_services/transfer/transfer.service';
 import {
   ParcAsterixAttractionsExperienceEnum,
-  ParcAsterixResponseAttractionInterface,
+  ParcAsterixResponseAttractionInterface, ParcAsterixResponseHotelInterface,
   ParcAsterixResponseRestaurantInterface,
   ParcAsterixResponseShowInterface,
 } from '../interfaces/parc-asterix-response.interface';
@@ -17,8 +17,8 @@ export class ParcAsterixTransferService extends TransferService {
     super();
   }
 
-  transferPoiToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface | ParcAsterixResponseShowInterface | ParcAsterixResponseRestaurantInterface): Poi {
-    const baseUrl = this.configService.get('PARC_ASTERIX_API_URL');
+  transferPoiToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface | ParcAsterixResponseShowInterface | ParcAsterixResponseRestaurantInterface | ParcAsterixResponseHotelInterface): Poi {
+    const baseImageUrl = this.configService.get('PARC_ASTERIX_IMAGE_URL');
 
     const p: Poi = {
       id: parcAsterixPoi.id,
@@ -36,35 +36,20 @@ export class ParcAsterixTransferService extends TransferService {
     // }
 
     if (parcAsterixPoi.sliders) {
-      p.images = parcAsterixPoi.sliders.map(slider => `${baseUrl}${slider.picture}`);
+      p.images = parcAsterixPoi.sliders.map(slider => `${baseImageUrl}/${slider.picture}`);
+
+      if (p.images && p.images.length > 0) {
+        p.image_url = p.images[0];
+      }
     }
 
     return p;
   }
 
   public transferRideToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface): Poi {
-    let rideCategory: RideCategory = RideCategory.UNDEFINED;
-
-    if (parcAsterixPoi.experience) {
-      switch (parcAsterixPoi.experience.id) {
-        case ParcAsterixAttractionsExperienceEnum.Petits_Gaulois:
-          rideCategory = RideCategory.KIDS;
-          break;
-        case ParcAsterixAttractionsExperienceEnum.Pour_toute_la_famille:
-          rideCategory = RideCategory.FAMILY;
-          break;
-        case ParcAsterixAttractionsExperienceEnum.Sensations_fortes:
-          rideCategory = RideCategory.THRILL;
-          break;
-        default:
-          break;
-      }
-    }
-
     const poi = this.transferPoiToPoi(parcAsterixPoi);
 
     poi.category = PoiCategory.ATTRACTION;
-    poi.rideCategory = rideCategory;
     poi.featured = parcAsterixPoi.isBest;
     poi.photoPoint = parcAsterixPoi.hasPicturePoint;
 
@@ -75,22 +60,49 @@ export class ParcAsterixTransferService extends TransferService {
       };
     }
 
+    if (parcAsterixPoi.experience) {
+      switch (parcAsterixPoi.experience.id) {
+        case ParcAsterixAttractionsExperienceEnum.Petits_Gaulois:
+          poi.rideCategory = RideCategory.KIDS;
+          break;
+        case ParcAsterixAttractionsExperienceEnum.Pour_toute_la_famille:
+          poi.rideCategory = RideCategory.FAMILY;
+          break;
+        case ParcAsterixAttractionsExperienceEnum.Sensations_fortes:
+          poi.rideCategory = RideCategory.THRILL;
+          break;
+        default:
+          break;
+      }
+    }
+
+    const minLengthLabel = parcAsterixPoi.features.find(f => f.label === 'Taille Minimum');
+    const minNotAccompaniedLengthLabel = parcAsterixPoi.features.find(f => f.label === 'Taille Minimale Non Accompagné');
+
+    if (minLengthLabel) {
+      poi.minSizeWithEscort = parseInt(minLengthLabel.value);
+    }
+
+    if (minNotAccompaniedLengthLabel) {
+      poi.minSize = parseInt(minNotAccompaniedLengthLabel.value);
+    }
+
     return poi;
   }
 
-  transferShowToPoi(show: any): Poi {
+  transferShowToPoi(show: ParcAsterixResponseShowInterface): Poi {
     const p = this.transferPoiToPoi(show);
     p.category = PoiCategory.SHOW;
     return p;
   }
 
-  transferRestaurantToPoi(restaurant: any): Poi {
+  transferRestaurantToPoi(restaurant: ParcAsterixResponseRestaurantInterface): Poi {
     const p = this.transferPoiToPoi(restaurant);
     p.category = PoiCategory.RESTAURANT;
     return p;
   }
 
-  transferHotelToPoi(hotel: any): Poi {
+  transferHotelToPoi(hotel: ParcAsterixResponseHotelInterface): Poi {
     const p = this.transferPoiToPoi(hotel);
     p.category = PoiCategory.HOTEL;
     return p;

@@ -57,9 +57,9 @@ export interface ParcAsterixResponseAttractionInterface {
 }
 
 export enum ParcAsterixAttractionsExperienceEnum {
-  'Pour_toute_la_famille' = 1,
-  'Sensations_fortes' = 7,
-  'Petits_Gaulois' = 10
+  'Pour_toute_la_famille' = '1',
+  'Sensations_fortes' = '7',
+  'Petits_Gaulois' = '10'
 }
 
 export interface ParcAsterixResponseRestaurantInterface {
@@ -155,6 +155,7 @@ export interface ParcAsterixResponseHotelInterface {"id": "7",
 export interface ParcAsterixResponseFeatureInterface {
   'icon': string,
   'text': string,
+  'label'?: string,
   'shortText': string,
   'value': string,
   'color'?: string | ParcAsterixResponseColorEnum,
