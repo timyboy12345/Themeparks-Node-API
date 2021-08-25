@@ -109,6 +109,7 @@ export class HolidayParkService extends ThemeParkService {
       })
       .catch(reason => {
         Sentry.captureException(reason);
+        console.log(reason);
         throw new InternalServerErrorException();
       });
   }

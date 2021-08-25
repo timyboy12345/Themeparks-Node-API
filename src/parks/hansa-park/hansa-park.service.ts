@@ -69,6 +69,7 @@ export class HansaParkService extends ThroughPoisThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new InternalServerErrorException(e);
       });
   }

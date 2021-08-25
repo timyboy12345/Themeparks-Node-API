@@ -69,6 +69,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       })
       .catch(reason => {
         Sentry.captureException(reason);
+        console.log(reason);
         throw new InternalServerErrorException();
       });
   }

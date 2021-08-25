@@ -113,6 +113,7 @@ export class WildlandsService extends ThemeParkService{
       })
       .catch(reason => {
         Sentry.captureException(reason);
+        console.log(reason);
         throw new InternalServerErrorException(reason);
       });
   }

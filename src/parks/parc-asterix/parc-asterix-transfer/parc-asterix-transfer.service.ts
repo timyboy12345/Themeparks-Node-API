@@ -79,10 +79,20 @@ export class ParcAsterixTransferService extends TransferService {
   }
 
   transferShowToPoi(show: any): Poi {
-    return this.transferPoiToPoi(show);
+    const p = this.transferPoiToPoi(show);
+    p.category = PoiCategory.SHOW;
+    return p;
   }
 
   transferRestaurantToPoi(restaurant: any): Poi {
-    return this.transferPoiToPoi(restaurant);
+    const p = this.transferPoiToPoi(restaurant);
+    p.category = PoiCategory.RESTAURANT;
+    return p;
+  }
+
+  transferHotelToPoi(hotel: any): Poi {
+    const p = this.transferPoiToPoi(hotel);
+    p.category = PoiCategory.HOTEL;
+    return p;
   }
 }

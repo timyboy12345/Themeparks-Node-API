@@ -117,6 +117,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new InternalServerErrorException(e);
       });
   }
@@ -130,6 +131,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new InternalServerErrorException(e);
       });
   }
@@ -146,6 +148,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new InternalServerErrorException(e);
       });
   }
