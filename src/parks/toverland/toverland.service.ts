@@ -62,6 +62,7 @@ export class ToverlandService extends ThemeParkService {
       })
       .catch((reason) => {
         Sentry.captureException(reason);
+        console.log(reason);
         throw new HttpException('Failed to fetch rides: ' + reason.toString(), 500);
       });
   }
@@ -74,6 +75,7 @@ export class ToverlandService extends ThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new HttpException('Failed to fetch restaurants: ' + e.toString(), 500);
       });
   }
@@ -85,6 +87,7 @@ export class ToverlandService extends ThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new HttpException('Failed to fetch shows: ' + e.toString(), 500);
       });
   }
@@ -107,6 +110,7 @@ export class ToverlandService extends ThemeParkService {
       })
       .catch(reason => {
         Sentry.captureException(reason);
+        console.log(reason);
         throw new InternalServerErrorException();
       });
   }

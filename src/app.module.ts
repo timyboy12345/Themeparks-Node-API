@@ -49,7 +49,7 @@ import { DatabaseModule } from './database/database.module';
     WaitTimeModule,
     ParksModule,
     ControllersModule,
-    DatabaseModule
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AttractionsIoThemeParkService, TransferService, CompanyService, WaitTimeScheduleService, LegolandDeutschlandService],

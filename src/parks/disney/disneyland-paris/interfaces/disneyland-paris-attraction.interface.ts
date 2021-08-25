@@ -1,6 +1,6 @@
 export interface DisneylandParisAttraction {
   'id': string,
-  'contentType': string,
+  'contentType': DisneyLandParisContentTypeEnum,
   'entityType': string,
   'contentId': string,
   'url': string,
@@ -161,4 +161,19 @@ export interface DisneylandParisAttraction {
     }
   ],
   'physicalConsiderations': []
+}
+
+export enum DisneyLandParisContentTypeEnum {
+  Shop = 'Shop',
+  Attraction = 'Attraction',
+  Entertainment = 'Entertainment',
+  Recreation = 'Recreation',
+  Restaurant = 'Restaurant',
+  Resort = 'Resort',
+  Tour = 'Tour',
+  GuestService = 'GuestService',
+  Event = 'Event',
+  DinnerShow = 'DinnerShow',
+  Spa = 'Spa',
+  DiningEvent = 'DiningEvent',
 }

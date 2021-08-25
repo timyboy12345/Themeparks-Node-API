@@ -1,19 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { HansaParkService } from './hansa-park.service';
-import { HansaParkTransferService } from './hansa-park-transfer/hansa-park-transfer.service';
+import { WildlandsService } from './wildlands.service';
+import { WildlandsTransferService } from './wildlands-transfer/wildlands-transfer.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-describe('HansaParkService', () => {
-  let service: HansaParkService;
+describe('WildlandsService', () => {
+  let service: WildlandsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [HansaParkService, HansaParkTransferService],
       imports: [HttpModule, ConfigModule.forRoot()],
+      providers: [WildlandsService, WildlandsTransferService],
     }).compile();
 
-    service = module.get<HansaParkService>(HansaParkService);
+    service = module.get<WildlandsService>(WildlandsService);
   });
 
   it('should be defined', () => {
@@ -27,5 +27,5 @@ describe('HansaParkService', () => {
   it('should return a list of POIs', async () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
-  }, 1000 * 60);
+  });
 });

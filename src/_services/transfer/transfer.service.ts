@@ -45,6 +45,14 @@ export class TransferService {
     return shops.map(shops => this.transferShopToPoi(shops));
   }
 
+  public transferHotelToPoi(hotel: any): Poi {
+    throw new NotImplementedException("Could not transfer hotel to POI");
+  }
+
+  public transferHotelsToPois(hotels: any): Poi[] {
+    return hotels.map(hotel => this.transferHotelsToPois(hotel));
+  }
+
   public transferShowTimesToShowTimes(showTimes: any): ShowTimes {
     throw new NotImplementedException("Could not transfer show time to POI show time");
   }

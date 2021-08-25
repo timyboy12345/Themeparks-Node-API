@@ -1,78 +1,110 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
-import { ParcAsterixAttraction } from '../interfaces/parc-asterix-attraction.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
-import { ParcAsterixRestaurant } from '../interfaces/parc-asterix-restaurant.interface';
-import { ParcAsterixShow } from '../interfaces/parc-asterix-show.interface';
 import { TransferService } from '../../../_services/transfer/transfer.service';
+import {
+  ParcAsterixAttractionsExperienceEnum,
+  ParcAsterixResponseAttractionInterface, ParcAsterixResponseHotelInterface,
+  ParcAsterixResponseRestaurantInterface,
+  ParcAsterixResponseShowInterface,
+} from '../interfaces/parc-asterix-response.interface';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ParcAsterixTransferService extends TransferService {
-  public transferRideToPoi(parcAsterixPoi: ParcAsterixAttraction): Poi {
-    let rideCategory: RideCategory;
+  constructor(private readonly configService: ConfigService) {
+    super();
+  }
 
-    switch (parcAsterixPoi.experience) {
-      case 'Thrillseekers':
-        rideCategory = RideCategory.THRILL;
-        break;
-      case 'Fun for all the family':
-        rideCategory = RideCategory.FAMILY;
-        break;
-      case 'Young Gauls':
-        rideCategory = RideCategory.KIDS;
-        break;
-      default:
-        rideCategory = RideCategory.UNDEFINED;
-        break;
+  transferPoiToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface | ParcAsterixResponseShowInterface | ParcAsterixResponseRestaurantInterface | ParcAsterixResponseHotelInterface): Poi {
+    const baseImageUrl = this.configService.get('PARC_ASTERIX_IMAGE_URL');
+
+    const p: Poi = {
+      id: parcAsterixPoi.id,
+      title: parcAsterixPoi.title,
+      subTitle: parcAsterixPoi.summary,
+      description: parcAsterixPoi.description,
+      category: PoiCategory.UNDEFINED,
+      original: parcAsterixPoi,
+    };
+
+    // if (parcAsterixPoi.headerV2) {
+    //   p.image_url =
+    // } else if (parcAsterixPoi.headerV1) {
+    //
+    // }
+
+    if (parcAsterixPoi.sliders) {
+      p.images = parcAsterixPoi.sliders.map(slider => `${baseImageUrl}/${slider.picture}`);
+
+      if (p.images && p.images.length > 0) {
+        p.image_url = p.images[0];
+      }
     }
 
-    return {
-      id: parcAsterixPoi.code + '',
-      title: parcAsterixPoi.title,
-      subTitle: parcAsterixPoi.summary,
-      description: parcAsterixPoi.description,
-      category: PoiCategory.ATTRACTION,
-      original: parcAsterixPoi,
-      images: parcAsterixPoi.slider_images,
-      image_url: parcAsterixPoi.slider_images.length > 0 ? parcAsterixPoi.slider_images[0] : parcAsterixPoi.thumbnail,
-      location: {
-        lat: parseFloat(parcAsterixPoi.latitude),
-        lng: parseFloat(parcAsterixPoi.longitude),
-      },
-      rideCategory: rideCategory,
-      fastpass: parcAsterixPoi.coupe_file,
-      featured: parcAsterixPoi.best,
-    };
+    return p;
   }
 
-  public transferRestaurantToPoi(parcAsterixPoi: ParcAsterixRestaurant): Poi {
-    return {
-      id: parcAsterixPoi.code + '',
-      title: parcAsterixPoi.title,
-      subTitle: parcAsterixPoi.summary,
-      description: parcAsterixPoi.description,
-      category: PoiCategory.RESTAURANT,
-      original: parcAsterixPoi,
-      location: {
-        lat: parseFloat(parcAsterixPoi.latitude),
-        lng: parseFloat(parcAsterixPoi.longitude),
-      },
-    };
+  public transferRideToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface): Poi {
+    const poi = this.transferPoiToPoi(parcAsterixPoi);
+
+    poi.category = PoiCategory.ATTRACTION;
+    poi.featured = parcAsterixPoi.isBest;
+    poi.photoPoint = parcAsterixPoi.hasPicturePoint;
+
+    if (parcAsterixPoi.latitude && parcAsterixPoi.longitude) {
+      poi.location = {
+        lat: parcAsterixPoi.latitude,
+        lng: parcAsterixPoi.longitude,
+      };
+    }
+
+    if (parcAsterixPoi.experience) {
+      switch (parcAsterixPoi.experience.id) {
+        case ParcAsterixAttractionsExperienceEnum.Petits_Gaulois:
+          poi.rideCategory = RideCategory.KIDS;
+          break;
+        case ParcAsterixAttractionsExperienceEnum.Pour_toute_la_famille:
+          poi.rideCategory = RideCategory.FAMILY;
+          break;
+        case ParcAsterixAttractionsExperienceEnum.Sensations_fortes:
+          poi.rideCategory = RideCategory.THRILL;
+          break;
+        default:
+          break;
+      }
+    }
+
+    const minLengthLabel = parcAsterixPoi.features.find(f => f.label === 'Taille Minimum');
+    const minNotAccompaniedLengthLabel = parcAsterixPoi.features.find(f => f.label === 'Taille Minimale Non Accompagné');
+
+    if (minLengthLabel) {
+      poi.minSizeWithEscort = parseInt(minLengthLabel.value);
+    }
+
+    if (minNotAccompaniedLengthLabel) {
+      poi.minSize = parseInt(minNotAccompaniedLengthLabel.value);
+    }
+
+    return poi;
   }
 
-  public transferShowToPoi(parcAsterixPoi: ParcAsterixShow): Poi {
-    return {
-      id: parcAsterixPoi.code + '',
-      title: parcAsterixPoi.title,
-      subTitle: parcAsterixPoi.summary,
-      description: parcAsterixPoi.description,
-      category: PoiCategory.SHOW,
-      original: parcAsterixPoi,
-      location: {
-        lat: parseFloat(parcAsterixPoi.latitude),
-        lng: parseFloat(parcAsterixPoi.longitude),
-      },
-    };
+  transferShowToPoi(show: ParcAsterixResponseShowInterface): Poi {
+    const p = this.transferPoiToPoi(show);
+    p.category = PoiCategory.SHOW;
+    return p;
+  }
+
+  transferRestaurantToPoi(restaurant: ParcAsterixResponseRestaurantInterface): Poi {
+    const p = this.transferPoiToPoi(restaurant);
+    p.category = PoiCategory.RESTAURANT;
+    return p;
+  }
+
+  transferHotelToPoi(hotel: ParcAsterixResponseHotelInterface): Poi {
+    const p = this.transferPoiToPoi(hotel);
+    p.category = PoiCategory.HOTEL;
+    return p;
   }
 }

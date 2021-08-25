@@ -31,6 +31,15 @@ In the table below you will find the parks that are currently supported and the 
 | 🇳🇱 Avonturenpark Hellendoorn | Yes | Yes | Yes | Yes |
 | 🇺🇸 All Sixflags parks | Yes | Yes | Yes | Yes |
 
+### Supported Zoos
+As an experiment, the API also includes some data from zoos. In the table below, you can find the zoos that are currently supported.
+
+| Zoo | Animal Support | Restaurants Support | Shows Support |
+| ------------- | ------------- | ------------- | ------------- |
+| 🇳🇱 Ouwehands Dierenpark | Yes | No | No |
+| 🇳🇱 Wildlands | Yes | No | No |
+
+
 ## Description
 
 This API was build using the [Nest](https://github.com/nestjs/nest) framework. Find the docs at the [NestJS Documentation](https://docs.nestjs.com/)
@@ -85,10 +94,6 @@ After the right files have been added, the park has to be added to the construct
 Some parks use a single API URL to return all data. For these parks, the `through-pois-theme-park.service.ts` file was created. This service can be usefull if a park returns data from for example `restaurants`, `rides` and `shows` in a single response. This way, you don't have to create all the methods by hand, but just implement the `getPois()` method. 
 
 Some parks use services provided by [themeparks.io](https://attractions.io). For these parks, a specific service was created called `themeparks-io-theme-park.service.ts`. This service can easily implement new themeparks.io parks by providing some basic information, since all data is returned in a standardized format.
-
-## License
-
-Nest is [MIT licensed](LICENSE).
 
 ## Formats
 The API returns parks, restaurants, rides and others points of interest (POIs) in a standardized way, these are detailed below. 

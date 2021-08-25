@@ -128,6 +128,7 @@ export class BellewaerdeService extends ThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new InternalServerErrorException(e);
       });
   }
@@ -141,6 +142,7 @@ export class BellewaerdeService extends ThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new InternalServerErrorException(e);
       });
   }
@@ -154,6 +156,7 @@ export class BellewaerdeService extends ThemeParkService {
       })
       .catch(e => {
         Sentry.captureException(e);
+        console.log(e);
         throw new InternalServerErrorException(e);
       });
   }
