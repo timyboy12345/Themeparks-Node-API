@@ -2,7 +2,8 @@ export interface ParcAsterixResponseInterface {
   'data': {
     'openAttractions': ParcAsterixResponseAttractionInterface[],
     'openShows': ParcAsterixResponseShowInterface[],
-    'restaurants': ParcAsterixResponseRestaurantInterface[]
+    'restaurants': ParcAsterixResponseRestaurantInterface[],
+    'hotels': ParcAsterixResponseHotelInterface[]
   },
   'extensions': {
     'lighthouse_subscriptions': {
@@ -125,6 +126,30 @@ export interface ParcAsterixResponseShowInterface {
   },
   "labels": string[],
   "__typename": "Show"
+}
+
+export interface ParcAsterixResponseHotelInterface {"id": "7",
+  "drupalId": string,
+  "title": string,
+  "slug": string,
+  "summary": string,
+  "description": string,
+  "latitude": number,
+  "longitude": number,
+  "features": ParcAsterixResponseFeatureInterface[],
+  "fromPriceAdult": null,
+  "fromPriceKid": null,
+  "priceAdult": null,
+  "priceKid": null,
+  "header": string,
+  "thumbnail": null,
+  "sliders": ParcAsterixResponseSliderInterface[],
+  "offers": null,
+  "order": number,
+  "stars": number,
+  "blocks": [],
+  "labels": [],
+  "__typename": "Hotel"
 }
 
 export interface ParcAsterixResponseFeatureInterface {

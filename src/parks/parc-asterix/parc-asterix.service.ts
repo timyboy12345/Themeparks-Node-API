@@ -70,6 +70,13 @@ export class ParcAsterixService extends ThemeParkService {
         this.parcAsterixTransferService.transferShowsToPois(showsResponse.data.data.openShows));
   }
 
+  async getHotels(): Promise<Poi[]> {
+    return this
+      .request<ParcAsterixResponseInterface>('?operationName=hotels&variables=%7B%22language%22%3A%22fr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2243b7bf45e8b05c64c76ba5285ec32d998d00c2d434cac37eb8f5f562b92156a4%22%7D%7D')
+      .then(hotelsResponse =>
+        this.parcAsterixTransferService.transferShowsToPois(hotelsResponse.data.data.openShows));
+  }
+
   async getPois(): Promise<Poi[]> {
     const promises = [
       this.getRides(),
