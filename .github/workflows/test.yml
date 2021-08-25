@@ -1,14 +1,6 @@
 name: Test Nest
 
 on:
-  push:
-    branches:
-      - master
-      - main
-      - v*
-      - test
-      - dev
-      - feature/**
   pull_request:
     branches:
       - master
