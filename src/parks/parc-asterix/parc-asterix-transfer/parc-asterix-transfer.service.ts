@@ -47,6 +47,7 @@ export class ParcAsterixTransferService extends TransferService {
   }
 
   public transferRideToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface): Poi {
+    const baseImageUrl = this.configService.get('PARC_ASTERIX_IMAGE_URL');
     const poi = this.transferPoiToPoi(parcAsterixPoi);
 
     poi.category = PoiCategory.ATTRACTION;
@@ -87,6 +88,14 @@ export class ParcAsterixTransferService extends TransferService {
       poi.minSize = parseInt(minNotAccompaniedLengthLabel.value);
     }
 
+    if (this.isAttraction(parcAsterixPoi)) {
+      const headerImage = parcAsterixPoi.headerV2 || parcAsterixPoi.headerV1;
+
+      if (headerImage) {
+        poi.image_url = `${baseImageUrl}/${headerImage}`
+      }
+    }
+
     return poi;
   }
 
@@ -105,6 +114,15 @@ export class ParcAsterixTransferService extends TransferService {
   transferHotelToPoi(hotel: ParcAsterixResponseHotelInterface): Poi {
     const p = this.transferPoiToPoi(hotel);
     p.category = PoiCategory.HOTEL;
+
     return p;
+  }
+
+  private isAttraction(poi: any): poi is ParcAsterixResponseAttractionInterface {
+    return poi.__typename === 'Attraction'
+  }
+
+  private isHotel(poi: any): poi is ParcAsterixResponseHotelInterface {
+    return poi.__typename === 'Hotel'
   }
 }
