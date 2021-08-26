@@ -25,7 +25,16 @@ describe('HansaParkService', () => {
   });
 
   it('should return a list of POIs', async () => {
-    const data = await service.getPois();
-    expect(data).toBeInstanceOf(Array);
+    let tries = [0, 1, 2, 3, 4, 5];
+
+    for (const t of tries) {
+      try {
+        const data = await service.getPois();
+        expect(data).toBeInstanceOf(Array);
+        break;
+      } catch (e) {
+        console.log(`Error while fetching Hansa Park times, trying again: ${t}`);
+      }
+    }
   }, 1000 * 60);
 });
