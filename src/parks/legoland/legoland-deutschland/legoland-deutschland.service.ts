@@ -14,7 +14,7 @@ export class LegolandDeutschlandService extends AttractionsIoThemeParkService {
       description: 'Legoland Duitsland (of: Legoland Deutschland) ligt in het Duitse plaatsje Günzburg in de deelstaat Beieren. De omvang van Legoland Duitsland en het grote attractie aanbod zorgen ervoor dat je na een dag zeker nog niet uitgekeken bent!',
       image: 'https://r-cf.bstatic.com/images/hotel/max1024x768/229/229051043.jpg',
       countryCode: 'de',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -33,7 +33,8 @@ export class LegolandDeutschlandService extends AttractionsIoThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
- supportsAnimals: true    };
+      supportsAnimals: false,
+    };
   }
 
   getInstallationRequestBody(): string {
@@ -51,7 +52,7 @@ export class LegolandDeutschlandService extends AttractionsIoThemeParkService {
       '\n' +
       '1.1.2\n' +
       '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc--\n' +
-      '\n'
+      '\n';
   }
 
   getApiKey(): string {

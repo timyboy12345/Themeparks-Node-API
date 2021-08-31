@@ -48,7 +48,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsShops: true,
       supportsShopOpeningTimes: true,
       supportsOpeningTimes: false,
-      supportsAnimals: true,
+      supportsAnimals: false,
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: true,
     };

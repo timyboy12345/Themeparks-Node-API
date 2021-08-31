@@ -25,7 +25,7 @@ export class SfOverTexasService extends ThemeParkService {
       name: 'Six Flags Over Texas',
       countryCode: 'us',
       image: '',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -44,7 +44,8 @@ export class SfOverTexasService extends ThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
- supportsAnimals: true    };
+      supportsAnimals: false,
+    };
   }
 
   async getPois(): Promise<Poi[]> {

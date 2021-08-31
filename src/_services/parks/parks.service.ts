@@ -10,7 +10,7 @@ import { DisneylandParisStudiosService } from '../../parks/disney/disneyland-par
 import { ParcAsterixService } from '../../parks/parc-asterix/parc-asterix.service';
 import { PortaventuraService } from '../../parks/portaventura/portaventura/portaventura.service';
 import { FerrariLandService } from '../../parks/portaventura/ferrariland/ferrariland.service';
-import { BellewaerdeService } from '../../parks/bellewaerde/bellewaerde.service';
+import { BellewaerdeService } from '../../parks/bellewaerde/bellewaerde/bellewaerde.service';
 import { DippieDoeService } from '../../parks/dippiedoe/dippie-doe.service';
 import { HolidayParkService } from '../../parks/holiday-park/holiday-park.service';
 import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service';
@@ -24,6 +24,7 @@ import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-p
 import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
 import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouwehands-dierenpark.service';
 import { WildlandsService } from '../../parks/wildlands/wildlands.service';
+import { BellewaerdeAquaparkService } from '../../parks/bellewaerde/bellewaerde-aquapark/bellewaerde-aquapark.service';
 
 @Injectable()
 export class ParksService {
@@ -41,6 +42,7 @@ export class ParksService {
               private readonly _portaVenturaService: PortaventuraService,
               private readonly _ferrariLandService: FerrariLandService,
               private readonly _bellewaerdeService: BellewaerdeService,
+              private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
               private readonly _dippieDoeService: DippieDoeService,
               private readonly _holidayParkService: HolidayParkService,
               private readonly _hellendoornService: HellendoornService,
@@ -63,6 +65,7 @@ export class ParksService {
     this._parks.push(_portaVenturaService);
     this._parks.push(_ferrariLandService);
     this._parks.push(_bellewaerdeService);
+    this._parks.push(_bellewaerdeAquaparkService);
     this._parks.push(_dippieDoeService);
     this._parks.push(_holidayParkService);
     this._parks.push(_hellendoornService);

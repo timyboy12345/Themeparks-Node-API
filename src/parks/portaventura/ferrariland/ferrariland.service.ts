@@ -26,7 +26,7 @@ export class FerrariLandService extends ThemeParkService {
       description: 'Ferrari Land is een Spaans themapark gelegen in het resort PortAventura World in Salou. Het is gewijd aan Ferrari en Italië. Met een oppervlakte van 60.000 m² Ferrari Land ligt naast PortAventura Park, een pretpark uit 1995',
       countryCode: 'es',
       image: 'https://nl.letsgodigital.org/uploads/2018/03/pretpark-ferrari-land.jpg',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -45,7 +45,8 @@ export class FerrariLandService extends ThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
- supportsAnimals: true    };
+      supportsAnimals: false,
+    };
   }
 
   async getPois(): Promise<Poi[]> {

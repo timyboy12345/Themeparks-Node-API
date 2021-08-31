@@ -58,4 +58,8 @@ export enum BellewaerdeRidesResponseCategory {
   Kids = 'Kids',
   Duizelig = 'Duizelig',
   Dieren = 'Dieren',
+  Glijbanen = 'Glijbanen',
+  Avontuur = 'Avontuur',
+  Speelzones = 'Speelzones',
+  Ontspanning = 'Ontspanning'
 }
