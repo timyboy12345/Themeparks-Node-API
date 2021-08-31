@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BellewaerdeService } from './bellewaerde.service';
-import { BellewaerdeTransferService } from './bellewaerde-transfer/bellewaerde-transfer.service';
+import { BellewaerdeTransferService } from '../bellewaerde-transfer/bellewaerde-transfer.service';
 import { HttpModule } from '@nestjs/common';
 
 describe('BellewaerdeService', () => {

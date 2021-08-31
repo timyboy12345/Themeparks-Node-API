@@ -19,7 +19,7 @@ export class BellewaerdeTransferService extends TransferService {
       case BellewaerdeRidesResponseCategory.Familie:
       case BellewaerdeRidesResponseCategory.Spannend:
       case BellewaerdeRidesResponseCategory.Duizelig:
-        c =PoiCategory.ATTRACTION;
+        c = PoiCategory.ATTRACTION;
         break;
       case BellewaerdeRidesResponseCategory.Show:
         c = PoiCategory.SHOW;
@@ -27,6 +27,12 @@ export class BellewaerdeTransferService extends TransferService {
       case BellewaerdeRidesResponseCategory.Dieren:
         c = PoiCategory.ANIMAL;
         break;
+      case BellewaerdeRidesResponseCategory.Glijbanen:
+      case BellewaerdeRidesResponseCategory.Avontuur:
+      case BellewaerdeRidesResponseCategory.Speelzones:
+        c = PoiCategory.SLIDE;
+        break;
+      case BellewaerdeRidesResponseCategory.Ontspanning:
       default:
         break;
     }
@@ -36,6 +42,9 @@ export class BellewaerdeTransferService extends TransferService {
       original: poi,
       category: c,
       title: poi.title,
+      featured: poi.isNew === 1,
+      singleRider: poi.single_rider === 1,
+      fastpass: poi.fast_lane === 1,
     };
 
     switch (poi.category) {
@@ -53,11 +62,22 @@ export class BellewaerdeTransferService extends TransferService {
         ride.rideCategory = RideCategory.KIDS;
     }
 
-    ride.website_url = "https://www.bellewaerde.be" + poi.url;
-    ride.image_url = "https://www.bellewaerde.be" + poi.imgUrl;
+    if (poi.url) {
+      ride.website_url = 'https://www.bellewaerde.be' + poi.url;
+    }
 
-    ride.minSize = poi.heightAlone;
-    ride.minSizeWithEscort = poi.heightAdult;
+    if (poi.imgUrl) {
+      ride.image_url = 'https://www.bellewaerde.be' + poi.imgUrl;
+    }
+
+
+    if (poi.heightAlone) {
+      ride.minSize = poi.heightAlone;
+    }
+
+    if (poi.heightAdult) {
+      ride.minSizeWithEscort = poi.heightAdult;
+    }
 
     return ride;
   }

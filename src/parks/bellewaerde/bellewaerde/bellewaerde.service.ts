@@ -1,16 +1,16 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ParkType, ThemePark } from '../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
-import * as BellewaerdePoiData from './data/bellewaerde-pois.json';
-import { Poi } from '../../_interfaces/poi.interface';
+import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
+import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
+import * as BellewaerdePoiData from '../data/bellewaerde-pois.json';
+import { Poi } from '../../../_interfaces/poi.interface';
 import * as Sentry from '@sentry/node';
-import { BellewaerdeApiResponseItemInterface } from './interfaces/bellewaerde-api-response.interface';
+import { BellewaerdeApiResponseItemInterface } from '../interfaces/bellewaerde-api-response.interface';
 import * as moment from 'moment';
-import { ShowTime } from '../../_interfaces/showtimes.interface';
-import { ThemeParkService } from '../../_services/themepark/theme-park.service';
-import { BellewaerdeRidesResponseInterface } from './interfaces/bellewaerde-rides-response.interface';
-import { BellewaerdeTransferService } from './bellewaerde-transfer/bellewaerde-transfer.service';
-import { PoiCategory } from '../../_interfaces/poi-categories.enum';
+import { ShowTime } from '../../../_interfaces/showtimes.interface';
+import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
+import { BellewaerdeRidesResponseInterface } from '../interfaces/bellewaerde-rides-response.interface';
+import { BellewaerdeTransferService } from '../bellewaerde-transfer/bellewaerde-transfer.service';
+import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class BellewaerdeService extends ThemeParkService {
