@@ -45,7 +45,7 @@ export class ParcAsterixService extends ThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsAnimals: true,
+      supportsAnimals: false,
     };
   }
 

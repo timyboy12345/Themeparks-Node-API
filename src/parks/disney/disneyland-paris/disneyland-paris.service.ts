@@ -27,7 +27,7 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       description: 'Disneyland Paris, eerst Euro Disney Resort en daarna Disneyland Resort Paris, is een attractiepark- en recreatiecomplex in Marne-la-Vallée, een stad in de banlieue van de Franse hoofdstad Parijs.',
       countryCode: 'fr',
       image: 'https://www.sortiraparis.com/images/80/87950/484853-visuels-disneyland-paris-chateau.jpg',
-      parkType: ParkType.THEMEPARK
+      parkType: ParkType.THEMEPARK,
     };
   }
 
@@ -46,7 +46,8 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
- supportsAnimals: true    };
+      supportsAnimals: false,
+    };
   }
 
   async getPois(): Promise<Poi[]> {

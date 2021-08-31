@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../../../../_services/themepark/theme-park.service';
-import { ThemePark } from '../../../../_interfaces/park.interface';
+import { ParkType, ThemePark } from '../../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../../../_interfaces/poi.interface';
@@ -51,7 +51,7 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsAnimals: true,
+      supportsAnimals: this.getInfo().parkType === ParkType.ZOO,
     };
   }
 

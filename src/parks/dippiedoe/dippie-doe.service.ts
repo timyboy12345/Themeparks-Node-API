@@ -35,7 +35,7 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsAnimals: true,
+      supportsAnimals: false,
     };
   }
 

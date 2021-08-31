@@ -50,7 +50,7 @@ export class HolidayParkService extends ThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsAnimals: true,
+      supportsAnimals: false,
     };
   }
 

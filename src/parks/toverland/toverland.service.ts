@@ -51,7 +51,7 @@ export class ToverlandService extends ThemeParkService {
       supportsRideWaitTimesHistory: true,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsAnimals: true,
+      supportsAnimals: false,
     };
   }
 
