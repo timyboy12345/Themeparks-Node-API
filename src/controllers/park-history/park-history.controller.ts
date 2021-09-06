@@ -8,7 +8,7 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiParam, ApiResponse } from '@nestjs/swagger';
+import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PoiDto } from '../../_dtos/poi.dto';
 import { Poi, PoiStatus } from '../../_interfaces/poi.interface';
 import { WaitingTimes } from '../../_interfaces/waitingtimes.interface';
@@ -17,6 +17,7 @@ import { Cache } from 'cache-manager';
 import { WaitTimeService } from '../../database/wait-time/wait-time.service';
 import * as moment from 'moment';
 
+@ApiTags('Themeparks')
 @Controller('parks/:id')
 export class ParkHistoryController {
   constructor(private readonly parksService: ParksService,

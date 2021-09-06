@@ -25,6 +25,7 @@ import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
 import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouwehands-dierenpark.service';
 import { WildlandsService } from '../../parks/wildlands/wildlands.service';
 import { BellewaerdeAquaparkService } from '../../parks/bellewaerde/bellewaerde-aquapark/bellewaerde-aquapark.service';
+import { LisebergService } from '../../parks/liseberg/liseberg.service';
 
 @Injectable()
 export class ParksService {
@@ -52,7 +53,9 @@ export class ParksService {
               private readonly _plopsalandDePanneService: PlopsalandDePanneService,
               private readonly _hansaParkService: HansaParkService,
               private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
-              private readonly _wildlandsService: WildlandsService) {
+              private readonly _wildlandsService: WildlandsService,
+              private readonly _lisebergService: LisebergService,
+  ) {
     this._parks = [];
     this._parks.push(_eftelingService);
     this._parks.push(_toverlandService);
@@ -75,6 +78,7 @@ export class ParksService {
     this._parks.push(_hansaParkService);
     this._parks.push(_ouwehandsDierenparkService);
     this._parks.push(_wildlandsService);
+    this._parks.push(_lisebergService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);

@@ -9,7 +9,7 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiOkResponse, ApiParam, ApiResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ParkDto } from '../../_dtos/park.dto';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { ParksService } from '../../_services/parks/parks.service';
@@ -17,6 +17,7 @@ import { Cache } from 'cache-manager';
 import { PoiDto } from '../../_dtos/poi.dto';
 import { Poi } from '../../_interfaces/poi.interface';
 
+@ApiTags('Themeparks')
 @Controller('parks/:id')
 export class ParkController {
   constructor(private readonly parksService: ParksService,
