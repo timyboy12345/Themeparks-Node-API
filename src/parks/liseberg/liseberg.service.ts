@@ -3,7 +3,7 @@ import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
-import { LisebergApiResponseItemInterface } from '../../../liseberg-api-response.interface';
+import { LisebergApiResponseItemInterface } from './interfaces/liseberg-api-response.interface';
 import * as Sentry from '@sentry/node';
 import { LisebergTransferService } from './liseberg-transfer/liseberg-transfer.service';
 import { Poi } from '../../_interfaces/poi.interface';
