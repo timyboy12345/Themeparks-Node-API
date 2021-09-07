@@ -35,7 +35,7 @@ export class LisebergService extends ThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimes: true,
       supportsRestaurants: true,
-      supportsShows: true,
+      supportsShows: false,
       supportsRides: true,
       supportsShops: true,
       supportsShopOpeningTimes: false,
