@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CedarfairBaseService } from '../cedarfair-base/cedarfair-base.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 
 @Injectable()
 export class CanadasWonderlandService extends CedarfairBaseService{
   protected getParkId(): string {
-    return 'CF_KBF';
+    return 'CF_CW';
   }
 
   getInfo(): ThemePark {
@@ -18,25 +17,6 @@ export class CanadasWonderlandService extends CedarfairBaseService{
       parkType: ParkType.THEMEPARK,
       countryCode: 'us',
       timezone: 'America/Toronto',
-    };
-  }
-
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsAnimals: false,
-      supportsShowTimes: false,
-      supportsRestaurantOpeningTimes: false,
-      supportsPois: true,
-      supportsPoiLocations: true,
-      supportsShopOpeningTimes: false,
-      supportsShops: true,
-      supportsRides: true,
-      supportsShows: true,
-      supportsRestaurants: true,
-      supportsRideWaitTimes: false,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
-      supportsRideWaitTimesHistory: false,
     };
   }
 }

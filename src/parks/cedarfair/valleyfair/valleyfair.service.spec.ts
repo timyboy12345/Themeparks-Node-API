@@ -1,19 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { KingsIslandService } from './kings-island.service';
+import { ValleyfairService } from './valleyfair.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { CedarfairTransferService } from '../cedarfair-transfer/cedarfair-transfer.service';
 
-describe('KingsIslandService', () => {
-  let service: KingsIslandService;
+describe('ValleyfairService', () => {
+  let service: ValleyfairService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [KingsIslandService, CedarfairTransferService],
+      providers: [ValleyfairService, CedarfairTransferService],
     }).compile();
 
-    service = module.get<KingsIslandService>(KingsIslandService);
+    service = module.get<ValleyfairService>(ValleyfairService);
   });
 
   it('should be defined', () => {

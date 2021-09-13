@@ -1,29 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CedarfairBaseService } from '../cedarfair-base/cedarfair-base.service';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 
 @Injectable()
 export class CarowindsService extends CedarfairBaseService {
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsRideWaitTimesHistory: false,
-      supportsOpeningTimes: false,
-      supportsOpeningTimesHistory: false,
-      supportsRideWaitTimes: false,
-      supportsRestaurants: true,
-      supportsShows: true,
-      supportsRides: true,
-      supportsShops: true,
-      supportsShopOpeningTimes: false,
-      supportsPoiLocations: true,
-      supportsPois: true,
-      supportsRestaurantOpeningTimes: false,
-      supportsShowTimes: false,
-      supportsAnimals: false,
-    };
-  }
-
   getInfo(): ThemePark {
     return {
       name: 'Carowinds',
@@ -37,6 +17,6 @@ export class CarowindsService extends CedarfairBaseService {
   }
 
   protected getParkId(): string {
-    return 'CF_CP';
+    return 'CF_CW';
   }
 }

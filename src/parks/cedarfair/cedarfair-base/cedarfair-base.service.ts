@@ -6,6 +6,7 @@ import { CedarfairBaseResponseInterface } from '../interfaces/cedarfair-base-res
 import { CedarfairTransferService } from '../cedarfair-transfer/cedarfair-transfer.service';
 import { ThroughPoisThemeParkService } from '../../../_services/themepark/through-pois-theme-park.service';
 import * as Sentry from '@sentry/node';
+import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 
 @Injectable()
 export class CedarfairBaseService extends ThroughPoisThemeParkService {
@@ -44,5 +45,24 @@ export class CedarfairBaseService extends ThroughPoisThemeParkService {
         Sentry.captureException(reason);
         throw new InternalServerErrorException();
       });
+  }
+
+  getSupports(): ThemeParkSupports {
+    return {
+      supportsAnimals: false,
+      supportsShowTimes: false,
+      supportsRestaurantOpeningTimes: false,
+      supportsPois: true,
+      supportsPoiLocations: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: true,
+      supportsRides: true,
+      supportsShows: true,
+      supportsRestaurants: true,
+      supportsRideWaitTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false,
+      supportsRideWaitTimesHistory: false,
+    };
   }
 }

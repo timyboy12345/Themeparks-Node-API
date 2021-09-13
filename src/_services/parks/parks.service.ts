@@ -30,6 +30,7 @@ import { SilverDollarCityService } from '../../parks/herschend/silver-dollar-cit
 import { CarowindsService } from '../../parks/cedarfair/carowinds/carowinds.service';
 import { GreatAmericaService } from '../../parks/cedarfair/great-america/great-america.service';
 import { CedarpointService } from '../../parks/cedarfair/cedarpoint/cedarpoint.service';
+import { ParqueWarnerService } from '../../parks/parque-warner/parque-warner.service';
 
 @Injectable()
 export class ParksService {
@@ -63,6 +64,7 @@ export class ParksService {
               private readonly _carowindsService: CarowindsService,
               private readonly _greatAdventureService: GreatAmericaService,
               private readonly _cedarPointService: CedarpointService,
+              private readonly _parqueWarnerService: ParqueWarnerService
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -91,6 +93,7 @@ export class ParksService {
     this._parks.push(_carowindsService);
     this._parks.push(_greatAdventureService);
     this._parks.push(_cedarPointService);
+    this._parks.push(_parqueWarnerService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
