@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CedarfairBaseService } from '../cedarfair-base/cedarfair-base.service';
-import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
+import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 
 @Injectable()
 export class GreatAmericaService extends CedarfairBaseService{
@@ -17,26 +16,8 @@ export class GreatAmericaService extends CedarfairBaseService{
       timezone: 'America/Los_Angeles',
       description: 'California\'s Great America is een attractiepark in de Amerikaanse stad Santa Clara (Californië). Het pretpark is in het bezit van en wordt uitgebaat door de firma Cedar Fair Entertainment Company uit Ohio.',
       image: 'https://drupal8-prod.visitcalifornia.com/sites/drupal8-prod.visitcalifornia.com/files/styles/fluid_1200/public/GreatAmerica_CourtesyGreatAmerica_1280x642.jpg?itok=pu0lKHY9',
-      name: 'California\'s Great Adventure'
-    }
-  }
-
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsAnimals: false,
-      supportsShowTimes: false,
-      supportsRestaurantOpeningTimes: false,
-      supportsPois: true,
-      supportsPoiLocations: true,
-      supportsShopOpeningTimes: false,
-      supportsShops: true,
-      supportsRides: true,
-      supportsShows: true,
-      supportsRestaurants: true,
-      supportsRideWaitTimes: false,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
-      supportsRideWaitTimesHistory: false,
+      name: 'California\'s Great Adventure',
+      company: Company.CEDAR_FAIR
     }
   }
 }

@@ -26,7 +26,7 @@ export class HolidayParkService extends ThemeParkService {
 
   getInfo(): ThemePark {
     return {
-      id: 'holiday_park',
+      id: 'holiday-park',
       name: 'Holiday Park',
       description: 'Holiday Park is een attractiepark gelegen in Haßloch in de Duitse deelstaat Rijnland-Palts. Het maakt sinds 2010 deel uit van de pretparken van de Plopsa-groep.',
       image: 'https://www.holidaypark.de/sites/default/files/public/brand/logos/Holiday%20Park.jpg',

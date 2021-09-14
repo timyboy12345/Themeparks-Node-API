@@ -35,7 +35,6 @@ export class HolidayParkTransferService extends TransferService {
       id: holidayParkAttraction.uniqueID,
       title: holidayParkAttraction.name,
       description: holidayParkAttraction.description,
-      image_url: holidayParkAttraction.images[0],
       category: category,
       original_category: holidayParkAttraction.type,
       original: holidayParkAttraction,
@@ -43,6 +42,10 @@ export class HolidayParkTransferService extends TransferService {
       maxSize: parseInt(holidayParkAttraction.maxHeight),
       minSizeWithEscort: parseInt(holidayParkAttraction.minHeightSupervised),
     };
+
+    if (holidayParkAttraction.images && holidayParkAttraction.images.length > 0) {
+      poi.image_url = holidayParkAttraction.images[0];
+    }
 
     if (poi.category === PoiCategory.ATTRACTION) {
       if ('10' in holidayParkAttraction.attractionType) {
