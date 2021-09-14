@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CedarfairBaseService } from '../cedarfair-base/cedarfair-base.service';
-import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
+import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 
 @Injectable()
 export class CanadasWonderlandService extends CedarfairBaseService{
@@ -17,6 +17,7 @@ export class CanadasWonderlandService extends CedarfairBaseService{
       parkType: ParkType.THEMEPARK,
       countryCode: 'us',
       timezone: 'America/Toronto',
+      company: Company.CEDAR_FAIR
     };
   }
 }

@@ -31,6 +31,7 @@ import { CarowindsService } from '../../parks/cedarfair/carowinds/carowinds.serv
 import { GreatAmericaService } from '../../parks/cedarfair/great-america/great-america.service';
 import { CedarpointService } from '../../parks/cedarfair/cedarpoint/cedarpoint.service';
 import { ParqueWarnerService } from '../../parks/parque-warner/parque-warner.service';
+import { CedarFairService } from '../../parks/cedarfair/cedar-fair.service';
 
 @Injectable()
 export class ParksService {
@@ -64,7 +65,8 @@ export class ParksService {
               private readonly _carowindsService: CarowindsService,
               private readonly _greatAdventureService: GreatAmericaService,
               private readonly _cedarPointService: CedarpointService,
-              private readonly _parqueWarnerService: ParqueWarnerService
+              private readonly _parqueWarnerService: ParqueWarnerService,
+              private readonly _cedarFairService: CedarFairService
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -90,13 +92,11 @@ export class ParksService {
     this._parks.push(_wildlandsService);
     this._parks.push(_lisebergService);
     this._parks.push(_silverDollarCityService);
-    this._parks.push(_carowindsService);
-    this._parks.push(_greatAdventureService);
-    this._parks.push(_cedarPointService);
     this._parks.push(_parqueWarnerService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
+    this._companies.push(_cedarFairService);
   }
 
   public async getParks(): Promise<ThemeParkService[]> {

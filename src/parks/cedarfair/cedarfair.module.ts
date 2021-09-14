@@ -13,10 +13,11 @@ import { ValleyfairService } from './valleyfair/valleyfair.service';
 import { WorldsOfFunService } from './worlds-of-fun/worlds-of-fun.service';
 import { KingsDominionService } from './kings-dominion/kings-dominion.service';
 import { DorneyParkService } from './dorney-park/dorney-park.service';
+import { CedarFairService } from './cedar-fair.service';
 
 @Module({
-  providers: [CedarfairBaseService, CarowindsService, CedarfairTransferService, GreatAmericaService, CedarpointService, CanadasWonderlandService, KingsIslandService, KnottsBerryFarmService, MichigansAdventureService, ValleyfairService, WorldsOfFunService, KingsDominionService, DorneyParkService],
-  exports: [CarowindsService, GreatAmericaService, CedarpointService],
+  providers: [CedarfairBaseService, CedarfairTransferService, CarowindsService, GreatAmericaService, CedarpointService, CanadasWonderlandService, KingsIslandService, KnottsBerryFarmService, MichigansAdventureService, ValleyfairService, WorldsOfFunService, KingsDominionService, DorneyParkService, CedarFairService],
+  exports: [CarowindsService, GreatAmericaService, CedarpointService, CanadasWonderlandService, KingsIslandService, KnottsBerryFarmService, MichigansAdventureService, ValleyfairService, WorldsOfFunService, KingsDominionService, DorneyParkService, CedarFairService],
   imports: [
     HttpModule,
     ConfigModule.forRoot({
@@ -24,6 +25,6 @@ import { DorneyParkService } from './dorney-park/dorney-park.service';
       cache: false,
       ignoreEnvFile: false,
     })
-  ]
+  ],
 })
 export class CedarfairModule {}

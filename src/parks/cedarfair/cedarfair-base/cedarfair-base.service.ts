@@ -10,6 +10,8 @@ import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface'
 
 @Injectable()
 export class CedarfairBaseService extends ThroughPoisThemeParkService {
+  private company: string;
+
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
               private readonly transferService: CedarfairTransferService) {
@@ -64,5 +66,9 @@ export class CedarfairBaseService extends ThroughPoisThemeParkService {
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
     };
+  }
+
+  public setCompany(company: string): void {
+    this.company = company;
   }
 }
