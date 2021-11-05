@@ -8,7 +8,6 @@ import { HolidayParkTransferService } from './holiday-park-transfer/holiday-park
 import * as Sentry from '@sentry/node';
 import { HolidayParkAttractionsResponseInterface } from './interfaces/holiday-park-attractions-response.interface';
 import { HolidayParkPageResponseInterface } from './interfaces/holiday-park-page-response.interface';
-import { HolidayParkLocationsResponseInterface } from './interfaces/holiday-park-locations-response.interface';
 
 @Injectable()
 export class HolidayParkService extends ThemeParkService {
@@ -32,6 +31,10 @@ export class HolidayParkService extends ThemeParkService {
       image: 'https://www.holidaypark.de/sites/default/files/public/brand/logos/Holiday%20Park.jpg',
       countryCode: 'de',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 49.318498726,
+        lng: 8.290165506
+      }
     };
   }
 
@@ -87,15 +90,15 @@ export class HolidayParkService extends ThemeParkService {
   //   return await this.request<HolidayParkPageResponseInterface>("show").then(value => this.holidayParkTransferService.)
   // }
 
-  private async attachLocations(pois: Poi[]): Promise<Poi[]> {
-    const locationData = await this.httpService.get<HolidayParkLocationsResponseInterface>('https://www.holidaypark.de/de/api/v1.0/locations/holiday-park?access_token=' + this._holidayParkApiToken).toPromise();
-
-    for (let key in locationData.data.en) {
-      console.log(key);
-    }
-
-    return pois;
-  }
+  // private async attachLocations(pois: Poi[]): Promise<Poi[]> {
+  //   const locationData = await this.httpService.get<HolidayParkLocationsResponseInterface>('https://www.holidaypark.de/de/api/v1.0/locations/holiday-park?access_token=' + this._holidayParkApiToken).toPromise();
+  //
+  //   for (let key in locationData.data.en) {
+  //     console.log(key);
+  //   }
+  //
+  //   return pois;
+  // }
 
   private request<T>(url: string) {
     const fullUrl = this._holidayParkApiUrl + '/' + url + '?access_token=' + this._holidayParkApiToken;

@@ -28,6 +28,10 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       countryCode: 'fr',
       image: 'https://www.magicontheweb.com/wp-content/uploads/2020/09/waltdisneystudiospark.jpg',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 48.868271,
+        lng: 2.780719
+      }
     };
   }
 

@@ -28,6 +28,10 @@ export class OuwehandsDierenparkService extends ThemeParkService {
       parkType: ParkType.ZOO,
       countryCode: 'nl',
       image: 'https://www.looopings.nl/img/foto/21/0601bonobo2.jpg',
+      location: {
+        lat: 51.95743584938769,
+        lng: 5.590213525112751,
+      },
     };
   }
 
@@ -79,15 +83,15 @@ export class OuwehandsDierenparkService extends ThemeParkService {
 
         combined.forEach(value => {
           animals = animals.concat(value.data);
-        })
+        });
 
         return {
           data: animals,
           pagination: {
             'pages': combined[0].pagination.pages,
-            'itemsperpage': combined[0].pagination.itemsperpage
-          }
-        }
+            'itemsperpage': combined[0].pagination.itemsperpage,
+          },
+        };
       }).catch((error) => {
         throw new InternalServerErrorException(error);
       });

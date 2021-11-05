@@ -27,6 +27,10 @@ export class PortaventuraService extends ThemeParkService {
       countryCode: 'es',
       image: 'https://nl.letsgodigital.org/uploads/2017/11/pretpark-portaventura-salou.jpg',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 41.088257825687606,
+        lng: 1.15730116599982,
+      },
     };
   }
 

@@ -14,6 +14,10 @@ export class SilverDollarCityService extends HerschendBaseService {
       timezone: 'America/Chicago',
       countryCode: 'us',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 36.667506051464756,
+        lng: -93.3385858874428
+      }
     };
   }
 

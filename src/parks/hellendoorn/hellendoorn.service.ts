@@ -17,6 +17,11 @@ export class HellendoornService extends AttractionsIoThemeParkService {
       description: 'Avonturenpark Hellendoorn is een attractiepark in de Nederlandse plaats Hellendoorn. Het park is in 1936 begonnen als theehuis met speeltuin en is uitgegroeid tot een volwaardig attractiepark. Het attractiepark ligt in een bosrijke omgeving aan de Luttenbergerweg ten westen van de plaats Hellendoorn.',
       image: 'https://nl.letsgodigital.org/uploads/2018/04/hellendoorn-2018.jpg',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 52.3901258,
+        lng: 6.447899
+      },
+      timezone: 'Europe/Amsterdam'
     };
   }
 

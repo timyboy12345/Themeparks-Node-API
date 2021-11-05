@@ -50,6 +50,13 @@ export class SixflagsService extends CompanyService {
         company: Company.SIXFLAGS
       };
 
+      if (park.renderLocation) {
+        parkInfo.location = {
+          lat: park.renderLocation.latitude,
+          lng: park.renderLocation.longitude
+        }
+      }
+
       if (park.image) {
         const key = Object.keys(park.image)[0];
         parkInfo.image = park.image[key];

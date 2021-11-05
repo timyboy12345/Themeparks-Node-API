@@ -28,6 +28,10 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       countryCode: 'fr',
       image: 'https://www.sortiraparis.com/images/80/87950/484853-visuels-disneyland-paris-chateau.jpg',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 48.870321,
+        lng: 2.779672,
+      },
     };
   }
 

@@ -10,6 +10,10 @@ export interface ThemePark {
   parkType: ParkType;
   timezone?: string;
   company?: Company;
+  location?: {
+    lat: number,
+    lng: number
+  }
 }
 
 export enum ParkType {

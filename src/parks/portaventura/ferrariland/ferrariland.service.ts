@@ -27,6 +27,10 @@ export class FerrariLandService extends ThemeParkService {
       countryCode: 'es',
       image: 'https://nl.letsgodigital.org/uploads/2018/03/pretpark-ferrari-land.jpg',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 41.084718452772584,
+        lng: 1.1520460265615593,
+      },
     };
   }
 
