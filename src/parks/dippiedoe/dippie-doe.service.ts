@@ -17,6 +17,10 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
       image: 'https://media.insiders.nl/vib/files/image/dolle-dobber_1770787802.jpeg',
       countryCode: 'nl',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 51.50000,
+        lng: 5.43555
+      }
     };
   }
 

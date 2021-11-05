@@ -25,6 +25,10 @@ export class LisebergService extends ThemeParkService {
       parkType: ParkType.THEMEPARK,
       countryCode: 'se',
       timezone: 'Europe/Stockholm',
+      location: {
+        lat: 57.6962467,
+        lng: 11.9856468
+      }
     };
   }
 

@@ -22,6 +22,10 @@ export class BellewaerdeAquaparkService extends ThemeParkService {
       image: 'https://aquapark.bellewaerde.be/sites/default/files/2019-07/aquaventure_0.jpg',
       countryCode: 'be',
       parkType: ParkType.WATER_PARK,
+      location: {
+        lat: 50.84687077818655,
+        lng: 2.9486033747962352
+      }
     };
   }
 

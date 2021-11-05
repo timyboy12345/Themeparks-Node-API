@@ -13,6 +13,10 @@ export class WalibiHollandService extends WalibiService {
       countryCode: 'nl',
       image: 'https://www.walibi.nl/sites/default/files/styles/1280x711/public/content/editorial/2020-01/Goliath-ALG-04_0.jpg?itok=SGL1LdeZ',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 52.44020062282858,
+        lng: 5.76276265766736,
+      },
     };
   }
 

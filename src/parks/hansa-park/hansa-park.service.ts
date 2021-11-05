@@ -25,6 +25,10 @@ export class HansaParkService extends ThroughPoisThemeParkService {
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Berlin',
       id: 'hansa-park',
+      location: {
+        lat: 54.0769,
+        lng: 10.78
+      }
     };
   }
 

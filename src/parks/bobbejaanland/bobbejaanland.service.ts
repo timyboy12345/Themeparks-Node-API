@@ -22,6 +22,10 @@ export class BobbejaanlandService extends ThroughPoisThemeParkService {
       countryCode: 'be',
       description: 'Bobbejaanland is een pretpark in Lichtaart, gelegen tussen Herentals en Kasterlee in België, en is genoemd naar zijn oprichter Bobbejaan Schoepen. Het pretpark is gelegen in een moerassig gebied in de vallei van de Kleine Nete. Wikipedia',
       id: 'bobbejaanland',
+      location: {
+        lat: 51.2009421,
+        lng: 4.9040014
+      }
     };
   }
 

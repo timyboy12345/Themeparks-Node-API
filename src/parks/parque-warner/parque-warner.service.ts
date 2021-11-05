@@ -28,6 +28,10 @@ export class ParqueWarnerService extends ThemeParkService {
       timezone: '',
       countryCode: 'es',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 40.230382352296,
+        lng: -3.593395704152226,
+      },
     };
   }
 
@@ -55,7 +59,7 @@ export class ParqueWarnerService extends ThemeParkService {
       this.getRides(),
       this.getRestaurants(),
       this.getShops(),
-      this.getShows()
+      this.getShows(),
     ];
 
     return []

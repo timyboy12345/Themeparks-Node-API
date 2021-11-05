@@ -13,7 +13,11 @@ export class DollywoodService extends HerschendBaseService{
       image: 'https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F619298038%2F0x0.jpg',
       parkType: ParkType.THEMEPARK,
       countryCode: 'us',
-      timezone: 'America/New_York'
+      timezone: 'America/New_York',
+      location: {
+        lat: 35.79526792382862,
+        lng: -83.53114328709876
+      }
     }
   }
 

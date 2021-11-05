@@ -29,6 +29,10 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       countryCode: 'de',
       image: 'https://static.phlcdn.de/files/uploads/themenpark/images/sommer/berlin/ga_keyvisual_berlin.jpg',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 50.798954,
+        lng: 6.879314
+      }
     };
   }
 

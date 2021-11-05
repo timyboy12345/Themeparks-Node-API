@@ -13,6 +13,10 @@ export class WalibiBelgiumService extends WalibiService {
       image: 'https://www.walibi.be/sites/default/files/styles/1280x711/public/content/editorial/2020-06/W18-TIKIWAKA_0629-1.jpg?itok=69V5PXVt',
       countryCode: 'be',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 50.701962206947776,
+        lng: 4.594036198076961,
+      },
     };
   }
 

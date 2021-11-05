@@ -14,6 +14,10 @@ export class EuropaParkService extends ThemeParkService {
       description: '',
       image: '',
       name: 'Europa Park',
+      location: {
+        lat: 48.26608365626527,
+        lng: 7.722061242161103
+      }
     };
   }
 

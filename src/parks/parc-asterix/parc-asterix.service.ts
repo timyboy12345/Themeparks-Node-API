@@ -27,6 +27,10 @@ export class ParcAsterixService extends ThemeParkService {
       image: 'https://www.parcasterix.fr/sites/default/files/1440_579_3_0.jpg',
       countryCode: 'fr',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 49.136041,
+        lng: 2.572768,
+      },
     };
   }
 
