@@ -17,8 +17,6 @@ import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service'
 import { LegolandDeutschlandService } from '../../parks/legoland/legoland-deutschland/legoland-deutschland.service';
 import { CompanyService } from '../company/company.service';
 import { SixflagsService } from '../../parks/sixflags/sixflags.service';
-
-import * as Sentry from '@sentry/node';
 import { BobbejaanlandService } from '../../parks/bobbejaanland/bobbejaanland.service';
 import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-panne/plopsaland-de-panne.service';
 import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
@@ -32,6 +30,9 @@ import { GreatAmericaService } from '../../parks/cedarfair/great-america/great-a
 import { CedarpointService } from '../../parks/cedarfair/cedarpoint/cedarpoint.service';
 import { ParqueWarnerService } from '../../parks/parque-warner/parque-warner.service';
 import { CedarFairService } from '../../parks/cedarfair/cedar-fair.service';
+
+import * as Sentry from '@sentry/node';
+import { GronaLundService } from '../../parks/grona-lund/grona-lund.service';
 
 @Injectable()
 export class ParksService {
@@ -66,7 +67,8 @@ export class ParksService {
               private readonly _greatAdventureService: GreatAmericaService,
               private readonly _cedarPointService: CedarpointService,
               private readonly _parqueWarnerService: ParqueWarnerService,
-              private readonly _cedarFairService: CedarFairService
+              private readonly _cedarFairService: CedarFairService,
+              private readonly _gronaLundService: GronaLundService
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -93,6 +95,7 @@ export class ParksService {
     this._parks.push(_lisebergService);
     this._parks.push(_silverDollarCityService);
     this._parks.push(_parqueWarnerService);
+    this._parks.push(_gronaLundService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
