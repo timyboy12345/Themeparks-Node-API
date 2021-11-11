@@ -5,7 +5,6 @@ import { SixflagsTransferService } from './sixflags-transfer/sixflags-transfer.s
 import { SixflagsService } from './sixflags.service';
 
 @Module({
-
   imports: [
     HttpModule,
     ConfigModule.forRoot({

@@ -55,14 +55,14 @@ export class ParcAsterixService extends ThemeParkService {
 
   async getRides(): Promise<Poi[]> {
     return this
-      .request<ParcAsterixResponseInterface>('?operationName=getAttractions&variables=%7B%22language%22%3A%22fr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22b050be5162f22dea1265c6a0a6fcbbc2b7b61d54e711b67239ed7f29f5d40be2%22%7D%7D')
+      .request<ParcAsterixResponseInterface>('?operationName=getAttractions&variables=%7B%22language%22%3A%22fr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%225609363783d826ec6c460caa620e3ca28e651897febf6753159836ab72d8139b%22%7D%7D')
       .then(attractionsResponse =>
         this.parcAsterixTransferService.transferRidesToPois(attractionsResponse.data.data.openAttractions));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
-      .request<ParcAsterixResponseInterface>('?operationName=restaurants&variables=%7B%22language%22%3A%22fr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22df037c4ab52388239cef7df141333587c7ad63b8340bd0664abde2c2a5aaf673%22%7D%7D')
+      .request<ParcAsterixResponseInterface>('?operationName=restaurants&variables=%7B%22language%22%3A%22fr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22857561404b9f5c69e651d74e0f5c0403f5bd3bd02491a0958d11d60bd8526cc9%22%7D%7D')
       .then(restaurantsResponse =>
         this.parcAsterixTransferService.transferRestaurantsToPois(restaurantsResponse.data.data.restaurants));
   }

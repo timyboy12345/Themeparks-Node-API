@@ -21,8 +21,8 @@ export class GronaLundService extends ThemeParkService {
       id: 'grona-lund',
       name: 'Grona Lund',
       countryCode: 'se',
-      description: '',
-      image: '',
+      description: 'Tivoli Gröna Lund is een attractiepark in de Zweedse hoofdstad Stockholm. Het park is gelegen op het schiereiland Djurgården en opende voor het eerst de poorten in 1883. In 2003 vierde het park dat het 120 jaar oud was met onder andere een nieuwe achtbaan.',
+      image: 'https://www.nordicchoicehotels.com/globalassets/global/campaign-images/nch-global-campaigns/nojespark/view-night-grona-lund.jpg?t=ScaleDownToFill%7C985x549',
       parkType: ParkType.THEMEPARK
     };
   }
@@ -36,7 +36,7 @@ export class GronaLundService extends ThemeParkService {
       supportsPoiLocations: false,
       supportsShopOpeningTimes: false,
       supportsShops: false,
-      supportsRides: false,
+      supportsRides: true,
       supportsShows: false,
       supportsRestaurants: false,
       supportsRideWaitTimes: false,
