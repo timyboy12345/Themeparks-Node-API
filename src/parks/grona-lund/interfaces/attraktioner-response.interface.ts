@@ -1,5 +1,3 @@
-import internal from 'stream';
-
 export interface AttraktionerResponseInterface {
   'componentChunkName': string,
   'path': string,
