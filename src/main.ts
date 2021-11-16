@@ -4,8 +4,15 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const Sentry = require("@sentry/node");
 
+// If taking advantage of automatic instrumentation (highly recommended)
+import { Integrations as TracingIntegrations } from "@sentry/tracing";
+
 Sentry.init({
   dsn: 'https://23fa5a724def4d8bbc58845111e300b2@o324258.ingest.sentry.io/5668770',
+
+  // This enables automatic instrumentation (highly recommended), but is not
+  // necessary for purely manual usage
+  integrations: [new TracingIntegrations.BrowserTracing()],
 
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control

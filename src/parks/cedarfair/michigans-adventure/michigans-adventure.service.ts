@@ -8,6 +8,9 @@ export class MichigansAdventureService extends CedarfairBaseService {
     return 'CF_MA';
   }
 
+  // TODO: Uses IDs instead of typed-out 'type's in the POI results
+  // Meaning no pois are found (since the transfer service looks at this type)
+
   getInfo(): ThemePark {
     return {
       parkType: ParkType.THEMEPARK,
