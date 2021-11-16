@@ -19,4 +19,8 @@ export enum PoiCategory {
   PHOTO_SHOP = 'PHOTO_SHOP',
   ANIMAL = 'ANIMAL',
   SMOKING_AREA = 'SMOKING_AREA',
+  SLIDE = 'SLIDE',
+  ATM = 'ATM',
+  MEET_AND_GREET = 'MEET_AND_GREET',
+  LOCKERS = 'LOCKERS'
 }

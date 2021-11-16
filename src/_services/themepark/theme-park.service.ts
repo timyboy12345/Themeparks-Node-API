@@ -1,16 +1,17 @@
-import { HttpService, Injectable, NotImplementedException } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { ThemePark } from '../../_interfaces/park.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
+import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 
 @Injectable()
 export class ThemeParkService {
   getInfo(): ThemePark {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get theme park info");
   }
 
   getSupports(): ThemeParkSupports {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get theme park supports");
   }
 
   getFullInfo() {
@@ -20,11 +21,11 @@ export class ThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get POIs");
   }
 
   async getRestaurants(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get restaurants");
   }
 
   async getRestaurant(id: string): Promise<Poi> {
@@ -35,7 +36,7 @@ export class ThemeParkService {
   }
 
   async getRides(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get rides");
   }
 
   async getRide(id: string): Promise<Poi> {
@@ -46,7 +47,7 @@ export class ThemeParkService {
   }
 
   async getShows(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get shows");
   }
 
   async getShow(id: string): Promise<Poi> {
@@ -57,7 +58,7 @@ export class ThemeParkService {
   }
 
   async getShops(): Promise<Poi[]> {
-    throw new NotImplementedException();
+    throw new NotImplementedException("Could not get shops");
   }
 
   async getShop(id: string): Promise<Poi> {
@@ -65,5 +66,20 @@ export class ThemeParkService {
       .then((shops) => {
         return shops.find(shop => shop.id === id);
       })
+  }
+
+  async getAnimals(): Promise<Poi[]> {
+    throw new NotImplementedException("Could not get animals");
+  }
+
+  async getAnimal(id: string): Promise<Poi> {
+    return await this.getAnimals()
+      .then((animals) => {
+        return animals.find(animal => animal.id === id);
+      })
+  }
+
+  async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
+    throw new NotImplementedException("Could not get opening times");
   }
 }
