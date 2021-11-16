@@ -27,6 +27,10 @@ export class BellewaerdeService extends ThemeParkService {
       image: 'https://www.bellewaerde.be/sites/default/files/home/2021-03/wakala-home_0.jpg',
       countryCode: 'be',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 50.846996,
+        lng: 2.947948
+      }
     };
   }
 

@@ -33,6 +33,10 @@ export class ToverlandService extends ThemeParkService {
       countryCode: 'nl',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Amsterdam',
+      location: {
+        lat: 51.396876785658854,
+        lng: 5.9847988846115,
+      },
     };
   }
 
@@ -95,6 +99,9 @@ export class ToverlandService extends ThemeParkService {
   private async request<T>(url: string) {
     const headers = {
       'Authorization': `Bearer ${this.toverlandApiToken}`,
+      'Accept': 'application/json, text/plain, */*',
+      'User-Agent': 'toverland/43 CFNetwork/1240.0.4 Darwin/20.6.0',
+      'Accept-Language': 'nl-nl',
     };
 
     const fullUrl = this.toverlandApiUrl + url;

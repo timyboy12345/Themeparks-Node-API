@@ -64,4 +64,8 @@ export class TransferService {
   public transferOpeningTimesToOpeningTimes(openingTimes: any): ThemeParkOpeningTimes[] {
     throw new NotImplementedException("Could not transfer opening times to opening times");
   }
+
+  public transferDataObjectToPois(data: any): Poi[] {
+    throw new NotImplementedException("Could not transfer data object to a list of POIs");
+  }
 }

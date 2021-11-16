@@ -4,11 +4,18 @@ import { ThemeParkService } from '../themepark/theme-park.service';
 
 @Injectable()
 export class CompanyService {
+  /**
+   * Return an array with the info of each park
+   */
   public async getParks(): Promise<ThemePark[]> {
-    throw new NotImplementedException("Could not get all parks for this company");
+    return this.getParkServices()
+      .then(value => value.map(s => s.getFullInfo()));
   }
 
+  /**
+   * Return a list of all parks associated with this company
+   */
   public async getParkServices(): Promise<ThemeParkService[]> {
-    throw new NotImplementedException("Could not get all park services for this company");
+    throw new NotImplementedException('Could not get all park services for this company');
   }
 }

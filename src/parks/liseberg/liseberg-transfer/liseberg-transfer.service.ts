@@ -4,7 +4,7 @@ import { Poi, PoiStatus } from '../../../_interfaces/poi.interface';
 import {
   LisebergApiResponseCategory,
   LisebergApiResponseItemInterface,
-} from '../../../../liseberg-api-response.interface';
+} from '../interfaces/liseberg-api-response.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 
 @Injectable()

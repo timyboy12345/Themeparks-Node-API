@@ -4,7 +4,7 @@ import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface'
 import { PlopsalandDePanneTokenInterface } from './interfaces/plopsaland-de-panne-token.interface';
 import { Poi } from '../../../_interfaces/poi.interface';
 import {
-  PlopsalandDePanneDetailsResponseInterface
+  PlopsalandDePanneDetailsResponseInterface,
 } from './interfaces/plopsaland-de-panne-details-response.interface';
 import { PlopsalandDePanneTransferService } from './plopsaland-de-panne-transfer/plopsaland-de-panne-transfer.service';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
@@ -25,6 +25,10 @@ export class PlopsalandDePanneService extends ThemeParkService {
       countryCode: 'be',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Brussels',
+      location: {
+        lat: 51.080857219669724,
+        lng: 2.5987519692562495,
+      },
     };
   }
 
@@ -51,7 +55,7 @@ export class PlopsalandDePanneService extends ThemeParkService {
     const promises = [
       this.getRides(),
       this.getShops(),
-      this.getRestaurants()
+      this.getRestaurants(),
     ];
 
     return []

@@ -23,7 +23,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
     this._eftelingApiURl = this.configService.get<string>('EFTELING_API_URL');
   }
 
-  public getInfo(): ThemePark {
+  getInfo(): ThemePark {
     return {
       id: 'efteling',
       name: 'Efteling',
@@ -32,6 +32,10 @@ export class EftelingService extends ThroughPoisThemeParkService {
       countryCode: 'nl',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Amsterdam',
+      location: {
+        lat: 51.64990915659694,
+        lng: 5.043561458587647
+      }
     };
   }
 

@@ -17,8 +17,6 @@ import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service'
 import { LegolandDeutschlandService } from '../../parks/legoland/legoland-deutschland/legoland-deutschland.service';
 import { CompanyService } from '../company/company.service';
 import { SixflagsService } from '../../parks/sixflags/sixflags.service';
-
-import * as Sentry from '@sentry/node';
 import { BobbejaanlandService } from '../../parks/bobbejaanland/bobbejaanland.service';
 import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-panne/plopsaland-de-panne.service';
 import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
@@ -26,6 +24,16 @@ import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouw
 import { WildlandsService } from '../../parks/wildlands/wildlands.service';
 import { BellewaerdeAquaparkService } from '../../parks/bellewaerde/bellewaerde-aquapark/bellewaerde-aquapark.service';
 import { LisebergService } from '../../parks/liseberg/liseberg.service';
+import { SilverDollarCityService } from '../../parks/herschend/silver-dollar-city/silver-dollar-city.service';
+import { CarowindsService } from '../../parks/cedarfair/carowinds/carowinds.service';
+import { GreatAmericaService } from '../../parks/cedarfair/great-america/great-america.service';
+import { CedarpointService } from '../../parks/cedarfair/cedarpoint/cedarpoint.service';
+import { ParqueWarnerService } from '../../parks/parque-warner/parque-warner.service';
+import { CedarFairService } from '../../parks/cedarfair/cedar-fair.service';
+
+import * as Sentry from '@sentry/node';
+import { GronaLundService } from '../../parks/grona-lund/grona-lund.service';
+import { TivoliService } from '../../parks/tivoli/tivoli.service';
 
 @Injectable()
 export class ParksService {
@@ -55,6 +63,14 @@ export class ParksService {
               private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
               private readonly _wildlandsService: WildlandsService,
               private readonly _lisebergService: LisebergService,
+              private readonly _silverDollarCityService: SilverDollarCityService,
+              private readonly _carowindsService: CarowindsService,
+              private readonly _greatAdventureService: GreatAmericaService,
+              private readonly _cedarPointService: CedarpointService,
+              private readonly _parqueWarnerService: ParqueWarnerService,
+              private readonly _cedarFairService: CedarFairService,
+              private readonly _gronaLundService: GronaLundService,
+              private readonly _tivoliService: TivoliService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -79,9 +95,14 @@ export class ParksService {
     this._parks.push(_ouwehandsDierenparkService);
     this._parks.push(_wildlandsService);
     this._parks.push(_lisebergService);
+    this._parks.push(_silverDollarCityService);
+    this._parks.push(_parqueWarnerService);
+    this._parks.push(_gronaLundService);
+    this._parks.push(_tivoliService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
+    this._companies.push(_cedarFairService);
   }
 
   public async getParks(): Promise<ThemeParkService[]> {

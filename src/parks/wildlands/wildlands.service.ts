@@ -12,7 +12,7 @@ import {
 } from './interfaces/wildlands-animals-response.interface';
 
 @Injectable()
-export class WildlandsService extends ThemeParkService{
+export class WildlandsService extends ThemeParkService {
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
               private readonly transferService: WildlandsTransferService) {
@@ -27,8 +27,12 @@ export class WildlandsService extends ThemeParkService{
       description: 'Wildlands, voluit Wildlands Adventure Zoo Emmen, is een dierenpark in Emmen. Het park heeft een oppervlakte van 24 hectare en is opgedeeld in drie themagebieden. In \'Jungola\' staat de jungle centraal, in \'Serenga\' de savanne en de woestijn en in \'Nortica\' het poolgebied. Wikipedia',
       countryCode: 'nl',
       parkType: ParkType.ZOO,
-      timezone: 'Europe/Amsterdam'
-    }
+      timezone: 'Europe/Amsterdam',
+      location: {
+        lat: 52.78139929877351,
+        lng: 6.888716508212956,
+      },
+    };
   }
 
   getSupports(): ThemeParkSupports {
@@ -46,8 +50,8 @@ export class WildlandsService extends ThemeParkService{
       supportsRideWaitTimes: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsRideWaitTimesHistory: false
-    }
+      supportsRideWaitTimesHistory: false,
+    };
   }
 
   async getPois(): Promise<Poi[]> {
@@ -79,14 +83,14 @@ export class WildlandsService extends ThemeParkService{
 
         combined.forEach(value => {
           animals = animals.concat(value.data.items);
-        })
+        });
 
         const p: WildlandsAnimalsResponseInterface = {
           data: {
-            items: animals
+            items: animals,
           },
-          pagination: combined[0].pagination
-        }
+          pagination: combined[0].pagination,
+        };
 
         return p;
       }).catch((error) => {

@@ -15,6 +15,10 @@ export class LegolandDeutschlandService extends AttractionsIoThemeParkService {
       image: 'https://r-cf.bstatic.com/images/hotel/max1024x768/229/229051043.jpg',
       countryCode: 'de',
       parkType: ParkType.THEMEPARK,
+      location: {
+        lat: 48.42588595451182,
+        lng: 10.308480797154878,
+      },
     };
   }
 
