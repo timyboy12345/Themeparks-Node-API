@@ -22,8 +22,8 @@ export class ParqueWarnerService extends ThemeParkService {
   getInfo(): ThemePark {
     return {
       name: 'Parque Warner',
-      image: '',
-      description: '',
+      image: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/06/6c/79/19.jpg',
+      description: 'Parque Warner Madrid is een themapark gelegen op 25 km ten zuidoosten van Madrid, Spanje, in de gemeente San Martín de la Vega.Het plan begon in 1997 en de bouw startte in de eerste helft van 1999.',
       id: 'parque-warner',
       timezone: '',
       countryCode: 'es',
