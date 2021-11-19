@@ -18,6 +18,7 @@ import { ParksModule } from './parks/parks.module';
 import { LegolandDeutschlandService } from './parks/legoland/legoland-deutschland/legoland-deutschland.service';
 import { ControllersModule } from './controllers/controllers.module';
 import { DatabaseModule } from './database/database.module';
+import { LocalizedAttractionsIoThemeParkService } from './_services/attractions-io-theme-park/localized-attractions-io-theme-park.service';
 
 @Module({
   imports: [
@@ -52,7 +53,7 @@ import { DatabaseModule } from './database/database.module';
     DatabaseModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AttractionsIoThemeParkService, TransferService, CompanyService, WaitTimeScheduleService, LegolandDeutschlandService],
+  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AttractionsIoThemeParkService, TransferService, CompanyService, WaitTimeScheduleService, LegolandDeutschlandService, LocalizedAttractionsIoThemeParkService],
 })
 export class AppModule {
 }

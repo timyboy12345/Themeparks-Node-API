@@ -1,11 +1,14 @@
-import { HttpService, Injectable, NotImplementedException } from '@nestjs/common';
+import { HttpService, Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { ThemeParkService } from '../themepark/theme-park.service';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError, AxiosRequestConfig } from 'axios';
-import { Poi } from '../../_interfaces/poi.interface';
-import { AttractionsIoItemInterface } from '../../_interfaces/attractions-io/attractions-io-item.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
+import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
+
+const unzipper = require('unzipper');
+import * as fs from 'fs';
+import { Poi } from '../../_interfaces/poi.interface';
 
 @Injectable()
 export class AttractionsIoThemeParkService extends ThemeParkService {
@@ -13,19 +16,38 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
 
   private _tempToken: string;
 
-  constructor(private readonly httpService: HttpService,
-              private readonly configService: ConfigService) {
+  constructor(protected readonly httpService: HttpService,
+              protected readonly configService: ConfigService) {
     super();
 
     this._attractionsIoApiUrl = 'https://api.attractions.io/v1';
   }
 
+  getSupports(): ThemeParkSupports {
+    return {
+      supportsAnimals: false,
+      supportsShowTimes: false,
+      supportsRestaurantOpeningTimes: false,
+      supportsPoiLocations: false,
+      supportsShopOpeningTimes: false,
+      supportsShops: false,
+      supportsRides: true,
+      supportsShows: false,
+      supportsRestaurants: false,
+      supportsRideWaitTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsPois: true,
+    };
+  }
+
   public getApiKey(): string {
-    throw new NotImplementedException("Could not get API key");
+    throw new NotImplementedException('Could not get API key');
   }
 
   public getInstallationRequestBody(): string {
-    throw new NotImplementedException("Could not get installation request body");
+    throw new NotImplementedException('Could not get installation request body');
   }
 
   private async getTempToken() {
@@ -33,7 +55,7 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
   }
 
   public getAppDetails(): AttractionsIoAppDetailsInterface {
-    throw new NotImplementedException("Could not get app details");
+    throw new NotImplementedException('Could not get app details');
   }
 
   protected async getToken(): Promise<string> {
@@ -67,14 +89,18 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
       });
   }
 
-  protected async getData() {
+  /**
+   * Returns a redirect to the ZIP-file for the specific park
+   * @protected
+   */
+  protected async getDataUrl(): Promise<any> {
     const token = await this.getTempToken();
     const settings = this.getAppDetails();
 
     const headers = {
       'Authorization': `Attractions-Io api-key="${this.getApiKey()}", installation-token="${token}"`,
       'Date': settings.latestUpdate,
-      'User-Agent': settings.userAgent
+      'User-Agent': settings.userAgent,
     };
 
     const config: AxiosRequestConfig = {
@@ -82,6 +108,7 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
       params: {
         'version': settings.latestUpdate,
       },
+      maxRedirects: 0,
     };
 
     return await this.httpService
@@ -91,62 +118,138 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
       )
       .toPromise()
       .then((value) => {
-        console.log("SUCCESS");
-        console.log(value);
-        console.log(value.data);
+        // When the call is successful, a redirect status code was not given
+        // This means something went wrong
+        console.log('SUCCESS BUT ACTUALLY AN ERROR');
       })
       .catch((reason: AxiosError) => {
-        console.error("FAILED");
+        if (reason.response.status === 303) {
+          const headers = reason.response.headers;
+          return headers.location;
+        }
+
+        console.error('FAILED');
         console.log(`${reason.response.status} / ${reason.response.statusText}`);
         console.log(reason.response.data);
+        console.log(reason.response.headers);
       });
   }
 
-  public getFileItems(file: any, default_locale = ' en-GB'): Poi[] {
-    return file.Item.map((item: AttractionsIoItemInterface) => {
-      let category: PoiCategory = this.getCategory(item.Category);
+  /**
+   * Download a zip folder from a specified URL
+   * @param fileUrl
+   * @param downloadLocation
+   */
+  protected async downloadZip(fileUrl: string, downloadLocation: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.httpService.request({
+        url: fileUrl,
+        responseType: 'arraybuffer',
+      })
+        .toPromise()
+        .then(value => {
+          fs.writeFile(downloadLocation, value.data, function(err) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(downloadLocation);
+            }
+          });
+        })
+        .catch(reason => {
+          console.error(reason);
+          reject(reason);
+        });
+    });
+  }
 
-      const poi: Poi = {
-        id: item._id + '',
-        title: item.Name[default_locale],
-        localizedTitles: {
-          en: item.Name['en-GB'],
-          nl: item.Name['nl-NL'],
-          de: item.Name['de-DE'],
-        },
-        description: item.Summary ? item.Summary['en-GB'] : undefined,
-        category: category,
-        original: item,
-        minSize: item.MinimumHeightRequirement ? item.MinimumHeightRequirement * 100 : undefined,
-        minSizeWithEscort: item.MinimumUnaccompaniedHeightRequirement ? item.MinimumUnaccompaniedHeightRequirement : undefined,
-        maxSize: item.MaximumHeightRequirement ? item.MaximumHeightRequirement * 100 : undefined,
-        minAge: item.MinimumAgeRequirement ?? undefined,
-        maxAge: item.MaximumAgeRequirement ?? undefined,
-      };
+  /**
+   * Read the details for a specific park
+   * @param location
+   */
+  protected readZip(location: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
 
-      if (item.Summary) {
-        poi.localizedDescriptions = {
-          en: item.Summary['en-GB'],
-          nl: item.Summary['nl-NL'],
-          de: item.Summary['de-DE'],
-        };
-      }
+      fs.createReadStream(location)
+        .pipe(unzipper.Parse())
+        .on('entry', function(entry) {
+          const fileName = entry.path;
+          const type = entry.type; // 'Directory' or 'File'
+          const size = entry.vars.uncompressedSize; // There is also compressedSize;
 
-      if (item.Location) {
-        const lat = parseFloat(item.Location.split(',')[0]);
-        const lng = parseFloat(item.Location.split(',')[1]);
+          if (fileName === 'records.json') {
+            // entry.pipe(fs.createWriteStream(outputPath));
+            entry.pipe(chunks);
+          } else {
+            entry.autodrain();
+          }
+        })
+        .on('end', function() {
+          resolve(Buffer.concat(chunks).toString('utf8'))
+        });
+    });
+  }
 
-        poi.location = {
-          lat: lat,
-          lng: lng,
-        };
-      }
+  private streamToString (stream) {
+    const chunks = [];
+    return new Promise((resolve, reject) => {
+      stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+      stream.on('error', (err) => reject(err));
+      stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    })
+  }
 
-      return poi;
+  /**
+   * Save details for a specific park
+   * @param location
+   * @param outputPath
+   */
+  protected saveDetails(location: string, outputPath: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+
     });
   }
 
   public getCategory(category: number): PoiCategory {
     return PoiCategory.UNDEFINED;
+  }
+
+  async getPois(): Promise<Poi[]> {
+    const url = await this.getDataUrl();
+    const zipLocation = await this.downloadZip(url, `${__dirname}/test.zip`)
+      .then(value => {
+        return value;
+      })
+      .catch(reason => {
+        console.error(reason);
+        throw new InternalServerErrorException(reason);
+      });
+
+    let jsonLocation;
+
+    // await this.saveDetails(zipLocation, `${__dirname}/test-output.json`);
+
+    await this.readZip(zipLocation)
+      .then((location) => {
+        console.log('File Unzipped');
+        console.log(location);
+        jsonLocation = location;
+      })
+      .catch(reason => {
+        console.error(reason);
+        throw new InternalServerErrorException(reason);
+      });
+
+    // fs.readFile(jsonLocation, (err, data) => {
+    //   if (err) {
+    //     console.error(err);
+    //     throw new InternalServerErrorException(err);
+    //   }
+    //
+    //   console.log(data);
+    // });
+
+    return [];
   }
 }

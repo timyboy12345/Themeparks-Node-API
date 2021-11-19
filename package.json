@@ -31,6 +31,7 @@
     "@nestjs/typeorm": "^7.1.5",
     "@sentry/node": "^6.2.1",
     "@sentry/tracing": "^6.2.1",
+    "@types/unzipper": "^0.10.4",
     "cache-manager": "^3.4.1",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
@@ -43,7 +44,9 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.2.34"
+    "typeorm": "^0.2.34",
+    "unzipper": "^0.10.11",
+    "yauzl": "^2.10.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.6",

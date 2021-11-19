@@ -75,7 +75,7 @@ export class LegolandDeutschlandService extends AttractionsIoThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
-    await this.getData().then(value => {
+    await this.getDataUrl().then(value => {
       console.log(value);
     });
 

@@ -77,25 +77,25 @@ export class HellendoornService extends AttractionsIoThemeParkService {
       '\n';
   }
 
-  async getPois(): Promise<Poi[]> {
-    return this.getFileItems(data, 'nl-NL');
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.ATTRACTION);
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this.getFileItems(data, 'nl-NL').filter(poi => [PoiCategory.RESTAURANT, PoiCategory.SNACKBAR].includes(poi.category));
-  }
-
-  async getShows(): Promise<Poi[]> {
-    return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.SHOW);
-  }
-
-  async getShops(): Promise<Poi[]> {
-    return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.SHOP);
-  }
+  // async getPois(): Promise<Poi[]> {
+  //   return this.getFileItems(data, 'nl-NL');
+  // }
+  //
+  // async getRides(): Promise<Poi[]> {
+  //   return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.ATTRACTION);
+  // }
+  //
+  // async getRestaurants(): Promise<Poi[]> {
+  //   return this.getFileItems(data, 'nl-NL').filter(poi => [PoiCategory.RESTAURANT, PoiCategory.SNACKBAR].includes(poi.category));
+  // }
+  //
+  // async getShows(): Promise<Poi[]> {
+  //   return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.SHOW);
+  // }
+  //
+  // async getShops(): Promise<Poi[]> {
+  //   return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.SHOP);
+  // }
 
   getCategory(category: number): PoiCategory {
     switch (category) {

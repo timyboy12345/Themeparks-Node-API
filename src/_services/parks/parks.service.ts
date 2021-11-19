@@ -34,6 +34,7 @@ import { CedarFairService } from '../../parks/cedarfair/cedar-fair.service';
 import * as Sentry from '@sentry/node';
 import { GronaLundService } from '../../parks/grona-lund/grona-lund.service';
 import { TivoliService } from '../../parks/tivoli/tivoli.service';
+import { ThorpeParkService } from '../../parks/thorpe-park/thorpe-park.service';
 
 @Injectable()
 export class ParksService {
@@ -71,6 +72,7 @@ export class ParksService {
               private readonly _cedarFairService: CedarFairService,
               private readonly _gronaLundService: GronaLundService,
               private readonly _tivoliService: TivoliService,
+              private readonly _thorpeParkService: ThorpeParkService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -99,6 +101,7 @@ export class ParksService {
     this._parks.push(_parqueWarnerService);
     this._parks.push(_gronaLundService);
     this._parks.push(_tivoliService);
+    this._parks.push(_thorpeParkService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
