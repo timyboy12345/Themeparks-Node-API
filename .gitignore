@@ -38,3 +38,6 @@ schema.graphql
 # Environments
 .env
 SERVER.md
+
+# Storage
+storage/
