@@ -40,4 +40,4 @@ schema.graphql
 SERVER.md
 
 # Storage
-storage/
+/storage
