@@ -1,5 +1,4 @@
 import { HttpService, Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
-import { ThemeParkService } from '../themepark/theme-park.service';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
@@ -9,15 +8,18 @@ import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 const unzipper = require('unzipper');
 import * as fs from 'fs';
 import { Poi } from '../../_interfaces/poi.interface';
+import { AioTransferServiceService } from './transfer-service/aio-transfer-service.service';
+import { ThroughPoisThemeParkService } from '../themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class AttractionsIoThemeParkService extends ThemeParkService {
+export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
   private readonly _attractionsIoApiUrl: string;
 
   private _tempToken: string;
 
   constructor(protected readonly httpService: HttpService,
-              protected readonly configService: ConfigService) {
+              protected readonly configService: ConfigService,
+              private readonly transferService: AioTransferServiceService) {
     super();
 
     this._attractionsIoApiUrl = 'https://api.attractions.io/v1';
@@ -117,7 +119,7 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
         config,
       )
       .toPromise()
-      .then((value) => {
+      .then(() => {
         // When the call is successful, a redirect status code was not given
         // This means something went wrong
         console.log('SUCCESS BUT ACTUALLY AN ERROR');
@@ -163,51 +165,13 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
     });
   }
 
-  /**
-   * Read the details for a specific park
-   * @param location
-   */
-  protected readZip(location: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const chunks = [];
-
-      fs.createReadStream(location)
-        .pipe(unzipper.Parse())
-        .on('entry', function(entry) {
-          const fileName = entry.path;
-          const type = entry.type; // 'Directory' or 'File'
-          const size = entry.vars.uncompressedSize; // There is also compressedSize;
-
-          if (fileName === 'records.json') {
-            // entry.pipe(fs.createWriteStream(outputPath));
-            entry.pipe(chunks);
-          } else {
-            entry.autodrain();
-          }
-        })
-        .on('end', function() {
-          resolve(Buffer.concat(chunks).toString('utf8'))
+  protected async parseZip(inputPath, outputPath): Promise<void> {
+    return new Promise((resolve) => {
+      fs.createReadStream(inputPath)
+        .pipe(unzipper.Extract({ path: outputPath }))
+        .on('close', () => {
+          resolve();
         });
-    });
-  }
-
-  private streamToString (stream) {
-    const chunks = [];
-    return new Promise((resolve, reject) => {
-      stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
-      stream.on('error', (err) => reject(err));
-      stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
-    })
-  }
-
-  /**
-   * Save details for a specific park
-   * @param location
-   * @param outputPath
-   */
-  protected saveDetails(location: string, outputPath: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-
     });
   }
 
@@ -217,39 +181,30 @@ export class AttractionsIoThemeParkService extends ThemeParkService {
 
   async getPois(): Promise<Poi[]> {
     const url = await this.getDataUrl();
-    const zipLocation = await this.downloadZip(url, `${__dirname}/test.zip`)
-      .then(value => {
-        return value;
-      })
-      .catch(reason => {
-        console.error(reason);
-        throw new InternalServerErrorException(reason);
-      });
+    const inputPath = `${__dirname}/../../../storage/aio/test.zip`;
+    const outputPath = `${__dirname}/../../../storage/aio/test-output/`;
 
-    let jsonLocation;
+    const settingsExists = fs.existsSync(`${outputPath}/records.json`);
 
-    // await this.saveDetails(zipLocation, `${__dirname}/test-output.json`);
+    if (!settingsExists) {
+      await this.downloadZip(url, inputPath)
+        .then(() => {
+          console.log(`Zip file downloaded to ${inputPath}`);
+        })
+        .catch(reason => {
+          console.error(reason);
+          throw new InternalServerErrorException(reason);
+        });
 
-    await this.readZip(zipLocation)
-      .then((location) => {
-        console.log('File Unzipped');
-        console.log(location);
-        jsonLocation = location;
-      })
-      .catch(reason => {
-        console.error(reason);
-        throw new InternalServerErrorException(reason);
-      });
+      await this.parseZip(inputPath, outputPath)
+        .then(() => {
+          console.log(`Files saved to ${outputPath}`);
+        });
+    }
 
-    // fs.readFile(jsonLocation, (err, data) => {
-    //   if (err) {
-    //     console.error(err);
-    //     throw new InternalServerErrorException(err);
-    //   }
-    //
-    //   console.log(data);
-    // });
+    let rawData = fs.readFileSync(`${outputPath}/records.json`);
+    let data = JSON.parse(rawData.toString());
 
-    return [];
+    return this.transferService.transferDataObjectToPois(data, this.getCategory);
   }
 }

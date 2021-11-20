@@ -109,6 +109,11 @@ export interface Poi {
   minSize?: number;
 
   /**
+   * The length that riders with parents are allowed to ride (in cm)
+   */
+  minSizeWithEscort?: number;
+
+  /**
    * The maximum length in centimeters for this ride
    */
   maxSize?: number;
@@ -119,14 +124,14 @@ export interface Poi {
   minAge?: number;
 
   /**
+   * The minimum age to ride this ride with parents
+   */
+  minAgeWithEscort?: number;
+
+  /**
    * The maximum age to ride this ride
    */
   maxAge?: number;
-
-  /**
-   * The length that riders with parents are allowed to ride (in cm)
-   */
-  minSizeWithEscort?: number;
 
   /**
    * Any tags the park may have given this ride

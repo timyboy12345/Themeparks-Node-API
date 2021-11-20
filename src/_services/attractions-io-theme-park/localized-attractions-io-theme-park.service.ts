@@ -1,47 +1,14 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { AttractionsIoThemeParkService } from './attractions-io-theme-park.service';
 import { Poi } from '../../_interfaces/poi.interface';
 import { TranslatedAttractionsIoItemInterface } from '../../_interfaces/attractions-io/translated-attractions-io-item.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
-import * as fs from 'fs';
 
 @Injectable()
 export class LocalizedAttractionsIoThemeParkService extends AttractionsIoThemeParkService {
+  // TODO: Fix this class when a localized theme park arises
   async getPois(): Promise<Poi[]> {
-    return new Promise(async (resolve, reject) => {
-      const url = await this.getDataUrl();
-
-      const zipLocation = await this.downloadZip(url, `${__dirname}/test.zip`)
-        .then(value => {
-          return value;
-        })
-        .catch(reason => {
-          console.error(reason);
-          throw new InternalServerErrorException(reason);
-        });
-
-      let jsonLocation;
-      await this.readZip(zipLocation)
-        .then((location) => {
-          console.log('File Unzipped');
-          console.log(location);
-          jsonLocation = location;
-        })
-        .catch(reason => {
-          console.error(reason);
-          throw new InternalServerErrorException(reason);
-        });
-
-      // fs.readFile(jsonLocation, (err, data) => {
-      //   if (err) {
-      //     console.error(err);
-      //     throw new InternalServerErrorException(err);
-      //   }
-      //
-      //   console.log(data);
-      //   resolve(this.transform(data));
-      // });
-    });
+    throw new NotImplementedException();
   }
 
   public transform(file: any, default_locale = ' en-GB'): Poi[] {
