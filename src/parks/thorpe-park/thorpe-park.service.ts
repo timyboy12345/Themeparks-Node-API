@@ -10,10 +10,15 @@ export class ThorpeParkService extends AioThemeparkService {
     return {
       id: 'thorpe-park',
       name: 'Thorpe Park',
-      description: '',
-      image: '',
+      description: 'Thorpe Park is een attractiepark in het Verenigd Koninkrijk. Het park ligt in het Engelse Chertsey op een plek waar vroeger een groeve lag. Thorpe Park werd geopend in 1979 en is momenteel eigendom van de "Merlin Entertainments"-groep. In het park bevinden zich ongeveer 25 attracties',
+      image: 'https://www.runnymedehotel.com/wp-content/uploads/2017/02/Thorpe-Park-Nemesis-Inferno.jpg',
       countryCode: 'uk',
       parkType: ParkType.THEMEPARK,
+      timezone: 'Europe/London',
+      location: {
+        lat: 51.4050121037,
+        lng: -0.5191569105
+      }
     };
   }
 
