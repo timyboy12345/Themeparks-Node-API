@@ -1,6 +1,7 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { LegolandDeutschlandService } from './legoland-deutschland/legoland-deutschland.service';
+import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
 
 @Module({
   imports: [
@@ -11,7 +12,7 @@ import { LegolandDeutschlandService } from './legoland-deutschland/legoland-deut
       ignoreEnvFile: false,
     }),
   ],
-  providers: [LegolandDeutschlandService],
+  providers: [LegolandDeutschlandService, AioTransferServiceService],
   exports: [LegolandDeutschlandService],
 })
 export class LegolandModule {

@@ -6,7 +6,7 @@ import { ThroughPoisThemeParkService } from './_services/themepark/through-pois-
 import { ParksService } from './_services/parks/parks.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ErrorService } from './_services/error/error.service';
-import { AttractionsIoThemeParkService } from './_services/attractions-io-theme-park/attractions-io-theme-park.service';
+import { AioThemeparkService } from './_services/aio/aio-themepark.service';
 import { TransferService } from './_services/transfer/transfer.service';
 import { CompanyService } from './_services/company/company.service';
 import { ScheduleModule } from '@nestjs/schedule';
@@ -18,6 +18,7 @@ import { ParksModule } from './parks/parks.module';
 import { LegolandDeutschlandService } from './parks/legoland/legoland-deutschland/legoland-deutschland.service';
 import { ControllersModule } from './controllers/controllers.module';
 import { DatabaseModule } from './database/database.module';
+import { AioTransferServiceService } from './_services/aio/transfer-service/aio-transfer-service.service';
 
 @Module({
   imports: [
@@ -52,7 +53,7 @@ import { DatabaseModule } from './database/database.module';
     DatabaseModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AttractionsIoThemeParkService, TransferService, CompanyService, WaitTimeScheduleService, LegolandDeutschlandService],
+  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AioThemeparkService, TransferService, CompanyService, WaitTimeScheduleService, LegolandDeutschlandService, AioTransferServiceService],
 })
 export class AppModule {
 }
