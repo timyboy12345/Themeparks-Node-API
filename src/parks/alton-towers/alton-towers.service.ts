@@ -12,7 +12,7 @@ export class AltonTowersService extends AioThemeparkService {
       name: 'Alton Towers',
       parkType: ParkType.THEMEPARK,
       description: 'Alton Towers is een attractiepark in het graafschap Staffordshire in Groot-Brittannië. Alton Towers trekt jaarlijks ongeveer twee miljoen bezoekers, waarmee het na Legoland Windsor het meest bezochte attractiepark is in het Verenigd Koninkrijk.',
-      countryCode: 'uk',
+      countryCode: 'gb',
       image: 'https://i2-prod.staffordshire-live.co.uk/incoming/article5048290.ece/ALTERNATES/s1200b/1_JS213388284.jpg',
       location: {
         lat: 52.9877,

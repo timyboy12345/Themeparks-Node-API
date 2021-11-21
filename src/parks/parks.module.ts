@@ -27,9 +27,10 @@ import { TivoliModule } from './tivoli/tivoli.module';
 import { ThorpeParkModule } from './thorpe-park/thorpe-park.module';
 import { AltonTowersModule } from './alton-towers/alton-towers.module';
 import { PaultonsParkModule } from './paultons-park/paultons-park.module';
+import { SanDiegoZooModule } from './san-diego-zoo/san-diego-zoo.module';
 
 @Module({
-  imports: [HttpModule, EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule],
-  exports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule],
+  imports: [HttpModule, EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule, SanDiegoZooModule],
+  exports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, LegolandModule, BobbejaanlandModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule, SanDiegoZooModule],
 })
 export class ParksModule {}
