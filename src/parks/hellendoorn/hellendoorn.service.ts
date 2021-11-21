@@ -1,14 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { AttractionsIoThemeParkService } from '../../_services/attractions-io-theme-park/attractions-io-theme-park.service';
+import { AioThemeparkService } from '../../_services/aio/aio-themepark.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
-import { Poi } from '../../_interfaces/poi.interface';
-import * as data from './data/records.json';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
 
 @Injectable()
-export class HellendoornService extends AttractionsIoThemeParkService {
+export class HellendoornService extends AioThemeparkService {
   getInfo(): ThemePark {
     return {
       id: 'hellendoorn',
@@ -77,25 +75,9 @@ export class HellendoornService extends AttractionsIoThemeParkService {
       '\n';
   }
 
-  // async getPois(): Promise<Poi[]> {
-  //   return this.getFileItems(data, 'nl-NL');
-  // }
-  //
-  // async getRides(): Promise<Poi[]> {
-  //   return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.ATTRACTION);
-  // }
-  //
-  // async getRestaurants(): Promise<Poi[]> {
-  //   return this.getFileItems(data, 'nl-NL').filter(poi => [PoiCategory.RESTAURANT, PoiCategory.SNACKBAR].includes(poi.category));
-  // }
-  //
-  // async getShows(): Promise<Poi[]> {
-  //   return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.SHOW);
-  // }
-  //
-  // async getShops(): Promise<Poi[]> {
-  //   return this.getFileItems(data, 'nl-NL').filter(poi => poi.category === PoiCategory.SHOP);
-  // }
+  getApiKey(): string {
+    return "3acb983d-a451-4700-b607-aac8ab1bedee";
+  }
 
   getCategory(category: number): PoiCategory {
     switch (category) {
@@ -121,5 +103,9 @@ export class HellendoornService extends AttractionsIoThemeParkService {
       default:
         return PoiCategory.UNDEFINED;
     }
+  }
+
+  getDefaultLanguage(): string {
+    return 'nl-NL';
   }
 }

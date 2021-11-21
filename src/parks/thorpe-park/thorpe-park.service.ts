@@ -1,12 +1,11 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { AttractionsIoThemeParkService } from '../../_services/attractions-io-theme-park/attractions-io-theme-park.service';
+import { Injectable } from '@nestjs/common';
+import { AioThemeparkService } from '../../_services/aio/aio-themepark.service';
 import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
-import { Poi } from '../../_interfaces/poi.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 
 @Injectable()
-export class ThorpeParkService extends AttractionsIoThemeParkService {
+export class ThorpeParkService extends AioThemeparkService {
   getInfo(): ThemePark {
     return {
       id: 'thorpe-park',
@@ -92,15 +91,15 @@ export class ThorpeParkService extends AttractionsIoThemeParkService {
       case 1638:
         return PoiCategory.HOTEL;
       case 522:
-        // Accessibility
+      // Accessibility
       case 533:
-        // Education
+      // Education
       case 660:
-        // Facilities
+      // Facilities
       case 1635:
-        // Coco-Cola freestyle
+      // Coco-Cola freestyle
       case 1639:
-        // "Info" (Hotel reception)
+      // "Info" (Hotel reception)
       default:
         return PoiCategory.UNDEFINED;
     }

@@ -1,18 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AttractionsIoThemeParkService } from './attractions-io-theme-park.service';
+import { AioThemeparkService } from './aio-themepark.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { AioTransferServiceService } from './transfer-service/aio-transfer-service.service';
 
 describe('AttractionsIoThemeParkService', () => {
-  let service: AttractionsIoThemeParkService;
+  let service: AioThemeparkService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [AttractionsIoThemeParkService],
+      providers: [AioThemeparkService, AioTransferServiceService],
     }).compile();
 
-    service = module.get<AttractionsIoThemeParkService>(AttractionsIoThemeParkService);
+    service = module.get<AioThemeparkService>(AioThemeparkService);
   });
 
   it('should be defined', () => {

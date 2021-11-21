@@ -12,7 +12,7 @@ import { AioTransferServiceService } from './transfer-service/aio-transfer-servi
 import { ThroughPoisThemeParkService } from '../themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
+export class AioThemeparkService extends ThroughPoisThemeParkService {
   private readonly _attractionsIoApiUrl: string;
 
   private _tempToken: string;
@@ -42,6 +42,10 @@ export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsPois: true,
     };
+  }
+
+  public getInstallationDirectory(): string {
+    return this.getInfo().id;
   }
 
   public getApiKey(): string {
@@ -113,7 +117,8 @@ export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
       maxRedirects: 0,
     };
 
-    return await this.httpService
+    return new Promise((resolve, reject) => {
+    this.httpService
       .get(
         this._attractionsIoApiUrl + '/data',
         config,
@@ -123,18 +128,22 @@ export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
         // When the call is successful, a redirect status code was not given
         // This means something went wrong
         console.log('SUCCESS BUT ACTUALLY AN ERROR');
+        reject();
       })
       .catch((reason: AxiosError) => {
         if (reason.response.status === 303) {
           const headers = reason.response.headers;
-          return headers.location;
+          resolve(headers.location);
+          return;
         }
 
         console.error('FAILED');
         console.log(`${reason.response.status} / ${reason.response.statusText}`);
         console.log(reason.response.data);
         console.log(reason.response.headers);
+        reject(reason);
       });
+    })
   }
 
   /**
@@ -150,6 +159,14 @@ export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
       })
         .toPromise()
         .then(value => {
+          if (!fs.existsSync(`${__dirname}/../../../storage`)) {
+            fs.mkdirSync(`${__dirname}/../../../storage`)
+          }
+
+          if (!fs.existsSync(`${__dirname}/../../../storage/aio`)) {
+            fs.mkdirSync(`${__dirname}/../../../storage/aio`)
+          }
+
           fs.writeFile(downloadLocation, value.data, function(err) {
             if (err) {
               reject(err);
@@ -179,10 +196,21 @@ export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
     return PoiCategory.UNDEFINED;
   }
 
+  public getDefaultLanguage(): string {
+    return 'en-GB'
+  }
+
   async getPois(): Promise<Poi[]> {
-    const url = await this.getDataUrl();
-    const inputPath = `${__dirname}/../../../storage/aio/test.zip`;
-    const outputPath = `${__dirname}/../../../storage/aio/test-output/`;
+    const url = await this.getDataUrl()
+      .then((value) => {
+        return value;
+      })
+      .catch(reason => {
+        console.error(reason);
+      });
+
+    const inputPath = `${__dirname}/../../../storage/aio/${this.getInstallationDirectory()}.zip`;
+    const outputPath = `${__dirname}/../../../storage/aio/${this.getInstallationDirectory()}-output/`;
 
     const settingsExists = fs.existsSync(`${outputPath}/records.json`);
 
@@ -205,6 +233,6 @@ export class AttractionsIoThemeParkService extends ThroughPoisThemeParkService {
     let rawData = fs.readFileSync(`${outputPath}/records.json`);
     let data = JSON.parse(rawData.toString());
 
-    return this.transferService.transferDataObjectToPois(data, this.getCategory);
+    return this.transferService.transferDataObjectToPois(data, this.getCategory, this.getDefaultLanguage());
   }
 }

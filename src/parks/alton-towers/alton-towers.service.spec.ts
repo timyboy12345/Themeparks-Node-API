@@ -1,22 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LegolandDeutschlandService } from './legoland-deutschland.service';
+import { AltonTowersService } from './alton-towers.service';
+import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AioTransferServiceService } from '../../../_services/aio/transfer-service/aio-transfer-service.service';
 
-describe('LegolandDeutschlandService', () => {
-  let service: LegolandDeutschlandService;
+describe('AltonTowersService', () => {
+  let service: AltonTowersService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [LegolandDeutschlandService, AioTransferServiceService],
-      imports: [
-        HttpModule,
-        ConfigModule.forRoot()
-      ]
+      providers: [AltonTowersService, AioTransferServiceService],
+      imports: [HttpModule, ConfigModule.forRoot()],
     }).compile();
 
-    service = module.get<LegolandDeutschlandService>(LegolandDeutschlandService);
+    service = module.get<AltonTowersService>(AltonTowersService);
   });
 
   it('should be defined', () => {

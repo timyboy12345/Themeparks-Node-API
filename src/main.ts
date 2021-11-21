@@ -4,8 +4,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const Sentry = require("@sentry/node");
 
+import { join } from 'path';
+
 // If taking advantage of automatic instrumentation (highly recommended)
 import { Integrations as TracingIntegrations } from "@sentry/tracing";
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 Sentry.init({
   dsn: 'https://23fa5a724def4d8bbc58845111e300b2@o324258.ingest.sentry.io/5668770',
@@ -20,7 +23,7 @@ Sentry.init({
 });
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.enableCors();
 
@@ -30,6 +33,10 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('Themeparks')
     .build();
+
+  app.useStaticAssets(join(__dirname, '..', 'public'), {
+    prefix: '/data/'
+  });
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

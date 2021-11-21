@@ -9,14 +9,15 @@ import {
 @Injectable()
 export class AioTransferServiceService extends TransferService {
   private categories: any;
+  private defaultLanguage: string;
 
   transferPoiToPoi(poi: AioRecordsItemInterface): Poi {
     const p: Poi = {
       id: `${poi._id}`,
-      title: poi.Name,
+      title: this.getProperty(poi, 'Name'),
       original: poi,
       category: this.getCategory(poi.Category),
-      description: poi.Summary,
+      description: this.getProperty(poi, 'Summary'),
       featured: poi.Featured
     };
 
@@ -53,10 +54,21 @@ export class AioTransferServiceService extends TransferService {
 
   transferDataObjectToPois(data: AioRecordsInterface, ...args): Poi[] {
     this.categories = args[0];
+    this.defaultLanguage = args[1];
     return this.transferPoisToPois(data.Item);
   }
 
   private getCategory(id: number) {
     return this.categories(id);
+  }
+
+  private getProperty(poi: AioRecordsItemInterface, property: string): string {
+    const data = poi[property];
+
+    if (typeof data === 'object' && data) {
+      return data[this.defaultLanguage ?? 'en-GB'];
+    }
+
+    return data;
   }
 }

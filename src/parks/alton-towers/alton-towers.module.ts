@@ -1,9 +1,10 @@
 import { HttpModule, Module } from '@nestjs/common';
+import { AltonTowersService } from './alton-towers.service';
 import { ConfigModule } from '@nestjs/config';
-import { LegolandDeutschlandService } from './legoland-deutschland/legoland-deutschland.service';
 import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
 
 @Module({
+  providers: [AltonTowersService, AioTransferServiceService],
   imports: [
     HttpModule,
     ConfigModule.forRoot({
@@ -12,8 +13,6 @@ import { AioTransferServiceService } from '../../_services/aio/transfer-service/
       ignoreEnvFile: false,
     }),
   ],
-  providers: [LegolandDeutschlandService, AioTransferServiceService],
-  exports: [LegolandDeutschlandService],
+  exports: [AltonTowersService]
 })
-export class LegolandModule {
-}
+export class AltonTowersModule {}
