@@ -36,4 +36,12 @@ export class ThroughPoisThemeParkService extends ThemeParkService {
 
     throw new NotImplementedException("Could not get all shops");
   }
+
+  async getAnimals(): Promise<Poi[]> {
+    if (this.getSupports().supportsAnimals) {
+      return this.getPois().then(pois => pois.filter(p => p.category === PoiCategory.ANIMAL));
+    }
+
+    throw new NotImplementedException("Could not get all animals");
+  }
 }

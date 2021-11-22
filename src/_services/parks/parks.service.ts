@@ -38,6 +38,7 @@ import { PaultonsParkService } from '../../parks/paultons-park/paultons-park.ser
 
 import * as Sentry from '@sentry/node';
 import { SanDiegoZooService } from '../../parks/san-diego-zoo/san-diego-zoo/san-diego-zoo.service';
+import { ChessingtonResortService } from '../../parks/chessington-resort/chessington-resort.service';
 
 @Injectable()
 export class ParksService {
@@ -78,7 +79,8 @@ export class ParksService {
               private readonly _thorpeParkService: ThorpeParkService,
               private readonly _altonTowersService: AltonTowersService,
               private readonly _paultonsParkService: PaultonsParkService,
-              private readonly _sanDiegoZooService: SanDiegoZooService
+              private readonly _sanDiegoZooService: SanDiegoZooService,
+              private readonly _chessingtonResort: ChessingtonResortService
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -111,6 +113,7 @@ export class ParksService {
     this._parks.push(_altonTowersService);
     this._parks.push(_paultonsParkService);
     this._parks.push(_sanDiegoZooService);
+    this._parks.push(_chessingtonResort);
 
     this._companies = [];
     this._companies.push(_sixflagsService);

@@ -32,6 +32,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇬🇧 Thorpe Park | 🎡 | True | False | False | False |
 | 🇬🇧 Alton Towers | 🎡 | True | True | True | True |
 | 🇬🇧 Paultons Park | 🎡 | True | False | False | False |
+| 🇬🇧 Chessington Resort | 🎡 | True | True | True | True |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False |
 | 🇳🇱 Walibi Holland | 🎡 | True | True | True | True |

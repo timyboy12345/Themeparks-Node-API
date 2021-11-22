@@ -8,7 +8,7 @@ import {
 
 @Injectable()
 export class AioTransferServiceService extends TransferService {
-  private categories: any;
+  private getCategory: any;
   private defaultLanguage: string;
 
   transferPoiToPoi(poi: AioRecordsItemInterface): Poi {
@@ -16,7 +16,8 @@ export class AioTransferServiceService extends TransferService {
       id: `${poi._id}`,
       title: this.getProperty(poi, 'Name'),
       original: poi,
-      category: this.getCategory(poi.Category),
+      original_category: poi.Category.toString(),
+      category: this.getCategoryById(poi.Category),
       description: this.getProperty(poi, 'Summary'),
       featured: poi.Featured
     };
@@ -53,13 +54,13 @@ export class AioTransferServiceService extends TransferService {
   }
 
   transferDataObjectToPois(data: AioRecordsInterface, ...args): Poi[] {
-    this.categories = args[0];
+    this.getCategory = args[0];
     this.defaultLanguage = args[1];
     return this.transferPoisToPois(data.Item);
   }
 
-  private getCategory(id: number) {
-    return this.categories(id);
+  private getCategoryById(id: number) {
+    return this.getCategory(id);
   }
 
   private getProperty(poi: AioRecordsItemInterface, property: string): string {
