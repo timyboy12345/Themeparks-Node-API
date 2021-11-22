@@ -17,7 +17,7 @@ export class PaultonsParkService extends AioThemeparkService{
         lat: 50.9489,
         lng: -1.5524
       },
-      countryCode: 'uk',
+      countryCode: 'gb',
       parkType: ParkType.THEMEPARK,
     }
   }

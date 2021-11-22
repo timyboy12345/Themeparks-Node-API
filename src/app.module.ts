@@ -15,7 +15,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { WaitTime } from './database/wait-time/wait-time.entity';
 import { WaitTimeModule } from './database/wait-time/wait-time.module';
 import { ParksModule } from './parks/parks.module';
-import { LegolandDeutschlandService } from './parks/legoland/legoland-deutschland/legoland-deutschland.service';
 import { ControllersModule } from './controllers/controllers.module';
 import { DatabaseModule } from './database/database.module';
 import { AioTransferServiceService } from './_services/aio/transfer-service/aio-transfer-service.service';
@@ -53,7 +52,7 @@ import { AioTransferServiceService } from './_services/aio/transfer-service/aio-
     DatabaseModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AioThemeparkService, TransferService, CompanyService, WaitTimeScheduleService, LegolandDeutschlandService, AioTransferServiceService],
+  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AioThemeparkService, TransferService, CompanyService, WaitTimeScheduleService, AioTransferServiceService],
 })
 export class AppModule {
 }

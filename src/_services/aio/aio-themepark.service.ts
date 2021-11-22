@@ -3,13 +3,13 @@ import { ConfigService } from '@nestjs/config';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
-import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
-
-const unzipper = require('unzipper');
-import * as fs from 'fs';
-import { Poi } from '../../_interfaces/poi.interface';
 import { AioTransferServiceService } from './transfer-service/aio-transfer-service.service';
 import { ThroughPoisThemeParkService } from '../themepark/through-pois-theme-park.service';
+import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
+import { Poi } from '../../_interfaces/poi.interface';
+import * as fs from 'fs';
+
+const unzipper = require('unzipper');
 
 @Injectable()
 export class AioThemeparkService extends ThroughPoisThemeParkService {
@@ -30,12 +30,12 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       supportsAnimals: false,
       supportsShowTimes: false,
       supportsRestaurantOpeningTimes: false,
-      supportsPoiLocations: false,
+      supportsPoiLocations: true,
       supportsShopOpeningTimes: false,
-      supportsShops: false,
+      supportsShops: true,
       supportsRides: true,
-      supportsShows: false,
-      supportsRestaurants: false,
+      supportsShows: true,
+      supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
