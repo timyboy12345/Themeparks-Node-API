@@ -10,33 +10,75 @@ To view the API, please go to [the example API](https://tp.arendz.nl/api) at htt
 ### Supported parks
 In the table below you will find the parks that are currently supported and the functions that they support. This list of included and non-included functions is also included in the API.
 
-| Park | Ride Support | Restaurants Support | Shows Support | Shops Support |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| 🇫🇷 Bellewaerde | Yes | Yes | Yes | Yes |
-| 🇫🇷 Disneyland Paris | Yes | Yes | Yes | Yes |
-| 🇫🇷 Disneyland Studios Park | Yes | Yes | Yes | Yes |
-| 🇫🇷 Parc Asterix | Yes | Yes | Yes | No |
-| 🇩🇪 Phantasialand | Yes | Yes | Yes | Yes |
-| 🇩🇪 Hansa Park | Yes | Yes | Yes | Yes |
-| 🇩🇪 Holiday Park | Yes | Yes | No | Yes |
-| 🇪🇸 Portaventura Park | Yes | Yes | No | No |
-| 🇪🇸 Ferrariland | Yes | Yes | No | No |
-| 🇪🇸 Parque Warner | Yes | Yes | Yes | Yes |
-| 🇧🇪 Walibi Belgium | Yes | No | No | Yes |
-| 🇧🇪 Bobbejaanland | Yes | Yes | No | Yes |
-| 🇧🇪 Plopsaland de Panne | Yes | Yes | Yes | Yes |
-| 🇳🇱 Efteling | Yes | Yes | Yes | Yes |
-| 🇳🇱 Toverland | Yes | Yes | No | No |
-| 🇳🇱 Walibi Holland | Yes | Yes | Yes | No |
-| 🇳🇱 DippieDoe | Yes | No | No | No |
-| 🇳🇱 Avonturenpark Hellendoorn | Yes | Yes | Yes | Yes |
-| 🇸🇪 Grona Lund | Yes | No | No | No |
-| 🇸🇪 Liseberg | Yes | Yes | No | Yes |
-| 🇩🇰 Tivoli | Yes | Yes | Yes | No |
-| 🇬🇧 Alton Towers | Yes | Yes | Yes | Yes |
-| 🇬🇧 Paultons Park | Yes | Yes | Yes | Yes |
-| 🇬🇧 Thorpe Park | Yes | Yes | Yes | Yes |
-| 🇺🇸 All Sixflags parks | Yes | Yes | Yes | Yes |
+| Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 🇧🇪 Walibi Belgium | 🎡 | True | True | True | True |
+| 🇧🇪 Bellewaerde | 🎡 | True | False | True | False |
+| 🇧🇪 Bellewaerde Aquapark | 🌊 | True | False | False | False |
+| 🇧🇪 Bobbejaanland | 🎡 | True | True | False | True |
+| 🇧🇪 Plopsalande de Panne | 🎡 | True | True | True | True |
+| 🇨🇦 La Ronde, Montreal | 🎡 | True | True | True | True |
+| 🇩🇪 Phantasialand | 🎡 | True | True | True | True |
+| 🇩🇪 Holiday Park | 🎡 | True | True | False | True |
+| 🇩🇪 LegoLand Deutschland | 🎡 | False | False | False | False |
+| 🇩🇪 Hansa Park | 🎡 | True | True | True | True |
+| 🇩🇰 Tivoli | 🎡 | True | True | True | False |
+| 🇪🇸 Portaventura | 🎡 | True | True | False | False |
+| 🇪🇸 Ferrari Land | 🎡 | True | True | False | False |
+| 🇪🇸 Parque Warner | 🎡 | True | True | True | True |
+| 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True |
+| 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True |
+| 🇫🇷 Parc Asterix | 🎡 | True | True | True | False |
+| 🇬🇧 Thorpe Park | 🎡 | True | False | False | False |
+| 🇬🇧 Alton Towers | 🎡 | True | True | True | True |
+| 🇬🇧 Paultons Park | 🎡 | True | False | False | False |
+| 🇳🇱 Efteling | 🎡 | True | True | True | True |
+| 🇳🇱 Toverland | 🎡 | True | True | True | False |
+| 🇳🇱 Walibi Holland | 🎡 | True | True | True | True |
+| 🇳🇱 DippieDoe | 🎡 | True | False | False | False |
+| 🇳🇱 Hellendoorn | 🎡 | True | True | True | True |
+| 🇳🇱 Ouwehands Dierenpark | 🦁 | False | False | False | False |
+| 🇳🇱 Wildlands | 🦁 | False | False | False | False |
+| 🇸🇪 Liseberg | 🎡 | True | True | False | True |
+| 🇸🇪 Grona Lund | 🎡 | True | False | False | False |
+| 🇺🇸 Silver Dollar City | 🎡 | True | False | False | False |
+| 🇺🇸 San Diego Zoo | 🦁 | True | False | False | False |
+| 🇺🇸 Six Flags Over Texas | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Over Georgia | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags St. Louis | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Great Adventure | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Magic Mountain | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Great America | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Fiesta Texas | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Arlington | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Los Angeles | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Chicago | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags America | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Discovery Kingdom | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags New England | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Jackson | 🌊 | True | True | True | True |
+| 🇺🇸 The Great Escape | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags White Water, Atlanta | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags México | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Oaxtepec | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Concord | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags Frontier City | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Oklahoma City | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags Darien Lake | 🎡 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Phoenix | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, SplashTown | 🌊 | True | True | True | True |
+| 🇺🇸 Six Flags Hurricane Harbor, Rockford | 🌊 | True | True | True | True |
+| 🇺🇸 Canada's Wonderland | 🎡 | True | True | True | True |
+| 🇺🇸 Carowinds | 🎡 | True | True | True | True |
+| 🇺🇸 Cedar Point | 🎡 | True | True | True | True |
+| 🇺🇸 Dorney Park | 🎡 | True | True | True | True |
+| 🇺🇸 California's Great Adventure | 🎡 | True | True | True | True |
+| 🇺🇸 King's Dominion | 🎡 | True | True | True | True |
+| 🇺🇸 Kings Island | 🎡 | True | True | True | True |
+| 🇺🇸 Knotts Berry Farm | 🎡 | True | True | True | True |
+| 🇺🇸 Michigans Adventure | 🎡 | True | True | True | True |
+| 🇺🇸 Valley Fair | 🎡 | True | True | True | True |
+| 🇺🇸 Worlds of Fun | 🎡 | True | True | True | True |
 
 ### Supported Zoos
 As an experiment, the API also includes some data from zoos. In the table below, you can find the zoos that are currently supported.
