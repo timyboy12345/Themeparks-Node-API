@@ -102,11 +102,13 @@ export class ParkHistoryController {
     const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsRideWaitTimesHistory) {
-      throw new BadRequestException('This park does not wait time history');
+      throw new BadRequestException('This park does not support wait time history');
     }
 
+    const date = moment().format('YYYY-MM-DD');
+
     const waitTimes: WaitingTimes[] = await this.waitTimeService
-      .findByParkId(park.getInfo().id)
+      .findByParkIdAndDate(park.getInfo().id, date)
       .then((waitTimes) => {
         return waitTimes
           .map((waitTime) => {
@@ -116,10 +118,7 @@ export class ParkHistoryController {
               state: PoiStatus.OPEN,
               wait: waitTime.wait,
             };
-          })
-          .filter((value => {
-            return moment(value.date).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD');
-          }));
+          });
       }).catch(() => {
         return [];
       });
