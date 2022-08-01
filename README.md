@@ -29,10 +29,10 @@ In the table below you will find the parks that are currently supported and the 
 | 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True |
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True |
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False |
-| 🇬🇧 Thorpe Park | 🎡 | True | False | False | False |
+| 🇬🇧 Thorpe Park | 🎡 | True | True | True | True |
 | 🇬🇧 Alton Towers | 🎡 | True | True | True | True |
-| 🇬🇧 Paultons Park | 🎡 | True | False | False | False |
-| 🇬🇧 Chessington Resort | 🎡 | True | True | True | True |
+| 🇬🇧 Paultons Park | 🎡 | True | True | True | True |
+| 🇬🇧 Chessington world of Adventures | 🎡 | True | True | True | True |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False |
 | 🇳🇱 Walibi Holland | 🎡 | True | True | True | True |
@@ -40,10 +40,13 @@ In the table below you will find the parks that are currently supported and the 
 | 🇳🇱 Hellendoorn | 🎡 | True | True | True | True |
 | 🇳🇱 Ouwehands Dierenpark | 🦁 | False | False | False | False |
 | 🇳🇱 Wildlands | 🦁 | False | False | False | False |
+| 🇳🇱 Blijdorp | 🦁 | False | False | True | False |
+| 🇳🇱 Apenheul | 🦁 | False | False | False | False |
+| 🇵🇱 Energylandia | 🎡 | False | False | True | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True |
 | 🇸🇪 Grona Lund | 🎡 | True | False | False | False |
 | 🇺🇸 Silver Dollar City | 🎡 | True | False | False | False |
-| 🇺🇸 San Diego Zoo | 🦁 | True | False | False | False |
+| 🇺🇸 San Diego Zoo | 🦁 | True | True | True | True |
 | 🇺🇸 Six Flags Over Texas | 🎡 | True | True | True | True |
 | 🇺🇸 Six Flags Over Georgia | 🎡 | True | True | True | True |
 | 🇺🇸 Six Flags St. Louis | 🎡 | True | True | True | True |

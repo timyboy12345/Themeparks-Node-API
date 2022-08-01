@@ -3,6 +3,8 @@ import { AioThemeparkService } from '../../../_services/aio/aio-themepark.servic
 import { AttractionsIoAppDetailsInterface } from '../../../_interfaces/attractions-io/attractions-io-app-details.interface';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
+import supports = CSS.supports;
 
 @Injectable()
 export class SanDiegoZooService extends AioThemeparkService {
@@ -20,6 +22,12 @@ export class SanDiegoZooService extends AioThemeparkService {
       parkType: ParkType.ZOO,
       timezone: 'America/Los_Angeles'
     }
+  }
+
+  getSupports(): ThemeParkSupports {
+    const superSupports = super.getSupports();
+    superSupports.supportsAnimals = true;
+    return superSupports;
   }
 
   getInstallationRequestBody(): string {

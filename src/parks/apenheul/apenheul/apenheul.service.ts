@@ -28,8 +28,8 @@ export class ApenheulService extends ThemeParkService {
       description: 'Apenheul is een dierentuin met apen aan de rand van de Nederlandse stad Apeldoorn. In het park verblijven ruim 300 apen van zo\'n 35 verschillende soorten die thuishoren in Afrika, Zuid-Amerika en Azië. Veel van de dieren zijn niet in hokken opgesloten: gaas of tralies ziet men er bijna niet.',
       image: 'https://cdn-cms.bookingexperts.nl/media/893/52/preprocessed.jpeg',
       location: {
-        lat: null,
-        lng: null,
+        lat: 52.21367,
+        lng: 5.92459,
       },
       timezone: 'Europe/Amsterdam',
       parkType: ParkType.ZOO,

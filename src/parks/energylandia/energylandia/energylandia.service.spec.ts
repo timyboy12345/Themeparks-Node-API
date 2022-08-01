@@ -1,22 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BlijdorpService } from './blijdorp.service';
+import { EnergylandiaService } from './energylandia.service';
 import { HttpModule } from '@nestjs/common';
-import { BlijdorpTransferService } from '../blijdorp-transfer/blijdorp-transfer.service';
 import { ConfigModule } from '@nestjs/config';
 
-describe('BlijdorpService', () => {
-  let service: BlijdorpService;
+describe('EnergylandiaService', () => {
+  let service: EnergylandiaService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [BlijdorpService, BlijdorpTransferService],
-      imports: [
-        HttpModule,
-        ConfigModule.forRoot()
-      ]
+      imports: [HttpModule, ConfigModule.forRoot()],
+      providers: [EnergylandiaService],
     }).compile();
 
-    service = module.get<BlijdorpService>(BlijdorpService);
+    service = module.get<EnergylandiaService>(EnergylandiaService);
   });
 
   it('should be defined', () => {
@@ -30,5 +26,10 @@ describe('BlijdorpService', () => {
   it('should return a list of POIs', async () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
-  }, 1000 * 60);
+  });
+
+  it('should return a list of Shows', async () => {
+    const data = await service.getShows();
+    expect(data).toBeInstanceOf(Array);
+  });
 });

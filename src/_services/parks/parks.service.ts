@@ -38,9 +38,9 @@ import { PaultonsParkService } from '../../parks/paultons-park/paultons-park.ser
 import { SanDiegoZooService } from '../../parks/san-diego-zoo/san-diego-zoo/san-diego-zoo.service';
 import { ChessingtonResortService } from '../../parks/chessington-resort/chessington-resort.service';
 import { BlijdorpService } from '../../parks/blijdorp/blijdorp/blijdorp.service';
-
-import * as Sentry from '@sentry/node';
 import { ApenheulService } from '../../parks/apenheul/apenheul/apenheul.service';
+import { EnergylandiaService } from '../../parks/energylandia/energylandia/energylandia.service';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class ParksService {
@@ -85,6 +85,7 @@ export class ParksService {
               private readonly _chessingtonResort: ChessingtonResortService,
               private readonly _blijdorpService: BlijdorpService,
               private readonly _apenheulService: ApenheulService,
+              private readonly _energylandiaService: EnergylandiaService
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -120,6 +121,7 @@ export class ParksService {
     this._parks.push(_chessingtonResort);
     this._parks.push(_blijdorpService);
     this._parks.push(_apenheulService);
+    this._parks.push(_energylandiaService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
