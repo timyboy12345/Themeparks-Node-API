@@ -1,16 +1,20 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { gql, request } from 'graphql-request';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
-import { Poi } from '../../../_interfaces/poi.interface';
+import { Poi, PoiStatus } from '../../../_interfaces/poi.interface';
 import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
 import { DisneylandParisAttraction } from './interfaces/disneyland-paris-attraction.interface';
 import { ThroughPoisThemeParkService } from '../../../_services/themepark/through-pois-theme-park.service';
+import { DisneylandParisWaitTimesResponseItemInterface } from './interfaces/disneyland-paris-wait-times-response-item.interface';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class DisneylandParisService extends ThroughPoisThemeParkService {
   private readonly _disneyLandParis: string;
+  private readonly _disneyLandParisWaitTimesUrl: string;
+  private readonly _disneylandParisWaitTimesApiKey: string;
 
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
@@ -18,6 +22,8 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
     super();
 
     this._disneyLandParis = this.configService.get('DISNEYLAND_PARIS_API_URL');
+    this._disneyLandParisWaitTimesUrl = this.configService.get('DISNEYLAND_PARIS_WAIT_TIMES_URL');
+    this._disneylandParisWaitTimesApiKey = this.configService.get('DISNEYLAND_PARIS_WAIT_TIMES_API_KEY');
   }
 
   getInfo(): ThemePark {
@@ -40,14 +46,14 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
-      supportsRideWaitTimes: false,
+      supportsRideWaitTimes: true,
       supportsRides: true,
       supportsShowTimes: false,
       supportsShows: true,
       supportsPoiLocations: true,
       supportsShops: true,
       supportsShopOpeningTimes: false,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimesHistory: true,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsAnimals: false,
@@ -56,13 +62,38 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
 
   async getPois(): Promise<Poi[]> {
     return this
-      .request()
-      .then((disneyLandParisPois: DisneylandParisAttraction[]) =>
-        this.disneylandParisTransferService
-          .transferPoisToPois(disneyLandParisPois.filter(poi => poi.location.id === 'P1')));
+      .graphQLRequest()
+      .then(async (disneyLandParisPois: DisneylandParisAttraction[]) => {
+        const pois = this
+          .disneylandParisTransferService
+          .transferPoisToPois(disneyLandParisPois.filter(poi => poi.location.id === 'P1'));
+
+        const waitTimes = await this.waitTimesRequest().then();
+        waitTimes.forEach((waitTime) => {
+          const waitTimePoi = pois.find((p) => p.id === waitTime.entityId);
+
+          if (waitTimePoi) {
+            waitTimePoi.currentWaitTime = parseInt(waitTime.postedWaitMinutes);
+
+            switch (waitTime.status) {
+              case 'OPERATING':
+                waitTimePoi.state = PoiStatus.OPEN;
+                break;
+              case 'REFURBISHMENT':
+                waitTimePoi.state = PoiStatus.MAINTENANCE;
+                break;
+              default:
+                waitTimePoi.state = PoiStatus.UNDEFINED;
+                break;
+            }
+          }
+        });
+
+        return pois;
+      });
   }
 
-  private request<T>(): Promise<any> {
+  private graphQLRequest<T>(): Promise<any> {
     const variables = {
       'market': 'en-en',
       'types': [
@@ -180,8 +211,32 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
     }
     `;
 
-    return request(this._disneyLandParis, query, variables).then((activitiesResponse) => {
+    return request(this._disneyLandParis, query, variables)
+      .then((activitiesResponse) => {
       return activitiesResponse.activities;
-    });
+    })
+      .catch((reason) => {
+        Sentry.captureException(reason);
+        console.log(reason);
+        throw new InternalServerErrorException(reason);
+      });
+  }
+
+  public waitTimesRequest(): Promise<DisneylandParisWaitTimesResponseItemInterface[]> {
+    const url = this._disneyLandParisWaitTimesUrl + '/prod/v1/waitTimes';
+
+    return this.httpService
+      .get<DisneylandParisWaitTimesResponseItemInterface[]>(url, {
+        headers: {
+          'x-api-key': this._disneylandParisWaitTimesApiKey,
+        },
+      })
+      .toPromise()
+      .then((data) => data.data)
+      .catch((reason) => {
+        Sentry.captureException(reason);
+        console.log(reason);
+        return [];
+      });
   }
 }
