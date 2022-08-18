@@ -58,6 +58,22 @@ export class WaitTimeService {
   }
 
   /**
+   * Get all wait times by park ID with a date greather then the given date
+   * @param parkId Park ID as string or number
+   * @param date Date as string (YYYY-MM-DD)
+   */
+  findByParkIdAndMinimumDate(parkId: string, date: string): Promise<WaitTime[]> {
+    return this
+      .waitTimeRepository
+      .createQueryBuilder('wait_time')
+      .where('wait_time.park_id = :park AND DATE(date) > :date', {
+        park: parkId,
+        date: date
+      })
+      .getMany();
+  }
+
+  /**
    * Get a specific wait time (by ID)
    * @param id
    */
