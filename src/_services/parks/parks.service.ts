@@ -41,6 +41,8 @@ import { BlijdorpService } from '../../parks/blijdorp/blijdorp/blijdorp.service'
 import { ApenheulService } from '../../parks/apenheul/apenheul/apenheul.service';
 import { EnergylandiaService } from '../../parks/energylandia/energylandia/energylandia.service';
 import * as Sentry from '@sentry/node';
+import { SafariparkService } from '../../parks/beekse-bergen/safaripark/safaripark.service';
+import { SpeellandService } from '../../parks/beekse-bergen/speelland/speelland.service';
 
 @Injectable()
 export class ParksService {
@@ -85,7 +87,9 @@ export class ParksService {
               private readonly _chessingtonResort: ChessingtonResortService,
               private readonly _blijdorpService: BlijdorpService,
               private readonly _apenheulService: ApenheulService,
-              private readonly _energylandiaService: EnergylandiaService
+              private readonly _energylandiaService: EnergylandiaService,
+              private readonly _beekseBergenSafariparkService: SafariparkService,
+              private readonly _beekseBergenSpeellandService: SpeellandService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -122,6 +126,8 @@ export class ParksService {
     this._parks.push(_blijdorpService);
     this._parks.push(_apenheulService);
     this._parks.push(_energylandiaService);
+    this._parks.push(_beekseBergenSafariparkService);
+    this._parks.push(_beekseBergenSpeellandService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);

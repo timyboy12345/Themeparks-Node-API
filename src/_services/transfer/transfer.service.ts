@@ -68,4 +68,12 @@ export class TransferService {
   public transferDataObjectToPois(data: any, ...args): Poi[] {
     throw new NotImplementedException("Could not transfer data object to a list of POIs");
   }
+
+  public transferAnimalToPoi(animal: any): Poi {
+    throw new NotImplementedException("Could not transfer restaurant to POI");
+  }
+
+  public transferAnimalsToPois(animals: any): Poi[] {
+    return animals.map(animal => this.transferAnimalToPoi(animal));
+  }
 }

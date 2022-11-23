@@ -47,8 +47,8 @@ export class GronaLundService extends ThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
-    const data = await this.getData();
-    return this.transferService.transferRidesToPois(data.result.data.contentfulContentPage.blocks[1].blocks[0].lists[0].listObjects);
+    const data: any = await this.getData();
+    return this.transferService.transferRidesToPois(data.result.data.contentfulContentPage.blocks[0].blocks[0].lists[0].listObjects);
   }
 
   async getData(): Promise<AttraktionerResponseInterface> {

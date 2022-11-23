@@ -56,7 +56,7 @@ export class EnergylandiaService extends ThemeParkService {
       .then((response) => {
         const date = moment().format('YYYY-MM-DD');
 
-        if (!response.data[date]) {
+        if (!response.data[date] || !response.data[date].show) {
           return [];
         }
 

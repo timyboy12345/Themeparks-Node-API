@@ -42,6 +42,8 @@ In the table below you will find the parks that are currently supported and the 
 | 🇳🇱 Wildlands | 🦁 | False | False | False | False |
 | 🇳🇱 Blijdorp | 🦁 | False | False | True | False |
 | 🇳🇱 Apenheul | 🦁 | False | False | False | False |
+| 🇳🇱 Safaripark Beekse Bergen | 🦁 | False | True | False | False |
+| 🇳🇱 Speelland Beekse Bergen | 🎡 | True | False | False | False |
 | 🇵🇱 Energylandia | 🎡 | False | False | True | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True |
 | 🇸🇪 Grona Lund | 🎡 | True | False | False | False |
@@ -83,16 +85,6 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Michigans Adventure | 🎡 | True | True | True | True |
 | 🇺🇸 Valley Fair | 🎡 | True | True | True | True |
 | 🇺🇸 Worlds of Fun | 🎡 | True | True | True | True |
-
-### Supported Zoos
-As an experiment, the API also includes some data from zoos. In the table below, you can find the zoos that are currently supported.
-
-| Zoo | Animal Support | Restaurants Support | Shows Support |
-| ------------- | ------------- | ------------- | ------------- |
-| 🇳🇱 Ouwehands Dierenpark | Yes | No | No |
-| 🇳🇱 Wildlands | Yes | No | No |
-| 🇺🇸 San Diego Zoo | Yes | Yes | Yes |
-
 
 ## Description
 
