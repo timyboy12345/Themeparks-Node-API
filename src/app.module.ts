@@ -18,6 +18,7 @@ import { ParksModule } from './parks/parks.module';
 import { ControllersModule } from './controllers/controllers.module';
 import { DatabaseModule } from './database/database.module';
 import { AioTransferServiceService } from './_services/aio/transfer-service/aio-transfer-service.service';
+import { LocaleModule } from './_services/locale/locale.module';
 
 @Module({
   imports: [
@@ -50,9 +51,21 @@ import { AioTransferServiceService } from './_services/aio/transfer-service/aio-
     ParksModule,
     ControllersModule,
     DatabaseModule,
+    LocaleModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ThemeParkService, ThroughPoisThemeParkService, ParksService, ErrorService, AioThemeparkService, TransferService, CompanyService, WaitTimeScheduleService, AioTransferServiceService],
+  providers: [
+    AppService,
+    ThemeParkService,
+    ThroughPoisThemeParkService,
+    ParksService,
+    ErrorService,
+    AioThemeparkService,
+    TransferService,
+    CompanyService,
+    WaitTimeScheduleService,
+    AioTransferServiceService
+  ],
 })
 export class AppModule {
 }

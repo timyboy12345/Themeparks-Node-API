@@ -52,6 +52,7 @@ export class ApenheulService extends ThemeParkService {
       supportsShops: false,
       supportsShowTimes: false,
       supportsShows: false,
+      supportsTranslations: false
     };
   }
 

@@ -6,7 +6,7 @@ import { HerschendTransferService } from '../herschend-transfer/herschend-transf
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
-export class HerschendBaseService extends ThemeParkService{
+export class HerschendBaseService extends ThemeParkService {
   constructor(private readonly httpService: HttpService,
               private readonly herschendTransferService: HerschendTransferService,
               private readonly configService: ConfigService) {
@@ -15,6 +15,10 @@ export class HerschendBaseService extends ThemeParkService{
 
   protected getParkId(): number {
     throw new NotImplementedException();
+  }
+
+  async getPois(): Promise<Poi[]> {
+    return this.getRides();
   }
 
   async getRides(): Promise<Poi[]> {

@@ -3,13 +3,14 @@ import { ToverlandService } from './toverland.service';
 import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ToverlandTransferService } from './toverland-transfer/toverland-transfer.service';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 describe('ToverlandService', () => {
   let service: ToverlandService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
       providers: [ToverlandService, ToverlandTransferService],
     }).compile();
 

@@ -57,9 +57,11 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsAnimals: false,
+      supportsTranslations: false,
     };
   }
 
+  // TODO: Disneyland Paris does support multi-language
   async getPois(): Promise<Poi[]> {
     return this
       .graphQLRequest()

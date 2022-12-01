@@ -6,6 +6,7 @@ import { ParksModule } from '../parks/parks.module';
 import { ParkController } from './park/park.controller';
 import { DatabaseModule } from '../database/database.module';
 import { ParkHistoryController } from './park-history/park-history.controller';
+import { LocaleModule } from '../_services/locale/locale.module';
 
 @Module({
   controllers: [ParksController, ParkController, ParkHistoryController],
@@ -20,10 +21,11 @@ import { ParkHistoryController } from './park-history/park-history.controller';
     }),
     HttpModule,
     ParksModule,
-    DatabaseModule
+    DatabaseModule,
+    LocaleModule
   ],
   providers: [
-    ParksService,
+    ParksService
   ],
 })
 export class ControllersModule {

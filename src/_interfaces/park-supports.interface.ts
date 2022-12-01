@@ -24,6 +24,13 @@ export interface ThemeParkSupports {
   supportsOpeningTimes: boolean;
   supportsOpeningTimesHistory: boolean;
 
-  // Animals
+  /**
+   * @description Whether or not a park supports retrieving a list of animals visible to the public
+   */
   supportsAnimals: boolean;
+
+  /**
+   * @description Whether or not a park supports localized names and descriptions for POIs
+   */
+  supportsTranslations: boolean;
 }

@@ -55,6 +55,7 @@ export class BlijdorpService extends ThemeParkService {
       supportsShops: false,
       supportsShowTimes: true,
       supportsShows: true,
+      supportsTranslations: false,
     };
   }
 

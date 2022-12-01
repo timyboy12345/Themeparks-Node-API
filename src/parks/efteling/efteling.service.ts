@@ -10,6 +10,7 @@ import { ThroughPoisThemeParkService } from '../../_services/themepark/through-p
 import { EftelingOpeningTimesResponse } from './interfaces/efteling-openingstimes-response.interface';
 import * as moment from 'moment';
 import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
+import { LocaleService } from '../../_services/locale/locale.service';
 
 @Injectable()
 export class EftelingService extends ThroughPoisThemeParkService {
@@ -17,7 +18,8 @@ export class EftelingService extends ThroughPoisThemeParkService {
 
   public constructor(private httpService: HttpService,
                      private readonly configService: ConfigService,
-                     private readonly eftelingTransferService: EftelingTransferService) {
+                     private readonly eftelingTransferService: EftelingTransferService,
+                     private readonly localeService: LocaleService) {
     super();
 
     this._eftelingApiURl = this.configService.get<string>('EFTELING_API_URL');
@@ -55,6 +57,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsAnimals: false,
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: true,
+      supportsTranslations: false,
     };
   }
 
@@ -63,10 +66,12 @@ export class EftelingService extends ThroughPoisThemeParkService {
       const pois = poisResponse.data.hits.hit.map(pois => this.eftelingTransferService.transferPoiToPoi(pois));
 
       return this.getWaitTimes().then(waitTimes => {
-        waitTimes.AttractionInfo.forEach(attractionInfo => {
-          const poi = pois.find(p => p.id.replace('-nl', '') === attractionInfo.Id);
+        console.log(waitTimes);
 
-          if (poi) {
+        return pois.map((poi) => {
+          const attractionInfo = waitTimes.AttractionInfo.find((p) => p.Id === poi.id);
+
+          if (attractionInfo) {
             if (attractionInfo.State) {
               switch (attractionInfo.State) {
                 case 'Geopend':
@@ -79,6 +84,9 @@ export class EftelingService extends ThroughPoisThemeParkService {
                 case 'Gesloten':
                 case 'nognietopen':
                   poi.state = PoiStatus.CLOSED;
+                  break;
+                case 'inonderhoud':
+                  poi.state = PoiStatus.MAINTENANCE;
                   break;
               }
             }
@@ -105,16 +113,32 @@ export class EftelingService extends ThroughPoisThemeParkService {
               poi.showTimes = this.eftelingTransferService.transferShowTimesToShowTimes(attractionInfo);
             }
           }
-        });
 
-        return pois;
+          return poi;
+        })
       });
     });
   }
 
   private request() {
+    let url = this._eftelingApiURl;
+
+    switch (this.localeService.getLocale()) {
+      case 'nl':
+        break;
+      case 'de':
+        url = url.replace("language 'nl'", "language 'de'");
+        break;
+      case 'fr':
+        url = url.replace("language 'nl'", "language 'fr'");
+        break;
+      default:
+        url = url.replace("language 'nl'", "language 'en'");
+        break;
+    }
+
     return this.httpService
-      .get<EftelingPoisResponse>(this._eftelingApiURl)
+      .get<EftelingPoisResponse>(url)
       .toPromise()
       .then(value => {
         return value;

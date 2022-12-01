@@ -38,6 +38,7 @@ export class LegolandDeutschlandService extends AioThemeparkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsAnimals: false,
+      supportsTranslations: false,
     };
   }
 

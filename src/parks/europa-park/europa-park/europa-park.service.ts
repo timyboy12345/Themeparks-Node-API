@@ -37,6 +37,7 @@ export class EuropaParkService extends ThemeParkService {
       supportsRestaurantOpeningTimes: false,
       supportsShowTimes: false,
       supportsAnimals: false,
+      supportsTranslations: false,
     };
   }
 }

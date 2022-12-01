@@ -74,8 +74,14 @@ export class EftelingTransferService extends TransferService {
     // Select a high quality image from images, otherwise get fallback low quality image
     const image = images.length > 0 ? images[0] : `${imgUrl}${eftelingPoi.fields.image}`;
 
+    let id = eftelingPoi.id
+      .replace('-nl', '')
+      .replace('-de', '')
+      .replace('-en', '')
+      .replace('-fr', '');
+
     const poi: Poi = {
-      id: eftelingPoi.id.replace('-nl', ''),
+      id: id,
       category: c,
       title: eftelingPoi.fields.name,
       subTitle: eftelingPoi.fields.subtitle,

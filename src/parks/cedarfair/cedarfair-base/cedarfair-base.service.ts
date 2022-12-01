@@ -65,6 +65,7 @@ export class CedarfairBaseService extends ThroughPoisThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
+      supportsTranslations: false,
     };
   }
 

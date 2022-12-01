@@ -2,6 +2,7 @@ import { HttpModule, Module } from '@nestjs/common';
 import { EftelingService } from './efteling.service';
 import { EftelingTransferService } from './efteling-transfer/efteling-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { ConfigModule } from '@nestjs/config';
       cache: false,
       ignoreEnvFile: false,
     }),
+    LocaleModule
   ],
   providers: [EftelingService, EftelingTransferService],
   exports: [EftelingService]

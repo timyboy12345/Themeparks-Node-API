@@ -9,15 +9,17 @@ import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import * as Sentry from '@sentry/node';
 import { ToverlandTransferService } from './toverland-transfer/toverland-transfer.service';
 import { ToverlandShow } from './interfaces/toverland-show.interface';
+import { LocaleService } from '../../_services/locale/locale.service';
 
 @Injectable()
 export class ToverlandService extends ThemeParkService {
-  private toverlandApiUrl: string;
-  private toverlandApiToken: string;
+  private readonly toverlandApiUrl: string;
+  private readonly toverlandApiToken: string;
 
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
-              private readonly toverlandTransferService: ToverlandTransferService) {
+              private readonly toverlandTransferService: ToverlandTransferService,
+              private readonly localeService: LocaleService) {
     super();
 
     this.toverlandApiUrl = configService.get<string>('TOVERLAND_API_URL');
@@ -56,13 +58,14 @@ export class ToverlandService extends ThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsAnimals: false,
+      supportsTranslations: true
     };
   }
 
   async getRides(): Promise<Poi[]> {
     return this.request<ToverlandRide[]>('/park/ride/operationInfo/list')
       .then((axiosRidesData) => {
-        return this.toverlandTransferService.transferRidesToPois(axiosRidesData.data);
+        return this.toverlandTransferService.transferRidesToPois(axiosRidesData.data, this.localeService.getLocale());
       })
       .catch((reason) => {
         Sentry.captureException(reason);
@@ -75,7 +78,7 @@ export class ToverlandService extends ThemeParkService {
     return this
       .request<ToverlandFoodAndDrink[]>('/park/foodAndDrinks/operationInfo/list')
       .then((axiosRidesData) => {
-        return this.toverlandTransferService.transferRestaurantsToPois(axiosRidesData.data);
+        return this.toverlandTransferService.transferRestaurantsToPois(axiosRidesData.data, this.localeService.getLocale());
       })
       .catch(e => {
         Sentry.captureException(e);
@@ -87,7 +90,7 @@ export class ToverlandService extends ThemeParkService {
   async getShows(): Promise<Poi[]> {
     return this.request<ToverlandShow[]>('/park/show/operationInfo/list')
       .then((axiosShowsData) => {
-        return this.toverlandTransferService.transferShowsToPois(axiosShowsData.data);
+        return this.toverlandTransferService.transferShowsToPois(axiosShowsData.data, this.localeService.getLocale());
       })
       .catch(e => {
         Sentry.captureException(e);

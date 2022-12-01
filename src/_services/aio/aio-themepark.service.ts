@@ -41,6 +41,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsPois: true,
+      supportsTranslations: false,
     };
   }
 

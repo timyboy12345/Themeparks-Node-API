@@ -57,6 +57,7 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       supportsAnimals: false,
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: true,
+      supportsTranslations: false,
     };
   }
 

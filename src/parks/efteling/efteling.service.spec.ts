@@ -3,13 +3,14 @@ import { EftelingService } from './efteling.service';
 import { ConfigModule} from '@nestjs/config';
 import { HttpModule} from '@nestjs/common';
 import { EftelingTransferService } from './efteling-transfer/efteling-transfer.service';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 describe('EftelingService', () => {
   let service: EftelingService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
       providers: [EftelingService, EftelingTransferService],
     }).compile();
 

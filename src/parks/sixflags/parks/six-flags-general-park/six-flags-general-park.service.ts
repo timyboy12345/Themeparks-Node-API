@@ -52,6 +52,7 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsAnimals: this.getInfo().parkType === ParkType.ZOO,
+      supportsTranslations: false,
     };
   }
 

@@ -16,6 +16,7 @@ import { ParksService } from '../../_services/parks/parks.service';
 import { Cache } from 'cache-manager';
 import { PoiDto } from '../../_dtos/poi.dto';
 import { Poi } from '../../_interfaces/poi.interface';
+import { LanguageInterceptor } from '../../_interceptors/language.interceptor';
 
 @ApiTags('Themeparks')
 @Controller('parks/:id')
@@ -25,7 +26,7 @@ export class ParkController {
   }
 
   @Get('')
-  @UseInterceptors(CacheInterceptor)
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiOkResponse({
     type: ParkDto,
   })
@@ -34,7 +35,7 @@ export class ParkController {
   }
 
   @Get('pois')
-  @UseInterceptors(CacheInterceptor)
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiParam({
     name: 'id',
     type: 'string',
@@ -69,7 +70,7 @@ export class ParkController {
   }
 
   @Get('rides')
-  @UseInterceptors(CacheInterceptor)
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiParam({
     name: 'id',
     type: 'string',
@@ -104,7 +105,7 @@ export class ParkController {
   }
 
   @Get('restaurants')
-  @UseInterceptors(CacheInterceptor)
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiParam({
     name: 'id',
     type: 'string',
@@ -136,7 +137,7 @@ export class ParkController {
   }
 
   @Get('shows')
-  @UseInterceptors(CacheInterceptor)
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiParam({
     name: 'id',
     type: 'string',
@@ -168,7 +169,7 @@ export class ParkController {
   }
 
   @Get('shops')
-  @UseInterceptors(CacheInterceptor)
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiParam({
     name: 'id',
     type: 'string',
@@ -200,7 +201,7 @@ export class ParkController {
   }
 
   @Get('animals')
-  @UseInterceptors(CacheInterceptor)
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiParam({
     name: 'id',
     type: 'string',

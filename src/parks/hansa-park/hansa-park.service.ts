@@ -48,6 +48,7 @@ export class HansaParkService extends ThroughPoisThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
+      supportsTranslations: false,
     };
   }
 

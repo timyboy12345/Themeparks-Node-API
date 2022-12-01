@@ -36,11 +36,12 @@ export class SilverDollarCityService extends HerschendBaseService {
       supportsRideWaitTimes: false,
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
-      supportsRideWaitTimesHistory: false
+      supportsRideWaitTimesHistory: false,
+      supportsTranslations: false,
     }
   }
 
   protected getParkId(): number {
-    return 1;
+    return 2;
   }
 }

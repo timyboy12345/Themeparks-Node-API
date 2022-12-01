@@ -10,25 +10,25 @@ import { ShowTime } from '../../../_interfaces/showtimes.interface';
 
 @Injectable()
 export class ToverlandTransferService extends TransferService {
-  transferRideToPoi(ride: ToverlandRide): Poi {
-    const r = this.transferPoiToPoi(ride);
+  transferRideToPoi(ride: ToverlandRide, locale: string): Poi {
+    const r = this.transferPoiToPoi(ride, locale);
     r.category = PoiCategory.ATTRACTION;
     return r;
   }
 
-  transferRestaurantToPoi(restaurant: ToverlandFoodAndDrink): Poi {
-    const r = this.transferPoiToPoi(restaurant);
+  transferRestaurantToPoi(restaurant: ToverlandFoodAndDrink, locale: string): Poi {
+    const r = this.transferPoiToPoi(restaurant, locale);
     r.category = PoiCategory.RESTAURANT;
     return r;
   }
 
-  transferShowToPoi(show: ToverlandShow): Poi {
-    const s = this.transferPoiToPoi(show);
+  transferShowToPoi(show: ToverlandShow, locale: string): Poi {
+    const s = this.transferPoiToPoi(show, locale);
     s.category = PoiCategory.RESTAURANT;
     return s;
   }
 
-  transferPoiToPoi(poi: ToverlandRide | ToverlandFoodAndDrink | ToverlandShow): Poi {let area;
+  transferPoiToPoi(poi: ToverlandRide | ToverlandFoodAndDrink | ToverlandShow, locale: string): Poi {let area;
     switch (poi.area_id) {
       case "2":
         area = "Wunderwald"
@@ -65,6 +65,20 @@ export class ToverlandTransferService extends TransferService {
         lng: parseFloat(poi.longitude),
       },
     };
+
+    // console.log(locale);
+
+    switch (locale) {
+      case 'de':
+        r.description = poi.description.de;
+        break;
+      case 'nl':
+        r.description = poi.description.nl;
+        break;
+      default:
+      case 'en':
+        break;
+    }
 
     if ('opening_times' in poi && poi.opening_times) {
       r.openingTimes = poi.opening_times.map((ot) => {

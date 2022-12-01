@@ -43,6 +43,7 @@ import { EnergylandiaService } from '../../parks/energylandia/energylandia/energ
 import * as Sentry from '@sentry/node';
 import { SafariparkService } from '../../parks/beekse-bergen/safaripark/safaripark.service';
 import { SpeellandService } from '../../parks/beekse-bergen/speelland/speelland.service';
+import { DollywoodService } from '../../parks/herschend/dollywood/dollywood.service';
 
 @Injectable()
 export class ParksService {
@@ -72,6 +73,7 @@ export class ParksService {
               private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
               private readonly _wildlandsService: WildlandsService,
               private readonly _lisebergService: LisebergService,
+              private readonly _dollywoodService: DollywoodService,
               private readonly _silverDollarCityService: SilverDollarCityService,
               private readonly _carowindsService: CarowindsService,
               private readonly _greatAdventureService: GreatAmericaService,
@@ -114,6 +116,7 @@ export class ParksService {
     this._parks.push(_ouwehandsDierenparkService);
     this._parks.push(_wildlandsService);
     this._parks.push(_lisebergService);
+    this._parks.push(_dollywoodService);
     this._parks.push(_silverDollarCityService);
     this._parks.push(_parqueWarnerService);
     this._parks.push(_gronaLundService);

@@ -45,6 +45,7 @@ export class BobbejaanlandService extends ThroughPoisThemeParkService {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsShowTimes: false,
+      supportsTranslations: false,
     };
   }
 

@@ -48,6 +48,7 @@ export class LisebergService extends ThemeParkService {
       supportsRestaurantOpeningTimes: false,
       supportsShowTimes: false,
       supportsAnimals: false,
+      supportsTranslations: false,
     };
   }
 

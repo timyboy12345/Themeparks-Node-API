@@ -48,6 +48,7 @@ export class PlopsalandDePanneService extends ThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: true,
+      supportsTranslations: false,
     };
   }
 

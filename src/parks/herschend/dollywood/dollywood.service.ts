@@ -4,7 +4,7 @@ import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface'
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 
 @Injectable()
-export class DollywoodService extends HerschendBaseService{
+export class DollywoodService extends HerschendBaseService {
   getInfo(): ThemePark {
     return {
       id: 'dollywood',
@@ -16,12 +16,32 @@ export class DollywoodService extends HerschendBaseService{
       timezone: 'America/New_York',
       location: {
         lat: 35.79526792382862,
-        lng: -83.53114328709876
-      }
-    }
+        lng: -83.53114328709876,
+      },
+    };
   }
 
   getSupports(): ThemeParkSupports {
-    return super.getSupports();
+    return {
+      supportsAnimals: false,
+      supportsShowTimes: false,
+      supportsRestaurantOpeningTimes: false,
+      supportsPois: true,
+      supportsPoiLocations: false,
+      supportsShopOpeningTimes: false,
+      supportsShops: false,
+      supportsRides: true,
+      supportsShows: false,
+      supportsRestaurants: false,
+      supportsRideWaitTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsTranslations: false,
+    }
+  }
+
+  protected getParkId(): number {
+    return 1;
   }
 }
