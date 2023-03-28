@@ -1,7 +1,8 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PhantasialandService } from './phantasialand.service';
 import { PhantasialandTransferService } from './phantasialand-transfer/phantasialand-transfer.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

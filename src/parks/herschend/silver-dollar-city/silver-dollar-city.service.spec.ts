@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SilverDollarCityService } from './silver-dollar-city.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { HerschendTransferService } from '../herschend-transfer/herschend-transfer.service';
 

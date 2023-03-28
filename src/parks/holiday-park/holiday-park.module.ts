@@ -1,7 +1,8 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HolidayParkService } from './holiday-park.service';
 import { HolidayParkTransferService } from './holiday-park-transfer/holiday-park-transfer.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

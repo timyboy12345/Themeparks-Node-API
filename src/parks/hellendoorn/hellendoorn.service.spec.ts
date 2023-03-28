@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HellendoornService } from './hellendoorn.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
 

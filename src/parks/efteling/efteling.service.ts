@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { Poi, PoiStatus } from '../../_interfaces/poi.interface';
 import { EftelingPoisResponse } from './interfaces/efteling-pois-response.interface';
@@ -11,6 +11,7 @@ import { EftelingOpeningTimesResponse } from './interfaces/efteling-openingstime
 import * as moment from 'moment';
 import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 import { LocaleService } from '../../_services/locale/locale.service';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class EftelingService extends ThroughPoisThemeParkService {

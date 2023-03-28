@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { gql, request } from 'graphql-request';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
@@ -9,6 +9,7 @@ import { DisneylandParisAttraction } from './interfaces/disneyland-paris-attract
 import { ThroughPoisThemeParkService } from '../../../_services/themepark/through-pois-theme-park.service';
 import { DisneylandParisWaitTimesResponseItemInterface } from './interfaces/disneyland-paris-wait-times-response-item.interface';
 import * as Sentry from '@sentry/node';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class DisneylandParisService extends ThroughPoisThemeParkService {

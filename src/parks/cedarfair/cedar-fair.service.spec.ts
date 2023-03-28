@@ -11,7 +11,7 @@ import { KnottsBerryFarmService } from './knotts-berry-farm/knotts-berry-farm.se
 import { MichigansAdventureService } from './michigans-adventure/michigans-adventure.service';
 import { ValleyfairService } from './valleyfair/valleyfair.service';
 import { WorldsOfFunService } from './worlds-of-fun/worlds-of-fun.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { CedarfairTransferService } from './cedarfair-transfer/cedarfair-transfer.service';
 

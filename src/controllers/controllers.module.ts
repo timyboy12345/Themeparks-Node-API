@@ -1,4 +1,4 @@
-import { CacheModule, HttpModule, Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { ParksController } from './parks/parks.controller';
 import { ParksService } from '../_services/parks/parks.service';
 import { ConfigModule } from '@nestjs/config';
@@ -10,6 +10,7 @@ import { LocaleModule } from '../_services/locale/locale.module';
 import { UserController } from './user/user.controller';
 import { AuthModule } from '../auth/auth.module';
 import { CheckinsController } from './checkins/checkins.controller';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController],

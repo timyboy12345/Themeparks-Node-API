@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ToverlandService } from './toverland.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { ToverlandTransferService } from './toverland-transfer/toverland-transfer.service';
 import { LocaleModule } from '../../_services/locale/locale.module';

@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GronaLundService } from './grona-lund.service';
-import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GronaLundTransferService } from './grona-lund-transfer/grona-lund-transfer.service';
+import { HttpModule } from '@nestjs/axios';
 
 describe('GronaLundService', () => {
   let service: GronaLundService;

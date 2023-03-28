@@ -1,7 +1,8 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { GronaLundService } from './grona-lund.service';
 import { GronaLundTransferService } from './grona-lund-transfer/grona-lund-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   providers: [GronaLundService, GronaLundTransferService],

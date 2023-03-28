@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
@@ -7,6 +7,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
 import { TivoliTransferService } from './tivoli-transfer/tivoli-transfer.service';
 import { TivoliDataResponseInterface } from './interfaces/tivoli-data-response.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class TivoliService extends ThroughPoisThemeParkService {
@@ -59,13 +60,19 @@ export class TivoliService extends ThroughPoisThemeParkService {
 
     return this.httpService.get<TivoliDataResponseInterface>(url)
       .toPromise()
-      .then(value => {
+      .then((value) => {
+        if (value.data.error) {
+          Sentry.captureException(value);
+          console.error("Tivoli server is down");
+          throw new InternalServerErrorException(value.data);
+        }
+
         return value.data;
       })
-      .catch(reason => {
-        Sentry.captureException(reason);
-        console.log(reason);
-        throw new InternalServerErrorException(reason);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 }

@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SpeellandService } from './speelland.service';
 import { BeekseBergenTransferService } from '../beekse-bergen-transfer/beekse-bergen-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('SpeellandService', () => {

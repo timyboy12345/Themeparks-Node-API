@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { encode } from 'js-base64';
 import { ConfigService } from '@nestjs/config';
@@ -7,6 +7,7 @@ import { CedarfairTransferService } from '../cedarfair-transfer/cedarfair-transf
 import { ThroughPoisThemeParkService } from '../../../_services/themepark/through-pois-theme-park.service';
 import * as Sentry from '@sentry/node';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class CedarfairBaseService extends ThroughPoisThemeParkService {

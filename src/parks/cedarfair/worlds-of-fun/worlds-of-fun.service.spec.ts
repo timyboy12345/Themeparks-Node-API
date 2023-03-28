@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WorldsOfFunService } from './worlds-of-fun.service';
 import { CedarfairTransferService } from '../cedarfair-transfer/cedarfair-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('WorldsOfFunService', () => {

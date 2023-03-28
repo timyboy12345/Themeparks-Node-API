@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BellewaerdeAquaparkService } from './bellewaerde-aquapark.service';
 import { BellewaerdeTransferService } from '../bellewaerde-transfer/bellewaerde-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 
 describe('BellewaerdeAquaparkService', () => {
   let service: BellewaerdeAquaparkService;

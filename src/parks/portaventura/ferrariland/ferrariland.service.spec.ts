@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FerrariLandService } from './ferrariland.service';
 import { PortaVenturaTransferService } from '../portaventura-transfer/porta-ventura-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('FerrarilandService', () => {

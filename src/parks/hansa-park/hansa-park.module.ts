@@ -1,7 +1,8 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { HansaParkService } from './hansa-park.service';
 import { HansaParkTransferService } from './hansa-park-transfer/hansa-park-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   providers: [HansaParkService, HansaParkTransferService],

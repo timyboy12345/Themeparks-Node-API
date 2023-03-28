@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ParksService } from './parks.service';
 import { ConfigModule} from '@nestjs/config';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ParksModule } from '../../parks/parks.module';
 
 describe('ParksService', () => {

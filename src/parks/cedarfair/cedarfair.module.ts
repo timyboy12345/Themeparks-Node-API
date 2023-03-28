@@ -1,4 +1,4 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { CedarfairBaseService } from './cedarfair-base/cedarfair-base.service';
 import { ConfigModule } from '@nestjs/config';
 import { CarowindsService } from './carowinds/carowinds.service';
@@ -14,6 +14,7 @@ import { WorldsOfFunService } from './worlds-of-fun/worlds-of-fun.service';
 import { KingsDominionService } from './kings-dominion/kings-dominion.service';
 import { DorneyParkService } from './dorney-park/dorney-park.service';
 import { CedarFairService } from './cedar-fair.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   providers: [CedarfairBaseService, CedarfairTransferService, CarowindsService, GreatAmericaService, CedarpointService, CanadasWonderlandService, KingsIslandService, KnottsBerryFarmService, MichigansAdventureService, ValleyfairService, WorldsOfFunService, KingsDominionService, DorneyParkService, CedarFairService],

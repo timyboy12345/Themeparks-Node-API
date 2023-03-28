@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
@@ -7,6 +7,7 @@ import { HansaParkTransferService } from './hansa-park-transfer/hansa-park-trans
 import { HansaParkDataResponseInterface } from './interfaces/hansa-park-data-response.interface';
 import { ConfigService } from '@nestjs/config';
 import * as Sentry from '@sentry/node';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class HansaParkService extends ThroughPoisThemeParkService {

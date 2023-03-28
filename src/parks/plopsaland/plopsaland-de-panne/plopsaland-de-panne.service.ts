@@ -1,4 +1,4 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { PlopsalandDePanneTokenInterface } from './interfaces/plopsaland-de-panne-token.interface';
@@ -8,6 +8,7 @@ import {
 } from './interfaces/plopsaland-de-panne-details-response.interface';
 import { PlopsalandDePanneTransferService } from './plopsaland-de-panne-transfer/plopsaland-de-panne-transfer.service';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class PlopsalandDePanneService extends ThemeParkService {

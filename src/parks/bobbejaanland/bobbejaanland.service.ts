@@ -1,4 +1,4 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
@@ -6,6 +6,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { BobbejaanlandApiResponseInterface } from './interfaces/bobbejaanland-api-response.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../_interfaces/ride-category.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class BobbejaanlandService extends ThroughPoisThemeParkService {

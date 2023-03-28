@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AioThemeparkService } from './aio-themepark.service';
-import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AioTransferServiceService } from './transfer-service/aio-transfer-service.service';
+import { HttpModule } from '@nestjs/axios';
 
 describe('AttractionsIoThemeParkService', () => {
   let service: AioThemeparkService;

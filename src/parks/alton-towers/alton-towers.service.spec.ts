@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AltonTowersService } from './alton-towers.service';
 import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
-import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 describe('AltonTowersService', () => {
   let service: AltonTowersService;

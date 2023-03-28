@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { OuwehandsDierenparkService } from './ouwehands-dierenpark.service';
 import { OuwehandsDierenparkTransferService } from './ouwehands-dierenpark-transfer/ouwehands-dierenpark-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('OuwehandsDierenparkService', () => {

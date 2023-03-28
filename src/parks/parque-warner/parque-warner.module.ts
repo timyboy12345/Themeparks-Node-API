@@ -1,7 +1,8 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ParqueWarnerService } from './parque-warner.service';
 import { ParqueWarnerTransferService } from './parque-warner-transfer/parque-warner-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

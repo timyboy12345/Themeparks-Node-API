@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SanDiegoZooService } from './san-diego-zoo.service';
 import { AioTransferServiceService } from '../../../_services/aio/transfer-service/aio-transfer-service.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('SanDiegoZooService', () => {

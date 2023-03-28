@@ -1,8 +1,9 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SixFlagsGeneralParkService } from './parks/six-flags-general-park/six-flags-general-park.service';
 import { SixflagsTransferService } from './sixflags-transfer/sixflags-transfer.service';
 import { SixflagsService } from './sixflags.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

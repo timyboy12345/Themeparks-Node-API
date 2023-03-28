@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ParcAsterixService } from './parc-asterix.service';
 import { ParcAsterixTransferService } from './parc-asterix-transfer/parc-asterix-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('ParkAsterixService', () => {

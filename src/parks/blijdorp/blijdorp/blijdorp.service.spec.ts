@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BlijdorpService } from './blijdorp.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { BlijdorpTransferService } from '../blijdorp-transfer/blijdorp-transfer.service';
 import { ConfigModule } from '@nestjs/config';
 

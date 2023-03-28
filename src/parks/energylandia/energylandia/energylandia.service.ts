@@ -1,4 +1,4 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
@@ -7,6 +7,7 @@ import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { EnergylandiaCalendarInterface } from '../interfaces/energylandia-calendar.interface';
 import { EnergylandiaWaitTimeInterface } from '../interfaces/energylandia-wait-time.interface';
 import * as moment from 'moment';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class EnergylandiaService extends ThemeParkService {

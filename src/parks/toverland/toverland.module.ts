@@ -1,8 +1,9 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ToverlandService } from './toverland.service';
 import { ToverlandTransferService } from './toverland-transfer/toverland-transfer.service';
 import { LocaleModule } from '../../_services/locale/locale.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

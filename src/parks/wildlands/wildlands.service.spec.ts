@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WildlandsService } from './wildlands.service';
 import { WildlandsTransferService } from './wildlands-transfer/wildlands-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('WildlandsService', () => {

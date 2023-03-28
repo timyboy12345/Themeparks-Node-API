@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import * as BellewaerdePoiData from '../data/bellewaerde-pois.json';
@@ -11,6 +11,7 @@ import { ThemeParkService } from '../../../_services/themepark/theme-park.servic
 import { BellewaerdeRidesResponseInterface } from '../interfaces/bellewaerde-rides-response.interface';
 import { BellewaerdeTransferService } from '../bellewaerde-transfer/bellewaerde-transfer.service';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class BellewaerdeService extends ThemeParkService {

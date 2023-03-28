@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import * as Sentry from '@sentry/node';
 import { ConfigService } from '@nestjs/config';
@@ -9,6 +9,7 @@ import { ThroughPoisThemeParkService } from '../../_services/themepark/through-p
 import { PhantasialandWaitTimeItem } from './interfaces/phantasialand-wait-time-item.interface';
 import * as moment from 'moment';
 import { ShowTime } from '../../_interfaces/showtimes.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class PhantasialandService extends ThroughPoisThemeParkService {
@@ -165,9 +166,12 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
   }
 
   private getRandomLatLng(): { longitude: number, latitude: number } {
+    const longitudes: number[] = [6.880389, 6.881138, 6.881475, 6.880786];
+    const latitudes: number[] = [50.800127, 50.799957, 50.799215, 50.798922];
+
     return {
-      longitude: 6.878342628 + (Math.random() * (6.882447 - 6.877412)),
-      latitude: 50.800659529 + (Math.random() * (50.798957 - 50.800298)),
+      longitude: longitudes[Math.floor(Math.random() * longitudes.length)],
+      latitude: latitudes[Math.floor(Math.random() * latitudes.length)],
     };
   }
 

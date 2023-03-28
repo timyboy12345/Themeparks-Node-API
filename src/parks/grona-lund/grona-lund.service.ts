@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
@@ -7,6 +7,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import * as Sentry from '@sentry/node';
 import { GronaLundTransferService } from './grona-lund-transfer/grona-lund-transfer.service';
 import { ConfigService } from '@nestjs/config';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class GronaLundService extends ThemeParkService {

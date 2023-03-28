@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
@@ -11,6 +11,7 @@ import {
   WildlandsAnimalsResponseInterface,
   WildlandsAnimalsResponseItemInterface,
 } from './interfaces/wildlands-animals-response.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class WildlandsService extends ThemeParkService {

@@ -1,9 +1,10 @@
-import { HttpService, Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { HerschendResponseItemInterface } from '../interfaces/herschend-response.interface';
 import { HerschendTransferService } from '../herschend-transfer/herschend-transfer.service';
 import { ConfigService } from '@nestjs/config';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class HerschendBaseService extends ThemeParkService {

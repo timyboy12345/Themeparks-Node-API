@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SafariparkService } from './safaripark.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { BeekseBergenTransferService } from '../beekse-bergen-transfer/beekse-bergen-transfer.service';
 import { ConfigModule } from '@nestjs/config';
 

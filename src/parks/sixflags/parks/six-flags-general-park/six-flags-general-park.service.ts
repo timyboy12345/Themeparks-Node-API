@@ -1,4 +1,4 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../../../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../../_interfaces/park-supports.interface';
@@ -9,6 +9,7 @@ import { SixflagsMapResponseInterface } from '../../interfaces/sixflags-map-resp
 import { SixflagsTransferService } from '../../sixflags-transfer/sixflags-transfer.service';
 import { PoiCategory } from '../../../../_interfaces/poi-categories.enum';
 import { SixflagsTokenResponseInterface } from '../../interfaces/sixflags-token-response.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class SixFlagsGeneralParkService extends ThemeParkService {

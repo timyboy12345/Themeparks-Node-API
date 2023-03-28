@@ -1,4 +1,4 @@
-import { HttpException, HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { HttpException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ToverlandRide } from './interfaces/toverland-ride.interface';
@@ -10,6 +10,7 @@ import * as Sentry from '@sentry/node';
 import { ToverlandTransferService } from './toverland-transfer/toverland-transfer.service';
 import { ToverlandShow } from './interfaces/toverland-show.interface';
 import { LocaleService } from '../../_services/locale/locale.service';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class ToverlandService extends ThemeParkService {

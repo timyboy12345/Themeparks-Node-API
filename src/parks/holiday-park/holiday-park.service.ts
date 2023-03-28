@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ConfigService } from '@nestjs/config';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
@@ -8,6 +8,7 @@ import { HolidayParkTransferService } from './holiday-park-transfer/holiday-park
 import * as Sentry from '@sentry/node';
 import { HolidayParkAttractionsResponseInterface } from './interfaces/holiday-park-attractions-response.interface';
 import { HolidayParkPageResponseInterface } from './interfaces/holiday-park-page-response.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class HolidayParkService extends ThemeParkService {

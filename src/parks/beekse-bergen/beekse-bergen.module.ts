@@ -1,8 +1,9 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { SafariparkService } from './safaripark/safaripark.service';
 import { SpeellandService } from './speelland/speelland.service';
 import { BeekseBergenTransferService } from './beekse-bergen-transfer/beekse-bergen-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

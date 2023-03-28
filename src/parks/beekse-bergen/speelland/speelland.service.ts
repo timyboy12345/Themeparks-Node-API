@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { BeekseBergenTransferService } from '../beekse-bergen-transfer/beekse-bergen-transfer.service';
 import { ConfigService } from '@nestjs/config';
@@ -6,6 +6,7 @@ import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { Poi } from '../../../_interfaces/poi.interface';
 import * as Sentry from '@sentry/node';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class SpeellandService extends ThemeParkService {

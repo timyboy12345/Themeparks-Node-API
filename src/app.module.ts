@@ -1,4 +1,4 @@
-import { CacheModule, HttpModule, Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './_services/app.service';
 import { ThemeParkService } from './_services/themepark/theme-park.service';
@@ -22,6 +22,7 @@ import { LocaleModule } from './_services/locale/locale.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './database/users/user.entity';
 import { Checkin } from './database/checkins/checkin.entity';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { EftelingService } from './efteling.service';
 import { ConfigModule} from '@nestjs/config';
-import { HttpModule} from '@nestjs/common';
 import { EftelingTransferService } from './efteling-transfer/efteling-transfer.service';
 import { LocaleModule } from '../../_services/locale/locale.module';
+import { HttpModule } from '@nestjs/axios';
 
 describe('EftelingService', () => {
   let service: EftelingService;

@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ParqueWarnerService } from './parque-warner.service';
 import { ParqueWarnerTransferService } from './parque-warner-transfer/parque-warner-transfer.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('ParqueWarnerService', () => {

@@ -1,10 +1,11 @@
-import { HttpService, Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { Poi } from '../../_interfaces/poi.interface';
 import { WalibiEntertainmentsResponse } from './interfaces/walibi-entertainments-response.interface';
 import * as Sentry from '@sentry/node';
 import { ConfigService } from '@nestjs/config';
 import { WalibiTransferService } from './walibi-transfer/walibi-transfer.service';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class WalibiService extends ThemeParkService {

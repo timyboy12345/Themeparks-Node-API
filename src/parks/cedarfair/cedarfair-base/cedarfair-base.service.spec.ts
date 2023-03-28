@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CedarfairBaseService } from './cedarfair-base.service';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { CedarfairTransferService } from '../cedarfair-transfer/cedarfair-transfer.service';
 

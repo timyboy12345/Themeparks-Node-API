@@ -1,4 +1,5 @@
 export interface TivoliDataResponseInterface {
+  error?: boolean,
   'rides': {
     Data: Ride[],
     LastUpdatedUtc: string

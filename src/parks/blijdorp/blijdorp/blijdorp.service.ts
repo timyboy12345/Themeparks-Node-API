@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { Poi } from '../../../_interfaces/poi.interface';
@@ -8,6 +8,7 @@ import { BlijdorpTransferService } from '../blijdorp-transfer/blijdorp-transfer.
 import * as moment from 'moment';
 import * as Sentry from '@sentry/node';
 import { BlijdorpShow } from '../interfaces/blijdorp-show.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class BlijdorpService extends ThemeParkService {

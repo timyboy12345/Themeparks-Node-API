@@ -1,8 +1,9 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { BellewaerdeService } from './bellewaerde/bellewaerde.service';
 import { BellewaerdeTransferService } from './bellewaerde-transfer/bellewaerde-transfer.service';
 import { BellewaerdeAquaparkService } from './bellewaerde-aquapark/bellewaerde-aquapark.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [

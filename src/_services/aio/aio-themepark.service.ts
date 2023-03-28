@@ -1,4 +1,4 @@
-import { HttpService, Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
@@ -8,6 +8,7 @@ import { ThroughPoisThemeParkService } from '../themepark/through-pois-theme-par
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import * as fs from 'fs';
+import { HttpService } from '@nestjs/axios';
 
 const unzipper = require('unzipper');
 

@@ -1,4 +1,4 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PortaVenturaTransferService } from '../portaventura-transfer/porta-ventura-transfer.service';
 import { PortaVenturaPoi } from '../interfaces/porta-ventura-poi.interface';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class PortaventuraService extends ThemeParkService {

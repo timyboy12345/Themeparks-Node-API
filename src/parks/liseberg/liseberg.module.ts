@@ -1,7 +1,8 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { LisebergService } from './liseberg.service';
 import { LisebergTransferService } from './liseberg-transfer/liseberg-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   providers: [LisebergService, LisebergTransferService],

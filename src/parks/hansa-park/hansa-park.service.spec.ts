@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HansaParkService } from './hansa-park.service';
 import { HansaParkTransferService } from './hansa-park-transfer/hansa-park-transfer.service';
-import { HttpModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 describe('HansaParkService', () => {
   let service: HansaParkService;

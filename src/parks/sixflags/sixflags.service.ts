@@ -1,4 +1,4 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { CompanyService } from '../../_services/company/company.service';
 import { Company, ParkType, ThemePark } from '../../_interfaces/park.interface';
@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { SixflagsThemeparksResponseInterface } from './interfaces/sixflags-themeparks-response.interface';
 import { SixFlagsGeneralParkService } from './parks/six-flags-general-park/six-flags-general-park.service';
 import { SixflagsTransferService } from './sixflags-transfer/sixflags-transfer.service';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class SixflagsService extends CompanyService {
