@@ -166,8 +166,8 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
 
   private getRandomLatLng(): { longitude: number, latitude: number } {
     return {
-      longitude: 6.878342628 + (Math.random() * (6.877570152 - 6.878342628)),
-      latitude: 50.800659529 + (Math.random() * (50.799683077 - 50.800659529)),
+      longitude: 6.878342628 + (Math.random() * (6.882447 - 6.877412)),
+      latitude: 50.800659529 + (Math.random() * (50.798957 - 50.800298)),
     };
   }
 

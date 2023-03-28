@@ -66,7 +66,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       const pois = poisResponse.data.hits.hit.map(pois => this.eftelingTransferService.transferPoiToPoi(pois));
 
       return this.getWaitTimes().then(waitTimes => {
-        console.log(waitTimes);
+        // console.log(waitTimes);
 
         return pois.map((poi) => {
           const attractionInfo = waitTimes.AttractionInfo.find((p) => p.Id === poi.id);
