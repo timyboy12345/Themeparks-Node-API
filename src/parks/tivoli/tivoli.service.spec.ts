@@ -24,9 +24,8 @@ describe('TivoliService', () => {
     expect(service.getInfo().id).toBeDefined();
   });
 
-  // TODO: Wait until tivoli works again
-  // it('should return a list of POIs', async () => {
-  //   const data = await service.getPois();
-  //   expect(data).toBeInstanceOf(Array);
-  // }, 1000 * 60);
+  it('should return a list of POIs', async () => {
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
+  }, 1000 * 60);
 });

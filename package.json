@@ -1,6 +1,6 @@
 {
   "name": "themeparks-node-api",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "An API which can retrieve theme park wait times.",
   "author": "Tim Arendsen",
   "private": false,
@@ -49,7 +49,7 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.7",
+    "rxjs": "^7.8.0",
     "swagger-ui-express": "^4.6.2",
     "typeorm": "^0.2.45",
     "unzipper": "^0.10.11",
