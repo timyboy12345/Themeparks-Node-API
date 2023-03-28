@@ -67,10 +67,10 @@ export class ToverlandService extends ThemeParkService {
       .then((axiosRidesData) => {
         return this.toverlandTransferService.transferRidesToPois(axiosRidesData.data, this.localeService.getLocale());
       })
-      .catch((reason) => {
-        Sentry.captureException(reason);
-        console.log(reason);
-        throw new HttpException('Failed to fetch rides: ' + reason.toString(), 500);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new HttpException('Failed to fetch rides: ' + exception.toString(), 500);
       });
   }
 
@@ -80,10 +80,10 @@ export class ToverlandService extends ThemeParkService {
       .then((axiosRidesData) => {
         return this.toverlandTransferService.transferRestaurantsToPois(axiosRidesData.data, this.localeService.getLocale());
       })
-      .catch(e => {
-        Sentry.captureException(e);
-        console.log(e);
-        throw new HttpException('Failed to fetch restaurants: ' + e.toString(), 500);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new HttpException('Failed to fetch restaurants: ' + exception.toString(), 500);
       });
   }
 
@@ -92,10 +92,10 @@ export class ToverlandService extends ThemeParkService {
       .then((axiosShowsData) => {
         return this.toverlandTransferService.transferShowsToPois(axiosShowsData.data, this.localeService.getLocale());
       })
-      .catch(e => {
-        Sentry.captureException(e);
-        console.log(e);
-        throw new HttpException('Failed to fetch shows: ' + e.toString(), 500);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new HttpException('Failed to fetch shows: ' + exception.toString(), 500);
       });
   }
 

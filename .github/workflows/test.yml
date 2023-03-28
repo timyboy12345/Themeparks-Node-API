@@ -42,6 +42,6 @@ jobs:
         run: 'echo "$ENV_FILE" > ./.env'
         shell: bash
         env:
-          ENV_FILE: ${{ secrets.PRODUCTION_ENV_FILE }}
+          ENV_FILE: ${{ secrets.CICD_ENV_FILE }}
       - run: npm ci
       - run: npm test

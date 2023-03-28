@@ -63,6 +63,7 @@ export class BlijdorpService extends ThemeParkService {
     return this.getShows();
   }
 
+  // TODO: Fix this error
   async getShows(): Promise<Poi[]> {
     const date = moment().format('YYYY-MM-DD');
     const url = `${this.organiqBaseUrl}/api/events/${date}`;
@@ -78,10 +79,10 @@ export class BlijdorpService extends ThemeParkService {
       .then((response) => {
         return this.transferService.transferShowsToPois(response.data);
       })
-      .catch((reason) => {
-        Sentry.captureException(reason);
-        console.log(reason);
-        throw new InternalServerErrorException(reason);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 }

@@ -114,10 +114,10 @@ export class ParqueWarnerService extends ThemeParkService {
       .then(value => {
         return value.data;
       })
-      .catch((e) => {
-        Sentry.captureException(e);
-        console.log(e);
-        throw new InternalServerErrorException(e);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.log(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 }

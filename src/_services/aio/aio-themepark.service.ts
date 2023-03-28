@@ -128,7 +128,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       .then(() => {
         // When the call is successful, a redirect status code was not given
         // This means something went wrong
-        console.log('SUCCESS BUT ACTUALLY AN ERROR');
+        console.error('SUCCESS BUT ACTUALLY AN ERROR');
         reject();
       })
       .catch((reason: AxiosError) => {
@@ -139,9 +139,9 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
         }
 
         console.error('FAILED');
-        console.log(`${reason.response.status} / ${reason.response.statusText}`);
-        console.log(reason.response.data);
-        console.log(reason.response.headers);
+        console.error(`${reason.response.status} / ${reason.response.statusText}`);
+        console.error(reason.response.data);
+        console.error(reason.response.headers);
         reject(reason);
       });
     })

@@ -8,14 +8,21 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 @Injectable()
 export class WalibiTransferService extends TransferService {
   public transferPoiToPoi(entertainment: WalibiEntertainment): Poi {
-    let category = this.getCategory(entertainment.category.name);
+    let category: { poiCategory: PoiCategory; rideCategory?: RideCategory } = {
+      poiCategory: PoiCategory.UNDEFINED,
+      rideCategory: RideCategory.UNDEFINED
+    };
+
+    if (entertainment.category && entertainment.category.name) {
+      category = this.getCategory(entertainment.category.name);
+    }
 
     const poi: Poi = {
       id: entertainment.uuid,
       title: entertainment.title,
       description: entertainment.description,
       category: category.poiCategory,
-      original_category: entertainment.category.name,
+      original_category: entertainment.category?.name ?? "0",
       rideCategory: category.rideCategory,
       original: entertainment,
       image_url: entertainment.image.url,

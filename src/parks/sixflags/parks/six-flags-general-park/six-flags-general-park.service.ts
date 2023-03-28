@@ -98,8 +98,8 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
         return value.data;
       })
       .catch((reason: AxiosError) => {
-        console.log(reason.response.data);
-        console.log(reason.request.headers);
+        console.error(reason.response.data);
+        console.error(reason.request.headers);
         return null;
       });
   }

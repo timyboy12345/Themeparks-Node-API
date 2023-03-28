@@ -113,10 +113,10 @@ export class OuwehandsDierenparkService extends ThemeParkService {
       .then(value => {
         return value.data;
       })
-      .catch(reason => {
-        Sentry.captureException(reason);
-        console.log(reason);
-        throw new InternalServerErrorException(reason);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 }

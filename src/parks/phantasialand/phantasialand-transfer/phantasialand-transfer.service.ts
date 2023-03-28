@@ -63,7 +63,7 @@ export class PhantasialandTransferService extends TransferService {
         lat: poi.entrance.world.lat,
         lng: poi.entrance.world.lng,
       },
-      image_url: poi.titleImage.url,
+      image_url: poi.titleImage?.url,
       original_category: poi.category,
       category: c,
       original: poi,

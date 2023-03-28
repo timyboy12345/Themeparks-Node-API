@@ -228,9 +228,9 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       })
       .toPromise()
       .then((data) => data.data)
-      .catch((reason) => {
-        Sentry.captureException(reason);
-        console.log(reason);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
         return [];
       });
   }

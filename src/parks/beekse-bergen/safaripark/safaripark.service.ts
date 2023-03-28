@@ -74,10 +74,10 @@ export class SafariparkService extends ThemeParkService {
       .then(value => {
         return this.transferService.transferAnimalsToPois(value.data.results);
       })
-      .catch(e => {
-        Sentry.captureException(e);
-        console.log(e);
-        throw new InternalServerErrorException(e);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 
@@ -89,10 +89,10 @@ export class SafariparkService extends ThemeParkService {
       .then(value => {
         return this.transferService.transferRestaurantsToPois(value.data.results);
       })
-      .catch(e => {
-        Sentry.captureException(e);
-        console.log(e);
-        throw new InternalServerErrorException(e);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 }

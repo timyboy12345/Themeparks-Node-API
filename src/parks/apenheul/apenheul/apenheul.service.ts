@@ -72,7 +72,7 @@ export class ApenheulService extends ThemeParkService {
       })
       .catch((reason) => {
         Sentry.captureException(reason);
-        console.log(reason);
+        console.error(reason);
         throw new InternalServerErrorException(reason);
       });
   }

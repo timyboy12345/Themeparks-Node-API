@@ -33,7 +33,7 @@ describe('HansaParkService', () => {
         expect(data).toBeInstanceOf(Array);
         break;
       } catch (e) {
-        console.log(`Error while fetching Hansa Park times, trying again: ${t}`);
+        console.error(`Error while fetching Hansa Park times, trying again: ${t}`);
       }
     }
   }, 1000 * 60);

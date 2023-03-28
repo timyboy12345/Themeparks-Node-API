@@ -217,10 +217,10 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       .then((activitiesResponse) => {
       return activitiesResponse.activities;
     })
-      .catch((reason) => {
-        Sentry.captureException(reason);
-        console.log(reason);
-        throw new InternalServerErrorException(reason);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 
@@ -235,9 +235,9 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       })
       .toPromise()
       .then((data) => data.data)
-      .catch((reason) => {
-        Sentry.captureException(reason);
-        console.log(reason);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
         return [];
       });
   }

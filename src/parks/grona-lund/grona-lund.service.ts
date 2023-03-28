@@ -49,7 +49,15 @@ export class GronaLundService extends ThemeParkService {
 
   async getPois(): Promise<Poi[]> {
     const data: any = await this.getData();
-    return this.transferService.transferRidesToPois(data.result.data.contentfulContentPage.blocks[0].blocks[0].lists[0].listObjects);
+
+    let d: null;
+    if (data.result.data.contentfulContentPage.blocks[0].blocks) {
+      d = data.result.data.contentfulContentPage.blocks[0].blocks[0].lists[0].listObjects;
+    } else {
+      d = data.result.data.contentfulContentPage.blocks[1].blocks[0].lists[0].listObjects
+    }
+
+    return this.transferService.transferRidesToPois(d);
   }
 
   async getData(): Promise<AttraktionerResponseInterface> {
@@ -61,10 +69,10 @@ export class GronaLundService extends ThemeParkService {
       .then(value => {
         return value.data;
       })
-      .catch(reason => {
-        Sentry.captureException(reason);
-        console.log(reason);
-        throw new InternalServerErrorException(reason);
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
       });
   }
 }
