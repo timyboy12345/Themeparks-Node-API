@@ -7,9 +7,12 @@ import { ParkController } from './park/park.controller';
 import { DatabaseModule } from '../database/database.module';
 import { ParkHistoryController } from './park-history/park-history.controller';
 import { LocaleModule } from '../_services/locale/locale.module';
+import { UserController } from './user/user.controller';
+import { AuthModule } from '../auth/auth.module';
+import { CheckinsController } from './checkins/checkins.controller';
 
 @Module({
-  controllers: [ParksController, ParkController, ParkHistoryController],
+  controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController],
   imports: [
     CacheModule.register({
       ttl: 60 * 5,
@@ -22,7 +25,8 @@ import { LocaleModule } from '../_services/locale/locale.module';
     HttpModule,
     ParksModule,
     DatabaseModule,
-    LocaleModule
+    LocaleModule,
+    AuthModule
   ],
   providers: [
     ParksService

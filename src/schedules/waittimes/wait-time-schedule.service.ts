@@ -56,6 +56,8 @@ export class WaitTimeScheduleService {
               });
           }
         }
+
+        this.logger.debug(` - Done importing wait times`);
       })
       .catch(reason => {
         this.logger.error(`Could not retrieve parks: ${reason}`);

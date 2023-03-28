@@ -1,12 +1,8 @@
-import {
-  CACHE_MANAGER,
-  Controller,
-  Get,
-  Inject,
-} from '@nestjs/common';
+import { CACHE_MANAGER, Controller, Get, Inject } from '@nestjs/common';
 import { AppService } from './_services/app.service';
 import { ParksService } from './_services/parks/parks.service';
 import { Cache } from 'cache-manager';
+import { ApiExcludeEndpoint } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
@@ -16,6 +12,7 @@ export class AppController {
   }
 
   @Get('')
+  @ApiExcludeEndpoint()
   getHello(): Object {
     return this.appService.getHello();
   }

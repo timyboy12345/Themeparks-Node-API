@@ -19,6 +19,9 @@ import { ControllersModule } from './controllers/controllers.module';
 import { DatabaseModule } from './database/database.module';
 import { AioTransferServiceService } from './_services/aio/transfer-service/aio-transfer-service.service';
 import { LocaleModule } from './_services/locale/locale.module';
+import { AuthModule } from './auth/auth.module';
+import { User } from './database/users/user.entity';
+import { Checkin } from './database/checkins/checkin.entity';
 
 @Module({
   imports: [
@@ -43,7 +46,7 @@ import { LocaleModule } from './_services/locale/locale.module';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_DATABASE'),
-        entities: [WaitTime],
+        entities: [WaitTime, User, Checkin],
         synchronize: true,
       }),
     }),
@@ -52,6 +55,7 @@ import { LocaleModule } from './_services/locale/locale.module';
     ControllersModule,
     DatabaseModule,
     LocaleModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
