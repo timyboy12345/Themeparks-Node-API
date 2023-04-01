@@ -39,9 +39,8 @@ export interface ParqueWarnerResponseDocInterface {
   'checkMinAge_b': boolean,
   'checkMaxSpeed_b': boolean,
   'checkMaxHeight_b': boolean,
-  'minHeight_ss': [
-    '110 cm'
-  ],
+  'minHeight_ss': string[],
+  'maxHeight_ss': string[],
   'checkMinHeight_b': boolean,
   'checkMaxWeight_b': boolean,
   'checkMinWeight_b': boolean,

@@ -7,6 +7,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { AtraccionesResponseInterface } from './interfaces/atracciones-response.interface';
 import { ParqueDeAtraccionesTransferService } from './parque-de-atracciones-transfer/parque-de-atracciones-transfer.service';
 import { ConfigService } from '@nestjs/config';
+import { ParqueAtraccionesShowsResponseInterface } from './interfaces/parque-atracciones-shows-response.interface';
 
 @Injectable()
 export class ParqueDeAtraccionesService extends ThemeParkService{
@@ -28,7 +29,7 @@ export class ParqueDeAtraccionesService extends ThemeParkService{
       description: 'Het Parque de Atracciones de Madrid is een attractiepark in de buurt van Madrid in het park Casa de Campo. Het werd geopend in 1969. Parque de Atracciones is wat ligging betreft vergelijkbaar met Tivoli in Kopenhagen. Het park ligt in de groene zone van de stad en is vlot bereikbaar met de metro.',
       id: 'parque-de-atracciones-madrid',
       image: 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Entrada_Parque_de_Atracciones_de_Madrid.jpg',
-      location: { lat: 0, lng: 0 },
+      location: { lat: 40.413120, lng: -3.750970 },
       name: 'Parque de Atracciones Madrid',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Madrid'
@@ -49,14 +50,21 @@ export class ParqueDeAtraccionesService extends ThemeParkService{
       supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: false,
-      supportsShowTimes: false,
-      supportsShows: false,
-      supportsTranslations: false
+      supportsShowTimes: true,
+      supportsShows: true,
+      supportsTranslations: true
     }
   }
 
   async getPois(): Promise<Poi[]> {
-    return this.getRides();
+    const promises = [
+      this.getRides(),
+      this.getShows()
+    ];
+
+    return []
+      .concat
+      .apply([], await Promise.all(promises));
   }
 
   async getRides(): Promise<Poi[]> {
@@ -68,5 +76,16 @@ export class ParqueDeAtraccionesService extends ThemeParkService{
     })
       .toPromise()
       .then((response) => this.transfer.transferRidesToPois(response.data.data));
+  }
+
+  async getShows(): Promise<Poi[]> {
+    return this.http.get<ParqueAtraccionesShowsResponseInterface>(this.apiUrl + '/api/v1/service/117626', {
+      headers: {
+        Authorization: 'Bearer ' + this.apiToken,
+        'Stay-Establishment': 'QRMy'
+      }
+    })
+      .toPromise()
+      .then((response) => this.transfer.transferShowsResponseToPois(response.data));
   }
 }

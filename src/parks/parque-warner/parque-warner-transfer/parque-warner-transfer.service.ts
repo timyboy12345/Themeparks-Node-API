@@ -36,7 +36,7 @@ export class ParqueWarnerTransferService extends TransferService {
 
     const p: Poi = {
       id: poi.id,
-      title: poi.attractionName_s,
+      title: poi.attractionName_s ?? poi.restaurantName_s ?? poi.storeName_s ?? poi.eventName_s,
       subTitle: poi.briefDescription_s,
       description: poi.description_s,
       original: poi,
@@ -67,6 +67,14 @@ export class ParqueWarnerTransferService extends TransferService {
         lat: parseFloat(poi.latitude_s),
         lng: parseFloat(poi.longitude_s)
       }
+    }
+
+    if (poi.minHeight_ss && poi.minHeight_ss.length > 0) {
+      p.minSize = parseInt(poi.minHeight_ss[0].split(' ')[0]);
+    }
+
+    if (poi.maxHeight_ss && poi.maxHeight_ss.length > 0) {
+      p.maxSize = parseInt(poi.maxHeight_ss[0].split(' ')[0]);
     }
 
     return p;

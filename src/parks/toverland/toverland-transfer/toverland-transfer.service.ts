@@ -66,8 +66,6 @@ export class ToverlandTransferService extends TransferService {
       },
     };
 
-    // console.log(locale);
-
     switch (locale) {
       case 'de':
         r.description = poi.description.de;

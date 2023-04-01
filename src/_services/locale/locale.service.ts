@@ -40,7 +40,7 @@ export class LocaleService {
    * Set the locale of the request
    * @param locale
    */
-  public setLocale(locale: string){
+  public setLocale(locale: string) {
     const selectedLocale = this.getAvailableLocales().find((l) => l.iso === locale);
 
     if (!selectedLocale) {

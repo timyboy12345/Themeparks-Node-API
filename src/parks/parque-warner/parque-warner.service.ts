@@ -8,6 +8,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { ParqueWarnerTransferService } from './parque-warner-transfer/parque-warner-transfer.service';
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
+import { LocaleService } from '../../_services/locale/locale.service';
 
 @Injectable()
 export class ParqueWarnerService extends ThemeParkService {
@@ -15,7 +16,8 @@ export class ParqueWarnerService extends ThemeParkService {
 
   constructor(private readonly httpService: HttpService,
               private readonly transferService: ParqueWarnerTransferService,
-              private readonly configService: ConfigService) {
+              private readonly configService: ConfigService,
+              private readonly localeService: LocaleService) {
     super();
     this.apiUrl = this.configService.get('PARQUE_WARNER_API_URL');
   }
@@ -89,23 +91,36 @@ export class ParqueWarnerService extends ThemeParkService {
       .then(value => this.transferService.transferPoisToPois(value.docs));
   }
 
+  private getLocale(): string {
+    switch (this.localeService.getLocale()) {
+      case 'es':
+        return 'es';
+      default:
+        return 'en';
+    }
+  }
+
   private getAttractionData(): Promise<ParqueWarnerResponseInterface> {
-    const url = `${this.apiUrl}/experiencias/atracciones.searchservlet.json?type_primary=parques-reunidos%3Aattractions&type_secondary=&facets%5B%5D=intensity&facets%5B%5D=fast-pass&lang=en`;
+    const locale = this.getLocale();
+    const url = `${this.apiUrl}/experiencias/atracciones.searchservlet.json?type_primary=parques-reunidos%3Aattractions&type_secondary=&facets%5B%5D=intensity&facets%5B%5D=fast-pass&lang=${locale}`;
     return this.request(url);
   }
 
   private getEventData(): Promise<ParqueWarnerResponseInterface> {
-    const url = `${this.apiUrl}/experiencias/espectaculos.searchservlet.json?type_primary=parques-reunidos%3Aevents&type_secondary=&fqs%5B%5D=monday_b%3Atrue&type=calendarevents&lang=en`;
+    const locale = this.getLocale();
+    const url = `${this.apiUrl}/experiencias/espectaculos.searchservlet.json?type_primary=parques-reunidos%3Aevents&type_secondary=&fqs%5B%5D=monday_b%3Atrue&type=calendarevents&lang=${locale}`;
     return this.request(url);
   }
 
   private getShopData(): Promise<ParqueWarnerResponseInterface> {
-    const url = `${this.apiUrl}/compras/tiendas.searchservlet.json?type_primary=parques-reunidos%3Astores&type_secondary=&facets%5B%5D=theme-areas&type=filters&lang=en`;
+    const locale = this.getLocale();
+    const url = `${this.apiUrl}/compras/tiendas.searchservlet.json?type_primary=parques-reunidos%3Astores&type_secondary=&facets%5B%5D=theme-areas&type=filters&lang=${locale}`;
     return this.request(url);
   }
 
   private getRestaurantData(): Promise<ParqueWarnerResponseInterface> {
-    const url = `${this.apiUrl}/donde-comer/restaurantes.searchservlet.json?type_primary=parques-reunidos%3Arestaurants&type_secondary=&facets%5B%5D=type-of-restaurant&facets%5B%5D=type-of-food&facets%5B%5D=price&facets%5B%5D=meal-plan&type=filters&lang=en`;
+    const locale = this.getLocale();
+    const url = `${this.apiUrl}/donde-comer/restaurantes.searchservlet.json?type_primary=parques-reunidos%3Arestaurants&type_secondary=&facets%5B%5D=type-of-restaurant&facets%5B%5D=type-of-food&facets%5B%5D=price&facets%5B%5D=meal-plan&type=filters&lang=${locale}`;
     return this.request(url);
   }
 
@@ -117,7 +132,7 @@ export class ParqueWarnerService extends ThemeParkService {
       })
       .catch((exception) => {
         Sentry.captureException(exception);
-        console.log(exception);
+        console.error(exception);
         throw new InternalServerErrorException(exception);
       });
   }
