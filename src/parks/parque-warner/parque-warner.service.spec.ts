@@ -3,13 +3,14 @@ import { ParqueWarnerService } from './parque-warner.service';
 import { ParqueWarnerTransferService } from './parque-warner-transfer/parque-warner-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 describe('ParqueWarnerService', () => {
   let service: ParqueWarnerService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
       providers: [ParqueWarnerService, ParqueWarnerTransferService],
     }).compile();
 
