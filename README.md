@@ -26,6 +26,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇪🇸 Portaventura | 🎡 | True | True | False | False |
 | 🇪🇸 Ferrari Land | 🎡 | True | True | False | False |
 | 🇪🇸 Parque Warner | 🎡 | True | True | True | True |
+| 🇪🇸 Parque de Atracciones Madrid | 🎡 | True | False | False | False |
 | 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True |
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True |
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False |
@@ -44,9 +45,10 @@ In the table below you will find the parks that are currently supported and the 
 | 🇳🇱 Apenheul | 🦁 | False | False | False | False |
 | 🇳🇱 Safaripark Beekse Bergen | 🦁 | False | True | False | False |
 | 🇳🇱 Speelland Beekse Bergen | 🎡 | True | False | False | False |
-| 🇵🇱 Energylandia | 🎡 | False | False | True | False |
+| 🇵🇱 Energylandia | 🎡 | True | False | True | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True |
 | 🇸🇪 Grona Lund | 🎡 | True | False | False | False |
+| 🇺🇸 Dollywood | 🎡 | True | False | False | False |
 | 🇺🇸 Silver Dollar City | 🎡 | True | False | False | False |
 | 🇺🇸 San Diego Zoo | 🦁 | True | True | True | True |
 | 🇺🇸 Six Flags Over Texas | 🎡 | True | True | True | True |

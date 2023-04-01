@@ -42,7 +42,7 @@ export class EnergylandiaService extends ThemeParkService {
       supportsRestaurants: false,
       supportsRideWaitTimes: true,
       supportsRideWaitTimesHistory: false,
-      supportsRides: false,
+      supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: false,
       supportsShowTimes: true,
@@ -92,6 +92,10 @@ export class EnergylandiaService extends ThemeParkService {
           return poi;
         });
       });
+  }
+
+  async getRides(): Promise<Poi[]> {
+    return this.getPois().then((rides) => rides.filter((r) => r.title));
   }
 
   async getPois(): Promise<Poi[]> {

@@ -38,6 +38,7 @@ schema.graphql
 # Environments
 .env
 .env.prod
+.env.cicd
 SERVER.md
 
 # Storage
