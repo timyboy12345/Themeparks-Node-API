@@ -22,4 +22,15 @@ describe('SixFlagsGeneralParkService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('should return info', () => {
+    service.setParkId('1');
+    expect(service.getInfo().id).toBeDefined();
+  });
+
+  it('should return a list of POIs', async () => {
+    service.setParkId('1');
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
+  });
 });

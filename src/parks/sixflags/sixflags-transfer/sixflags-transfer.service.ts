@@ -44,11 +44,11 @@ export class SixflagsTransferService extends TransferService {
     };
 
     if ([PoiCategory.ATTRACTION, PoiCategory.SLIDE].includes(category)) {
-      if (poi.rideType.includes(SixflagsRideRideTypeMapEnum.RideTypeThrill)) {
+      if (poi.rideType && poi.rideType.includes(SixflagsRideRideTypeMapEnum.RideTypeThrill)) {
         p.rideCategory = RideCategory.THRILL;
-      } else if (poi.rideType.includes(SixflagsRideRideTypeMapEnum.RideTypeFamily)) {
+      } else if (poi.rideType && poi.rideType.includes(SixflagsRideRideTypeMapEnum.RideTypeFamily)) {
         p.rideCategory = RideCategory.FAMILY;
-      } else if (poi.rideType.includes(SixflagsRideRideTypeMapEnum.RideTypeKids)) {
+      } else if (poi.rideType && poi.rideType.includes(SixflagsRideRideTypeMapEnum.RideTypeKids)) {
         p.rideCategory = RideCategory.KIDS;
       } else {
         p.rideCategory = RideCategory.UNDEFINED;

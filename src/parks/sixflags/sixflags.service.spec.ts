@@ -19,4 +19,14 @@ describe('SixflagsService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('can retrieve parks', async () => {
+    const data = await service.getParks();
+    expect(data).toBeInstanceOf(Array);
+  });
+
+  it('can retrieve info for all parks', async () => {
+    const data = await service.getParkServices();
+    expect(data).toBeInstanceOf(Array);
+  });
 });
