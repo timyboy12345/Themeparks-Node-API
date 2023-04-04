@@ -71,7 +71,7 @@ export class ToverlandService extends ThemeParkService {
       .catch((exception) => {
         Sentry.captureException(exception);
         console.error(exception);
-        throw new HttpException("message", 500, {
+        throw new HttpException("Failed to fetch rides", 500, {
           cause: new Error('Failed to fetch rides: ' + exception.toString())
         });
       });
@@ -86,7 +86,7 @@ export class ToverlandService extends ThemeParkService {
       .catch((exception) => {
         Sentry.captureException(exception);
         console.error(exception);
-        throw new HttpException('message', 500, {
+        throw new HttpException('Failed to fetch restaurants', 500, {
           cause: new Error('Failed to fetch restaurants: ' + exception.toString())
         });
       });
@@ -100,7 +100,7 @@ export class ToverlandService extends ThemeParkService {
       .catch((exception) => {
         Sentry.captureException(exception);
         console.error(exception);
-        throw new HttpException('message', 500, {
+        throw new HttpException('Failed to fetch shows', 500, {
           cause: new Error('Failed to fetch shows: ' + exception.toString())
         });
       });
