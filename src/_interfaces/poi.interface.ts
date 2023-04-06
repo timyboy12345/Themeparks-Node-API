@@ -104,14 +104,14 @@ export interface Poi {
   };
 
   /**
-   * The minimum length in centimeters that riders need to be to ride alone
-   */
-  minSize?: number;
-
-  /**
-   * The length that riders with parents are allowed to ride (in cm)
+   * The minimum length in centimeters that riders need to be to ride with an escort
    */
   minSizeWithEscort?: number;
+
+  /**
+   * The length that riders need to be (in cm) to ride without supervision
+   */
+  minSizeWithoutEscort?: number;
 
   /**
    * The maximum length in centimeters for this ride
@@ -119,9 +119,9 @@ export interface Poi {
   maxSize?: number;
 
   /**
-   * The minimum age to ride this ride
+   * The minimum age to ride this ride alone
    */
-  minAge?: number;
+  minAgeWithoutEscort?: number;
 
   /**
    * The minimum age to ride this ride with parents
@@ -213,6 +213,21 @@ export interface Poi {
    * When this data point was updated
    */
   updatedAt?: string;
+
+  /**
+   * The price of this ride, could be tokens, points, or euros
+   */
+  price?: number;
+
+  /**
+   * The type of currency used to calculate price
+   */
+  priceType?: 'tokens' | 'local_currency' | 'points';
+
+  /**
+   * The name of the price type, so 'euros', 'dollars', 'tokens' or something simular
+   */
+  priceName?: string;
 
   /**
    * The original POI (The object returned by the park)

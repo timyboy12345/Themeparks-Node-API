@@ -48,6 +48,10 @@ export class GronaLundService extends ThemeParkService {
     };
   }
 
+  async getRides(): Promise<Poi[]> {
+    return this.getPois();
+  }
+
   async getPois(): Promise<Poi[]> {
     const data: any = await this.getData();
 

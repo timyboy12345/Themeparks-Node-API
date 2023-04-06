@@ -19,15 +19,15 @@ export class AioTransferServiceService extends TransferService {
       original_category: poi.Category.toString(),
       category: this.getCategoryById(poi.Category),
       description: this.getProperty(poi, 'Summary'),
-      featured: poi.Featured
+      featured: poi.Featured,
     };
 
     if (poi.Location) {
       const latLng = poi.Location.split(',');
       p.location = {
         lat: parseFloat(latLng[0]),
-        lng: parseFloat(latLng[1])
-      }
+        lng: parseFloat(latLng[1]),
+      };
     }
 
     if (poi.MinimumAgeRequirement) {
@@ -35,19 +35,19 @@ export class AioTransferServiceService extends TransferService {
     }
 
     if (poi.MinimumUnaccompaniedAgeRequirement) {
-      p.minAge = poi.MinimumUnaccompaniedAgeRequirement;
+      p.minAgeWithoutEscort = poi.MinimumUnaccompaniedAgeRequirement;
     }
 
     if (poi.MinimumHeightRequirement) {
-      if (poi.MinimumUnaccompaniedHeightRequirement) {
-        p.minSizeWithEscort = Math.round(poi.MinimumHeightRequirement * 100);
-      } else {
-        p.minSize = Math.round(poi.MinimumHeightRequirement * 100);
-      }
+      // if (poi.MinimumUnaccompaniedHeightRequirement) {
+      //   p.minSizeWithoutEscort = Math.round(poi.MinimumHeightRequirement * 100);
+      // } else {
+      p.minSizeWithEscort = Math.round(poi.MinimumHeightRequirement * 100);
+      // }
     }
 
     if (poi.MinimumUnaccompaniedHeightRequirement) {
-      p.minSize = Math.round(poi.MinimumUnaccompaniedHeightRequirement * 100);
+      p.minSizeWithoutEscort = Math.round(poi.MinimumUnaccompaniedHeightRequirement * 100);
     }
 
     return p;

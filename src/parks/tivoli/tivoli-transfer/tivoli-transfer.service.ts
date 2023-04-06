@@ -35,8 +35,8 @@ export class TivoliTransferService extends TransferService {
     if (poi.Placement) {
       p.location = {
         lat: parseFloat(poi.Placement.LocationLatitude),
-        lng: parseFloat(poi.Placement.LocationLongitude)
-      }
+        lng: parseFloat(poi.Placement.LocationLongitude),
+      };
     }
 
     return p;
@@ -50,20 +50,34 @@ export class TivoliTransferService extends TransferService {
       // TODO: Implement facts
     }
 
-    if (ride.AccessAge) {
-      const age = Number(ride.AccessAge.replace(/\D+/g, ""))
+    // if (ride.AccessAge) {
+    //   const age = Number(ride.AccessAge.replace(/\D+/g, ""))
+    //
+    //   if (age) {
+    //     r.minAgeWithoutEscort = age;
+    //   }
+    // }
 
-      if (age) {
-        r.minAge = age;
-      }
+    // if (ride.AccessMinHeight) {
+    //   const minHeight = Number(ride.AccessMinHeight.replace(/\D+/g, ""))
+    //
+    //   if (minHeight) {
+    //     r.minSizeWithEscort = minHeight;
+    //   }
+    // }
+
+    if (ride.AccessAgeValue) {
+      r.minAgeWithoutEscort = ride.AccessAgeValue;
     }
 
-    if (ride.AccessMinHeight) {
-      const minHeight = Number(ride.AccessMinHeight.replace(/\D+/g, ""))
+    if (ride.AccessMinHeightValue) {
+      r.minSizeWithoutEscort = ride.AccessMinHeightValue;
+    }
 
-      if (minHeight) {
-        r.minSize = minHeight;
-      }
+    if (ride.AccessPriceValue) {
+      r.priceType = 'local_currency';
+      r.priceName = 'DKK';
+      r.price = ride.AccessPriceValue;
     }
 
     return r;
@@ -85,7 +99,7 @@ export class TivoliTransferService extends TransferService {
     return [
       ...this.transferRidesToPois(data.rides.Data),
       ...this.transferRestaurantsToPois(data.food.Data),
-      ...this.transferShowsToPois(data.events.Data)
+      ...this.transferShowsToPois(data.events.Data),
     ];
   }
 }

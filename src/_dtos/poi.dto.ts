@@ -102,19 +102,19 @@ export class PoiDto {
     description: 'The minimum age someone has to be to be allowed to ride this ride',
     required: false,
   })
-  minAge?: number;
+  minAgeWithoutEscort?: number;
 
   @ApiProperty({
-    description: 'The minimum size in meters that someone has to be is allowed to ride this ride',
+    description: 'The minimum size in meters that someone has to be is allowed to ride this ride with adult supervision',
     required: false,
   })
-  minSize?: number;
+  minSizeWithEscort?: number;
 
   @ApiProperty({
     description: 'The minimum size in meters before someone is allowed to ride this ride on their own',
     required: false,
   })
-  minSizeEscort?: number;
+  minSizeWithoutEscort?: number;
 
   @ApiProperty({
     description: 'Tags that are given to this ride',

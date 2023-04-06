@@ -115,7 +115,7 @@ export class EftelingTransferService extends TransferService {
       if (eftelingPoi.fields.properties && eftelingPoi.fields.properties.length > 0) {
         eftelingPoi.fields.properties.forEach(property => {
           if (property.includes('minimum')) {
-            poi.minSize = parseInt(property.split('minimum')[1]);
+            poi.minSizeWithEscort = parseInt(property.split('minimum')[1]);
           }
 
           if (property.includes('childrentwelveyears2')) {
@@ -125,9 +125,10 @@ export class EftelingTransferService extends TransferService {
           if (property.includes('undersupervision')) {
             // If a dash is included, there is a minimum length, otherwise supervision is needed from 0-x
             if (property.includes('-')) {
-              poi.minSizeWithEscort = parseInt(property.split('undersupervision')[0].split('-')[1]);
+              poi.minSizeWithoutEscort = parseInt(property.split('undersupervision')[0].split('-')[1]);
             } else {
-              poi.minSizeWithEscort = parseInt(property.split('undersupervision')[0]);
+              poi.minSizeWithEscort = 0;
+              poi.minSizeWithoutEscort = parseInt(property.split('undersupervision')[0]);
             }
           }
         });

@@ -108,22 +108,22 @@ export class ToverlandTransferService extends TransferService {
     if ('minLength' in poi && poi.minLength) {
       switch (poi.minLength) {
         case "8":
-          r.minSize = 110;
+          r.minSizeWithoutEscort = 110;
           break;
         case "9":
-          r.minSize = 120;
+          r.minSizeWithoutEscort = 120;
           break;
         case "10":
-          r.minSize = 132;
+          r.minSizeWithoutEscort = 132;
           r.maxSize = 195;
           break;
         case "11":
-          r.minSize = 140;
+          r.minSizeWithoutEscort = 140;
           break;
         case "7":
         case "12":
         default:
-          r.minSize = undefined;
+          r.minSizeWithEscort = undefined;
           break;
       }
     }
@@ -131,24 +131,24 @@ export class ToverlandTransferService extends TransferService {
     if ('supervision' in poi && poi.supervision) {
       switch (poi.supervision) {
         case "6":
-          r.minSize = undefined;
-          r.minSizeWithEscort = 120;
+          r.minSizeWithEscort = undefined;
+          r.minSizeWithoutEscort = 120;
           break;
         case "30":
-          r.minSize = undefined;
-          r.minSizeWithEscort = 100;
+          r.minSizeWithEscort = undefined;
+          r.minSizeWithoutEscort = 100;
           break;
         case "32":
-          r.minSizeWithEscort = 120;
-          r.minSize = 100;
+          r.minSizeWithEscort = 100;
+          r.minSizeWithoutEscort = 120;
           break;
         case "33":
-          r.minSizeWithEscort = 110;
-          r.minSize = 90;
+          r.minSizeWithEscort = 90;
+          r.minSizeWithoutEscort = 110;
           break;
         case "34":
-          r.minSizeWithEscort = 120;
-          r.minSize = 90;
+          r.minSizeWithEscort = 90;
+          r.minSizeWithoutEscort = 120;
           break;
         default:
           break;

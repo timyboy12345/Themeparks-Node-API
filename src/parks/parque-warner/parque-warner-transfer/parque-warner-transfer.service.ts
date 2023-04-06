@@ -70,7 +70,7 @@ export class ParqueWarnerTransferService extends TransferService {
     }
 
     if (poi.minHeight_ss && poi.minHeight_ss.length > 0) {
-      p.minSize = parseInt(poi.minHeight_ss[0].split(' ')[0]);
+      p.minSizeWithoutEscort = parseInt(poi.minHeight_ss[0].split(' ')[0]);
     }
 
     if (poi.maxHeight_ss && poi.maxHeight_ss.length > 0) {

@@ -15,8 +15,10 @@ export class GronaLundTransferService extends TransferService{
     }
 
     if (poi.minimumHeightInteger) {
-      p.minSize = poi.minimumHeightInteger;
+      p.minSizeWithoutEscort = poi.minimumHeightInteger;
     }
+
+    // Todo: Implement age requirement
 
     if (poi.imageInList.file) {
       p.image_url = poi.imageInList.file.url;

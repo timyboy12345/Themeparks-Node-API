@@ -49,12 +49,12 @@ export class HansaParkTransferService extends TransferService {
     }
 
     if (poi.restrictions.childAlone && !Array.isArray(poi.restrictions.childAlone)) {
-      p.minSize = poi.restrictions.childAlone.heightMin;
+      p.minSizeWithoutEscort = poi.restrictions.childAlone.heightMin;
       p.maxAge = poi.restrictions.childAlone.ageMax;
     }
 
     if (poi.restrictions.withAdult && !Array.isArray(poi.restrictions.withAdult)) {
-      p.minAge = poi.restrictions.withAdult.ageMin;
+      p.minAgeWithEscort = poi.restrictions.withAdult.ageMin;
       p.minSizeWithEscort = poi.restrictions.withAdult.heightMin;
     }
 

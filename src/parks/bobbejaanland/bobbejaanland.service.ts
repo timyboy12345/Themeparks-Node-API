@@ -90,7 +90,7 @@ export class BobbejaanlandService extends ThroughPoisThemeParkService {
         }
 
         if (poi.minHeight_ss && poi.minHeight_ss.length > 0) {
-          ride.minSize = parseInt(poi.minHeight_ss[0].split(' ')[0]);
+          ride.minSizeWithoutEscort = parseInt(poi.minHeight_ss[0].split(' ')[0]);
         }
 
         if (poi.maxHeight_ss && poi.maxHeight_ss.length > 0) {

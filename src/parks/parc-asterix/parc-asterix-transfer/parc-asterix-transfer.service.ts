@@ -85,7 +85,7 @@ export class ParcAsterixTransferService extends TransferService {
     }
 
     if (minNotAccompaniedLengthLabel) {
-      poi.minSize = parseInt(minNotAccompaniedLengthLabel.value);
+      poi.minSizeWithoutEscort = parseInt(minNotAccompaniedLengthLabel.value);
     }
 
     if (this.isAttraction(parcAsterixPoi)) {

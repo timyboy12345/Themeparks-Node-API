@@ -38,7 +38,7 @@ export class HolidayParkTransferService extends TransferService {
       category: category,
       original_category: holidayParkAttraction.type,
       original: holidayParkAttraction,
-      minSize: parseInt(holidayParkAttraction.minHeight),
+      minSizeWithoutEscort: parseInt(holidayParkAttraction.minHeight),
       maxSize: parseInt(holidayParkAttraction.maxHeight),
       minSizeWithEscort: parseInt(holidayParkAttraction.minHeightSupervised),
     };

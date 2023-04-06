@@ -54,8 +54,9 @@ export class SixflagsTransferService extends TransferService {
         p.rideCategory = RideCategory.UNDEFINED;
       }
 
+      // TODO: Improve min/max height
       if (poi.minimumHeight) {
-        p.minSize = Math.round(poi.minimumHeight * 2.54);
+        p.minSizeWithoutEscort = Math.round(poi.minimumHeight * 2.54);
       }
     }
 

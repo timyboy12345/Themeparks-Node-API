@@ -76,40 +76,40 @@ export class LisebergTransferService extends TransferService {
       switch (poi.heightLimitation) {
         case 'At least 90 cm or no height limit if accompanied by adult':
           p.minSizeWithEscort = 0;
-          p.minSize = 90;
+          p.minSizeWithoutEscort = 90;
           break;
         case 'At least 110 cm':
-          p.minSize = 110;
+          p.minSizeWithoutEscort = 110;
           break;
         case 'At least 110 cm or no height limit if accompanied by adult':
           p.minSizeWithEscort = 0;
-          p.minSize = 110;
+          p.minSizeWithoutEscort = 110;
           break;
         case 'At least 130 cm or no height limit if accompanied by adult':
           p.minSizeWithEscort = 0;
-          p.minSize = 130;
+          p.minSizeWithoutEscort = 130;
           break;
         case 'At least 9 years old':
-          p.minAge = 9;
+          p.minAgeWithoutEscort = 9;
           break;
         case 'At least 110 cm or 90 cm if accompanied by adult':
           p.minSizeWithEscort = 90;
-          p.minSize = 110;
+          p.minSizeWithoutEscort = 110;
           break;
         case 'At least 130 cm and 7 years old':
-          p.minAge = 7;
-          p.minSize = 130;
+          p.minAgeWithoutEscort = 7;
+          p.minSizeWithoutEscort = 130;
           break;
         case 'At least 130 cm or 90 cm if accompanied by adult':
-          p.minSize = 130;
+          p.minSizeWithoutEscort = 130;
           p.minSizeWithEscort= 90;
           break;
         case 'At least 132 cm and 7 years old':
-          p.minSize = 132;
-          p.minAge = 7;
+          p.minSizeWithoutEscort = 132;
+          p.minAgeWithoutEscort = 7;
           break;
         case 'At least 140 cm':
-          p.minSize = 140;
+          p.minSizeWithoutEscort = 140;
           break;
         default:
           break;

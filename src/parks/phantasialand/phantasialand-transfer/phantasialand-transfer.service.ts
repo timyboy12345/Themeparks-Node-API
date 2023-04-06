@@ -69,8 +69,9 @@ export class PhantasialandTransferService extends TransferService {
       original: poi,
       maxAge: poi.maxAge,
       maxSize: poi.maxSize,
-      minAge: poi.minAge,
-      minSize: poi.minSize,
+      minAgeWithoutEscort: poi.minAge,
+      minSizeWithEscort: poi.minSizeEscort === 1 ? 0 : poi.minSizeEscort,
+      minSizeWithoutEscort: poi.minSize
     };
   }
 

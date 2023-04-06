@@ -60,4 +60,4 @@ jobs:
       - name: Publish files
         run: scp -r dist/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/tp.arendz.nl/dist
       - name: Restart Themeparks Server
-        run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} pm2 reload 1
+        run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} pm2 reload 0

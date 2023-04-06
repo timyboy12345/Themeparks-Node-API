@@ -72,9 +72,9 @@ export class ParqueDeAtraccionesTransferService extends TransferService {
       if (minMatches && minMatches.length > 0) {
         if (accompaniedMatches && accompaniedMatches.length > 0) {
           r.minSizeWithEscort = Number.parseFloat(minMatches[1]);
-          r.minSize = Number.parseFloat(accompaniedMatches[1]);
+          r.minSizeWithoutEscort = Number.parseFloat(accompaniedMatches[1]);
         } else {
-          r.minSize = Number.parseFloat(minMatches[1]);
+          r.minSizeWithoutEscort = Number.parseFloat(minMatches[1]);
         }
       }
 

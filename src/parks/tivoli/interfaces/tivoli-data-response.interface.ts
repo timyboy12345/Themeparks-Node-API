@@ -30,6 +30,9 @@ export interface Ride {
   'AccessNotes': 'Follows park opening hours',
   'RideSpeedRate': number,
   'RideActionRate': number,
+  'AccessAgeValue'?: number,
+  'AccessMinHeightValue'?: number,
+  'AccessPriceValue'?: number,
   'IsGame': boolean,
   'ActivityStatus': {
     'Title': string,
