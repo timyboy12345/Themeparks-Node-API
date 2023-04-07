@@ -20,6 +20,10 @@ export interface WalibiEntertainment {
     'lat': string,
     'lon': string
   },
+  'parameters': {
+    'title': string,
+    'value': string
+  }[],
   'additionalContent': [
     {
       'title': string,

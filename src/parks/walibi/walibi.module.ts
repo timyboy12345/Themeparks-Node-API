@@ -5,6 +5,7 @@ import { WalibiHollandService } from './holland/walibi-holland.service';
 import { WalibiService } from './walibi.service';
 import { WalibiTransferService } from './walibi-transfer/walibi-transfer.service';
 import { HttpModule } from '@nestjs/axios';
+import { WalibiFranceService } from './france/walibi-france.service';
 
 @Module({
 
@@ -16,8 +17,8 @@ import { HttpModule } from '@nestjs/axios';
       ignoreEnvFile: false,
     }),
   ],
-  exports: [WalibiBelgiumService, WalibiHollandService],
-  providers: [WalibiHollandService, WalibiBelgiumService, WalibiService, WalibiTransferService],
+  exports: [WalibiBelgiumService, WalibiHollandService, WalibiFranceService],
+  providers: [WalibiBelgiumService, WalibiHollandService, WalibiFranceService, WalibiService, WalibiTransferService],
 })
 export class WalibiModule {
 }

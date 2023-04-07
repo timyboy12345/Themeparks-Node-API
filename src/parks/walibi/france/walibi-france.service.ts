@@ -1,21 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { WalibiService } from '../walibi.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
-import { WalibiService } from '../walibi.service';
 
 @Injectable()
-export class WalibiBelgiumService extends WalibiService {
+export class WalibiFranceService extends WalibiService {
   getInfo(): ThemePark {
     return {
-      id: 'walibi_belgium',
-      name: 'Walibi Belgium',
-      description: 'Walibi Belgium is een pretpark in de Belgische gemeente Waver. Het park, geopend in 1975, heeft meerdere namen gehad en is ook nog een tijdje onderdeel geweest van het Amerikaanse concern Six Flags.',
-      image: 'https://www.walibi.be/sites/default/files/styles/1280x711/public/content/editorial/2020-06/W18-TIKIWAKA_0629-1.jpg?itok=69V5PXVt',
-      countryCode: 'be',
+      id: 'walibi-rhone-alpes',
+      name: 'Walibi Rhône-Alpes',
+      description: 'Walibi Rhône-Alpes is een pretpark in Zuid-Frankrijk dat eigendom is van de Compagnie des Alpes. Het trekt jaarlijks zo\'n 400.000 bezoekers. Het park telt ongeveer dertig attracties.',
+      countryCode: 'fr',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/EqWalizer.jpg/1024px-EqWalizer.jpg',
       parkType: ParkType.THEMEPARK,
       location: {
-        lat: 50.701962206947776,
-        lng: 4.594036198076961,
+        lat: 45.62165,
+        lng: 5.5707,
       },
     };
   }
@@ -41,6 +41,6 @@ export class WalibiBelgiumService extends WalibiService {
   }
 
   getLocale(): string {
-    return 'be';
+    return 'fr';
   }
 }

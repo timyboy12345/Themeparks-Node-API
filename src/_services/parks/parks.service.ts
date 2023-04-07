@@ -45,6 +45,7 @@ import { SafariparkService } from '../../parks/beekse-bergen/safaripark/safaripa
 import { SpeellandService } from '../../parks/beekse-bergen/speelland/speelland.service';
 import { DollywoodService } from '../../parks/herschend/dollywood/dollywood.service';
 import { ParqueDeAtraccionesService } from '../../parks/parque-de-atracciones/parque-de-atracciones.service';
+import { WalibiFranceService } from '../../parks/walibi/france/walibi-france.service';
 
 @Injectable()
 export class ParksService {
@@ -55,6 +56,7 @@ export class ParksService {
               private readonly _toverlandService: ToverlandService,
               private readonly _walibiHollandService: WalibiHollandService,
               private readonly _walibiBelgiumService: WalibiBelgiumService,
+              private readonly _walibiFranceService: WalibiFranceService,
               private readonly _phantasialandService: PhantasialandService,
               private readonly _disneylandParisService: DisneylandParisService,
               private readonly _disneylandParisStudiosService: DisneylandParisStudiosService,
@@ -100,6 +102,7 @@ export class ParksService {
     this._parks.push(_toverlandService);
     this._parks.push(_walibiHollandService);
     this._parks.push(_walibiBelgiumService);
+    this._parks.push(_walibiFranceService);
     this._parks.push(_phantasialandService);
     this._parks.push(_disneylandParisService);
     this._parks.push(_disneylandParisStudiosService);

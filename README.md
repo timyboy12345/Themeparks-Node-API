@@ -19,14 +19,15 @@ In the table below you will find the parks that are currently supported and the 
 | 🇧🇪 Plopsalande de Panne | 🎡 | True | True | True | True |
 | 🇨🇦 La Ronde, Montreal | 🎡 | True | True | True | True |
 | 🇩🇪 Phantasialand | 🎡 | True | True | True | True |
-| 🇩🇪 Holiday Park | 🎡 | True | True | False | True |
+| 🇩🇪 Holiday Park | 🎡 | True | True | True | True |
 | 🇩🇪 LegoLand Deutschland | 🎡 | False | False | False | False |
 | 🇩🇪 Hansa Park | 🎡 | True | True | True | True |
 | 🇩🇰 Tivoli | 🎡 | True | True | True | False |
 | 🇪🇸 Portaventura | 🎡 | True | True | False | False |
 | 🇪🇸 Ferrari Land | 🎡 | True | True | False | False |
 | 🇪🇸 Parque Warner | 🎡 | True | True | True | True |
-| 🇪🇸 Parque de Atracciones Madrid | 🎡 | True | False | False | False |
+| 🇪🇸 Parque de Atracciones Madrid | 🎡 | True | False | True | False |
+| 🇫🇷 Walibi Rhône-Alpes | 🎡 | True | True | True | True |
 | 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True |
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True |
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False |

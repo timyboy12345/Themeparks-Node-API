@@ -7,37 +7,82 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 
 @Injectable()
 export class WalibiTransferService extends TransferService {
-  public transferPoiToPoi(entertainment: WalibiEntertainment): Poi {
+  public transferPoiToPoi(walibiPoi: WalibiEntertainment): Poi {
     let category: { poiCategory: PoiCategory; rideCategory?: RideCategory } = {
       poiCategory: PoiCategory.UNDEFINED,
       rideCategory: RideCategory.UNDEFINED
     };
 
-    if (entertainment.category && entertainment.category.name) {
-      category = this.getCategory(entertainment.category.name);
+    if (walibiPoi.category && walibiPoi.category.name) {
+      category = this.getCategory(walibiPoi.category.name);
     }
 
     const poi: Poi = {
-      id: entertainment.uuid,
-      title: entertainment.title,
-      description: entertainment.description,
+      id: walibiPoi.uuid,
+      title: walibiPoi.title,
+      description: walibiPoi.description,
       category: category.poiCategory,
-      original_category: entertainment.category?.name ?? "0",
+      original_category: walibiPoi.category?.name ?? "0",
       rideCategory: category.rideCategory,
-      original: entertainment,
-      image_url: entertainment.image.url,
+      original: walibiPoi,
+      image_url: walibiPoi.image.url,
+      previewImage: walibiPoi.image.thumbnailUrl
     };
 
-    if (entertainment.location) {
+    if (walibiPoi.location) {
       poi.location = {
-        lat: parseFloat(entertainment.location.lat),
-        lng: parseFloat(entertainment.location.lon),
+        lat: parseFloat(walibiPoi.location.lat),
+        lng: parseFloat(walibiPoi.location.lon),
       };
     }
 
-    if (category.poiCategory == PoiCategory.ATTRACTION) {
-      poi.subTitle = entertainment.additionalContent[0].title;
-      poi.description = entertainment.additionalContent[0].text;
+    if (walibiPoi.parameters) {
+      poi.facts = [];
+
+      walibiPoi.parameters.forEach((param) => {
+        switch (param.title) {
+          case 'min accompagnied height':
+          case 'taille min accompagné':
+            poi.minSizeWithEscort = Number.parseInt(param.value);
+            break;
+          case 'min height alone':
+          case 'taille minimum':
+            poi.minSizeWithoutEscort = Number.parseInt(param.value);
+            break;
+          case 'Max height':
+          case 'Max. lengte':
+            poi.maxSize = Number.parseInt(param.value);
+            break;
+          case 'Height':
+          case 'Baanhoogte':
+            poi.facts.push({value: param.value, type: 'height', id: 'height'})
+            break;
+          case 'Length':
+          case 'Baanlengte':
+            poi.facts.push({value: param.value, type: 'length', id: 'length'})
+            break;
+          case 'Duur':
+            poi.facts.push({value: param.value, type: 'duration', id: 'duration'})
+            break;
+          case 'Speed':
+          case 'Snelheid':
+            poi.facts.push({value: param.value, type: 'speed', id: 'speed'})
+            break;
+          case 'Looping':
+            poi.facts.push({value: param.value, type: 'inversion_count', id: 'inversion_count'})
+            break;
+          case 'Capacité':
+            poi.facts.push({value: param.value, type: 'capacity', id: 'capacity'})
+            break;
+          default:
+            break;
+        }
+      })
+    }
+
+    if (walibiPoi.additionalContent && walibiPoi.additionalContent.length > 0) {
+      poi.subTitle = walibiPoi.additionalContent[0].title;
+      poi.description = walibiPoi.additionalContent[0].text;
     }
 
     return poi;
@@ -62,10 +107,13 @@ export class WalibiTransferService extends TransferService {
   private getCategory(category: string): { poiCategory: PoiCategory, rideCategory?: RideCategory } {
     switch (category) {
       case 'Toiletten':
+      case 'Toilets':
+      case 'Toilettes':
         return {
           poiCategory: PoiCategory.TOILETS,
         };
       case 'Kids':
+      case 'Enfants':
         return {
           poiCategory: PoiCategory.ATTRACTION,
           rideCategory: RideCategory.KIDS,
@@ -74,6 +122,7 @@ export class WalibiTransferService extends TransferService {
       case 'Exciting':
       case 'Thrills':
       case 'Sensational':
+      case 'Sensations':
         return {
           poiCategory: PoiCategory.ATTRACTION,
           rideCategory: RideCategory.THRILL,
@@ -81,6 +130,7 @@ export class WalibiTransferService extends TransferService {
       case 'Familie':
       case 'Family':
       case 'Fun':
+      case 'Familles':
         return {
           poiCategory: PoiCategory.ATTRACTION,
           rideCategory: RideCategory.FAMILY,
@@ -88,6 +138,8 @@ export class WalibiTransferService extends TransferService {
       case 'Restaurant':
       case 'Barbecue':
       case 'Meals':
+      case 'Restauration classique':
+      case 'Restauration rapide':
         return {
           poiCategory: PoiCategory.RESTAURANT,
         };
@@ -96,10 +148,17 @@ export class WalibiTransferService extends TransferService {
       case 'Snacks':
       case 'Snacks & drinks':
       case 'Ice cream':
+      case 'Sandwicherie':
+      case 'Kiosque':
         return {
           poiCategory: PoiCategory.SNACKBAR,
         };
+      case 'Change bébé':
+        return {
+          poiCategory: PoiCategory.UNDEFINED
+        }
       case 'Shop':
+      case 'Souvenirs':
         return {
           poiCategory: PoiCategory.SHOP
         }
@@ -109,8 +168,31 @@ export class WalibiTransferService extends TransferService {
           poiCategory: PoiCategory.SERVICE
         }
       case 'FirstAid':
+      case 'Premiers secours':
         return {
           poiCategory: PoiCategory.FIRSTAID
+        }
+      case 'Parking autocars':
+      case 'Parking voitures':
+        return {
+          poiCategory: PoiCategory.PARKING
+        }
+      case 'Accueil point info':
+        return {
+          poiCategory: PoiCategory.GUEST_SERVICES
+        }
+      case 'Zone fumeur':
+        return {
+          poiCategory: PoiCategory.SMOKING_AREA
+        }
+      case 'Distributeur de billets':
+        return {
+          poiCategory: PoiCategory.ATM
+        }
+      case 'Zones effrayantes':
+      case 'Maisons hantées':
+        return {
+          poiCategory: PoiCategory.HALLOWEEN_EVENT
         }
       default:
         return {
