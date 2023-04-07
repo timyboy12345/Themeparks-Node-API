@@ -18,7 +18,9 @@ export class GronaLundTransferService extends TransferService{
       p.minSizeWithoutEscort = poi.minimumHeightInteger;
     }
 
-    // Todo: Implement age requirement
+    if (poi.ageRequirement === 'Rek. från 11 år') {
+      p.minAgeWithoutEscort = 11;
+    }
 
     if (poi.imageInList.file) {
       p.image_url = poi.imageInList.file.url;
@@ -27,6 +29,12 @@ export class GronaLundTransferService extends TransferService{
 
     if (poi.tags) {
       p.tags = poi.tags.map(t => t.title);
+    }
+
+    if (poi.couponCount) {
+      p.price = Number.parseInt(poi.couponCount);
+      p.priceName = 'Coupons';
+      p.priceType = 'tokens';
     }
 
     return p;

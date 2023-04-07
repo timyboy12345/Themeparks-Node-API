@@ -6,6 +6,8 @@ import { HolidayParkAttractionsResponseInterface } from '../interfaces/holiday-p
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
 import { HolidayParkPageResponseInterface } from '../interfaces/holiday-park-page-response.interface';
 import { TransferService } from '../../../_services/transfer/transfer.service';
+import * as moment from 'moment-timezone';
+import { ShowTime } from '../../../_interfaces/showtimes.interface';
 
 @Injectable()
 export class HolidayParkTransferService extends TransferService {
@@ -21,6 +23,9 @@ export class HolidayParkTransferService extends TransferService {
         break;
       case 'shop':
         category = PoiCategory.SHOP;
+        break;
+      case 'show':
+        category = PoiCategory.SHOW;
         break;
       case 'event':
       case 'meet_greet':
@@ -60,34 +65,135 @@ export class HolidayParkTransferService extends TransferService {
     return poi;
   }
 
-  public transferRidesToPois(responseInterface: HolidayParkAttractionsResponseInterface): Poi[] {
+  public transferRidesToPois(responseInterface: HolidayParkAttractionsResponseInterface, locale?: string): Poi[] {
     const pois: HolidayParkAttraction[] = [];
 
-    for (let key in responseInterface.en.attraction) {
-      pois.push(responseInterface.en.attraction[key]);
+    if (locale === 'de') {
+      for (let key in responseInterface.de.attraction) {
+        pois.push(responseInterface.de.attraction[key]);
+      }
+    } else if (locale === 'nl') {
+      for (let key in responseInterface.nl.attraction) {
+        pois.push(responseInterface.nl.attraction[key]);
+      }
+    } else if (locale === 'fr') {
+      for (let key in responseInterface.fr.attraction) {
+        pois.push(responseInterface.fr.attraction[key]);
+      }
+    } else {
+      for (let key in responseInterface.en.attraction) {
+        pois.push(responseInterface.en.attraction[key]);
+      }
     }
 
     return pois.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
   }
 
-  public transferShopsToPois(responseInterface: HolidayParkPageResponseInterface): Poi[] {
-    const pois: HolidayParkAttraction[] = [];
+  public transferShopsToPois(responseInterface: HolidayParkPageResponseInterface, locale?: string): Poi[] {
+    const shops: HolidayParkAttraction[] = [];
 
-    for (let key in responseInterface.en.shop) {
-      pois.push(responseInterface.en.shop[key]);
+    if (locale === 'de') {
+      for (let key in responseInterface.de.shop) {
+        shops.push(responseInterface.de.shop[key]);
+      }
+    } else if (locale === 'nl') {
+      for (let key in responseInterface.nl.shop) {
+        shops.push(responseInterface.nl.shop[key]);
+      }
+    } else if (locale === 'fr') {
+      for (let key in responseInterface.fr.shop) {
+        shops.push(responseInterface.fr.shop[key]);
+      }
+    } else {
+      for (let key in responseInterface.en.shop) {
+        shops.push(responseInterface.en.shop[key]);
+      }
     }
 
-    return pois.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
+    return shops.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
   }
 
-  public transferRestaurantsToPois(responseInterface: HolidayParkPageResponseInterface): Poi[] {
-    const pois: HolidayParkAttraction[] = [];
+  public transferRestaurantsToPois(responseInterface: HolidayParkPageResponseInterface, locale?: string): Poi[] {
+    const restaurants: HolidayParkAttraction[] = [];
 
-    for (let key in responseInterface.en.food) {
-      pois.push(responseInterface.en.food[key]);
+    if (locale === 'de') {
+      for (let key in responseInterface.de.food) {
+        restaurants.push(responseInterface.de.food[key]);
+      }
+    } else if (locale === 'nl') {
+      for (let key in responseInterface.nl.food) {
+        restaurants.push(responseInterface.nl.food[key]);
+      }
+    } else if (locale === 'fr') {
+      for (let key in responseInterface.fr.food) {
+        restaurants.push(responseInterface.fr.food[key]);
+      }
+    } else {
+      for (let key in responseInterface.en.food) {
+        restaurants.push(responseInterface.en.food[key]);
+      }
     }
 
-    return pois.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
+    return restaurants.map(holidayParkRestaurant => this.transferPoiToPoi(holidayParkRestaurant));
+  }
+
+  transferShowsToPois(responseInterface: HolidayParkPageResponseInterface, locale?: string): Poi[] {
+    const shows: HolidayParkAttraction[] = [];
+
+    if (locale === 'de') {
+      for (let key in responseInterface.de.show) {
+        shows.push(responseInterface.de.show[key]);
+      }
+    } else if (locale === 'nl') {
+      for (let key in responseInterface.nl.show) {
+        shows.push(responseInterface.nl.show[key]);
+      }
+    } else if (locale === 'fr') {
+      for (let key in responseInterface.fr.show) {
+        shows.push(responseInterface.fr.show[key]);
+      }
+    } else {
+      for (let key in responseInterface.en.show) {
+        shows.push(responseInterface.en.show[key]);
+      }
+    }
+
+    return shows.map(holidayParkShow => this.transferShowToPoi(holidayParkShow));
+  }
+
+  transferShowToPoi(holidayParkShow: HolidayParkAttraction): Poi {
+    const show = this.transferPoiToPoi(holidayParkShow);
+
+    const today = moment().tz('Europe/Berlin').format('YYYY-MM-DD');
+    const timeBlockData: [] = holidayParkShow.timeblocks[today];
+    const shows: ShowTime[] = [];
+
+    if (timeBlockData) {
+      timeBlockData.forEach((timeBlock: any) => {
+        const s: ShowTime = {
+          from: moment().tz('Europe/Berlin').set({
+            hour: timeBlock.start.split(':')[0],
+            minute: timeBlock.start.split(':')[1],
+            second: 0,
+          }).format(),
+          id: timeBlock.id,
+          fromTime: timeBlock.start,
+          toTime: timeBlock.end,
+        };
+
+        shows.push(s);
+      });
+    }
+
+    show.showTimes = {
+      currentDate: today,
+      allShowTimes: shows,
+      todayShowTimes: shows,
+      futureShowTimes: shows.filter((s) => !s.isPassed),
+      pastShowTimes: shows.filter((s) => s.isPassed),
+    };
+
+    return show;
   }
 
   // public HolidayParkShowsResponseToPois(holidayParkAttractionsResponse: HolidayParkPageResponseInterface): Poi[] {

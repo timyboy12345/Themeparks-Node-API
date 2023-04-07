@@ -17,6 +17,8 @@ import { Cache } from 'cache-manager';
 import { PoiDto } from '../../_dtos/poi.dto';
 import { Poi } from '../../_interfaces/poi.interface';
 import { LanguageInterceptor } from '../../_interceptors/language.interceptor';
+import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
+import { ThemeParkOpeningHourDto } from '../../_dtos/theme-park-opening-hour.dto';
 
 @ApiTags('Themeparks')
 @Controller('parks/:id')
@@ -230,5 +232,32 @@ export class ParkController {
         return animal;
       });
     });
+  }
+
+  @Get('opening-hours')
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    description: 'The park id',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'All opening hours of a specific theme park',
+    isArray: true,
+    type: ThemeParkOpeningHourDto,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'The requested park could not be found',
+  })
+  async getParkOpeningHours(@Param() params): Promise<ThemeParkOpeningTimes[]> {
+    const park = await this.parksService.findPark(params.id, true);
+
+    if (!park.getFullInfo().supports.supportsOpeningTimes) {
+      throw new BadRequestException('This park does not support opening hours');
+    }
+
+    return await park.getOpeningTimes();
   }
 }

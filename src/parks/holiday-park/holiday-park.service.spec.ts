@@ -3,13 +3,14 @@ import { HolidayParkService } from './holiday-park.service';
 import { HolidayParkTransferService } from './holiday-park-transfer/holiday-park-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 describe('HolidayParkService', () => {
   let service: HolidayParkService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
       providers: [HolidayParkService, HolidayParkTransferService],
     }).compile();
 

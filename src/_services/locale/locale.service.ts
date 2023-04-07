@@ -29,10 +29,15 @@ export class LocaleService {
         code: 'fr',
         iso: 'fr-FR',
         countryFlag: 'fr',
+      },
+      {
+        code: 'da',
+        iso: 'da-DK',
+        countryFlag: 'da',
       }];
   }
 
-  public getLocale(): 'en' | 'es' | 'nl' | 'de' | 'fr' {
+  public getLocale(): 'en' | 'es' | 'nl' | 'de' | 'fr' | 'da' {
     return this.currentLang ?? 'en';
   }
 

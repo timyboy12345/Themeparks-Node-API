@@ -54,7 +54,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsPoiLocations: true,
       supportsShops: true,
       supportsShopOpeningTimes: true,
-      supportsOpeningTimes: false,
+      supportsOpeningTimes: true,
       supportsAnimals: false,
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: true,
@@ -166,11 +166,11 @@ export class EftelingService extends ThroughPoisThemeParkService {
   }
 
   async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
-    const year = '2021';
-    const month = '06';
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
 
     return this.httpService
-      .get<EftelingOpeningTimesResponse>(`https://api.efteling.com/service/cached/getpoiinfo/nl/${year}/${month}`)
+      .get<EftelingOpeningTimesResponse>(`https://www.efteling.com/service/cached/getpoiinfo/nl/${year}/${month}`)
       .toPromise()
       .then(value => {
         return this.eftelingTransferService.transferOpeningTimesToOpeningTimes(value.data);

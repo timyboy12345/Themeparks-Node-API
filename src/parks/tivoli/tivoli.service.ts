@@ -8,12 +8,15 @@ import { ThroughPoisThemeParkService } from '../../_services/themepark/through-p
 import { TivoliTransferService } from './tivoli-transfer/tivoli-transfer.service';
 import { TivoliDataResponseInterface } from './interfaces/tivoli-data-response.interface';
 import { HttpService } from '@nestjs/axios';
+import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
+import { LocaleService } from '../../_services/locale/locale.service';
 
 @Injectable()
 export class TivoliService extends ThroughPoisThemeParkService {
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
-              private readonly transferService: TivoliTransferService) {
+              private readonly transferService: TivoliTransferService,
+              private readonly localeService: LocaleService) {
     super();
   }
 
@@ -31,7 +34,7 @@ export class TivoliService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsRideWaitTimesHistory: false,
-      supportsOpeningTimes: false,
+      supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimes: false,
       supportsRestaurants: true,
@@ -54,9 +57,16 @@ export class TivoliService extends ThroughPoisThemeParkService {
     return this.transferService.transferDataObjectToPois(data);
   }
 
+  async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
+    return this.getData().then((data) => this.transferService.transferOpeningTimesToOpeningTimes(data.openingHours.Data))
+  }
+
+  // TODO: Implement wait times once park is open
   private getData(): Promise<TivoliDataResponseInterface> {
     const baseUrl = this.configService.get('TIVOLI_API_URL');
-    const url = `${baseUrl}/AppShop/AppData/GetData?devicetype=ios&appversion=5.5.5(706)&deviceid=3B79ADF2-4EEC-4614-B86C-EE7F52C93193&language=en`;
+    const language = this.localeService.getLocale() === 'da' ? 'da' : 'en';
+
+    const url = `${baseUrl}/AppShop/AppData/GetData?devicetype=ios&appversion=5.5.5(706)&deviceid=3B79ADF2-4EEC-4614-B86C-EE7F52C93193&language=${language}`;
 
     return this.httpService.get<TivoliDataResponseInterface>(url)
       .toPromise()

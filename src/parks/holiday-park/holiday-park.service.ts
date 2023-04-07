@@ -9,6 +9,7 @@ import * as Sentry from '@sentry/node';
 import { HolidayParkAttractionsResponseInterface } from './interfaces/holiday-park-attractions-response.interface';
 import { HolidayParkPageResponseInterface } from './interfaces/holiday-park-page-response.interface';
 import { HttpService } from '@nestjs/axios';
+import { LocaleService } from '../../_services/locale/locale.service';
 
 @Injectable()
 export class HolidayParkService extends ThemeParkService {
@@ -17,7 +18,8 @@ export class HolidayParkService extends ThemeParkService {
 
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
-              private readonly holidayParkTransferService: HolidayParkTransferService) {
+              private readonly holidayParkTransferService: HolidayParkTransferService,
+              private readonly localeService: LocaleService) {
     super();
 
     this._holidayParkApiUrl = this.configService.get('HOLIDAY_PARK_API_URL');
@@ -47,8 +49,8 @@ export class HolidayParkService extends ThemeParkService {
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRides: true,
-      supportsShowTimes: false,
-      supportsShows: false,
+      supportsShowTimes: true,
+      supportsShows: true,
       supportsShops: true,
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
@@ -64,6 +66,7 @@ export class HolidayParkService extends ThemeParkService {
       this.getRides(),
       this.getRestaurants(),
       this.getShops(),
+      this.getShows(),
     ];
 
     return []
@@ -74,23 +77,22 @@ export class HolidayParkService extends ThemeParkService {
   // TODO: Find out if locations still work
   async getRides(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(value => this.holidayParkTransferService.HolidayParkAttractionsResponseToPois(value.data)));
-    return await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(r => this.holidayParkTransferService.transferRidesToPois(r.data));
+    return await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(r => this.holidayParkTransferService.transferRidesToPois(r.data, this.localeService.getLocale()));
   }
 
   async getRestaurants(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkPageResponseInterface>('page').then(value => this.holidayParkTransferService.HolidayParkRestaurantsResponseToPois(value.data)));
-    return await this.request<HolidayParkPageResponseInterface>('page').then(r => this.holidayParkTransferService.transferRestaurantsToPois(r.data));
+    return await this.request<HolidayParkPageResponseInterface>('page').then(r => this.holidayParkTransferService.transferRestaurantsToPois(r.data, this.localeService.getLocale()));
   }
 
   async getShops(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkPageResponseInterface>('page').then(value => this.holidayParkTransferService.HolidayParkShopsResponseToPois(value.data)));
-    return await this.request<HolidayParkPageResponseInterface>('page').then(r => this.holidayParkTransferService.transferShopsToPois(r.data));
+    return await this.request<HolidayParkPageResponseInterface>('page').then(r => this.holidayParkTransferService.transferShopsToPois(r.data, this.localeService.getLocale()));
   }
 
-  // TODO: Find out if shows can be implemented
-  // async getShows(): Promise<Poi[]> {
-  //   return await this.request<HolidayParkPageResponseInterface>("show").then(value => this.holidayParkTransferService.)
-  // }
+  async getShows(): Promise<Poi[]> {
+    return await this.request<HolidayParkPageResponseInterface>("show").then(value => this.holidayParkTransferService.transferShowsToPois(value.data, this.localeService.getLocale()))
+  }
 
   // private async attachLocations(pois: Poi[]): Promise<Poi[]> {
   //   const locationData = await this.httpService.get<HolidayParkLocationsResponseInterface>('https://www.holidaypark.de/de/api/v1.0/locations/holiday-park?access_token=' + this._holidayParkApiToken).toPromise();

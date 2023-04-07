@@ -67,7 +67,8 @@ export class PhantasialandTransferService extends TransferService {
       original_category: poi.category,
       category: c,
       original: poi,
-      maxAge: poi.maxAge,
+      // Phantasialand maxAge seems to be misused and is confusing
+      // maxAge: poi.maxAge,
       maxSize: poi.maxSize,
       minAgeWithoutEscort: poi.minAge,
       minSizeWithEscort: poi.minSizeEscort === 1 ? 0 : poi.minSizeEscort,

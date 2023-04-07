@@ -7,6 +7,9 @@ export interface HolidayParkPageResponseInterface {
     },
     shop: {
       [poiId: string]: HolidayParkAttraction
+    },
+    show: {
+      [poiId: string]: HolidayParkAttraction
     }
   }
 }

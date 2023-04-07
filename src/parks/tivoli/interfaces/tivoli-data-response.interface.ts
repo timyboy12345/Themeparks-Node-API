@@ -16,6 +16,10 @@ export interface TivoliDataResponseInterface {
     'Data': Location[],
     'LastUpdatedUtc': string
   },
+  openingHours: {
+    Data: OpeningHour[],
+    LastUpdatedUtc: string,
+  }
 }
 
 export interface Ride {
@@ -175,4 +179,14 @@ export interface Location {
   'PageManchet': string,
   'PageText': string,
   'Id': string
+}
+
+export interface OpeningHour {
+  "Date": string,
+  "FromHour": string,
+  "FromMinute": string,
+  "UntilHour": string,
+  "UntilMinute": string,
+  "WeekDay": number,
+  "Id": string
 }

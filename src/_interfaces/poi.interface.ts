@@ -5,6 +5,7 @@ import { ShowTimes } from './showtimes.interface';
 import { RideCategory } from './ride-category.interface';
 import { Translation } from './translation.interface';
 import { PoiMenuItemInterface } from './poi-menu-item.interface';
+import { PoiFact } from './poi-fact.interface';
 
 export interface Poi {
   /**
@@ -222,12 +223,17 @@ export interface Poi {
   /**
    * The type of currency used to calculate price
    */
-  priceType?: 'tokens' | 'local_currency' | 'points';
+  priceType?: 'tokens' | 'local_currency';
 
   /**
    * The name of the price type, so 'euros', 'dollars', 'tokens' or something simular
    */
   priceName?: string;
+
+  /**
+   * An array of facts provided by the park
+   */
+  facts?: PoiFact[];
 
   /**
    * The original POI (The object returned by the park)
