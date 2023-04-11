@@ -10,6 +10,7 @@ import { ThroughPoisThemeParkService } from '../../../_services/themepark/throug
 import { DisneylandParisWaitTimesResponseItemInterface } from './interfaces/disneyland-paris-wait-times-response-item.interface';
 import * as Sentry from '@sentry/node';
 import { HttpService } from '@nestjs/axios';
+import { LocaleService } from '../../../_services/locale/locale.service';
 
 @Injectable()
 export class DisneylandParisService extends ThroughPoisThemeParkService {
@@ -17,9 +18,12 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
   private readonly _disneyLandParisWaitTimesUrl: string;
   private readonly _disneylandParisWaitTimesApiKey: string;
 
-  constructor(private readonly httpService: HttpService,
-              private readonly configService: ConfigService,
-              private readonly disneylandParisTransferService: DisneylandParisTransferService) {
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly configService: ConfigService,
+    private readonly disneylandParisTransferService: DisneylandParisTransferService,
+    private readonly localeService: LocaleService,
+  ) {
     super();
 
     this._disneyLandParis = this.configService.get('DISNEYLAND_PARIS_API_URL');
@@ -58,18 +62,16 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsAnimals: false,
-      supportsTranslations: false,
+      supportsTranslations: true,
     };
   }
 
-  // TODO: Disneyland Paris does support multi-language
   async getPois(): Promise<Poi[]> {
-    return this
-      .graphQLRequest()
-      .then(async (disneyLandParisPois: DisneylandParisAttraction[]) => {
-        const pois = this
-          .disneylandParisTransferService
-          .transferPoisToPois(disneyLandParisPois.filter(poi => poi.location.id === 'P1'));
+    return this.graphQLRequest().then(
+      async (disneyLandParisPois: DisneylandParisAttraction[]) => {
+        const pois = this.disneylandParisTransferService.transferPoisToPois(
+          disneyLandParisPois.filter((poi) => poi.location.id === 'P1'),
+        );
 
         const waitTimes = await this.waitTimesRequest().then();
         waitTimes.forEach((waitTime) => {
@@ -97,8 +99,41 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
   }
 
   private graphQLRequest<T>(): Promise<any> {
+    let market = 'en-en';
+
+    switch (this.localeService.getLocale()) {
+      case 'en':
+        market = 'en-en';
+        break;
+      case 'nl':
+        market = 'nl-nl';
+        break;
+      case 'de':
+        market = 'de-de';
+        break;
+      // @ts-ignore
+      case 'it':
+        market = 'it-it';
+        break;
+      case 'es':
+        market = 'es-es';
+        break;
+      // @ts-ignore
+      case 'pt':
+        market = 'pt-pt';
+        break;
+      case 'fr':
+        market = 'fr-fr';
+        break;
+      case 'da':
+        market = 'da-da';
+        break;
+      default:
+        break;
+    }
+
     const variables = {
-      'market': 'en-en',
+      'market': market,
       'types': [
         'Attraction',
         'DiningEvent',
@@ -216,8 +251,8 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
 
     return request(this._disneyLandParis, query, variables)
       .then((activitiesResponse) => {
-      return activitiesResponse.activities;
-    })
+        return activitiesResponse.activities;
+      })
       .catch((exception) => {
         Sentry.captureException(exception);
         console.error(exception);

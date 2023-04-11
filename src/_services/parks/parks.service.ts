@@ -46,56 +46,59 @@ import { SpeellandService } from '../../parks/beekse-bergen/speelland/speelland.
 import { DollywoodService } from '../../parks/herschend/dollywood/dollywood.service';
 import { ParqueDeAtraccionesService } from '../../parks/parque-de-atracciones/parque-de-atracciones.service';
 import { WalibiFranceService } from '../../parks/walibi/france/walibi-france.service';
+import { FuturoscopeService } from '../../parks/futuroscope/futuroscope.service';
 
 @Injectable()
 export class ParksService {
   private readonly _parks: ThemeParkService[];
   private readonly _companies: CompanyService[];
 
-  constructor(private readonly _eftelingService: EftelingService,
-              private readonly _toverlandService: ToverlandService,
-              private readonly _walibiHollandService: WalibiHollandService,
-              private readonly _walibiBelgiumService: WalibiBelgiumService,
-              private readonly _walibiFranceService: WalibiFranceService,
-              private readonly _phantasialandService: PhantasialandService,
-              private readonly _disneylandParisService: DisneylandParisService,
-              private readonly _disneylandParisStudiosService: DisneylandParisStudiosService,
-              private readonly _parcAsterixService: ParcAsterixService,
-              private readonly _portaVenturaService: PortaventuraService,
-              private readonly _ferrariLandService: FerrariLandService,
-              private readonly _bellewaerdeService: BellewaerdeService,
-              private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
-              private readonly _dippieDoeService: DippieDoeService,
-              private readonly _holidayParkService: HolidayParkService,
-              private readonly _hellendoornService: HellendoornService,
-              private readonly _legolandDeutschlandService: LegolandDeutschlandService,
-              private readonly _sixflagsService: SixflagsService,
-              private readonly _bobbejaanlandService: BobbejaanlandService,
-              private readonly _plopsalandDePanneService: PlopsalandDePanneService,
-              private readonly _hansaParkService: HansaParkService,
-              private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
-              private readonly _wildlandsService: WildlandsService,
-              private readonly _lisebergService: LisebergService,
-              private readonly _dollywoodService: DollywoodService,
-              private readonly _silverDollarCityService: SilverDollarCityService,
-              private readonly _carowindsService: CarowindsService,
-              private readonly _greatAdventureService: GreatAmericaService,
-              private readonly _cedarPointService: CedarpointService,
-              private readonly _parqueWarnerService: ParqueWarnerService,
-              private readonly _cedarFairService: CedarFairService,
-              private readonly _gronaLundService: GronaLundService,
-              private readonly _tivoliService: TivoliService,
-              private readonly _thorpeParkService: ThorpeParkService,
-              private readonly _altonTowersService: AltonTowersService,
-              private readonly _paultonsParkService: PaultonsParkService,
-              private readonly _sanDiegoZooService: SanDiegoZooService,
-              private readonly _chessingtonResort: ChessingtonResortService,
-              private readonly _blijdorpService: BlijdorpService,
-              private readonly _apenheulService: ApenheulService,
-              private readonly _energylandiaService: EnergylandiaService,
-              private readonly _beekseBergenSafariparkService: SafariparkService,
-              private readonly _beekseBergenSpeellandService: SpeellandService,
-              private readonly _parqueDeAtraccionesService: ParqueDeAtraccionesService,
+  constructor(
+    private readonly _eftelingService: EftelingService,
+    private readonly _toverlandService: ToverlandService,
+    private readonly _walibiHollandService: WalibiHollandService,
+    private readonly _walibiBelgiumService: WalibiBelgiumService,
+    private readonly _walibiFranceService: WalibiFranceService,
+    private readonly _phantasialandService: PhantasialandService,
+    private readonly _disneylandParisService: DisneylandParisService,
+    private readonly _disneylandParisStudiosService: DisneylandParisStudiosService,
+    private readonly _parcAsterixService: ParcAsterixService,
+    private readonly _portaVenturaService: PortaventuraService,
+    private readonly _ferrariLandService: FerrariLandService,
+    private readonly _bellewaerdeService: BellewaerdeService,
+    private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
+    private readonly _dippieDoeService: DippieDoeService,
+    private readonly _holidayParkService: HolidayParkService,
+    private readonly _hellendoornService: HellendoornService,
+    private readonly _legolandDeutschlandService: LegolandDeutschlandService,
+    private readonly _sixflagsService: SixflagsService,
+    private readonly _bobbejaanlandService: BobbejaanlandService,
+    private readonly _plopsalandDePanneService: PlopsalandDePanneService,
+    private readonly _hansaParkService: HansaParkService,
+    private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
+    private readonly _wildlandsService: WildlandsService,
+    private readonly _lisebergService: LisebergService,
+    private readonly _dollywoodService: DollywoodService,
+    private readonly _silverDollarCityService: SilverDollarCityService,
+    private readonly _carowindsService: CarowindsService,
+    private readonly _greatAdventureService: GreatAmericaService,
+    private readonly _cedarPointService: CedarpointService,
+    private readonly _parqueWarnerService: ParqueWarnerService,
+    private readonly _cedarFairService: CedarFairService,
+    private readonly _gronaLundService: GronaLundService,
+    private readonly _tivoliService: TivoliService,
+    private readonly _thorpeParkService: ThorpeParkService,
+    private readonly _altonTowersService: AltonTowersService,
+    private readonly _paultonsParkService: PaultonsParkService,
+    private readonly _sanDiegoZooService: SanDiegoZooService,
+    private readonly _chessingtonResort: ChessingtonResortService,
+    private readonly _blijdorpService: BlijdorpService,
+    private readonly _apenheulService: ApenheulService,
+    private readonly _energylandiaService: EnergylandiaService,
+    private readonly _beekseBergenSafariparkService: SafariparkService,
+    private readonly _beekseBergenSpeellandService: SpeellandService,
+    private readonly _parqueDeAtraccionesService: ParqueDeAtraccionesService,
+    private readonly _futuroscope: FuturoscopeService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -137,6 +140,7 @@ export class ParksService {
     this._parks.push(_beekseBergenSafariparkService);
     this._parks.push(_beekseBergenSpeellandService);
     this._parks.push(_parqueDeAtraccionesService);
+    this._parks.push(_futuroscope);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
@@ -165,7 +169,7 @@ export class ParksService {
 
     if (park == null && throwError) {
       throw new HttpException('Park not found', 404, {
-        cause: new Error('Park not found')
+        cause: new Error('Park not found'),
       });
     }
 

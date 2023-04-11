@@ -1,20 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DisneylandParisService } from './disneyland-paris.service';
-import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
+import { FuturoscopeService } from './futuroscope.service';
+import { FuturoscopeTransferService } from './futuroscope-transfer/futuroscope-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
-import { LocaleModule } from '../../../_services/locale/locale.module';
 
-describe('DisneylandParisService', () => {
-  let service: DisneylandParisService;
+describe('FuturoscopeService', () => {
+  let service: FuturoscopeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
-      providers: [DisneylandParisService, DisneylandParisTransferService],
+      providers: [FuturoscopeService, FuturoscopeTransferService],
+      imports: [HttpModule, ConfigModule.forRoot()],
     }).compile();
 
-    service = module.get<DisneylandParisService>(DisneylandParisService);
+    service = module.get<FuturoscopeService>(FuturoscopeService);
   });
 
   it('should be defined', () => {

@@ -10,6 +10,7 @@ import { ThroughPoisThemeParkService } from '../../../_services/themepark/throug
 import { DisneylandParisWaitTimesResponseItemInterface } from './interfaces/disneyland-paris-wait-times-response-item.interface';
 import * as Sentry from '@sentry/node';
 import { HttpService } from '@nestjs/axios';
+import { LocaleService } from '../../../_services/locale/locale.service';
 
 @Injectable()
 export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
@@ -19,7 +20,8 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
 
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
-              private readonly disneylandParisTransferService: DisneylandParisTransferService) {
+              private readonly disneylandParisTransferService: DisneylandParisTransferService,
+              private readonly localeService: LocaleService) {
     super();
 
     this._disneyLandParis = this.configService.get('DISNEYLAND_PARIS_API_URL');
@@ -37,8 +39,8 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       parkType: ParkType.THEMEPARK,
       location: {
         lat: 48.868271,
-        lng: 2.780719
-      }
+        lng: 2.780719,
+      },
     };
   }
 
@@ -63,12 +65,11 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
-    return this
-      .graphQLRequest()
-      .then(async (disneyLandParisPois: DisneylandParisAttraction[]) => {
-        const pois = this
-          .disneylandParisTransferService
-          .transferPoisToPois(disneyLandParisPois.filter(poi => poi.location.id === 'P2'));
+    return this.graphQLRequest().then(
+      async (disneyLandParisPois: DisneylandParisAttraction[]) => {
+        const pois = this.disneylandParisTransferService.transferPoisToPois(
+          disneyLandParisPois.filter((poi) => poi.location.id === 'P2'),
+        );
 
         const waitTimes = await this.waitTimesRequest().then();
         waitTimes.forEach((waitTime) => {
@@ -92,13 +93,47 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
         });
 
         return pois;
-      });
+      },
+    );
   }
 
   private graphQLRequest<T>(): Promise<any> {
+    let market = 'en-en';
+
+    switch (this.localeService.getLocale()) {
+      case 'en':
+        market = 'en-en';
+        break;
+      case 'nl':
+        market = 'nl-nl';
+        break;
+      case 'de':
+        market = 'de-de';
+        break;
+      // @ts-ignore
+      case 'it':
+        market = 'it-it';
+        break;
+      case 'es':
+        market = 'es-es';
+        break;
+      // @ts-ignore
+      case 'pt':
+        market = 'pt-pt';
+        break;
+      case 'fr':
+        market = 'fr-fr';
+        break;
+      case 'da':
+        market = 'da-da';
+        break;
+      default:
+        break;
+    }
+
     const variables = {
-      'market': 'en-en',
-      'types': [
+      market: market,
+      types: [
         'Attraction',
         'DiningEvent',
         'DinnerShow',
@@ -114,108 +149,112 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       ],
     };
 
-    const query = gql`query($market: String, $types: [String]) {
+    const query = gql`
+      query ($market: String, $types: [String]) {
         activities(market: $market, types: $types) {
-            id        contentType: __typename
-            entityType
-            contentId
-            id
-            url
-            pageLink {
-                ...pageLink
-            }
-            hideFunctionality
-            name
-            squareMediaMobile {
-                ...media
-            }
-            subType
-            location {
-                ...location
-            }
-            coordinates {
-                ...coordinates
-            }
+          id
+          contentType: __typename
+          entityType
+          contentId
+          id
+          url
+          pageLink {
+            ...pageLink
+          }
+          hideFunctionality
+          name
+          squareMediaMobile {
+            ...media
+          }
+          subType
+          location {
+            ...location
+          }
+          coordinates {
+            ...coordinates
+          }
+          closed
+          schedules {
+            language
+            startTime
+            endTime
+            date
+            status
             closed
-            schedules {
-                language
-                startTime
-                endTime
-                date
-                status
-                closed
-            }
+          }
 
-            heroMedia {
-                url
-            }
+          heroMedia {
+            url
+          }
 
-            ... on Attraction {
-                age {
-                    ...facet
-                }
-                height {
-                    ...facet
-                }
-                interests {
-                    ...facet
-                }
-                photopass
-                fastPass
-                singleRider
-                mobilityDisabilities {
-                    ...facet
-                }
-                serviceAnimals {
-                    ...facet
-                }
-                physicalConsiderations {
-                    ...facet
-                }
+          ... on Attraction {
+            age {
+              ...facet
             }
+            height {
+              ...facet
+            }
+            interests {
+              ...facet
+            }
+            photopass
+            fastPass
+            singleRider
+            mobilityDisabilities {
+              ...facet
+            }
+            serviceAnimals {
+              ...facet
+            }
+            physicalConsiderations {
+              ...facet
+            }
+          }
         }
-    }
-    fragment facet on Facet {
+      }
+      fragment facet on Facet {
         id
         value
         urlFriendlyId
         iconFont
-    }
-    fragment location on Location {
+      }
+      fragment location on Location {
         id
         value
         urlFriendlyId
         iconFont
         pageLink {
-            ...pageLink
+          ...pageLink
         }
-    }
-    fragment coordinates on MapCoordinates {
+      }
+      fragment coordinates on MapCoordinates {
         lat
         lng
         type
-    }
-    fragment media on Media {
+      }
+      fragment media on Media {
         url
         alt
-    }
-    fragment pageLink on PageLink {
+      }
+      fragment pageLink on PageLink {
         tcmId
         title
         regions {
-            ...region
+          ...region
         }
-    }
-    fragment region on Region {
+      }
+      fragment region on Region {
         contentId
         templateId
         schemaId
-    }
+      }
     `;
 
-    return request(this._disneyLandParis, query, variables).then((activitiesResponse) => {
-      return activitiesResponse.activities;
-    });
+    return request(this._disneyLandParis, query, variables).then(
+      (activitiesResponse) => {
+        return activitiesResponse.activities;
+      },
+    );
   }
 
   public waitTimesRequest(): Promise<DisneylandParisWaitTimesResponseItemInterface[]> {

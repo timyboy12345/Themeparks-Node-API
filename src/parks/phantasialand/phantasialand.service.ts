@@ -124,6 +124,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
 
   private getToken() {
     const fullUrl = this._phantasialandApiUrl + '/app-users/login';
+    let r = (Math.random() + 1).toString(36).substring(7);
 
     return this
       .httpService
@@ -133,7 +134,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
         created: string,
         userId: number
       }>(fullUrl, {
-        'email': this._phantasialandApiEmail,
+        'email': r + this._phantasialandApiEmail,
         'password': this._phantasialandApiPassword,
         'ttl': 31556926, // One year
       })

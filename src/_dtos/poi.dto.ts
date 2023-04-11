@@ -135,6 +135,12 @@ export class PoiDto {
   website_url?: string;
 
   @ApiProperty({
+    description: 'An URL where the menu for this location can be viewed',
+    required: false,
+  })
+  menuUrl?: string;
+
+  @ApiProperty({
     description: 'Whether this ride supports fastpass or not',
     required: false,
   })
@@ -175,6 +181,12 @@ export class PoiDto {
     required: false,
   })
   openingTimes?: PoiOpeningTimeDto[];
+
+  @ApiProperty({
+    description: 'The number of minutes this experience takes',
+    required: false,
+  })
+  duration?: Number;
 
   @ApiProperty({
     description: 'The original object as send by the theme park',

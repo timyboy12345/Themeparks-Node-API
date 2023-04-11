@@ -9,7 +9,6 @@ import { RideCategory } from '../../../_interfaces/ride-category.interface';
 export class SixflagsTransferService extends TransferService {
   transferPoiToPoi(poi: SixflagsMapItemInterface): Poi {
     let category: PoiCategory;
-    let originalCategory: string;
     let id: number;
 
     if (poi.name.toLowerCase().includes('slide') || (poi.description ?? '').toLowerCase().includes('slide')) {
@@ -54,9 +53,59 @@ export class SixflagsTransferService extends TransferService {
         p.rideCategory = RideCategory.UNDEFINED;
       }
 
-      // TODO: Improve min/max height
-      if (poi.minimumHeight) {
-        p.minSizeWithoutEscort = Math.round(poi.minimumHeight * 2.54);
+      if (poi.minimumHeight && poi.minimumHeight > 0) {
+        p.minSizeWithoutEscort = Math.round(poi.minimumHeight * 2.54)
+      }
+
+      if (poi.minimumHeightDisplay) {
+        const lengthData = poi.minimumHeightDisplay.split(';');
+
+        if (poi.minimumHeightDisplay.toLowerCase().includes('none with adult')) {
+          p.minSizeWithEscort = 0;
+        }
+
+        for (let i = 0; i < lengthData.length; i++) {
+          const selection = lengthData[i];
+
+          if (selection.toLowerCase().includes('maximum height')) {
+            let num = selection
+              .toLowerCase()
+              .replace('maximum height', '')
+              .replace('"', '')
+              .replace(' ', '');
+
+            if (num) {
+              const maxHeight = Number.parseInt(num);
+              p.maxSize = Math.round(maxHeight * 2.54);
+            }
+          }
+
+          if (selection.toLowerCase().includes('to ride alone')) {
+            let num = selection
+              .toLowerCase()
+              .replace('to ride alone', '')
+              .replace('"', '')
+              .replace(' ', '');
+
+            if (num) {
+              const heightWithoutSupervision = Number.parseInt(num);
+              p.minSizeWithoutEscort = Math.round(heightWithoutSupervision * 2.54);
+            }
+          }
+
+          if (selection.toLowerCase().includes('with adult') && !selection.toLowerCase().includes('none')) {
+            let num = selection
+              .toLowerCase()
+              .replace('with adult', '')
+              .replace('"', '')
+              .replace(' ', '');
+
+            if (num) {
+              const heightWithSupervision = Number.parseInt(num);
+              p.minSizeWithEscort = Math.round(heightWithSupervision * 2.54);
+            }
+          }
+        }
       }
     }
 

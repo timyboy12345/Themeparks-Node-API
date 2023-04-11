@@ -31,6 +31,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True |
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True |
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False |
+| 🇫🇷 Futuroscope | 🎡 | True | True | True | True |
 | 🇬🇧 Thorpe Park | 🎡 | True | True | True | True |
 | 🇬🇧 Alton Towers | 🎡 | True | True | True | True |
 | 🇬🇧 Paultons Park | 🎡 | True | True | True | True |

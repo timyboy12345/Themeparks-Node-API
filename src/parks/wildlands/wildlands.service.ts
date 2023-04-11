@@ -6,7 +6,6 @@ import { ConfigService } from '@nestjs/config';
 import { WildlandsTransferService } from './wildlands-transfer/wildlands-transfer.service';
 import { Poi } from '../../_interfaces/poi.interface';
 import * as Sentry from '@sentry/node';
-const https = require('https');
 import {
   WildlandsAnimalsResponseInterface,
   WildlandsAnimalsResponseItemInterface,
@@ -113,9 +112,6 @@ export class WildlandsService extends ThemeParkService {
 
     return this.httpService.get<WildlandsAnimalsResponseInterface>(url, {
       headers: headers,
-      // We cannot use the default agent, since Wildlands certificate chain is broken
-      // TODO: Maybe this is not needed anymore?
-      httpsAgent: new https.Agent({ rejectUnauthorized: false })
     })
       .toPromise()
       .then(value => {

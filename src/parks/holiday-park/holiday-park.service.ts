@@ -36,8 +36,8 @@ export class HolidayParkService extends ThemeParkService {
       parkType: ParkType.THEMEPARK,
       location: {
         lat: 49.318498726,
-        lng: 8.290165506
-      }
+        lng: 8.290165506,
+      },
     };
   }
 
@@ -74,7 +74,6 @@ export class HolidayParkService extends ThemeParkService {
       .apply([], await Promise.all(promises));
   }
 
-  // TODO: Find out if locations still work
   async getRides(): Promise<Poi[]> {
     // return this.attachLocations(await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(value => this.holidayParkTransferService.HolidayParkAttractionsResponseToPois(value.data)));
     return await this.request<HolidayParkAttractionsResponseInterface>('attraction').then(r => this.holidayParkTransferService.transferRidesToPois(r.data, this.localeService.getLocale()));
@@ -91,9 +90,10 @@ export class HolidayParkService extends ThemeParkService {
   }
 
   async getShows(): Promise<Poi[]> {
-    return await this.request<HolidayParkPageResponseInterface>("show").then(value => this.holidayParkTransferService.transferShowsToPois(value.data, this.localeService.getLocale()))
+    return await this.request<HolidayParkPageResponseInterface>('show').then(value => this.holidayParkTransferService.transferShowsToPois(value.data, this.localeService.getLocale()));
   }
 
+  // Holiday Park has moved to an internal lat/lng system
   // private async attachLocations(pois: Poi[]): Promise<Poi[]> {
   //   const locationData = await this.httpService.get<HolidayParkLocationsResponseInterface>('https://www.holidaypark.de/de/api/v1.0/locations/holiday-park?access_token=' + this._holidayParkApiToken).toPromise();
   //

@@ -3,14 +3,18 @@ import { DisneylandParisStudiosService } from './disneyland-paris-studios.servic
 import { DisneylandParisTransferService } from './disneyland-paris-transfer/disneyland-paris-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('DisneylandParisStudiosService', () => {
   let service: DisneylandParisStudiosService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [DisneylandParisStudiosService, DisneylandParisTransferService],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
+      providers: [
+        DisneylandParisStudiosService,
+        DisneylandParisTransferService,
+      ],
     }).compile();
 
     service = module.get<DisneylandParisStudiosService>(DisneylandParisStudiosService);

@@ -160,6 +160,11 @@ export interface Poi {
   website_url?: string;
 
   /**
+   * A full URL that leads to the menu for this location
+   */
+  menuUrl?: string;
+
+  /**
    * URLs for different translations of this POI
    */
   translatedWebsiteUrl?: Translation;
@@ -199,6 +204,11 @@ export interface Poi {
   showTimes?: ShowTimes;
 
   openingTimes?: PoiOpeningTime[];
+
+  /**
+   * The duration of this experience, in minutes
+   */
+  duration?: number;
 
   /**
    * Any menu items this POI may have
@@ -247,5 +257,6 @@ export enum PoiStatus {
   CLOSED_TODAY = 'CLOSED_TODAY',
   DOWN = 'DOWN',
   MAINTENANCE = 'MAINTENANCE',
-  UNDEFINED = 'UNDEFINED'
+  OPENS_LATER_TODAY = 'OPENS_LATER_TODAY',
+  UNDEFINED = 'UNDEFINED',
 }

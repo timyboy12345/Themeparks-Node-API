@@ -4,6 +4,7 @@ import { DisneylandParisService } from './disneyland-paris/disneyland-paris.serv
 import { DisneylandParisStudiosService } from './disneyland-paris/disneyland-paris-studios.service';
 import { DisneylandParisTransferService } from './disneyland-paris/disneyland-paris-transfer/disneyland-paris-transfer.service';
 import { HttpModule } from '@nestjs/axios';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { HttpModule } from '@nestjs/axios';
       cache: false,
       ignoreEnvFile: false,
     }),
+    LocaleModule,
   ],
   providers: [DisneylandParisService, DisneylandParisStudiosService, DisneylandParisTransferService],
   exports: [DisneylandParisStudiosService, DisneylandParisService],
