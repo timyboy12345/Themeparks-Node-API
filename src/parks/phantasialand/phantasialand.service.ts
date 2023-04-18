@@ -124,7 +124,9 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
 
   private getToken() {
     const fullUrl = this._phantasialandApiUrl + '/app-users/login';
-    let r = (Math.random() + 1).toString(36).substring(7);
+
+    // let randomEmail = (Math.random() + 1).toString(36).substring(7);
+    // let randomPass = (Math.random() + 1).toString(36).substring(7);
 
     return this
       .httpService
@@ -134,8 +136,8 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
         created: string,
         userId: number
       }>(fullUrl, {
-        'email': r + this._phantasialandApiEmail,
-        'password': this._phantasialandApiPassword,
+        'email': `${this._phantasialandApiEmail}`,
+        'password': `${this._phantasialandApiPassword}`,
         'ttl': 31556926, // One year
       })
       .toPromise()
@@ -145,6 +147,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       .catch(reason => {
         Sentry.captureException(reason);
         console.log(reason);
+        console.log(reason.response.data);
         throw new InternalServerErrorException();
       });
   }
