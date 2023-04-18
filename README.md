@@ -90,6 +90,16 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Valley Fair | 🎡 | True | True | True | True |
 | 🇺🇸 Worlds of Fun | 🎡 | True | True | True | True |
 
+## Parks on the planning
+
+UK: Pleasure Beach, LegoLand Windsor, Drayton Manor
+IT: Gardaland, Cincetitta World
+ES: Puy de Fou Espana
+DE: Movie Park, Europapark, Rulantica, Heidi Park
+OO: Familypark
+FR: Puy de Fou
+DM: Legoland Billund, Djurs Sommerland, Farup Sommerland
+
 ## Description
 
 This API was build using the [Nest](https://github.com/nestjs/nest) framework. Find the docs at the [NestJS Documentation](https://docs.nestjs.com/)

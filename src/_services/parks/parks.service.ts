@@ -44,9 +44,11 @@ import * as Sentry from '@sentry/node';
 import { SafariparkService } from '../../parks/beekse-bergen/safaripark/safaripark.service';
 import { SpeellandService } from '../../parks/beekse-bergen/speelland/speelland.service';
 import { DollywoodService } from '../../parks/herschend/dollywood/dollywood.service';
-import { ParqueDeAtraccionesService } from '../../parks/parque-de-atracciones/parque-de-atracciones.service';
+import { ParqueDeAtraccionesService } from '../../parks/parques-reunidos/parque-de-atracciones/parque-de-atracciones.service';
 import { WalibiFranceService } from '../../parks/walibi/france/walibi-france.service';
 import { FuturoscopeService } from '../../parks/futuroscope/futuroscope.service';
+import { MovieParkService } from '../../parks/parques-reunidos/movie-park/movie-park.service';
+import { ParqueWarnerMadridBeachService } from '../../parks/parques-reunidos/parque-warner-madrid-beach/parque-warner-madrid-beach.service';
 
 @Injectable()
 export class ParksService {
@@ -98,6 +100,8 @@ export class ParksService {
     private readonly _beekseBergenSafariparkService: SafariparkService,
     private readonly _beekseBergenSpeellandService: SpeellandService,
     private readonly _parqueDeAtraccionesService: ParqueDeAtraccionesService,
+    private readonly _movieParkService: MovieParkService,
+    private readonly _parqueWarnerMadridBeach: ParqueWarnerMadridBeachService,
     private readonly _futuroscope: FuturoscopeService,
   ) {
     this._parks = [];
@@ -140,6 +144,8 @@ export class ParksService {
     this._parks.push(_beekseBergenSafariparkService);
     this._parks.push(_beekseBergenSpeellandService);
     this._parks.push(_parqueDeAtraccionesService);
+    this._parks.push(_movieParkService);
+    this._parks.push(_parqueWarnerMadridBeach);
     this._parks.push(_futuroscope);
 
     this._companies = [];

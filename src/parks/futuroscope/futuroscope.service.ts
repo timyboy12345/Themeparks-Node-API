@@ -26,10 +26,10 @@ export class FuturoscopeService extends ThroughPoisThemeParkService {
   getInfo(): ThemePark {
     return {
       countryCode: 'fr',
-      description: '',
+      description: 'Futuroscope is een Frans attractiepark dat is opgebouwd rond de thema\'s multimedia, cinematografie en futuristische audio-visuele technieken. Het ligt tien kilometer ten noorden van de stad Poitiers, op het gebied van de gemeenten Chasseneuil-du-Poitou en Jaunay-Marigny, en is gesticht door René Monory.',
       id: 'futuroscope',
-      image: '',
-      location: { lat: 0, lng: 0 },
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Le_parc_du_futuroscope.JPG/1280px-Le_parc_du_futuroscope.JPG',
+      location: { lat: 46.669627, lng: 0.368478 },
       name: 'Futuroscope',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Paris',

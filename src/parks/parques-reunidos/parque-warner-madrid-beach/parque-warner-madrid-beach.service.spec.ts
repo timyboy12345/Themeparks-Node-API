@@ -1,19 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ParqueDeAtraccionesService } from './parque-de-atracciones.service';
+import { ParqueWarnerMadridBeachService } from './parque-warner-madrid-beach.service';
+import { ParquesReunidosTransfer } from '../parques-reunidos-transfer/parques-reunidos.transfer';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
-import { ParqueDeAtraccionesTransferService } from './parque-de-atracciones-transfer/parque-de-atracciones-transfer.service';
 
-describe('ParqueDeAtraccionesService', () => {
-  let service: ParqueDeAtraccionesService;
+describe('ParqueWarnerMadridBeachService', () => {
+  let service: ParqueWarnerMadridBeachService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ParqueDeAtraccionesService, ParqueDeAtraccionesTransferService],
+      providers: [ParqueWarnerMadridBeachService, ParquesReunidosTransfer],
       imports: [HttpModule, ConfigModule.forRoot()],
     }).compile();
 
-    service = module.get<ParqueDeAtraccionesService>(ParqueDeAtraccionesService);
+    service = module.get<ParqueWarnerMadridBeachService>(ParqueWarnerMadridBeachService);
   });
 
   it('should be defined', () => {
@@ -27,5 +27,5 @@ describe('ParqueDeAtraccionesService', () => {
   it('should return a list of POIs', async () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
-  });
+  }, 1000 * 60);
 });

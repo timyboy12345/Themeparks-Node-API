@@ -9,20 +9,39 @@ import * as moment from 'moment-timezone';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
 
 @Injectable()
-export class ParqueDeAtraccionesTransferService extends TransferService {
+export class ParquesReunidosTransfer extends TransferService {
   transferRideToPoi(ride: AtraccionesResponseAtraccioneInterface, locale?: string): Poi {
+    let lang;
+
+    if (ride.translatableName.en) {
+      lang = 'en';
+    } else if (ride.translatableName.es) {
+      lang = 'es';
+    } else if (ride.translatableName.de) {
+      lang = 'de';
+    }
+
     const r: Poi = {
       category: PoiCategory.ATTRACTION,
       id: ride.id.toString(),
       original: ride,
-      title: ride.translatableName.es,
-      subTitle: ride.translatableSubTitle.es,
-      description: ride.translatableDescription.es,
-      location: {
+      title: ride.translatableName[lang],
+    };
+
+    if (ride.place && ride.place.point) {
+      r.location = {
         lat: ride.place.point.latitude,
         lng: ride.place.point.longitude,
-      },
-    };
+      };
+    }
+
+    if (ride.translatableSubTitle && ride.translatableSubTitle[lang]) {
+      r.subTitle = ride.translatableSubTitle[lang];
+    }
+
+    if (ride.translatableDescription && ride.translatableDescription[lang]) {
+      r.description = ride.translatableDescription[lang];
+    }
 
     if (ride.photographs && ride.photographs.length > 0) {
       r.previewImage = `https://s3-eu-west-1.amazonaws.com/stayapp.cms/${ride.photographs[0]}/${ride.photographs[0]}_appthumb`;
@@ -60,33 +79,35 @@ export class ParqueDeAtraccionesTransferService extends TransferService {
         break;
     }
 
-    const lengthData = ride.textList.find((tl) => tl.icon === 248919);
+    if (ride.textList) {
+      const lengthData = ride.textList.find((tl) => tl.icon === 248919);
 
-    if (lengthData) {
-      const accompaniedRegex = /Acompañados: menores de ([0-9]+) cm/;
-      const accompaniedMatches = lengthData.description.es.match(accompaniedRegex);
+      if (lengthData) {
+        const accompaniedRegex = /Acompañados: menores de ([0-9]+) cm/;
+        const accompaniedMatches = lengthData.description[lang].match(accompaniedRegex);
 
-      const minRegex = /Mínimo: ([0-9]+) cm/;
-      const minMatches = lengthData.description.es.match(minRegex);
+        const minRegex = /Mínimo: ([0-9]+) cm/;
+        const minMatches = lengthData.description[lang].match(minRegex);
 
-      if (minMatches && minMatches.length > 0) {
-        if (accompaniedMatches && accompaniedMatches.length > 0) {
-          r.minSizeWithEscort = Number.parseFloat(minMatches[1]);
-          r.minSizeWithoutEscort = Number.parseFloat(accompaniedMatches[1]);
-        } else {
-          r.minSizeWithoutEscort = Number.parseFloat(minMatches[1]);
+        if (minMatches && minMatches.length > 0) {
+          if (accompaniedMatches && accompaniedMatches.length > 0) {
+            r.minSizeWithEscort = Number.parseFloat(minMatches[1]);
+            r.minSizeWithoutEscort = Number.parseFloat(accompaniedMatches[1]);
+          } else {
+            r.minSizeWithoutEscort = Number.parseFloat(minMatches[1]);
+          }
         }
-      }
 
-      const maxRegex = /Máximo: ([0-9]+) cm/;
-      const maxMatches = lengthData.description.es.match(maxRegex);
+        const maxRegex = /Máximo: ([0-9]+) cm/;
+        const maxMatches = lengthData.description[lang].match(maxRegex);
 
-      if (maxMatches && maxMatches.length > 0) {
-        r.maxSize = Number.parseFloat(maxMatches[1]);
+        if (maxMatches && maxMatches.length > 0) {
+          r.maxSize = Number.parseFloat(maxMatches[1]);
+        }
       }
     }
 
-    if (ride.waitingTime >= 0) {
+    if (ride.waitingTime && ride.waitingTime >= 0) {
       r.currentWaitTime = ride.waitingTime;
     }
 
@@ -160,5 +181,43 @@ export class ParqueDeAtraccionesTransferService extends TransferService {
     }
 
     return r;
+  }
+
+  transferShowsToPois(shows: any, locale?: string): Poi[] {
+    const uniqueShows = [];
+
+    shows.forEach((show) => {
+      if (!uniqueShows.find((s) => s.repetition === show.repetition)) {
+        uniqueShows.push(show);
+      }
+    })
+
+    const parsedShows = uniqueShows.map(show => this.transferRepetitionShowToPoi(show, locale));
+
+    return parsedShows;
+  }
+
+  transferRepetitionShowToPoi(show, locale) {
+    let lang;
+
+    if (show.translatableName.es) {
+      lang = 'es';
+    } else if (show.translatableName.de) {
+      lang = 'de';
+    }
+
+    const c: Poi = {
+      category: PoiCategory.SHOW, id: show.repetition, original: show, title: show.translatableName[lang]
+    }
+
+    return c;
+  }
+
+  transferRestaurantsToPois(restaurants: any, locale?: string): Poi[] {
+    return restaurants.map((r) => {
+      const poi = this.transferRideToPoi(r);
+      poi.category = PoiCategory.RESTAURANT;
+      return poi;
+    });
   }
 }
