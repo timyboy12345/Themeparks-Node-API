@@ -14,7 +14,8 @@ export class BlogPostsService {
     return this.blogPostRepository.find({
       where: {
         locale: locale
-      }
+      },
+      select: ['id', 'slug', 'imageUrl', 'description', 'author', 'locale', 'parkId']
     });
   }
 
@@ -30,9 +31,21 @@ export class BlogPostsService {
   async getBySlug(locale: string, slug: string) {
     return this.blogPostRepository.findOneOrFail({
       where: {
-        locale: locale,
         slug: slug
-      }
+      },
+      select: {
+        id: true,
+        slug: true,
+        locale: true,
+        description: true,
+        content: true,
+        createdAt: true,
+        author: {
+          id: true,
+          firstName: true
+        }
+      },
+      relations: ['author']
     })
   }
 
