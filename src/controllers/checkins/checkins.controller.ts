@@ -20,7 +20,7 @@ export class CheckinsController {
   })
   @Get('')
   public getAllCheckins(@Request() req) {
-    return this.checkinsService.getAll(req.user.id);
+    return this.checkinsService.getAll(req.user);
   }
 
   // @ApiParam({

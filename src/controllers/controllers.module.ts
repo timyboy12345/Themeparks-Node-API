@@ -11,9 +11,10 @@ import { UserController } from './user/user.controller';
 import { AuthModule } from '../auth/auth.module';
 import { CheckinsController } from './checkins/checkins.controller';
 import { HttpModule } from '@nestjs/axios';
+import { BlogPostsController } from './blog-posts/blog-posts.controller';
 
 @Module({
-  controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController],
+  controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController, BlogPostsController],
   imports: [
     CacheModule.register({
       ttl: 60 * 5,

@@ -1,51 +1,45 @@
 // This script can be used to scrape an array of ride data from the DippieDoe website:
 // URL: https://www.dippiedoe.nl/nl/dippiedoe-attracties
 
+document.querySelectorAll('.elementor-element-e7e5e2a').forEach((item) => {
+  item.style.opacity = 1;
+  item.style.visibility = 'visible';
+  item.style.height = '200px';
+});
+
 if (typeof rides === undefined) {
   let rides = [];
 } else {
   rides = [];
 }
 
-document.querySelectorAll('.product-holder').forEach(item => {
-  let title = item.querySelector('h3').innerHTML;
-  let description = item.querySelector('p:not(:empty)').innerText;
-  let area = item.querySelector('.locatie').innerText;
+document.querySelectorAll('.row-attracties .elementor-post.elementor-grid-item.ecs-post-loop').forEach(item => {
+  let title = item.querySelector('.elementor-page-title').innerText.replace(/(\r\n|\n|\r)/gm, '');
+  let description = item.querySelector('.attractie-beschrijving').innerText;
+  let area = item.querySelector('.elementor-heading-title.elementor-size-default').innerText;
   let img = item.querySelector('img').getAttribute('src');
+  let video = item.querySelector('video').getAttribute('src');
 
-  // Fix NBSP in description
-  const re = new RegExp(String.fromCharCode(160), "g");
-  description = description.replace(re, " ");
-
-  let lengthResponse = item.querySelector('.lengte').innerText;
-  let minLength, maxLength, minAge, maxAge, minLengthAlone = undefined;
-
-  if (lengthResponse.includes('cm')) {
-    minLength = parseFloat(lengthResponse.split(' cm')[0]);
-  } else if (lengthResponse.includes('jaar')) {
-    minAge = parseInt(lengthResponse.split('-')[0]);
-    maxAge = parseInt(lengthResponse.split('-')[1].split(' jaar')[0]);
+  let constructor = item.querySelector('elementor-element-6745541');
+  if (constructor) {
+    constructor = constructor.innerText;
   }
 
-  item.querySelectorAll('p').forEach(lengthItem => {
-    if (lengthItem.innerText.includes('alleen onder begeleiding')) {
-      let minAloneLengthResponse = lengthItem.querySelector('span').innerText;
+  let openingYear = item.querySelector('elementor-element-8471bf7');
+  if (openingYear) {
+    openingYear = openingYear.innerText;
+  }
 
-      if (minAloneLengthResponse.includes('-')) {
-        minLength = parseInt(minAloneLengthResponse.split('-')[0]);
-        minLengthAlone = parseInt(minAloneLengthResponse.split('-')[1]);
-      } else if (minAloneLengthResponse.toLowerCase().includes('tot')) {
-        minLength = parseInt(minAloneLengthResponse.toLowerCase().split('tot')[0]);
-        minLengthAlone = parseInt(minAloneLengthResponse.toLowerCase().split('tot')[1].split('cm')[0]);
-      }
-    }
+  // Fix NBSP in description
+  const re = new RegExp(String.fromCharCode(160), 'g');
+  description = description.replace(re, ' ');
 
-    if (lengthItem.innerText.includes('Minimum leeftijd:')) {
-      let minAgeResponse = lengthItem.innerText;
+  let lengthResponse = item.querySelector('.elementor-element-885fd6d');
+  let minLength, maxLength, minAge, maxAge, minLengthAlone = undefined;
 
-      minAge = parseInt(minAgeResponse.split('Minimum leeftijd:')[1]);
-    }
-  })
+  if (lengthResponse && lengthResponse.innerText.includes('cm')) {
+    minLength = parseFloat(lengthResponse.innerText.split(' cm')[0]);
+  }
 
   rides.push({
     id: title.replace(/[\W_]+/g, ' ').replace(/ /g, '_').toLowerCase(),
@@ -58,6 +52,9 @@ document.querySelectorAll('.product-holder').forEach(item => {
     maxAge,
     minLengthAlone,
     image_url: img,
+    video_url: video,
+    constructor,
+
   });
 });
 

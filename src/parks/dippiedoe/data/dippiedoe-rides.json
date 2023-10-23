@@ -1,158 +1,187 @@
 [
   {
-    "id": "tuimelaar",
-    "title": "Tuimelaar",
-    "description": "Lekker rondjes draaien in je favoriete voertuig.",
-    "area": "Binnen",
-    "minLength": null,
-    "minLengthAlone": 90,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1391",
-    "lat": 51.499473,
-    "lng": 5.433761
-  },
-  {
-    "id": "stormtoren",
-    "title": "Stormtoren",
-    "description": "Een vrije val! Op deze bank ga je hard van boven naar beneden, durf jij?!",
-    "area": "Binnen",
-    "minLengthAlone": 90,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/195",
-    "lat": 51.499453,
-    "lng": 5.433847
+    "id": "piratengolf",
+    "title": "Piratengolf",
+    "description": "Ai ai landrotten! Klaar voor een avontuurlijk potje golf? Sla jij een hole-in-one of ga je met het schip ten onder?\n\nLet op! Onder begeleiding van een volwassene\n\n ",
+    "area": "buiten",
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2023/06/Image2-1024x768.jpeg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2023/06/Midgetgolf_DippieDoe-1.mp4"
   },
   {
     "id": "ballenbaai",
     "title": "Ballenbaai",
-    "description": "Rollenbollen tussen de ballen in de Mini Ballenbaai.",
-    "area": "Binnen",
-    "minAge": 0,
-    "maxAge": 3,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/196"
-  },
-  {
-    "id": "dreumesbaai",
-    "title": "Dreumesbaai",
-    "description": "De allerkleinsten kunnen lekker spelen in deze prachtige Dreumesbaai.",
-    "area": "Binnen",
-    "minAge": 0,
-    "maxAge": 3,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1399"
+    "description": "Rollenbollen tussen de ballen in de Mini Ballenbaai.\n\nLet op! Alleen voor kinderen van 0 t/m 4 jaar.",
+    "area": "binnen",
+    "maxAge": 4,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Ballenbaai-1-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/11/Ballenbaai.mp4"
   },
   {
     "id": "klauter_kajuit",
     "title": "Klauter Kajuit",
-    "description": "Eindeloos rondkruipen, klimmen en klauteren.",
-    "area": "Binnen",
+    "description": "Eindeloos rondkruipen, klimmen en klauteren.\n\nLet op! Alleen voor kinderen van 4 tot 12 jaar. Volwassenen niet toegestaan.",
+    "area": "binnen",
     "minAge": 4,
     "maxAge": 12,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/895"
+    "minSizeWithoutEscort": 90,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Klauter-Kajuit-1024x768.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/11/Klauter_Kajuit.mp4"
   },
   {
-    "id": "grote_golf",
-    "title": "Grote Golf",
-    "description": "Klim helemaal naar het dak en suis in vliegende vaart over de superlange glijbaan naar beneden! ",
-    "area": "Binnen",
-    "minLength": 0,
-    "minLengthAlone": 140,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/207"
-  },
-  {
-    "id": "dolle_pier",
-    "title": "Dolle Pier",
-    "description": "Leuke kinderachtbaan. Stap in deze snelle stoomtrein, voel de kriebels in je buik én geniet van de wind door je haren!\nMinimum leeftijd: 5",
-    "area": "Buiten",
-    "minLength": 95,
-    "minLengthAlone": 110,
-    "minAge": 5,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1421",
-    "lat": 51.499810,
-    "lng": 5.434604
-  },
-  {
-    "id": "strandkussen",
-    "title": "Strandkussen",
-    "description": "Lachen, gieren en brullen.... Jong én oud heeft plezier op deze nieuwe airtrampoline van maar liefst 26x10 meter",
+    "id": "slinger_sloep",
+    "title": "Slinger Sloep",
+    "description": "Slinger op en neer over de golven zo hoog als je durft!\n\nLet op! 120-140 cm alleen onder begeleiding van iemand van minimaal 140cm",
     "area": "buiten",
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1810",
-    "lat": 51.499813,
-    "lng": 5.435323
+    "minSizeWithEscort": 120,
+    "minSizeWithoutEscort": 140,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Slinger-Sloep-1-1024x768.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/11/Slinger_Sloep.mp4"
   },
   {
-    "id": "klimkasteel",
-    "title": "Klimkasteel",
-    "description": "Lekker klimmen, klauteren en glijden.",
-    "area": "Buiten",
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/994"
+    "id": "dollybots",
+    "title": "Dollybots",
+    "description": "Laat je beste stuurkunsten zien! Vlieg je uit de bocht? Geen probleem!\n\nMaximale lengte: 140cm",
+    "area": "buiten",
+    "minSizeWithoutEscort": 90,
+    "maxSize": 140,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Dollybots-683x1024.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Dollybots.mp4"
   },
   {
     "id": "tyfoon",
     "title": "Tyfoon",
     "description": "Een achtbaan voor durfallen! De orkaandrempel wordt opgezocht in deze spectaculaire rit!",
-    "area": "Buiten",
-    "minLength": null,
-    "minLengthAlone": 125,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/203",
-    "lat": 51.500625,
-    "lng": 5.437968
+    "area": "buiten",
+    "minSizeWithoutEscort": 125,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Tyfoon-1024x768.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Tyfoon-1.mp4"
   },
   {
-    "id": "het_schoeprad",
-    "title": "Het Schoeprad",
-    "description": "Rond en rond naar de wolken.",
-    "area": "Buiten",
-    "minLength": 0,
-    "minLengthAlone": 130,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/205",
-    "lat": 51.500568,
-    "lng": 5.436514
+    "id": "schoeprad",
+    "title": "Schoeprad",
+    "description": "Rond en rond naar de wolken.\n\nLet op! <105 alleen onder begeleiding",
+    "area": "buiten",
+    "minSizeWithEscort": 75,
+    "minSizeWithoutEscort": 105,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Schoeprad-683x1024.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Schoeprad.mp4"
+  },
+  {
+    "id": "dolle_pier",
+    "title": "Dolle Pier",
+    "description": "Stap in deze snelle stoomtrein, voel de kriebels in je buik én geniet van de wind door je haren!\n\nTot 120cm onder begeleiding",
+    "area": "buiten",
+    "minSizeWithEscort": 95,
+    "minSizeWithoutEscort": 105,
+    "maxSize": 195,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Dolle-Pier-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Dolle-Pier.mp4"
+  },
+  {
+    "id": "dreumesbaai",
+    "title": "Dreumesbaai",
+    "description": "De allerkleinsten kunnen lekker spelen in deze prachtige Dreumesbaai.\n\nLet op! Alleen voor kinderen van 0 t/m 3 jaar, onder begeleiding van een volwassene.",
+    "area": "binnen",
+    "maxAge": 3,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Dreumesbaai-1024x670.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/11/Dreumesbaai_2.mp4"
+  },
+  {
+    "id": "donut_glide",
+    "title": "Donut Glide",
+    "description": "Stap in een speciale donut en glijd van boven naar beneden in de Klauter Kajuit!",
+    "area": "binnen",
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Donut-Glide-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Donut-Glide.mp4"
+  },
+  {
+    "id": "dolle_dobber",
+    "title": "Dolle Dobber",
+    "description": "Op en neer over de golven in de Dolle Dobber.\n\nLet op!  75 tot 105 cm alleen onder begeleiding.",
+    "area": "buiten",
+    "minSizeWithEscort": 75,
+    "minSizeWithoutEscort": 105,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Dolle-Dobber-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Dolle_Dobber.mp4"
+  },
+  {
+    "id": "vuurtoren",
+    "title": "Vuurtoren",
+    "description": "Klim zo hoog als je durft! Helemaal bovenin kun je op een platform staan en uitkijken over de Binnenhaven",
+    "area": "binnen",
+    "minSizeWithoutEscort": 70,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Klimvulkaan-2-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Klimvulkaan.mp4"
+  },
+  {
+    "id": "stormtoren",
+    "title": "Stormtoren",
+    "description": "Een vrije val! Op deze bank ga je hard van boven naar beneden, durf jij?!",
+    "area": "binnen",
+    "minSizeWithoutEscort": 90,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Stormtoren-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Stormtoren.mp4"
+  },
+  {
+    "id": "grote_golf",
+    "title": "Grote Golf",
+    "description": "Klim helemaal naar het dak en suis in vliegende vaart over de superlange glijbaan naar beneden!",
+    "area": "binnen",
+    "minSizeWithoutEscort": 70,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Grote-Golf-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Grote_Golf.mp4"
+  },
+  {
+    "id": "draaikolk",
+    "title": "Draaikolk",
+    "description": "Voel je als een vogel in de lucht! Hoger en hoger… Hou je goed vast!",
+    "area": "buiten",
+    "minSizeWithoutEscort": 90,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Draaikolk-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Draaikolk_1.mp4"
+  },
+  {
+    "id": "tuimelaar",
+    "title": "Tuimelaar",
+    "description": "Lekker rondjes draaien in je favoriete voertuig.",
+    "area": "binnen",
+    "minSizeWithoutEscort": 90,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Tuimelaar-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Tuimelaar_1.mp4"
   },
   {
     "id": "speelduin",
     "title": "Speelduin",
     "description": "Lekker spelen in het zand.\nOok staat hier o.a. een familieschommel en een loopton.",
-    "area": "Buiten",
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/992"
+    "area": "buiten",
+    "minSizeWithoutEscort": 70,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Speelduin.-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/11/Speelduin..mp4"
   },
   {
-    "id": "dolle_dobber",
-    "title": "Dolle Dobber",
-    "description": "Op en neer over de golven in de Dolle Dobber.",
-    "area": "Buiten",
-    "minLength": 75,
-    "minLengthAlone": 105,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/1372",
-    "lat": 51.500091,
-    "lng": 5.436058
+    "id": "angry_birds_speeltuin",
+    "title": "Angry Birds speeltuin",
+    "description": "Speel tussen de boos kijkende vogels en de groene varkens in de Angry Birds speeltuin!",
+    "area": "buiten",
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Angry-Birds-speeltuin..-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/11/Angry-Birds-speeltuin.mp4"
   },
   {
-    "id": "de_draaikolk",
-    "title": "De Draaikolk",
-    "description": "Voel je als een vogel in de lucht! Hoger en hoger… Hou je goed vast! ",
-    "area": "Buiten",
-    "minLengthAlone": 90,
-    "minLength": 110,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/134",
-    "lat":51.500401,
-    "lng": 5.436107
+    "id": "strandkussen_xxl",
+    "title": "Strandkussen XXL",
+    "description": "Lachen, gieren en brullen…. Jong én oud heeft plezier op deze nieuwe airtrampoline van maar liefst 26×10 meter",
+    "area": "buiten",
+    "minSizeWithoutEscort": 75,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Strandkussen-XXL-1024x683.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/08/Strandkussen-XXL.mp4"
   },
   {
-    "id": "piraten_golf",
-    "title": "Piraten Golf",
-    "description": "Golf door de wereld van piraten en vind de schat met goud!",
-    "area": "Buiten",
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/132",
-    "lat": 51.500451,
-    "lng": 5.437635
-  },
-  {
-    "id": "de_slinger_sloep",
-    "title": "De Slinger Sloep",
-    "description": "Slinger op en neer over de golven.",
-    "area": "Buiten",
-    "minLength": 120,
-    "minLengthAlone": 140,
-    "image_url": "https://www.dippiedoe.nl/nl/files/large/204",
-    "lat": 51.500692,
-    "lng": 5.437238
+    "id": "klimkasteel",
+    "title": "Klimkasteel",
+    "description": "Lekker klimmen, klauteren en glijden. Leef je uit in ons Klimkasteel!",
+    "area": "buiten",
+    "minSizeWithoutEscort": 90,
+    "image_url": "https://cdn-hjmpb.nitrocdn.com/NVWHtDOARVQIWwSwAuPdoJYLUNufFOAR/assets/images/optimized/rev-e027324/dippiedoe.nl/wp-content/uploads/2022/08/Klimkasteel-1024x768.jpg",
+    "video_url": "https://dippiedoe.nl/wp-content/uploads/2022/11/Klimkasteel..mp4"
   }
 ]

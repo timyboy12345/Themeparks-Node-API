@@ -74,14 +74,6 @@ export class WaitTimeService {
   }
 
   /**
-   * Get a specific wait time (by ID)
-   * @param id
-   */
-  findOne(id: string): Promise<WaitTime> {
-    return this.waitTimeRepository.findOne(id);
-  }
-
-  /**
    * Remove a wait time by ID
    * @param id
    */

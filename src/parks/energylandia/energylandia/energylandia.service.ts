@@ -23,7 +23,7 @@ export class EnergylandiaService extends ThemeParkService {
       description: 'Energylandia is een attractiepark in Zator in het zuiden van Polen. Het park ligt ongeveer 50 kilometer af van Krakau en 400 kilometer van de hoofdstad Warschau. Met een oppervlakte van zo\'n 30 hectare is Energylandia het grootste pretpark van het land.',
       countryCode: 'pl',
       parkType: ParkType.THEMEPARK,
-      timezone: 'Europe/Poland',
+      timezone: 'Europe/Warsaw',
       location: {
         lat: 49.99959,
         lng: 19.40716,
@@ -41,7 +41,7 @@ export class EnergylandiaService extends ThemeParkService {
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: false,
       supportsRideWaitTimes: true,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimesHistory: true,
       supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: false,
@@ -115,4 +115,8 @@ export class EnergylandiaService extends ThemeParkService {
           return poi;
         }));
   }
+
+  // async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
+  //   https://us-central1-cms-energylandia-app.cloudfunctions.net/activeRule
+  // }
 }

@@ -10,37 +10,37 @@ export class CheckinService {
   constructor(@InjectRepository(Checkin) private checkinRepository: Repository<Checkin>) {
   }
 
-  async getAll(id: string) {
+  async getAll(u: User) {
     return this.checkinRepository.find({
       where: {
-        user: id,
+        user: u,
       },
     });
   }
 
-  async getAllFromPark(id: string, parkId: string) {
-    return this.checkinRepository.find({
-      where: {
-        user: id,
-        parkId: parkId,
-      },
-    });
-  }
+  // async getAllFromPark(id: string, parkId: string) {
+  //   return this.checkinRepository.find({
+  //     where: {
+  //       user: id,
+  //       parkId: parkId,
+  //     },
+  //   });
+  // }
 
   async create(checkin: CheckinInsertEntity, user: User) {
     return this.checkinRepository.insert({ ...checkin, user: user });
   }
 
-  async read(id: String, user: User) {
+  async read(checkinId: number, user: User) {
     return this.checkinRepository.findOne({
       where: {
-        id: id,
+        id: checkinId,
         user: user,
       },
     });
   }
 
-  async update(id: string, updatedData: CheckinInsertEntity, user: User) {
+  async update(id: number, updatedData: CheckinInsertEntity, user: User) {
     const checkin = await this.read(id, user);
 
     if (!checkin) {
@@ -52,7 +52,7 @@ export class CheckinService {
     return await this.checkinRepository.update(id, updatedData);
   }
 
-  async delete(id: string, user: User) {
+  async delete(id: number, user: User) {
     const checkin = await this.read(id, user);
 
     if (checkin) {

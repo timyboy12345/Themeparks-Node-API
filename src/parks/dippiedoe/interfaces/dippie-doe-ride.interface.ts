@@ -3,12 +3,13 @@ export interface DippieDoeRide {
   title: string,
   description: string,
   area: string,
-  minLength?: number,
-  maxLength?: number,
+  minSizeWithEscort?: number,
+  minSizeWithoutEscort?: number,
+  maxSize?: number,
   minAge?: number,
   maxAge?: number,
-  minLengthAlone?: number,
   image_url?: string,
+  video_url?: string,
   lat?: number;
   lng?: number;
 }

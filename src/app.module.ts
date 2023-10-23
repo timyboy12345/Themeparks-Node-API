@@ -23,6 +23,7 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './database/users/user.entity';
 import { Checkin } from './database/checkins/checkin.entity';
 import { HttpModule } from '@nestjs/axios';
+import { BlogPost } from './database/blog-posts/blog-post.entity';
 
 @Module({
   imports: [
@@ -47,7 +48,7 @@ import { HttpModule } from '@nestjs/axios';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_DATABASE'),
-        entities: [WaitTime, User, Checkin],
+        entities: [WaitTime, User, Checkin, BlogPost],
         synchronize: true,
       }),
     }),
