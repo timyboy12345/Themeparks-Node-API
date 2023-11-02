@@ -234,6 +234,38 @@ export class ParkController {
     });
   }
 
+  @Get('halloween')
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    description: 'The park id',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'All halloween events and zones of a specific theme park',
+    isArray: true,
+    type: PoiDto,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'The requested park could not be found',
+  })
+  async getParkHalloweenRelatedItems(@Param() params): Promise<Poi[]> {
+    const park = await this.parksService.findPark(params.id, true);
+
+    if (!park.getFullInfo().supports.supportsHalloween) {
+      throw new BadRequestException('This park does not support halloween related items');
+    }
+
+    return await park.getHalloweenEvents().then(halloweenEvents => {
+      return halloweenEvents.map((halloweenEvent) => {
+        delete halloweenEvent.original;
+        return halloweenEvent;
+      });
+    });
+  }
+
   @Get('opening-hours')
   @UseInterceptors(CacheInterceptor, LanguageInterceptor)
   @ApiParam({

@@ -48,6 +48,7 @@ export class TivoliService extends ThroughPoisThemeParkService {
       supportsShowTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

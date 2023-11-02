@@ -37,6 +37,7 @@ export class WalibiFranceService extends WalibiService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

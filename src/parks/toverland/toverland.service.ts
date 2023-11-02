@@ -59,7 +59,8 @@ export class ToverlandService extends ThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsOpeningTimes: false,
       supportsAnimals: false,
-      supportsTranslations: true
+      supportsTranslations: true,
+      supportsHalloween: true,
     };
   }
 
@@ -102,6 +103,20 @@ export class ToverlandService extends ThemeParkService {
         console.error(exception);
         throw new HttpException('Failed to fetch shows', 500, {
           cause: new Error('Failed to fetch shows: ' + exception.toString())
+        });
+      });
+  }
+
+  async getHalloweenEvents(): Promise<Poi[]> {
+    return this.request<ToverlandShow[]>('/park/halloween/operationInfo/list')
+      .then((axiosShowsData) => {
+        return this.toverlandTransferService.transferHalloweenEventsToPoi(axiosShowsData.data, this.localeService.getLocale());
+      })
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new HttpException('Failed to fetch halloween events', 500, {
+          cause: new Error('Failed to fetch halloween events: ' + exception.toString())
         });
       });
   }

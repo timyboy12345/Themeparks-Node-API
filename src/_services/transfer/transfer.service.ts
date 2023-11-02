@@ -45,6 +45,14 @@ export class TransferService {
     return shops.map(shops => this.transferShopToPoi(shops, locale));
   }
 
+  public transferHalloweenEventToPoi(halloweenEvent: any, locale?: string): Poi {
+    throw new NotImplementedException("Could not transfer shop to POI");
+  }
+
+  public transferHalloweenEventsToPoi(halloweenEvents: any, locale?: string): Poi[] {
+    return halloweenEvents.map(halloweenEvent => this.transferHalloweenEventToPoi(halloweenEvent, locale));
+  }
+
   public transferHotelToPoi(hotel: any, locale?: string): Poi {
     throw new NotImplementedException("Could not transfer hotel to POI");
   }

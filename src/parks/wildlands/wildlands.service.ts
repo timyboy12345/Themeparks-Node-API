@@ -53,6 +53,7 @@ export class WildlandsService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

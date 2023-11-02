@@ -53,6 +53,7 @@ export class FuturoscopeService extends ThroughPoisThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

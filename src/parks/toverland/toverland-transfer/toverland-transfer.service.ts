@@ -6,6 +6,7 @@ import { ToverlandRide } from '../interfaces/toverland-ride.interface';
 import * as moment from 'moment';
 import { ToverlandFoodAndDrink } from '../interfaces/toverland-foodanddrink.interface';
 import { ToverlandShow, ToverlandShowTime } from '../interfaces/toverland-show.interface';
+import { ToverlandHalloweenEvent } from '../interfaces/toverland-halloween-event.interface';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
 
 @Injectable()
@@ -28,7 +29,30 @@ export class ToverlandTransferService extends TransferService {
     return s;
   }
 
-  transferPoiToPoi(poi: ToverlandRide | ToverlandFoodAndDrink | ToverlandShow, locale: string): Poi {let area;
+  transferHalloweenEventToPoi(halloweenEvent: ToverlandHalloweenEvent, locale: string): Poi {
+    const s = this.transferPoiToPoi(halloweenEvent, locale);
+
+    switch (halloweenEvent.type_id) {
+      case 1:
+        s.category = PoiCategory.HALLOWEEN_SCAREZONE;
+        break;
+      case 3:
+        s.category = PoiCategory.FOODTRUCK;
+        break;
+      case 5:
+        s.category = PoiCategory.HALLOWEEN_MAZE;
+        break;
+      case 6:
+        s.category = PoiCategory.HALLOWEEN_HOUSE;
+        break;
+      default:
+        break;
+    }
+
+    return s;
+  }
+
+  transferPoiToPoi(poi: ToverlandRide | ToverlandFoodAndDrink | ToverlandShow | ToverlandHalloweenEvent, locale: string): Poi {let area;
     switch (poi.area_id) {
       case "2":
         area = "Wunderwald"

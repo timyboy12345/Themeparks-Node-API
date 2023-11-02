@@ -55,6 +55,7 @@ export class ParqueWarnerService extends ThemeParkService {
       supportsShowTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

@@ -28,8 +28,8 @@ export class ParksController {
     const parks = (await this.parksService.getParks()).map(park => park.getFullInfo());
 
     let lines = [];
-    lines.push('| Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support |');
-    lines.push('| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |');
+    lines.push('| Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support | Halloween Support |');
+    lines.push('| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |');
 
     parks.sort((a, b) => {
       if (a.countryCode > b.countryCode) {
@@ -63,6 +63,7 @@ export class ParksController {
       line += ` ${this.capitalizeBoolean(park.supports.supportsRestaurants)} |`;
       line += ` ${this.capitalizeBoolean(park.supports.supportsShows)} |`;
       line += ` ${this.capitalizeBoolean(park.supports.supportsShops)} |`;
+      line += ` ${this.capitalizeBoolean(park.supports.supportsHalloween)} |`;
 
       lines.push(line);
       // lines.push(`| ${this.countryCodeEmoji(park.countryCode)} ${park.name} | ${park.supports.supportsRides} | x | x | x |`);

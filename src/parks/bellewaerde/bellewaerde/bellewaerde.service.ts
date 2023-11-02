@@ -52,6 +52,7 @@ export class BellewaerdeService extends ThemeParkService {
       supportsRideWaitTimesHistory: true,
       supportsAnimals: true,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

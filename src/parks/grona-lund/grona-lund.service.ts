@@ -45,6 +45,7 @@ export class GronaLundService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

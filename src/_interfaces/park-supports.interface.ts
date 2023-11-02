@@ -33,4 +33,9 @@ export interface ThemeParkSupports {
    * @description Whether or not a park supports localized names and descriptions for POIs
    */
   supportsTranslations: boolean;
+
+  /**
+   * @description Whether or not a park supports returning Halloween related items, such as scare zones and experiences
+   */
+  supportsHalloween: boolean;
 }

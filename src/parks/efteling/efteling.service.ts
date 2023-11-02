@@ -59,6 +59,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: true,
       supportsTranslations: false,
+supportsHalloween: false,
     };
   }
 

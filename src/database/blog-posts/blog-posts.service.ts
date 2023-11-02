@@ -15,7 +15,7 @@ export class BlogPostsService {
       where: {
         locale: locale
       },
-      select: ['id', 'slug', 'imageUrl', 'description', 'author', 'locale', 'parkId']
+      select: ['id', 'createdAt', 'slug', 'title', 'imageUrl', 'description', 'author', 'locale', 'parkId']
     });
   }
 
@@ -37,7 +37,34 @@ export class BlogPostsService {
         id: true,
         slug: true,
         locale: true,
+        title: true,
         description: true,
+        imageUrl: true,
+        parkId: true,
+        content: true,
+        createdAt: true,
+        author: {
+          id: true,
+          firstName: true
+        }
+      },
+      relations: ['author']
+    })
+  }
+
+  async find(id: number) {
+    return this.blogPostRepository.findOneOrFail({
+      where: {
+        id: id
+      },
+      select: {
+        id: true,
+        slug: true,
+        locale: true,
+        title: true,
+        description: true,
+        imageUrl: true,
+        parkId: true,
         content: true,
         createdAt: true,
         author: {

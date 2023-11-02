@@ -53,6 +53,7 @@ export class SafariparkService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: false,
       supportsTranslations: false,
+supportsHalloween: false,
     }
   }
 

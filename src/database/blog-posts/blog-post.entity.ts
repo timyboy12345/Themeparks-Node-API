@@ -29,6 +29,12 @@ export class BlogPost {
   slug: string;
 
   @ApiProperty({
+    description: "The title of the blog post"
+  })
+  @Column()
+  title: string;
+
+  @ApiProperty({
     description: "The description of the blog post, SEO-optimized"
   })
   @Column()
