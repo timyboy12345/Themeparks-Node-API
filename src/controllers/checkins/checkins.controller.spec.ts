@@ -8,6 +8,7 @@ import { WaitTime } from '../../database/wait-time/wait-time.entity';
 import { User } from '../../database/users/user.entity';
 import { Checkin } from '../../database/checkins/checkin.entity';
 import { CheckinService } from '../../database/checkins/checkin.service';
+import { BlogPost } from '../../database/blog-posts/blog-post.entity';
 
 describe('CheckinsController', () => {
   let controller: CheckinsController;
@@ -30,11 +31,11 @@ describe('CheckinsController', () => {
             username: configService.get('DATABASE_USERNAME'),
             password: configService.get('DATABASE_PASSWORD'),
             database: configService.get('DATABASE_DATABASE'),
-            entities: [WaitTime, User, Checkin],
+            entities: [BlogPost, WaitTime, User, Checkin],
             synchronize: true,
           }),
         }),
-        TypeOrmModule.forFeature([WaitTime, User, Checkin]),
+        TypeOrmModule.forFeature([BlogPost, WaitTime, User, Checkin]),
       ],
     }).compile();
 

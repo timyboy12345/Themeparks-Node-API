@@ -3,14 +3,16 @@ import { PortaventuraService } from './portaventura.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { PortaVenturaTransferService } from '../portaventura-transfer/porta-ventura-transfer.service';
+import { LocaleModule } from '../../../_services/locale/locale.module';
+import { PortaventuraServiceService } from '../portaventura-service/portaventura-service.service';
 
 describe('PortaventuraService', () => {
   let service: PortaventuraService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot()],
-      providers: [PortaventuraService, PortaVenturaTransferService],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
+      providers: [PortaventuraService, PortaVenturaTransferService, PortaventuraServiceService],
     }).compile();
 
     service = module.get<PortaventuraService>(PortaventuraService);

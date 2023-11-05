@@ -220,4 +220,11 @@ export class ParquesReunidosTransfer extends TransferService {
       return poi;
     });
   }
+
+  transferShopToPoi(shop: any, locale?: string): Poi {
+    const poi =  this.transferRideToPoi(shop, locale)
+    poi.category = PoiCategory.SHOP;
+    delete poi.rideCategory;
+    return poi;
+  }
 }

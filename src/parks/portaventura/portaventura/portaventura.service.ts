@@ -1,23 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
-import { Poi } from '../../../_interfaces/poi.interface';
 import { PortaVenturaTransferService } from '../portaventura-transfer/porta-ventura-transfer.service';
-import { PortaVenturaPoi } from '../interfaces/porta-ventura-poi.interface';
 import { HttpService } from '@nestjs/axios';
+import { PortaventuraServiceService } from '../portaventura-service/portaventura-service.service';
+import { LocaleService } from '../../../_services/locale/locale.service';
 
 @Injectable()
-export class PortaventuraService extends ThemeParkService {
-  private readonly _portaVenturaApiUrl: any;
-
-  constructor(private readonly httpService: HttpService,
-              private readonly configService: ConfigService,
-              private readonly portaVenturaTransferService: PortaVenturaTransferService) {
-    super();
-
-    this._portaVenturaApiUrl = this.configService.get('PORTAVENTURA_API_URL');
+export class PortaventuraService extends PortaventuraServiceService {
+  constructor(
+    configService: ConfigService,
+    httpService: HttpService,
+    portaVenturaTransferService: PortaVenturaTransferService,
+    localeService: LocaleService,
+  ) {
+    super(httpService, configService, portaVenturaTransferService, localeService);
   }
 
   getInfo(): ThemePark {
@@ -35,53 +32,7 @@ export class PortaventuraService extends ThemeParkService {
     };
   }
 
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsPois: true,
-      supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: true,
-      supportsRideWaitTimes: false,
-      supportsRides: true,
-      supportsShowTimes: false,
-      supportsShows: false,
-      supportsPoiLocations: true,
-      supportsShops: false,
-      supportsShopOpeningTimes: false,
-      supportsRideWaitTimesHistory: false,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
-      supportsAnimals: false,
-      supportsTranslations: false,
-supportsHalloween: false,
-    };
-  }
-
-  async getPois(): Promise<Poi[]> {
-    const promises = [
-      this.getRides(),
-      this.getRestaurants(),
-    ];
-    return []
-      .concat
-      .apply([], await Promise.all(promises));
-  }
-
-  async getRides(): Promise<Poi[]> {
-    return this
-      .request<PortaVenturaPoi[]>('atraccion')
-      .then((portaVenturaRidesResponse =>
-        this.portaVenturaTransferService.transferPoisToPois(portaVenturaRidesResponse.data.filter(p => p.parque_id))));
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this
-      .request<PortaVenturaPoi[]>('restaurante')
-      .then((portaVenturaRestaurantsResponse =>
-        this.portaVenturaTransferService.transferPoisToPois(portaVenturaRestaurantsResponse.data.filter(p => p.parque_id))));
-  }
-
-  private request<T>(url: string) {
-    const fullUrl = this._portaVenturaApiUrl + '/' + url + '/en';
-    return this.httpService.get<T>(fullUrl).toPromise();
+  getParkName(): string {
+    return 'PortAventura Park';
   }
 }

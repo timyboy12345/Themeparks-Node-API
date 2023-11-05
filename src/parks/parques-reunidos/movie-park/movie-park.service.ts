@@ -33,4 +33,8 @@ export class MovieParkService extends ParquesReunidosParkService {
   async getShows(): Promise<Poi[]> {
     return this.getNewShows();
   }
+
+  supportsRestaurants(): boolean {
+    return true;
+  }
 }

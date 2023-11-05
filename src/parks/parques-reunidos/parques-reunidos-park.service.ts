@@ -56,7 +56,7 @@ export class ParquesReunidosParkService extends ThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsRides: true,
       supportsShopOpeningTimes: false,
-      supportsShops: false,
+      supportsShops: true,
       supportsShowTimes: supportsShows,
       supportsShows: supportsShows,
       supportsTranslations: true,
@@ -115,6 +115,17 @@ export class ParquesReunidosParkService extends ThemeParkService {
     })
       .toPromise()
       .then((response) => this.transfer.transferShowsResponseToPois(response.data));
+  }
+
+  async getShops(): Promise<Poi[]> {
+    return this.http.get<AtraccionesResponseInterface>(this.apiUrl + '/api/v1/service/shop', {
+      headers: {
+        Authorization: 'Bearer ' + this.apiToken,
+        'Stay-Establishment': this.getStayEstablishment(),
+      },
+    })
+      .toPromise()
+      .then((response) => this.transfer.transferShopsToPois(response.data.data));
   }
 
   async getNewShows(): Promise<Poi[]> {

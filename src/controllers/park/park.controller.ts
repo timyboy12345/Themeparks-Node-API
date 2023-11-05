@@ -123,7 +123,7 @@ export class ParkController {
     status: 404,
     description: 'The requested park could not be found',
   })
-  async getParkRestaurants(@Param() params): Promise<Poi[]> {
+  async getParkRestaurants(@Param() params, @Query() query): Promise<Poi[]> {
     const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsRestaurants) {
@@ -132,7 +132,10 @@ export class ParkController {
 
     return await park.getRestaurants().then(restaurants => {
       return restaurants.map((restaurant) => {
-        delete restaurant.original;
+        if (!query.includeOriginal) {
+          delete restaurant.original;
+        }
+
         return restaurant;
       });
     }) ?? [];
@@ -155,7 +158,7 @@ export class ParkController {
     status: 404,
     description: 'The requested park could not be found',
   })
-  async getParkShows(@Param() params): Promise<Poi[]> {
+  async getParkShows(@Param() params, @Query() query): Promise<Poi[]> {
     const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsShows) {
@@ -164,7 +167,10 @@ export class ParkController {
 
     return await park.getShows().then(shows => {
       return shows.map((show) => {
-        delete show.original;
+        if (!query.includeOriginal) {
+          delete show.original;
+        }
+
         return show;
       });
     }) ?? [];
@@ -187,7 +193,7 @@ export class ParkController {
     status: 404,
     description: 'The requested park could not be found',
   })
-  async getParkShops(@Param() params): Promise<Poi[]> {
+  async getParkShops(@Param() params, @Query() query): Promise<Poi[]> {
     const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsShops) {
@@ -196,7 +202,10 @@ export class ParkController {
 
     return await park.getShops().then(shops => {
       return shops.map((shop) => {
-        delete shop.original;
+        if (!query.includeOriginal) {
+          delete shop.original;
+        }
+
         return shop;
       });
     });
@@ -219,7 +228,7 @@ export class ParkController {
     status: 404,
     description: 'The requested park could not be found',
   })
-  async getParkAnimals(@Param() params): Promise<Poi[]> {
+  async getParkAnimals(@Param() params, @Query() query): Promise<Poi[]> {
     const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsAnimals) {
@@ -228,7 +237,10 @@ export class ParkController {
 
     return await park.getAnimals().then(animals => {
       return animals.map((animal) => {
-        delete animal.original;
+        if (!query.includeOriginal) {
+          delete animal.original;
+        }
+
         return animal;
       });
     });
@@ -251,7 +263,7 @@ export class ParkController {
     status: 404,
     description: 'The requested park could not be found',
   })
-  async getParkHalloweenRelatedItems(@Param() params): Promise<Poi[]> {
+  async getParkHalloweenRelatedItems(@Param() params, @Query() query): Promise<Poi[]> {
     const park = await this.parksService.findPark(params.id, true);
 
     if (!park.getFullInfo().supports.supportsHalloween) {
@@ -260,7 +272,10 @@ export class ParkController {
 
     return await park.getHalloweenEvents().then(halloweenEvents => {
       return halloweenEvents.map((halloweenEvent) => {
-        delete halloweenEvent.original;
+        if (!query.includeOriginal) {
+          delete halloweenEvent.original;
+        }
+
         return halloweenEvent;
       });
     });
