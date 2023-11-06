@@ -42,7 +42,7 @@ export class TransferService {
   }
 
   public transferShopsToPois(shops: any, locale?: string): Poi[] {
-    return shops.map(shops => this.transferShopToPoi(shops, locale));
+    return shops.map((shops: any[]) => this.transferShopToPoi(shops, locale));
   }
 
   public transferHalloweenEventToPoi(halloweenEvent: any, locale?: string): Poi {
@@ -50,7 +50,7 @@ export class TransferService {
   }
 
   public transferHalloweenEventsToPoi(halloweenEvents: any, locale?: string): Poi[] {
-    return halloweenEvents.map(halloweenEvent => this.transferHalloweenEventToPoi(halloweenEvent, locale));
+    return halloweenEvents.map((halloweenEvent: any[]) => this.transferHalloweenEventToPoi(halloweenEvent, locale));
   }
 
   public transferHotelToPoi(hotel: any, locale?: string): Poi {
@@ -58,7 +58,7 @@ export class TransferService {
   }
 
   public transferHotelsToPois(hotels: any, locale?: string): Poi[] {
-    return hotels.map(hotel => this.transferHotelsToPois(hotel, locale));
+    return hotels.map((hotel: any[]) => this.transferHotelsToPois(hotel, locale));
   }
 
   public transferShowTimesToShowTimes(showTimes: any, locale?: string): ShowTimes {
@@ -78,7 +78,7 @@ export class TransferService {
   }
 
   public transferAnimalsToPois(animals: any, locale?: string): Poi[] {
-    return animals.map(animal => this.transferAnimalToPoi(animal, locale));
+    return animals.map((animal: any[]) => this.transferAnimalToPoi(animal, locale));
   }
 
   public transferDataObjectToPois(data: any, ...args): Poi[] {

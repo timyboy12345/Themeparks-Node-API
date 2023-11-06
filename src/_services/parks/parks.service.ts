@@ -49,6 +49,7 @@ import { WalibiFranceService } from '../../parks/walibi/france/walibi-france.ser
 import { FuturoscopeService } from '../../parks/futuroscope/futuroscope.service';
 import { MovieParkService } from '../../parks/parques-reunidos/movie-park/movie-park.service';
 import { ParqueWarnerMadridBeachService } from '../../parks/parques-reunidos/parque-warner-madrid-beach/parque-warner-madrid-beach.service';
+import { HersheyparkService } from '../../parks/hersheypark/hersheypark.service';
 
 @Injectable()
 export class ParksService {
@@ -103,6 +104,7 @@ export class ParksService {
     private readonly _movieParkService: MovieParkService,
     private readonly _parqueWarnerMadridBeach: ParqueWarnerMadridBeachService,
     private readonly _futuroscope: FuturoscopeService,
+    private readonly _hersheypark: HersheyparkService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -147,6 +149,7 @@ export class ParksService {
     this._parks.push(_movieParkService);
     this._parks.push(_parqueWarnerMadridBeach);
     this._parks.push(_futuroscope);
+    this._parks.push(_hersheypark);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
