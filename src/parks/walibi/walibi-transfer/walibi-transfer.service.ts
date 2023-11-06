@@ -81,8 +81,13 @@ export class WalibiTransferService extends TransferService {
     }
 
     if (walibiPoi.additionalContent && walibiPoi.additionalContent.length > 0) {
-      poi.subTitle = walibiPoi.additionalContent[0].title;
-      poi.description = walibiPoi.additionalContent[0].text;
+      if (walibiPoi.additionalContent[0].title) {
+        poi.subTitle = walibiPoi.additionalContent[0].title;
+      }
+
+      if (walibiPoi.additionalContent[0].text) {
+        poi.description = walibiPoi.additionalContent[0].text;
+      }
     }
 
     return poi;
@@ -104,11 +109,16 @@ export class WalibiTransferService extends TransferService {
     return this.transferPoiToPoi(ride);
   }
 
+  public transferHalloweenEventToPoi(halloweenEvent: any, locale?: string): Poi {
+    return this.transferPoiToPoi(halloweenEvent);
+  }
+
   private getCategory(category: string): { poiCategory: PoiCategory, rideCategory?: RideCategory } {
     switch (category) {
       case 'Toiletten':
       case 'Toilets':
       case 'Toilettes':
+      case 'WC':
         return {
           poiCategory: PoiCategory.TOILETS,
         };
@@ -153,10 +163,6 @@ export class WalibiTransferService extends TransferService {
         return {
           poiCategory: PoiCategory.SNACKBAR,
         };
-      case 'Change bébé':
-        return {
-          poiCategory: PoiCategory.UNDEFINED
-        }
       case 'Shop':
       case 'Souvenirs':
         return {
@@ -169,6 +175,7 @@ export class WalibiTransferService extends TransferService {
         }
       case 'FirstAid':
       case 'Premiers secours':
+      case 'EHBO':
         return {
           poiCategory: PoiCategory.FIRSTAID
         }
@@ -178,6 +185,7 @@ export class WalibiTransferService extends TransferService {
           poiCategory: PoiCategory.PARKING
         }
       case 'Accueil point info':
+      case 'Guest Service':
         return {
           poiCategory: PoiCategory.GUEST_SERVICES
         }
@@ -191,8 +199,41 @@ export class WalibiTransferService extends TransferService {
         }
       case 'Zones effrayantes':
       case 'Maisons hantées':
+      case 'Haunted House':
+      case 'Haunted houses':
+        return {
+          poiCategory: PoiCategory.HALLOWEEN_HOUSE
+        }
+      case 'Area':
+      case 'Scare Zone':
+      case 'Scare zones':
+        return {
+          poiCategory: PoiCategory.HALLOWEEN_SCAREZONE
+        }
+      case 'Walkthrough':
+        return {
+          poiCategory: PoiCategory.HALLOWEEN_WALKTROUGH
+        }
+      case 'Experiences':
+        return {
+          poiCategory: PoiCategory.HALLOWEEN_EXPERIENCE
+        }
+      case 'Shows':
+      case 'Spectacles':
+        return {
+          poiCategory: PoiCategory.SHOW
+        }
+      case 'Animations':
         return {
           poiCategory: PoiCategory.HALLOWEEN_EVENT
+        }
+      case 'Change bébé':
+        return {
+          poiCategory: PoiCategory.BABY_SWAP
+        }
+      case 'Activiteiten':
+        return {
+          poiCategory: PoiCategory.EVENT
         }
       default:
         return {

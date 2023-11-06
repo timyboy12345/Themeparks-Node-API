@@ -12,7 +12,7 @@ In the table below you will find the parks that are currently supported and the 
 
 | Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support | Halloween Support |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 🇧🇪 Walibi Belgium | 🎡 | True | True | True | True | False |
+| 🇧🇪 Walibi Belgium | 🎡 | True | True | True | True | True |
 | 🇧🇪 Bellewaerde | 🎡 | True | False | True | False | False |
 | 🇧🇪 Bellewaerde Aquapark | 🌊 | True | False | False | False | False |
 | 🇧🇪 Bobbejaanland | 🎡 | True | True | False | True | False |
@@ -22,14 +22,14 @@ In the table below you will find the parks that are currently supported and the 
 | 🇩🇪 Holiday Park | 🎡 | True | True | True | True | False |
 | 🇩🇪 LegoLand Deutschland | 🎡 | False | False | False | False | False |
 | 🇩🇪 Hansa Park | 🎡 | True | True | True | True | False |
-| 🇩🇪 Movie Park Germany | 🎡 | True | False | True | False | False |
+| 🇩🇪 Movie Park Germany | 🎡 | True | True | True | True | False |
 | 🇩🇰 Tivoli | 🎡 | True | True | True | False | False |
-| 🇪🇸 Portaventura | 🎡 | True | True | False | False | False |
-| 🇪🇸 Ferrari Land | 🎡 | True | True | False | False | False |
+| 🇪🇸 Portaventura | 🎡 | True | True | True | True | False |
+| 🇪🇸 Ferrari Land | 🎡 | True | True | True | True | False |
 | 🇪🇸 Parque Warner | 🎡 | True | True | True | True | False |
-| 🇪🇸 Parque de Atracciones Madrid | 🎡 | True | False | True | False | False |
-| 🇪🇸 Parque Warner Beach | 🌊 | True | True | False | False | False |
-| 🇫🇷 Walibi Rhône-Alpes | 🎡 | True | True | True | True | False |
+| 🇪🇸 Parque de Atracciones Madrid | 🎡 | True | False | True | True | False |
+| 🇪🇸 Parque Warner Beach | 🌊 | True | True | False | True | False |
+| 🇫🇷 Walibi Rhône-Alpes | 🎡 | True | True | True | True | True |
 | 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True | False |
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True | False |
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False | False |
@@ -40,7 +40,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇬🇧 Chessington world of Adventures | 🎡 | True | True | True | True | False |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True | False |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False | True |
-| 🇳🇱 Walibi Holland | 🎡 | True | True | True | True | False |
+| 🇳🇱 Walibi Holland | 🎡 | True | True | True | True | True |
 | 🇳🇱 DippieDoe | 🎡 | True | False | False | False | False |
 | 🇳🇱 Hellendoorn | 🎡 | True | True | True | True | False |
 | 🇳🇱 Ouwehands Dierenpark | 🦁 | False | False | False | False | False |

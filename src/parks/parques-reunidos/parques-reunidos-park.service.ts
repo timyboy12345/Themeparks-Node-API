@@ -13,6 +13,7 @@ export class ParquesReunidosParkService extends ThemeParkService {
   private readonly apiUrl: string;
   private readonly apiToken: string;
 
+  // TODO: Parque Reunidos supports multiple locales
   constructor(
     private readonly configService: ConfigService,
     private readonly http: HttpService,

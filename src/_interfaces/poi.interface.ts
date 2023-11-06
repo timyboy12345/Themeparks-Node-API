@@ -6,6 +6,7 @@ import { RideCategory } from './ride-category.interface';
 import { Translation } from './translation.interface';
 import { PoiMenuItemInterface } from './poi-menu-item.interface';
 import { PoiFact } from './poi-fact.interface';
+import { PoiVideo } from './poi-video.interface';
 
 export interface Poi {
   /**
@@ -158,6 +159,11 @@ export interface Poi {
    * A full URL that leads to the official web page for this ride
    */
   website_url?: string;
+
+  /**
+   * A full URL that leads to a video of this ride
+   */
+  videos?: PoiVideo[];
 
   /**
    * A full URL that leads to the menu for this location

@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/node';
 import { ConfigService } from '@nestjs/config';
 import { WalibiTransferService } from './walibi-transfer/walibi-transfer.service';
 import { HttpService } from '@nestjs/axios';
+import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 
 @Injectable()
 export class WalibiService extends ThemeParkService {
@@ -19,6 +20,27 @@ export class WalibiService extends ThemeParkService {
 
     this._walibiApiUrl = this.configService.get('WALIBI_API_URL');
     this._walibiApiToken = this.configService.get('WALIBI_API_TOKEN');
+  }
+
+  getSupports(): ThemeParkSupports {
+    return {
+      supportsPois: true,
+      supportsRestaurantOpeningTimes: false,
+      supportsRestaurants: true,
+      supportsRideWaitTimes: false,
+      supportsRides: true,
+      supportsShowTimes: false,
+      supportsShows: true,
+      supportsPoiLocations: true,
+      supportsShops: true,
+      supportsShopOpeningTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsOpeningTimesHistory: false,
+      supportsOpeningTimes: false,
+      supportsAnimals: false,
+      supportsTranslations: false,
+      supportsHalloween: true,
+    };
   }
 
   async getPois(): Promise<Poi[]> {
@@ -54,6 +76,12 @@ export class WalibiService extends ThemeParkService {
   async getRestaurants(): Promise<Poi[]> {
     return this.request<WalibiEntertainmentsResponse>('/entertainments?_format=json').then(axiosEntertainmentsData => {
       return this.walibiTransferService.transferRestaurantsToPois(axiosEntertainmentsData.data.restaurant);
+    });
+  }
+
+  async getHalloweenEvents(): Promise<Poi[]> {
+    return this.request<WalibiEntertainmentsResponse>('/entertainments?_format=json').then(axiosEntertainmentsData => {
+      return this.walibiTransferService.transferRestaurantsToPois(axiosEntertainmentsData.data.halloween);
     });
   }
 

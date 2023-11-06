@@ -5,6 +5,7 @@ export interface WalibiEntertainmentsResponse {
   animals: WalibiEntertainment[],
   entertainment: WalibiEntertainment[],
   restaurant: WalibiEntertainment[],
+  halloween: WalibiEntertainment[],
   shop: WalibiEntertainment[],
   show: WalibiEntertainment[],
   service: WalibiEntertainment[],

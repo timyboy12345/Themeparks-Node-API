@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { WalibiService } from '../walibi.service';
 
 @Injectable()
@@ -17,27 +16,6 @@ export class WalibiHollandService extends WalibiService {
         lat: 52.44020062282858,
         lng: 5.76276265766736,
       },
-    };
-  }
-
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsPois: true,
-      supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: true,
-      supportsRideWaitTimes: false,
-      supportsRides: true,
-      supportsShowTimes: false,
-      supportsShows: true,
-      supportsPoiLocations: true,
-      supportsShops: true,
-      supportsShopOpeningTimes: false,
-      supportsRideWaitTimesHistory: false,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
-      supportsAnimals: false,
-      supportsTranslations: false,
-supportsHalloween: false,
     };
   }
 

@@ -80,6 +80,19 @@ export class HansaParkTransferService extends TransferService {
       }];
     }
 
+    // TODO: Add videos once URLs are not encoded
+    // if (poi.videos) {
+    //   p.videos = poi.videos
+    //     .filter((video) => video.provider === 'youtube')
+    //     .map((v) => {
+    //       return {
+    //         platform: 'YOUTUBE',
+    //         embed_id: v.embedId,
+    //         full_url: v.url,
+    //       };
+    //     });
+    // }
+
     return p;
   }
 }

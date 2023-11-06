@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { PortaventuraServiceService } from '../portaventura-service/portaventura-service.service';
 
 @Injectable()
@@ -17,27 +16,6 @@ export class FerrariLandService extends PortaventuraServiceService {
         lat: 41.084718452772584,
         lng: 1.1520460265615593,
       },
-    };
-  }
-
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsPois: true,
-      supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: true,
-      supportsRideWaitTimes: false,
-      supportsRides: true,
-      supportsShowTimes: false,
-      supportsShows: false,
-      supportsPoiLocations: true,
-      supportsShops: false,
-      supportsShopOpeningTimes: false,
-      supportsRideWaitTimesHistory: false,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
-      supportsAnimals: false,
-      supportsTranslations: false,
-      supportsHalloween: false,
     };
   }
 

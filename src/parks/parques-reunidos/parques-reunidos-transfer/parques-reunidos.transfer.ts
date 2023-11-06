@@ -192,9 +192,7 @@ export class ParquesReunidosTransfer extends TransferService {
       }
     })
 
-    const parsedShows = uniqueShows.map(show => this.transferRepetitionShowToPoi(show, locale));
-
-    return parsedShows;
+    return uniqueShows.map(show => this.transferRepetitionShowToPoi(show, locale));
   }
 
   transferRepetitionShowToPoi(show, locale) {

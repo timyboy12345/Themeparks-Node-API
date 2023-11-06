@@ -23,11 +23,10 @@ describe('EnergylandiaService', () => {
     expect(service.getInfo().id).toBeDefined();
   });
 
-  // TODO: Re-enable once energylandia is working again
-  // it('should return a list of POIs', async () => {
-  //   const data = await service.getPois();
-  //   expect(data).toBeInstanceOf(Array);
-  // }, 1000 * 20);
+  it('should return a list of POIs', async () => {
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
+  }, 1000 * 20);
 
   it('should return a list of Shows', async () => {
     const data = await service.getShows();

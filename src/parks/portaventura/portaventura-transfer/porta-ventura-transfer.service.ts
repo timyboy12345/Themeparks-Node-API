@@ -6,12 +6,12 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 
 @Injectable()
 export class PortaVenturaTransferService extends TransferService {
-  // TODO: Add all supported elements
   transferPoiToPoi(poi: PortaVenturaPoi, locale?: string): Poi {
     const p: Poi = {
       id: `${poi.id}`,
-      title: poi.attributes.name,
       category: undefined,
+      title: poi.attributes.name,
+      subTitle: poi.attributes.tagLine,
       description: poi.attributes.description,
       location: {
         lat: poi.attributes.latitude,
@@ -43,11 +43,33 @@ export class PortaVenturaTransferService extends TransferService {
       })
 
       p.images = images;
+      p.image_url = images[0];
       p.previewImage = thumb;
+    }
+
+    if (poi.attributes.adultMinimumHeight) {
+      if (!poi.attributes.minimumHeight || poi.attributes.minimumHeight !== poi.attributes.adultMinimumHeight) {
+        p.minSizeWithEscort = Math.round(poi.attributes.adultMinimumHeight * 100);
+      }
+    }
+
+    if (poi.attributes.minimumHeight) {
+      p.minSizeWithoutEscort = Math.round(poi.attributes.minimumHeight * 100);
+    }
+
+    if (poi.attributes.maximumHeight) {
+      p.maxSize = Math.round(poi.attributes.maximumHeight * 100);
     }
 
     if (poi.attributes.area && poi.attributes.area.data) {
       p.area = poi.attributes.area.data.attributes.name
+    }
+
+    if (poi.attributes.videoUrl) {
+      p.videos = [{
+        platform: 'YOUTUBE',
+        full_url: poi.attributes.videoUrl
+      }]
     }
 
     return p;

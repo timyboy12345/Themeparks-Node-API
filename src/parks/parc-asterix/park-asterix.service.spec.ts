@@ -3,13 +3,14 @@ import { ParcAsterixService } from './parc-asterix.service';
 import { ParcAsterixTransferService } from './parc-asterix-transfer/parc-asterix-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 describe('ParkAsterixService', () => {
   let service: ParcAsterixService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
       providers: [ParcAsterixService, ParcAsterixTransferService],
     }).compile();
 
@@ -25,9 +26,7 @@ describe('ParkAsterixService', () => {
   });
 
   it('should return a list of POIs', async () => {
-    // TODO: Temporarily disabled, since it is buggy
-    // const data = await service.getPois();
-    // expect(data).toBeInstanceOf(Array);
-    expect(true).toBe(true);
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
   });
 });
