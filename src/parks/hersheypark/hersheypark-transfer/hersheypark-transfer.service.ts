@@ -16,6 +16,7 @@ export class HersheyparkTransferService extends TransferService {
       description: poi.description,
       images: poi.images,
       image_url: poi.thumbnail,
+      // TODO: Fix Park Area
       area: poi.parkarea?.name,
       facts: [],
       fastpass: poi.fasttrack,

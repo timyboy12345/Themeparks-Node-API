@@ -33,8 +33,8 @@ export class HersheyparkService extends ThroughPoisThemeParkService {
       image: 'https://www.hersheypa.com/assets/images/things-to-do/attractions/hersheypark/hershey-pa-candymonium-reeses-hero-01-2023.jpg',
       description: 'Hersheypark is een attractiepark in Hershey, Pennsylvania dicht bij de Hershey chocoladefabriek gesitueerd. Hershey Park werd in 1907 geopend als ontspanningsplaats voor de medewerkers van the Hershey Chocolate Company, een Amerikaanse snoepfabriek. Later besloot het bedrijf het park open te stellen voor iedereen.',
       location: {
-        lat: 40.288666325275635,
-        lng: -76.65457523862625,
+        lat: 40.287681,
+        lng: -76.658579,
       },
       parkType: ParkType.THEMEPARK,
       timezone: 'America/New_York',

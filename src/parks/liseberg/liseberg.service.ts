@@ -22,14 +22,14 @@ export class LisebergService extends ThemeParkService {
       id: 'liseberg',
       name: 'Liseberg',
       description: 'Liseberg is een attractiepark in Göteborg in Zweden. Het park is geopend in 1923, is gelegen aan de snelweg en is te zien bij binnenkomst van Göteborg. Het park ontvangt per jaar ongeveer 3 miljoen bezoekers, waarmee het het meest bezochte attractiepark van Scandinavië is.',
-      image: 'https://www.liseberg.com/optimized/facebook/9e5815d4/globalassets/for-foretag/grupper-event/helix_150308_sommar_4.jpg',
+      image: 'https://www.liseberg.se/optimized/facebook/046e6139/globalassets/parken/parkvyer/hela-parken-vy.jpg',
       parkType: ParkType.THEMEPARK,
       countryCode: 'se',
       timezone: 'Europe/Stockholm',
       location: {
         lat: 57.6962467,
-        lng: 11.9856468
-      }
+        lng: 11.9856468,
+      },
     };
   }
 
@@ -50,7 +50,7 @@ export class LisebergService extends ThemeParkService {
       supportsShowTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsHalloween: false,
     };
   }
 

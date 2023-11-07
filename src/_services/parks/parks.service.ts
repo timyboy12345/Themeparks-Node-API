@@ -50,6 +50,7 @@ import { FuturoscopeService } from '../../parks/futuroscope/futuroscope.service'
 import { MovieParkService } from '../../parks/parques-reunidos/movie-park/movie-park.service';
 import { ParqueWarnerMadridBeachService } from '../../parks/parques-reunidos/parque-warner-madrid-beach/parque-warner-madrid-beach.service';
 import { HersheyparkService } from '../../parks/hersheypark/hersheypark.service';
+import { SeaworldService } from '../../parks/seaworld/seaworld.service';
 
 @Injectable()
 export class ParksService {
@@ -105,6 +106,7 @@ export class ParksService {
     private readonly _parqueWarnerMadridBeach: ParqueWarnerMadridBeachService,
     private readonly _futuroscope: FuturoscopeService,
     private readonly _hersheypark: HersheyparkService,
+    private readonly _seaworldCompanyService: SeaworldService
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -154,6 +156,7 @@ export class ParksService {
     this._companies = [];
     this._companies.push(_sixflagsService);
     this._companies.push(_cedarFairService);
+    this._companies.push(_seaworldCompanyService);
   }
 
   public async getParks(): Promise<ThemeParkService[]> {
