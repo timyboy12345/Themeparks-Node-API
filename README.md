@@ -38,6 +38,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇬🇧 Alton Towers | 🎡 | True | True | True | True | False |
 | 🇬🇧 Paultons Park | 🎡 | True | True | True | True | False |
 | 🇬🇧 Chessington world of Adventures | 🎡 | True | True | True | True | False |
+| 🇮🇹 Gardaland | 🎡 | True | True | True | False | False |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True | False |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False | True |
 | 🇳🇱 Walibi Holland | 🎡 | True | True | True | True | True |
@@ -104,7 +105,7 @@ In the table below you will find the parks that are currently supported and the 
 ## Parks on the planning
 
 UK: Pleasure Beach, LegoLand Windsor, Drayton Manor
-IT: Gardaland, Cincetitta World
+IT: Cincetitta World, **Mirabilandia**
 ES: Puy de Fou Espana
 DE: Europapark, Rulantica, Heidi Park
 OO: Familypark

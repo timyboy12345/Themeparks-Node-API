@@ -9,6 +9,7 @@ import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import * as fs from 'fs';
 import { HttpService } from '@nestjs/axios';
+import * as Sentry from '@sentry/node';
 
 const unzipper = require('unzipper');
 
@@ -43,7 +44,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsPois: true,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsHalloween: false,
     };
   }
 
@@ -121,24 +122,24 @@ supportsHalloween: false,
     };
 
     return new Promise((resolve, reject) => {
-    this.httpService
-      .get(
-        this._attractionsIoApiUrl + '/data',
-        config,
-      )
-      .toPromise()
-      .then(() => {
-        // When the call is successful, a redirect status code was not given
-        // This means something went wrong
-        console.error('SUCCESS BUT ACTUALLY AN ERROR');
-        reject();
-      })
-      .catch((reason: AxiosError) => {
-        if (reason.response.status === 303) {
-          const headers = reason.response.headers;
-          resolve(headers.location);
-          return;
-        }
+      this.httpService
+        .get(
+          this._attractionsIoApiUrl + '/data',
+          config,
+        )
+        .toPromise()
+        .then(() => {
+          // When the call is successful, a redirect status code was not given
+          // This means something went wrong
+          console.error('SUCCESS BUT ACTUALLY AN ERROR');
+          reject();
+        })
+        .catch((reason: AxiosError) => {
+          if (reason.response.status === 303) {
+            const headers = reason.response.headers;
+            resolve(headers.location);
+            return;
+          }
 
         console.error('FAILED');
         console.error(`${reason.response.status} / ${reason.response.statusText}`);
@@ -163,11 +164,11 @@ supportsHalloween: false,
         .toPromise()
         .then(value => {
           if (!fs.existsSync(`${__dirname}/../../../storage`)) {
-            fs.mkdirSync(`${__dirname}/../../../storage`)
+            fs.mkdirSync(`${__dirname}/../../../storage`);
           }
 
           if (!fs.existsSync(`${__dirname}/../../../storage/aio`)) {
-            fs.mkdirSync(`${__dirname}/../../../storage/aio`)
+            fs.mkdirSync(`${__dirname}/../../../storage/aio`);
           }
 
           fs.writeFile(downloadLocation, value.data, function(err) {
@@ -200,24 +201,27 @@ supportsHalloween: false,
   }
 
   public getDefaultLanguage(): string {
-    return 'en-GB'
+    return 'en-GB';
   }
 
   async getPois(): Promise<Poi[]> {
-    const url = await this.getDataUrl()
-      .then((value) => {
-        return value;
-      })
-      .catch(reason => {
-        console.error(reason);
-      });
-
     const inputPath = `${__dirname}/../../../storage/aio/${this.getInstallationDirectory()}.zip`;
     const outputPath = `${__dirname}/../../../storage/aio/${this.getInstallationDirectory()}-output/`;
 
+    // TODO: Add a system that invalidates old information (fs.stat or fs.statSync?)
     const settingsExists = fs.existsSync(`${outputPath}/records.json`);
 
     if (!settingsExists) {
+      const url = await this.getDataUrl()
+        .then((value) => {
+          return value;
+        })
+        .catch(reason => {
+          console.error(reason);
+          Sentry.captureException(reason);
+          throw reason;
+        });
+
       await this.downloadZip(url, inputPath)
         .then(() => {
           console.log(`Zip file downloaded to ${inputPath}`);

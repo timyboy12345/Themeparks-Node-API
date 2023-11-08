@@ -73,11 +73,11 @@ export class ParksController {
   }
 
   /**
-   * convert country code to corresponding flag emoji
+   * Convert country code to corresponding flag emoji
    * @param {string} cc - country code string
    * @returns {string} flag emoji
    */
-  private countryCodeEmoji(cc) {
+  private countryCodeEmoji(cc): string {
     // country code regex
     const CC_REGEX = /^[a-z]{2}$/i;
 
@@ -100,6 +100,11 @@ export class ParksController {
     return String.fromCodePoint(...codePoints);
   }
 
+  /**
+   * Capitalize the first letter of a word
+   * @param string The string to capitalize
+   * @private
+   */
   private capitalize(string: string) {
     return string.slice(0, 1).toUpperCase() + string.slice(1);
   };
