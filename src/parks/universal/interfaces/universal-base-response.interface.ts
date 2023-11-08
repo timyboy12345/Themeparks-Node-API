@@ -52,6 +52,7 @@ export interface UniversalBaseItem {
   'LandId': number,
   'VenueId': number,
   'MblShortDescription': string,
+  'MblLongDescription': string,
   'Longitude': number,
   'Latitude': number,
   'DetailImages': string[],
@@ -73,6 +74,29 @@ export interface UniversalBaseItem {
 
   // DiningLocations
   DiningMenusLinks?: { MenuText: string, MenuLink: string }[]
+
+  // Shows
+  'StartTimes': [
+    '10:30:00',
+    '11:30:00',
+    '12:30:00',
+    '14:00:00',
+    '15:00:00',
+    '16:00:00'
+  ],
+  'StartDateTimes': [
+    '2023-11-08 10:30:00',
+    '2023-11-08 11:30:00',
+    '2023-11-08 12:30:00',
+    '2023-11-08 14:00:00',
+    '2023-11-08 15:00:00',
+    '2023-11-08 16:00:00'
+  ],
+  'EndTimes': [],
+  'EndDateTimes': [],
+  'ShowTypes': UniversalShowType[],
+  'ContinuousUntilParkClose': boolean,
+  'Tier': 'Tier1' | 'Tier2' | 'Tier3',
 }
 
 export enum UniversalCategory {
@@ -96,7 +120,14 @@ export enum UniversalCategory {
   Rides = 'Rides',
   ServiceAnimalRestAreas = 'ServiceAnimalRestAreas',
   Shops = 'Shops',
-  Shows = 'Shows',
   SmokingAreas = 'SmokingAreas',
+  Shows = 'Shows',
   GameHub = 'GameHub',
+}
+
+export enum UniversalShowType {
+  Music = 'Music',
+  Action = 'Action',
+  Comedy = 'Comedy',
+  Character = 'Character',
 }

@@ -7,6 +7,8 @@ import {
   UniversalCategory,
 } from '../interfaces/universal-base-response.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import { ShowTime } from '../../../_interfaces/showtimes.interface';
+import * as moment from 'moment-timezone'
 
 @Injectable()
 export class UniversalTransferService extends TransferService {
@@ -34,6 +36,29 @@ export class UniversalTransferService extends TransferService {
     if (poi.DiningMenusLinks && poi.DiningMenusLinks.length > 0) {
       p.menuUrl = poi.DiningMenusLinks[0].MenuLink
     }
+
+    if (poi.StartDateTimes) {
+      let dateTime = moment.tz('America/New_York');
+
+      let showTimes: ShowTime[] = poi.StartDateTimes
+        .map((st) => {
+          return {
+            from: moment(st).tz('America/New_York', true).format(),
+            fromTime: st.split(' ')[1],
+            isPassed: moment(st).tz('America/New_York', true).isBefore()
+          }
+        })
+
+      p.showTimes = {
+        allShowTimes: showTimes,
+        currentDate: dateTime.format(),
+        futureShowTimes: showTimes.filter((s) => !s.isPassed),
+        pastShowTimes: showTimes.filter((s) => !s.isPassed),
+        todayShowTimes: showTimes
+      };
+    }
+
+    // TODO: Add Restaurant Opening Times
 
     return p
   }

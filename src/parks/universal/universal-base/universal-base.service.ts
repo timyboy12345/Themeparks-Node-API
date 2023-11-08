@@ -29,7 +29,7 @@ export class UniversalBaseService extends ThroughPoisThemeParkService {
       supportsHalloween: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
-      supportsPoiLocations: false,
+      supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
@@ -38,7 +38,7 @@ export class UniversalBaseService extends ThroughPoisThemeParkService {
       supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: true,
-      supportsShowTimes: false,
+      supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false
     }
