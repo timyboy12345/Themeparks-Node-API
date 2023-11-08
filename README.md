@@ -55,6 +55,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Dollywood | 🎡 | True | False | False | False | False |
 | 🇺🇸 Silver Dollar City | 🎡 | True | False | False | False | False |
 | 🇺🇸 San Diego Zoo | 🦁 | True | True | True | True | False |
+| 🇺🇸 Hersheypark | 🎡 | True | True | True | True | False |
 | 🇺🇸 Six Flags Over Texas | 🎡 | True | True | True | True | False |
 | 🇺🇸 Six Flags Over Georgia | 🎡 | True | True | True | True | False |
 | 🇺🇸 Six Flags St. Louis | 🎡 | True | True | True | True | False |
@@ -91,13 +92,21 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Michigans Adventure | 🎡 | True | True | True | True | False |
 | 🇺🇸 Valley Fair | 🎡 | True | True | True | True | False |
 | 🇺🇸 Worlds of Fun | 🎡 | True | True | True | True | False |
+| 🇺🇸 Seaworld San Antonio | 🎡 | True | True | True | True | False |
+| 🇺🇸 Seaworld San Diego | 🎡 | True | True | True | True | False |
+| 🇺🇸 Seaworld Orlando | 🎡 | True | True | True | True | False |
+| 🇺🇸 Bush Gardens Tampa Bay | 🎡 | True | True | True | True | False |
+| 🇺🇸 Bush Gardens Williamsburg | 🎡 | True | True | True | True | False |
+| 🇺🇸 Universal Studios Orlando | 🎡 | True | True | True | True | False |
+| 🇺🇸 Islands of Adventure | 🎡 | True | True | True | True | False |
+| 🇺🇸 Universal Studios Hollywood | 🎡 | True | True | True | True | False |
 
 ## Parks on the planning
 
 UK: Pleasure Beach, LegoLand Windsor, Drayton Manor
 IT: Gardaland, Cincetitta World
 ES: Puy de Fou Espana
-DE: Movie Park, Europapark, Rulantica, Heidi Park
+DE: Europapark, Rulantica, Heidi Park
 OO: Familypark
 FR: Puy de Fou
 DM: Legoland Billund, Djurs Sommerland, Farup Sommerland

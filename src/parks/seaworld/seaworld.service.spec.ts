@@ -6,13 +6,15 @@ import { SeaworldOrlandoService } from './seaworld-orlando/seaworld-orlando.serv
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 import { SeaworldTransferService } from './seaworld-transfer/seaworld-transfer.service';
+import { BushGardensTampaBayService } from './bush-gardens-tampa-bay/bush-gardens-tampa-bay.service';
+import { BushGardensWilliamsburgService } from './bush-gardens-williamsburg/bush-gardens-williamsburg.service';
 
 describe('SeaworldService', () => {
   let service: SeaworldService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [SeaworldService, SeaworldTransferService, SeaworldSanDiegoService, SeaworldSanAntonioService, SeaworldOrlandoService],
+      providers: [SeaworldService, SeaworldTransferService, SeaworldSanDiegoService, SeaworldSanAntonioService, SeaworldOrlandoService, BushGardensTampaBayService, BushGardensWilliamsburgService],
       imports: [ConfigModule.forRoot(), HttpModule],
     }).compile();
 

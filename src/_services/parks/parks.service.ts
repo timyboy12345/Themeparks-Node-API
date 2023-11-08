@@ -44,13 +44,18 @@ import * as Sentry from '@sentry/node';
 import { SafariparkService } from '../../parks/beekse-bergen/safaripark/safaripark.service';
 import { SpeellandService } from '../../parks/beekse-bergen/speelland/speelland.service';
 import { DollywoodService } from '../../parks/herschend/dollywood/dollywood.service';
-import { ParqueDeAtraccionesService } from '../../parks/parques-reunidos/parque-de-atracciones/parque-de-atracciones.service';
+import {
+  ParqueDeAtraccionesService,
+} from '../../parks/parques-reunidos/parque-de-atracciones/parque-de-atracciones.service';
 import { WalibiFranceService } from '../../parks/walibi/france/walibi-france.service';
 import { FuturoscopeService } from '../../parks/futuroscope/futuroscope.service';
 import { MovieParkService } from '../../parks/parques-reunidos/movie-park/movie-park.service';
-import { ParqueWarnerMadridBeachService } from '../../parks/parques-reunidos/parque-warner-madrid-beach/parque-warner-madrid-beach.service';
+import {
+  ParqueWarnerMadridBeachService,
+} from '../../parks/parques-reunidos/parque-warner-madrid-beach/parque-warner-madrid-beach.service';
 import { HersheyparkService } from '../../parks/hersheypark/hersheypark.service';
 import { SeaworldService } from '../../parks/seaworld/seaworld.service';
+import { UniversalService } from '../../parks/universal/universal.service';
 
 @Injectable()
 export class ParksService {
@@ -106,7 +111,8 @@ export class ParksService {
     private readonly _parqueWarnerMadridBeach: ParqueWarnerMadridBeachService,
     private readonly _futuroscope: FuturoscopeService,
     private readonly _hersheypark: HersheyparkService,
-    private readonly _seaworldCompanyService: SeaworldService
+    private readonly _seaworldCompanyService: SeaworldService,
+    private readonly _universalService: UniversalService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -157,6 +163,7 @@ export class ParksService {
     this._companies.push(_sixflagsService);
     this._companies.push(_cedarFairService);
     this._companies.push(_seaworldCompanyService);
+    this._companies.push(_universalService);
   }
 
   public async getParks(): Promise<ThemeParkService[]> {

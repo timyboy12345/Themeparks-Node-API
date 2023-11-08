@@ -22,7 +22,7 @@ export class SeaworldBaseService extends ThroughPoisThemeParkService {
       supportsHalloween: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
-      supportsPoiLocations: false,
+      supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,

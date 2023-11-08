@@ -26,4 +26,5 @@ export enum Company {
   SIXFLAGS = 'SIXFLAGS',
   CEDAR_FAIR = 'CEDAR_FAIR',
   SEAWORLD = 'SEAWORLD',
+  UNIVERSAL = 'UNIVERSAL',
 }
