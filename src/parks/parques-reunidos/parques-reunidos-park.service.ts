@@ -70,7 +70,9 @@ export class ParquesReunidosParkService extends ThemeParkService {
     };
   }
 
-  trackWaitTimes(): bool { return false }
+  public trackWaitTimes(): bool { 
+    return false
+  }
 
   async getPois(): Promise<Poi[]> {
     const promises = [];
