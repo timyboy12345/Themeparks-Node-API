@@ -80,7 +80,7 @@ export class ThemeParkService {
   }
 
   async getHalloweenEvents(): Promise<Poi[]> {
-    throw new NotImplementedException("Could not get animals");
+    throw new NotImplementedException("Could not get halloween events");
   }
 
   async getHalloweenEvent(id: string): Promise<Poi> {

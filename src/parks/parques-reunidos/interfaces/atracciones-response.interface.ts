@@ -1,5 +1,5 @@
 export interface AtraccionesResponseInterface {
-  'data': AtraccionesResponseInterface[]
+  'data': AtraccionesResponseAtraccioneInterface[]
 }
 
 export interface AtraccionesResponseAtraccioneInterface {

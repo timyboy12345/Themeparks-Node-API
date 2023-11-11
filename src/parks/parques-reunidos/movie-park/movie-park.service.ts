@@ -37,4 +37,8 @@ export class MovieParkService extends ParquesReunidosParkService {
   supportsRestaurants(): boolean {
     return true;
   }
+
+  halloweenCategories(): (string | number)[] {
+    return [48231]
+  }
 }

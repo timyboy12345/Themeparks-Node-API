@@ -17,7 +17,7 @@ import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service'
 import { LegolandDeutschlandService } from '../../parks/legoland/legoland-deutschland/legoland-deutschland.service';
 import { CompanyService } from '../company/company.service';
 import { SixflagsService } from '../../parks/sixflags/sixflags.service';
-import { BobbejaanlandService } from '../../parks/bobbejaanland/bobbejaanland.service';
+import { BobbejaanlandService } from '../../parks/parques-reunidos/bobbejaanland/bobbejaanland.service';
 import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-panne/plopsaland-de-panne.service';
 import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
 import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouwehands-dierenpark.service';
@@ -57,6 +57,7 @@ import { HersheyparkService } from '../../parks/hersheypark/hersheypark.service'
 import { SeaworldService } from '../../parks/seaworld/seaworld.service';
 import { UniversalService } from '../../parks/universal/universal.service';
 import { GardalandService } from '../../parks/gardaland/gardaland.service';
+import { MirabilandiaService } from '../../parks/parques-reunidos/mirabilandia/mirabilandia.service';
 
 @Injectable()
 export class ParksService {
@@ -115,6 +116,7 @@ export class ParksService {
     private readonly _seaworldCompanyService: SeaworldService,
     private readonly _universalService: UniversalService,
     private readonly _gardaland: GardalandService,
+    private readonly _mirabilandia: MirabilandiaService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -161,6 +163,7 @@ export class ParksService {
     this._parks.push(_futuroscope);
     this._parks.push(_hersheypark);
     this._parks.push(_gardaland)
+    this._parks.push(_mirabilandia)
 
     this._companies = [];
     this._companies.push(_sixflagsService);

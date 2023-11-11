@@ -45,6 +45,7 @@ export class ParquesReunidosTransfer extends TransferService {
 
     if (ride.photographs && ride.photographs.length > 0) {
       r.previewImage = `https://s3-eu-west-1.amazonaws.com/stayapp.cms/${ride.photographs[0]}/${ride.photographs[0]}_appthumb`;
+      r.image_url = `https://s3-eu-west-1.amazonaws.com/stayapp.cms/${ride.photographs[0]}/${ride.photographs[0]}_appthumb`;
       r.images = [];
 
       ride.photographs.forEach((photo) => {
@@ -68,14 +69,18 @@ export class ParquesReunidosTransfer extends TransferService {
       // Nickelodeon Land
       case 7881:
         break;
+      // Casa del Terror
+      case 36921:
+        r.category = PoiCategory.HALLOWEEN_EVENT;
+        break;
+      // Movie park: Scare maze
+      case 48231:
+        r.category = PoiCategory.HALLOWEEN_WALKTROUGH;
+        break;
       // No disponibles
       case 29844:
       default:
         r.rideCategory = RideCategory.UNDEFINED;
-        break;
-      // Casa del Terror
-      case 36921:
-        r.category = PoiCategory.HALLOWEEN_EVENT;
         break;
     }
 

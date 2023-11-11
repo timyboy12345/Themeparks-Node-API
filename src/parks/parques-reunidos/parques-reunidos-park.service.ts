@@ -37,6 +37,10 @@ export class ParquesReunidosParkService extends ThemeParkService {
     return false;
   }
 
+  public halloweenCategories(): (string | number)[] {
+    return [];
+  }
+
   public getShowCategoryID(): string {
     throw new NotImplementedException('Show Category ID not set');
   }
@@ -44,12 +48,13 @@ export class ParquesReunidosParkService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     const supportsShows = this.getShowType() !== 'unsupported';
     const supportsRestaurants = this.supportsRestaurants();
+    const supportsHalloween = this.halloweenCategories().length > 0;
 
     return {
       supportsAnimals: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
-      supportsPoiLocations: false,
+      supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: supportsRestaurants,
@@ -61,7 +66,7 @@ export class ParquesReunidosParkService extends ThemeParkService {
       supportsShowTimes: supportsShows,
       supportsShows: supportsShows,
       supportsTranslations: true,
-      supportsHalloween: false,
+      supportsHalloween: supportsHalloween,
     };
   }
 
@@ -80,6 +85,10 @@ export class ParquesReunidosParkService extends ThemeParkService {
       promises.push(this.getRestaurants());
     }
 
+    if (this.getSupports().supportsHalloween) {
+      promises.push(this.getHalloweenEvents());
+    }
+
     return []
       .concat
       .apply([], await Promise.all(promises));
@@ -93,7 +102,13 @@ export class ParquesReunidosParkService extends ThemeParkService {
       },
     })
       .toPromise()
-      .then((response) => this.transfer.transferRidesToPois(response.data.data));
+      .then((response) => {
+        if (this.halloweenCategories().length > 0) {
+          return this.transfer.transferRidesToPois(response.data.data.filter((e) => !this.halloweenCategories().includes(e.category)))
+        }
+
+        return this.transfer.transferRidesToPois(response.data.data)
+      });
   }
 
   async getRestaurants(): Promise<Poi[]> {
@@ -138,5 +153,16 @@ export class ParquesReunidosParkService extends ThemeParkService {
     })
       .toPromise()
       .then((response) => this.transfer.transferShowsToPois(response.data.data));
+  }
+
+  async getHalloweenEvents(): Promise<Poi[]> {
+    return this.http.get<AtraccionesResponseInterface>(this.apiUrl + '/api/v1/service/attraction', {
+      headers: {
+        Authorization: 'Bearer ' + this.apiToken,
+        'Stay-Establishment': this.getStayEstablishment(),
+      },
+    })
+      .toPromise()
+      .then((response) => this.transfer.transferRidesToPois(response.data.data.filter((e) => this.halloweenCategories().includes(e.category))));
   }
 }
