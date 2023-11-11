@@ -41,4 +41,6 @@ export class MovieParkService extends ParquesReunidosParkService {
   halloweenCategories(): (string | number)[] {
     return [48231]
   }
+
+  trackWaitTimes(): { return true; }
 }
