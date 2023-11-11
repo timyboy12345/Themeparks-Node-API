@@ -58,8 +58,8 @@ export class ParquesReunidosParkService extends ThemeParkService {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: supportsRestaurants,
-      supportsRideWaitTimes: false,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimes: this.trackWaitTimes(),
+      supportsRideWaitTimesHistory: this.trackWaitTimes(),
       supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: true,
@@ -69,6 +69,8 @@ export class ParquesReunidosParkService extends ThemeParkService {
       supportsHalloween: supportsHalloween,
     };
   }
+
+  trackWaitTimes(): bool { return false }
 
   async getPois(): Promise<Poi[]> {
     const promises = [];
