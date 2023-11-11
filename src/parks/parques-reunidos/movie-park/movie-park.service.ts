@@ -42,5 +42,5 @@ export class MovieParkService extends ParquesReunidosParkService {
     return [48231]
   }
 
-  trackWaitTimes(): { return true; }
+  trackWaitTimes() { return true; }
 }
