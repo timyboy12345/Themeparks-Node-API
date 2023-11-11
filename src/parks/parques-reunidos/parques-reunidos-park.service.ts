@@ -70,7 +70,7 @@ export class ParquesReunidosParkService extends ThemeParkService {
     };
   }
 
-  public trackWaitTimes(): bool { 
+  public trackWaitTimes(): boolean { 
     return false
   }
 
