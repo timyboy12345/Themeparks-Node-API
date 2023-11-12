@@ -42,6 +42,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
     };
   }
 
+  // TODO: Fix broking POI status and re-enable wait times
   public getSupports(): ThemeParkSupports {
     return {
       supportsPois: true,
@@ -57,9 +58,9 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsOpeningTimes: true,
       supportsAnimals: false,
       supportsOpeningTimesHistory: false,
-      supportsRideWaitTimesHistory: true,
+      supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsHalloween: false,
     };
   }
 

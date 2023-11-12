@@ -45,6 +45,10 @@ export class ParquesReunidosParkService extends ThemeParkService {
     throw new NotImplementedException('Show Category ID not set');
   }
 
+  public saveWaitTimes(): boolean {
+    return false;
+  }
+
   getSupports(): ThemeParkSupports {
     const supportsShows = this.getShowType() !== 'unsupported';
     const supportsRestaurants = this.supportsRestaurants();
@@ -58,8 +62,8 @@ export class ParquesReunidosParkService extends ThemeParkService {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: supportsRestaurants,
-      supportsRideWaitTimes: false,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimes: true,
+      supportsRideWaitTimesHistory: this.saveWaitTimes(),
       supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: true,

@@ -14,7 +14,7 @@ export class MovieParkService extends ParquesReunidosParkService {
       location: { lat: 51.6205885, lng: 6.9722368 },
       name: 'Movie Park Germany',
       parkType: ParkType.THEMEPARK,
-      timezone: 'Europe/Berlin'
+      timezone: 'Europe/Berlin',
     };
   }
 
@@ -39,6 +39,10 @@ export class MovieParkService extends ParquesReunidosParkService {
   }
 
   halloweenCategories(): (string | number)[] {
-    return [48231]
+    return [48231];
+  }
+
+  saveWaitTimes(): boolean {
+    return true;
   }
 }

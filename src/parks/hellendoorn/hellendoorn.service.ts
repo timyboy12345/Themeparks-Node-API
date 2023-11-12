@@ -3,7 +3,9 @@ import { AioThemeparkService } from '../../_services/aio/aio-themepark.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
-import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
+import {
+  AttractionsIoAppDetailsInterface,
+} from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
 
 @Injectable()
 export class HellendoornService extends AioThemeparkService {
@@ -17,9 +19,9 @@ export class HellendoornService extends AioThemeparkService {
       parkType: ParkType.THEMEPARK,
       location: {
         lat: 52.3901258,
-        lng: 6.447899
+        lng: 6.447899,
       },
-      timezone: 'Europe/Amsterdam'
+      timezone: 'Europe/Amsterdam',
     };
   }
 
@@ -40,7 +42,7 @@ export class HellendoornService extends AioThemeparkService {
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsHalloween: false,
     };
   }
 
@@ -78,7 +80,7 @@ supportsHalloween: false,
   }
 
   getApiKey(): string {
-    return "3acb983d-a451-4700-b607-aac8ab1bedee";
+    return '3acb983d-a451-4700-b607-aac8ab1bedee';
   }
 
   getCategory(category: number): PoiCategory {

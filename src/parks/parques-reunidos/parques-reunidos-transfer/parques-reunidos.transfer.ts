@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TransferService } from '../../../_services/transfer/transfer.service';
-import { Poi } from '../../../_interfaces/poi.interface';
+import { Poi, PoiStatus } from '../../../_interfaces/poi.interface';
 import { AtraccionesResponseAtraccioneInterface } from '../interfaces/atracciones-response.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
@@ -11,7 +11,7 @@ import { ShowTime } from '../../../_interfaces/showtimes.interface';
 @Injectable()
 export class ParquesReunidosTransfer extends TransferService {
   transferRideToPoi(ride: AtraccionesResponseAtraccioneInterface, locale?: string): Poi {
-    let lang;
+    let lang: string;
 
     if (ride.translatableName.en) {
       lang = 'en';
@@ -112,8 +112,15 @@ export class ParquesReunidosTransfer extends TransferService {
       }
     }
 
-    if (ride.waitingTime && ride.waitingTime >= 0) {
-      r.currentWaitTime = ride.waitingTime;
+    if (ride.waitingTime)  {
+      if (ride.waitingTime >= 0) {
+        r.state = PoiStatus.OPEN;
+        r.currentWaitTime = ride.waitingTime;
+      }
+
+      if (ride.waitingTime === -3) {
+        r.state = PoiStatus.CLOSED;
+      }
     }
 
     return r;
