@@ -5,6 +5,7 @@ import { HerschendResponseItemInterface } from '../interfaces/herschend-response
 import { HerschendTransferService } from '../herschend-transfer/herschend-transfer.service';
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
+import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 
 @Injectable()
 export class HerschendBaseService extends ThemeParkService {
@@ -12,6 +13,27 @@ export class HerschendBaseService extends ThemeParkService {
               private readonly herschendTransferService: HerschendTransferService,
               private readonly configService: ConfigService) {
     super();
+  }
+
+  getSupports(): ThemeParkSupports {
+    return {
+      supportsAnimals: false,
+      supportsHalloween: false,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsPoiLocations: false,
+      supportsPois: true,
+      supportsRestaurantOpeningTimes: false,
+      supportsRestaurants: false,
+      supportsRideWaitTimes: true,
+      supportsRideWaitTimesHistory: false,
+      supportsRides: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: false,
+      supportsShowTimes: false,
+      supportsShows: false,
+      supportsTranslations: false
+    }
   }
 
   protected getParkId(): number {

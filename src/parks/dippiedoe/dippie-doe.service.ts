@@ -19,8 +19,8 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
       parkType: ParkType.THEMEPARK,
       location: {
         lat: 51.50000,
-        lng: 5.43555
-      }
+        lng: 5.43555,
+      },
     };
   }
 
@@ -41,7 +41,7 @@ export class DippieDoeService extends ThroughPoisThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsHalloween: false,
     };
   }
 

@@ -19,6 +19,8 @@ export class ParquesReunidosTransfer extends TransferService {
       lang = 'es';
     } else if (ride.translatableName.de) {
       lang = 'de';
+    } else if (ride.translatableName.it) {
+      lang = 'it';
     }
 
     const r: Poi = {

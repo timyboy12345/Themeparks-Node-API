@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { BlogPost } from './blog-post.entity';
 import { BlogPostInsertEntity } from './dto/blog-post-insert.entity';
 import { User } from '../users/user.entity';
+import { BlogPostEditEntity } from './dto/blog-post-edit.entity';
 
 @Injectable()
 export class BlogPostsService {
@@ -78,5 +79,9 @@ export class BlogPostsService {
 
   create(blogPost: BlogPostInsertEntity, user: User) {
     return this.blogPostRepository.insert({ ...blogPost, author: user });
+  }
+
+  update(id: number, blogPost: BlogPostEditEntity) {
+    return this.blogPostRepository.update(id, blogPost);
   }
 }

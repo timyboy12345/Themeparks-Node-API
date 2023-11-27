@@ -5,9 +5,11 @@ import { HerschendTransferService } from './herschend-transfer/herschend-transfe
 import { DollywoodService } from './dollywood/dollywood.service';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
+import { KentuckyKingdomService } from './kentucky-kingdom/kentucky-kingdom.service';
+import { WildAdventuresService } from './wild-adventures/wild-adventures.service';
 
 @Module({
-  providers: [HerschendBaseService, SilverDollarCityService, HerschendTransferService, DollywoodService],
+  providers: [HerschendBaseService, SilverDollarCityService, HerschendTransferService, DollywoodService, KentuckyKingdomService, WildAdventuresService],
   exports: [SilverDollarCityService, DollywoodService],
   imports: [
     HttpModule,

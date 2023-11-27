@@ -9,6 +9,7 @@ import { join } from 'path';
 // If taking advantage of automatic instrumentation (highly recommended)
 import { Integrations as TracingIntegrations } from "@sentry/tracing";
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { ValidationPipe } from '@nestjs/common';
 
 Sentry.init({
   dsn: 'https://23fa5a724def4d8bbc58845111e300b2@o324258.ingest.sentry.io/5668770',
@@ -32,11 +33,14 @@ async function bootstrap() {
     .setDescription('The Themeparks API description')
     .setVersion('1.0')
     .addTag('Themeparks')
+    .addBearerAuth()
     .build();
 
   app.useStaticAssets(join(__dirname, '..', 'public'), {
     prefix: '/data/'
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
