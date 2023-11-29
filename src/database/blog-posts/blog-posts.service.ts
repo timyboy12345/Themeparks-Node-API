@@ -16,7 +16,12 @@ export class BlogPostsService {
       where: {
         locale: locale
       },
-      select: ['id', 'createdAt', 'slug', 'title', 'imageUrl', 'description', 'author', 'locale', 'parkId']
+      select: ['id', 'createdAt', 'slug', 'title', 'imageUrl', 'description', 'author', 'locale', 'parkId'],
+      order: {
+        createdAt: {
+          direction: 'DESC'
+        }
+      }
     });
   }
 
@@ -25,6 +30,11 @@ export class BlogPostsService {
       where: {
         locale: locale,
         parkId: parkId
+      },
+      order: {
+        createdAt: {
+          direction: 'DESC'
+        }
       }
     });
   }
