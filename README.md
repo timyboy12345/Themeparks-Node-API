@@ -22,7 +22,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇩🇪 Holiday Park | 🎡 | True | True | True | True | False |
 | 🇩🇪 LegoLand Deutschland | 🎡 | False | False | False | False | False |
 | 🇩🇪 Hansa Park | 🎡 | True | True | True | True | False |
-| 🇩🇪 Movie Park Germany | 🎡 | True | True | True | True | False |
+| 🇩🇪 Movie Park Germany | 🎡 | True | True | True | True | True |
 | 🇩🇰 Tivoli | 🎡 | True | True | True | False | False |
 | 🇪🇸 Portaventura | 🎡 | True | True | True | True | False |
 | 🇪🇸 Ferrari Land | 🎡 | True | True | True | True | False |
@@ -34,11 +34,13 @@ In the table below you will find the parks that are currently supported and the 
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True | False |
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False | False |
 | 🇫🇷 Futuroscope | 🎡 | True | True | True | True | False |
+| 🇫🇷 Marineland Cote D'azure | 🎡 | True | True | True | True | False |
 | 🇬🇧 Thorpe Park | 🎡 | True | True | True | True | False |
 | 🇬🇧 Alton Towers | 🎡 | True | True | True | True | False |
 | 🇬🇧 Paultons Park | 🎡 | True | True | True | True | False |
 | 🇬🇧 Chessington world of Adventures | 🎡 | True | True | True | True | False |
 | 🇮🇹 Gardaland | 🎡 | True | True | True | False | False |
+| 🇮🇹 Mirabilandia | 🎡 | True | True | False | True | False |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True | False |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False | True |
 | 🇳🇱 Walibi Holland | 🎡 | True | True | True | True | True |
@@ -82,6 +84,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Six Flags Hurricane Harbor, Phoenix | 🌊 | True | True | True | True | False |
 | 🇺🇸 Six Flags Hurricane Harbor, SplashTown | 🌊 | True | True | True | True | False |
 | 🇺🇸 Six Flags Hurricane Harbor, Rockford | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Wild Safari, Jackson | 🎡 | True | True | True | True | False |
 | 🇺🇸 Canada's Wonderland | 🎡 | True | True | True | True | False |
 | 🇺🇸 Carowinds | 🎡 | True | True | True | True | False |
 | 🇺🇸 Cedar Point | 🎡 | True | True | True | True | False |

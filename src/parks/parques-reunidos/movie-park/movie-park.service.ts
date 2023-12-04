@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ParquesReunidosParkService } from '../parques-reunidos-park.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { Poi } from '../../../_interfaces/poi.interface';
 
 @Injectable()
 export class MovieParkService extends ParquesReunidosParkService {
@@ -28,10 +27,6 @@ export class MovieParkService extends ParquesReunidosParkService {
 
   getShowType(): 'new' | 'old' | 'unsupported' {
     return 'new';
-  }
-
-  async getShows(): Promise<Poi[]> {
-    return this.getNewShows();
   }
 
   supportsRestaurants(): boolean {

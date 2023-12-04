@@ -58,6 +58,9 @@ import { SeaworldService } from '../../parks/seaworld/seaworld.service';
 import { UniversalService } from '../../parks/universal/universal.service';
 import { GardalandService } from '../../parks/gardaland/gardaland.service';
 import { MirabilandiaService } from '../../parks/parques-reunidos/mirabilandia/mirabilandia.service';
+import {
+  MarinelandCoteDazurService
+} from '../../parks/parques-reunidos/marineland-cote-dazur/marineland-cote-dazur.service';
 
 @Injectable()
 export class ParksService {
@@ -117,6 +120,7 @@ export class ParksService {
     private readonly _universalService: UniversalService,
     private readonly _gardaland: GardalandService,
     private readonly _mirabilandia: MirabilandiaService,
+    private readonly _marineLandCoteDazur: MarinelandCoteDazurService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -164,6 +168,7 @@ export class ParksService {
     this._parks.push(_hersheypark);
     this._parks.push(_gardaland)
     this._parks.push(_mirabilandia)
+    this._parks.push(_marineLandCoteDazur)
 
     this._companies = [];
     this._companies.push(_sixflagsService);

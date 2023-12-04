@@ -7,20 +7,23 @@ import { RideCategory } from '../../../_interfaces/ride-category.interface';
 import { ParqueAtraccionesShowsResponseInterface } from '../interfaces/parque-atracciones-shows-response.interface';
 import * as moment from 'moment-timezone';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
+import { ParqueReunidosNewShowItemInterface } from '../interfaces/parque-reunidos-new-show-interface';
 
 @Injectable()
 export class ParquesReunidosTransfer extends TransferService {
   transferRideToPoi(ride: AtraccionesResponseAtraccioneInterface, locale?: string): Poi {
     let lang: string;
 
-    if (ride.translatableName.en) {
+    if (ride.translatableName.en && ride.translatableName.en !== 'Default') {
       lang = 'en';
-    } else if (ride.translatableName.es) {
+    } else if (ride.translatableName.es && ride.translatableName.es !== 'Default') {
       lang = 'es';
-    } else if (ride.translatableName.de) {
+    } else if (ride.translatableName.de && ride.translatableName.de !== 'Default') {
       lang = 'de';
-    } else if (ride.translatableName.it) {
+    } else if (ride.translatableName.it && ride.translatableName.it !== 'Default') {
       lang = 'it';
+    } else if (ride.translatableName.fr && ride.translatableName.fr !== 'Default') {
+      lang = 'fr';
     }
 
     const r: Poi = {
@@ -55,35 +58,37 @@ export class ParquesReunidosTransfer extends TransferService {
       });
     }
 
-    switch (ride.category) {
-      // Suaves (zacht)
-      case 7878:
-        r.rideCategory = RideCategory.KIDS;
-        break;
-      // Moderadas (gematigd)
-      case 7879:
-        r.rideCategory = RideCategory.FAMILY;
-        break;
-      // Intensas
-      case 7880:
-        r.rideCategory = RideCategory.THRILL;
-        break;
-      // Nickelodeon Land
-      case 7881:
-        break;
-      // Casa del Terror
-      case 36921:
-        r.category = PoiCategory.HALLOWEEN_EVENT;
-        break;
-      // Movie park: Scare maze
-      case 48231:
-        r.category = PoiCategory.HALLOWEEN_WALKTROUGH;
-        break;
-      // No disponibles
-      case 29844:
-      default:
-        r.rideCategory = RideCategory.UNDEFINED;
-        break;
+    if (ride.category) {
+      switch (ride.category) {
+        // Suaves (zacht)
+        case 7878:
+          r.rideCategory = RideCategory.KIDS;
+          break;
+        // Moderadas (gematigd)
+        case 7879:
+          r.rideCategory = RideCategory.FAMILY;
+          break;
+        // Intensas
+        case 7880:
+          r.rideCategory = RideCategory.THRILL;
+          break;
+        // Nickelodeon Land
+        case 7881:
+          break;
+        // Casa del Terror
+        case 36921:
+          r.category = PoiCategory.HALLOWEEN_EVENT;
+          break;
+        // Movie park: Scare maze
+        case 48231:
+          r.category = PoiCategory.HALLOWEEN_WALKTROUGH;
+          break;
+        // No disponibles
+        case 29844:
+        default:
+          r.rideCategory = RideCategory.UNDEFINED;
+          break;
+      }
     }
 
     if (ride.textList) {
@@ -114,7 +119,7 @@ export class ParquesReunidosTransfer extends TransferService {
       }
     }
 
-    if (ride.waitingTime)  {
+    if (ride.waitingTime) {
       if (ride.waitingTime >= 0) {
         r.state = PoiStatus.OPEN;
         r.currentWaitTime = ride.waitingTime;
@@ -129,7 +134,7 @@ export class ParquesReunidosTransfer extends TransferService {
   }
 
   public transferShowsResponseToPois(showResponse: ParqueAtraccionesShowsResponseInterface): Poi[] {
-    const shows = this.transferShowsToPois(showResponse.data.grouping[0].list);
+    const shows = showResponse.data.grouping[0].list.map((s) => this.transferShowToPoi(s));
 
     const tz = moment().tz('Europe/Madrid');
     showResponse.data.grouping[0].calendar.forEach((calenderRow) => {
@@ -164,65 +169,76 @@ export class ParquesReunidosTransfer extends TransferService {
   }
 
   transferShowToPoi(show: any, locale?: string): Poi {
-    const r: Poi = {
+    const s: Poi = {
+      ...this.transferRideToPoi(show),
       category: PoiCategory.SHOW,
-      id: show.id.toString(),
-      original: show,
-      title: show.translatableName.es,
-      showTimes: {
-        currentDate: moment().tz('Europe/Madrid').format('YYYY-MM-DD'),
-        futureShowTimes: [],
-        allShowTimes: [],
-        pastShowTimes: [],
-        todayShowTimes: [],
-      },
     };
 
+    s.id = this.stringToId(s.title);
+
     if (show.place && show.place.point) {
-      r.location = {
+      s.location = {
         lat: show.place.point.latitude,
         lng: show.place.point.longitude,
       };
     }
 
     if (show.photographs && show.photographs.length > 0) {
-      r.previewImage = `https://s3-eu-west-1.amazonaws.com/stayapp.cms/${show.photographs[0]}/${show.photographs[0]}_appthumb`;
-      r.images = [];
+      s.previewImage = `https://s3-eu-west-1.amazonaws.com/stayapp.cms/${show.photographs[0]}/${show.photographs[0]}_appthumb`;
+      s.images = [];
 
       show.photographs.forEach((photo) => {
-        r.images.push(`https://s3-eu-west-1.amazonaws.com/stayapp.cms/${photo}/${photo}`);
+        s.images.push(`https://s3-eu-west-1.amazonaws.com/stayapp.cms/${photo}/${photo}`);
       });
     }
 
-    return r;
+    return s;
   }
 
-  transferShowsToPois(shows: any, locale?: string): Poi[] {
+  transferShowsToPois(shows: ParqueReunidosNewShowItemInterface[], locale?: string): Poi[] {
     const uniqueShows = [];
 
     shows.forEach((show) => {
-      if (!uniqueShows.find((s) => s.repetition === show.repetition)) {
+      if (!uniqueShows.find((s) => s.repetition === show.repetition || s.service === show.service)) {
         uniqueShows.push(show);
       }
-    })
+    });
 
-    return uniqueShows.map(show => this.transferRepetitionShowToPoi(show, locale));
-  }
+    let ss = uniqueShows.map(show => {
+      return {
+        repetition: show.repetition,
+        service: show.service,
+        show: this.transferShowToPoi(show),
+      };
+    });
 
-  transferRepetitionShowToPoi(show, locale) {
-    let lang;
+    ss.forEach((show) => {
+      const showTimes: ShowTime[] = [];
 
-    if (show.translatableName.es) {
-      lang = 'es';
-    } else if (show.translatableName.de) {
-      lang = 'de';
-    }
+      // TODO: Don't hardcode timezone
+      shows
+        .filter((s) => s.repetition === show.repetition || show.service == s.service)
+        .forEach((showEntry) => {
+          showTimes.push({
+            id: showEntry.id.toString(),
+            from: moment(`${showEntry.eventDay} ${showEntry.hour}`).tz('Europe/Paris', false).format(),
+            fromTime: showEntry.hour,
+            to: moment(`${showEntry.eventDay} ${showEntry.endHour}`).tz('Europe/Paris', false).format(),
+            toTime: showEntry.endHour,
+            isPassed: moment(`${showEntry.eventDay} ${showEntry.hour}`).tz('Europe/Paris', false).isBefore(moment.tz('Europe/Paris')),
+          });
+        });
 
-    const c: Poi = {
-      category: PoiCategory.SHOW, id: show.repetition, original: show, title: show.translatableName[lang]
-    }
+      show.show.showTimes = {
+        allShowTimes: showTimes,
+        currentDate: moment.tz('Europe/Paris').format(),
+        futureShowTimes: showTimes.filter((st) => !st.isPassed),
+        pastShowTimes: showTimes.filter((st) => st.isPassed),
+        todayShowTimes: showTimes,
+      };
+    });
 
-    return c;
+    return ss.map((s) => s.show);
   }
 
   transferRestaurantsToPois(restaurants: any, locale?: string): Poi[] {
@@ -234,9 +250,20 @@ export class ParquesReunidosTransfer extends TransferService {
   }
 
   transferShopToPoi(shop: any, locale?: string): Poi {
-    const poi =  this.transferRideToPoi(shop, locale)
+    const poi = this.transferRideToPoi(shop, locale);
     poi.category = PoiCategory.SHOP;
     delete poi.rideCategory;
     return poi;
+  }
+
+  stringToId(string) {
+    return string
+      .normalize('NFKD') // split accented characters into their base characters and diacritical marks
+      .replace(/[\u0300-\u036f]/g, '') // remove all the accents, which happen to be all in the \u03xx UNICODE block.
+      .trim() // trim leading or trailing whitespace
+      .toLowerCase() // convert to lowercase
+      .replace(/[^a-z0-9 -]/g, '') // remove non-alphanumeric characters
+      .replace(/\s+/g, '-') // replace spaces with hyphens
+      .replace(/-+/g, '-'); // remove consecutive hyphens
   }
 }

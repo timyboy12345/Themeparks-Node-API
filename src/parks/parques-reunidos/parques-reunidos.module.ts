@@ -8,6 +8,7 @@ import { ParquesReunidosParkService } from './parques-reunidos-park.service';
 import { ParqueWarnerMadridBeachService } from './parque-warner-madrid-beach/parque-warner-madrid-beach.service';
 import { BobbejaanlandService } from './bobbejaanland/bobbejaanland.service';
 import { MirabilandiaService } from './mirabilandia/mirabilandia.service';
+import { MarinelandCoteDazurService } from './marineland-cote-dazur/marineland-cote-dazur.service';
 
 @Module({
   imports: [
@@ -18,8 +19,8 @@ import { MirabilandiaService } from './mirabilandia/mirabilandia.service';
       ignoreEnvFile: false,
     }),
   ],
-  providers: [ParquesReunidosParkService, ParqueDeAtraccionesService, ParquesReunidosTransfer, MovieParkService, ParqueWarnerMadridBeachService, BobbejaanlandService, MirabilandiaService],
-  exports: [ParqueDeAtraccionesService, MovieParkService, ParqueWarnerMadridBeachService, BobbejaanlandService, MirabilandiaService],
+  providers: [ParquesReunidosParkService, ParqueDeAtraccionesService, ParquesReunidosTransfer, MovieParkService, ParqueWarnerMadridBeachService, BobbejaanlandService, MirabilandiaService, MarinelandCoteDazurService],
+  exports: [ParqueDeAtraccionesService, MovieParkService, ParqueWarnerMadridBeachService, BobbejaanlandService, MirabilandiaService, MarinelandCoteDazurService],
 })
 
 export class ParquesReunidosModule {}

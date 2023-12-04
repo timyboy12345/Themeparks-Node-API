@@ -118,6 +118,7 @@ export interface AtraccionesResponseAtraccioneInterface {
     'es'?: string
     'de'?: string
     'it'?: string
+    'fr'?: string
   },
   'translatableReservationTitle': {
     'es': string

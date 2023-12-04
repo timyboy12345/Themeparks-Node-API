@@ -7,6 +7,8 @@ import { ParqueAtraccionesShowsResponseInterface } from './interfaces/parque-atr
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { ParquesReunidosTransfer } from './parques-reunidos-transfer/parques-reunidos.transfer';
+import * as Sentry from '@sentry/node';
+import { ParqueReunidosNewShowInterface } from './interfaces/parque-reunidos-new-show-interface';
 
 @Injectable()
 export class ParquesReunidosParkService extends ThemeParkService {
@@ -37,6 +39,10 @@ export class ParquesReunidosParkService extends ThemeParkService {
     return false;
   }
 
+  public supportsAnimals(): boolean {
+    return false;
+  }
+
   public halloweenCategories(): (string | number)[] {
     return [];
   }
@@ -53,9 +59,10 @@ export class ParquesReunidosParkService extends ThemeParkService {
     const supportsShows = this.getShowType() !== 'unsupported';
     const supportsRestaurants = this.supportsRestaurants();
     const supportsHalloween = this.halloweenCategories().length > 0;
+    const supportsAnimals = this.supportsAnimals();
 
     return {
-      supportsAnimals: false,
+      supportsAnimals: supportsAnimals,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,
@@ -95,7 +102,10 @@ export class ParquesReunidosParkService extends ThemeParkService {
 
     return []
       .concat
-      .apply([], await Promise.all(promises));
+      .apply([], await Promise.all(promises).catch((e) => {
+        Sentry.captureException(e);
+        throw e
+      }));
   }
 
   async getRides(): Promise<Poi[]> {
@@ -127,6 +137,10 @@ export class ParquesReunidosParkService extends ThemeParkService {
   }
 
   async getShows(): Promise<Poi[]> {
+    if (this.getShowType() === 'new') {
+      return this.getNewShows();
+    }
+
     return this.http.get<ParqueAtraccionesShowsResponseInterface>(this.apiUrl + '/api/v1/service/' + this.getShowCategoryID(), {
       headers: {
         Authorization: 'Bearer ' + this.apiToken,
@@ -149,7 +163,7 @@ export class ParquesReunidosParkService extends ThemeParkService {
   }
 
   async getNewShows(): Promise<Poi[]> {
-    return this.http.get<ParqueAtraccionesShowsResponseInterface>(this.apiUrl + '/api/v1/service/eventcalendar/category/' + this.getShowCategoryID() + '/calendar', {
+    return this.http.get<ParqueReunidosNewShowInterface>(this.apiUrl + '/api/v1/service/eventcalendar/category/' + this.getShowCategoryID() + '/calendar', {
       headers: {
         Authorization: 'Bearer ' + this.apiToken,
         'Stay-Establishment': this.getStayEstablishment(),
