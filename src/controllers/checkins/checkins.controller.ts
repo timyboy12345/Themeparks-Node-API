@@ -1,12 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { CheckinService } from '../../database/checkins/checkin.service';
-import { CheckinInsertEntity } from '../../database/checkins/dto/checkin-insert.entity';
-import { ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
+import { CheckinInsertInterface } from '../../database/checkins/dto/checkin-insert.interface';
+import { ApiBearerAuth, ApiBody, ApiOkResponse, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { CheckinDto } from '../../_dtos/checkin.dto';
 import { Checkin } from '../../database/checkins/checkin.entity';
+import { CheckinInsertDto } from '../../database/checkins/dto/checkin-insert.dto';
 
-@ApiTags("Checkins")
+@ApiTags('Checkins')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'))
 @Controller('checkins')
 export class CheckinsController {
@@ -18,6 +20,7 @@ export class CheckinsController {
     type: CheckinDto,
     isArray: true,
   })
+  @ApiOperation({ summary: 'Get all checkins for a specific user' })
   @Get('')
   public getAllCheckins(@Request() req) {
     return this.checkinsService.getAll(req.user);
@@ -37,8 +40,13 @@ export class CheckinsController {
   //   return this.checkinsService.getAllFromPark(req.user.id, params.parkId);
   // }
 
+
+  @ApiBody({
+    type: CheckinInsertDto,
+  })
+  @ApiOperation({ summary: 'Create a checkin for a specific park, ride and user' })
   @Post('')
-  public create(@Body() checkin: CheckinInsertEntity, @Request() req) {
+  public create(@Body() checkin: CheckinInsertInterface, @Request() req) {
     return this.checkinsService.create(checkin, req.user);
   }
 
@@ -46,6 +54,10 @@ export class CheckinsController {
     name: 'id',
     type: 'string',
     description: 'The id of the checkin',
+  })
+  @ApiOperation({
+    summary: 'Get a specific checkin by id, can only fetch checkins for the logged in user',
+    description: 'You can only fetch checkins for the logged in user, any checkins that may (or may not) exist but are not coupled to the given user will give a 404.',
   })
   @ApiOkResponse({
     type: Checkin,
@@ -56,11 +68,22 @@ export class CheckinsController {
     return this.checkinsService.read(params.id, req.user);
   }
 
+  @ApiOperation({ summary: 'Update a specific checkin' })
+  @ApiBody({
+    type: CheckinInsertDto,
+  })
   @Put('/:id')
-  public update(@Param() params, @Body() checkin: CheckinInsertEntity, @Request() req) {
+  public update(@Param() params, @Body() checkin: CheckinInsertInterface, @Request() req) {
     return this.checkinsService.update(params.id, checkin, req.user);
   }
 
+
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    description: 'The id of the checkin to delete',
+  })
+  @ApiOperation({ summary: 'Delete a specific checkin' })
   @Delete('/:id')
   public delete(@Param() params, @Request() req) {
     return this.checkinsService.delete(params.id, req.user);

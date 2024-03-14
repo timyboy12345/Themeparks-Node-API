@@ -2,7 +2,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Checkin } from './checkin.entity';
-import { CheckinInsertEntity } from './dto/checkin-insert.entity';
+import { CheckinInsertInterface } from './dto/checkin-insert.interface';
 import { User } from '../users/user.entity';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class CheckinService {
   //   });
   // }
 
-  async create(checkin: CheckinInsertEntity, user: User) {
+  async create(checkin: CheckinInsertInterface, user: User) {
     return this.checkinRepository.insert({ ...checkin, user: user });
   }
 
@@ -40,7 +40,7 @@ export class CheckinService {
     });
   }
 
-  async update(id: number, updatedData: CheckinInsertEntity, user: User) {
+  async update(id: number, updatedData: CheckinInsertInterface, user: User) {
     const checkin = await this.read(id, user);
 
     if (!checkin) {
