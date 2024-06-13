@@ -1,0 +1,98 @@
+[
+  {
+    "UriId": "tampa",
+    "Name": "Adventure Island Tampa",
+    "Brand": "Adventure Island",
+    "Id": "770E691C-E6DA-4264-AF27-863189380D0B",
+    "ParkId": 2,
+    "park_id": 2
+  },
+  {
+    "UriId": "orlando",
+    "Name": "Aquatica Orlando",
+    "Brand": "Aquatica",
+    "Id": "4B040706-968A-41B4-9967-D93C7814E665",
+    "ParkId": 3,
+    "park_id": 3
+  },
+  {
+    "UriId": "san-antonio",
+    "Name": "Aquatica San Antonio",
+    "Brand": "Aquatica",
+    "Id": "04668F50-A57E-4DE6-8E70-D4567D9B46B5",
+    "ParkId": 15,
+    "park_id": 15
+  },
+  {
+    "UriId": "tampa",
+    "Name": "Busch Gardens Tampa",
+    "Brand": "Busch Gardens",
+    "Id": "C001866B-555D-4E92-B48E-CC67E195DE96",
+    "ParkId": 8,
+    "park_id": 8
+  },
+  {
+    "UriId": "williamsburg",
+    "Name": "Busch Gardens Williamsburg",
+    "Brand": "Busch Gardens",
+    "Id": "45FE1F31-D4E4-4B1E-90E0-5255111070F2",
+    "ParkId": 9,
+    "park_id": 9
+  },
+  {
+    "UriId": "orlando",
+    "Name": "Discovery Cove Orlando",
+    "Brand": "Discovery Cove",
+    "Id": "1FB04DFC-B6C0-4918-BE36-EE6DD14FE741",
+    "ParkId": 12,
+    "park_id": 12
+  },
+  {
+    "UriId": "orlando",
+    "Name": "SeaWorld Orlando",
+    "Brand": "SeaWorld",
+    "Id": "AC3AF402-3C62-4893-8B05-822F19B9D2BC",
+    "ParkId": 4,
+    "park_id": 4
+  },
+  {
+    "UriId": "san-antonio",
+    "Name": "SeaWorld San Antonio",
+    "Brand": "SeaWorld",
+    "Id": "F4040D22-8B8D-4394-AEC7-D05FA5DEA945",
+    "ParkId": 5,
+    "park_id": 5
+  },
+  {
+    "UriId": "san-diego",
+    "Name": "SeaWorld San Diego",
+    "Brand": "SeaWorld",
+    "Id": "4325312F-FDF1-41FF-ABF4-361A4FF03443",
+    "ParkId": 1,
+    "park_id": 1
+  },
+  {
+    "UriId": "langhorne",
+    "Name": "Sesame Place Langhorne",
+    "Brand": "Sesame Place",
+    "Id": "F7408854-28CB-4B1E-98E5-4449FE600E85",
+    "ParkId": 7,
+    "park_id": 7
+  },
+  {
+    "UriId": "san-diego",
+    "Name": "Sesame Place San Diego",
+    "Brand": "Sesame Place",
+    "Id": "A988F4CE-6A81-4527-9535-DDB378689E52",
+    "ParkId": 34,
+    "park_id": 34
+  },
+  {
+    "UriId": "williamsburg",
+    "Name": "Water Country USA",
+    "Brand": "Water Country",
+    "Id": "66480532-A73C-4617-9B2D-EDC4430CAB86",
+    "ParkId": 11,
+    "park_id": 11
+  }
+]

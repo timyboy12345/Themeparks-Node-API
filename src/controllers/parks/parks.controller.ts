@@ -1,4 +1,4 @@
-import { CACHE_MANAGER, CacheInterceptor, Controller, Get, Inject, UseInterceptors } from '@nestjs/common';
+import { CACHE_MANAGER, CacheInterceptor, Controller, Get, Header, Inject, UseInterceptors } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ParkDto } from '../../_dtos/park.dto';
 import { ParksService } from '../../_services/parks/parks.service';
@@ -23,6 +23,7 @@ export class ParksController {
   }
 
   @Get('/readme')
+  @Header('content-type', 'text/plain')
   @UseInterceptors(CacheInterceptor)
   async getParksReadme() {
     const parks = (await this.parksService.getParks()).map(park => park.getFullInfo());

@@ -101,6 +101,8 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Seaworld Orlando | 🎡 | True | True | True | True | False |
 | 🇺🇸 Bush Gardens Tampa Bay | 🎡 | True | True | True | True | False |
 | 🇺🇸 Bush Gardens Williamsburg | 🎡 | True | True | True | True | False |
+| 🇺🇸 Sesame Place Philadelphia | 🎡 | True | True | True | True | False |
+| 🇺🇸 Sesame Place San Diego | 🎡 | True | True | True | True | False |
 | 🇺🇸 Universal Studios Orlando | 🎡 | True | True | True | True | False |
 | 🇺🇸 Islands of Adventure | 🎡 | True | True | True | True | False |
 | 🇺🇸 Universal Studios Hollywood | 🎡 | True | True | True | True | False |

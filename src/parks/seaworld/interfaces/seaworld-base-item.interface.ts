@@ -60,9 +60,14 @@ export interface SeaworldBaseItem {
   'MobileOrderingStoreId': null,
   'OnlineOrderingEnabled': boolean,
   'OnlineOrderingUrl': string | null,
-  'StaticMenuUrl': string | null | "",
-  'RideType': "Coaster" | null,
-  'ShowType': null | "Show Type 1" | "",
-  'ShowTimes': [],
+  'StaticMenuUrl': string | null | '',
+  'RideType': 'Coaster' | null,
+  'ShowType': null | 'Show Type 1' | '',
+  'ShowTimes': {
+    'StartDateTime': string,
+    'EndDateTime': string,
+    'StartTime': string,
+    'EndTime': string
+  }[],
   'SlideType': null
 }

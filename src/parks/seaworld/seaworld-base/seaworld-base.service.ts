@@ -5,6 +5,8 @@ import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { HttpService } from '@nestjs/axios';
 import { SeaworldTransferService } from '../seaworld-transfer/seaworld-transfer.service';
+import * as moment from 'moment';
+import { SeaworldWaitTimesInterface } from '../interfaces/seaworld-wait-times.interface';
 
 @Injectable()
 export class SeaworldBaseService extends ThroughPoisThemeParkService {
@@ -33,8 +35,8 @@ export class SeaworldBaseService extends ThroughPoisThemeParkService {
       supportsShops: true,
       supportsShowTimes: false,
       supportsShows: true,
-      supportsTranslations: false
-    }
+      supportsTranslations: false,
+    };
   }
 
   getParkId(): string {
@@ -42,8 +44,23 @@ export class SeaworldBaseService extends ThroughPoisThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
-    return this.http.get(`${this._apiUrl}/park/${this.getParkId()}/poi`)
+    const rides = await this.http.get(`${this._apiUrl}/park/${this.getParkId()}/poi`)
       .toPromise()
       .then((res) => this.transfer.transferPoisToPois(res.data));
+
+    // TODO: Actually implement seaworld wait time
+    const waitTimes = this.getWaitTimes();
+    return rides.map((r) => {
+      r.currentWaitTime = 0;
+      return r;
+    })
+  }
+
+  async getWaitTimes(): Promise<SeaworldWaitTimesInterface> {
+    const date = moment().format('YYYY-MM-DD');
+
+    return this.http.get<SeaworldWaitTimesInterface>(`${this._apiUrl}/park/${this.getParkId()}/availability?searchDate=${date}`)
+      .toPromise()
+      .then((res) => res.data);
   }
 }

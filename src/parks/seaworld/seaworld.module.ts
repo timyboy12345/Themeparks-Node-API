@@ -9,6 +9,8 @@ import { SeaworldOrlandoService } from './seaworld-orlando/seaworld-orlando.serv
 import { SeaworldSanDiegoService } from './seaworld-san-diego/seaworld-san-diego.service';
 import { BushGardensWilliamsburgService } from './bush-gardens-williamsburg/bush-gardens-williamsburg.service';
 import { BushGardensTampaBayService } from './bush-gardens-tampa-bay/bush-gardens-tampa-bay.service';
+import { SesamePlaceSanDiegoService } from './sesame-place-san-diego/sesame-place-san-diego.service';
+import { SesamePlaceLanghorneService } from './sesame-place-langhorne/sesame-place-langhorne.service';
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { BushGardensTampaBayService } from './bush-gardens-tampa-bay/bush-garden
       ignoreEnvFile: false,
     }),
   ],
-  providers: [SeaworldBaseService, SeaworldSanAntonioService, SeaworldService, SeaworldTransferService, SeaworldOrlandoService, SeaworldSanDiegoService, BushGardensWilliamsburgService, BushGardensTampaBayService],
+  providers: [SeaworldBaseService, SeaworldSanAntonioService, SeaworldService, SeaworldTransferService, SeaworldOrlandoService, SeaworldSanDiegoService, BushGardensWilliamsburgService, BushGardensTampaBayService, SesamePlaceSanDiegoService, SesamePlaceLanghorneService],
   exports: [SeaworldService],
 })
 export class SeaworldModule {}

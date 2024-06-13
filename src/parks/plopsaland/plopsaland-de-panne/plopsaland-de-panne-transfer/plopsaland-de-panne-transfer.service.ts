@@ -4,7 +4,7 @@ import { Poi } from '../../../../_interfaces/poi.interface';
 import { PlopsalandDePanneDetailsResponseItemInterface } from '../interfaces/plopsaland-de-panne-details-response.interface';
 import { PoiCategory } from '../../../../_interfaces/poi-categories.enum';
 import { ShowTime } from '../../../../_interfaces/showtimes.interface';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class PlopsalandDePanneTransferService extends TransferService {

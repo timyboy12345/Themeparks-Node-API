@@ -6,6 +6,8 @@ import { SeaworldSanDiegoService } from './seaworld-san-diego/seaworld-san-diego
 import { SeaworldOrlandoService } from './seaworld-orlando/seaworld-orlando.service';
 import { BushGardensTampaBayService } from './bush-gardens-tampa-bay/bush-gardens-tampa-bay.service';
 import { BushGardensWilliamsburgService } from './bush-gardens-williamsburg/bush-gardens-williamsburg.service';
+import { SesamePlaceLanghorneService } from './sesame-place-langhorne/sesame-place-langhorne.service';
+import { SesamePlaceSanDiegoService } from './sesame-place-san-diego/sesame-place-san-diego.service';
 
 @Injectable()
 export class SeaworldService extends CompanyService {
@@ -15,6 +17,8 @@ export class SeaworldService extends CompanyService {
     private readonly seaworldOrlando: SeaworldOrlandoService,
     private readonly bushGardensTampaBay: BushGardensTampaBayService,
     private readonly bushGardensWilliamsburg: BushGardensWilliamsburgService,
+    private readonly sesameplaceLanghorne: SesamePlaceLanghorneService,
+    private readonly sesameplaceSanDiego: SesamePlaceSanDiegoService,
   ) {
     super();
   }
@@ -25,7 +29,9 @@ export class SeaworldService extends CompanyService {
       this.seaworldSanDiego,
       this.seaworldOrlando,
       this.bushGardensTampaBay,
-      this.bushGardensWilliamsburg
+      this.bushGardensWilliamsburg,
+      this.sesameplaceLanghorne,
+      this.sesameplaceSanDiego,
     ];
   }
 }

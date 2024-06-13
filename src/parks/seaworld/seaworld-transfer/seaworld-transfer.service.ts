@@ -3,6 +3,8 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { SeaworldBaseItem } from '../interfaces/seaworld-base-item.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import { ShowTime } from '../../../_interfaces/showtimes.interface';
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class SeaworldTransferService extends TransferService {
@@ -62,6 +64,33 @@ export class SeaworldTransferService extends TransferService {
         lat: poi.Coordinate.Latitude,
         lng: poi.Coordinate.Longitude
       }
+    }
+
+    if (poi.ShowTimes) {
+      //   "StartDateTime": "2024-06-10T18:30:00Z",
+      //   "EndDateTime": "2024-06-10T19:00:00Z",
+      //   "StartTime": "2024-06-10T13:30:00",
+      //   "EndTime": "2024-06-10T14:00:00"
+      const showTimes = poi.ShowTimes.map((s): ShowTime => {
+        const start = moment(s.StartTime).tz('America/Los_Angeles', false);
+
+        return {
+          from: start.format(),
+          fromTime: moment(s.StartTime).format('HH:mm:ss'),
+          to: moment(s.StartTime).tz('America/Los_Angeles', false).format(),
+          isPassed: moment().tz('America/Los_Angeles', false).isAfter(start),
+        }
+      })
+
+      const d = new Date();
+      p.showTimes = {
+        currentDate: moment().tz('America/Los_Angeles').format(),
+        allShowTimes: showTimes,
+        futureShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day') && !s.isPassed),
+        pastShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day') && s.isPassed),
+        todayShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day')),
+        otherDateShowTimes: showTimes.filter(s => !moment(s.from).isSame(d, 'day')),
+      };
     }
 
     if (poi.MinimumHeight > 0) {
