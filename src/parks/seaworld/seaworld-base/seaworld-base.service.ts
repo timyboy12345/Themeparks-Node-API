@@ -48,10 +48,14 @@ export class SeaworldBaseService extends ThroughPoisThemeParkService {
       .toPromise()
       .then((res) => this.transfer.transferPoisToPois(res.data));
 
-    // TODO: Actually implement seaworld wait time
-    const waitTimes = this.getWaitTimes();
+    const waitTimes = await this.getWaitTimes();
     return rides.map((r) => {
-      r.currentWaitTime = 0;
+      const wait = waitTimes.WaitTimes.find((w) => w.Id == r.id);
+
+      if (wait) {
+        r.currentWaitTime = wait.Minutes;
+      }
+
       return r;
     })
   }

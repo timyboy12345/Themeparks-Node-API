@@ -12,5 +12,9 @@
     "baseUrl": "./",
     "incremental": true,
     "resolveJsonModule": true,
+    "types": [
+      "node",
+      "jest"
+    ]
   }
 }

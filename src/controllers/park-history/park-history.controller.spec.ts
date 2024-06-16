@@ -1,7 +1,7 @@
 // import { Test, TestingModule } from '@nestjs/testing';
 // import { ParkHistoryController } from './park-history.controller';
 // import { ParksService } from '../../_services/parks/parks.service';
-// import { CacheModule } from '@nestjs/common';
+// import { CacheModule } from '@nestjs/cache-module';
 // import { ParksModule } from '../../parks/parks.module';
 
 // TODO: Fix the testing of anything with a dependency on the database
