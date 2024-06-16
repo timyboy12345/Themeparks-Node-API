@@ -1,7 +1,5 @@
 import {
   BadRequestException,
-  CACHE_MANAGER,
-  CacheInterceptor, CacheTTL,
   Controller,
   Get,
   Inject,
@@ -17,6 +15,7 @@ import { ParksService } from '../../_services/parks/parks.service';
 import { Cache } from 'cache-manager';
 import { WaitTimeService } from '../../database/wait-time/wait-time.service';
 import * as moment from 'moment';
+import { CACHE_MANAGER, CacheInterceptor, CacheTTL } from '@nestjs/cache-manager';
 
 @ApiTags('Themeparks')
 @Controller('parks/:id')

@@ -1,7 +1,5 @@
 import {
   BadRequestException,
-  CACHE_MANAGER,
-  CacheInterceptor,
   Controller,
   Get,
   Inject,
@@ -19,6 +17,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { LanguageInterceptor } from '../../_interceptors/language.interceptor';
 import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 import { ThemeParkOpeningHourDto } from '../../_dtos/theme-park-opening-hour.dto';
+import { CACHE_MANAGER, CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('Themeparks')
 @Controller('parks/:id')
