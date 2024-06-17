@@ -28,5 +28,5 @@ describe('HolidayParkService', () => {
   it('should return a list of POIs', async () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
-  });
+  }, 1000 * 60);
 });
