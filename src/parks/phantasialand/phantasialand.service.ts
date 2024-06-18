@@ -7,7 +7,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { PhantasialandTransferService } from './phantasialand-transfer/phantasialand-transfer.service';
 import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
 import { PhantasialandWaitTimeItem } from './interfaces/phantasialand-wait-time-item.interface';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { ShowTime } from '../../_interfaces/showtimes.interface';
 import { HttpService } from '@nestjs/axios';
 
@@ -89,26 +89,21 @@ supportsHalloween: false,
 
               waitTimeData.showTimes.map((showTime) => {
                 const start = moment(showTime);
+
+                // TODO: Implement all members
                 showTimes.push({
-                  from: start.format(),
-                  fromTime: start.format('HH:mm'),
-                  to: null,
-                  toTime: null,
-                  id: null,
+                  localFromDate: start.format('YYYY-MM-DD'),
+                  localFromTime: start.format('HH:mm'),
                   isPassed: moment(start).isBefore(),
+                  timezoneFrom: start.clone().tz('Europe/Berlin').format()
                 });
               });
 
-              const d = new Date();
-
               poi.showTimes = {
-                currentDate: moment().format(),
-                duration: null,
-                allShowTimes: showTimes,
-                futureShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day') && !s.isPassed),
-                pastShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day') && s.isPassed),
-                todayShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day')),
-                otherDateShowTimes: showTimes.filter(s => !moment(s.from).isSame(d, 'day')),
+                currentDateTimezone: moment().tz('Europe/Berlin').format(),
+                timezone: 'Europe/Berlin',
+                currentDate: moment().tz('Europe/Berlin').format('YYYY-MM-DD'),
+                showTimes: showTimes
               };
             }
           }

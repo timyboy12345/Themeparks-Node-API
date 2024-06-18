@@ -10,7 +10,7 @@ import { PoiVideo } from './poi-video.interface';
 
 export interface Poi {
   /**
-   * An unique identifier for this ride
+   * A unique identifier for this ride
    *  - There can not be two POIs with the same ID within one park
    *  - Different parks may have the same ID though
    */

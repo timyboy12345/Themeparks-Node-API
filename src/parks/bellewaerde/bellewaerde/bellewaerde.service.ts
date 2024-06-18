@@ -5,7 +5,7 @@ import * as BellewaerdePoiData from '../data/bellewaerde-pois.json';
 import { Poi } from '../../../_interfaces/poi.interface';
 import * as Sentry from '@sentry/node';
 import { BellewaerdeApiResponseItemInterface } from '../interfaces/bellewaerde-api-response.interface';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { BellewaerdeRidesResponseInterface } from '../interfaces/bellewaerde-rides-response.interface';
@@ -28,10 +28,11 @@ export class BellewaerdeService extends ThemeParkService {
       image: 'https://www.bellewaerde.be/sites/default/files/home/2021-03/wakala-home_0.jpg',
       countryCode: 'be',
       parkType: ParkType.THEMEPARK,
+      timezone: 'Europe/Berlin',
       location: {
         lat: 50.846996,
-        lng: 2.947948
-      }
+        lng: 2.947948,
+      },
     };
   }
 
@@ -52,14 +53,14 @@ export class BellewaerdeService extends ThemeParkService {
       supportsRideWaitTimesHistory: true,
       supportsAnimals: true,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsHalloween: false,
     };
   }
 
   async getPois(): Promise<Poi[]> {
     const promises = [
       this.getRides(),
-      this.getAnimals()
+      this.getAnimals(),
     ];
 
     return []
@@ -89,25 +90,29 @@ supportsHalloween: false,
         }
 
         if (poiData.shows) {
+          const localtime = moment().tz(this.getInfo().timezone);
+
           const shows: ShowTime[] = poiData.shows.map(show => {
             const hour = parseInt(show.start.split(':')[0]);
             const minutes = parseInt(show.start.split(':')[1]);
-            const timeStamp = moment().set({ 'hour': hour, 'minutes': minutes });
+            const dateTime = localtime.clone().set({ 'hour': hour, 'minutes': minutes });
+            const dateTimeTimezone = dateTime.clone().tz(this.getInfo().timezone);
 
+            // TODO: Check if more information can be added
             return {
-              from: timeStamp.format(),
-              fromTime: show.start,
+              localFromDate: dateTime.format(),
+              localFromTime: show.start,
               duration: parseInt(show.duration),
-              isPassed: timeStamp.isBefore(),
+              isPassed: dateTimeTimezone.isBefore(localtime),
+              timezoneFrom: localtime.format(),
             };
           });
 
           poi.showTimes = {
-            currentDate: moment().format(),
-            todayShowTimes: shows,
-            futureShowTimes: shows.filter(s => !s.isPassed),
-            pastShowTimes: shows.filter(s => s.isPassed),
-            allShowTimes: shows,
+            currentDate: localtime.format(),
+            currentDateTimezone: localtime.format(),
+            showTimes: shows,
+            timezone: this.getInfo().timezone
           };
         }
       }

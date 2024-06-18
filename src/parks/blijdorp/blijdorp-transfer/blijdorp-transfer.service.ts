@@ -9,29 +9,48 @@ import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 @Injectable()
 export class BlijdorpTransferService extends TransferService {
   transferShowToPoi(poi: BlijdorpShow): Poi {
-    const start = moment(poi.start_time, 'HH:mm');
-    const end = moment(poi.end_time, 'HH:mm');
-    const duration = moment.duration(end.diff(start));
+    const currentDate = moment().tz('Europe/Amsterdam');
 
-    const tz = moment().tz('Europe/Amsterdam');
+    let show: ShowTime;
 
-    const showTime: ShowTime = {
-      duration: duration.asMinutes(),
-      from: poi.start_time === 'ALLDAY' ? tz.format('YYYY-MM-DD HH:mm:ss') : start.format('YYYY-MM-DD HH:mm:ss'),
-      to: poi.start_time === 'ALLDAY' ? tz.add('1 hour').format('YYYY-MM-DD HH:mm:ss') : end.format('YYYY-MM-DD HH:mm:ss'),
-      fromTime: poi.start_time === 'ALLDAY' ? null : poi.start_time,
-      toTime: poi.start_time === 'ALLDAY' ? null : poi.end_time,
-      isPassed: poi.start_time === 'ALLDAY' ? null : start.isBefore(tz),
-    };
+    if (poi.all_day === 0) {
+      const start = moment(poi.start_time, 'HH:mm').tz('Europe/Amsterdam');
+      const end = moment(poi.end_time, 'HH:mm').tz('Europe/Amsterdam');
+      const duration = moment.duration(end.diff(start));
 
-    const showTimeArray = [showTime];
+      const tz = moment().tz('Europe/Amsterdam');
+
+      show = {
+        localFromDate: currentDate.format('YYYY-MM-DD'),
+        localFromTime: poi.start_time,
+        localToDate: currentDate.format('YYYY-MM-DD'),
+        localToTime: poi.end_time,
+        isPassed: currentDate.isAfter(start),
+        timezoneFrom: start.format(),
+        timezoneTo: end.format(),
+        duration: duration.asMinutes(),
+      };
+    } else {
+      const start = moment('12:00', 'HH:mm').tz('Europe/Amsterdam');
+
+      show = {
+        localFromTime: '12:00',
+        localToTime: '16:00',
+        duration: 240,
+        timezoneFrom: start.format(),
+        timezoneTo: start.add(4, 'hours').format(),
+        localFromDate: currentDate.format('YYYY-MM-DD'),
+        localToDate: currentDate.format('YYYY-MM-DD'),
+        // TODO: This does not seem to work properly
+        isPassed: currentDate.isAfter(start)
+      };
+    }
 
     const showTimes: ShowTimes = {
-      pastShowTimes: showTimeArray.filter(st => st.isPassed),
-      todayShowTimes: showTimeArray,
-      allShowTimes: showTimeArray,
-      currentDate: moment().tz('Europe/Amsterdam').format(),
-      futureShowTimes: showTimeArray.filter(st => !st.isPassed),
+      currentDateTimezone: '',
+      timezone: 'Europe/Amsterdam',
+      showTimes: [show],
+      currentDate: currentDate.format(),
     };
 
     return {

@@ -63,11 +63,10 @@ export class PlopsalandDePanneTransferService extends TransferService {
 
     if (poi.timeblocks) {
       p.showTimes = {
-        currentDate: moment().format(),
-        allShowTimes: [],
-        pastShowTimes: [],
-        futureShowTimes: [],
-        todayShowTimes: [],
+        currentDateTimezone: moment().tz('Europe/Berlin').format(),
+        timezone: 'Europe/Berlin',
+        currentDate: moment().format('YYYY-MM-DD'),
+        showTimes: []
       };
 
       const dates = Object.keys(poi.timeblocks).map((key) => {
@@ -80,26 +79,23 @@ export class PlopsalandDePanneTransferService extends TransferService {
 
       dates.forEach(d => {
         d.shows.forEach(show => {
-          const start = moment(`${d.date}T${show.start}:00Z`);
-          const end = show.end && show.end != "" ? moment(`${d.date}T${show.end}:00Z`) : moment(d.date);
+          const currently = moment().tz('Europe/Berlin');
+          const start = moment(`${d.date}T${show.start}:00Z`).tz('Europe/Berlin');
+          const end = show.end && show.end != "" ? moment(`${d.date}T${show.end}:00Z`) : moment(d.date).tz('Europe/Berlin');
 
           showTimes.push({
-            from: start.format(),
-            fromTime: show.start,
-            to: show.end ? end.format() : null,
-            toTime: show.end ? show.end : null,
+            timezoneFrom: start.format(),
+            localFromTime: show.start,
+            localFromDate: d.date,
+            localToDate: show.end ? end.format() : null,
+            localToTime: show.end ? show.end : null,
             id: show.id,
-            isPassed: moment(start).isBefore()
+            isPassed: moment(start).isBefore(currently)
           });
         });
       });
 
-      const d = new Date();
-      p.showTimes.allShowTimes = showTimes;
-      p.showTimes.futureShowTimes = showTimes.filter(s => moment(s.from).isSame(d, 'day') && !s.isPassed);
-      p.showTimes.pastShowTimes = showTimes.filter(s => moment(s.from).isSame(d, 'day') && s.isPassed);
-      p.showTimes.todayShowTimes = showTimes.filter(s => moment(s.from).isSame(d, 'day'));
-      p.showTimes.otherDateShowTimes = showTimes.filter(s => !moment(s.from).isSame(d, 'day'));
+      p.showTimes.showTimes = showTimes;
     }
 
     return p;
