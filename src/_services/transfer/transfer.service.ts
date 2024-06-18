@@ -6,6 +6,7 @@ import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.inter
 @Injectable()
 export class TransferService {
   public transferPoiToPoi(poi: any, locale?: string): Poi {
+    // TODO: Should these be added to Sentry?
     throw new NotImplementedException("Could not transfer POI to POI");
   }
 

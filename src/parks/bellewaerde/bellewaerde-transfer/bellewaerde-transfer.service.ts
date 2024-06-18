@@ -1,81 +1,156 @@
 import { Injectable } from '@nestjs/common';
 import { TransferService } from '../../../_services/transfer/transfer.service';
 import { Poi } from '../../../_interfaces/poi.interface';
-import {
-  BellewaerdeRidesResponseCategory,
-  BellewaerdeRidesResponseRideInterface,
-} from '../interfaces/bellewaerde-rides-response.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
+import { BellewaerdeAttractionResponseInterface } from '../interfaces/bellewaerde-attractions-response.interface';
 
 @Injectable()
 export class BellewaerdeTransferService extends TransferService {
-  public transferPoiToPoi(poi: BellewaerdeRidesResponseRideInterface): Poi {
-    let c = PoiCategory.UNDEFINED;
+  transferRestaurantToPoi(restaurant: BellewaerdeAttractionResponseInterface, locale?: string): Poi {
+    const r = {
+      id: restaurant.waitingTimeName,
+      original: restaurant,
+      category: PoiCategory.RESTAURANT,
+      title: restaurant.title,
+      description: restaurant.shortDescription,
+      subTitle: restaurant.subtitle,
+      location: {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude,
+      },
+      area: restaurant.zone.title,
+    };
 
-    switch (poi.category) {
-      case BellewaerdeRidesResponseCategory.Kids:
-      case BellewaerdeRidesResponseCategory.Splash:
-      case BellewaerdeRidesResponseCategory.Familie:
-      case BellewaerdeRidesResponseCategory.Spannend:
-      case BellewaerdeRidesResponseCategory.Duizelig:
-        c = PoiCategory.ATTRACTION;
-        break;
-      case BellewaerdeRidesResponseCategory.Show:
-        c = PoiCategory.SHOW;
-        break;
-      case BellewaerdeRidesResponseCategory.Dieren:
-        c = PoiCategory.ANIMAL;
-        break;
-      case BellewaerdeRidesResponseCategory.Glijbanen:
-      case BellewaerdeRidesResponseCategory.Avontuur:
-      case BellewaerdeRidesResponseCategory.Speelzones:
-        c = PoiCategory.SLIDE;
-        break;
-      case BellewaerdeRidesResponseCategory.Ontspanning:
-      default:
-        break;
-    }
+    // switch (restaurant.type.id) {
+    //   case 'blw:restaurant-types/fast-food':
+    //     r.category = PoiCategory.fast
+    //     break;
+    // }
 
+    return r;
+  }
+  transferShopToPoi(shop: BellewaerdeAttractionResponseInterface, locale?: string): Poi {
+    const s = {
+      id: shop.waitingTimeName,
+      original: shop,
+      category: PoiCategory.SHOP,
+      title: shop.title,
+      description: shop.shortDescription,
+      subTitle: shop.subtitle,
+      location: {
+        lat: shop.latitude,
+        lng: shop.longitude,
+      },
+      area: shop.zone.title,
+    };
+
+    return s;
+  }
+
+  public transferRideToPoi(poi: BellewaerdeAttractionResponseInterface): Poi {
+    const imageBase = 'https://www.bellewaerde.be';
+
+    let c = PoiCategory.ATTRACTION;
     const ride: Poi = {
-      id: poi.title.toLowerCase(),
+      id: poi.waitingTimeName,
       original: poi,
       category: c,
       title: poi.title,
-      featured: poi.isNew === 1,
-      singleRider: poi.single_rider === 1,
-      fastpass: poi.fast_lane === 1,
+      description: poi.shortDescription,
+      subTitle: poi.subtitle,
+      location: {
+        lat: poi.latitude,
+        lng: poi.longitude,
+      },
+      area: poi.zone.title,
     };
 
-    switch (poi.category) {
-      case BellewaerdeRidesResponseCategory.Duizelig:
-      case BellewaerdeRidesResponseCategory.Spannend:
-        ride.rideCategory = RideCategory.THRILL;
-        break;
-      case BellewaerdeRidesResponseCategory.Familie:
-      case BellewaerdeRidesResponseCategory.Show:
-      case BellewaerdeRidesResponseCategory.Splash:
+    if (poi.mainVideo) {
+      ride.videos = [{
+        platform: 'URL',
+        full_url: imageBase + poi.mainVideo,
+      }];
+    }
+
+    switch (poi.type.id) {
+      case 'blw:attraction-target-groups/families':
         ride.rideCategory = RideCategory.FAMILY;
         break;
-      case BellewaerdeRidesResponseCategory.Kids:
-      default:
+      case 'blw:attraction-target-groups/sensations':
+        ride.rideCategory = RideCategory.THRILL;
+        break;
+      case 'blw:attraction-target-groups/kids':
         ride.rideCategory = RideCategory.KIDS;
+        break;
+      default:
+        ride.rideCategory = RideCategory.UNDEFINED;
+        break;
     }
 
-    if (poi.url) {
-      ride.website_url = 'https://www.bellewaerde.be' + poi.url;
+    if (poi.mainImage) {
+      ride.image_url = imageBase + poi.mainImage.renditions
+        .filter((i) => i.width <= 700)
+        .sort((a, b) => {
+          return a.width < b.width ? 1 : -1;
+        })[0].url;
+      ride.images = [imageBase + poi.mainImage.path];
     }
 
-    if (poi.imgUrl) {
-      ride.image_url = 'https://www.bellewaerde.be' + poi.imgUrl;
+    if (poi.heightSoloRide) {
+      ride.minSizeWithoutEscort = poi.heightSoloRide;
     }
 
-    if (poi.heightAlone) {
-      ride.minSizeWithoutEscort = poi.heightAlone;
+    if (poi.heightAccompaniedByAdult) {
+      ride.minSizeWithEscort = poi.heightAccompaniedByAdult;
     }
 
-    if (poi.heightAdult) {
-      ride.minSizeWithEscort = poi.heightAdult;
+    if (poi.maxHeightNotAllowed) {
+      ride.maxSize = poi.maxHeightNotAllowed;
+    }
+
+    ride.facts = [];
+
+    if (poi.rideDetails) {
+      if (poi.rideDetails.speed) {
+        ride.facts.push({
+          type: 'speed',
+          id: 'speed',
+          value: poi.rideDetails.speed.toString()
+        })
+      }
+
+      if (poi.rideDetails.height) {
+        ride.facts.push({
+          type: 'height',
+          id: 'height',
+          value: poi.rideDetails.height.toString()
+        })
+      }
+
+      if (poi.rideDetails.length) {
+        ride.facts.push({
+          type: 'length',
+          id: 'length',
+          value: poi.rideDetails.length.toString()
+        })
+      }
+
+      if (poi.rideDetails.capacity) {
+        ride.facts.push({
+          type: 'capacity',
+          id: 'capacity',
+          value: poi.rideDetails.capacity.toString()
+        })
+      }
+
+      if (poi.rideDetails.yearOfConstruction) {
+        ride.facts.push({
+          type: 'build_in',
+          id: 'build_in',
+          value: poi.rideDetails.yearOfConstruction.toString()
+        })
+      }
     }
 
     return ride;

@@ -1,25 +1,10 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { BellewaerdeBaseService } from '../bellewaerde-base/bellewaerde-base.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
-import * as BellewaerdePoiData from '../data/bellewaerde-pois.json';
-import { Poi } from '../../../_interfaces/poi.interface';
-import * as Sentry from '@sentry/node';
-import { BellewaerdeApiResponseItemInterface } from '../interfaces/bellewaerde-api-response.interface';
-import * as moment from 'moment-timezone';
-import { ShowTime } from '../../../_interfaces/showtimes.interface';
-import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
-import { BellewaerdeRidesResponseInterface } from '../interfaces/bellewaerde-rides-response.interface';
-import { BellewaerdeTransferService } from '../bellewaerde-transfer/bellewaerde-transfer.service';
-import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
-import { HttpService } from '@nestjs/axios';
 
 @Injectable()
-export class BellewaerdeService extends ThemeParkService {
-  constructor(private readonly httpService: HttpService,
-              private readonly belleWaerdeTransferService: BellewaerdeTransferService) {
-    super();
-  }
-
+export class BellewaerdeService extends BellewaerdeBaseService {
   getInfo(): ThemePark {
     return {
       id: 'bellewaerde',
@@ -38,138 +23,28 @@ export class BellewaerdeService extends ThemeParkService {
 
   getSupports(): ThemeParkSupports {
     return {
+      // TODO: Fix animals
+      supportsAnimals: false,
+      supportsHalloween: false,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
+      supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: false,
-      supportsRideWaitTimes: true,
+      // TODO: Fix wait times
+      supportsRideWaitTimes: false,
+      supportsRideWaitTimesHistory: false,
       supportsRides: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: true,
       supportsShowTimes: false,
       supportsShows: true,
-      supportsPoiLocations: false,
-      supportsShops: false,
-      supportsShopOpeningTimes: false,
-      supportsOpeningTimes: false,
-      supportsOpeningTimesHistory: false,
-      supportsRideWaitTimesHistory: true,
-      supportsAnimals: true,
       supportsTranslations: false,
-      supportsHalloween: false,
     };
   }
 
-  async getPois(): Promise<Poi[]> {
-    const promises = [
-      this.getRides(),
-      this.getAnimals(),
-    ];
-
-    return []
-      .concat
-      .apply([], await Promise.all(promises));
-  }
-
-  async getRides(): Promise<Poi[]> {
-    const data = await this.getRideData();
-    const waitTimes = await this.getWaitTimes();
-
-    const pois = this.belleWaerdeTransferService.transferPoisToPois(data.markers);
-
-    pois.forEach(poi => {
-      const r = BellewaerdePoiData.find(p => p.name.toLowerCase() === poi.title.toLowerCase());
-      if (r) {
-        poi.id = `${r.code}`;
-      }
-    });
-
-    pois.forEach(poi => {
-      const poiData = waitTimes.find(w => w.id === poi.id);
-
-      if (poiData) {
-        if (poiData.wait) {
-          poi.currentWaitTime = parseInt(poiData.wait);
-        }
-
-        if (poiData.shows) {
-          const localtime = moment().tz(this.getInfo().timezone);
-
-          const shows: ShowTime[] = poiData.shows.map(show => {
-            const hour = parseInt(show.start.split(':')[0]);
-            const minutes = parseInt(show.start.split(':')[1]);
-            const dateTime = localtime.clone().set({ 'hour': hour, 'minutes': minutes });
-            const dateTimeTimezone = dateTime.clone().tz(this.getInfo().timezone);
-
-            // TODO: Check if more information can be added
-            return {
-              localFromDate: dateTime.format(),
-              localFromTime: show.start,
-              duration: parseInt(show.duration),
-              isPassed: dateTimeTimezone.isBefore(localtime),
-              timezoneFrom: localtime.format(),
-            };
-          });
-
-          poi.showTimes = {
-            currentDate: localtime.format(),
-            currentDateTimezone: localtime.format(),
-            showTimes: shows,
-            timezone: this.getInfo().timezone
-          };
-        }
-      }
-    });
-
-    return pois;
-  }
-
-  async getShows(): Promise<Poi[]> {
-    const rides = await this.getPois();
-    return rides.filter(r => r.category === PoiCategory.SHOW);
-  }
-
-  async getAnimals(): Promise<Poi[]> {
-    const animals = await this.getAnimalData();
-    return this.belleWaerdeTransferService.transferPoisToPois(animals.markers);
-  }
-
-  private async getRideData() {
-    return this.httpService
-      .get<BellewaerdeRidesResponseInterface>('https://www.bellewaerde.be/nl/entertainment_list/61/json')
-      .toPromise()
-      .then(value => {
-        return value.data;
-      })
-      .catch((exception) => {
-        Sentry.captureException(exception);
-        console.error(exception);
-        throw new InternalServerErrorException(exception);
-      });
-  }
-
-  private async getAnimalData() {
-    return this.httpService
-      .get<BellewaerdeRidesResponseInterface>('https://www.bellewaerde.be/nl/entertainment_list/109/json')
-      .toPromise()
-      .then(value => {
-        return value.data;
-      })
-      .catch((exception) => {
-        Sentry.captureException(exception);
-        console.error(exception);
-        throw new InternalServerErrorException(exception);
-      });
-  }
-
-  private async getWaitTimes() {
-    return this.httpService
-      .get<BellewaerdeApiResponseItemInterface[]>('http://bellewaer.de/realtime/api/api-realtime.php')
-      .toPromise()
-      .then(value => {
-        return value.data;
-      })
-      .catch((exception) => {
-        Sentry.captureException(exception);
-        console.error(exception);
-        throw new InternalServerErrorException(exception);
-      });
+  getParkCode(): string {
+    return "blw";
   }
 }
