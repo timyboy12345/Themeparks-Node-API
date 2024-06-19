@@ -6,8 +6,9 @@ import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { EnergylandiaCalendarInterface } from '../interfaces/energylandia-calendar.interface';
 import { EnergylandiaWaitTimeInterface } from '../interfaces/energylandia-wait-time.interface';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { HttpService } from '@nestjs/axios';
+import { ShowTime } from '../../../_interfaces/showtimes.interface';
 
 @Injectable()
 export class EnergylandiaService extends ThemeParkService {
@@ -64,14 +65,22 @@ export class EnergylandiaService extends ThemeParkService {
         }
 
         return response.data[date].show.map((show) => {
-          const shows = show.time.split(',').map((showTime) => {
+          const currentMomentTimezone = moment().tz(this.getInfo().timezone);
+
+          const shows: ShowTime[] = show.time.split(',').map((showTime) => {
             const time = showTime.trim();
+            const hour = parseInt(time.split(':')[0]);
+            const minutes = parseInt(time.split(':')[1]);
+            const showDateTime = currentMomentTimezone.clone().set({
+              'hour': hour,
+              'minutes': minutes,
+            });
 
             return {
-              from: moment(time, 'HH:mm').format(),
-              fromTime: time,
-              toTime: null,
-              isPassed: moment(time, 'HH:mm').isBefore(),
+              localFromDate: showDateTime.format('YYYY-MM-DD'),
+              localFromTime: time,
+              isPassed: showDateTime.isAfter(currentMomentTimezone),
+              timezoneFrom: showDateTime.format(),
             };
           });
 
@@ -83,10 +92,9 @@ export class EnergylandiaService extends ThemeParkService {
             website_url: show.link,
             showTimes: {
               currentDate: moment().format(),
-              todayShowTimes: shows,
-              futureShowTimes: shows.filter(s => !s.isPassed),
-              pastShowTimes: shows.filter(s => s.isPassed),
-              allShowTimes: shows,
+              showTimes: shows,
+              currentDateTimezone: moment().tz(this.getInfo().timezone).format(),
+              timezone: this.getInfo().timezone,
             },
           };
 

@@ -1,5 +1,12 @@
 export interface SeaworldWaitTimesInterface {
-  'WaitTimes': [],
+  'WaitTimes': {
+    "Id": string,
+    "LastUpDateTime": string,
+    "Minutes": number,
+    "Status": string,
+    "StatusDisplay": null,
+    "Title": null
+  }[],
   'ShowTimes': {
     'Id': string,
     'ShowTimes': {

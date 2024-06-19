@@ -74,22 +74,23 @@ export class SeaworldTransferService extends TransferService {
       const showTimes = poi.ShowTimes.map((s): ShowTime => {
         const start = moment(s.StartTime).tz('America/Los_Angeles', false);
 
+        // TODO: Don't hardcode timezones
+        // TODO: Check if times are correct, since there are two sets of times given by the API
         return {
-          from: start.format(),
-          fromTime: moment(s.StartTime).format('HH:mm:ss'),
-          to: moment(s.StartTime).tz('America/Los_Angeles', false).format(),
-          isPassed: moment().tz('America/Los_Angeles', false).isAfter(start),
+          timezoneFrom: start.format(),
+          localFromDate: start.format('YYYY-MM-DD'),
+          localFromTime: moment(s.StartTime).format('HH:mm'),
+          localToDate: moment(s.StartTime).tz('America/Los_Angeles', false).format('YYYY-MM-DD'),
+          isPassed: moment().tz('America/Los_Angeles', false).isAfter(start)
         }
       })
 
-      const d = new Date();
+      // TODO: Don't hardcode the timezone information
       p.showTimes = {
+        currentDateTimezone: '',
+        timezone: 'America/New_York',
         currentDate: moment().tz('America/Los_Angeles').format(),
-        allShowTimes: showTimes,
-        futureShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day') && !s.isPassed),
-        pastShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day') && s.isPassed),
-        todayShowTimes: showTimes.filter(s => moment(s.from).isSame(d, 'day')),
-        otherDateShowTimes: showTimes.filter(s => !moment(s.from).isSame(d, 'day')),
+        showTimes: showTimes
       };
     }
 

@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { WalibiService } from '../walibi.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
+import {
+  CompagnieDesAlpesBaseService
+} from '../../compagnie-des-alpes/compagnie-des-alpes-base/compagnie-des-alpes-base.service';
 
 @Injectable()
-export class WalibiFranceService extends WalibiService {
+export class WalibiFranceService extends CompagnieDesAlpesBaseService {
   getInfo(): ThemePark {
     return {
       id: 'walibi-rhone-alpes',
@@ -19,7 +21,28 @@ export class WalibiFranceService extends WalibiService {
     };
   }
 
-  getLocale(): string {
-    return 'fr';
+  getParkCode(): string {
+    return 'wra';
+  }
+
+  getBaseUrl(): string {
+    return 'https://www.walibi.fr';
+  }
+
+  getRealTimeURL(): string {
+    return null;
+  }
+
+  getLocaleCode(l): string {
+    switch (l) {
+      // case 'fr':
+      //   return 'fr';
+      default:
+        return 'fr';
+    }
+  }
+
+  supportsShows(): boolean {
+    return false;
   }
 }

@@ -10,11 +10,12 @@ import { HolidayParkAttractionsResponseInterface } from './interfaces/holiday-pa
 import { HolidayParkPageResponseInterface } from './interfaces/holiday-park-page-response.interface';
 import { HttpService } from '@nestjs/axios';
 import { LocaleService } from '../../_services/locale/locale.service';
+import { HolidayParkTokenInterface } from './interfaces/holiday-park-token.interface';
 
 @Injectable()
 export class HolidayParkService extends ThemeParkService {
   private readonly _holidayParkApiUrl: String;
-  private readonly _holidayParkApiToken: String;
+  private _holidayParkApiToken: String;
 
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
@@ -23,7 +24,7 @@ export class HolidayParkService extends ThemeParkService {
     super();
 
     this._holidayParkApiUrl = this.configService.get('HOLIDAY_PARK_API_URL');
-    this._holidayParkApiToken = this.configService.get('HOLIDAY_PARK_API_TOKEN');
+    // this._holidayParkApiToken = this.configService.get('HOLIDAY_PARK_API_TOKEN');
   }
 
   getInfo(): ThemePark {
@@ -58,7 +59,7 @@ export class HolidayParkService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsHalloween: false,
     };
   }
 
@@ -105,7 +106,11 @@ supportsHalloween: false,
   //   return pois;
   // }
 
-  private request<T>(url: string) {
+  private async request<T>(url: string) {
+    if (!this._holidayParkApiToken) {
+      this._holidayParkApiToken = await this.getToken();
+    }
+
     const fullUrl = this._holidayParkApiUrl + '/' + url + '?access_token=' + this._holidayParkApiToken;
 
     return this
@@ -118,6 +123,19 @@ supportsHalloween: false,
       .catch((exception) => {
         Sentry.captureException(exception);
         console.error(exception);
+        throw new InternalServerErrorException();
+      });
+  }
+
+  private getToken() {
+    const url = 'https://www.holidaypark.de/de/api/v1.0/token/0001';
+
+    return this.httpService.post<HolidayParkTokenInterface>(url, { 'clientSecret': '6YqyzzOsaNkxDkHmwhgK%%2Fw%%3D%%3D', 'clientId': '7xfwRB8iK1tbf3cYiABI%%2Fw%%3D%%3D' })
+      .toPromise()
+      .then((r) => r.data.accessToken)
+      .catch((e) => {
+        Sentry.captureException(e);
+        console.error(e);
         throw new InternalServerErrorException();
       });
   }

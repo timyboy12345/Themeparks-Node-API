@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ParkController } from './park.controller';
-import { CacheModule } from '@nestjs/common';
+import { CacheModule } from '@nestjs/cache-manager';
 import { ParksService } from '../../_services/parks/parks.service';
 import { ParksModule } from '../../parks/parks.module';
 import { LocaleService } from '../../_services/locale/locale.service';

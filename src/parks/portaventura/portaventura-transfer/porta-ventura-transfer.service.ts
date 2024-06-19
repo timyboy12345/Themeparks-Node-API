@@ -1,101 +1,131 @@
 import { Injectable } from '@nestjs/common';
-import { Poi } from '../../../_interfaces/poi.interface';
-import { PortaVenturaPoi } from '../interfaces/porta-ventura-poi.interface';
-import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { TransferService } from '../../../_services/transfer/transfer.service';
+import { Poi } from '../../../_interfaces/poi.interface';
+import { PortaventuraBaseRideInterface } from '../interfaces/portaventura-base-ride.interface';
+import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import * as moment from 'moment-timezone';
+import { RideCategory } from '../../../_interfaces/ride-category.interface';
+import { ShowTime } from '../../../_interfaces/showtimes.interface';
+import { PoiOpeningTime } from '../../../_interfaces/poi-openingtimes.interface';
 
 @Injectable()
 export class PortaVenturaTransferService extends TransferService {
-  transferPoiToPoi(poi: PortaVenturaPoi, locale?: string): Poi {
-    const p: Poi = {
-      id: `${poi.id}`,
-      category: undefined,
-      title: poi.attributes.name,
-      subTitle: poi.attributes.tagLine,
-      description: poi.attributes.description,
+  transferRideToPoi(poi: any, locale?: string): Poi {
+    const ride = this.transferPoiToPoi(poi);
+    ride.category = PoiCategory.ATTRACTION;
+    return ride;
+  }
+
+  transferShowToPoi(poi: any, locale?: string): Poi {
+    const show = this.transferPoiToPoi(poi);
+    show.category = PoiCategory.SHOW;
+    show.showTimes = {
+      currentDate: moment().tz('Europe/Madrid').format('YYYY-MM-DD'),
+      currentDateTimezone: moment().tz('Europe/Madrid').format(),
+      timezone: 'Europe/Madrid',
+      showTimes: show.openingTimes.map((ot) => {
+        const start = moment(ot.open);
+        const st: ShowTime = {
+          localFromDate: start.format('YYYY-MM-DD'),
+          localFromTime: start.format('HH:mm'),
+          timezoneFrom: start.format(),
+        };
+
+        if (ot.close) {
+          const end = moment(ot.close);
+          st.localToDate = end.format('YYYY-MM-DD');
+          st.localToTime = end.format('HH:mm');
+          st.duration = start.diff(end, 'minutes');
+        }
+
+        return st;
+      }),
+    };
+    show.openingTimes = undefined;
+
+    return show;
+  }
+
+  transferRestaurantToPoi(poi: any, locale?: string): Poi {
+    const restaurant = this.transferPoiToPoi(poi);
+    restaurant.category = PoiCategory.RESTAURANT;
+    return restaurant;
+  }
+
+  transferShopToPoi(poi: any, locale?: string): Poi {
+    const shop = this.transferPoiToPoi(poi);
+    shop.category = PoiCategory.SHOP;
+    return shop;
+  }
+
+  transferPoiToPoi(data: PortaventuraBaseRideInterface, locale?: string): Poi {
+    const poi: Poi = {
+      category: PoiCategory.UNDEFINED,
+      id: data.id,
+      original: data,
+      title: data.name,
+      subTitle: data.tagLine,
+      description: data.description,
+      images: data.images,
+      image_url: data.logo,
+      previewImage: data.thumbnail,
+      maxSize: data.maximumHeight > 0 ? data.maximumHeight * 100 : null,
+      minSizeWithoutEscort: data.minimumHeight > 0 ? data.minimumHeight * 100 : null,
+      minSizeWithEscort: data.adultMinimumHeight > 0 ? data.adultMinimumHeight * 100 : null,
       location: {
-        lat: poi.attributes.latitude,
-        lng: poi.attributes.longitude,
+        lat: data.latitude,
+        lng: data.longitude,
       },
-      original: poi,
+      area: data.area,
+      singleRider: data.tags.filter((t) => t.name === 'Single rider').length > 0,
+      photoPoint: data.tags.filter((t) => t.name === 'Photo Ride').length > 0,
     };
 
-    if (poi.attributes.images && poi.attributes.images.data) {
-      let images = [];
-      let thumb = null;
-
-      poi.attributes.images.data.forEach((imageObject) => {
-        if (imageObject.attributes.formats) {
-          if (imageObject.attributes.formats.large) {
-            images.push(imageObject.attributes.formats.large.url);
-          } else if (imageObject.attributes.formats.medium) {
-            images.push(imageObject.attributes.formats.medium.url);
-          } else if (imageObject.attributes.formats.small) {
-            images.push(imageObject.attributes.formats.small.url);
-          }
-
-          if (imageObject.attributes.formats.small && !thumb) {
-            thumb = imageObject.attributes.formats.small.url;
-          } else if (imageObject.attributes.formats.thumbnail && !thumb) {
-            thumb = imageObject.attributes.formats.thumbnail.url;
-          }
-        }
-      })
-
-      p.images = images;
-      p.image_url = images[0];
-      p.previewImage = thumb;
-    }
-
-    if (poi.attributes.adultMinimumHeight) {
-      if (!poi.attributes.minimumHeight || poi.attributes.minimumHeight !== poi.attributes.adultMinimumHeight) {
-        p.minSizeWithEscort = Math.round(poi.attributes.adultMinimumHeight * 100);
-      }
-    }
-
-    if (poi.attributes.minimumHeight) {
-      p.minSizeWithoutEscort = Math.round(poi.attributes.minimumHeight * 100);
-    }
-
-    if (poi.attributes.maximumHeight) {
-      p.maxSize = Math.round(poi.attributes.maximumHeight * 100);
-    }
-
-    if (poi.attributes.area && poi.attributes.area.data) {
-      p.area = poi.attributes.area.data.attributes.name
-    }
-
-    if (poi.attributes.videoUrl) {
-      p.videos = [{
+    if (data.videoUrl) {
+      poi.videos = [{
         platform: 'YOUTUBE',
-        full_url: poi.attributes.videoUrl
-      }]
+        full_url: data.videoUrl,
+      }];
     }
 
-    return p;
-  }
+    if (data.schedule) {
+      poi.openingTimes = [];
 
-  transferRideToPoi(ride: any, locale?: string): Poi {
-    const r = this.transferPoiToPoi(ride, locale);
-    r.category = PoiCategory.ATTRACTION;
-    return r;
-  }
+      data.schedule.forEach((s) => {
+        const open = moment(s.open, 'HH:mm').tz('Europe/Madrid');
+        const close = moment(s.close, 'HH:mm').tz('Europe/Madrid');
 
-  transferShowToPoi(ride: any, locale?: string): Poi {
-    const r = this.transferPoiToPoi(ride, locale);
-    r.category = PoiCategory.SHOW;
-    return r;
-  }
+        const ot: PoiOpeningTime = {
+          open: open.format(),
+          openTime: open.format('HH:mm'),
+          date: open.format('YYYY-MM-DD'),
+        };
 
-  transferShopToPoi(ride: any, locale?: string): Poi {
-    const r = this.transferPoiToPoi(ride, locale);
-    r.category = PoiCategory.SHOP;
-    return r;
-  }
+        if (s.close) {
+          ot.close = close.format();
+          ot.closeTime = close.format('HH:mm');
+        }
 
-  transferRestaurantToPoi(ride: any, locale?: string): Poi {
-    const r = this.transferPoiToPoi(ride, locale);
-    r.category = PoiCategory.RESTAURANT;
-    return r;
+        poi.openingTimes.push(ot);
+      });
+    }
+
+    if (data.queue) {
+      poi.currentWaitTime = data.queue;
+    }
+
+    if (data.express) {
+      poi.fastpass = data.express;
+    }
+
+    if (data.tags.some((t) => t.name === 'Children' || t.name === 'Gentle')) {
+      poi.rideCategory = RideCategory.KIDS;
+    } else if (data.tags.some((t) => t.name === 'Thrill')) {
+      poi.rideCategory = RideCategory.THRILL;
+    } else if (data.tags.some((t) => t.name === 'Moderate')) {
+      poi.rideCategory = RideCategory.FAMILY;
+    }
+
+    return poi;
   }
 }

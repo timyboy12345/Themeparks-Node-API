@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './_services/app.service';
 import { ParksService } from './_services/parks/parks.service';
-import { CacheModule } from '@nestjs/common';
+import { CacheModule } from '@nestjs/cache-manager';
 import { ConfigModule } from '@nestjs/config';
 import { ParksModule } from './parks/parks.module';
 import { HttpModule } from '@nestjs/axios';

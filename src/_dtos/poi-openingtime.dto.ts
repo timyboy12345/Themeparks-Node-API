@@ -9,7 +9,7 @@ export class PoiOpeningTimeDto {
   @ApiProperty({
     example: '18:00:00',
   })
-  close: string;
+  close?: string;
 
   @ApiProperty({
     example: '10:00:00',
@@ -24,7 +24,7 @@ export class PoiOpeningTimeDto {
   @ApiProperty({
     example: '18:00:00',
   })
-  closeTime: string;
+  closeTime?: string;
 
   @ApiProperty({
     example: false,

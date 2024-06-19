@@ -3,7 +3,7 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { ToverlandRide } from '../interfaces/toverland-ride.interface';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { ToverlandFoodAndDrink } from '../interfaces/toverland-foodanddrink.interface';
 import { ToverlandShow, ToverlandShowTime } from '../interfaces/toverland-show.interface';
 import { ToverlandHalloweenEvent } from '../interfaces/toverland-halloween-event.interface';
@@ -121,11 +121,10 @@ export class ToverlandTransferService extends TransferService {
 
     if ('times' in poi && poi.times) {
       r.showTimes = {
+        currentDateTimezone: moment().tz('Europe/Amsterdam').format(),
+        timezone: 'Europe/Amsterdam',
         currentDate: moment().format(),
-        allShowTimes: poi.times.map(t => this.transferShowTimeToShowTime(t)),
-        pastShowTimes: poi.times.map(t => this.transferShowTimeToShowTime(t)).filter(t => t.isPassed),
-        futureShowTimes: poi.times.map(t => this.transferShowTimeToShowTime(t)).filter(t => !t.isPassed),
-        todayShowTimes: poi.times.map(t => this.transferShowTimeToShowTime(t)),
+        showTimes: poi.times.map(t => this.transferShowTimeToShowTime(t))
       }
     }
 
@@ -184,9 +183,10 @@ export class ToverlandTransferService extends TransferService {
 
   transferShowTimeToShowTime(showTime: ToverlandShowTime): ShowTime {
     return {
-      from: moment(showTime.start).format(),
-      fromTime: moment(showTime.start).format('HH:mm:ss'),
-      isPassed: moment(showTime.start).isBefore()
+      localFromDate: moment(showTime.start).format('YYYY-MM-DD'),
+      localFromTime: moment(showTime.start).format('HH:mm'),
+      timezoneFrom: moment(showTime.start).tz('Europe/Amsterdam').format(),
+      isPassed: moment(showTime.start).isBefore(),
     }
   }
 }

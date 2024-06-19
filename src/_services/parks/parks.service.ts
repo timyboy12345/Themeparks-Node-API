@@ -22,7 +22,6 @@ import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-p
 import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
 import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouwehands-dierenpark.service';
 import { WildlandsService } from '../../parks/wildlands/wildlands.service';
-import { BellewaerdeAquaparkService } from '../../parks/bellewaerde/bellewaerde-aquapark/bellewaerde-aquapark.service';
 import { LisebergService } from '../../parks/liseberg/liseberg.service';
 import { SilverDollarCityService } from '../../parks/herschend/silver-dollar-city/silver-dollar-city.service';
 import { CarowindsService } from '../../parks/cedarfair/carowinds/carowinds.service';
@@ -80,7 +79,7 @@ export class ParksService {
     private readonly _portaVenturaService: PortaventuraService,
     private readonly _ferrariLandService: FerrariLandService,
     private readonly _bellewaerdeService: BellewaerdeService,
-    private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
+    // private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
     private readonly _dippieDoeService: DippieDoeService,
     private readonly _holidayParkService: HolidayParkService,
     private readonly _hellendoornService: HellendoornService,
@@ -135,7 +134,7 @@ export class ParksService {
     this._parks.push(_portaVenturaService);
     this._parks.push(_ferrariLandService);
     this._parks.push(_bellewaerdeService);
-    this._parks.push(_bellewaerdeAquaparkService);
+    // this._parks.push(_bellewaerdeAquaparkService);
     this._parks.push(_dippieDoeService);
     this._parks.push(_holidayParkService);
     this._parks.push(_hellendoornService);

@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ParksController } from './parks.controller';
 import { ParksService } from '../../_services/parks/parks.service';
 import { ParksModule } from '../../parks/parks.module';
-import { CacheModule } from '@nestjs/common';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('ParksController', () => {
   let controller: ParksController;

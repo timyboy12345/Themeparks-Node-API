@@ -9,7 +9,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { BlogPostsService } from '../../database/blog-posts/blog-posts.service';
 import { BlogPost } from '../../database/blog-posts/blog-post.entity';
 import { BlogPostInsertEntity } from '../../database/blog-posts/dto/blog-post-insert.entity';
@@ -17,7 +17,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { LocaleService } from '../../_services/locale/locale.service';
 import { LanguageInterceptor } from '../../_interceptors/language.interceptor';
 import { BlogPostEditEntity } from '../../database/blog-posts/dto/blog-post-edit.entity';
-import { ApiImplicitQuery } from '@nestjs/swagger/dist/decorators/api-implicit-query.decorator';
 
 @ApiTags('Blog Posts')
 @Controller('blog-posts')
@@ -31,7 +30,7 @@ export class BlogPostsController {
     type: BlogPost,
     isArray: true,
   })
-  @ApiImplicitQuery({
+  @ApiQuery({
     type: String,
     isArray: false,
     example: 'nl-NL',

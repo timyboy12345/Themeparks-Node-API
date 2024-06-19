@@ -1,11 +1,28 @@
 export interface ShowTimes {
+  /**
+   * @description The duration of a show, in minutes
+   */
   duration?: number;
+
+  /**
+   * @description The current datetime of this park, to use as a reference
+   */
   currentDate: string;
-  allShowTimes: ShowTime[];
-  todayShowTimes: ShowTime[];
-  otherDateShowTimes?: ShowTime[];
-  pastShowTimes: ShowTime[];
-  futureShowTimes: ShowTime[];
+
+  /**
+   * @description The current date with timezone information
+   */
+  currentDateTimezone: string;
+
+  /**
+   * @description A list of all show times for this location, these may be from another date, or have already passed
+   */
+  showTimes: ShowTime[];
+
+  /**
+   * @description The timezone for this set of shows
+   */
+  timezone: string;
 }
 
 export interface ShowTime {
@@ -15,24 +32,34 @@ export interface ShowTime {
   id?: string;
 
   /**
-   * The full date when the show starts
+   * The local date when the show starts
    */
-  from: string;
+  localFromDate: string;
 
   /**
-   * The start time
+   * The local start time
    */
-  fromTime: string;
+  localFromTime: string;
 
   /**
-   * The full date when the show ends
+   * The local date the show ends
    */
-  to?: string;
+  localToDate?: string;
 
   /**
-   * The end time
+   * The local end time
    */
-  toTime?: string;
+  localToTime?: string;
+
+  /**
+   * The full 'from' datetime in UTC format, with timezone information
+   */
+  timezoneFrom: string;
+
+  /**
+   * The full 'to' datetime in UTC format, with timezone information
+   */
+  timezoneTo?: string;
 
   /**
    * The duration of the show (in minutes)

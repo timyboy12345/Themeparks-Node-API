@@ -4,7 +4,7 @@ import { EftelingPoi } from '../interfaces/efteling-poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
 import { TransferService } from '../../../_services/transfer/transfer.service';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { ShowTime, ShowTimes } from '../../../_interfaces/showtimes.interface';
 import {
   EftelingOpeningTimesAttraction,
@@ -144,25 +144,29 @@ export class EftelingTransferService extends TransferService {
     const shows = showTimes.PastShowTimes.concat(showTimes.ShowTimes);
 
     return {
-      todayShowTimes: shows.map(this.transferShowTimeToShowTime),
-      pastShowTimes: shows.map(this.transferShowTimeToShowTime).filter(st => st.isPassed),
-      duration: showTimes.ShowDuration,
-      allShowTimes: shows.map(this.transferShowTimeToShowTime),
-      otherDateShowTimes: [],
+      showTimes: shows.map(this.transferShowTimeToShowTime),
       currentDate: moment().format(),
-      futureShowTimes: shows.map(this.transferShowTimeToShowTime).filter(st => !st.isPassed),
+      currentDateTimezone: moment().tz('Amsterdam/Europe').format(),
+      timezone: 'Europe/Amsterdam',
     };
   }
 
   transferShowTimeToShowTime(showTime: EftelingOpeningTimesAttractionShowTimes): ShowTime {
+    const start = moment(showTime.StartDateTime).tz('Europe/Amsterdam');
+    const end = moment(showTime.EndDateTime).tz('Europe/Amsterdam');
+    const currently = moment().tz('Europe/Amsterdam');
+
+    // TODO: Test if this works properly once Efteling works again
     return {
-      duration: null,
-      from: moment.parseZone(showTime.StartDateTime).format(),
-      to: moment.parseZone(showTime.EndDateTime).format(),
+      localFromDate: start.format('YYYY-MM-DD'),
+      localFromTime: start.format('HH:mm'),
+      duration: start.diff(end, 'minutes'),
+      isPassed: currently.isAfter(start),
+      localToDate: end.format('YYYY-MM-DD'),
+      localToTime: end.format('HH:mm'),
       edition: showTime.Edition,
-      fromTime: moment.parseZone(showTime.StartDateTime).format('HH:mm:ss'),
-      toTime: moment.parseZone(showTime.EndDateTime).format('HH:mm:ss'),
-      isPassed: moment.parseZone(showTime.StartDateTime).isBefore(),
+      timezoneFrom: start.format(),
+      timezoneTo: end.format(),
     };
   }
 

@@ -9,6 +9,11 @@ import * as moment from 'moment';
 import * as Sentry from '@sentry/node';
 import { BlijdorpShow } from '../interfaces/blijdorp-show.interface';
 import { HttpService } from '@nestjs/axios';
+import {
+  BlijdorpAnimalInterface,
+  BlijdorpAnimalsResponseInterface,
+} from '../interfaces/blijdorp-animals-response.interface';
+import { LocaleService } from '../../../_services/locale/locale.service';
 
 @Injectable()
 export class BlijdorpService extends ThemeParkService {
@@ -17,7 +22,8 @@ export class BlijdorpService extends ThemeParkService {
 
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
-              private readonly transferService: BlijdorpTransferService) {
+              private readonly transferService: BlijdorpTransferService,
+              private readonly localeService: LocaleService) {
     super();
 
     this.organiqBaseUrl = this.configService.get('BLIJDORP_ORGANIQ_URL');
@@ -42,11 +48,12 @@ export class BlijdorpService extends ThemeParkService {
 
   getSupports(): ThemeParkSupports {
     return {
-      supportsAnimals: false,
+      supportsAnimals: true,
+      supportsHalloween: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
-      supportsPois: false,
+      supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: false,
       supportsRideWaitTimes: false,
@@ -57,15 +64,62 @@ export class BlijdorpService extends ThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
-supportsHalloween: false,
     };
   }
 
   async getPois(): Promise<Poi[]> {
-    return this.getShows();
+    const promises = [
+      this.getAnimals(),
+      this.getShows(),
+    ];
+
+    return []
+      .concat
+      .apply([], await Promise.all(promises));
   }
 
-  // TODO: Fix this error
+  async getAnimals(): Promise<Poi[]> {
+    const url = 'https://diergaardeblijdorp.nl/api/animals-plants-overview';
+
+    let lang: string;
+    if (this.localeService.getLocale() == 'nl') {
+      lang = 'nl-NL';
+    } else {
+      lang = 'en-GB';
+    }
+
+    let page = 1;
+    let tries = 0;
+    let animals: BlijdorpAnimalInterface[] = [];
+
+    while (page > 0 && tries < 100) {
+      tries++;
+
+      await this.httpService
+        .post<BlijdorpAnimalsResponseInterface>(url, {
+          'lang': lang,
+          'type': 'animal',
+          'page': page,
+        }).toPromise()
+        .then((response) => {
+          animals = animals.concat(response.data.items);
+
+          if (response.data.nextPage) {
+            page++;
+          } else {
+            page = -1;
+          }
+        })
+        .catch((exception) => {
+          Sentry.captureException(exception);
+          console.error(exception);
+          throw new InternalServerErrorException(exception);
+        });
+    }
+
+    return this.transferService.transferAnimalsToPois(animals);
+  }
+
   async getShows(): Promise<Poi[]> {
     const date = moment().format('YYYY-MM-DD');
     const url = `${this.organiqBaseUrl}/api/events/${date}`;

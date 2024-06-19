@@ -3,6 +3,7 @@ import { BlijdorpService } from './blijdorp.service';
 import { HttpModule } from '@nestjs/axios';
 import { BlijdorpTransferService } from '../blijdorp-transfer/blijdorp-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('BlijdorpService', () => {
   let service: BlijdorpService;
@@ -12,8 +13,9 @@ describe('BlijdorpService', () => {
       providers: [BlijdorpService, BlijdorpTransferService],
       imports: [
         HttpModule,
-        ConfigModule.forRoot()
-      ]
+        ConfigModule.forRoot(),
+        LocaleModule,
+      ],
     }).compile();
 
     service = module.get<BlijdorpService>(BlijdorpService);
@@ -27,9 +29,8 @@ describe('BlijdorpService', () => {
     expect(service.getInfo().id).toBeDefined();
   });
 
-  // TODO: Fix error in retrieving events
-  // it('should return a list of POIs', async () => {
-  //   const data = await service.getPois();
-  //   expect(data).toBeInstanceOf(Array);
-  // }, 1000 * 60);
+  it('should return a list of POIs', async () => {
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
+  }, 1000 * 60);
 });

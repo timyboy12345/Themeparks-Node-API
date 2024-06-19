@@ -1,9 +1,10 @@
-import { CACHE_MANAGER, CacheInterceptor, Controller, Get, Header, Inject, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Header, Inject, UseInterceptors } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ParkDto } from '../../_dtos/park.dto';
 import { ParksService } from '../../_services/parks/parks.service';
 import { Cache } from 'cache-manager';
 import { ParkType } from '../../_interfaces/park.interface';
+import { CACHE_MANAGER, CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('Themeparks')
 @Controller('parks')

@@ -1,4 +1,4 @@
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ParksController } from './parks/parks.controller';
 import { ParksService } from '../_services/parks/parks.service';
 import { ConfigModule } from '@nestjs/config';
@@ -12,6 +12,7 @@ import { AuthModule } from '../auth/auth.module';
 import { CheckinsController } from './checkins/checkins.controller';
 import { HttpModule } from '@nestjs/axios';
 import { BlogPostsController } from './blog-posts/blog-posts.controller';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController, BlogPostsController],

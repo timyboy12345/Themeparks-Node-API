@@ -1,4 +1,4 @@
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './_services/app.service';
 import { ThemeParkService } from './_services/themepark/theme-park.service';
@@ -24,6 +24,7 @@ import { User } from './database/users/user.entity';
 import { Checkin } from './database/checkins/checkin.entity';
 import { HttpModule } from '@nestjs/axios';
 import { BlogPost } from './database/blog-posts/blog-post.entity';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
@@ -70,7 +71,7 @@ import { BlogPost } from './database/blog-posts/blog-post.entity';
     TransferService,
     CompanyService,
     WaitTimeScheduleService,
-    AioTransferServiceService
+    AioTransferServiceService,
   ],
 })
 export class AppModule {

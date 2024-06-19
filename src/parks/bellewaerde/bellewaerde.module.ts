@@ -1,21 +1,23 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { BellewaerdeService } from './bellewaerde/bellewaerde.service';
-import { BellewaerdeTransferService } from './bellewaerde-transfer/bellewaerde-transfer.service';
-import { BellewaerdeAquaparkService } from './bellewaerde-aquapark/bellewaerde-aquapark.service';
 import { HttpModule } from '@nestjs/axios';
+import { BellewaerdeService } from './bellewaerde/bellewaerde.service';
+import { LocaleModule } from '../../_services/locale/locale.module';
+import { CompagnieDesAlpesModule } from '../compagnie-des-alpes/compagnie-des-alpes.module';
 
 @Module({
   imports: [
     HttpModule,
+    LocaleModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
       cache: false,
       ignoreEnvFile: false,
     }),
+    CompagnieDesAlpesModule
   ],
-  providers: [BellewaerdeService, BellewaerdeTransferService, BellewaerdeAquaparkService],
-  exports: [BellewaerdeService, BellewaerdeAquaparkService],
+  providers: [BellewaerdeService],
+  exports: [BellewaerdeService],
 })
 export class BellewaerdeModule {
 }

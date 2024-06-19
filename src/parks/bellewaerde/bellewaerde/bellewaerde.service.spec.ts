@@ -1,17 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BellewaerdeService } from './bellewaerde.service';
-import { BellewaerdeTransferService } from '../bellewaerde-transfer/bellewaerde-transfer.service';
 import { HttpModule } from '@nestjs/axios';
+import { ConfigModule } from '@nestjs/config';
+import {
+  CompagnieDesAlpesTransferService
+} from '../../compagnie-des-alpes/compagnie-des-alpes-transfer/compagnie-des-alpes-transfer.service';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('BellewaerdeService', () => {
   let service: BellewaerdeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [BellewaerdeService, BellewaerdeTransferService],
-      imports: [
-        HttpModule,
-      ],
+      providers: [BellewaerdeService, CompagnieDesAlpesTransferService],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule]
     }).compile();
 
     service = module.get<BellewaerdeService>(BellewaerdeService);
@@ -28,5 +30,5 @@ describe('BellewaerdeService', () => {
   it('should return a list of POIs', async () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
-  });
+  }, 1000 * 60);
 });

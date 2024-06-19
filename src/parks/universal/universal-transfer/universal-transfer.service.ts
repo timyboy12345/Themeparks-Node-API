@@ -43,19 +43,24 @@ export class UniversalTransferService extends TransferService {
 
       let showTimes: ShowTime[] = poi.StartDateTimes
         .map((st) => {
+          const start = moment(st).tz('America/New_York', true);
+
+          // TODO: Check if more can be implemented
+          // TODO: Don't hard-code timezone
           return {
-            from: moment(st).tz('America/New_York', true).format(),
-            fromTime: st.split(' ')[1],
+            localFromDate: start.format('YYYY-MM-DD'),
+            localFromTime: st.split(' ')[1],
+            timezoneFrom: start.format(),
             isPassed: moment(st).tz('America/New_York', true).isBefore()
           }
         })
 
+      const currently = moment().tz('America/New_York');
       p.showTimes = {
-        allShowTimes: showTimes,
-        currentDate: dateTime.format(),
-        futureShowTimes: showTimes.filter((s) => !s.isPassed),
-        pastShowTimes: showTimes.filter((s) => !s.isPassed),
-        todayShowTimes: showTimes
+        showTimes: showTimes,
+        currentDate: currently.format('YYYY-MM-DD'),
+        currentDateTimezone: currently.format(),
+        timezone: 'America/New_York'
       };
     }
 
