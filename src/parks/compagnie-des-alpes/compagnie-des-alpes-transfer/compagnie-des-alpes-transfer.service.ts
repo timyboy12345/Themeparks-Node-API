@@ -174,16 +174,16 @@ export class CompagnieDesAlpesTransferService extends TransferService {
       for (const month in openingTimes.calendar[year].months) {
         for (const dayNumber in openingTimes.calendar[year].months[month].days) {
           const d = openingTimes.calendar[year].months[month].days[dayNumber];
-          const openDate = moment(`${year}-${month}-${dayNumber}T${d.openingHour}:00`);
-          const closeDate = moment(`${year}-${month}-${dayNumber}T${d.closingHour}:00`);
+          const openDate = moment(`${year}-${month}-${dayNumber} ${d.openingHour}:00`, 'YYYY-MM-DD HH:mm:ss');
+          const closeDate = moment(`${year}-${month}-${dayNumber} ${d.closingHour}:00`, 'YYYY-MM-DD HH:mm:ss');
 
           if (!d.closed) {
             times.push({
               date: openDate.format(),
               openingTimes: [{
                 open: openDate.format(),
-                close: d.closingHour,
-                openTime: closeDate.format(),
+                openTime: d.openingHour,
+                close: closeDate.format(),
                 closeTime: d.closingHour,
               }],
             });

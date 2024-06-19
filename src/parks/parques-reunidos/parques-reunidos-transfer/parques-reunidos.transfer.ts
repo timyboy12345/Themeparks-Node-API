@@ -14,7 +14,11 @@ export class ParquesReunidosTransfer extends TransferService {
   transferRideToPoi(ride: AtraccionesResponseAtraccioneInterface, locale?: string): Poi {
     let lang: string;
 
-    if (ride.translatableName.en && ride.translatableName.en !== 'Default') {
+    let fallBackLanguage = 'en';
+
+    if (ride.translatableName.nl && ride.translatableName.nl !== 'Default') {
+      lang = 'nl';
+    } else if (ride.translatableName.en && ride.translatableName.en !== 'Default') {
       lang = 'en';
     } else if (ride.translatableName.es && ride.translatableName.es !== 'Default') {
       lang = 'es';
@@ -30,7 +34,7 @@ export class ParquesReunidosTransfer extends TransferService {
       category: PoiCategory.ATTRACTION,
       id: ride.id.toString(),
       original: ride,
-      title: ride.translatableName[lang],
+      title: ride.translatableName[lang] ? ride.translatableName[lang] : ride.translatableName[fallBackLanguage],
     };
 
     if (ride.place && ride.place.point) {
@@ -42,10 +46,14 @@ export class ParquesReunidosTransfer extends TransferService {
 
     if (ride.translatableSubTitle && ride.translatableSubTitle[lang]) {
       r.subTitle = ride.translatableSubTitle[lang];
+    } else if (ride.translatableSubTitle && ride.translatableSubTitle[fallBackLanguage]) {
+      r.subTitle = ride.translatableSubTitle[fallBackLanguage];
     }
 
     if (ride.translatableDescription && ride.translatableDescription[lang]) {
       r.description = ride.translatableDescription[lang];
+    } else if (ride.translatableDescription && ride.translatableDescription[fallBackLanguage]) {
+      r.description = ride.translatableDescription[fallBackLanguage];
     }
 
     if (ride.photographs && ride.photographs.length > 0) {

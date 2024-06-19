@@ -45,4 +45,8 @@ export class WalibiBelgiumService extends CompagnieDesAlpesBaseService {
   getApiKey(): string {
     return 'e0fe3a8d975b-who';
   }
+
+  supportsShows(): boolean {
+    return false;
+  }
 }

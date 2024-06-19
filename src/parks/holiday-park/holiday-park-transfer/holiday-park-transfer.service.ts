@@ -176,14 +176,27 @@ export class HolidayParkTransferService extends TransferService {
           second: 0,
         });
 
-        // TODO: Implement all
         const s: ShowTime = {
-          localFromDate: start.format('YYYY-MM-DD'),
           id: timeBlock.id,
+          localFromDate: start.format('YYYY-MM-DD'),
           localFromTime: timeBlock.start,
-          localToTime: timeBlock.end,
           timezoneFrom: start.format(),
+          isPassed: moment().tz('Europe/Berlin').isAfter(start),
         };
+
+        if (timeBlock.end) {
+          const end = moment().tz('Europe/Berlin').set({
+            hour: timeBlock.start.split(':')[0],
+            minute: timeBlock.start.split(':')[1],
+            second: 0,
+          });
+
+          const duration = start.diff(end, 'minutes');
+          s.localToTime = timeBlock.end;
+          s.localToDate = end.format('YYYY-MM-DD');
+          s.duration = duration;
+          s.timezoneTo = end.format();
+        }
 
         shows.push(s);
       });

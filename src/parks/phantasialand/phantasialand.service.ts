@@ -88,14 +88,13 @@ supportsHalloween: false,
               const showTimes: ShowTime[] = [];
 
               waitTimeData.showTimes.map((showTime) => {
-                const start = moment(showTime);
+                const start = moment(showTime).tz('Europe/Berlin');
 
-                // TODO: Implement all members
                 showTimes.push({
                   localFromDate: start.format('YYYY-MM-DD'),
                   localFromTime: start.format('HH:mm'),
-                  isPassed: moment(start).isBefore(),
-                  timezoneFrom: start.clone().tz('Europe/Berlin').format()
+                  timezoneFrom: start.format(),
+                  isPassed: moment(start).isBefore(moment().tz('Europe/Berlin')),
                 });
               });
 

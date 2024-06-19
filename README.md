@@ -12,9 +12,8 @@ In the table below you will find the parks that are currently supported and the 
 
 | Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support | Halloween Support |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 🇧🇪 Walibi Belgium | 🎡 | True | True | True | True | True |
-| 🇧🇪 Bellewaerde | 🎡 | True | False | True | False | False |
-| 🇧🇪 Bellewaerde Aquapark | 🌊 | True | False | False | False | False |
+| 🇧🇪 Walibi Belgium | 🎡 | True | True | False | True | False |
+| 🇧🇪 Bellewaerde | 🎡 | True | True | True | True | False |
 | 🇧🇪 Bobbejaanland | 🎡 | True | True | False | True | False |
 | 🇧🇪 Plopsalande de Panne | 🎡 | True | True | True | True | False |
 | 🇨🇦 La Ronde, Montreal | 🎡 | True | True | True | True | False |
@@ -29,7 +28,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇪🇸 Parque Warner | 🎡 | True | True | True | True | False |
 | 🇪🇸 Parque de Atracciones Madrid | 🎡 | True | False | True | True | False |
 | 🇪🇸 Parque Warner Beach | 🌊 | True | True | False | True | False |
-| 🇫🇷 Walibi Rhône-Alpes | 🎡 | True | True | True | True | True |
+| 🇫🇷 Walibi Rhône-Alpes | 🎡 | True | True | False | True | False |
 | 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True | False |
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True | False |
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False | False |
@@ -43,7 +42,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇮🇹 Mirabilandia | 🎡 | True | True | False | True | False |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True | False |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False | True |
-| 🇳🇱 Walibi Holland | 🎡 | True | True | True | True | True |
+| 🇳🇱 Walibi Holland | 🎡 | True | True | False | True | False |
 | 🇳🇱 DippieDoe | 🎡 | True | False | False | False | False |
 | 🇳🇱 Hellendoorn | 🎡 | True | True | True | True | False |
 | 🇳🇱 Ouwehands Dierenpark | 🦁 | False | False | False | False | False |

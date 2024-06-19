@@ -41,4 +41,8 @@ export class WalibiFranceService extends CompagnieDesAlpesBaseService {
         return 'fr';
     }
   }
+
+  supportsShows(): boolean {
+    return false;
+  }
 }

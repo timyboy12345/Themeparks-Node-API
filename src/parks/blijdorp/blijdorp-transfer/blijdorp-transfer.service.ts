@@ -5,6 +5,7 @@ import { BlijdorpShow } from '../interfaces/blijdorp-show.interface';
 import * as moment from 'moment-timezone';
 import { ShowTime, ShowTimes } from '../../../_interfaces/showtimes.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import { BlijdorpAnimalInterface } from '../interfaces/blijdorp-animals-response.interface';
 
 @Injectable()
 export class BlijdorpTransferService extends TransferService {
@@ -17,8 +18,6 @@ export class BlijdorpTransferService extends TransferService {
       const start = moment(poi.start_time, 'HH:mm').tz('Europe/Amsterdam');
       const end = moment(poi.end_time, 'HH:mm').tz('Europe/Amsterdam');
       const duration = moment.duration(end.diff(start));
-
-      const tz = moment().tz('Europe/Amsterdam');
 
       show = {
         localFromDate: currentDate.format('YYYY-MM-DD'),
@@ -42,7 +41,7 @@ export class BlijdorpTransferService extends TransferService {
         localFromDate: currentDate.format('YYYY-MM-DD'),
         localToDate: currentDate.format('YYYY-MM-DD'),
         // TODO: This does not seem to work properly
-        isPassed: currentDate.isAfter(start)
+        isPassed: currentDate.isAfter(start),
       };
     }
 
@@ -60,6 +59,19 @@ export class BlijdorpTransferService extends TransferService {
       showTimes: showTimes,
       category: PoiCategory.SHOW,
       original: poi,
+    };
+  }
+
+  transferAnimalToPoi(animal: BlijdorpAnimalInterface, locale?: string): Poi {
+    return {
+      category: PoiCategory.ANIMAL,
+      id: animal.title.replace(' ', '-').toLowerCase(),
+      original: animal,
+      title: animal.title,
+      website_url: 'https://diergaardeblijdorp.nl' + animal.link,
+      description: animal.description,
+      images: [animal.image.url],
+      image_url: animal.image.url,
     };
   }
 }
