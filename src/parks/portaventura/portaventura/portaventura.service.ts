@@ -1,22 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ConfigService } from '@nestjs/config';
-import { PortaVenturaTransferService } from '../portaventura-transfer/porta-ventura-transfer.service';
-import { HttpService } from '@nestjs/axios';
-import { PortaventuraServiceService } from '../portaventura-service/portaventura-service.service';
-import { LocaleService } from '../../../_services/locale/locale.service';
+import { PortaventuraBaseServiceService } from '../portaventura-base-service/portaventura-base-service.service';
 
 @Injectable()
-export class PortaventuraService extends PortaventuraServiceService {
-  constructor(
-    configService: ConfigService,
-    httpService: HttpService,
-    portaVenturaTransferService: PortaVenturaTransferService,
-    localeService: LocaleService,
-  ) {
-    super(httpService, configService, portaVenturaTransferService, localeService);
-  }
-
+export class PortaventuraService extends PortaventuraBaseServiceService {
   getInfo(): ThemePark {
     return {
       id: 'portaventura',
@@ -32,7 +19,7 @@ export class PortaventuraService extends PortaventuraServiceService {
     };
   }
 
-  getParkName(): string {
+  getParkName() {
     return 'PortAventura Park';
   }
 }

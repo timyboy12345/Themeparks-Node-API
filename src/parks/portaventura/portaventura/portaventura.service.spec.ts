@@ -4,7 +4,7 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { PortaVenturaTransferService } from '../portaventura-transfer/porta-ventura-transfer.service';
 import { LocaleModule } from '../../../_services/locale/locale.module';
-import { PortaventuraServiceService } from '../portaventura-service/portaventura-service.service';
+import { PortaventuraBaseServiceService } from '../portaventura-service/portaventura-base-service.service';
 
 describe('PortaventuraService', () => {
   let service: PortaventuraService;
@@ -12,7 +12,7 @@ describe('PortaventuraService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
-      providers: [PortaventuraService, PortaVenturaTransferService, PortaventuraServiceService],
+      providers: [PortaventuraService, PortaVenturaTransferService, PortaventuraBaseServiceService],
     }).compile();
 
     service = module.get<PortaventuraService>(PortaventuraService);

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { PortaventuraServiceService } from '../portaventura-service/portaventura-service.service';
+import { PortaventuraBaseServiceService } from '../portaventura-base-service/portaventura-base-service.service';
 
 @Injectable()
-export class FerrariLandService extends PortaventuraServiceService {
+export class FerrariLandService extends PortaventuraBaseServiceService {
   getInfo(): ThemePark {
     return {
       id: 'ferrariland',
@@ -19,7 +19,7 @@ export class FerrariLandService extends PortaventuraServiceService {
     };
   }
 
-  getParkName(): string {
-    return 'Ferrari Land'
+  getParkName() {
+    return 'Ferrari Land';
   }
 }

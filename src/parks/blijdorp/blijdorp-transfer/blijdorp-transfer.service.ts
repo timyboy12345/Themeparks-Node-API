@@ -46,10 +46,10 @@ export class BlijdorpTransferService extends TransferService {
     }
 
     const showTimes: ShowTimes = {
-      currentDateTimezone: '',
       timezone: 'Europe/Amsterdam',
       showTimes: [show],
-      currentDate: currentDate.format(),
+      currentDate: currentDate.format('YYYY-MM-DD'),
+      currentDateTimezone: currentDate.format(),
     };
 
     return {

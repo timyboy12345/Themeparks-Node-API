@@ -4,8 +4,8 @@ import { PortaventuraService } from './portaventura/portaventura.service';
 import { FerrariLandService } from './ferrariland/ferrariland.service';
 import { PortaVenturaTransferService } from './portaventura-transfer/porta-ventura-transfer.service';
 import { HttpModule } from '@nestjs/axios';
-import { PortaventuraServiceService } from './portaventura-service/portaventura-service.service';
 import { LocaleModule } from '../../_services/locale/locale.module';
+import { PortaventuraBaseServiceService } from './portaventura-base-service/portaventura-base-service.service';
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { LocaleModule } from '../../_services/locale/locale.module';
       ignoreEnvFile: false,
     }),
   ],
-  providers: [PortaventuraService, FerrariLandService, PortaVenturaTransferService, PortaventuraServiceService],
+  providers: [PortaventuraService, FerrariLandService, PortaVenturaTransferService, PortaventuraBaseServiceService],
   exports: [PortaventuraService, FerrariLandService],
 })
 export class PortaventuraModule {

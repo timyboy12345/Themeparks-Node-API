@@ -12,7 +12,7 @@ export class WalibiHollandService extends CompagnieDesAlpesBaseService {
       name: 'Walibi Holland',
       description: 'Walibi Holland is een attractiepark, gelegen in Biddinghuizen in de Nederlandse provincie Flevoland. Voorheen heette dit park Walibi World, daarvoor Six Flags Holland, daarvoor Walibi Flevo, terwijl het park startte als Flevohof.',
       countryCode: 'nl',
-      image: 'https://www.walibi.nl/adobe/dynamicmedia/deliver/dm-aid--49191dcc-8407-43ab-8177-012eac58440f/attractie-untamed-12.jpg?preferwebp=true&quality=85',
+      image: 'https://www.walibi.be/adobe/dynamicmedia/deliver/dm-aid--6736fdd0-c9f9-4671-bc81-90bfe8aa2325/43-cobra.jpg?quality=85&preferwebp=true',
       parkType: ParkType.THEMEPARK,
       location: {
         lat: 52.44020062282858,

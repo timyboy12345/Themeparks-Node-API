@@ -3,13 +3,13 @@ export interface PoiOpeningTime {
   open: string;
 
   // The full datetime closing time
-  close: string;
+  close?: string;
 
   // The hour:minute:second the poi opens
   openTime: string;
 
   // The hour:minute:second the poi closes
-  closeTime: string;
+  closeTime?: string;
 
   // The date of this opening time, without time
   date: string;
