@@ -33,22 +33,22 @@ export class TivoliService extends ThroughPoisThemeParkService {
 
   getSupports(): ThemeParkSupports {
     return {
-      supportsRideWaitTimesHistory: false,
+      supportsAnimals: false,
+      supportsHalloween: false,
       supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
-      supportsRideWaitTimes: false,
-      supportsRestaurants: true,
-      supportsShows: true,
-      supportsRides: true,
-      supportsShops: false,
-      supportsShopOpeningTimes: false,
       supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
+      supportsRestaurants: true,
+      supportsRideWaitTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsRides: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: false,
       supportsShowTimes: false,
-      supportsAnimals: false,
+      supportsShows: true,
       supportsTranslations: false,
-supportsHalloween: false,
     };
   }
 
@@ -59,7 +59,7 @@ supportsHalloween: false,
   }
 
   async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
-    return this.getData().then((data) => this.transferService.transferOpeningTimesToOpeningTimes(data.openingHours.Data))
+    return this.getData().then((data) => this.transferService.transferOpeningTimesToOpeningTimes(data.openingHours.Data));
   }
 
   // TODO: Implement wait times once park is open
@@ -74,7 +74,7 @@ supportsHalloween: false,
       .then((value) => {
         if (value.data.error) {
           Sentry.captureException(value);
-          console.error("Tivoli server is down");
+          console.error('Tivoli server is down');
           throw new InternalServerErrorException(value.data);
         }
 

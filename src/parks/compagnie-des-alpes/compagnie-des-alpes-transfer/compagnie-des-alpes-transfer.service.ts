@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import * as moment from 'moment-timezone';
 import {
   CDAAttractionResponseInterface,
 } from '../interfaces/cda-attractions-response.interface';
@@ -173,14 +174,16 @@ export class CompagnieDesAlpesTransferService extends TransferService {
       for (const month in openingTimes.calendar[year].months) {
         for (const dayNumber in openingTimes.calendar[year].months[month].days) {
           const d = openingTimes.calendar[year].months[month].days[dayNumber];
+          const openDate = moment(`${year}-${month}-${dayNumber}T${d.openingHour}:00`);
+          const closeDate = moment(`${year}-${month}-${dayNumber}T${d.closingHour}:00`);
 
           if (!d.closed) {
             times.push({
-              date: `${year}-${month}-${dayNumber}`,
+              date: openDate.format(),
               openingTimes: [{
-                open: d.openingHour,
+                open: openDate.format(),
                 close: d.closingHour,
-                openTime: d.openingHour,
+                openTime: closeDate.format(),
                 closeTime: d.closingHour,
               }],
             });

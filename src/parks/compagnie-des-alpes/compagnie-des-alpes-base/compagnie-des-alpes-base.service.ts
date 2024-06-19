@@ -60,6 +60,14 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
     throw new NotImplementedException('Locales for this park have not been set yet');
   }
 
+  public getApiKey(): string {
+    return 'r6uko7sdv4dq-btw'
+  }
+
+  public getUserAgent(): string {
+    return 'Bellewaerde/2015 CFNetwork/1496.0.7 Darwin/23.5.0';
+  }
+
   async getPois(): Promise<Poi[]> {
     const promises = [
       this.getRides(),
@@ -83,7 +91,15 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
     const rides = this.transfer.transferRidesToPois(raw);
 
     if (this.getRealTimeURL()) {
-      const waitTimes = await this.getWaitTimes();
+      const waitTimes = await this.getWaitTimes()
+        .catch((exception) => {
+          Sentry.captureException(exception);
+          console.error(exception);
+
+          return [];
+        });
+
+
       waitTimes.forEach((w) => {
         rides.map((r) => {
           if (r.id === w.id) {
@@ -141,8 +157,8 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
 
     return this.http.get<CDAAttractionResponseInterface[]>(url, {
       headers: {
-        'x-api-key': 'r6uko7sdv4dq-btw',
-        'user-agent': 'Bellewaerde/2015 CFNetwork/1496.0.7 Darwin/23.5.0',
+        'x-api-key': this.getApiKey(),
+        'user-agent': this.getUserAgent(),
       },
     })
       .toPromise()

@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import {
   CompagnieDesAlpesBaseService
 } from '../../compagnie-des-alpes/compagnie-des-alpes-base/compagnie-des-alpes-base.service';
@@ -20,27 +19,6 @@ export class BellewaerdeService extends CompagnieDesAlpesBaseService {
         lat: 50.846996,
         lng: 2.947948,
       },
-    };
-  }
-
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsAnimals: true,
-      supportsHalloween: false,
-      supportsOpeningTimes: true,
-      supportsOpeningTimesHistory: false,
-      supportsPoiLocations: true,
-      supportsPois: true,
-      supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: true,
-      supportsRideWaitTimes: true,
-      supportsRideWaitTimesHistory: false,
-      supportsRides: true,
-      supportsShopOpeningTimes: false,
-      supportsShops: true,
-      supportsShowTimes: false,
-      supportsShows: true,
-      supportsTranslations: false,
     };
   }
 

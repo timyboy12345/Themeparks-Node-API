@@ -7,7 +7,7 @@ import {
 } from '../../compagnie-des-alpes/compagnie-des-alpes-transfer/compagnie-des-alpes-transfer.service';
 import { LocaleModule } from '../../../_services/locale/locale.module';
 
-describe('BelgiumService', () => {
+describe('WalibiBelgiumService', () => {
   let service: WalibiBelgiumService;
 
   beforeEach(async () => {
