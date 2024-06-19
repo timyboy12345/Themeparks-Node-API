@@ -1,4 +1,4 @@
-export interface BellewaerdeAttractionResponseInterface {
+export interface CDAAttractionResponseInterface {
   'title': string,
   'waitingTimeName': string, // Also known as the ID
   'subtitle': string,

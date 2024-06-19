@@ -8,12 +8,14 @@ import { HansaParkDataResponseInterface } from './interfaces/hansa-park-data-res
 import { ConfigService } from '@nestjs/config';
 import * as Sentry from '@sentry/node';
 import { HttpService } from '@nestjs/axios';
+import { LocaleService } from '../../_services/locale/locale.service';
 
 @Injectable()
 export class HansaParkService extends ThroughPoisThemeParkService {
   constructor(private readonly hansaParkTransferService: HansaParkTransferService,
               private readonly httpService: HttpService,
-              private readonly configService: ConfigService) {
+              private readonly configService: ConfigService,
+              private readonly locale: LocaleService) {
     super();
   }
 
@@ -28,29 +30,29 @@ export class HansaParkService extends ThroughPoisThemeParkService {
       id: 'hansa-park',
       location: {
         lat: 54.0769,
-        lng: 10.78
-      }
+        lng: 10.78,
+      },
     };
   }
 
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsShowTimes: false,
-      supportsRestaurantOpeningTimes: false,
-      supportsPois: true,
+      supportsHalloween: false,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,
-      supportsShopOpeningTimes: true,
-      supportsShops: true,
-      supportsRides: true,
-      supportsShows: true,
+      supportsPois: true,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: true,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
+      supportsRides: true,
+      supportsShopOpeningTimes: true,
+      supportsShops: true,
+      supportsShowTimes: true,
+      supportsShows: true,
       supportsTranslations: false,
-supportsHalloween: false,
     };
   }
 
@@ -62,10 +64,22 @@ supportsHalloween: false,
   }
 
   async getData(): Promise<HansaParkDataResponseInterface> {
-    const locale = 'en';
+    let locale: string;
     const order = 'name';
     const key = this.configService.get('HANSA_PARK_API_KEY');
     const baseUrl = this.configService.get('HANSA_PARK_API_URL');
+
+    switch (this.locale.getLocale()) {
+      case 'de':
+        locale = 'de';
+        break;
+      case 'da':
+        locale = 'dk';
+        break;
+      default:
+        locale = 'en';
+        break;
+    }
 
     const url = `${baseUrl}/attractions/?locale=${locale}&orderBy=${order}&orderDir=ASC&key=${key}`;
 

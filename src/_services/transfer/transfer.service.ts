@@ -75,7 +75,7 @@ export class TransferService {
   }
 
   public transferAnimalToPoi(animal: any, locale?: string): Poi {
-    throw new NotImplementedException("Could not transfer restaurant to POI");
+    throw new NotImplementedException("Could not transfer animal to POI");
   }
 
   public transferAnimalsToPois(animals: any, locale?: string): Poi[] {

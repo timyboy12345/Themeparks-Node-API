@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { BellewaerdeBaseService } from '../bellewaerde-base/bellewaerde-base.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
+import {
+  CompagnieDesAlpesBaseService
+} from '../../compagnie-des-alpes/compagnie-des-alpes-base/compagnie-des-alpes-base.service';
 
 @Injectable()
-export class BellewaerdeService extends BellewaerdeBaseService {
+export class BellewaerdeService extends CompagnieDesAlpesBaseService {
   getInfo(): ThemePark {
     return {
       id: 'bellewaerde',
@@ -23,17 +25,15 @@ export class BellewaerdeService extends BellewaerdeBaseService {
 
   getSupports(): ThemeParkSupports {
     return {
-      // TODO: Fix animals
-      supportsAnimals: false,
+      supportsAnimals: true,
       supportsHalloween: false,
-      supportsOpeningTimes: false,
+      supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: false,
-      // TODO: Fix wait times
-      supportsRideWaitTimes: false,
+      supportsRestaurants: true,
+      supportsRideWaitTimes: true,
       supportsRideWaitTimesHistory: false,
       supportsRides: true,
       supportsShopOpeningTimes: false,
@@ -46,5 +46,22 @@ export class BellewaerdeService extends BellewaerdeBaseService {
 
   getParkCode(): string {
     return "blw";
+  }
+
+  getBaseUrl(): string {
+    return 'https://www.bellewaerde.be';
+  }
+
+  getRealTimeURL(): string {
+    return 'https://bellewaer.de/realtime/api/api-realtime.php';
+  }
+
+  getLocaleCode(l): string {
+    switch (l) {
+      case 'fr':
+        return 'fr';
+      default:
+        return 'nl';
+    }
   }
 }

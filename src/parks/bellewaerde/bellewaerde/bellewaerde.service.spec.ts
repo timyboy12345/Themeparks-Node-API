@@ -1,15 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BellewaerdeService } from './bellewaerde.service';
 import { HttpModule } from '@nestjs/axios';
-import { BellewaerdeTransferService } from '../bellewaerde-transfer/bellewaerde-transfer.service';
+import { ConfigModule } from '@nestjs/config';
+import {
+  CompagnieDesAlpesTransferService
+} from '../../compagnie-des-alpes/compagnie-des-alpes-transfer/compagnie-des-alpes-transfer.service';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('BellewaerdeService', () => {
   let service: BellewaerdeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [BellewaerdeService, BellewaerdeTransferService],
-      imports: [HttpModule]
+      providers: [BellewaerdeService, CompagnieDesAlpesTransferService],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule]
     }).compile();
 
     service = module.get<BellewaerdeService>(BellewaerdeService);

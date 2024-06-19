@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { WalibiService } from '../walibi.service';
+import {
+  CompagnieDesAlpesBaseService
+} from '../../compagnie-des-alpes/compagnie-des-alpes-base/compagnie-des-alpes-base.service';
 
 @Injectable()
-export class WalibiHollandService extends WalibiService {
+export class WalibiHollandService extends CompagnieDesAlpesBaseService {
   getInfo(): ThemePark {
     return {
-      id: 'walibi_holland',
+      id: 'walibi-holland',
       name: 'Walibi Holland',
       description: 'Walibi Holland is een attractiepark, gelegen in Biddinghuizen in de Nederlandse provincie Flevoland. Voorheen heette dit park Walibi World, daarvoor Six Flags Holland, daarvoor Walibi Flevo, terwijl het park startte als Flevohof.',
       countryCode: 'nl',
@@ -19,7 +21,24 @@ export class WalibiHollandService extends WalibiService {
     };
   }
 
-  getLocale(): string {
-    return 'nl';
+  getParkCode(): string {
+    return 'who';
+  }
+
+  getBaseUrl(): string {
+    return 'https://www.walibi.nl';
+  }
+
+  getRealTimeURL(): string {
+    return 'https://www.walibi.nl/api/who/waitingtimes.v1.json';
+  }
+
+  getLocaleCode(l: string): string {
+    switch (l) {
+      // case 'fr':
+      //   return 'fr';
+      default:
+        return 'nl';
+    }
   }
 }

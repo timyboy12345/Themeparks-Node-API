@@ -32,5 +32,5 @@ describe('SixFlagsGeneralParkService', () => {
     service.setParkId('1');
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
-  });
+  }, 1000 * 60);
 });

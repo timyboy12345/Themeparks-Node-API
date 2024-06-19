@@ -3,6 +3,7 @@ import { HansaParkService } from './hansa-park.service';
 import { HansaParkTransferService } from './hansa-park-transfer/hansa-park-transfer.service';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
+import { LocaleModule } from '../../_services/locale/locale.module';
 
 describe('HansaParkService', () => {
   let service: HansaParkService;
@@ -10,7 +11,7 @@ describe('HansaParkService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [HansaParkService, HansaParkTransferService],
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
     }).compile();
 
     service = module.get<HansaParkService>(HansaParkService);

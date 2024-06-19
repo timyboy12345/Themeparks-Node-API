@@ -71,7 +71,7 @@ import { CacheModule } from '@nestjs/cache-manager';
     TransferService,
     CompanyService,
     WaitTimeScheduleService,
-    AioTransferServiceService
+    AioTransferServiceService,
   ],
 })
 export class AppModule {

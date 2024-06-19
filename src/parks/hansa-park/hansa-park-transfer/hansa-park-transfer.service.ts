@@ -6,7 +6,8 @@ import {
   HansaParkDataResponseItemInterface,
 } from '../interfaces/hansa-park-data-response.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
+import { ShowTime } from '../../../_interfaces/showtimes.interface';
 
 @Injectable()
 export class HansaParkTransferService extends TransferService {
@@ -22,6 +23,10 @@ export class HansaParkTransferService extends TransferService {
       category = PoiCategory.RESTAURANT;
     }
 
+    if (categoryIds.includes(HansaParkDataResponseCategoryIdEnum.Shows)) {
+      category = PoiCategory.SHOW;
+    }
+
     const thumbnailUrl = poi.images && poi.images.length > 0 ? poi.images[0].resized.medium : null;
 
     const p: Poi = {
@@ -32,6 +37,14 @@ export class HansaParkTransferService extends TransferService {
       images: poi.images.map(i => i.fullPath),
       image_url: thumbnailUrl,
     };
+
+    if (poi.longDescription) {
+      p.description = poi.longDescription;
+    }
+
+    if (poi.shortDescription) {
+      p.subTitle = poi.shortDescription;
+    }
 
     if (poi.themeworlds && poi.themeworlds.length > 0) {
       p.area = poi.themeworlds[0].name;
@@ -92,6 +105,32 @@ export class HansaParkTransferService extends TransferService {
     //       };
     //     });
     // }
+
+    if (poi.showTimes && poi.showTimes.hasShowtimes) {
+      p.showTimes = {
+        showTimes: poi.showTimes.today.map((s) => {
+          const localStart = moment(s, 'HH:mm').tz('Europe/Berlin');
+          const localEnd = localStart.clone().add(poi.showTimes.duration, 'minutes');
+
+          const d: ShowTime = {
+            localFromDate: localStart.format('YYYY-MM-DD'),
+            localFromTime: localStart.format('HH:mm'),
+            localToDate: localEnd.format('YYYY-MM-DD'),
+            localToTime: localEnd.format('HH:mm'),
+            timezoneFrom: localStart.format(),
+            timezoneTo: localEnd.format(),
+            duration: poi.showTimes.duration,
+            isPassed: moment().tz('Europe/Berlin').isAfter(localStart),
+          };
+
+          return d;
+        }),
+        timezone: 'Europe/Berlin',
+        duration: poi.showTimes.duration,
+        currentDate: moment().tz('Europe/Berlin').format('YYYY-MM-DD'),
+        currentDateTimezone: moment().tz('Europe/Berlin').format(),
+      };
+    }
 
     return p;
   }
