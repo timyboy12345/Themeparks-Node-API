@@ -4,7 +4,7 @@ import { PortaVenturaTransferService } from '../portaventura-transfer/porta-vent
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { LocaleModule } from '../../../_services/locale/locale.module';
-import { PortaventuraBaseServiceService } from '../portaventura-service/portaventura-base-service.service';
+import { PortaventuraBaseServiceService } from '../portaventura-base-service/portaventura-base-service.service';
 
 describe('FerrarilandService', () => {
   let service: FerrariLandService;
