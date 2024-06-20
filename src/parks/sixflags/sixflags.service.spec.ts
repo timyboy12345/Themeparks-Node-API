@@ -23,10 +23,12 @@ describe('SixflagsService', () => {
   it('can retrieve parks', async () => {
     const data = await service.getParks();
     expect(data).toBeInstanceOf(Array);
+    expect(data.length).toBeGreaterThan(6);
   });
 
   it('can retrieve info for all parks', async () => {
     const data = await service.getParkServices();
     expect(data).toBeInstanceOf(Array);
+    expect(data.length).toBeGreaterThan(6);
   });
 });

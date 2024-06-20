@@ -3,7 +3,7 @@ import { CedarfairBaseService } from '../cedarfair-base/cedarfair-base.service';
 import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 
 @Injectable()
-export class KingsIslandService extends CedarfairBaseService{
+export class KingsIslandService extends CedarfairBaseService {
   protected getParkId(): string {
     return 'CF_KI';
   }
@@ -17,7 +17,7 @@ export class KingsIslandService extends CedarfairBaseService{
       parkType: ParkType.THEMEPARK,
       countryCode: 'us',
       timezone: 'America/Los_Angeles',
-      company: Company.CEDAR_FAIR
+      company: Company.CEDAR_FAIR,
     };
   }
 }
