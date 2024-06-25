@@ -1,72 +1,75 @@
 export interface CedarfairBaseResponseInterface {
-  'id': '0021a808-ba30-43de-ae66-5dfc15f5f69a',
-  'type': CedarfairBaseResponseType,
-  'description': string,
-  'label': string,
-  'images': CedarfairBaseResponseImageInterface[],
-  'details': CedarfairBaseResponseDetailInterface[],
-  'tags': CedarfairBaseResponseTagInterface[],
-  'location': {
-    'lat': number,
-    'lon': number
-  }
+  "parkId": number,
+  "venueId": number,
+  "poiId": number,
+  "fimsId": string,
+  "uuid": string,
+  "name": string,
+  "isActive": boolean,
+  "type"?: {
+    "id": number,
+    "name": string
+  },
+  "waterRide": boolean,
+  "description": string,
+  "height"?: {
+    "maxAlone": number | 0,
+    "minAlone": number | 0,
+    "maxAccompanied": number | 0,
+    "minAccompanied": number | 0
+  },
+  "area": {
+    "id": number,
+    "name": string
+  },
+  "thrillLevel": 1 | 2 | 3 | 4 | 5,
+  "location": {
+    "latitude": string,
+    "longitude": string
+  },
+  "fastPass": [
+    {
+      "id": 40,
+      "name": "Fast Lane"
+    }
+  ],
+  "parkModes": [
+    {
+      "id": 24,
+      "name": "Park"
+    }
+  ],
+  "image": string,
+  "moreInfoButton": null,
+  "landmark": string,
+  "mediaGallery": CedarFairMediaObject[],
+  "menu": null,
+  "foodTypes": [
+    {
+      "id": 56,
+      "name": "Snacks"
+    }
+  ],
+  "iconPOI": "/content/gallery/cp-en-us/icons/cp-bluestreak-ridesicon.png/cp-bluestreak-ridesicon.png"
 }
 
-export interface CedarfairBaseResponseImageInterface {
-  'resolution': CedarfairBaseResponseResolution,
-  'src': string
-}
 
-export interface CedarfairBaseResponseDetailInterface {
-  'id': string,
-  'value': {
-    'terms': string[]
-  }
-}
+export interface CedarFairMediaObject
+{
+  "type": "VideoCompound" | "ImageCompound"
 
-export interface CedarfairBaseResponseTagInterface {
-  'name': 'thrillFactor',
-  'value': 'Mild',
-  'label': 'Thrill level',
-  'valueLabel': 'Mild',
-  'uiVisible': true,
-  'displayOrder': '1',
-  'icons': CedarfairBaseResponseImageInterface[]
-}
+  // Videos
+  "autoloop"?: boolean,
+  "autoplay"?: boolean,
+  "fullscreen"?: boolean,
+  "mute"?: boolean,
+  "id"?: string,
+  "title"?: "",
+  "videoService"?: "youtube",
 
-export enum CedarfairBaseResponseResolution {
-  XXXHDPI,
-  MDPI,
-  XHDPI
-}
-
-export enum CedarfairBaseResponseType {
-  '',
-  wpDining = 'wpDining',
-  Snacks = 'Snacks',
-  Meals = 'Meals',
-  gpEvents = 'gpEvents',
-  FunPix = 'FunPix',
-  ATM = 'ATM',
-  Lockers = 'Lockers',
-  wpAmenities = 'wpAmenities',
-  gsAmenities = 'gsAmenities',
-  SmokingArea = 'SmokingArea',
-  Restrooms = 'Restrooms',
-  Family = 'Family',
-  Coasters = 'Coasters',
-  Kids = 'Kids',
-  Attractions = 'Attractions',
-  Shopping = 'Shopping',
-  ThrillRides = 'ThrillRides',
-  Venue = 'Venue',
-  Waterpark = 'Waterpark',
-  xBeacon = 'xBeacon',
-  ScareZones = 'ScareZones',
-  DaytimeExperiences = 'DaytimeExperiences',
-  GreatPumpkin = 'GreatPumpkin',
-  DaytimeMazes = 'DaytimeMazes',
-  HauntExperiences = 'HauntExperiences',
-  HauntShows = 'HauntShows',
-  Mazes = 'Mazes'
+  // Images
+  "label"?: string,
+  "altText"?: string,
+  "link"?: string | null,
+  "image"?: string, // "/content/gallery/cp-en-us/poi/rides/mobile-app/cp-23-bluestreak-app.jpg/cp-23-bluestreak-app.jpg",
 }

@@ -5,7 +5,7 @@ import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interfac
 @Injectable()
 export class MichigansAdventureService extends CedarfairBaseService {
   protected getParkId(): string {
-    return 'CF_MA';
+    return "12";
   }
 
   // TODO: Uses IDs instead of typed-out 'type's in the POI results

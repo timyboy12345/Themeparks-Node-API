@@ -5,7 +5,7 @@ import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interfac
 @Injectable()
 export class CanadasWonderlandService extends CedarfairBaseService {
   protected getParkId(): string {
-    return 'CF_CW';
+    return '40';
   }
 
   getInfo(): ThemePark {

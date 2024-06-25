@@ -27,5 +27,6 @@ describe('ValleyfairService', () => {
   it('should return a list of POIs', async () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
+    expect(data.length).toBeGreaterThan(6);
   });
 });

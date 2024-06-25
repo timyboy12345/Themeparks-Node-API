@@ -12,7 +12,7 @@ export interface CDAAttractionResponseInterface {
   },
   'subType': [
     {
-      'id': 'blw:attraction-types/water' |  'blw:attraction-types/indoor' |  'blw:attraction-types/rollercoaster' |  'blw:attraction-types/spinning',
+      'id': 'blw:attraction-types/water' | 'blw:attraction-types/indoor' | 'blw:attraction-types/rollercoaster' | 'blw:attraction-types/spinning',
       'title': 'Water' | 'Draaiend' | 'Achtbaan' | 'Overdekt'
     }
   ],
@@ -60,7 +60,7 @@ export interface CDAAttractionResponseInterface {
     'height': number,
     'length': number
   },
-  'gallery': []
+  'gallery': BellewaerdeMediaInterface[]
 }
 
 export interface BellewaerdeMediaInterface {
@@ -90,5 +90,5 @@ export interface BellewaerdeMediaInterface {
       'width': 2048
     }
   ],
-  'type': 'IMAGE'
+  'type': 'IMAGE' | 'VIDEO',
 }
