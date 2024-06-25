@@ -52,12 +52,39 @@ export class CompagnieDesAlpesTransferService extends TransferService {
     }
 
     if (poi.mainImage) {
-      p.image_url = imageBase + poi.mainImage.renditions
+      const imgs = poi.mainImage.renditions
         .filter((i) => i.width <= 1300)
         .sort((a, b) => {
           return a.width < b.width ? 1 : -1;
-        })[0].url;
-      p.images = [imageBase + poi.mainImage.path];
+        });
+
+      if (imgs.length > 0) {
+        p.image_url = imageBase + imgs[0].url;
+        p.images = [imageBase + poi.mainImage.path];
+      }
+    }
+
+    if (poi.gallery) {
+      const images = poi.gallery.filter((i) => i.type === 'IMAGE');
+      const videos = poi.gallery.filter((i) => i.type === 'VIDEO');
+
+      p.images = images.map((i) => {
+        return imageBase + i.renditions
+          .sort((a, b) => {
+            return a.width < b.width ? 1 : -1;
+          })[0].url;
+      });
+
+      p.videos = videos.map((v) => {
+        return {
+          platform: 'URL',
+          full_url: imageBase + v.url,
+          thumbnail: imageBase + v.renditions
+            .sort((a, b) => {
+              return a.width < b.width ? 1 : -1;
+            })[0].url,
+        }
+      })
     }
 
     return p;
@@ -90,7 +117,7 @@ export class CompagnieDesAlpesTransferService extends TransferService {
   public transferRideToPoi(poi: CDAAttractionResponseInterface): Poi {
     let c = PoiCategory.ATTRACTION;
     const ride = this.transferPoiToPoi(poi);
-    ride.id = poi.waitingTimeName;
+    ride.id = poi.waitingTimeName ? poi.waitingTimeName : ride.id;
     ride.category = c;
 
     switch (poi.type.id) {
