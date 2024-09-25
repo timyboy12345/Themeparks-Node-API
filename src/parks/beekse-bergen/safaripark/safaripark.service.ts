@@ -1,15 +1,16 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
-import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
+import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { ConfigService } from '@nestjs/config';
 import * as Sentry from '@sentry/node';
 import { BeekseBergenTransferService } from '../beekse-bergen-transfer/beekse-bergen-transfer.service';
 import { HttpService } from '@nestjs/axios';
+import { ThroughPoisThemeParkService } from '../../../_services/themepark/through-pois-theme-park.service';
+import { BeekseBergenLocationsResponseInterface } from '../interfaces/beekse-bergen-locations-response.interface';
 
 @Injectable()
-export class SafariparkService extends ThemeParkService {
+export class SafariparkService extends ThroughPoisThemeParkService {
   private readonly apiUrl;
 
   constructor(private readonly httpService: HttpService,
@@ -33,13 +34,15 @@ export class SafariparkService extends ThemeParkService {
       timezone: 'Europe/Amsterdam',
       parkType: ParkType.ZOO,
       countryCode: 'nl',
+      company: Company.LIBEMA,
     };
   }
 
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: true,
-      supportsOpeningTimes: false,
+      supportsHalloween: false,
+      supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
       supportsPois: true,
@@ -47,54 +50,48 @@ export class SafariparkService extends ThemeParkService {
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRideWaitTimesHistory: false,
-      supportsRides: false,
+      supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: false,
       supportsShowTimes: false,
       supportsShows: false,
       supportsTranslations: false,
-supportsHalloween: false,
-    }
+    };
   }
 
   async getPois(): Promise<Poi[]> {
-    const promises = [
-      this.getAnimals(),
-      this.getRestaurants()
-    ];
+    // Beekse Bergen Resort ID: 5, Speelland: 6
+    const url = 'https://xmp.xo10.io/api/locations?populate=*&filters%5Bresort%5D=5';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjE2MzQyLCJ0ZW5hbnQiOjEsImlhdCI6MTcxOTk5MzUzOCwiZXhwIjoxNzUxNTUxMTM4fQ.PHulhXTPfRURWXRfwvrrYfhKUCgYnTrYd_0-Ok-NGL4';
 
-    return []
-      .concat
-      .apply([], await Promise.all(promises));
-  }
+    let page = 1;
+    let lastPage = false;
+    let pois = [];
 
-  async getAnimals(): Promise<Poi[]> {
-    const url = this.apiUrl + '/contents?order_by=createdAt&direction=ASC&page=1&limit=999999&expr=[{%22id%22:1495203205804,%22key%22:%22contenttype_id%22,%22selector%22:%22contentType.id%22,%22constraint%22:%22Webmozart\\\\Expression\\\\Constraint\\\\Equals%22,%22type%22:%22select%22,%22value%22:%223%22,%22children%22:[]}]';
-
-    return this.httpService.get<BeekseBergenApiResponse>(url)
-      .toPromise()
-      .then(value => {
-        return this.transferService.transferAnimalsToPois(value.data.results);
+    // TODO: FIX BEEKSE BERGEN
+    // while (!lastPage && page < 100) {
+      const items = this.httpService.get<BeekseBergenLocationsResponseInterface>(url, {
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
       })
-      .catch((exception) => {
-        Sentry.captureException(exception);
-        console.error(exception);
-        throw new InternalServerErrorException(exception);
-      });
-  }
+        .toPromise()
+        .then(value => {
+          return this.transferService.transferDataObjectToPois(value.data);
+        })
+        .catch((exception) => {
+          Sentry.captureException(exception);
+          console.error(exception);
+          throw new InternalServerErrorException(exception);
+        })
+        .then(() => {
+          page += 1;
+          lastPage = true;
+        });
 
-  async getRestaurants(): Promise<Poi[]> {
-    const url = this.apiUrl + '/contents?&order_by=createdAt&direction=ASC&limit=12&page=1&expr=[{%22id%22:1591338477520,%22key%22:%22and%22,%22selector%22:%22and%22,%22constraint%22:%22Webmozart\\\\Expression\\\\Logic\\\\AndX%22,%22type%22:%22set%22,%22value%22:%22%22,%22children%22:[{%22id%22:1591338481044,%22key%22:%22contenttype_id%22,%22selector%22:%22contentType.id%22,%22constraint%22:%22Webmozart\\\\Expression\\\\Constraint\\\\Equals%22,%22type%22:%22select%22,%22value%22:%226%22,%22children%22:[]},{%22id%22:1591338488735,%22key%22:%22status%22,%22selector%22:%22active%22,%22constraint%22:%22Webmozart\\\\Expression\\\\Constraint\\\\Equals%22,%22type%22:%22select%22,%22value%22:%221%22,%22children%22:[]}]}]';
+      pois = pois.concat(items);
+    // }
 
-    return this.httpService.get<BeekseBergenApiResponse>(url)
-      .toPromise()
-      .then(value => {
-        return this.transferService.transferRestaurantsToPois(value.data.results);
-      })
-      .catch((exception) => {
-        Sentry.captureException(exception);
-        console.error(exception);
-        throw new InternalServerErrorException(exception);
-      });
+    return pois;
   }
 }

@@ -146,7 +146,7 @@ export class EftelingTransferService extends TransferService {
     return {
       showTimes: shows.map(this.transferShowTimeToShowTime),
       currentDate: moment().format(),
-      currentDateTimezone: moment().tz('Amsterdam/Europe').format(),
+      currentDateTimezone: moment().tz('Europe/Amsterdam').format(),
       timezone: 'Europe/Amsterdam',
     };
   }
@@ -156,11 +156,10 @@ export class EftelingTransferService extends TransferService {
     const end = moment(showTime.EndDateTime).tz('Europe/Amsterdam');
     const currently = moment().tz('Europe/Amsterdam');
 
-    // TODO: Test if this works properly once Efteling works again
     return {
       localFromDate: start.format('YYYY-MM-DD'),
       localFromTime: start.format('HH:mm'),
-      duration: start.diff(end, 'minutes'),
+      duration: end.diff(start, 'minutes'),
       isPassed: currently.isAfter(start),
       localToDate: end.format('YYYY-MM-DD'),
       localToTime: end.format('HH:mm'),

@@ -3,6 +3,7 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
+import { BeekseBergenLocationsResponseInterface } from '../interfaces/beekse-bergen-locations-response.interface';
 
 @Injectable()
 export class BeekseBergenTransferService extends TransferService {
@@ -57,5 +58,43 @@ export class BeekseBergenTransferService extends TransferService {
     }
 
     return poi;
+  }
+
+  transferDataObjectToPois(data: BeekseBergenLocationsResponseInterface, ...args): Poi[] {
+    const pois: Poi[] = [];
+
+    const facilities = data.data.filter((d) => d.attributes.facility.data !== null);
+    console.log(facilities);
+    const animals = data.data.filter((d) => d.attributes.animals.data.length > 0);
+
+    animals.forEach((a) => {
+      const animal = a.attributes.animals.data[0];
+
+      pois.push({
+        category: PoiCategory.ANIMAL,
+        id: a.id.toString(),
+        original: a,
+        title: a.attributes.name,
+        description: animal.attributes.description + '\n\n' + animal.attributes.bottomDescription,
+        subTitle: animal.attributes.subtitle,
+        location: {
+          lat: a.attributes.coordinates.latitude,
+          lng: a.attributes.coordinates.longitude,
+        },
+      });
+    });
+
+    facilities.forEach((f) => {
+      pois.push({
+        category: PoiCategory.RESTAURANT,
+        id: f.id.toString(),
+        original: f,
+        title: f.attributes.name,
+        description: f.attributes.facility.data.attributes.description,
+        subTitle: f.attributes.facility.data.attributes.summary,
+      });
+    });
+
+    return pois;
   }
 }

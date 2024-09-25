@@ -7,7 +7,6 @@ import { ConfigService } from '@nestjs/config';
 import { BlijdorpTransferService } from '../blijdorp-transfer/blijdorp-transfer.service';
 import * as moment from 'moment';
 import * as Sentry from '@sentry/node';
-import { BlijdorpShow } from '../interfaces/blijdorp-show.interface';
 import { HttpService } from '@nestjs/axios';
 import {
   BlijdorpAnimalInterface,
@@ -121,19 +120,28 @@ export class BlijdorpService extends ThemeParkService {
   }
 
   async getShows(): Promise<Poi[]> {
-    const date = moment().format('YYYY-MM-DD');
-    const url = `${this.organiqBaseUrl}/api/events/${date}`;
+    const variables = {
+      'where': {
+        'date_time': {
+          'start_date_start_time_before': moment().endOf('day').format(),
+          'end_date_end_time_after': moment().startOf('day').format(),
+          'wednesday': true,
+        },
+      }, 'lang': 'nl-NL',
+    };
+
+    const url = 'https://blijdorp.prismic.io/graphql?query=query%20allSchedule(%24sortBy%3A%20SortSchedule_cty%2C%20%24where%3A%20WhereSchedule_ct%2C%20%24first%3A%20Int%2C%20%24after%3A%20String%2C%20%24lang%3A%20String)%20%7B%0A%20%20allSchedule_cts(%0A%20%20%20%20where%3A%20%24where%0A%20%20%20%20first%3A%20%24first%0A%20%20%20%20after%3A%20%24after%0A%20%20%20%20sortBy%3A%20%24sortBy%0A%20%20%20%20lang%3A%20%24lang%0A%20%20)%20%7B%0A%20%20%20%20pageInfo%20%7B%0A%20%20%20%20%20%20...PageInfo%0A%20%20%20%20%20%20__typename%0A%20%20%20%20%7D%0A%20%20%20%20edges%20%7B%0A%20%20%20%20%20%20node%20%7B%0A%20%20%20%20%20%20%20%20...Schedule%0A%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20cursor%0A%20%20%20%20%20%20__typename%0A%20%20%20%20%7D%0A%20%20%20%20totalCount%0A%20%20%20%20__typename%0A%20%20%7D%0A%7D%0A%0Afragment%20PageInfo%20on%20PageInfo%20%7B%0A%20%20hasNextPage%0A%20%20hasPreviousPage%0A%20%20startCursor%0A%20%20endCursor%0A%20%20__typename%0A%7D%0A%0Afragment%20Schedule%20on%20Schedule_ct%20%7B%0A%20%20type%0A%20%20title%0A%20%20main_image%0A%20%20description%0A%20%20pin_on_map%20%7B%0A%20%20%20%20_linkType%0A%20%20%20%20...%20on%20Pins_ct%20%7B%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20_meta%20%7B%0A%20%20%20%20%20%20%20%20...Meta%0A%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20__typename%0A%20%20%20%20%7D%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20connected_route%20%7B%0A%20%20%20%20...%20on%20Route_ct%20%7B%0A%20%20%20%20%20%20_meta%20%7B%0A%20%20%20%20%20%20%20%20uid%0A%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20__typename%0A%20%20%20%20%7D%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20animal_or_plant%20%7B%0A%20%20%20%20...%20on%20Animal_plant_detail%20%7B%0A%20%20%20%20%20%20_meta%20%7B%0A%20%20%20%20%20%20%20%20uid%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20__typename%0A%20%20%20%20%7D%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20link%20%7B%0A%20%20%20%20...%20on%20Landing_page%20%7B%0A%20%20%20%20%20%20_meta%20%7B%0A%20%20%20%20%20%20%20%20uid%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20__typename%0A%20%20%20%20%7D%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20date_time%20%7B%0A%20%20%20%20...ScheduleDateTime%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20_meta%20%7B%0A%20%20%20%20...Meta%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20__typename%0A%7D%0A%0Afragment%20Meta%20on%20Meta%20%7B%0A%20%20id%0A%20%20uid%0A%20%20type%0A%20%20tags%0A%20%20lang%0A%20%20alternateLanguages%20%7B%0A%20%20%20%20id%0A%20%20%20%20uid%0A%20%20%20%20type%0A%20%20%20%20lang%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20firstPublicationDate%0A%20%20lastPublicationDate%0A%20%20__typename%0A%7D%0A%0Afragment%20ScheduleDateTime%20on%20Schedule_ctDate_time%20%7B%0A%20%20title%0A%20%20start_date_start_time%0A%20%20end_date_end_time%0A%20%20monday%0A%20%20tuesday%0A%20%20wednesday%0A%20%20thursday%0A%20%20friday%0A%20%20saturday%0A%20%20sunday%0A%20%20__typename%0A%7D&operationName=allSchedule&variables=' + encodeURIComponent(JSON.stringify(variables));
 
     const headers = {
-      Authorization: `Bearer ${this.organiqToken}`,
+      'prismic-ref': 'ZvKvHhIAAB8ApMvW',
     };
 
     return this.httpService
-      .get<BlijdorpShow[]>(url, {
+      .get<any>(url, {
         headers: headers,
       }).toPromise()
       .then((response) => {
-        return this.transferService.transferShowsToPois(response.data);
+        return this.transferService.transferShowsToPois(response.data.data.allSchedule_cts.edges);
       })
       .catch((exception) => {
         Sentry.captureException(exception);

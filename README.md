@@ -49,7 +49,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇳🇱 Wildlands | 🦁 | False | False | False | False | False |
 | 🇳🇱 Blijdorp | 🦁 | False | False | True | False | False |
 | 🇳🇱 Apenheul | 🦁 | False | False | False | False | False |
-| 🇳🇱 Safaripark Beekse Bergen | 🦁 | False | True | False | False | False |
+| 🇳🇱 Safaripark Beekse Bergen | 🦁 | True | True | False | False | False |
 | 🇳🇱 Speelland Beekse Bergen | 🎡 | True | False | False | False | False |
 | 🇵🇱 Energylandia | 🎡 | True | False | True | False | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True | False |

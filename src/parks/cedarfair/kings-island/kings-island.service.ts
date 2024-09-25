@@ -1,11 +1,11 @@
-import { Injectable, NotImplementedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CedarfairBaseService } from '../cedarfair-base/cedarfair-base.service';
 import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 
 @Injectable()
 export class KingsIslandService extends CedarfairBaseService {
   protected getParkId(): string {
-    throw new NotImplementedException("New park ID not set");
+    return "20";
   }
 
   getInfo(): ThemePark {

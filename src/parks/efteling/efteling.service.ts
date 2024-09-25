@@ -31,36 +31,36 @@ export class EftelingService extends ThroughPoisThemeParkService {
       id: 'efteling',
       name: 'Efteling',
       description: 'De Efteling is een attractiepark en recreatiecomplex in Kaatsheuvel, een dorp in de Nederlandse provincie Noord-Brabant. Naast het attractiepark omvat de hele Wereld van de Efteling een theater, twee hotels, twee vakantieparken en een golfpark.',
-      image: 'https://traveltrade.visitbrabant.com/uploads/cache/medium/uploads/media/5cac5f21d23d9/kopfoto-pardoes-en-pardijn-hartenhof-npf2017-5760x3840px-z-nr-16193.jpg',
+      image: 'https://www.efteling.com/nl/-/media/images/social-open-graph/1200x628-roodkapje-bij-de-entree.jpg',
       countryCode: 'nl',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Amsterdam',
       location: {
         lat: 51.64990915659694,
-        lng: 5.043561458587647
-      }
+        lng: 5.043561458587647,
+      },
     };
   }
 
   // TODO: Fix broking POI status and re-enable wait times
   public getSupports(): ThemeParkSupports {
     return {
+      supportsAnimals: false,
+      supportsHalloween: false,
+      supportsOpeningTimes: true,
+      supportsOpeningTimesHistory: false,
+      supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: true,
       supportsRestaurants: true,
       supportsRideWaitTimes: true,
+      supportsRideWaitTimesHistory: true,
       supportsRides: true,
+      supportsShopOpeningTimes: true,
+      supportsShops: true,
       supportsShowTimes: true,
       supportsShows: true,
-      supportsPoiLocations: true,
-      supportsShops: true,
-      supportsShopOpeningTimes: true,
-      supportsOpeningTimes: true,
-      supportsAnimals: false,
-      supportsOpeningTimesHistory: false,
-      supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
-      supportsHalloween: false,
     };
   }
 
@@ -118,27 +118,27 @@ export class EftelingService extends ThroughPoisThemeParkService {
           }
 
           return poi;
-        })
+        });
       });
     });
   }
 
   private request() {
-    let url = this._eftelingApiURl;
+    let url = this._eftelingApiURl + '/app/poi/';
 
-    switch (this.localeService.getLocale()) {
-      case 'nl':
-        break;
-      case 'de':
-        url = url.replace("language 'nl'", "language 'de'");
-        break;
-      case 'fr':
-        url = url.replace("language 'nl'", "language 'fr'");
-        break;
-      default:
-        url = url.replace("language 'nl'", "language 'en'");
-        break;
-    }
+    // switch (this.localeService.getLocale()) {
+    //   case 'nl':
+    //     break;
+    //   case 'de':
+    //     url = url.replace('language \'nl\'', 'language \'de\'');
+    //     break;
+    //   case 'fr':
+    //     url = url.replace('language \'nl\'', 'language \'fr\'');
+    //     break;
+    //   default:
+    //     url = url.replace('language \'nl\'', 'language \'en\'');
+    //     break;
+    // }
 
     return this.httpService
       .get<EftelingPoisResponse>(url)
@@ -155,7 +155,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
 
   private getWaitTimes() {
     return this.httpService
-      .get<EftelingOpeningTimesResponse>('https://api.efteling.com/app/wis/')
+      .get<EftelingOpeningTimesResponse>(this._eftelingApiURl + '/app/wis/')
       .toPromise()
       .then(value => {
         return value.data;
