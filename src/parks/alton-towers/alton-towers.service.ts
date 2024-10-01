@@ -40,7 +40,7 @@ export class AltonTowersService extends AioThemeparkService {
       supportsShowTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-      supportsHalloween: false,
+      supportsEvents: false,
     }
   }
 

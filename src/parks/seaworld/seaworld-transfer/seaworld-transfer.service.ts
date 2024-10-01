@@ -5,16 +5,23 @@ import { SeaworldBaseItem } from '../interfaces/seaworld-base-item.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
 import * as moment from 'moment-timezone';
+import * as sluggo from 'sluggo';
 
 @Injectable()
 export class SeaworldTransferService extends TransferService {
   transferPoiToPoi(poi: SeaworldBaseItem, locale?: string): Poi {
+    const name = poi.Name
+      .replace('All-New!', '')
+      .replace('All-New', '')
+      .replace('All New!', '')
+      .replace('All New', '');
+
     const p: Poi = {
       category: PoiCategory.UNDEFINED,
       original_category: poi.Type,
-      id: `${poi.Id}`,
+      id: poi.Name ? sluggo(name, {}) : `${poi.Id}`,
       original: poi,
-      title: poi.Name,
+      title: name,
       subTitle: poi.ShortDescription,
       description: poi.LongDescription,
       image_url: poi.ListingImageUrl,

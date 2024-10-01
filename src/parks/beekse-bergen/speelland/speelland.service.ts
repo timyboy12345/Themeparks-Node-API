@@ -53,7 +53,7 @@ export class SpeellandService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: false,
       supportsTranslations: false,
-      supportsHalloween: false,
+      supportsEvents: false,
     }
   }
 

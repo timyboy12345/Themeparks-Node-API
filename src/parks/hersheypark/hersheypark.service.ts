@@ -44,7 +44,7 @@ export class HersheyparkService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: true,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,

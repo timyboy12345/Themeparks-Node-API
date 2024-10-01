@@ -65,7 +65,7 @@ export class ParksController {
       line += ` ${this.capitalizeBoolean(park.supports.supportsRestaurants)} |`;
       line += ` ${this.capitalizeBoolean(park.supports.supportsShows)} |`;
       line += ` ${this.capitalizeBoolean(park.supports.supportsShops)} |`;
-      line += ` ${this.capitalizeBoolean(park.supports.supportsHalloween)} |`;
+      line += ` ${this.capitalizeBoolean(park.supports.supportsEvents)} |`;
 
       lines.push(line);
       // lines.push(`| ${this.countryCodeEmoji(park.countryCode)} ${park.name} | ${park.supports.supportsRides} | x | x | x |`);

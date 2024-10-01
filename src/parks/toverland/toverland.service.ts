@@ -11,6 +11,8 @@ import { ToverlandTransferService } from './toverland-transfer/toverland-transfe
 import { ToverlandShow } from './interfaces/toverland-show.interface';
 import { LocaleService } from '../../_services/locale/locale.service';
 import { HttpService } from '@nestjs/axios';
+import { ThemeParkEvent } from '../../_interfaces/park-event.interface';
+import { EventCategory } from '../../_interfaces/event.category';
 
 @Injectable()
 export class ToverlandService extends ThemeParkService {
@@ -60,7 +62,7 @@ export class ToverlandService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: true,
-      supportsHalloween: true,
+      supportsEvents: true,
     };
   }
 
@@ -72,8 +74,8 @@ export class ToverlandService extends ThemeParkService {
       .catch((exception) => {
         Sentry.captureException(exception);
         console.error(exception);
-        throw new HttpException("Failed to fetch rides", 500, {
-          cause: new Error('Failed to fetch rides: ' + exception.toString())
+        throw new HttpException('Failed to fetch rides', 500, {
+          cause: new Error('Failed to fetch rides: ' + exception.toString()),
         });
       });
   }
@@ -88,7 +90,7 @@ export class ToverlandService extends ThemeParkService {
         Sentry.captureException(exception);
         console.error(exception);
         throw new HttpException('Failed to fetch restaurants', 500, {
-          cause: new Error('Failed to fetch restaurants: ' + exception.toString())
+          cause: new Error('Failed to fetch restaurants: ' + exception.toString()),
         });
       });
   }
@@ -102,7 +104,7 @@ export class ToverlandService extends ThemeParkService {
         Sentry.captureException(exception);
         console.error(exception);
         throw new HttpException('Failed to fetch shows', 500, {
-          cause: new Error('Failed to fetch shows: ' + exception.toString())
+          cause: new Error('Failed to fetch shows: ' + exception.toString()),
         });
       });
   }
@@ -116,7 +118,7 @@ export class ToverlandService extends ThemeParkService {
         Sentry.captureException(exception);
         console.error(exception);
         throw new HttpException('Failed to fetch halloween events', 500, {
-          cause: new Error('Failed to fetch halloween events: ' + exception.toString())
+          cause: new Error('Failed to fetch halloween events: ' + exception.toString()),
         });
       });
   }
@@ -157,5 +159,12 @@ export class ToverlandService extends ThemeParkService {
     return []
       .concat
       .apply([], await Promise.all(promises));
+  }
+
+  async getEvents(): Promise<ThemeParkEvent[]> {
+    return [{
+      name: 'Halloween Halloween Nights',
+      type: EventCategory.HALLOWEEN,
+    }];
   }
 }

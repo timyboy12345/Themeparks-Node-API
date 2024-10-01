@@ -24,7 +24,7 @@ export class EuropaParkService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,

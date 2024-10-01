@@ -48,7 +48,7 @@ export class BlijdorpService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: true,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
@@ -91,32 +91,34 @@ export class BlijdorpService extends ThemeParkService {
     let tries = 0;
     let animals: BlijdorpAnimalInterface[] = [];
 
-    while (page > 0 && tries < 100) {
-      tries++;
+    // TODO: CHECK WHILE LOOP
+    return Promise.resolve([]);
+    // while (page > 0 && tries < 100) {
+    //   tries++;
+    //
+    //   await this.httpService
+    //     .post<BlijdorpAnimalsResponseInterface>(url, {
+    //       'lang': lang,
+    //       'type': 'animal',
+    //       'page': page,
+    //     }).toPromise()
+    //     .then((response) => {
+    //       animals = animals.concat(response.data.items);
+    //
+    //       if (response.data.nextPage) {
+    //         page++;
+    //       } else {
+    //         page = -1;
+    //       }
+    //     })
+    //     .catch((exception) => {
+    //       Sentry.captureException(exception);
+    //       console.error(exception);
+    //       throw new InternalServerErrorException(exception);
+    //     });
+    // }
 
-      await this.httpService
-        .post<BlijdorpAnimalsResponseInterface>(url, {
-          'lang': lang,
-          'type': 'animal',
-          'page': page,
-        }).toPromise()
-        .then((response) => {
-          animals = animals.concat(response.data.items);
-
-          if (response.data.nextPage) {
-            page++;
-          } else {
-            page = -1;
-          }
-        })
-        .catch((exception) => {
-          Sentry.captureException(exception);
-          console.error(exception);
-          throw new InternalServerErrorException(exception);
-        });
-    }
-
-    return this.transferService.transferAnimalsToPois(animals);
+    // return this.transferService.transferAnimalsToPois(animals);
   }
 
   async getShows(): Promise<Poi[]> {

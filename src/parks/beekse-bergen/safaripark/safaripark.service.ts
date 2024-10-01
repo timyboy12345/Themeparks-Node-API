@@ -41,7 +41,7 @@ export class SafariparkService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: true,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
@@ -70,26 +70,26 @@ export class SafariparkService extends ThroughPoisThemeParkService {
 
     // TODO: FIX BEEKSE BERGEN
     // while (!lastPage && page < 100) {
-      const items = this.httpService.get<BeekseBergenLocationsResponseInterface>(url, {
-        headers: {
-          'Authorization': 'Bearer ' + token,
-        },
-      })
-        .toPromise()
-        .then(value => {
-          return this.transferService.transferDataObjectToPois(value.data);
-        })
-        .catch((exception) => {
-          Sentry.captureException(exception);
-          console.error(exception);
-          throw new InternalServerErrorException(exception);
-        })
-        .then(() => {
-          page += 1;
-          lastPage = true;
-        });
-
-      pois = pois.concat(items);
+    //   const items = this.httpService.get<BeekseBergenLocationsResponseInterface>(url, {
+    //     headers: {
+    //       'Authorization': 'Bearer ' + token,
+    //     },
+    //   })
+    //     .toPromise()
+    //     .then(value => {
+    //       return this.transferService.transferDataObjectToPois(value.data);
+    //     })
+    //     .catch((exception) => {
+    //       Sentry.captureException(exception);
+    //       console.error(exception);
+    //       throw new InternalServerErrorException(exception);
+    //     })
+    //     .then(() => {
+    //       page += 1;
+    //       lastPage = true;
+    //     });
+    //
+    //   pois = pois.concat(items);
     // }
 
     return pois;

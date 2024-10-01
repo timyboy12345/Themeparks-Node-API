@@ -34,7 +34,7 @@ export class TivoliService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,

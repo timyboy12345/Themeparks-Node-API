@@ -28,7 +28,7 @@ export class GardalandService extends AioThemeparkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,

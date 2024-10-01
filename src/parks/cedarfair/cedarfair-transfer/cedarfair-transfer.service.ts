@@ -3,6 +3,7 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 import { CedarfairBaseResponseInterface } from '../interfaces/cedarfair-base-response.interface';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
+import * as sluggo from 'sluggo';
 
 @Injectable()
 export class CedarfairTransferService extends TransferService {
@@ -39,10 +40,7 @@ export class CedarfairTransferService extends TransferService {
     let id: string;
 
     if (poi.name) {
-      id = poi.name
-        .replace(' ', '-')
-        .trim()
-        .toLowerCase();
+      id = sluggo(poi.name);
     } else {
       id = poi.uuid;
     }

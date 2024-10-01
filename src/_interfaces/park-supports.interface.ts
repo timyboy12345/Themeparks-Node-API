@@ -35,7 +35,7 @@ export interface ThemeParkSupports {
   supportsTranslations: boolean;
 
   /**
-   * @description Whether or not a park supports returning Halloween related items, such as scare zones and experiences
+   * @description Whether or not a park supports returning special event related items, such as Halloween scare zones and experiences or Christmas experiences
    */
-  supportsHalloween: boolean;
+  supportsEvents: boolean;
 }

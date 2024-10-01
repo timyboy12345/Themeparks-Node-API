@@ -21,7 +21,7 @@ export class SeaworldBaseService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: true,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,

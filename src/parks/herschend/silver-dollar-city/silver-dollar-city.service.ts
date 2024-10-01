@@ -38,7 +38,7 @@ export class SilverDollarCityService extends HerschendBaseService {
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
-supportsHalloween: false,
+supportsEvents: false,
     }
   }
 

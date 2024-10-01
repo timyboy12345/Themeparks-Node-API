@@ -43,10 +43,11 @@ export class EftelingService extends ThroughPoisThemeParkService {
   }
 
   // TODO: Fix broking POI status and re-enable wait times
+  // TODO: Fix locales
   public getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: true,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,

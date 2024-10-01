@@ -59,7 +59,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      supportsEvents: false,
     };
   }
 
@@ -102,7 +102,7 @@ supportsHalloween: false,
                 currentDateTimezone: moment().tz('Europe/Berlin').format(),
                 timezone: 'Europe/Berlin',
                 currentDate: moment().tz('Europe/Berlin').format('YYYY-MM-DD'),
-                showTimes: showTimes
+                showTimes: showTimes,
               };
             }
           }

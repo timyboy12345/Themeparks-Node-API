@@ -53,7 +53,7 @@ export class OuwehandsDierenparkService extends ThemeParkService {
       supportsShowTimes: false,
       supportsAnimals: true,
       supportsTranslations: false,
-supportsHalloween: false,
+supportsEvents: false,
     };
   }
 

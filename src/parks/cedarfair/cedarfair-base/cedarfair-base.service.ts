@@ -50,7 +50,7 @@ export class CedarfairBaseService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,
