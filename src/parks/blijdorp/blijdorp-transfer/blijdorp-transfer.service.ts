@@ -26,7 +26,7 @@ export class BlijdorpTransferService extends TransferService {
       title: poi.node.title,
       description: poi.node.description && poi.node.description.length > 0 ? poi.node.description[0].text : null,
       image_url: poi.node.main_image.url,
-      previewImage: poi.node.main_image.url,
+      previewImage: poi.node.main_image.url + "&w=400",
       showTimes: showTimes,
       category: PoiCategory.SHOW,
       original: poi,
@@ -43,6 +43,7 @@ export class BlijdorpTransferService extends TransferService {
       description: animal.description,
       images: [animal.image.url],
       image_url: animal.image.url,
+      previewImage: animal.image.url.replace('w=10000', 'w=400').replace('h=13000', 'h=400'),
     };
   }
 }

@@ -1,7 +1,5 @@
 import { Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-// import * as moment from 'moment';
-// import * as crypto from 'node:crypto';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { UniversalTransferService } from '../universal-transfer/universal-transfer.service';
@@ -52,52 +50,19 @@ export class UniversalBaseService extends ThroughPoisThemeParkService {
     throw new NotImplementedException("GetVenueId is not implemented")
   }
 
+  // TODO: Universal supports Wait Times, but only testable while not on blocklist
   async getPois(): Promise<Poi[]> {
-    return this.http.get(`${this._apiUrl}/pointsofinterest`, {
+    return this.http.get(`${this._apiUrl}/eventseries`, {
       params: {
-        city: this.getCity()
+        city: this.getCity(),
+        pageSize: 'All'
       }
     })
       .toPromise()
       .then((res) => this.transfer.transferDataObjectToPois(res.data, this.getVenueId()))
       .catch((err) => {
         Sentry.captureException(err);
-        console.log(err);
-        throw new InternalServerErrorException();
+        throw new InternalServerErrorException(err);
       })
   }
-
-  // private getToken() {
-  //   // Get access token
-  //   // generate access token signature
-  //   //  calculate current date to generate access token signature
-  //   const today = `${moment.utc().format('ddd, DD MMM YYYY HH:mm:ss')} GMT`;
-  //
-  //   // create signature to get access token
-  //   const signatureBuilder = crypto.createHmac('sha256', this._apiSecret);
-  //   signatureBuilder.update(`${this._apiKey}\n${today}\n`);
-  //   // generate hash from signature builder
-  //   //  also convert trailing equal signs to unicode. because. I don't know
-  //   const signature = signatureBuilder.digest('base64').replace(/=$/, '\u003d');
-  //
-  //   // request new access token
-  //   return this.http.post(this._apiUrl, {
-  //     headers: {
-  //       Date: today,
-  //     },
-  //     body: {
-  //       apiKey: this._apiKey,
-  //       signature,
-  //     },
-  //   })
-  //     .toPromise()
-  //     .then((res) => {
-  //       console.log(res);
-  //       // check we actually got the token back
-  //       // if (!body.Token) {
-  //       //   this.Log(body.toString('ascii'));
-  //       //   return Promise.reject(new Error('Missing access token from Universal API'));
-  //       // }
-  //     });
-  // }
 }

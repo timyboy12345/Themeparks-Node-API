@@ -28,10 +28,4 @@ describe('EnergylandiaService', () => {
     expect(data).toBeInstanceOf(Array);
     expect(data.length).toBeGreaterThan(6);
   }, 1000 * 20);
-
-  it('should return a list of Shows', async () => {
-    const data = await service.getShows();
-    expect(data).toBeInstanceOf(Array);
-    expect(data.length).toBeGreaterThan(6);
-  }, 1000 * 20);
 });

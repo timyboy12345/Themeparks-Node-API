@@ -64,7 +64,6 @@ export class BeekseBergenTransferService extends TransferService {
     const pois: Poi[] = [];
 
     const facilities = data.data.filter((d) => d.attributes.facility.data !== null);
-    console.log(facilities);
     const animals = data.data.filter((d) => d.attributes.animals.data.length > 0);
 
     animals.forEach((a) => {

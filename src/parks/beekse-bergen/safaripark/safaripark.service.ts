@@ -60,38 +60,34 @@ export class SafariparkService extends ThroughPoisThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
+    // TODO: Beekse Bergen seems to supports pagination, but does not seem to use it
+    // let page = 1;
+    // let lastPage = false;
+    // let pois = [];
+
+    const d = await this.fetchPage(1);
+
+    return this.transferService.transferDataObjectToPois(d);
+  }
+
+  async fetchPage(page: number): Promise<BeekseBergenLocationsResponseInterface> {
     // Beekse Bergen Resort ID: 5, Speelland: 6
     const url = 'https://xmp.xo10.io/api/locations?populate=*&filters%5Bresort%5D=5';
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjE2MzQyLCJ0ZW5hbnQiOjEsImlhdCI6MTcxOTk5MzUzOCwiZXhwIjoxNzUxNTUxMTM4fQ.PHulhXTPfRURWXRfwvrrYfhKUCgYnTrYd_0-Ok-NGL4';
 
-    let page = 1;
-    let lastPage = false;
-    let pois = [];
-
-    // TODO: FIX BEEKSE BERGEN
-    // while (!lastPage && page < 100) {
-    //   const items = this.httpService.get<BeekseBergenLocationsResponseInterface>(url, {
-    //     headers: {
-    //       'Authorization': 'Bearer ' + token,
-    //     },
-    //   })
-    //     .toPromise()
-    //     .then(value => {
-    //       return this.transferService.transferDataObjectToPois(value.data);
-    //     })
-    //     .catch((exception) => {
-    //       Sentry.captureException(exception);
-    //       console.error(exception);
-    //       throw new InternalServerErrorException(exception);
-    //     })
-    //     .then(() => {
-    //       page += 1;
-    //       lastPage = true;
-    //     });
-    //
-    //   pois = pois.concat(items);
-    // }
-
-    return pois;
+    return this.httpService.get<BeekseBergenLocationsResponseInterface>(url, {
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+    })
+      .toPromise()
+      .then(value => {
+        return value.data;
+      })
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
+      });
   }
 }

@@ -8,10 +8,7 @@ import { BlijdorpTransferService } from '../blijdorp-transfer/blijdorp-transfer.
 import * as moment from 'moment';
 import * as Sentry from '@sentry/node';
 import { HttpService } from '@nestjs/axios';
-import {
-  BlijdorpAnimalInterface,
-  BlijdorpAnimalsResponseInterface,
-} from '../interfaces/blijdorp-animals-response.interface';
+import { BlijdorpAnimalsResponseInterface } from '../interfaces/blijdorp-animals-response.interface';
 import { LocaleService } from '../../../_services/locale/locale.service';
 
 @Injectable()
@@ -78,6 +75,18 @@ export class BlijdorpService extends ThemeParkService {
   }
 
   async getAnimals(): Promise<Poi[]> {
+    let { items: animals, maxPage } = await this.getPage(1);
+
+    for (let i = 2; i <= maxPage; i++) {
+      await this.getPage(i).then((d) => {
+        animals = animals.concat(d.items);
+      });
+    }
+
+    return this.transferService.transferAnimalsToPois(animals);
+  }
+
+  async getPage(page): Promise<BlijdorpAnimalsResponseInterface> {
     const url = 'https://diergaardeblijdorp.nl/api/animals-plants-overview';
 
     let lang: string;
@@ -87,38 +96,20 @@ export class BlijdorpService extends ThemeParkService {
       lang = 'en-GB';
     }
 
-    let page = 1;
-    let tries = 0;
-    let animals: BlijdorpAnimalInterface[] = [];
-
-    // TODO: CHECK WHILE LOOP
-    return Promise.resolve([]);
-    // while (page > 0 && tries < 100) {
-    //   tries++;
-    //
-    //   await this.httpService
-    //     .post<BlijdorpAnimalsResponseInterface>(url, {
-    //       'lang': lang,
-    //       'type': 'animal',
-    //       'page': page,
-    //     }).toPromise()
-    //     .then((response) => {
-    //       animals = animals.concat(response.data.items);
-    //
-    //       if (response.data.nextPage) {
-    //         page++;
-    //       } else {
-    //         page = -1;
-    //       }
-    //     })
-    //     .catch((exception) => {
-    //       Sentry.captureException(exception);
-    //       console.error(exception);
-    //       throw new InternalServerErrorException(exception);
-    //     });
-    // }
-
-    // return this.transferService.transferAnimalsToPois(animals);
+    return await this.httpService
+      .post<BlijdorpAnimalsResponseInterface>(url, {
+        'lang': lang,
+        'type': 'animal',
+        'page': page,
+      }).toPromise()
+      .then((response) => {
+        return Promise.resolve(response.data);
+      })
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException(exception);
+      });
   }
 
   async getShows(): Promise<Poi[]> {
