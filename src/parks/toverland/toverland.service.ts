@@ -154,6 +154,7 @@ export class ToverlandService extends ThemeParkService {
       this.getRides(),
       this.getRestaurants(),
       this.getShows(),
+      this.getHalloweenEvents(),
     ];
 
     return []
@@ -163,8 +164,25 @@ export class ToverlandService extends ThemeParkService {
 
   async getEvents(): Promise<ThemeParkEvent[]> {
     return [{
-      name: 'Halloween Halloween Nights',
+      name: 'Halloween Nights',
+      subTitle: 'Discover your own fear',
       type: EventCategory.HALLOWEEN,
+      dates: [
+        '2024-10-05',
+        '2024-10-12',
+        '2024-10-19',
+        '2024-10-20',
+        '2024-10-21',
+        '2024-10-23',
+        '2024-10-24',
+        '2024-10-25',
+        '2024-10-26',
+        '2024-10-27',
+        '2024-11-01',
+        '2024-11-02',
+        '2024-11-09',
+      ],
+      pois: await this.getHalloweenEvents(),
     }];
   }
 }

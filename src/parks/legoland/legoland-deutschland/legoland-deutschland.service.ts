@@ -24,22 +24,22 @@ export class LegolandDeutschlandService extends AioThemeparkService {
 
   getSupports(): ThemeParkSupports {
     return {
+      supportsAnimals: false,
+      supportsEvents: false,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: false,
+      supportsRestaurants: true,
       supportsRideWaitTimes: false,
-      supportsRides: false,
-      supportsShopOpeningTimes: false,
-      supportsShops: false,
-      supportsShowTimes: false,
-      supportsShows: false,
       supportsRideWaitTimesHistory: false,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
-      supportsAnimals: false,
+      supportsRides: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: true,
+      supportsShowTimes: false,
+      supportsShows: true,
       supportsTranslations: false,
-supportsEvents: false,
     };
   }
 
@@ -101,7 +101,7 @@ supportsEvents: false,
       case 2082:
         return PoiCategory.SMOKING_AREA;
       case 1031:
-        // Discover & Wonder
+      // Discover & Wonder
       case 1033:
         // Create
         return PoiCategory.UNDEFINED;

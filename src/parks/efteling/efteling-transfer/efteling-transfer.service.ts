@@ -14,10 +14,6 @@ import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.in
 
 @Injectable()
 export class EftelingTransferService extends TransferService {
-  // constructor(private readonly configService: ConfigService) {
-  //   super();
-  // }
-
   transferPoiToPoi(eftelingPoi: EftelingPoi): Poi {
     let c: PoiCategory = PoiCategory.UNDEFINED;
 
@@ -60,7 +56,6 @@ export class EftelingTransferService extends TransferService {
     const lng = parseFloat(eftelingPoi.fields.latlon.split(',')[1]);
 
     // Get the URL where the images are located
-    // const imgUrl = this.configService.get('EFTELING_MEDIA_URL');
     const imgUrl = 'https://efteling.com';
 
     const images = [];
