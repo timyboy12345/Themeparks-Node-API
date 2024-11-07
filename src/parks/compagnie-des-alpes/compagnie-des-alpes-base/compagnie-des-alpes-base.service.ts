@@ -26,7 +26,7 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: this.supportsAnimals(),
-      supportsEvents: false,
+      supportsEvents: this.supportsEvents(),
       supportsOpeningTimes: this.supportsOpeningTimes(),
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,
@@ -53,6 +53,10 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
   }
 
   public supportsAnimals() {
+    return false;
+  }
+
+  public supportsEvents() {
     return false;
   }
 

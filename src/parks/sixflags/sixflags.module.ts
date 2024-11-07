@@ -15,7 +15,7 @@ import { HttpModule } from '@nestjs/axios';
     }),
   ],
   exports: [SixflagsService],
-  providers: [SixflagsTransferService, SixFlagsGeneralParkService, SixflagsService, SixFlagsGeneralParkService],
+  providers: [SixflagsTransferService, SixFlagsGeneralParkService, SixflagsService],
 })
 export class SixflagsModule {
 }

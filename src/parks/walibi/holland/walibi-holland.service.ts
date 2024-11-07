@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import {
-  CompagnieDesAlpesBaseService
+  CompagnieDesAlpesBaseService,
 } from '../../compagnie-des-alpes/compagnie-des-alpes-base/compagnie-des-alpes-base.service';
+import { ThemeParkEvent } from '../../../_interfaces/park-event.interface';
+import { EventCategory } from '../../../_interfaces/event.category';
 
 @Injectable()
 export class WalibiHollandService extends CompagnieDesAlpesBaseService {
@@ -47,6 +49,32 @@ export class WalibiHollandService extends CompagnieDesAlpesBaseService {
   }
 
   supportsShows(): boolean {
-    return false;
+    return true;
+  }
+
+  supportsEvents(): boolean {
+    return true;
+  }
+
+  async getEvents(): Promise<ThemeParkEvent[]> {
+    const pois = await this
+      .getPois()
+      .then((r) => r.filter((p) => p.eventCategory !== undefined));
+
+    return [{
+      name: 'Halloween Fright Nights',
+      image: 'https://www.looopings.nl/img/foto/24/0201langhfn1.jpg',
+      subTitle: 'Cheers to Fears',
+      slug: 'halloween-fright-nights',
+      type: EventCategory.HALLOWEEN,
+      pois: pois,
+    }, {
+      name: 'Halloween Spooky Days',
+      image: 'https://www.walibi.nl/adobe/dynamicmedia/deliver/dm-aid--e1890ec9-2862-4316-ba42-6183f2c784a9/kv-hsd-met-pay-off-horizontaal.jpg?preferwebp=true&quality=85',
+      // subTitle: 'Cheers to Fears',
+      type: EventCategory.HALLOWEEN,
+      slug: 'halloween-spooky-days',
+      pois: pois,
+    }];
   }
 }

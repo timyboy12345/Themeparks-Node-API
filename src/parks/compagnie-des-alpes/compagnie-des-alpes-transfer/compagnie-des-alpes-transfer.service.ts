@@ -2,15 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import * as moment from 'moment-timezone';
-import {
-  CDAAttractionResponseInterface,
-} from '../interfaces/cda-attractions-response.interface';
+import { CDAAttractionResponseInterface } from '../interfaces/cda-attractions-response.interface';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
-import {
-  CdaOpeningHoursResponseInterface,
-} from '../interfaces/cda-opening-hours-response.interface';
+import { CdaOpeningHoursResponseInterface } from '../interfaces/cda-opening-hours-response.interface';
 import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.interface';
 import { TransferService } from '../../../_services/transfer/transfer.service';
+import { EventCategory } from '../../../_interfaces/event.category';
 
 @Injectable()
 export class CompagnieDesAlpesTransferService extends TransferService {
@@ -83,8 +80,19 @@ export class CompagnieDesAlpesTransferService extends TransferService {
             .sort((a, b) => {
               return a.width < b.width ? 1 : -1;
             })[0].url,
-        }
-      })
+        };
+      });
+    }
+
+    if (poi.eventTags) {
+      // Walibi NL Spooky Days
+      // Walibi NL Fright Nights
+      if (poi.eventTags.find((e) => [
+        'who:halloween/halloween-spooky-days',
+        'who:halloween/halloween-fright-nights',
+      ].includes(e.id))) {
+        p.eventCategory = EventCategory.HALLOWEEN;
+      }
     }
 
     return p;

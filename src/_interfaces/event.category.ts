@@ -1,6 +1,6 @@
 export enum EventCategory {
   HALLOWEEN = 'HALLOWEEN',
-  CHRISTMAS = 'CHRISTMAS',
+  WINTER = 'WINTER',
   EASTER = 'EASTER',
   OTHER = 'OTHER',
 }

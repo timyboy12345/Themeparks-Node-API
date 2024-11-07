@@ -6,9 +6,10 @@ export interface ThemeParkEvent {
   toDate?: string;
   dates?: string[];
   type: EventCategory;
+  slug: string;
   name?: string;
   subTitle?: string;
   description?: string;
-  image: 'https://www.toverland.com/fileadmin/_processed_/5/b/csm_Cirque-close-middel_9ac7a20e79.jpg',
+  image?: string,
   pois?: Poi[];
 }

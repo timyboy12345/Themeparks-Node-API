@@ -47,6 +47,7 @@ export class MovieParkService extends ParquesReunidosParkService {
   async getEvents(): Promise<ThemeParkEvent[]> {
     return [{
       name: 'Halloween Horror Festival',
+      slug: 'halloween-horror-festival',
       type: EventCategory.HALLOWEEN,
     }];
   }
