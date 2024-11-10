@@ -1,5 +1,5 @@
-import { Controller, Get, Header, Inject, UseInterceptors } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Header, Inject, Query, UseInterceptors } from '@nestjs/common';
+import { ApiOkResponse, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ParkDto } from '../../_dtos/park.dto';
 import { ParksService } from '../../_services/parks/parks.service';
 import { Cache } from 'cache-manager';
@@ -15,12 +15,23 @@ export class ParksController {
 
   @Get('')
   @UseInterceptors(CacheInterceptor)
+  @ApiQuery({
+    name: 'name',
+    required: false,
+    description: 'Filter the parks by name',
+  })
   @ApiOkResponse({
     type: ParkDto,
     isArray: true,
   })
-  async getParks() {
-    return (await this.parksService.getParks()).map(park => park.getFullInfo());
+  async getParks(@Query('name') name) {
+    let parks = (await this.parksService.getParks()).map(park => park.getFullInfo());
+
+    if (name) {
+      parks = parks.filter((p) => p.name.toLowerCase().includes(name.toLowerCase()));
+    }
+
+    return parks;
   }
 
   @Get('/readme')
