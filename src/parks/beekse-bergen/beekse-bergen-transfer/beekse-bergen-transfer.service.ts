@@ -19,6 +19,7 @@ export class BeekseBergenTransferService extends TransferService {
     return this.transferItemToPoi(PoiCategory.ATTRACTION, ride);
   }
 
+  // TODO: Implement new API url
   private transferItemToPoi(category: PoiCategory, data: BeekseBergenApiResponseItem): Poi {
     const poi: Poi = {
       category: category,

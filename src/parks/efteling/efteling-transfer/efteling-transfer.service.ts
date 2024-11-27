@@ -94,6 +94,10 @@ export class EftelingTransferService extends TransferService {
       };
     }
 
+    if (eftelingPoi.fields.menu_card_pdf) {
+      poi.menuUrl = eftelingPoi.fields.menu_card_pdf;
+    }
+
     if (c === PoiCategory.ATTRACTION) {
       if (eftelingPoi.fields.targetgroups) {
         if (eftelingPoi.fields.targetgroups.includes('whole-family')) {
@@ -176,9 +180,9 @@ export class EftelingTransferService extends TransferService {
             openTime: ot.Open,
             close: ot.Close,
             closeTime: ot.Close,
-          }
-        })
-      }
-    })
+          };
+        }),
+      };
+    });
   }
 }

@@ -70,6 +70,7 @@ export class SafariparkService extends ThroughPoisThemeParkService {
     return this.transferService.transferDataObjectToPois(d);
   }
 
+  // TODO: Use other API endpoint to fetch more data
   async fetchPage(page: number): Promise<BeekseBergenLocationsResponseInterface> {
     // Beekse Bergen Resort ID: 5, Speelland: 6
     const url = 'https://xmp.xo10.io/api/locations?populate=*&filters%5Bresort%5D=5';

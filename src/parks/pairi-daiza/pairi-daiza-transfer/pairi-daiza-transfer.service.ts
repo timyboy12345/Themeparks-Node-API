@@ -8,6 +8,7 @@ import {
 } from '../interfaces/PairiDaizaResponse';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import * as moment from 'moment-timezone';
+import * as sluggo from 'sluggo';
 
 @Injectable()
 export class PairiDaizaTransferService extends TransferService {
@@ -42,8 +43,9 @@ export class PairiDaizaTransferService extends TransferService {
         break;
     }
 
-    p.title = poi.Name[loc];
+    p.title = this.titleCase(poi.Name[loc]);
     p.description = poi.Description[loc];
+    p.id = sluggo(poi.Name[loc])
 
     p.facts = [];
     if ('AnimalClass' in poi) {
@@ -116,7 +118,7 @@ export class PairiDaizaTransferService extends TransferService {
             });
           } else {
             p.openingTimes.push({
-              date: moment().format(),
+              date: moment().format('YYYY-MM-DD'),
               open: start.format(),
               openTime: start.format('HH:mm:ss'),
               close: oh.EndHour !== '00:00:00' ? end.format() : undefined,
@@ -156,5 +158,18 @@ export class PairiDaizaTransferService extends TransferService {
       ...this.transferPoiToPoi(animal, locale),
       category: PoiCategory.SHOP,
     };
+  }
+
+  private titleCase(str: string): string {
+    const splitStr = str.toLowerCase().split(' ');
+
+    for (let i = 0; i < splitStr.length; i++) {
+      // You do not need to check if i is larger than splitStr length, as your for does that for you
+      // Assign it back to the array
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+
+    // Directly return the joined string
+    return splitStr.join(' ');
   }
 }

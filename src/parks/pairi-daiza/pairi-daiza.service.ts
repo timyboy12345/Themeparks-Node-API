@@ -22,7 +22,7 @@ export class PairiDaizaService extends ThemeParkService {
         lng: 3.8873162,
       },
       parkType: ParkType.ZOO,
-      countryCode: 'BE',
+      countryCode: 'be',
     };
   }
 
@@ -35,7 +35,7 @@ export class PairiDaizaService extends ThemeParkService {
       supportsPoiLocations: true,
       supportsPois: false,
       supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: false,
+      supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsRides: false,
