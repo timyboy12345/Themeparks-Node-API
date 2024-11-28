@@ -39,6 +39,7 @@ export class EuropaParkService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: false,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 }

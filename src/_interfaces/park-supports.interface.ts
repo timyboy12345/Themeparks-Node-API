@@ -38,4 +38,6 @@ export interface ThemeParkSupports {
    * @description Whether or not a park supports returning special event related items, such as Halloween scare zones and experiences or Christmas experiences
    */
   supportsEvents: boolean;
+
+  textType: "UNDEFINED" | "HTML" | "MARKDOWN";
 }

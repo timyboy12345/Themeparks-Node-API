@@ -61,6 +61,7 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

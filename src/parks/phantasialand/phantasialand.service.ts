@@ -60,6 +60,7 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       supportsOpeningTimes: true,
       supportsAnimals: false,
       supportsTranslations: false,
+      textType: "UNDEFINED",
       supportsEvents: false,
     };
   }

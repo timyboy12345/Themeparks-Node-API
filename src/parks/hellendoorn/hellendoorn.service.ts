@@ -42,6 +42,7 @@ export class HellendoornService extends AioThemeparkService {
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
+      textType: "UNDEFINED",
       supportsEvents: false,
     };
   }

@@ -49,6 +49,7 @@ export class EnergylandiaService extends ThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
       supportsEvents: false,
     };
   }

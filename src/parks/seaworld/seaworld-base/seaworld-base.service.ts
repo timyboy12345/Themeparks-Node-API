@@ -36,6 +36,7 @@ export class SeaworldBaseService extends ThroughPoisThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

@@ -41,6 +41,7 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: this.supportsShows(),
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

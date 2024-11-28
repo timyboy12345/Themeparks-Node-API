@@ -19,6 +19,11 @@ export interface PoiFact {
     | 'animal_longevity'
     | 'animal_diet'
     | 'animal_class'
+    | 'animal_habitat'
+    | 'animal_iucn'
+    | 'animal_gestation'
+    | 'animal_offspring'
+    | 'animal_bigFive'
     | string;
   description?: string;
   content?: string;

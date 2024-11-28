@@ -40,6 +40,7 @@ export class LegolandDeutschlandService extends AioThemeparkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

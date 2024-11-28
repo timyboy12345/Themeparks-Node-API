@@ -45,6 +45,7 @@ export class PairiDaizaService extends ThemeParkService {
       supportsShows: true,
       // Supports FR, EN, NL
       supportsTranslations: true,
+      textType: "UNDEFINED",
     };
   }
 

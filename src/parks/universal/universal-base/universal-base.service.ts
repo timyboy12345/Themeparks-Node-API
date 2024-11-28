@@ -10,8 +10,8 @@ import * as Sentry from '@sentry/node';
 @Injectable()
 export class UniversalBaseService extends ThroughPoisThemeParkService {
   private readonly _apiUrl: string;
-  private readonly _apiKey : string;
-  private readonly _apiSecret : string;
+  private readonly _apiKey: string;
+  private readonly _apiSecret: string;
 
   constructor(private readonly http: HttpService, private readonly transfer: UniversalTransferService, private readonly config: ConfigService) {
     super();
@@ -38,16 +38,17 @@ export class UniversalBaseService extends ThroughPoisThemeParkService {
       supportsShops: true,
       supportsShowTimes: true,
       supportsShows: true,
-      supportsTranslations: false
-    }
+      supportsTranslations: false,
+      textType: 'UNDEFINED',
+    };
   }
 
   getCity(): string {
-    throw new NotImplementedException("GetCity is not implemented")
+    throw new NotImplementedException('GetCity is not implemented');
   }
 
   getVenueId(): string {
-    throw new NotImplementedException("GetVenueId is not implemented")
+    throw new NotImplementedException('GetVenueId is not implemented');
   }
 
   // TODO: Universal supports Wait Times, but only testable while not on blocklist
@@ -55,14 +56,14 @@ export class UniversalBaseService extends ThroughPoisThemeParkService {
     return this.http.get(`${this._apiUrl}/eventseries`, {
       params: {
         city: this.getCity(),
-        pageSize: 'All'
-      }
+        pageSize: 'All',
+      },
     })
       .toPromise()
       .then((res) => this.transfer.transferDataObjectToPois(res.data, this.getVenueId()))
       .catch((err) => {
         Sentry.captureException(err);
         throw new InternalServerErrorException(err);
-      })
+      });
   }
 }

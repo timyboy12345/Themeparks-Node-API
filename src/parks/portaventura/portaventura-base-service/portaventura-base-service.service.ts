@@ -40,6 +40,7 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

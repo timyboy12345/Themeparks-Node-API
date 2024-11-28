@@ -32,8 +32,9 @@ export class HerschendBaseService extends ThemeParkService {
       supportsShops: false,
       supportsShowTimes: false,
       supportsShows: false,
-      supportsTranslations: false
-    }
+      supportsTranslations: false,
+      textType: 'UNDEFINED',
+    };
   }
 
   protected getParkId(): number {

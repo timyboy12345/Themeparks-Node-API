@@ -77,6 +77,7 @@ export class ParquesReunidosParkService extends ThemeParkService {
       supportsShowTimes: supportsShows,
       supportsShows: supportsShows,
       supportsTranslations: true,
+      textType: "UNDEFINED",
       supportsEvents: supportsHalloween,
     };
   }

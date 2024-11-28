@@ -3,6 +3,7 @@ import { SafariparkService } from './safaripark.service';
 import { HttpModule } from '@nestjs/axios';
 import { BeekseBergenTransferService } from '../beekse-bergen-transfer/beekse-bergen-transfer.service';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('SafariparkService', () => {
   let service: SafariparkService;
@@ -12,7 +13,8 @@ describe('SafariparkService', () => {
       providers: [SafariparkService, BeekseBergenTransferService],
       imports: [
         HttpModule,
-        ConfigModule.forRoot()
+        ConfigModule.forRoot(),
+        LocaleModule,
       ],
     }).compile();
 

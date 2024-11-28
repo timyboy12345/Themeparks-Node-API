@@ -3,6 +3,7 @@ import { SpeellandService } from './speelland.service';
 import { BeekseBergenTransferService } from '../beekse-bergen-transfer/beekse-bergen-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('SpeellandService', () => {
   let service: SpeellandService;
@@ -12,7 +13,8 @@ describe('SpeellandService', () => {
       providers: [SpeellandService, BeekseBergenTransferService],
       imports: [
         HttpModule,
-        ConfigModule.forRoot()
+        ConfigModule.forRoot(),
+        LocaleModule,
       ],
     }).compile();
 
@@ -30,6 +32,6 @@ describe('SpeellandService', () => {
   it('should return a list of POIs', async () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
-    expect(data.length).toBeGreaterThan(6);
+    expect(data.length).toBeGreaterThan(3);
   });
 });

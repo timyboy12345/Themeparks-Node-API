@@ -62,6 +62,7 @@ export class ToverlandService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: true,
+      textType: "UNDEFINED",
       supportsEvents: true,
     };
   }

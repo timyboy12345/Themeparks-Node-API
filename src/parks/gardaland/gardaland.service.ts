@@ -43,6 +43,7 @@ export class GardalandService extends AioThemeparkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

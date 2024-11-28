@@ -59,6 +59,7 @@ export class HolidayParkService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
+      textType: "UNDEFINED",
       supportsEvents: false,
     };
   }

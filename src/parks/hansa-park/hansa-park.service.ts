@@ -53,6 +53,7 @@ export class HansaParkService extends ThroughPoisThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

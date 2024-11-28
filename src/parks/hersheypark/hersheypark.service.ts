@@ -59,6 +59,7 @@ export class HersheyparkService extends ThroughPoisThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

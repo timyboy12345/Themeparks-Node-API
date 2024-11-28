@@ -63,6 +63,7 @@ export class DisneylandParisService extends ThroughPoisThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: true,
+      textType: "UNDEFINED",
       supportsEvents: false,
     };
   }

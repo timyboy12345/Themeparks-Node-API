@@ -46,6 +46,7 @@ export class GronaLundService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: false,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 
