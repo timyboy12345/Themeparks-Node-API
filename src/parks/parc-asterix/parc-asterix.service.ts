@@ -54,7 +54,8 @@ export class ParcAsterixService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-      supportsHalloween: false,
+      textType: "UNDEFINED",
+      supportsEvents: false,
     };
   }
 

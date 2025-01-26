@@ -10,6 +10,7 @@ import { PhantasialandWaitTimeItem } from './interfaces/phantasialand-wait-time-
 import * as moment from 'moment-timezone';
 import { ShowTime } from '../../_interfaces/showtimes.interface';
 import { HttpService } from '@nestjs/axios';
+import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 
 @Injectable()
 export class PhantasialandService extends ThroughPoisThemeParkService {
@@ -56,10 +57,11 @@ export class PhantasialandService extends ThroughPoisThemeParkService {
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: true,
       supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
+      supportsOpeningTimes: true,
       supportsAnimals: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      textType: "UNDEFINED",
+      supportsEvents: false,
     };
   }
 
@@ -102,7 +104,7 @@ supportsHalloween: false,
                 currentDateTimezone: moment().tz('Europe/Berlin').format(),
                 timezone: 'Europe/Berlin',
                 currentDate: moment().tz('Europe/Berlin').format('YYYY-MM-DD'),
-                showTimes: showTimes
+                showTimes: showTimes,
               };
             }
           }
@@ -194,6 +196,32 @@ supportsHalloween: false,
         Sentry.captureException(reason);
         console.log(reason);
         throw new InternalServerErrorException();
+      });
+  }
+
+  async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
+    return this.request<any[]>('park-infos')
+      .then((res) => {
+        if (res.data && res.data.length > 0) {
+          const obj = res.data[0];
+          const startTime = obj.open.split(' ')[1];
+          const endTime = obj.close.split(' ')[1];
+
+          return [{
+            date: moment().format(),
+            openingTimes: [{
+              open: moment(startTime, 'HH:mm:ss').format(),
+              openTime: startTime,
+              close: moment(endTime, 'HH:mm:ss').format(),
+              closeTime: endTime
+            }]
+          }]
+        } else {
+          return [{
+            date: moment().format(),
+            openingTimes: []
+          }]
+        }
       });
   }
 }

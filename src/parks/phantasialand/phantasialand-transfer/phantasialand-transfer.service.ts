@@ -49,7 +49,7 @@ export class PhantasialandTransferService extends TransferService {
       entrance = {
         lat: poi.entrance.world.lat,
         lng: poi.entrance.world.lng,
-      }
+      };
     }
 
     return {
@@ -58,7 +58,7 @@ export class PhantasialandTransferService extends TransferService {
       subTitle: poi.tagline.en,
       description: poi.description.en,
       entrance: entrance,
-      area: poi.area,
+      area: this.titleCase(poi.area.replace(/_/g, ' ')),
       location: {
         lat: poi.entrance.world.lat,
         lng: poi.entrance.world.lng,
@@ -72,11 +72,24 @@ export class PhantasialandTransferService extends TransferService {
       maxSize: poi.maxSize,
       minAgeWithoutEscort: poi.minAge,
       minSizeWithEscort: poi.minSizeEscort === 1 ? 0 : poi.minSizeEscort,
-      minSizeWithoutEscort: poi.minSize
+      minSizeWithoutEscort: poi.minSize,
     };
   }
 
   public getLocalizedData(poi: PhantasialandPoi): LocalizedDataInterface {
     return {};
+  }
+
+  private titleCase(str: string): string {
+    const splitStr = str.toLowerCase().split(' ');
+
+    for (let i = 0; i < splitStr.length; i++) {
+      // You do not need to check if i is larger than splitStr length, as your for does that for you
+      // Assign it back to the array
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+
+    // Directly return the joined string
+    return splitStr.join(' ');
   }
 }

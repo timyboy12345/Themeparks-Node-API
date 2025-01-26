@@ -11,6 +11,8 @@ import { ToverlandTransferService } from './toverland-transfer/toverland-transfe
 import { ToverlandShow } from './interfaces/toverland-show.interface';
 import { LocaleService } from '../../_services/locale/locale.service';
 import { HttpService } from '@nestjs/axios';
+import { ThemeParkEvent } from '../../_interfaces/park-event.interface';
+import { EventCategory } from '../../_interfaces/event.category';
 
 @Injectable()
 export class ToverlandService extends ThemeParkService {
@@ -60,7 +62,8 @@ export class ToverlandService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: true,
-      supportsHalloween: true,
+      textType: "UNDEFINED",
+      supportsEvents: true,
     };
   }
 
@@ -72,8 +75,8 @@ export class ToverlandService extends ThemeParkService {
       .catch((exception) => {
         Sentry.captureException(exception);
         console.error(exception);
-        throw new HttpException("Failed to fetch rides", 500, {
-          cause: new Error('Failed to fetch rides: ' + exception.toString())
+        throw new HttpException('Failed to fetch rides', 500, {
+          cause: new Error('Failed to fetch rides: ' + exception.toString()),
         });
       });
   }
@@ -88,7 +91,7 @@ export class ToverlandService extends ThemeParkService {
         Sentry.captureException(exception);
         console.error(exception);
         throw new HttpException('Failed to fetch restaurants', 500, {
-          cause: new Error('Failed to fetch restaurants: ' + exception.toString())
+          cause: new Error('Failed to fetch restaurants: ' + exception.toString()),
         });
       });
   }
@@ -102,7 +105,7 @@ export class ToverlandService extends ThemeParkService {
         Sentry.captureException(exception);
         console.error(exception);
         throw new HttpException('Failed to fetch shows', 500, {
-          cause: new Error('Failed to fetch shows: ' + exception.toString())
+          cause: new Error('Failed to fetch shows: ' + exception.toString()),
         });
       });
   }
@@ -116,7 +119,7 @@ export class ToverlandService extends ThemeParkService {
         Sentry.captureException(exception);
         console.error(exception);
         throw new HttpException('Failed to fetch halloween events', 500, {
-          cause: new Error('Failed to fetch halloween events: ' + exception.toString())
+          cause: new Error('Failed to fetch halloween events: ' + exception.toString()),
         });
       });
   }
@@ -152,10 +155,58 @@ export class ToverlandService extends ThemeParkService {
       this.getRides(),
       this.getRestaurants(),
       this.getShows(),
+      this.getHalloweenEvents(),
     ];
 
     return []
       .concat
       .apply([], await Promise.all(promises));
+  }
+
+  async getEvents(): Promise<ThemeParkEvent[]> {
+    return [{
+      dates: [
+        '2024-10-05',
+        '2024-10-12',
+        '2024-10-19',
+        '2024-10-20',
+        '2024-10-21',
+        '2024-10-23',
+        '2024-10-24',
+        '2024-10-25',
+        '2024-10-26',
+        '2024-10-27',
+        '2024-11-01',
+        '2024-11-02',
+        '2024-11-09',
+      ],
+      description: 'De Toverland Halloween Nights zijn een terugkerend Halloween-evenement waar je zeker bent de stuipen op het lijf geschrokken te worden.',
+      image: 'https://www.toverland.com/fileadmin/_processed_/5/b/csm_Cirque-close-middel_9ac7a20e79.jpg',
+      name: 'Halloween Nights',
+      slug: 'halloween-nights',
+      pois: await this.getHalloweenEvents(),
+      subTitle: 'Discover your own fear',
+      type: EventCategory.HALLOWEEN,
+    }, {
+      dates: [
+        '2024-10-05', '2024-10-06',
+        '2024-10-12', '2024-10-13',
+        '2024-10-19', '2024-10-20', '2024-10-21', '2024-10-22', '2024-10-23', '2024-10-24', '2024-10-25', '2024-10-26', '2024-10-27', '2024-10-28', '2024-10-29', '2024-10-30', '2024-10-31',
+        '2024-11-01', '2024-11-02', '2024-11-03',
+        '2024-11-09', '2024-11-10',
+      ],
+      image: 'https://www.toverland.com/fileadmin/_processed_/a/8/csm_Days-Pumpkin-2-middel_275d8fcc38.jpg',
+      name: 'Halloween Days',
+      slug: 'halloween-days',
+      pois: await this.getHalloweenEvents(),
+      subTitle: 'Samen griezelen met een lach',
+      type: EventCategory.HALLOWEEN,
+    }, {
+      name: 'Winter Feelings',
+      subTitle: 'Toverland in Winterse sferen',
+      slug: 'winter-feelings',
+      type: EventCategory.WINTER,
+      image: 'https://www.looopings.nl/img/foto/23/1204eentover32.jpg',
+    }];
   }
 }

@@ -4,6 +4,7 @@ import { Poi } from '../../../_interfaces/poi.interface';
 import { SixflagsMapItemInterface, SixflagsRideRideTypeMapEnum } from '../interfaces/sixflags-map-item.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
+import * as sluggo from 'sluggo';
 
 @Injectable()
 export class SixflagsTransferService extends TransferService {
@@ -32,7 +33,7 @@ export class SixflagsTransferService extends TransferService {
     }
 
     const p: Poi = {
-      id: id + '',
+      id: poi.name ? sluggo(poi.name) : id,
       title: poi.name,
       description: poi.body ?? poi.description,
       subTitle: poi.tagLine ?? poi.description,

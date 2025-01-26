@@ -18,6 +18,7 @@ import { LanguageInterceptor } from '../../_interceptors/language.interceptor';
 import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
 import { ThemeParkOpeningHourDto } from '../../_dtos/theme-park-opening-hour.dto';
 import { CACHE_MANAGER, CacheInterceptor } from '@nestjs/cache-manager';
+import { ThemeParkEvent } from '../../_interfaces/park-event.interface';
 
 @ApiTags('Themeparks')
 @Controller('parks/:id')
@@ -265,7 +266,7 @@ export class ParkController {
   async getParkHalloweenRelatedItems(@Param() params, @Query() query): Promise<Poi[]> {
     const park = await this.parksService.findPark(params.id, true);
 
-    if (!park.getFullInfo().supports.supportsHalloween) {
+    if (!park.getFullInfo().supports.supportsEvents) {
       throw new BadRequestException('This park does not support halloween related items');
     }
 
@@ -305,5 +306,32 @@ export class ParkController {
     }
 
     return await park.getOpeningTimes();
+  }
+
+  @Get('events')
+  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    description: 'The park id',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'All events of a specific park, with all available data',
+    isArray: true,
+    type: ThemeParkOpeningHourDto,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'The requested park could not be found',
+  })
+  async getParkEvents(@Param() params): Promise<ThemeParkEvent[]> {
+    const park = await this.parksService.findPark(params.id, true);
+
+    if (!park.getFullInfo().supports.supportsEvents) {
+      throw new BadRequestException('This park does not support events');
+    }
+
+    return await park.getEvents();
   }
 }

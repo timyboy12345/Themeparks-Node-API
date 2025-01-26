@@ -2,15 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import * as moment from 'moment-timezone';
-import {
-  CDAAttractionResponseInterface,
-} from '../interfaces/cda-attractions-response.interface';
+import { CDAAttractionResponseInterface } from '../interfaces/cda-attractions-response.interface';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
-import {
-  CdaOpeningHoursResponseInterface,
-} from '../interfaces/cda-opening-hours-response.interface';
+import { CdaOpeningHoursResponseInterface } from '../interfaces/cda-opening-hours-response.interface';
 import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.interface';
 import { TransferService } from '../../../_services/transfer/transfer.service';
+import { EventCategory } from '../../../_interfaces/event.category';
 
 @Injectable()
 export class CompagnieDesAlpesTransferService extends TransferService {
@@ -52,12 +49,50 @@ export class CompagnieDesAlpesTransferService extends TransferService {
     }
 
     if (poi.mainImage) {
-      p.image_url = imageBase + poi.mainImage.renditions
+      const imgs = poi.mainImage.renditions
         .filter((i) => i.width <= 1300)
         .sort((a, b) => {
           return a.width < b.width ? 1 : -1;
-        })[0].url;
-      p.images = [imageBase + poi.mainImage.path];
+        });
+
+      if (imgs.length > 0) {
+        p.image_url = imageBase + imgs[0].url;
+        p.images = [imageBase + poi.mainImage.path];
+      }
+    }
+
+    if (poi.gallery) {
+      const images = poi.gallery.filter((i) => i.type === 'IMAGE');
+      const videos = poi.gallery.filter((i) => i.type === 'VIDEO');
+
+      p.images = images.map((i) => {
+        return imageBase + i.renditions
+          .sort((a, b) => {
+            return a.width < b.width ? 1 : -1;
+          })[0].url;
+      });
+
+      p.videos = videos.map((v) => {
+        return {
+          platform: 'URL',
+          full_url: imageBase + v.url,
+          thumbnail: imageBase + v.renditions
+            .sort((a, b) => {
+              return a.width < b.width ? 1 : -1;
+            })[0].url,
+        };
+      });
+    }
+
+    if (poi.eventTags) {
+      // Walibi NL Spooky Days
+      // Walibi NL Fright Nights
+      if (poi.eventTags.find((e) => [
+        'who:halloween/halloween-spooky-days',
+        'who:halloween/halloween-fright-nights',
+      ].includes(e.id))) {
+        p.eventCategory = EventCategory.HALLOWEEN;
+      }
     }
 
     return p;
@@ -90,7 +125,7 @@ export class CompagnieDesAlpesTransferService extends TransferService {
   public transferRideToPoi(poi: CDAAttractionResponseInterface): Poi {
     let c = PoiCategory.ATTRACTION;
     const ride = this.transferPoiToPoi(poi);
-    ride.id = poi.waitingTimeName;
+    ride.id = poi.waitingTimeName ? poi.waitingTimeName : ride.id;
     ride.category = c;
 
     switch (poi.type.id) {

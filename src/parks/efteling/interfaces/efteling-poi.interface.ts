@@ -10,6 +10,7 @@ export interface EftelingPoi {
     text: string,
     can_order: boolean,
     latlon: string,
+    menu_card_pdf: string | null,
     targetgroups: string[],
     language: string,
 

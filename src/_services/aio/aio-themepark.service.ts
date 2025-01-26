@@ -19,6 +19,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
 
   private _tempToken: string;
 
+  // TODO: Some AIO parks offer localizations
   constructor(protected readonly httpService: HttpService,
               protected readonly configService: ConfigService,
               private readonly transferService: AioTransferServiceService) {
@@ -44,7 +45,8 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsPois: true,
       supportsTranslations: false,
-      supportsHalloween: false,
+      textType: "UNDEFINED",
+      supportsEvents: false,
     };
   }
 
@@ -80,6 +82,8 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       'Content-Type': settings.contentType,
     };
 
+    console.debug(" - AIO: Fetching Token");
+
     const config: AxiosRequestConfig = { headers: headers };
 
     return await this.httpService
@@ -90,6 +94,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       )
       .toPromise()
       .then(value => {
+        console.debug(` - AIO: API Key is ${value.data.token}`)
         this._tempToken = value.data.token;
         return this._tempToken;
       })
@@ -110,6 +115,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
     const headers = {
       'Authorization': `Attractions-Io api-key="${this.getApiKey()}", installation-token="${token}"`,
       'Date': settings.latestUpdate,
+      'Occasio-Data-Version': settings.latestUpdate,
       'User-Agent': settings.userAgent,
     };
 
@@ -120,6 +126,8 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       },
       maxRedirects: 0,
     };
+
+    console.debug(` - AIO: Fetching Data Package URL for ${settings.latestUpdate}`);
 
     return new Promise((resolve, reject) => {
       this.httpService

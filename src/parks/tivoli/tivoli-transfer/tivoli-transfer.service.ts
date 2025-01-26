@@ -5,12 +5,13 @@ import { Food, OpeningHour, Ride, TivoliDataResponseInterface } from '../interfa
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.interface';
 import * as moment from 'moment-timezone';
+import * as sluggo from 'sluggo';
 
 @Injectable()
 export class TivoliTransferService extends TransferService {
   transferPoiToPoi(poi: Ride | Food): Poi {
     const p: Poi = {
-      id: poi.Id,
+      id: poi.IntroductionHeadline ? sluggo(poi.IntroductionHeadline) : poi.Id,
       title: poi.IntroductionHeadline,
       original: poi,
       category: PoiCategory.ATTRACTION,

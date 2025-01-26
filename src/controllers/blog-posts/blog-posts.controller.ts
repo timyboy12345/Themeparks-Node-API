@@ -44,6 +44,7 @@ export class BlogPostsController {
     return this.blogPostService.getAll(this.localeService.getLocale());
   }
 
+  // TODO: Should more information be cached?
   @ApiOkResponse({
     type: BlogPost,
     isArray: true,

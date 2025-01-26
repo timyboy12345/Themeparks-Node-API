@@ -16,12 +16,14 @@ In the table below you will find the parks that are currently supported and the 
 | 🇧🇪 Bellewaerde | 🎡 | True | True | True | True | False |
 | 🇧🇪 Bobbejaanland | 🎡 | True | True | False | True | False |
 | 🇧🇪 Plopsalande de Panne | 🎡 | True | True | True | True | False |
+| 🇧🇪 Pairi Daiza | 🦁 | False | True | True | True | False |
 | 🇨🇦 La Ronde, Montreal | 🎡 | True | True | True | True | False |
 | 🇩🇪 Phantasialand | 🎡 | True | True | True | True | False |
 | 🇩🇪 Holiday Park | 🎡 | True | True | True | True | False |
-| 🇩🇪 LegoLand Deutschland | 🎡 | False | False | False | False | False |
+| 🇩🇪 LegoLand Deutschland | 🎡 | True | True | True | True | False |
 | 🇩🇪 Hansa Park | 🎡 | True | True | True | True | False |
 | 🇩🇪 Movie Park Germany | 🎡 | True | True | True | True | True |
+| 🇩🇪 Heidi Park | 🎡 | True | True | True | True | False |
 | 🇩🇰 Tivoli | 🎡 | True | True | True | False | False |
 | 🇪🇸 Portaventura | 🎡 | True | True | True | True | False |
 | 🇪🇸 Ferrari Land | 🎡 | True | True | True | True | False |
@@ -42,15 +44,15 @@ In the table below you will find the parks that are currently supported and the 
 | 🇮🇹 Mirabilandia | 🎡 | True | True | False | True | False |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True | False |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False | True |
-| 🇳🇱 Walibi Holland | 🎡 | True | True | False | True | False |
+| 🇳🇱 Walibi Holland | 🎡 | True | True | True | True | True |
 | 🇳🇱 DippieDoe | 🎡 | True | False | False | False | False |
 | 🇳🇱 Hellendoorn | 🎡 | True | True | True | True | False |
 | 🇳🇱 Ouwehands Dierenpark | 🦁 | False | False | False | False | False |
 | 🇳🇱 Wildlands | 🦁 | False | False | False | False | False |
 | 🇳🇱 Blijdorp | 🦁 | False | False | True | False | False |
 | 🇳🇱 Apenheul | 🦁 | False | False | False | False | False |
-| 🇳🇱 Safaripark Beekse Bergen | 🦁 | False | True | False | False | False |
-| 🇳🇱 Speelland Beekse Bergen | 🎡 | True | False | False | False | False |
+| 🇳🇱 Safaripark Beekse Bergen | 🦁 | True | True | False | True | False |
+| 🇳🇱 Speelland Beekse Bergen | 🎡 | True | True | False | True | False |
 | 🇵🇱 Energylandia | 🎡 | True | False | True | False | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True | False |
 | 🇸🇪 Grona Lund | 🎡 | True | False | False | False | False |

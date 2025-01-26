@@ -3,12 +3,11 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import {
   UniversalBaseItem,
-  UniversalBaseResponse,
   UniversalCategory,
 } from '../interfaces/universal-base-response.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
-import * as moment from 'moment-timezone'
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class UniversalTransferService extends TransferService {
@@ -23,21 +22,22 @@ export class UniversalTransferService extends TransferService {
       description: poi.MblLongDescription ?? poi.MblShortDescription,
       images: poi.DetailImages,
       image_url: poi.ListImage ?? poi.ThumbnailImage,
-      previewImage: poi.ListImage ?? poi.ThumbnailImage,
+      previewImage: poi.ThumbnailImage ?? poi.ListImage,
       location: {
         lat: poi.Latitude,
-        lng: poi.Longitude
-      }
-    }
+        lng: poi.Longitude,
+      },
+    };
 
     if (poi.MinHeightInInches) {
-      p.minSizeWithEscort = poi.MinHeightInInches * 2.54
+      p.minSizeWithEscort = poi.MinHeightInInches * 2.54;
     }
 
     if (poi.DiningMenusLinks && poi.DiningMenusLinks.length > 0) {
-      p.menuUrl = poi.DiningMenusLinks[0].MenuLink
+      p.menuUrl = poi.DiningMenusLinks[0].MenuLink;
     }
 
+    // TODO: Check if show-times are send again with API response
     if (poi.StartDateTimes) {
       let dateTime = moment.tz('America/New_York');
 
@@ -51,22 +51,22 @@ export class UniversalTransferService extends TransferService {
             localFromDate: start.format('YYYY-MM-DD'),
             localFromTime: st.split(' ')[1],
             timezoneFrom: start.format(),
-            isPassed: moment(st).tz('America/New_York', true).isBefore()
-          }
-        })
+            isPassed: moment(st).tz('America/New_York', true).isBefore(),
+          };
+        });
 
       const currently = moment().tz('America/New_York');
       p.showTimes = {
         showTimes: showTimes,
         currentDate: currently.format('YYYY-MM-DD'),
         currentDateTimezone: currently.format(),
-        timezone: 'America/New_York'
+        timezone: 'America/New_York',
       };
     }
 
     // TODO: Add Restaurant Opening Times
 
-    return p
+    return p;
   }
 
   private getCategory(poi: UniversalBaseItem): PoiCategory {
@@ -80,42 +80,42 @@ export class UniversalTransferService extends TransferService {
       case UniversalCategory.Shows:
         return PoiCategory.SHOW;
       case UniversalCategory.Shops:
-        return PoiCategory.SHOP
+        return PoiCategory.SHOP;
       case UniversalCategory.FirstAidStations:
-        return PoiCategory.FIRSTAID
+        return PoiCategory.FIRSTAID;
       case UniversalCategory.GuestServices:
-        return PoiCategory.GUEST_SERVICES
+        return PoiCategory.GUEST_SERVICES;
       case UniversalCategory.Lockers:
-        return PoiCategory.LOCKERS
+        return PoiCategory.LOCKERS;
       case UniversalCategory.Restrooms:
-        return PoiCategory.TOILETS
+        return PoiCategory.TOILETS;
       case UniversalCategory.SmokingAreas:
-        return PoiCategory.SMOKING_AREA
+        return PoiCategory.SMOKING_AREA;
       case UniversalCategory.GameHub:
-        return PoiCategory.GAME
+        return PoiCategory.GAME;
       default:
         return PoiCategory.UNDEFINED;
     }
   }
 
-//  Studios: 10010
-//  Islands: 10000
-//  CityWalk: 10011
-//  Wet 'N Wild: 45084
+  //  Studios: 10010
+  //  Islands: 10000
+  //  CityWalk: 10011
+  //  Wet 'N Wild: 45084
 
-  transferDataObjectToPois(data: UniversalBaseResponse, ...args): Poi[] {
-    return [
-      ...this.transferPoisToPois(data.Rides.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.Shows.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.DiningLocations.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.Atms.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.Games.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.Shops.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.FirstAidStations.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.GuestServices.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.Lockers.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.Restrooms.filter((p) => p.VenueId == args[0])),
-      ...this.transferPoisToPois(data.SmokingAreas.filter((p) => p.VenueId == args[0])),
-    ]
+  transferDataObjectToPois(data: any, ...args): Poi[] {
+    let pois: Poi[] = [];
+
+    data.Results.forEach((land) => {
+      const landName = land.MblDisplayName;
+
+      const attractions = land.Attractions
+        .filter((a: any) => a.VenueId && a.VenueId.toString() === args[0].toString());
+      const rides = this.transferPoisToPois(attractions)
+        .map((l) => ({ ...l, area: landName }));
+      pois = pois.concat(rides);
+    });
+
+    return pois;
   }
 }

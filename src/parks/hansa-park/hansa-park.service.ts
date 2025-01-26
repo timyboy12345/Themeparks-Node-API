@@ -38,7 +38,7 @@ export class HansaParkService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,
@@ -53,6 +53,7 @@ export class HansaParkService extends ThroughPoisThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
+      textType: "UNDEFINED",
     };
   }
 

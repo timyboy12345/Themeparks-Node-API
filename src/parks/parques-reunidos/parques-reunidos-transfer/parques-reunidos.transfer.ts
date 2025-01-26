@@ -8,6 +8,7 @@ import { ParqueAtraccionesShowsResponseInterface } from '../interfaces/parque-at
 import * as moment from 'moment-timezone';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
 import { ParqueReunidosNewShowItemInterface } from '../interfaces/parque-reunidos-new-show-interface';
+import { EventCategory } from '../../../_interfaces/event.category';
 
 @Injectable()
 export class ParquesReunidosTransfer extends TransferService {
@@ -86,10 +87,12 @@ export class ParquesReunidosTransfer extends TransferService {
         // Casa del Terror
         case 36921:
           r.category = PoiCategory.HALLOWEEN_EVENT;
+          r.eventCategory = EventCategory.HALLOWEEN;
           break;
         // Movie park: Scare maze
         case 48231:
           r.category = PoiCategory.HALLOWEEN_WALKTROUGH;
+          r.eventCategory = EventCategory.HALLOWEEN;
           break;
         // No disponibles
         case 29844:

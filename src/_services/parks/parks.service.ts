@@ -60,6 +60,8 @@ import { MirabilandiaService } from '../../parks/parques-reunidos/mirabilandia/m
 import {
   MarinelandCoteDazurService
 } from '../../parks/parques-reunidos/marineland-cote-dazur/marineland-cote-dazur.service';
+import { MerlinEntertainmentsService } from '../../parks/merlin-entertainments/merlin-entertainments.service';
+import { PairiDaizaService } from '../../parks/pairi-daiza/pairi-daiza.service';
 
 @Injectable()
 export class ParksService {
@@ -120,6 +122,8 @@ export class ParksService {
     private readonly _gardaland: GardalandService,
     private readonly _mirabilandia: MirabilandiaService,
     private readonly _marineLandCoteDazur: MarinelandCoteDazurService,
+    private readonly _merlinEntertainmentsService: MerlinEntertainmentsService,
+    private readonly _pairiDaizaService: PairiDaizaService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -168,12 +172,14 @@ export class ParksService {
     this._parks.push(_gardaland)
     this._parks.push(_mirabilandia)
     this._parks.push(_marineLandCoteDazur)
+    this._parks.push(_pairiDaizaService)
 
     this._companies = [];
     this._companies.push(_sixflagsService);
     this._companies.push(_cedarFairService);
     this._companies.push(_seaworldCompanyService);
     this._companies.push(_universalService);
+    this._companies.push(_merlinEntertainmentsService);
   }
 
   public async getParks(): Promise<ThemeParkService[]> {

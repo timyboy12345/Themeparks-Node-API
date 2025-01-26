@@ -38,7 +38,8 @@ export class DollywoodService extends HerschendBaseService {
       supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsTranslations: false,
-      supportsHalloween: false,
+      textType: "UNDEFINED",
+      supportsEvents: false,
     }
   }
 

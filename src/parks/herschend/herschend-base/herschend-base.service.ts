@@ -18,7 +18,7 @@ export class HerschendBaseService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsHalloween: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
@@ -32,8 +32,9 @@ export class HerschendBaseService extends ThemeParkService {
       supportsShops: false,
       supportsShowTimes: false,
       supportsShows: false,
-      supportsTranslations: false
-    }
+      supportsTranslations: false,
+      textType: 'UNDEFINED',
+    };
   }
 
   protected getParkId(): number {

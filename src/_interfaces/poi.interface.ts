@@ -7,6 +7,7 @@ import { Translation } from './translation.interface';
 import { PoiMenuItemInterface } from './poi-menu-item.interface';
 import { PoiFact } from './poi-fact.interface';
 import { PoiVideo } from './poi-video.interface';
+import { EventCategory } from './event.category';
 
 export interface Poi {
   /**
@@ -30,6 +31,11 @@ export interface Poi {
    * The original category for this POI (how the park describes the ride)
    */
   original_category?: string;
+
+  /**
+   * The type of event this poi relates to, if available
+   */
+  eventCategory?: EventCategory;
 
   /**
    * The name of the POI

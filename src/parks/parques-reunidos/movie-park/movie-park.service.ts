@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ParquesReunidosParkService } from '../parques-reunidos-park.service';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
+import { ThemeParkEvent } from '../../../_interfaces/park-event.interface';
+import { EventCategory } from '../../../_interfaces/event.category';
 
 @Injectable()
 export class MovieParkService extends ParquesReunidosParkService {
@@ -34,10 +36,19 @@ export class MovieParkService extends ParquesReunidosParkService {
   }
 
   halloweenCategories(): (string | number)[] {
-    return [48231];
+    // 2023 and 2024 respectively
+    return [48231, 62161];
   }
 
   saveWaitTimes(): boolean {
     return true;
+  }
+
+  async getEvents(): Promise<ThemeParkEvent[]> {
+    return [{
+      name: 'Halloween Horror Festival',
+      slug: 'halloween-horror-festival',
+      type: EventCategory.HALLOWEEN,
+    }];
   }
 }

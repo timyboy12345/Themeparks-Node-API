@@ -16,29 +16,30 @@ export class EuropaParkService extends ThemeParkService {
       name: 'Europa Park',
       location: {
         lat: 48.26608365626527,
-        lng: 7.722061242161103
-      }
+        lng: 7.722061242161103,
+      },
     };
   }
 
   getSupports(): ThemeParkSupports {
     return {
-      supportsRideWaitTimesHistory: false,
+      supportsAnimals: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
-      supportsRideWaitTimes: false,
-      supportsRestaurants: false,
-      supportsShows: false,
-      supportsRides: true,
-      supportsShops: false,
-      supportsShopOpeningTimes: false,
       supportsPoiLocations: false,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
+      supportsRestaurants: false,
+      supportsRideWaitTimes: false,
+      supportsRideWaitTimesHistory: false,
+      supportsRides: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: false,
       supportsShowTimes: false,
-      supportsAnimals: false,
+      supportsShows: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      textType: "UNDEFINED",
     };
   }
 }

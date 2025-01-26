@@ -77,7 +77,8 @@ export class ParquesReunidosParkService extends ThemeParkService {
       supportsShowTimes: supportsShows,
       supportsShows: supportsShows,
       supportsTranslations: true,
-      supportsHalloween: supportsHalloween,
+      textType: "UNDEFINED",
+      supportsEvents: supportsHalloween,
     };
   }
 
@@ -96,7 +97,7 @@ export class ParquesReunidosParkService extends ThemeParkService {
       promises.push(this.getRestaurants());
     }
 
-    if (this.getSupports().supportsHalloween) {
+    if (this.getSupports().supportsEvents) {
       promises.push(this.getHalloweenEvents());
     }
 

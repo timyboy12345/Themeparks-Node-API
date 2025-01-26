@@ -61,7 +61,8 @@ export class DisneylandParisStudiosService extends ThroughPoisThemeParkService {
       supportsOpeningTimesHistory: false,
       supportsRideWaitTimesHistory: true,
       supportsTranslations: false,
-supportsHalloween: false,
+      textType: "UNDEFINED",
+supportsEvents: false,
     };
   }
 

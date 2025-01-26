@@ -5,7 +5,7 @@ import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interfac
 @Injectable()
 export class KnottsBerryFarmService extends CedarfairBaseService {
   protected getParkId(): string {
-    return 'CF_KBF';
+    return '4';
   }
 
   getInfo(): ThemePark {

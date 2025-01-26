@@ -14,10 +14,6 @@ import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.in
 
 @Injectable()
 export class EftelingTransferService extends TransferService {
-  // constructor(private readonly configService: ConfigService) {
-  //   super();
-  // }
-
   transferPoiToPoi(eftelingPoi: EftelingPoi): Poi {
     let c: PoiCategory = PoiCategory.UNDEFINED;
 
@@ -60,7 +56,6 @@ export class EftelingTransferService extends TransferService {
     const lng = parseFloat(eftelingPoi.fields.latlon.split(',')[1]);
 
     // Get the URL where the images are located
-    // const imgUrl = this.configService.get('EFTELING_MEDIA_URL');
     const imgUrl = 'https://efteling.com';
 
     const images = [];
@@ -97,6 +92,10 @@ export class EftelingTransferService extends TransferService {
         lat: lat,
         lng: lng,
       };
+    }
+
+    if (eftelingPoi.fields.menu_card_pdf) {
+      poi.menuUrl = eftelingPoi.fields.menu_card_pdf;
     }
 
     if (c === PoiCategory.ATTRACTION) {
@@ -146,7 +145,7 @@ export class EftelingTransferService extends TransferService {
     return {
       showTimes: shows.map(this.transferShowTimeToShowTime),
       currentDate: moment().format(),
-      currentDateTimezone: moment().tz('Amsterdam/Europe').format(),
+      currentDateTimezone: moment().tz('Europe/Amsterdam').format(),
       timezone: 'Europe/Amsterdam',
     };
   }
@@ -156,11 +155,10 @@ export class EftelingTransferService extends TransferService {
     const end = moment(showTime.EndDateTime).tz('Europe/Amsterdam');
     const currently = moment().tz('Europe/Amsterdam');
 
-    // TODO: Test if this works properly once Efteling works again
     return {
       localFromDate: start.format('YYYY-MM-DD'),
       localFromTime: start.format('HH:mm'),
-      duration: start.diff(end, 'minutes'),
+      duration: end.diff(start, 'minutes'),
       isPassed: currently.isAfter(start),
       localToDate: end.format('YYYY-MM-DD'),
       localToTime: end.format('HH:mm'),
@@ -182,9 +180,9 @@ export class EftelingTransferService extends TransferService {
             openTime: ot.Open,
             close: ot.Close,
             closeTime: ot.Close,
-          }
-        })
-      }
-    })
+          };
+        }),
+      };
+    });
   }
 }

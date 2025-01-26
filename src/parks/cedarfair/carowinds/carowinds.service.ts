@@ -18,6 +18,6 @@ export class CarowindsService extends CedarfairBaseService {
   }
 
   protected getParkId(): string {
-    return 'CF_CW';
+    return "30";
   }
 }

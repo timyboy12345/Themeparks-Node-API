@@ -31,21 +31,22 @@ export class GronaLundService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsShowTimes: false,
-      supportsRestaurantOpeningTimes: false,
-      supportsPois: true,
+      supportsEvents: false,
+      supportsOpeningTimes: false,
+      supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
-      supportsShopOpeningTimes: false,
-      supportsShops: false,
-      supportsRides: true,
-      supportsShows: false,
+      supportsPois: true,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: false,
       supportsRideWaitTimes: false,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
+      supportsRides: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: false,
+      supportsShowTimes: false,
+      supportsShows: false,
       supportsTranslations: false,
-supportsHalloween: false,
+      textType: "UNDEFINED",
     };
   }
 

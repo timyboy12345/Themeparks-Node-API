@@ -8,6 +8,8 @@ import { ToverlandFoodAndDrink } from '../interfaces/toverland-foodanddrink.inte
 import { ToverlandShow, ToverlandShowTime } from '../interfaces/toverland-show.interface';
 import { ToverlandHalloweenEvent } from '../interfaces/toverland-halloween-event.interface';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
+import { EventCategory } from '../../../_interfaces/event.category';
+import * as sluggo from 'sluggo';
 
 @Injectable()
 export class ToverlandTransferService extends TransferService {
@@ -31,6 +33,7 @@ export class ToverlandTransferService extends TransferService {
 
   transferHalloweenEventToPoi(halloweenEvent: ToverlandHalloweenEvent, locale: string): Poi {
     const s = this.transferPoiToPoi(halloweenEvent, locale);
+    s.eventCategory = EventCategory.HALLOWEEN;
 
     switch (halloweenEvent.type_id) {
       case 1:
@@ -75,9 +78,10 @@ export class ToverlandTransferService extends TransferService {
     }
 
     const r: Poi = {
-      id: `${poi.id}`,
+      id: poi.name ? sluggo(poi.name) : `${poi.id}`,
       category: PoiCategory.UNDEFINED,
       title: poi.name,
+      subTitle: poi.short_description.en,
       localizedSubtitles: poi.short_description,
       image_url: poi.thumbnail,
       description: poi.description.en,
@@ -92,9 +96,11 @@ export class ToverlandTransferService extends TransferService {
 
     switch (locale) {
       case 'de':
+        r.subTitle = poi.short_description.de;
         r.description = poi.description.de;
         break;
       case 'nl':
+        r.subTitle = poi.short_description.nl;
         r.description = poi.description.nl;
         break;
       default:

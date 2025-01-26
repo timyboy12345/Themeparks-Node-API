@@ -39,6 +39,7 @@ export class FuturoscopeService extends ThroughPoisThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
+      supportsEvents: false,
       supportsOpeningTimes: false,
       supportsOpeningTimesHistory: false,
       supportsPoiLocations: true,
@@ -53,7 +54,7 @@ export class FuturoscopeService extends ThroughPoisThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsTranslations: false,
-supportsHalloween: false,
+      textType: "UNDEFINED",
     };
   }
 
@@ -78,7 +79,7 @@ supportsHalloween: false,
         }
       });
     } catch (exception) {
-      console.error('Fetching Futuroscope wait times failed, continuing anyway')
+      console.error('Fetching Futuroscope wait times failed, continuing anyway');
       console.error(exception);
     }
 

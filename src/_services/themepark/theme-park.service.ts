@@ -3,6 +3,7 @@ import { ThemePark } from '../../_interfaces/park.interface';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.interface';
+import { ThemeParkEvent } from '../../_interfaces/park-event.interface';
 
 @Injectable()
 export class ThemeParkService {
@@ -92,5 +93,9 @@ export class ThemeParkService {
 
   async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
     throw new NotImplementedException("Could not get opening times");
+  }
+
+  async getEvents(): Promise<ThemeParkEvent[]> {
+    throw new NotImplementedException("Could not get events");
   }
 }

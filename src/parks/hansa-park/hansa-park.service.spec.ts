@@ -32,6 +32,7 @@ describe('HansaParkService', () => {
       try {
         const data = await service.getPois();
         expect(data).toBeInstanceOf(Array);
+    expect(data.length).toBeGreaterThan(6);
         break;
       } catch (e) {
         console.error(`Error while fetching Hansa Park times, trying again: ${t}`);
