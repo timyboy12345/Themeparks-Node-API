@@ -25,6 +25,7 @@ import { Checkin } from './database/checkins/checkin.entity';
 import { HttpModule } from '@nestjs/axios';
 import { BlogPost } from './database/blog-posts/blog-post.entity';
 import { CacheModule } from '@nestjs/cache-manager';
+import { Push } from './database/push/push.entity';
 
 @Module({
   imports: [
@@ -49,7 +50,7 @@ import { CacheModule } from '@nestjs/cache-manager';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_DATABASE'),
-        entities: [WaitTime, User, Checkin, BlogPost],
+        entities: [WaitTime, User, Checkin, BlogPost, Push],
         synchronize: true,
       }),
     }),

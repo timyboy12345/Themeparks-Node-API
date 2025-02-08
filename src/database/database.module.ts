@@ -8,11 +8,13 @@ import { CheckinService } from './checkins/checkin.service';
 import { Checkin } from './checkins/checkin.entity';
 import { BlogPost } from './blog-posts/blog-post.entity';
 import { BlogPostsService } from './blog-posts/blog-posts.service';
+import { Push } from './push/push.entity';
+import { PushService } from './push/push.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([WaitTime, User, Checkin, BlogPost])],
-  providers: [WaitTimeService, UsersService, CheckinService, BlogPostsService],
-  exports: [WaitTimeService, UsersService, CheckinService, BlogPostsService]
+  imports: [TypeOrmModule.forFeature([WaitTime, User, Checkin, BlogPost, Push])],
+  providers: [WaitTimeService, UsersService, CheckinService, BlogPostsService, PushService],
+  exports: [WaitTimeService, UsersService, CheckinService, BlogPostsService, PushService]
 })
 export class DatabaseModule {
 }
