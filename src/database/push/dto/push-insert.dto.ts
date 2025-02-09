@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumberString, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class PushInsertDto {
@@ -8,7 +8,7 @@ export class PushInsertDto {
     example: 'efteling',
     required: true,
   })
-  parkId: string
+  parkId: string;
 
   @IsString()
   @ApiProperty({
@@ -16,13 +16,13 @@ export class PushInsertDto {
     example: 'baron1898',
     required: true,
   })
-  poiId: string
+  poiId: string;
 
-  @IsNumber()
+  @IsNumberString()
   @ApiProperty({
     type: Number,
     example: '10',
     required: true,
   })
-  minutes: string
+  minutes: string;
 }

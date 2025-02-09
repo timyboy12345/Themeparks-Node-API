@@ -2,7 +2,6 @@ import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common'
 import { ApiBearerAuth, ApiBody, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { PushService } from '../../database/push/push.service';
-import { PushInsert } from '../../database/push/dto/push.interface';
 import { PushInsertDto } from '../../database/push/dto/push-insert.dto';
 import { PushDto } from '../../_dtos/push.dto';
 
@@ -30,7 +29,7 @@ export class PushController {
   })
   @ApiOperation({ summary: 'Create a push message request for a specific park, poi and user' })
   @Post('')
-  public create(@Body() push: PushInsert, @Request() req) {
+  public create(@Body() push: PushInsertDto, @Request() req) {
     return this.pushService.create(push, req.user);
   }
 }

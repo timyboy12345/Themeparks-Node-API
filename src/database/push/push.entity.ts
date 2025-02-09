@@ -17,4 +17,7 @@ export class Push {
 
   @Column()
   poiId: String;
+
+  @Column()
+  minutes: Number;
 }
