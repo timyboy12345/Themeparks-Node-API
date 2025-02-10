@@ -4,30 +4,30 @@ import { ParksService } from '../../_services/parks/parks.service';
 import { WaitTimeService } from '../../database/wait-time/wait-time.service';
 import * as moment from 'moment-timezone';
 import { PushService } from '../../database/push/push.service';
-import { HttpService } from '@nestjs/axios';
-import { ConfigService } from '@nestjs/config';
-import * as Sentry from '@sentry/node';
+import { NotificationsService } from '../../_services/notifications/notifications.service';
+import { PoiStatus } from '../../_interfaces/poi.interface';
 
 @Injectable()
 export class WaitTimeScheduleService {
   private readonly logger = new Logger(WaitTimeScheduleService.name);
-  private _oneSignalAppId: string;
-  private _oneSignalToken: string;
 
   constructor(private readonly parksService: ParksService,
               private readonly waitTimeService: WaitTimeService,
               private readonly pushService: PushService,
-              private readonly httpService: HttpService,
-              private readonly configService: ConfigService) {
-    this._oneSignalAppId = configService.get('ONESIGNAL_APP_ID');
-    this._oneSignalToken = configService.get('ONESIGNAL_PRIVATE_TOKEN');
+              private readonly notificationsService: NotificationsService) {
   }
 
   @Cron(CronExpression.EVERY_5_MINUTES)
   async handleCron() {
     this.logger.debug('Parks:');
 
-    const waitData: { parkId: string, poiId: string, minutes: number }[] = [];
+    const rideWaitData: {
+      minutes: number,
+      parkId: string,
+      poiId: string,
+      poiStatus: PoiStatus,
+      poiTitle: string
+    }[] = [];
 
     this.parksService.getParks()
       .then(async (parks) => {
@@ -50,10 +50,12 @@ export class WaitTimeScheduleService {
                 for (let r = 0; r < rides.length; r++) {
                   const ride = rides[r];
 
-                  waitData.push({
+                  rideWaitData.push({
                     parkId: park.getInfo().id,
                     poiId: ride.id,
                     minutes: ride.currentWaitTime,
+                    poiTitle: ride.title,
+                    poiStatus: ride.state,
                   });
 
                   await this.waitTimeService.insert({
@@ -79,76 +81,92 @@ export class WaitTimeScheduleService {
         this.logger.debug(` - Done importing wait times`);
         this.logger.debug(' - Started Push Message service');
 
-
-        for (let i = waitData.length - 1; i >= 0; i--) {
-          const parkId = waitData[i].parkId;
-          const poiId = waitData[i].poiId;
-          const minutes = waitData[i].minutes;
-
-          const pushMessages = await this.pushService.getAllForParkAndPoi(parkId, poiId);
-
-          if (pushMessages.length > 0) {
-            this.logger.debug(`  - Found ${pushMessages.length} for ${parkId}/${poiId}`);
-
-            const aliases = pushMessages.filter((p) => minutes.toString() <= p.minutes.toString());
-            const userIds = aliases.map((p) => p.user.id);
-
-            // TODO: Also send notifications for up/down
-            // TODO: Add right POI name to push notification
-
-            if (aliases.length > 0) {
-              this.logger.debug(`   - Sending ${aliases.length} messages (${userIds.join(', ')})`);
-
-              this.httpService.post('https://api.onesignal.com/notifications', {
-                'target_channel': 'push',
-                'include_aliases': {
-                  'external_id': userIds,
-                },
-                'app_id': this._oneSignalAppId,
-                'contents': {
-                  'nl': `De wachttijd van ${poiId} is ${minutes} minuten`,
-                  'en': `The waiting time of ${poiId} is ${minutes} mins`,
-                },
-                'headings': {
-                  'nl': 'Wachttijd Update',
-                  'en': 'Wait Time Update',
-                },
-                'name': 'wait-time-update',
-                'url': 'https://themeparkplanner.com/planner',
-              }, {
-                headers: {
-                  'Authorization': 'Bearer ' + this._oneSignalToken,
-                },
-              })
-                .toPromise()
-                .then((d) => {
-                  this.logger.debug(`   - Send ${aliases.length} messages`);
-
-                  // TODO: Maybe we should check errors better
-                  // if (!d.data.errors) {
-                  for (let j = aliases.length - 1; j >= 0; j--) {
-                    this.pushService.delete(aliases[j].id, aliases[j].user);
-                  }
-                  // }
-
-                  if (d.data.errors) {
-                    Sentry.captureException(d.data.errors);
-                  }
-                })
-                .catch((e) => {
-                  this.logger.error('  - Error send Push Messages');
-                  this.logger.error(e);
-                });
-            } else {
-              this.logger.debug(`   - No aliases (${pushMessages.map((p) => p.minutes).join(', ')}) with sufficient wait time (${minutes})`);
-            }
-          }
-        }
-
-        this.logger.debug(' - Done with Push Messages')
+        await this.sendPushMessages(rideWaitData);
       })
       .catch(reason => {
         this.logger.error(`Could not retrieve parks: ${reason}`);
       });
+  }
+
+  public async sendPushMessages(rideWaitData: any): Promise<void> {
+    for (let i = rideWaitData.length - 1; i >= 0; i--) {
+      const parkId = rideWaitData[i].parkId;
+      const poiId = rideWaitData[i].poiId;
+      const poiTitle = rideWaitData[i].poiTitle;
+      const minutes = rideWaitData[i].minutes;
+      const state = rideWaitData[i].poiStatus;
+
+      const pushMessages = await this.pushService.getAllForParkAndPoi(parkId, poiId);
+
+      if (pushMessages.length === 0) {
+        continue;
+      }
+
+      this.logger.debug(`  - Found ${pushMessages.length} for ${parkId}/${poiId} (${minutes} minutes / ${state})`);
+
+      for (let m = pushMessages.length - 1; m >= 0; m--) {
+        const message = pushMessages[m];
+
+        // TODO: Should this also check if `state === PoiStatus.OPEN`?
+        // TODO: This system sends a secondary message five minutes after a closed ride opens again, is this desirable?
+        if (state === PoiStatus.OPEN) {
+          // If the ride was previously down for this user, send a custom message
+          // specifying the ride is open once again
+          if (message.lastStatus) {
+            this.logger.debug(`   - Sending status to open message to ${message.user.id}`);
+
+            await this.notificationsService.sendStatusUpdateNotification([message.user.id], poiTitle, state, message.minutes, minutes)
+              .then((d) => {
+                this.pushService.update(message.id, {
+                  statusSince: new Date(),
+                  lastStatus: undefined,
+                  minutes: message.minutes,
+                  downUp: message.downUp,
+                });
+              })
+              .catch((e) => {
+                this.logger.error('  - Error sending Push Messages');
+                this.logger.error(e);
+              });
+          } else if (minutes !== undefined && message.minutes >= minutes) {
+            this.logger.debug(`   - Sending wait time message to ${message.user.id}`);
+
+            await this.notificationsService.sendWaitTimeNotification([message.user.id], poiTitle, minutes)
+              .then((d) => {
+                this.logger.debug(`   - Send 1 message`);
+
+                // TODO: Maybe we should check errors better
+                this.pushService.delete(message.id, message.user);
+              })
+              .catch((e) => {
+                this.logger.error('  - Error sending Push Messages');
+                this.logger.error(e);
+              });
+          }
+        } else if ((state === PoiStatus.CLOSED || state === PoiStatus.DOWN) && message.lastStatus !== state) {
+          this.logger.debug(`   - Sending ${state} message to ${message.user.id}`);
+
+          await this.notificationsService.sendStatusUpdateNotification([message.user.id], poiTitle, state, message.minutes, minutes)
+            .then((d) => {
+              this.logger.debug(`   - Send 1 messages`);
+
+              this.pushService.update(message.id, {
+                statusSince: new Date(),
+                lastStatus: state,
+                minutes: message.minutes,
+                downUp: message.downUp,
+              });
+            })
+            .catch((e) => {
+              this.logger.error('  - Error sending Push Messages');
+              this.logger.error(e);
+            });
+        } else {
+          this.logger.debug(`   - No cases found for ${message.id} (${message.minutes} / ${message.downUp} / ${message.lastStatus} - ${message.statusSince})`);
+        }
+      }
+    }
+
+    this.logger.debug(' - Done with Push Messages');
   }
 }

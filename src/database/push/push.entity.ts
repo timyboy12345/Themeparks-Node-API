@@ -19,10 +19,20 @@ export class Push {
   poiId: String;
 
   @Column()
-  minutes: Number;
+  minutes: number;
 
   @Column({
-    default: false
+    default: false,
   })
-  downUp: Boolean;
+  downUp: boolean;
+
+  @Column({
+    nullable: true,
+  })
+  lastStatus: string;
+
+  @Column({
+    nullable: true,
+  })
+  statusSince: Date;
 }

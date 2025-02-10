@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Poi } from '../../../_interfaces/poi.interface';
+import { Poi, PoiStatus } from '../../../_interfaces/poi.interface';
 import { EftelingPoi } from '../interfaces/efteling-poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
@@ -8,7 +8,8 @@ import * as moment from 'moment-timezone';
 import { ShowTime, ShowTimes } from '../../../_interfaces/showtimes.interface';
 import {
   EftelingOpeningTimesAttraction,
-  EftelingOpeningTimesAttractionShowTimes, EftelingOpeningTimesResponse,
+  EftelingOpeningTimesAttractionShowTimes,
+  EftelingOpeningTimesResponse,
 } from '../interfaces/efteling-openingstimes-response.interface';
 import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.interface';
 
@@ -16,6 +17,7 @@ import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.in
 export class EftelingTransferService extends TransferService {
   transferPoiToPoi(eftelingPoi: EftelingPoi): Poi {
     let c: PoiCategory = PoiCategory.UNDEFINED;
+    let s: PoiStatus = PoiStatus.UNDEFINED;
 
     switch (eftelingPoi.fields.category) {
       case 'attraction':
@@ -85,6 +87,7 @@ export class EftelingTransferService extends TransferService {
       image_url: image,
       area: eftelingPoi.fields.empire,
       images: images,
+      state: s,
     };
 
     if (lat !== 0 && lng !== 0) {

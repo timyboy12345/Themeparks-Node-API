@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Push } from './push.entity';
 import { User } from '../users/user.entity';
 import { PushInsertDto } from './dto/push-insert.dto';
+import { PushUpdateDto } from './dto/push-update.dto';
 
 @Injectable()
 export class PushService {
@@ -39,6 +40,10 @@ export class PushService {
         user: user,
       },
     });
+  }
+
+  async update(id: number, push: PushUpdateDto) {
+    return this.pushRepository.update(id, push)
   }
 
   async delete(id: number, user: User) {

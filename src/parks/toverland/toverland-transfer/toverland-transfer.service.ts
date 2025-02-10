@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TransferService } from '../../../_services/transfer/transfer.service';
-import { Poi } from '../../../_interfaces/poi.interface';
+import { Poi, PoiStatus } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { ToverlandRide } from '../interfaces/toverland-ride.interface';
 import * as moment from 'moment-timezone';
@@ -121,8 +121,25 @@ export class ToverlandTransferService extends TransferService {
       })
     }
 
+    // TODO: Implement other status codes
+    if ('last_status' in poi && poi.last_status) {
+      switch (poi.last_status.status_id) {
+        case 2:
+          r.state = PoiStatus.CLOSED;
+          break;
+        // 1 = open (big ride), 7 = alternating schedule, 8 = open (playgrounds)
+        case 1:
+        case 7:
+        case 8:
+          r.state = PoiStatus.OPEN;
+          break;
+      }
+    }
+
     if ('last_waiting_time' in poi && poi.last_waiting_time) {
-      r.currentWaitTime = poi.last_waiting_time.waiting_time;
+      if (!('last_status' in poi && poi.last_status && [1, 7, 8].includes(poi.last_status.status_id))) {
+        r.currentWaitTime = poi.last_waiting_time.waiting_time;
+      }
     }
 
     if ('times' in poi && poi.times) {
