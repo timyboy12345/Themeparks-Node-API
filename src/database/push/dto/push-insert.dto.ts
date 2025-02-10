@@ -1,4 +1,4 @@
-import { IsNumberString, IsString } from 'class-validator';
+import { IsBoolean, IsNumberString, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class PushInsertDto {
@@ -25,4 +25,12 @@ export class PushInsertDto {
     required: true,
   })
   minutes: string;
+
+  @IsBoolean()
+  @ApiProperty({
+    type: Boolean,
+    example: true,
+    required: true,
+  })
+  downUp: boolean;
 }

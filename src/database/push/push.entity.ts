@@ -20,4 +20,9 @@ export class Push {
 
   @Column()
   minutes: Number;
+
+  @Column({
+    default: false
+  })
+  downUp: Boolean;
 }

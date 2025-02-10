@@ -93,6 +93,9 @@ export class WaitTimeScheduleService {
             const aliases = pushMessages.filter((p) => minutes.toString() <= p.minutes.toString());
             const userIds = aliases.map((p) => p.user.id);
 
+            // TODO: Also send notifications for up/down
+            // TODO: Add right POI name to push notification
+
             if (aliases.length > 0) {
               this.logger.debug(`   - Sending ${aliases.length} messages (${userIds.join(', ')})`);
 
