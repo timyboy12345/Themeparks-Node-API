@@ -6,6 +6,7 @@ import * as moment from 'moment-timezone';
 import { PushService } from '../../database/push/push.service';
 import { NotificationsService } from '../../_services/notifications/notifications.service';
 import { PoiStatus } from '../../_interfaces/poi.interface';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class WaitTimeScheduleService {
@@ -85,6 +86,8 @@ export class WaitTimeScheduleService {
       })
       .catch(reason => {
         this.logger.error(`Could not retrieve parks: ${reason}`);
+        console.error(reason)
+        Sentry.captureException(reason);
       });
   }
 

@@ -137,9 +137,9 @@ export class ToverlandTransferService extends TransferService {
     }
 
     if ('last_waiting_time' in poi && poi.last_waiting_time) {
-      if (!('last_status' in poi && poi.last_status && [1, 7, 8].includes(poi.last_status.status_id))) {
+      // if (!('last_status' in poi && poi.last_status && [1, 7, 8].includes(poi.last_status.status_id))) {
         r.currentWaitTime = poi.last_waiting_time.waiting_time;
-      }
+      // }
     }
 
     if ('times' in poi && poi.times) {

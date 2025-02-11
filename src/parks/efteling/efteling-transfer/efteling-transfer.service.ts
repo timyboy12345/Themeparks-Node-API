@@ -23,6 +23,9 @@ export class EftelingTransferService extends TransferService {
       case 'attraction':
         c = PoiCategory.ATTRACTION;
         break;
+      case 'attraction-alternative':
+        c = PoiCategory.ATTRACTION_ALTERNATIVE;
+        break;
       case 'game':
         c = PoiCategory.GAME;
         break;

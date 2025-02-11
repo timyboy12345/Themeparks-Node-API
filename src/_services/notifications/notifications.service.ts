@@ -43,11 +43,27 @@ export class NotificationsService {
           en: 'We will notify you once the ride goes up again.',
           nl: 'We zullen je een bericht sturen als de attractie weer is opgestart.',
         });
+      case PoiStatus.CLOSED:
+        return this.sendNotification(userIds, {
+          en: `${poiTitle} is momentarily closed`,
+          nl: `${poiTitle} is momenteel gesloten`,
+        }, {
+          en: 'We will notify you once it opens.',
+          nl: 'We zullen je een bericht sturen als hij weer open gaat.',
+        });
+      default:
+        return this.sendNotification(userIds, {
+          en: `The status of ${poiTitle} is unknown`,
+          nl: `${poiTitle} is zojuist kapot gegaan`,
+        }, {
+          en: 'Click here what to see what you can do next. We\'ll update you once we know more.',
+          nl: 'Klik hier om er meer over te lezen, we sturen je een bericht zodra we meer weten.',
+        });
     }
   }
 
-  private sendNotification(userIds: string[], headings: object, messages: object) {
-    return this.httpService.post('https://api.onesignal.com/notifications', {
+  private async sendNotification(userIds: string[], headings: object, messages: object) {
+    return await this.httpService.post('https://api.onesignal.com/notifications', {
       'target_channel': 'push',
       'include_aliases': {
         'external_id': userIds,
