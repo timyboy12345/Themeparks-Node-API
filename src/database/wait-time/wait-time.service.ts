@@ -45,6 +45,7 @@ export class WaitTimeService {
    * Get all wait times by park ID and date
    * @param parkId Park ID as string or number
    * @param date Date as string (YYYY-MM-DD)
+   * @deprecated use the findByParkIdAndDateRange
    */
   findByParkIdAndDate(parkId: string, date: string): Promise<WaitTime[]> {
     return this
@@ -53,6 +54,24 @@ export class WaitTimeService {
       .where('wait_time.park_id = :park AND DATE(date) = :date', {
         park: parkId,
         date: date
+      })
+      .getMany();
+  }
+
+  /**
+   * Get all wait times by park ID and date
+   * @param parkId Park ID as string or number
+   * @param start Date as string (YYYY-MM-DD)
+   * @param end Date as string (YYYY-MM-DD)
+   */
+  findByParkIdAndDateRange(parkId: string, start: string, end: string): Promise<WaitTime[]> {
+    return this
+      .waitTimeRepository
+      .createQueryBuilder('wait_time')
+      .where('wait_time.park_id = :park AND date > :start AND date < :end', {
+        park: parkId,
+        start,
+        end
       })
       .getMany();
   }
