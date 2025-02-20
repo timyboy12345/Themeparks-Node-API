@@ -20,7 +20,7 @@ export class DailyAnalysisService {
     });
   }
 
-  @Cron(new Date(Date.now() + 10 * 1000))
+  // @Cron(new Date(Date.now() + 10 * 1000))
   @Cron(CronExpression.EVERY_DAY_AT_4AM)
   async handleCron() {
     this.logger.debug('Started analyzing and saving wait times')
@@ -39,8 +39,8 @@ export class DailyAnalysisService {
       const folder = this.configService.get('ENVIRONMENT') === 'production' ? 'history' : 'history-dev';
       const file = this.storage.bucket(bucketName).file(`${folder}/daily/${park.getInfo().id}/${date.format('YYYY-MM-DD')}.json`);
 
-      const start = date.startOf('day');
-      const end = date.endOf('day');
+      const start = date.clone().startOf('day');
+      const end = date.clone().endOf('day');
 
       this.logger.debug(` - Fetching for ${park.getInfo().name} for ${start.format()} to ${end.format()}`)
 
