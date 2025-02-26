@@ -86,8 +86,12 @@ export class EftelingService extends ThroughPoisThemeParkService {
                   poi.state = PoiStatus.CLOSED;
                   break;
                 case 'Gesloten':
+                case 'gesloten':
                 case 'nognietopen':
                   poi.state = PoiStatus.CLOSED;
+                  break;
+                case 'storing':
+                  poi.state = PoiStatus.DOWN;
                   break;
                 case 'inonderhoud':
                   poi.state = PoiStatus.MAINTENANCE;

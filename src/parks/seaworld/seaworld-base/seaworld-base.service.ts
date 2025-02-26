@@ -60,7 +60,7 @@ export class SeaworldBaseService extends ThroughPoisThemeParkService {
       .then((res) => this.transfer.transferPoisToPois(res.data))
       .catch((reason) => {
         Sentry.captureException(reason);
-        console.error(reason);
+        // console.error(reason);
         throw new InternalServerErrorException("Error fetching SeaWorld Inc data");
       });
 

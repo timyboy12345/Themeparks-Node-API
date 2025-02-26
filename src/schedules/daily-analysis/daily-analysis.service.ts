@@ -77,8 +77,8 @@ export class DailyAnalysisService {
     }
   }
 
-  @Cron(new Date(Date.now() + 10 * 1000))
-  @Cron(CronExpression.EVERY_1ST_DAY_OF_MONTH_AT_MIDNIGHT)
+  // @Cron(new Date(Date.now() + 10 * 1000))
+  @Cron('0 1 * * 1') // At 01:00 AM, Every Monday
   async handleWeeklyCron() {
     this.logger.debug('Started analyzing and saving wait times for last month');
 
@@ -94,10 +94,10 @@ export class DailyAnalysisService {
       const date = moment().subtract(1, 'week');
 
       const folder = this.configService.get('ENVIRONMENT') === 'production' ? 'history' : 'history-dev';
-      const file = this.storage.bucket(bucketName).file(`${folder}/weekly/${park.getInfo().id}/${date.format('YYYY-MM-DD')}.json`);
+      const file = this.storage.bucket(bucketName).file(`${folder}/weekly/${park.getInfo().id}/${date.clone().startOf('isoWeek').format('YYYY-MM-DD')}.json`);
 
-      const start = date.clone().subtract('4', 'week').startOf('week');
-      const end = date.clone().endOf('week');
+      const start = date.clone().subtract('4', 'week').startOf('isoWeek');
+      const end = date.clone().endOf('isoWeek');
 
       this.logger.debug(` - Fetching for ${park.getInfo().name} for ${start.format()} to ${end.format()}`);
 
@@ -136,9 +136,9 @@ export class DailyAnalysisService {
             };
           }
 
-          averaged[wt.ride_id][wt.hour].average = parseInt(wt.average);
-          averaged[wt.ride_id][wt.hour].min = parseInt(wt.min);
-          averaged[wt.ride_id][wt.hour].max = parseInt(wt.max);
+          averaged[wt.ride_id][wt.hour].average += parseInt(wt.average);
+          averaged[wt.ride_id][wt.hour].min += parseInt(wt.min);
+          averaged[wt.ride_id][wt.hour].max += parseInt(wt.max);
           averaged[wt.ride_id][wt.hour].count += 1;
         });
 

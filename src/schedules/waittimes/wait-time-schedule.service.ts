@@ -59,10 +59,12 @@ export class WaitTimeScheduleService {
                     poiStatus: ride.state,
                   });
 
+                  const state = ride.state ? ride.state.toLowerCase() : (ride.currentWaitTime ? 'open' : 'closed')
+
                   await this.waitTimeService.insert({
                     ride_id: ride.id,
                     wait: ride.currentWaitTime,
-                    status: ride.currentWaitTime ? 'open' : 'closed',
+                    status: state,
                     park_id: park.getInfo().id,
                     date: date,
                   })
@@ -115,14 +117,14 @@ export class WaitTimeScheduleService {
         if (state === PoiStatus.OPEN) {
           // If the ride was previously down for this user, send a custom message
           // specifying the ride is open once again
-          if (message.lastStatus) {
+          if (message.lastStatus && message.lastStatus !== PoiStatus.OPEN) {
             this.logger.debug(`   - Sending status to open message to ${message.user.id}`);
 
             await this.notificationsService.sendStatusUpdateNotification([message.user.id], poiTitle, state, message.minutes, minutes)
               .then((d) => {
                 this.pushService.update(message.id, {
                   statusSince: new Date(),
-                  lastStatus: undefined,
+                  lastStatus: state,
                   minutes: message.minutes,
                   downUp: message.downUp,
                 });
