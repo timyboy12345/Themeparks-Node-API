@@ -4,13 +4,18 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { HeidiParkService } from './heidi-park/heidi-park.service';
 import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
+import { GardalandService } from './gardaland/gardaland.service';
+import { LegolandWindsorResortService } from './legoland-windsor-resort/legoland-windsor-resort.service';
+import { LegolandCaliforniaService } from './legoland-california/legoland-california.service';
+import { LegolandBillundService } from './legoland-billund/legoland-billund.service';
+import { LegolandDeutschlandService } from './legoland-deutschland/legoland-deutschland.service';
 
 describe('MerlinEntertainmentsService', () => {
   let service: MerlinEntertainmentsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [MerlinEntertainmentsService, HeidiParkService, AioTransferServiceService],
+      providers: [MerlinEntertainmentsService, HeidiParkService, GardalandService, LegolandWindsorResortService, LegolandCaliforniaService, LegolandBillundService, LegolandDeutschlandService, AioTransferServiceService],
       imports: [HttpModule, ConfigModule.forRoot()],
     }).compile();
 

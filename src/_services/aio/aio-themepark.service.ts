@@ -100,6 +100,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       })
       .catch((reason: AxiosError) => {
         console.error(reason.response.data);
+        Sentry.captureException(reason);
         throw reason;
       });
   }
@@ -153,6 +154,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
         console.error(`${reason.response.status} / ${reason.response.statusText}`);
         console.error(reason.response.data);
         console.error(reason.response.headers);
+        Sentry.captureException(reason);
         reject(reason);
       });
     })
@@ -181,6 +183,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
 
           fs.writeFile(downloadLocation, value.data, function(err) {
             if (err) {
+              Sentry.captureException(err);
               reject(err);
             } else {
               resolve(downloadLocation);
@@ -188,6 +191,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
           });
         })
         .catch(reason => {
+          Sentry.captureException(reason);
           console.error(reason);
           reject(reason);
         });
@@ -235,6 +239,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
           console.log(`Zip file downloaded to ${inputPath}`);
         })
         .catch(reason => {
+          Sentry.captureException(reason);
           console.error(reason);
           throw new InternalServerErrorException(reason);
         });

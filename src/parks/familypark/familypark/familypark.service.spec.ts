@@ -1,12 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FamilyparkService } from './familypark.service';
+import { HttpModule } from '@nestjs/axios';
+import { ConfigModule } from '@nestjs/config';
+import { FamilyparkTransferService } from '../familypark-transfer/familypark-transfer.service';
+import { LocaleService } from '../../../_services/locale/locale.service';
 
 describe('FamilyparkService', () => {
   let service: FamilyparkService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [FamilyparkService],
+      providers: [FamilyparkService, FamilyparkTransferService, LocaleService],
+      imports: [HttpModule, ConfigModule.forRoot()],
     }).compile();
 
     service = module.get<FamilyparkService>(FamilyparkService);

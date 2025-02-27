@@ -8,15 +8,15 @@ export class FamilyparkTransferService extends TransferService {
   transferPoiToPoi(poi: any, locale?: string): Poi {
     const p: Poi = {
       category: PoiCategory.UNDEFINED,
-      id: poi.properties.id,
+      id: poi.properties.id.toString(),
       original: poi,
       title: poi.properties.name,
     };
 
-    if (poi.geometry && poi.geometry.geometries && poi.geometry.geometries.coordinates) {
+    if (poi.geometry && poi.geometry.geometries && poi.geometry.geometries.length > 0 && poi.geometry.geometries[0].coordinates) {
       p.location = {
-        lat: poi.geometry.geometries.coordinates[0],
-        lng: poi.geometry.geometries.coordinates[1],
+        lat: poi.geometry.geometries[0].coordinates[1],
+        lng: poi.geometry.geometries[0].coordinates[0],
       };
     }
 

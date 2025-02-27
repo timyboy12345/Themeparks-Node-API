@@ -25,7 +25,9 @@ In the table below you will find the parks that are currently supported and the 
 | 🇩🇪 Hansa Park | 🎡 | True | True | True | True | False |
 | 🇩🇪 Movie Park Germany | 🎡 | True | True | True | True | True |
 | 🇩🇪 Heidi Park | 🎡 | True | True | True | True | False |
+| 🇩🇪 LegoLand Deutschland | 🎡 | True | True | True | True | False |
 | 🇩🇰 Tivoli | 🎡 | True | True | True | False | False |
+| 🇩🇰 LegoLand Billund | 🎡 | True | True | True | True | False |
 | 🇪🇸 Portaventura | 🎡 | True | True | True | True | False |
 | 🇪🇸 Ferrari Land | 🎡 | True | True | True | True | False |
 | 🇪🇸 Parque Warner | 🎡 | True | True | True | True | False |
@@ -41,8 +43,10 @@ In the table below you will find the parks that are currently supported and the 
 | 🇬🇧 Alton Towers | 🎡 | True | True | True | True | False |
 | 🇬🇧 Paultons Park | 🎡 | True | True | True | True | False |
 | 🇬🇧 Chessington world of Adventures | 🎡 | True | True | True | True | False |
+| 🇬🇧 Legoland Windsor Resort | 🎡 | True | True | True | True | False |
 | 🇮🇹 Gardaland | 🎡 | True | True | True | False | False |
 | 🇮🇹 Mirabilandia | 🎡 | True | True | False | True | False |
+| 🇮🇹 Gardaland | 🎡 | True | True | True | False | False |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True | False |
 | 🇳🇱 Toverland | 🎡 | True | True | True | False | True |
 | 🇳🇱 Walibi Holland | 🎡 | True | True | True | True | True |
@@ -108,6 +112,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Universal Studios Orlando | 🎡 | True | True | True | True | False |
 | 🇺🇸 Islands of Adventure | 🎡 | True | True | True | True | False |
 | 🇺🇸 Universal Studios Hollywood | 🎡 | True | True | True | True | False |
+| 🇺🇸 Legoland California | 🎡 | True | True | True | True | False |
 
 ## Parks on the planning
 

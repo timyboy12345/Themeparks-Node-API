@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { AioThemeparkService } from '../../_services/aio/aio-themepark.service';
-import { ParkType, ThemePark } from '../../_interfaces/park.interface';
+import { AioThemeparkService } from '../../../_services/aio/aio-themepark.service';
+import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import {
   AttractionsIoAppDetailsInterface,
-} from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
-import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
-import { PoiCategory } from '../../_interfaces/poi-categories.enum';
+} from '../../../_interfaces/attractions-io/attractions-io-app-details.interface';
+import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
+import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class GardalandService extends AioThemeparkService {
@@ -17,6 +17,7 @@ export class GardalandService extends AioThemeparkService {
       image: 'https://www.gardaland.it/media/1wzlpokx/panoramiche-006.jpg',
       name: 'Gardaland',
       parkType: ParkType.THEMEPARK,
+      company: Company.MERLIN_ENTERTAINMENTS,
       location: {
         lat: 45.45624514532554,
         lng: 10.713386930685767,

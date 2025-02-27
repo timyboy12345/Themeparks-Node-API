@@ -14,7 +14,7 @@ import { BellewaerdeService } from '../../parks/bellewaerde/bellewaerde/bellewae
 import { DippieDoeService } from '../../parks/dippiedoe/dippie-doe.service';
 import { HolidayParkService } from '../../parks/holiday-park/holiday-park.service';
 import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service';
-import { LegolandDeutschlandService } from '../../parks/legoland/legoland-deutschland/legoland-deutschland.service';
+import { LegolandDeutschlandService } from '../../parks/merlin-entertainments/legoland-deutschland/legoland-deutschland.service';
 import { CompanyService } from '../company/company.service';
 import { SixflagsService } from '../../parks/sixflags/sixflags.service';
 import { BobbejaanlandService } from '../../parks/parques-reunidos/bobbejaanland/bobbejaanland.service';
@@ -55,7 +55,7 @@ import {
 import { HersheyparkService } from '../../parks/hersheypark/hersheypark.service';
 import { SeaworldService } from '../../parks/seaworld/seaworld.service';
 import { UniversalService } from '../../parks/universal/universal.service';
-import { GardalandService } from '../../parks/gardaland/gardaland.service';
+import { GardalandService } from '../../parks/merlin-entertainments/gardaland/gardaland.service';
 import { MirabilandiaService } from '../../parks/parques-reunidos/mirabilandia/mirabilandia.service';
 import {
   MarinelandCoteDazurService

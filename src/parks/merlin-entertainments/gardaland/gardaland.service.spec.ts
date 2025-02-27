@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GardalandService } from './gardaland.service';
-import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
+import { AioTransferServiceService } from '../../../_services/aio/transfer-service/aio-transfer-service.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 

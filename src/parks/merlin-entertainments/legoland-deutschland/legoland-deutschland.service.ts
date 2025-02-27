@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { AioThemeparkService } from '../../../_services/aio/aio-themepark.service';
-import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
+import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { AttractionsIoAppDetailsInterface } from '../../../_interfaces/attractions-io/attractions-io-app-details.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
@@ -15,6 +15,7 @@ export class LegolandDeutschlandService extends AioThemeparkService {
       image: 'https://r-cf.bstatic.com/images/hotel/max1024x768/229/229051043.jpg',
       countryCode: 'de',
       parkType: ParkType.THEMEPARK,
+      company: Company.MERLIN_ENTERTAINMENTS,
       location: {
         lat: 48.42588595451182,
         lng: 10.308480797154878,
