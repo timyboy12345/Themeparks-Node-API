@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectDataSource, InjectRepository } from '@nestjs/typeorm';
 import { WaitTime } from './wait-time.entity';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { WaitTimeInsertEntity } from './dto/wait-time-insert.entity';
 
 @Injectable()
 export class WaitTimeService {
-  constructor(@InjectRepository(WaitTime) private waitTimeRepository: Repository<WaitTime>) {
+  constructor(@InjectRepository(WaitTime) private waitTimeRepository: Repository<WaitTime>,
+              @InjectDataSource() private readonly dataSource: DataSource) {
   }
 
   /**
@@ -45,6 +46,7 @@ export class WaitTimeService {
    * Get all wait times by park ID and date
    * @param parkId Park ID as string or number
    * @param date Date as string (YYYY-MM-DD)
+   * @deprecated use the findByParkIdAndDateRange
    */
   findByParkIdAndDate(parkId: string, date: string): Promise<WaitTime[]> {
     return this
@@ -55,6 +57,36 @@ export class WaitTimeService {
         date: date
       })
       .getMany();
+  }
+
+  /**
+   * Get all wait times by park ID and date range
+   * @param parkId Park ID as string or number
+   * @param start Date as string (YYYY-MM-DD)
+   * @param end Date as string (YYYY-MM-DD)
+   */
+  findByParkIdAndDateRange(parkId: string, start: string, end: string): Promise<WaitTime[]> {
+    return this
+      .waitTimeRepository
+      .createQueryBuilder('wait_time')
+      .where('wait_time.park_id = :park AND date > :start AND date < :end', {
+        park: parkId,
+        start,
+        end
+      })
+      .getMany();
+  }
+
+  /**
+   * Get all wait times by park ID and date range
+   * @param parkId Park ID as string or number
+   * @param start Date as string (YYYY-MM-DD)
+   * @param end Date as string (YYYY-MM-DD)
+   */
+  findByParkIdAndWeekRange(parkId: string, start: string, end: string): Promise<WaitTime[]> {
+    return this.dataSource.query("select ride_id, WEEKDAY(date) as 'day', hour(date) as 'hour', avg(wait) as 'average', min(wait) as 'min', max(wait) as 'max' from wait_time where date between ? and ? AND status = 'open' AND park_id = ? group by ride_id, WEEKDAY(date), hour(date) ORDER BY ride_id;", [
+      start, end, parkId
+    ])
   }
 
   /**

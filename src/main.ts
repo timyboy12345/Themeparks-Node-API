@@ -24,7 +24,9 @@ Sentry.init({
 });
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    // logger: ['log', 'fatal', 'error', 'warn', 'debug', 'verbose']
+  });
 
   app.enableCors();
 

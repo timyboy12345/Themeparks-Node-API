@@ -25,6 +25,9 @@ import { Checkin } from './database/checkins/checkin.entity';
 import { HttpModule } from '@nestjs/axios';
 import { BlogPost } from './database/blog-posts/blog-post.entity';
 import { CacheModule } from '@nestjs/cache-manager';
+import { Push } from './database/push/push.entity';
+import { NotificationsService } from './_services/notifications/notifications.service';
+import { DailyAnalysisService } from './schedules/daily-analysis/daily-analysis.service';
 
 @Module({
   imports: [
@@ -49,7 +52,7 @@ import { CacheModule } from '@nestjs/cache-manager';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_DATABASE'),
-        entities: [WaitTime, User, Checkin, BlogPost],
+        entities: [WaitTime, User, Checkin, BlogPost, Push],
         synchronize: true,
       }),
     }),
@@ -72,6 +75,8 @@ import { CacheModule } from '@nestjs/cache-manager';
     CompanyService,
     WaitTimeScheduleService,
     AioTransferServiceService,
+    NotificationsService,
+    DailyAnalysisService,
   ],
 })
 export class AppModule {

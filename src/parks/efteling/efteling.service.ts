@@ -76,18 +76,22 @@ export class EftelingService extends ThroughPoisThemeParkService {
           const attractionInfo = waitTimes.AttractionInfo.find((p) => p.Id === poi.id);
 
           if (attractionInfo) {
-            if (attractionInfo.State) {
+            if (attractionInfo.State !== undefined) {
               switch (attractionInfo.State) {
                 case 'Geopend':
                 case 'open':
                   poi.state = PoiStatus.OPEN;
                   break;
                 case '':
-                  poi.state = PoiStatus.CLOSED_TODAY;
+                  poi.state = PoiStatus.CLOSED;
                   break;
                 case 'Gesloten':
+                case 'gesloten':
                 case 'nognietopen':
                   poi.state = PoiStatus.CLOSED;
+                  break;
+                case 'storing':
+                  poi.state = PoiStatus.DOWN;
                   break;
                 case 'inonderhoud':
                   poi.state = PoiStatus.MAINTENANCE;

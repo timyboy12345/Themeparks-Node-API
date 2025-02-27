@@ -44,3 +44,5 @@ SERVER.md
 # Storage
 /storage/
 /public/
+
+/google-cloud-key.json

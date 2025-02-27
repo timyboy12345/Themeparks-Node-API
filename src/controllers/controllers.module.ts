@@ -13,9 +13,10 @@ import { CheckinsController } from './checkins/checkins.controller';
 import { HttpModule } from '@nestjs/axios';
 import { BlogPostsController } from './blog-posts/blog-posts.controller';
 import { CacheModule } from '@nestjs/cache-manager';
+import { PushController } from './push/push.controller';
 
 @Module({
-  controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController, BlogPostsController],
+  controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController, BlogPostsController, PushController],
   imports: [
     CacheModule.register({
       ttl: 60 * 5,
@@ -32,7 +33,7 @@ import { CacheModule } from '@nestjs/cache-manager';
     AuthModule
   ],
   providers: [
-    ParksService
+    ParksService,
   ],
 })
 export class ControllersModule {

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
@@ -8,6 +8,7 @@ import { ParcAsterixTransferService } from './parc-asterix-transfer/parc-asterix
 import { ParcAsterixResponseInterface } from './interfaces/parc-asterix-response.interface';
 import { HttpService } from '@nestjs/axios';
 import { LocaleService } from '../../_services/locale/locale.service';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class ParcAsterixService extends ThemeParkService {
@@ -54,7 +55,7 @@ export class ParcAsterixService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-      textType: "UNDEFINED",
+      textType: 'UNDEFINED',
       supportsEvents: false,
     };
   }
@@ -63,28 +64,45 @@ export class ParcAsterixService extends ThemeParkService {
     return this
       .request<ParcAsterixResponseInterface>(`?operationName=getAttractions&variables=%7B%22language%22%3A%22${this.getLocale()}%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%225609363783d826ec6c460caa620e3ca28e651897febf6753159836ab72d8139b%22%7D%7D`)
       .then(attractionsResponse =>
-        this.parcAsterixTransferService.transferRidesToPois(attractionsResponse.data.data.openAttractions));
+        this.parcAsterixTransferService.transferRidesToPois(attractionsResponse.data.data.openAttractions)).catch((reason) => {
+        Sentry.captureException(reason);
+        console.error(reason);
+        throw new InternalServerErrorException(reason);
+      });
   }
 
   async getRestaurants(): Promise<Poi[]> {
     return this
       .request<ParcAsterixResponseInterface>(`?operationName=restaurants&variables=%7B%22language%22%3A%22${this.getLocale()}%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22857561404b9f5c69e651d74e0f5c0403f5bd3bd02491a0958d11d60bd8526cc9%22%7D%7D`)
       .then(restaurantsResponse =>
-        this.parcAsterixTransferService.transferRestaurantsToPois(restaurantsResponse.data.data.restaurants));
+        this.parcAsterixTransferService.transferRestaurantsToPois(restaurantsResponse.data.data.restaurants)).catch((reason) => {
+        Sentry.captureException(reason);
+        console.error(reason);
+        throw new InternalServerErrorException(reason);
+      });
   }
 
   async getShows(): Promise<Poi[]> {
     return this
       .request<ParcAsterixResponseInterface>(`?operationName=spectacles&variables=%7B%22language%22%3A%22${this.getLocale()}%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22a3a067a0edbfb3666228d5d966d5933b1572e271b4c7f2858ce1758a2490227e%22%7D%7D`)
       .then(showsResponse =>
-        this.parcAsterixTransferService.transferShowsToPois(showsResponse.data.data.openShows));
+        this.parcAsterixTransferService.transferShowsToPois(showsResponse.data.data.openShows))
+      .catch((reason) => {
+        Sentry.captureException(reason);
+        console.error(reason);
+        throw new InternalServerErrorException(reason);
+      });
   }
 
   async getHotels(): Promise<Poi[]> {
     return this
       .request<ParcAsterixResponseInterface>('?operationName=hotels&variables=%7B%22language%22%3A%22fr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2243b7bf45e8b05c64c76ba5285ec32d998d00c2d434cac37eb8f5f562b92156a4%22%7D%7D')
       .then(hotelsResponse =>
-        this.parcAsterixTransferService.transferShowsToPois(hotelsResponse.data.data.openShows));
+        this.parcAsterixTransferService.transferShowsToPois(hotelsResponse.data.data.openShows)).catch((reason) => {
+        Sentry.captureException(reason);
+        console.error(reason);
+        throw new InternalServerErrorException(reason);
+      });
   }
 
   async getPois(): Promise<Poi[]> {

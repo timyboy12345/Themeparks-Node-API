@@ -10,6 +10,7 @@ import { SixflagsTransferService } from '../../sixflags-transfer/sixflags-transf
 import { PoiCategory } from '../../../../_interfaces/poi-categories.enum';
 import { SixflagsTokenResponseInterface } from '../../interfaces/sixflags-token-response.interface';
 import { HttpService } from '@nestjs/axios';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class SixFlagsGeneralParkService extends ThemeParkService {
@@ -101,8 +102,9 @@ supportsEvents: false,
         return value.data;
       })
       .catch((reason: AxiosError) => {
-        console.error(reason.response.data);
-        console.error(reason.request.headers);
+        Sentry.captureException(reason);
+        // console.error(reason.response.data);
+        // console.error(reason.request.headers);
         return null;
       });
   }
@@ -128,8 +130,9 @@ supportsEvents: false,
         return value.data.access_token;
       })
       .catch((reason: AxiosError) => {
-        console.log(reason.response.data);
-        console.log(reason.request.headers);
+        Sentry.captureException(reason);
+        // console.log(reason.response.data);
+        // console.log(reason.request.headers);
         return null;
       });
   }
