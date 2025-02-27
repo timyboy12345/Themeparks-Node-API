@@ -12,6 +12,7 @@ In the table below you will find the parks that are currently supported and the 
 
 | Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support | Halloween Support |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 🇦🇹 Familypark | 🎡 | True | False | False | False | False |
 | 🇧🇪 Walibi Belgium | 🎡 | True | True | False | True | False |
 | 🇧🇪 Bellewaerde | 🎡 | True | True | True | True | False |
 | 🇧🇪 Bobbejaanland | 🎡 | True | True | False | True | False |
@@ -111,10 +112,9 @@ In the table below you will find the parks that are currently supported and the 
 ## Parks on the planning
 
 UK: Pleasure Beach, LegoLand Windsor, Drayton Manor
-IT: Cincetitta World, **Mirabilandia**
+IT: Cincetitta World
 ES: Puy de Fou Espana
 DE: Europapark, Rulantica, Heidi Park
-OO: Familypark
 FR: Puy de Fou
 DM: Legoland Billund, Djurs Sommerland, Farup Sommerland
 

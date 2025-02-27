@@ -58,12 +58,12 @@ export class ParquesReunidosTransfer extends TransferService {
     }
 
     if (ride.photographs && ride.photographs.length > 0) {
-      r.previewImage = `https://s3-eu-west-1.amazonaws.com/stayapp.cms/${ride.photographs[0]}/${ride.photographs[0]}_appthumb`;
-      r.image_url = `https://s3-eu-west-1.amazonaws.com/stayapp.cms/${ride.photographs[0]}/${ride.photographs[0]}_appthumb`;
+      r.previewImage = `https://cdn.stay-app.com/${ride.photographs[0]}/${ride.photographs[0]}_appthumb`;
+      r.image_url = `https://cdn.stay-app.com/${ride.photographs[0]}/${ride.photographs[0]}_ld`;
       r.images = [];
 
       ride.photographs.forEach((photo) => {
-        r.images.push(`https://s3-eu-west-1.amazonaws.com/stayapp.cms/${photo}/${photo}`);
+        r.images.push(`https://cdn.stay-app.com/${photo}/${photo}`);
       });
     }
 

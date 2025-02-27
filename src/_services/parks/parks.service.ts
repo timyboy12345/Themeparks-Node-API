@@ -62,6 +62,7 @@ import {
 } from '../../parks/parques-reunidos/marineland-cote-dazur/marineland-cote-dazur.service';
 import { MerlinEntertainmentsService } from '../../parks/merlin-entertainments/merlin-entertainments.service';
 import { PairiDaizaService } from '../../parks/pairi-daiza/pairi-daiza.service';
+import { FamilyparkService } from '../../parks/familypark/familypark/familypark.service';
 
 @Injectable()
 export class ParksService {
@@ -124,6 +125,7 @@ export class ParksService {
     private readonly _marineLandCoteDazur: MarinelandCoteDazurService,
     private readonly _merlinEntertainmentsService: MerlinEntertainmentsService,
     private readonly _pairiDaizaService: PairiDaizaService,
+    private readonly _familyParkService: FamilyparkService
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -173,6 +175,7 @@ export class ParksService {
     this._parks.push(_mirabilandia)
     this._parks.push(_marineLandCoteDazur)
     this._parks.push(_pairiDaizaService)
+    this._parks.push(_familyParkService)
 
     this._companies = [];
     this._companies.push(_sixflagsService);
