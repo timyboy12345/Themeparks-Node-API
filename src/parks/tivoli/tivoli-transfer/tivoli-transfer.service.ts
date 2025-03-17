@@ -26,12 +26,12 @@ export class TivoliTransferService extends TransferService {
     }
 
     if (poi.MediaListImages) {
-      p.images = poi.MediaListImages;
+      p.images = poi.MediaListImages.map(this.imageUrl);
     }
 
     if (poi.IntroductionImage) {
-      p.previewImage = poi.IntroductionImage;
-      p.image_url = poi.IntroductionImage;
+      p.previewImage = this.imageUrl(poi.IntroductionImage);
+      p.image_url = this.imageUrl(poi.IntroductionImage);
     }
 
     if (poi.Placement) {
@@ -57,73 +57,73 @@ export class TivoliTransferService extends TransferService {
             r.facts.push({
               id: 'build_in',
               type: 'build_in',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'Capacity':
             r.facts.push({
               id: 'capacity',
               type: 'capacity',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'G-effect':
             r.facts.push({
               id: 'g_forces',
               type: 'g_forces',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'Length of ride':
             r.facts.push({
               id: 'length',
               type: 'length',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'Height':
             r.facts.push({
               id: 'height',
               type: 'height',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'Maker':
             r.facts.push({
               id: 'manufacturer',
               type: 'manufacturer',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'Speed':
             r.facts.push({
               id: 'speed',
               type: 'speed',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'Ride time':
             r.facts.push({
               id: 'duration',
               type: 'duration',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           case 'Number of passengers per ride':
             r.facts.push({
               id: 'passengers_per_car',
               type: 'passengers_per_car',
-              value: fact.Value
-            })
+              value: fact.Value,
+            });
             break;
           default:
             break;
         }
-      })
+      });
     }
 
     if (ride.AccessAge) {
-      const age = Number(ride.AccessAge.replace(/\D+/g, ""))
+      const age = Number(ride.AccessAge.replace(/\D+/g, ''));
 
       if (age) {
         r.minAgeWithoutEscort = age;
@@ -175,9 +175,13 @@ export class TivoliTransferService extends TransferService {
           open: moment(`${oh.Date} ${oh.FromHour}:${oh.FromMinute}`).tz('Europe/Copenhagen').format(),
           openTime: `${oh.FromHour}:${oh.FromMinute}`,
           close: moment(`${oh.Date} ${oh.UntilHour}:${oh.UntilMinute}`).tz('Europe/Copenhagen').format(),
-          closeTime: `${oh.UntilHour}:${oh.UntilMinute}`
-        }]
-      }
-    })
+          closeTime: `${oh.UntilHour}:${oh.UntilMinute}`,
+        }],
+      };
+    });
+  }
+
+  private imageUrl(slug: string): string {
+    return encodeURI(`https://tivoli.dk${slug}`);
   }
 }

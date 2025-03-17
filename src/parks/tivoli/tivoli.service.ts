@@ -27,7 +27,7 @@ export class TivoliService extends ThroughPoisThemeParkService {
       name: 'Tivoli',
       description: 'Tivoli is een attractiepark in het centrum van Kopenhagen en is gelegen naast het Københavns Hovedbanegård en vlak bij Rådhuspladsen. Het park geniet grote bekendheid binnen en buiten Denemarken.',
       countryCode: 'dk',
-      image: 'https://img.itinari.com/activity/images/original/827537bb-e1fa-4335-a647-739ff7acebd9-istock-458432813.jpg?ch=DPR&dpr=1&w=1200&h=800&s=53d46ec4ff38ef956795ecc46d5c95c7',
+      image: 'https://www.visitdenmark.nl/sites/visitdenmark.com/files/2019-03/Tivoli_Photo_Martin%20Heiberg_Copenhagen%20Media%20Center.jpg',
     };
   }
 

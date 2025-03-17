@@ -21,12 +21,14 @@ In the table below you will find the parks that are currently supported and the 
 | 🇨🇦 La Ronde, Montreal | 🎡 | True | True | True | True | False |
 | 🇩🇪 Phantasialand | 🎡 | True | True | True | True | False |
 | 🇩🇪 Holiday Park | 🎡 | True | True | True | True | False |
-| 🇩🇪 LegoLand Deutschland | 🎡 | True | True | True | True | False |
 | 🇩🇪 Hansa Park | 🎡 | True | True | True | True | False |
 | 🇩🇪 Movie Park Germany | 🎡 | True | True | True | True | True |
-| 🇩🇪 Heidi Park | 🎡 | True | True | True | True | False |
+| 🇩🇪 Europa Park | 🎡 | True | True | True | True | False |
+| 🇩🇪 Rulantica | 🌊 | True | True | True | True | False |
+| 🇩🇪 Heide Park | 🎡 | True | True | True | True | False |
 | 🇩🇪 LegoLand Deutschland | 🎡 | True | True | True | True | False |
 | 🇩🇰 Tivoli | 🎡 | True | True | True | False | False |
+| 🇩🇰 Djurs Sommerland | 🎡 | True | True | True | True | False |
 | 🇩🇰 LegoLand Billund | 🎡 | True | True | True | True | False |
 | 🇪🇸 Portaventura | 🎡 | True | True | True | True | False |
 | 🇪🇸 Ferrari Land | 🎡 | True | True | True | True | False |
@@ -39,12 +41,12 @@ In the table below you will find the parks that are currently supported and the 
 | 🇫🇷 Parc Asterix | 🎡 | True | True | True | False | False |
 | 🇫🇷 Futuroscope | 🎡 | True | True | True | True | False |
 | 🇫🇷 Marineland Cote D'azure | 🎡 | True | True | True | True | False |
+| 🇫🇷 Puy de Fou | 🎡 | False | True | True | False | False |
 | 🇬🇧 Thorpe Park | 🎡 | True | True | True | True | False |
 | 🇬🇧 Alton Towers | 🎡 | True | True | True | True | False |
 | 🇬🇧 Paultons Park | 🎡 | True | True | True | True | False |
 | 🇬🇧 Chessington world of Adventures | 🎡 | True | True | True | True | False |
 | 🇬🇧 Legoland Windsor Resort | 🎡 | True | True | True | True | False |
-| 🇮🇹 Gardaland | 🎡 | True | True | True | False | False |
 | 🇮🇹 Mirabilandia | 🎡 | True | True | False | True | False |
 | 🇮🇹 Gardaland | 🎡 | True | True | True | False | False |
 | 🇳🇱 Efteling | 🎡 | True | True | True | True | False |
@@ -115,13 +117,12 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Legoland California | 🎡 | True | True | True | True | False |
 
 ## Parks on the planning
+If you have any tips, you can always reach out to me via info@themeparkplanner.com.
 
-UK: Pleasure Beach, LegoLand Windsor, Drayton Manor
+UK: Pleasure Beach, Drayton Manor
 IT: Cincetitta World
 ES: Puy de Fou Espana
-DE: Europapark, Rulantica, Heidi Park
-FR: Puy de Fou
-DM: Legoland Billund, Djurs Sommerland, Farup Sommerland
+DK: Fårup Sommerland (Has no API)
 
 ## Description
 

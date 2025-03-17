@@ -6,6 +6,7 @@ import { UniversalTransferService } from '../universal-transfer/universal-transf
 import { ConfigService } from '@nestjs/config';
 import { ThroughPoisThemeParkService } from '../../../_services/themepark/through-pois-theme-park.service';
 import * as Sentry from '@sentry/node';
+import { AxiosError } from 'axios';
 
 @Injectable()
 export class UniversalBaseService extends ThroughPoisThemeParkService {
@@ -61,9 +62,9 @@ export class UniversalBaseService extends ThroughPoisThemeParkService {
     })
       .toPromise()
       .then((res) => this.transfer.transferDataObjectToPois(res.data, this.getVenueId()))
-      .catch((err) => {
-        Sentry.captureException(err);
-        throw new InternalServerErrorException(err);
+      .catch((err: AxiosError) => {
+        Sentry.captureException(err.response);
+        throw new InternalServerErrorException(err.response);
       });
   }
 }

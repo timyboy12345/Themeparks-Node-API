@@ -25,9 +25,8 @@ describe('EftelingService', () => {
     expect(service.getInfo().id).toBeDefined();
   });
 
-  // TODO: Fix Efteling
-  // it('should return a list of POIs', async () => {
-  //   const data = await service.getPois();
-  //   expect(data).toBeInstanceOf(Array);
-  // });
+  it('should return a list of POIs', async () => {
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
+  });
 });

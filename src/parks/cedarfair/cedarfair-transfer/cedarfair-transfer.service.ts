@@ -81,7 +81,7 @@ export class CedarfairTransferService extends TransferService {
       };
     }
 
-    const baseURL: string = 'https://prod.cf-mobile.com';
+    const baseURL: string = 'https://cdn-cloudfront.cfauthx.com/binaries';
 
     if (poi.image) {
       p.image_url = baseURL + poi.image;

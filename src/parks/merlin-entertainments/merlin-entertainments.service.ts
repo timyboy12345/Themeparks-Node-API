@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CompanyService } from '../../_services/company/company.service';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
-import { HeidiParkService } from './heidi-park/heidi-park.service';
+import { HeideParkService } from './heide-park/heide-park.service';
 import { GardalandService } from './gardaland/gardaland.service';
 import { LegolandDeutschlandService } from './legoland-deutschland/legoland-deutschland.service';
 import { LegolandBillundService } from './legoland-billund/legoland-billund.service';
@@ -10,7 +10,7 @@ import { LegolandWindsorResortService } from './legoland-windsor-resort/legoland
 
 @Injectable()
 export class MerlinEntertainmentsService extends CompanyService{
-  constructor(private _heidiPark: HeidiParkService,
+  constructor(private _heidePark: HeideParkService,
               private _gardaland: GardalandService,
               private _legolandDeutschland: LegolandDeutschlandService,
               private _legolandBillund: LegolandBillundService,
@@ -21,7 +21,7 @@ export class MerlinEntertainmentsService extends CompanyService{
 
   async getParkServices(): Promise<ThemeParkService[]> {
     return [
-      this._heidiPark,
+      this._heidePark,
       this._gardaland,
       this._legolandDeutschland,
       this._legolandBillund,

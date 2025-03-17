@@ -1,6 +1,7 @@
 export interface PoiFact {
   id: string;
   type:
+    | 'opened'
     | 'build_in'
     | 'length'
     | 'speed'

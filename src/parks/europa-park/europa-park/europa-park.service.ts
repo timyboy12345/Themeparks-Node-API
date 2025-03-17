@@ -1,18 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
-import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
-import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
+import { EuropaParkBaseService } from '../europa-park-base/europa-park-base.service';
 
 @Injectable()
-export class EuropaParkService extends ThemeParkService {
+export class EuropaParkService extends EuropaParkBaseService {
   getInfo(): ThemePark {
     return {
       id: 'europa-park',
       timezone: 'Europa/Berlin',
       parkType: ParkType.THEMEPARK,
       countryCode: 'de',
-      description: '',
-      image: '',
+      description: 'Europa-Park, geopend in 1975, is een attractiepark bij Rust in de Duitse deelstaat Baden-Württemberg. Het thema is het werelddeel Europa met haar verschillende landen. In 2023 was het na het Disneyland (Park) in Parijs het meest bezochte attractiepark van Europa',
+      image: 'https://corporate.europapark.com/typo3temp/_processed_/csm_corporate_europa-park_210997ef71.jpg',
       name: 'Europa Park',
       location: {
         lat: 48.26608365626527,
@@ -21,25 +20,7 @@ export class EuropaParkService extends ThemeParkService {
     };
   }
 
-  getSupports(): ThemeParkSupports {
-    return {
-      supportsAnimals: false,
-      supportsEvents: false,
-      supportsOpeningTimes: false,
-      supportsOpeningTimesHistory: false,
-      supportsPoiLocations: false,
-      supportsPois: true,
-      supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: false,
-      supportsRideWaitTimes: false,
-      supportsRideWaitTimesHistory: false,
-      supportsRides: true,
-      supportsShopOpeningTimes: false,
-      supportsShops: false,
-      supportsShowTimes: false,
-      supportsShows: false,
-      supportsTranslations: false,
-      textType: "UNDEFINED",
-    };
+  getParkName(){
+    return "europapark"
   }
 }

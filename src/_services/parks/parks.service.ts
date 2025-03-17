@@ -14,7 +14,6 @@ import { BellewaerdeService } from '../../parks/bellewaerde/bellewaerde/bellewae
 import { DippieDoeService } from '../../parks/dippiedoe/dippie-doe.service';
 import { HolidayParkService } from '../../parks/holiday-park/holiday-park.service';
 import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service';
-import { LegolandDeutschlandService } from '../../parks/merlin-entertainments/legoland-deutschland/legoland-deutschland.service';
 import { CompanyService } from '../company/company.service';
 import { SixflagsService } from '../../parks/sixflags/sixflags.service';
 import { BobbejaanlandService } from '../../parks/parques-reunidos/bobbejaanland/bobbejaanland.service';
@@ -55,14 +54,17 @@ import {
 import { HersheyparkService } from '../../parks/hersheypark/hersheypark.service';
 import { SeaworldService } from '../../parks/seaworld/seaworld.service';
 import { UniversalService } from '../../parks/universal/universal.service';
-import { GardalandService } from '../../parks/merlin-entertainments/gardaland/gardaland.service';
 import { MirabilandiaService } from '../../parks/parques-reunidos/mirabilandia/mirabilandia.service';
 import {
-  MarinelandCoteDazurService
+  MarinelandCoteDazurService,
 } from '../../parks/parques-reunidos/marineland-cote-dazur/marineland-cote-dazur.service';
 import { MerlinEntertainmentsService } from '../../parks/merlin-entertainments/merlin-entertainments.service';
 import { PairiDaizaService } from '../../parks/pairi-daiza/pairi-daiza.service';
 import { FamilyparkService } from '../../parks/familypark/familypark/familypark.service';
+import { DjursSommerlandService } from '../../parks/djurs-sommerland/djurs-sommerland.service';
+import { PuyDeFouService } from '../../parks/puy-de-fou/puy-de-fou.service';
+import { EuropaParkService } from '../../parks/europa-park/europa-park/europa-park.service';
+import { RulanticaService } from '../../parks/europa-park/rulantica/rulantica.service';
 
 @Injectable()
 export class ParksService {
@@ -86,7 +88,6 @@ export class ParksService {
     private readonly _dippieDoeService: DippieDoeService,
     private readonly _holidayParkService: HolidayParkService,
     private readonly _hellendoornService: HellendoornService,
-    private readonly _legolandDeutschlandService: LegolandDeutschlandService,
     private readonly _sixflagsService: SixflagsService,
     private readonly _bobbejaanlandService: BobbejaanlandService,
     private readonly _plopsalandDePanneService: PlopsalandDePanneService,
@@ -120,12 +121,15 @@ export class ParksService {
     private readonly _hersheypark: HersheyparkService,
     private readonly _seaworldCompanyService: SeaworldService,
     private readonly _universalService: UniversalService,
-    private readonly _gardaland: GardalandService,
     private readonly _mirabilandia: MirabilandiaService,
     private readonly _marineLandCoteDazur: MarinelandCoteDazurService,
     private readonly _merlinEntertainmentsService: MerlinEntertainmentsService,
     private readonly _pairiDaizaService: PairiDaizaService,
-    private readonly _familyParkService: FamilyparkService
+    private readonly _familyParkService: FamilyparkService,
+    private readonly _djursSommerlandService: DjursSommerlandService,
+    private readonly _puyDeFou: PuyDeFouService,
+    private readonly _europaParkService: EuropaParkService,
+    private readonly _rulanticaService: RulanticaService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -144,7 +148,6 @@ export class ParksService {
     this._parks.push(_dippieDoeService);
     this._parks.push(_holidayParkService);
     this._parks.push(_hellendoornService);
-    this._parks.push(_legolandDeutschlandService);
     this._parks.push(_bobbejaanlandService);
     this._parks.push(_plopsalandDePanneService);
     this._parks.push(_hansaParkService);
@@ -171,11 +174,13 @@ export class ParksService {
     this._parks.push(_parqueWarnerMadridBeach);
     this._parks.push(_futuroscope);
     this._parks.push(_hersheypark);
-    this._parks.push(_gardaland)
-    this._parks.push(_mirabilandia)
-    this._parks.push(_marineLandCoteDazur)
-    this._parks.push(_pairiDaizaService)
-    this._parks.push(_familyParkService)
+    this._parks.push(_mirabilandia);
+    this._parks.push(_marineLandCoteDazur);
+    this._parks.push(_pairiDaizaService);
+    this._parks.push(_familyParkService);
+    this._parks.push(_djursSommerlandService);
+    this._parks.push(_europaParkService);
+    this._parks.push(_rulanticaService);
 
     this._companies = [];
     this._companies.push(_sixflagsService);
@@ -183,6 +188,7 @@ export class ParksService {
     this._companies.push(_seaworldCompanyService);
     this._companies.push(_universalService);
     this._companies.push(_merlinEntertainmentsService);
+    this._companies.push(_puyDeFou);
   }
 
   public async getParks(): Promise<ThemeParkService[]> {

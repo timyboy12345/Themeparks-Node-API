@@ -8,7 +8,6 @@ import { CompagnieDesAlpesModule } from '../compagnie-des-alpes/compagnie-des-al
 import { LocaleModule } from '../../_services/locale/locale.module';
 
 @Module({
-
   imports: [
     HttpModule,
     CompagnieDesAlpesModule,

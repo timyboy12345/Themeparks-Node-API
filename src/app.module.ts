@@ -28,6 +28,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { Push } from './database/push/push.entity';
 import { NotificationsService } from './_services/notifications/notifications.service';
 import { DailyAnalysisService } from './schedules/daily-analysis/daily-analysis.service';
+import { MeilisearchService } from './schedules/meilisearch/meilisearch.service';
 
 @Module({
   imports: [
@@ -77,6 +78,7 @@ import { DailyAnalysisService } from './schedules/daily-analysis/daily-analysis.
     AioTransferServiceService,
     NotificationsService,
     DailyAnalysisService,
+    MeilisearchService,
   ],
 })
 export class AppModule {

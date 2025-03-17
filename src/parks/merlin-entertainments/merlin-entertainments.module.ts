@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MerlinEntertainmentsService } from './merlin-entertainments.service';
-import { HeidiParkService } from './heidi-park/heidi-park.service';
+import { HeideParkService } from './heide-park/heide-park.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { AioTransferServiceService } from '../../_services/aio/transfer-service/aio-transfer-service.service';
@@ -11,7 +11,7 @@ import { LegolandCaliforniaService } from './legoland-california/legoland-califo
 import { LegolandWindsorResortService } from './legoland-windsor-resort/legoland-windsor-resort.service';
 
 @Module({
-  providers: [MerlinEntertainmentsService, HeidiParkService, GardalandService, AioTransferServiceService, LegolandDeutschlandService, LegolandBillundService, LegolandBillundService, LegolandCaliforniaService, LegolandWindsorResortService],
+  providers: [MerlinEntertainmentsService, HeideParkService, GardalandService, AioTransferServiceService, LegolandDeutschlandService, LegolandBillundService, LegolandBillundService, LegolandCaliforniaService, LegolandWindsorResortService],
   imports: [
     HttpModule,
     ConfigModule.forRoot({
@@ -20,7 +20,7 @@ import { LegolandWindsorResortService } from './legoland-windsor-resort/legoland
       ignoreEnvFile: false,
     }),
   ],
-  exports: [MerlinEntertainmentsService, HeidiParkService, GardalandService, LegolandDeutschlandService, LegolandBillundService],
+  exports: [MerlinEntertainmentsService, HeideParkService, GardalandService, LegolandDeutschlandService, LegolandBillundService],
 })
 export class MerlinEntertainmentsModule {
 }
