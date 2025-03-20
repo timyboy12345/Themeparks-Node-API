@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ParcAsterixService } from './parc-asterix.service';
 import { ParcAsterixTransferService } from './parc-asterix-transfer/parc-asterix-transfer.service';
@@ -13,9 +13,9 @@ import { LocaleModule } from '../../_services/locale/locale.module';
       cache: false,
       ignoreEnvFile: false,
     }),
-    LocaleModule
+    LocaleModule,
   ],
-  providers: [ParcAsterixService, ParcAsterixTransferService],
+  providers: [ParcAsterixService, ParcAsterixTransferService, Logger],
   exports: [ParcAsterixService],
 })
 export class ParcAsterixModule {

@@ -41,7 +41,7 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: this.supportsShows(),
       supportsTranslations: false,
-      textType: "UNDEFINED",
+      textType: 'UNDEFINED',
     };
   }
 
@@ -78,7 +78,7 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
   }
 
   public getApiKey(): string {
-    return 'r6uko7sdv4dq-btw'
+    return 'r6uko7sdv4dq-btw';
   }
 
   public getUserAgent(): string {
@@ -107,7 +107,14 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
     const raw = await (this.request('attractions'));
     const rides = this.transfer.transferRidesToPois(raw);
 
-    if (this.getRealTimeURL()) {
+    let supportsWaitTimes = false;
+    try {
+      this.getRealTimeURL();
+    } catch {
+      supportsWaitTimes = false;
+    }
+
+    if (supportsWaitTimes) {
       const waitTimes = await this.getWaitTimes()
         .catch((exception) => {
           Sentry.captureException(exception);

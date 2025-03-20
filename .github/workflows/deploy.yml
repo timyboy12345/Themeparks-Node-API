@@ -50,6 +50,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Upload Sourcemaps
+        run: SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} npm run sentry:sourcemaps
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:

@@ -1,14 +1,15 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../_interfaces/poi.interface';
 import { ParcAsterixTransferService } from './parc-asterix-transfer/parc-asterix-transfer.service';
-import { ParcAsterixResponseInterface } from './interfaces/parc-asterix-response.interface';
 import { HttpService } from '@nestjs/axios';
 import { LocaleService } from '../../_services/locale/locale.service';
 import * as Sentry from '@sentry/node';
+import * as fs from 'fs';
+import * as unzipper from 'unzipper';
 
 @Injectable()
 export class ParcAsterixService extends ThemeParkService {
@@ -17,7 +18,8 @@ export class ParcAsterixService extends ThemeParkService {
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
               private readonly parcAsterixTransferService: ParcAsterixTransferService,
-              private readonly localeService: LocaleService) {
+              private readonly localeService: LocaleService,
+              private readonly logger: Logger) {
     super();
 
     this._parcAsterixApiUrl = this.configService.get('PARC_ASTERIX_API_URL');
@@ -55,84 +57,147 @@ export class ParcAsterixService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: false,
       supportsTranslations: false,
-      textType: 'UNDEFINED',
+      textType: 'MARKDOWN',
       supportsEvents: false,
     };
   }
 
-  async getRides(): Promise<Poi[]> {
-    return this
-      .request<ParcAsterixResponseInterface>(`?operationName=getAttractions&variables=%7B%22language%22%3A%22${this.getLocale()}%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%225609363783d826ec6c460caa620e3ca28e651897febf6753159836ab72d8139b%22%7D%7D`)
-      .then(attractionsResponse =>
-        this.parcAsterixTransferService.transferRidesToPois(attractionsResponse.data.data.openAttractions)).catch((reason) => {
-        Sentry.captureException(reason);
-        console.error(reason);
-        throw new InternalServerErrorException(reason);
-      });
-  }
-
-  async getRestaurants(): Promise<Poi[]> {
-    return this
-      .request<ParcAsterixResponseInterface>(`?operationName=restaurants&variables=%7B%22language%22%3A%22${this.getLocale()}%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22857561404b9f5c69e651d74e0f5c0403f5bd3bd02491a0958d11d60bd8526cc9%22%7D%7D`)
-      .then(restaurantsResponse =>
-        this.parcAsterixTransferService.transferRestaurantsToPois(restaurantsResponse.data.data.restaurants)).catch((reason) => {
-        Sentry.captureException(reason);
-        console.error(reason);
-        throw new InternalServerErrorException(reason);
-      });
-  }
-
-  async getShows(): Promise<Poi[]> {
-    return this
-      .request<ParcAsterixResponseInterface>(`?operationName=spectacles&variables=%7B%22language%22%3A%22${this.getLocale()}%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22a3a067a0edbfb3666228d5d966d5933b1572e271b4c7f2858ce1758a2490227e%22%7D%7D`)
-      .then(showsResponse =>
-        this.parcAsterixTransferService.transferShowsToPois(showsResponse.data.data.openShows))
-      .catch((reason) => {
-        Sentry.captureException(reason);
-        console.error(reason);
-        throw new InternalServerErrorException(reason);
-      });
-  }
-
-  async getHotels(): Promise<Poi[]> {
-    return this
-      .request<ParcAsterixResponseInterface>('?operationName=hotels&variables=%7B%22language%22%3A%22fr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2243b7bf45e8b05c64c76ba5285ec32d998d00c2d434cac37eb8f5f562b92156a4%22%7D%7D')
-      .then(hotelsResponse =>
-        this.parcAsterixTransferService.transferShowsToPois(hotelsResponse.data.data.openShows)).catch((reason) => {
-        Sentry.captureException(reason);
-        console.error(reason);
-        throw new InternalServerErrorException(reason);
-      });
-  }
-
   async getPois(): Promise<Poi[]> {
-    const promises = [
-      this.getRides(),
-      this.getRestaurants(),
-      this.getShows(),
-    ];
+    const folder = `${process.cwd()}/storage/parc-asterix`;
+    const file = 'parc-asterix.zip';
 
-    return []
-      .concat
-      .apply([], await Promise.all(promises));
+    // TODO: Add a system that invalidates old information (fs.stat or fs.statSync?)
+    const fileExists = fs.existsSync(`${folder}/unpackage/pax_en.sqlite`);
+    if (!fileExists) {
+      this.logger.debug(' - Downloading Files');
+
+      const download = await this.downloadZip(folder, file);
+      const unpackage = await this.unpackageZip(folder, file);
+    }
+
+    switch (this.getLocale()) {
+      case 'fr':
+        return this.getPoisFromFile(`${folder}/unpackage/pax_fr.sqlite`);
+      case 'nl':
+        return this.getPoisFromFile(`${folder}/unpackage/pax_nl.sqlite`);
+      case 'es':
+        return this.getPoisFromFile(`${folder}/unpackage/pax_es.sqlite`);
+      default:
+        return this.getPoisFromFile(`${folder}/unpackage/pax_en.sqlite`);
+    }
   }
 
-  private request<T>(url: string, count = 0) {
-    const fullUrl = this._parcAsterixApiUrl + url;
-    return this.httpService.get<T>(fullUrl).toPromise().then((r) => {
-      // @ts-ignore
-      if (!r.data.data && count < 5) {
-        return this.request(url, count + 1);
-      }
+  private async downloadZip(downloadFolder: string, fileName: string) {
+    this.logger.debug(' - Downloading PA zip');
 
-      return r;
+    if (!fs.existsSync(downloadFolder)) {
+      fs.mkdirSync(downloadFolder);
+    }
+
+    const baseUrl = this._parcAsterixApiUrl;
+
+    this.logger.debug(' - Fetching ZIP url');
+
+    const fileUrl = await this.httpService.get(`${baseUrl}`, {
+      params: {
+        'operationName': 'offlinePackageLast',
+        'variables': {},
+        'extensions': {
+          persistedQuery: {
+            version: 1,
+            sha256Hash: '309702a5c744f3389a4cc971c589dfb351d4548701899f6335c17f8095d94982',
+          },
+        },
+      },
+    })
+      .toPromise()
+      .then((r) => r.data.data.offlinePackageLast.url)
+      .catch((e) => {
+        console.error(e);
+        Sentry.captureException(e);
+        throw new InternalServerErrorException('Could not download Parc Asterix POI zip file');
+      });
+
+    this.logger.debug(' - Fetching file from ' + fileUrl);
+
+    const logger = this.logger;
+
+    await this.httpService.request({
+      url: fileUrl,
+      responseType: 'arraybuffer',
+    })
+      .toPromise()
+      .then(value => {
+        fs.writeFile(`${downloadFolder}/${fileName}`, value.data, function(err) {
+          logger.debug(' - ZIP has been fetched');
+
+          if (err) {
+            Sentry.captureException(err);
+            return Promise.reject(err);
+          } else {
+            return Promise.resolve();
+          }
+        });
+      })
+      .catch(reason => {
+        Sentry.captureException(reason);
+        console.error(reason);
+        return Promise.reject(reason);
+      });
+  }
+
+  private async unpackageZip(downloadFolder: string, fileName: string) {
+    this.logger.debug(' - Unzipping zip');
+
+    return new Promise((resolve) => {
+      fs.createReadStream(`${downloadFolder}/${fileName}`)
+        .pipe(unzipper.Extract({ path: `${downloadFolder}/unpackage` }))
+        .on('close', () => {
+          return Promise.resolve();
+        })
+        .on('error', (e) => {
+          Sentry.captureException(e);
+          console.error(e);
+          return Promise.reject();
+        })
+        .on('end', () => {
+          return Promise.reject();
+        });
     });
+  }
+
+  private async getPoisFromFile(filePath: string) {
+    const Database = require('better-sqlite3');
+    let db = new Database(filePath, { fileMustExist: true });
+
+    let pois = [];
+
+    const rides: any[] = db.prepare('SELECT * FROM attractions').all();
+    pois = pois.concat(this.parcAsterixTransferService.transferRidesToPois(rides));
+
+    const restaurants: any[] = db.prepare('SELECT * FROM restaurants').all();
+    pois = pois.concat(this.parcAsterixTransferService.transferRestaurantsToPois(restaurants));
+
+    const stores: any[] = db.prepare('SELECT * FROM stores').all();
+    pois = pois.concat(this.parcAsterixTransferService.transferShopsToPois(stores));
+
+    // TODO: Fix hotels
+    // const hotels: any[] = db.prepare('SELECT * FROM hotels').all();
+    // pois = pois.concat(this.parcAsterixTransferService.transferHotelsToPois(hotels));
+
+    db.close();
+
+    return pois;
   }
 
   private getLocale(): string {
     switch (this.localeService.getLocale()) {
       case 'fr':
         return 'fr';
+      case 'nl':
+        return 'nl';
+      case 'es':
+        return 'es';
       default:
         return 'en';
     }

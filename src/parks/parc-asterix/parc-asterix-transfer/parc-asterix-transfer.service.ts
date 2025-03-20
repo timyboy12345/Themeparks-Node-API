@@ -1,15 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Poi } from '../../../_interfaces/poi.interface';
-import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
-import { RideCategory } from '../../../_interfaces/ride-category.interface';
 import { TransferService } from '../../../_services/transfer/transfer.service';
-import {
-  ParcAsterixAttractionsExperienceEnum,
-  ParcAsterixResponseAttractionInterface, ParcAsterixResponseHotelInterface,
-  ParcAsterixResponseRestaurantInterface,
-  ParcAsterixResponseShowInterface,
-} from '../interfaces/parc-asterix-response.interface';
 import { ConfigService } from '@nestjs/config';
+import * as sluggo from 'sluggo';
+import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class ParcAsterixTransferService extends TransferService {
@@ -17,112 +11,67 @@ export class ParcAsterixTransferService extends TransferService {
     super();
   }
 
-  transferPoiToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface | ParcAsterixResponseShowInterface | ParcAsterixResponseRestaurantInterface | ParcAsterixResponseHotelInterface): Poi {
-    const baseImageUrl = this.configService.get('PARC_ASTERIX_IMAGE_URL');
-
+  transferPoiToPoi(poi: any, locale?: string): Poi {
     const p: Poi = {
-      id: parcAsterixPoi.id,
-      title: parcAsterixPoi.title,
-      subTitle: parcAsterixPoi.summary,
-      description: parcAsterixPoi.description,
-      category: PoiCategory.UNDEFINED,
-      original: parcAsterixPoi,
+      category: PoiCategory.ATTRACTION,
+      id: sluggo(poi.title),
+      original: poi,
+      title: poi.title,
+      description: poi.description,
+      subTitle: poi.summary,
     };
 
-    // if (parcAsterixPoi.headerV2) {
-    //   p.image_url =
-    // } else if (parcAsterixPoi.headerV1) {
-    //
-    // }
-
-    if (parcAsterixPoi.sliders) {
-      p.images = parcAsterixPoi.sliders.map(slider => `${baseImageUrl}/${slider.picture}`);
-
-      if (p.images && p.images.length > 0) {
-        p.image_url = p.images[0];
-      }
-    }
-
-    return p;
-  }
-
-  public transferRideToPoi(parcAsterixPoi: ParcAsterixResponseAttractionInterface): Poi {
-    const baseImageUrl = this.configService.get('PARC_ASTERIX_IMAGE_URL');
-    const poi = this.transferPoiToPoi(parcAsterixPoi);
-
-    poi.category = PoiCategory.ATTRACTION;
-    poi.featured = parcAsterixPoi.isBest;
-    poi.photoPoint = parcAsterixPoi.hasPicturePoint;
-
-    if (parcAsterixPoi.latitude && parcAsterixPoi.longitude) {
-      poi.location = {
-        lat: parcAsterixPoi.latitude,
-        lng: parcAsterixPoi.longitude,
+    if (poi.latitude && poi.longitude) {
+      p.location = {
+        lat: poi.latitude,
+        lng: poi.longitude,
       };
     }
 
-    if (parcAsterixPoi.experience) {
-      switch (parcAsterixPoi.experience.id) {
-        case ParcAsterixAttractionsExperienceEnum.Petits_Gaulois:
-          poi.rideCategory = RideCategory.KIDS;
-          break;
-        case ParcAsterixAttractionsExperienceEnum.Pour_toute_la_famille:
-          poi.rideCategory = RideCategory.FAMILY;
-          break;
-        case ParcAsterixAttractionsExperienceEnum.Sensations_fortes:
-          poi.rideCategory = RideCategory.THRILL;
-          break;
-        default:
-          break;
-      }
+    if (poi.logo) {
+      const logo = JSON.parse(poi.logo);
+      p.image_url = logo.url;
     }
 
-    const minLengthLabel = parcAsterixPoi.features.find(f => f.label === 'Taille Minimum');
-    const minNotAccompaniedLengthLabel = parcAsterixPoi.features.find(f => f.label === 'Taille Minimale Non Accompagné');
-
-    if (minLengthLabel) {
-      poi.minSizeWithEscort = parseInt(minLengthLabel.value);
+    if (poi.sliders) {
+      const sliders = JSON.parse(poi.sliders);
+      p.images = sliders.map((m) => m.url);
     }
 
-    if (minNotAccompaniedLengthLabel) {
-      poi.minSizeWithoutEscort = parseInt(minNotAccompaniedLengthLabel.value);
+    if (poi.is_best) {
+      p.featured = Boolean(poi.is_best);
     }
 
-    if (this.isAttraction(parcAsterixPoi)) {
-      const headerImage = parcAsterixPoi.headerV2 || parcAsterixPoi.headerV1;
-
-      if (headerImage) {
-        poi.image_url = `${baseImageUrl}/${headerImage}`
-      }
+    if (poi.min_size) {
+      p.minSizeWithEscort = poi.min_size;
     }
 
-    return poi;
-  }
+    if (poi.min_size_unaccompanied) {
+      p.minSizeWithoutEscort = poi.min_size_unaccompanied;
+    }
 
-  transferShowToPoi(show: ParcAsterixResponseShowInterface): Poi {
-    const p = this.transferPoiToPoi(show);
-    p.category = PoiCategory.SHOW;
-    return p;
-  }
-
-  transferRestaurantToPoi(restaurant: ParcAsterixResponseRestaurantInterface): Poi {
-    const p = this.transferPoiToPoi(restaurant);
-    p.category = PoiCategory.RESTAURANT;
-    return p;
-  }
-
-  transferHotelToPoi(hotel: ParcAsterixResponseHotelInterface): Poi {
-    const p = this.transferPoiToPoi(hotel);
-    p.category = PoiCategory.HOTEL;
+    p.photoPoint = Boolean(poi.has_picture_point);
 
     return p;
   }
 
-  private isAttraction(poi: any): poi is ParcAsterixResponseAttractionInterface {
-    return poi.__typename === 'Attraction'
+  transferRideToPoi(ride: any, locale?: string): Poi {
+    return { ...this.transferPoiToPoi(ride), category: PoiCategory.ATTRACTION };
   }
 
-  private isHotel(poi: any): poi is ParcAsterixResponseHotelInterface {
-    return poi.__typename === 'Hotel'
+  transferHotelToPoi(ride: any, locale?: string): Poi {
+    return { ...this.transferPoiToPoi(ride), category: PoiCategory.HOTEL };
+  }
+
+  transferShopToPoi(ride: any, locale?: string): Poi {
+    return { ...this.transferPoiToPoi(ride), category: PoiCategory.SHOP };
+  }
+
+  transferShowToPoi(ride: any, locale?: string): Poi {
+    return { ...this.transferPoiToPoi(ride), category: PoiCategory.SHOW };
+  }
+
+  transferRestaurantToPoi(ride: any, locale?: string): Poi {
+    return { ...this.transferPoiToPoi(ride), category: PoiCategory.RESTAURANT };
   }
 }

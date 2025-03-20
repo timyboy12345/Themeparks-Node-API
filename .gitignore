@@ -46,3 +46,6 @@ SERVER.md
 /public/
 
 /google-cloud-key.json
+
+# Sentry Config File
+.sentryclirc

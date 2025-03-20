@@ -4,6 +4,7 @@ import { ParcAsterixTransferService } from './parc-asterix-transfer/parc-asterix
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { LocaleModule } from '../../_services/locale/locale.module';
+import { Logger } from '@nestjs/common';
 
 describe('ParkAsterixService', () => {
   let service: ParcAsterixService;
@@ -11,7 +12,7 @@ describe('ParkAsterixService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
-      providers: [ParcAsterixService, ParcAsterixTransferService],
+      providers: [ParcAsterixService, ParcAsterixTransferService, Logger],
     }).compile();
 
     service = module.get<ParcAsterixService>(ParcAsterixService);
@@ -21,12 +22,12 @@ describe('ParkAsterixService', () => {
     expect(service).toBeDefined();
   });
 
-  // it('should return info', () => {
-  //   expect(service.getInfo().id).toBeDefined();
-  // });
-  //
-  // it('should return a list of POIs', async () => {
-  //   const data = await service.getPois();
-  //   expect(data).toBeInstanceOf(Array);
-  // });
+  it('should return info', () => {
+    expect(service.getInfo().id).toBeDefined();
+  });
+
+  it('should return a list of POIs', async () => {
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
+  });
 });

@@ -30,9 +30,10 @@ export class BellewaerdeService extends CompagnieDesAlpesBaseService {
     return 'https://www.bellewaerde.be';
   }
 
-  getRealTimeURL(): string {
-    return 'https://bellewaer.de/realtime/api/api-realtime.php';
-  }
+  // TODO: Find new realtime URL
+  // getRealTimeURL(): string {
+  //   return 'https://bellewaer.de/realtime/api/api-realtime.php';
+  // }
 
   getLocaleCode(l): string {
     switch (l) {

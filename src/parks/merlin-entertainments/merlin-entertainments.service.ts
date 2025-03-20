@@ -9,7 +9,7 @@ import { LegolandCaliforniaService } from './legoland-california/legoland-califo
 import { LegolandWindsorResortService } from './legoland-windsor-resort/legoland-windsor-resort.service';
 
 @Injectable()
-export class MerlinEntertainmentsService extends CompanyService{
+export class MerlinEntertainmentsService extends CompanyService {
   constructor(private _heidePark: HeideParkService,
               private _gardaland: GardalandService,
               private _legolandDeutschland: LegolandDeutschlandService,
@@ -26,7 +26,7 @@ export class MerlinEntertainmentsService extends CompanyService{
       this._legolandDeutschland,
       this._legolandBillund,
       this._legolandCalifornia,
-      this._legolandWindsor
+      this._legolandWindsor,
     ];
   }
 }

@@ -1,22 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-
-const Sentry = require("@sentry/node");
-
 import { join } from 'path';
+import * as Sentry from '@sentry/node';
 
-// If taking advantage of automatic instrumentation (highly recommended)
-import { Integrations as TracingIntegrations } from "@sentry/tracing";
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ValidationPipe } from '@nestjs/common';
+import { nodeProfilingIntegration } from '@sentry/profiling-node';
 
 Sentry.init({
   dsn: 'https://23fa5a724def4d8bbc58845111e300b2@o324258.ingest.sentry.io/5668770',
 
-  // This enables automatic instrumentation (highly recommended), but is not
-  // necessary for purely manual usage
-  integrations: [new TracingIntegrations.BrowserTracing()],
+  integrations: [
+    nodeProfilingIntegration(),
+  ],
 
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
@@ -39,7 +36,7 @@ async function bootstrap() {
     .build();
 
   app.useStaticAssets(join(__dirname, '..', 'public'), {
-    prefix: '/data/'
+    prefix: '/data/',
   });
 
   app.useGlobalPipes(new ValidationPipe());

@@ -63,8 +63,10 @@ export class UniversalBaseService extends ThroughPoisThemeParkService {
       .toPromise()
       .then((res) => this.transfer.transferDataObjectToPois(res.data, this.getVenueId()))
       .catch((err: AxiosError) => {
-        Sentry.captureException(err.response);
-        throw new InternalServerErrorException(err.response);
+        // Sentry.captureException(err.response);
+        // throw new InternalServerErrorException(err.response);
+        Sentry.captureException("Could not fetch Universal wait times")
+        throw new InternalServerErrorException("Something went wrong while fetching Universal POIs");
       });
   }
 }
