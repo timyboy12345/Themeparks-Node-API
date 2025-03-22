@@ -18,6 +18,9 @@ Sentry.init({
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
   tracesSampleRate: 1.0,
+  // Set sampling rate for profiling
+  // This is relative to tracesSampleRate
+  profilesSampleRate: 1.0,
 });
 
 async function bootstrap() {

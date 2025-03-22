@@ -102,9 +102,16 @@ supportsEvents: false,
         return value.data;
       })
       .catch((reason: AxiosError) => {
-        Sentry.captureException(reason);
+        // Sentry.captureException(reason);
         // console.error(reason.response.data);
         // console.error(reason.request.headers);
+
+        Sentry.withScope(function (scope) {
+          scope.setFingerprint(['get', url, String(reason.response.status)]);
+          scope.setTransactionName('get-six-flags-data');
+          scope.captureException(reason);
+        });
+
         return null;
       });
   }

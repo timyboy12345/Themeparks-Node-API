@@ -147,17 +147,22 @@ export interface Poi {
   tags?: string[];
 
   /**
-   * The header image of this ride
+   * The header image of this poi
    */
   image_url?: string;
 
   /**
-   * An array of urls on which images of this attraction can be found
+   * The logo of the poi
+   */
+  logo?: string;
+
+  /**
+   * An array of urls on which images of this poi can be found
    */
   images?: string[];
 
   /**
-   * A preview image for this ride (a smaller image that does not require as much bandwith)
+   * A preview image for this ride (a smaller image that does not require as much bandwidth)
    */
   previewImage?: string;
 

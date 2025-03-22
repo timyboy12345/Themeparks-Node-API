@@ -29,9 +29,11 @@ import { Push } from './database/push/push.entity';
 import { NotificationsService } from './_services/notifications/notifications.service';
 import { DailyAnalysisService } from './schedules/daily-analysis/daily-analysis.service';
 import { MeilisearchService } from './schedules/meilisearch/meilisearch.service';
+import { SentryModule } from '@sentry/nestjs/setup';
 
 @Module({
   imports: [
+    SentryModule,
     HttpModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
@@ -39,7 +41,7 @@ import { MeilisearchService } from './schedules/meilisearch/meilisearch.service'
       ignoreEnvFile: false,
     }),
     CacheModule.register({
-      ttl: 60 * 5,
+      ttl: 1000 * 5 * 60,
     }),
     ScheduleModule.forRoot(),
     TypeOrmModule.forRootAsync({

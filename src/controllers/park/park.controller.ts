@@ -19,6 +19,7 @@ import { ThemeParkOpeningTimes } from '../../_interfaces/park-openingtimes.inter
 import { ThemeParkOpeningHourDto } from '../../_dtos/theme-park-opening-hour.dto';
 import { CACHE_MANAGER, CacheInterceptor } from '@nestjs/cache-manager';
 import { ThemeParkEvent } from '../../_interfaces/park-event.interface';
+import * as Sentry from '@sentry/nestjs';
 
 @ApiTags('Themeparks')
 @Controller('parks/:id')
@@ -60,6 +61,8 @@ export class ParkController {
       throw new BadRequestException('This park does not support pois');
     }
 
+    Sentry.setTag("park-id", params.id);
+
     return await park.getPois().then(pois => {
       return pois.map((poi) => {
         if (!query.includeOriginal) {
@@ -94,6 +97,8 @@ export class ParkController {
     if (!park.getFullInfo().supports.supportsRides) {
       throw new BadRequestException('This park does not support rides');
     }
+
+    Sentry.setTag("park-id", params.id);
 
     return await park.getRides().then(rides => {
       return rides.map((ride) => {
@@ -130,6 +135,8 @@ export class ParkController {
       throw new BadRequestException('This park does not support restaurants');
     }
 
+    Sentry.setTag("park-id", params.id);
+
     return await park.getRestaurants().then(restaurants => {
       return restaurants.map((restaurant) => {
         if (!query.includeOriginal) {
@@ -164,6 +171,8 @@ export class ParkController {
     if (!park.getFullInfo().supports.supportsShows) {
       throw new BadRequestException('This park does not support shows');
     }
+
+    Sentry.setTag("park-id", params.id);
 
     return await park.getShows().then(shows => {
       return shows.map((show) => {
@@ -200,6 +209,8 @@ export class ParkController {
       throw new BadRequestException('This park does not support shops');
     }
 
+    Sentry.setTag("park-id", params.id);
+
     return await park.getShops().then(shops => {
       return shops.map((shop) => {
         if (!query.includeOriginal) {
@@ -235,6 +246,8 @@ export class ParkController {
       throw new BadRequestException('This park does not support animals');
     }
 
+    Sentry.setTag("park-id", params.id);
+
     return await park.getAnimals().then(animals => {
       return animals.map((animal) => {
         if (!query.includeOriginal) {
@@ -242,41 +255,6 @@ export class ParkController {
         }
 
         return animal;
-      });
-    });
-  }
-
-  @Get('halloween')
-  @UseInterceptors(CacheInterceptor, LanguageInterceptor)
-  @ApiParam({
-    name: 'id',
-    type: 'string',
-    description: 'The park id',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'All halloween events and zones of a specific theme park',
-    isArray: true,
-    type: PoiDto,
-  })
-  @ApiResponse({
-    status: 404,
-    description: 'The requested park could not be found',
-  })
-  async getParkHalloweenRelatedItems(@Param() params, @Query() query): Promise<Poi[]> {
-    const park = await this.parksService.findPark(params.id, true);
-
-    if (!park.getFullInfo().supports.supportsEvents) {
-      throw new BadRequestException('This park does not support halloween related items');
-    }
-
-    return await park.getHalloweenEvents().then(halloweenEvents => {
-      return halloweenEvents.map((halloweenEvent) => {
-        if (!query.includeOriginal) {
-          delete halloweenEvent.original;
-        }
-
-        return halloweenEvent;
       });
     });
   }
@@ -305,6 +283,8 @@ export class ParkController {
       throw new BadRequestException('This park does not support opening hours');
     }
 
+    Sentry.setTag("park-id", params.id);
+
     return await park.getOpeningTimes();
   }
 
@@ -331,6 +311,8 @@ export class ParkController {
     if (!park.getFullInfo().supports.supportsEvents) {
       throw new BadRequestException('This park does not support events');
     }
+
+    Sentry.setTag("park-id", params.id);
 
     return await park.getEvents();
   }

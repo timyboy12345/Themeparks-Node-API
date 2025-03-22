@@ -1,5 +1,4 @@
 import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
-import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
@@ -10,9 +9,10 @@ import { LocaleService } from '../../_services/locale/locale.service';
 import * as Sentry from '@sentry/node';
 import * as fs from 'fs';
 import * as unzipper from 'unzipper';
+import { ThroughPoisThemeParkService } from '../../_services/themepark/through-pois-theme-park.service';
 
 @Injectable()
-export class ParcAsterixService extends ThemeParkService {
+export class ParcAsterixService extends ThroughPoisThemeParkService {
   private readonly _parcAsterixApiUrl: string;
 
   constructor(private readonly httpService: HttpService,
@@ -50,7 +50,7 @@ export class ParcAsterixService extends ThemeParkService {
       supportsShowTimes: false,
       supportsShows: true,
       supportsPoiLocations: true,
-      supportsShops: false,
+      supportsShops: true,
       supportsShopOpeningTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsOpeningTimesHistory: false,
@@ -66,11 +66,17 @@ export class ParcAsterixService extends ThemeParkService {
     const folder = `${process.cwd()}/storage/parc-asterix`;
     const file = 'parc-asterix.zip';
 
+    const storageFolder = `${process.cwd()}/storage`;
+    if (!fs.existsSync(`${process.cwd()}/storage`)) {
+      fs.mkdirSync(`${process.cwd()}/storage`);
+    }
+
     // TODO: Add a system that invalidates old information (fs.stat or fs.statSync?)
     const fileExists = fs.existsSync(`${folder}/unpackage/pax_en.sqlite`);
     if (!fileExists) {
       this.logger.debug(' - Downloading Files');
 
+      // TODO: Unpackage happens before download is complete
       const download = await this.downloadZip(folder, file);
       const unpackage = await this.unpackageZip(folder, file);
     }
@@ -88,7 +94,7 @@ export class ParcAsterixService extends ThemeParkService {
   }
 
   private async downloadZip(downloadFolder: string, fileName: string) {
-    this.logger.debug(' - Downloading PA zip');
+    this.logger.debug(' - Staring download');
 
     if (!fs.existsSync(downloadFolder)) {
       fs.mkdirSync(downloadFolder);
@@ -96,7 +102,7 @@ export class ParcAsterixService extends ThemeParkService {
 
     const baseUrl = this._parcAsterixApiUrl;
 
-    this.logger.debug(' - Fetching ZIP url');
+    this.logger.debug(' -  Fetching ZIP url');
 
     const fileUrl = await this.httpService.get(`${baseUrl}`, {
       params: {
@@ -111,30 +117,39 @@ export class ParcAsterixService extends ThemeParkService {
       },
     })
       .toPromise()
-      .then((r) => r.data.data.offlinePackageLast.url)
+      .then((r) => {
+        if (!r.data.data.offlinePackageLast) {
+          Sentry.captureException('Failed to fetch Parc Asterix ZIP url');
+          throw new InternalServerErrorException('Could not fetch Parc Asterix ZIP url: not present');
+        }
+
+        return r.data.data.offlinePackageLast.url;
+      })
       .catch((e) => {
         console.error(e);
         Sentry.captureException(e);
         throw new InternalServerErrorException('Could not download Parc Asterix POI zip file');
       });
 
-    this.logger.debug(' - Fetching file from ' + fileUrl);
+    this.logger.debug('  - Fetching file from ' + fileUrl);
 
     const logger = this.logger;
 
-    await this.httpService.request({
+    return await this.httpService.request({
       url: fileUrl,
       responseType: 'arraybuffer',
     })
       .toPromise()
       .then(value => {
-        fs.writeFile(`${downloadFolder}/${fileName}`, value.data, function(err) {
-          logger.debug(' - ZIP has been fetched');
+        return fs.writeFile(`${downloadFolder}/${fileName}`, value.data, function(err) {
+          logger.debug('  - ZIP has been fetched');
 
           if (err) {
+            logger.error(err);
             Sentry.captureException(err);
             return Promise.reject(err);
           } else {
+            logger.debug(' - Returning resolve');
             return Promise.resolve();
           }
         });

@@ -1,4 +1,5 @@
 import { BadRequestException } from '@nestjs/common';
+import * as Sentry from '@sentry/nestjs';
 
 export class LocaleService {
   private currentLang: 'en' | 'es' | 'nl' | 'de' | 'fr' = null;
@@ -51,6 +52,8 @@ export class LocaleService {
     if (!selectedLocale) {
       throw new BadRequestException(`Locale "${locale}" not supported`);
     }
+
+    Sentry.setTag('locale', 'locale');
 
     // @ts-ignore
     this.currentLang = selectedLocale.code;

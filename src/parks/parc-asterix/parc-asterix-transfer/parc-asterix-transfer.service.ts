@@ -30,12 +30,14 @@ export class ParcAsterixTransferService extends TransferService {
 
     if (poi.logo) {
       const logo = JSON.parse(poi.logo);
-      p.image_url = logo.url;
+      p.logo = logo.url;
     }
 
     if (poi.sliders) {
       const sliders = JSON.parse(poi.sliders);
       p.images = sliders.map((m) => m.url);
+
+      p.image_url = p.images[0];
     }
 
     if (poi.is_best) {

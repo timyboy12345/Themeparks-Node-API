@@ -41,8 +41,19 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
     throw new NotImplementedException('getParkName is not defined');
   }
 
-  private getToken(): Promise<string> {
-    return Promise.resolve('eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk5OTQ5YmQ5LTY5MzEtNGFlNy1hYmU2LWY4MGI0OWYzYjcxMSJ9.eyJhdWQiOiI4NjQyYjIwNy1jMThiLTRlMDYtODYwZi1jNjhmMzdkODRiMjUiLCJhdXRoX3RpbWUiOjE3NDIyNDQ5NDEsImV4cCI6MTc0MjMzMTM0MSwiaWF0IjoxNzQyMjQ0OTQxLCJpc3MiOiJodHRwczovL2FjY291bnQubWFja29uZS5kZSIsImp0aSI6ImU3ZmIwMGY5LWJiNjMtNGQ1ZS1iMWQ2LWMyYzgyMGNkMGMyOCIsInNjb3BlcyI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJhZGRyZXNzIiwiY2lkYWFzOnJlZ2lzdGVyIiwib2ZmbGluZV9hY2Nlc3MiXSwic2lkIjoiYTVlMmY0NWEtNDI5Ny00YTdlLWE1MTMtMGYzMTZkYmMxMTA0Iiwic3ViIjoiQU5PTllNT1VTIiwidWFfaGFzaCI6ImU2NjgzZTQ4MDUwYzYxMTQwMzA5NDM5OTY3MGYyZGZlIn0.qus_XQ33v7iKD0XBTCZZGhiiF6yc_EFQXvK-na5S8-sJkn6zxV217nsbldqXaSFq_sxvr9j_6s18PeOcYOdrJhtdxiE3sZddJZiP6DTL9DVhQmDFo1ON9Z5vMI_tNPo2bs9x7WZxeeZOV0mr0qeWSuMLOnuPwe13hEWcS9njNbM');
+  private async getToken(): Promise<string> {
+    const body = 'client_id=8642b207-c18b-4e06-860f-c68f37d84b25&client_secret=7ae7ada2-04ee-47af-aa0a-163581787d26&grant_type=client_credentials';
+    return await this.http.post('https://account.mackone.de/token-srv/token', body)
+      .toPromise()
+      .then((res) => {
+        return res.data.access_token
+      })
+      .catch((e) => {
+        Sentry.captureException(e)
+        console.error(e)
+      })
+
+    // return Promise.resolve('eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk5OTQ5YmQ5LTY5MzEtNGFlNy1hYmU2LWY4MGI0OWYzYjcxMSJ9.eyJhdWQiOiI4NjQyYjIwNy1jMThiLTRlMDYtODYwZi1jNjhmMzdkODRiMjUiLCJhdXRoX3RpbWUiOjE3NDIyNDQ5NDEsImV4cCI6MTc0MjMzMTM0MSwiaWF0IjoxNzQyMjQ0OTQxLCJpc3MiOiJodHRwczovL2FjY291bnQubWFja29uZS5kZSIsImp0aSI6ImU3ZmIwMGY5LWJiNjMtNGQ1ZS1iMWQ2LWMyYzgyMGNkMGMyOCIsInNjb3BlcyI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJhZGRyZXNzIiwiY2lkYWFzOnJlZ2lzdGVyIiwib2ZmbGluZV9hY2Nlc3MiXSwic2lkIjoiYTVlMmY0NWEtNDI5Ny00YTdlLWE1MTMtMGYzMTZkYmMxMTA0Iiwic3ViIjoiQU5PTllNT1VTIiwidWFfaGFzaCI6ImU2NjgzZTQ4MDUwYzYxMTQwMzA5NDM5OTY3MGYyZGZlIn0.qus_XQ33v7iKD0XBTCZZGhiiF6yc_EFQXvK-na5S8-sJkn6zxV217nsbldqXaSFq_sxvr9j_6s18PeOcYOdrJhtdxiE3sZddJZiP6DTL9DVhQmDFo1ON9Z5vMI_tNPo2bs9x7WZxeeZOV0mr0qeWSuMLOnuPwe13hEWcS9njNbM');
   }
 
   private async request<T>(url: string): Promise<any> {

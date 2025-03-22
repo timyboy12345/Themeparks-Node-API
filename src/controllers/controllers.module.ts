@@ -19,7 +19,7 @@ import { PushController } from './push/push.controller';
   controllers: [ParksController, ParkController, ParkHistoryController, UserController, CheckinsController, BlogPostsController, PushController],
   imports: [
     CacheModule.register({
-      ttl: 60 * 5,
+      ttl: 1000 * 5 * 60,
     }),
     ConfigModule.forRoot({
       envFilePath: '.env',
