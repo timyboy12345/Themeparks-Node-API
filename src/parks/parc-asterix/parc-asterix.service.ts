@@ -67,8 +67,8 @@ export class ParcAsterixService extends ThroughPoisThemeParkService {
     const file = 'parc-asterix.zip';
 
     const storageFolder = `${process.cwd()}/storage`;
-    if (!fs.existsSync(`${process.cwd()}/storage`)) {
-      fs.mkdirSync(`${process.cwd()}/storage`);
+    if (!fs.existsSync(storageFolder)) {
+      fs.mkdirSync(storageFolder);
     }
 
     // TODO: Add a system that invalidates old information (fs.stat or fs.statSync?)
@@ -77,8 +77,15 @@ export class ParcAsterixService extends ThroughPoisThemeParkService {
       this.logger.debug(' - Downloading Files');
 
       // TODO: Unpackage happens before download is complete
-      const download = await this.downloadZip(folder, file);
-      const unpackage = await this.unpackageZip(folder, file);
+      const download = await this.downloadZip(folder, file)
+        .catch((e) => {
+          throw new InternalServerErrorException('Could not download zip file');
+        });
+
+      const unpackage = await this.unpackageZip(folder, file)
+        .catch((e) => {
+          throw new InternalServerErrorException('Could not unpackage zip file');
+        });
     }
 
     switch (this.getLocale()) {
@@ -94,89 +101,95 @@ export class ParcAsterixService extends ThroughPoisThemeParkService {
   }
 
   private async downloadZip(downloadFolder: string, fileName: string) {
-    this.logger.debug(' - Staring download');
+    return new Promise(async (resolve, reject) => {
+      this.logger.debug(' - Staring download');
 
-    if (!fs.existsSync(downloadFolder)) {
-      fs.mkdirSync(downloadFolder);
-    }
+      if (!fs.existsSync(downloadFolder)) {
+        fs.mkdirSync(downloadFolder);
+      }
 
-    const baseUrl = this._parcAsterixApiUrl;
+      const baseUrl = this._parcAsterixApiUrl;
 
-    this.logger.debug(' -  Fetching ZIP url');
+      this.logger.debug(' -  Fetching ZIP url');
 
-    const fileUrl = await this.httpService.get(`${baseUrl}`, {
-      params: {
-        'operationName': 'offlinePackageLast',
-        'variables': {},
-        'extensions': {
-          persistedQuery: {
-            version: 1,
-            sha256Hash: '309702a5c744f3389a4cc971c589dfb351d4548701899f6335c17f8095d94982',
+      const fileUrl = await this.httpService.get(`${baseUrl}`, {
+        params: {
+          'operationName': 'offlinePackageLast',
+          'variables': {},
+          'extensions': {
+            persistedQuery: {
+              version: 1,
+              sha256Hash: '309702a5c744f3389a4cc971c589dfb351d4548701899f6335c17f8095d94982',
+            },
           },
         },
-      },
-    })
-      .toPromise()
-      .then((r) => {
-        if (!r.data.data.offlinePackageLast) {
-          Sentry.captureException('Failed to fetch Parc Asterix ZIP url');
-          throw new InternalServerErrorException('Could not fetch Parc Asterix ZIP url: not present');
-        }
-
-        return r.data.data.offlinePackageLast.url;
       })
-      .catch((e) => {
-        console.error(e);
-        Sentry.captureException(e);
-        throw new InternalServerErrorException('Could not download Parc Asterix POI zip file');
-      });
-
-    this.logger.debug('  - Fetching file from ' + fileUrl);
-
-    const logger = this.logger;
-
-    return await this.httpService.request({
-      url: fileUrl,
-      responseType: 'arraybuffer',
-    })
-      .toPromise()
-      .then(value => {
-        return fs.writeFile(`${downloadFolder}/${fileName}`, value.data, function(err) {
-          logger.debug('  - ZIP has been fetched');
-
-          if (err) {
-            logger.error(err);
-            Sentry.captureException(err);
-            return Promise.reject(err);
-          } else {
-            logger.debug(' - Returning resolve');
-            return Promise.resolve();
+        .toPromise()
+        .then((r) => {
+          if (!r.data.data.offlinePackageLast) {
+            Sentry.captureException('Failed to fetch Parc Asterix ZIP url');
+            throw new InternalServerErrorException('Could not fetch Parc Asterix ZIP url: not present');
           }
+
+          return r.data.data.offlinePackageLast.url;
+        })
+        .catch((e) => {
+          console.error(e);
+          Sentry.captureException(e);
+          throw new InternalServerErrorException('Could not download Parc Asterix POI zip file');
         });
+
+      this.logger.debug('  - Fetching file from ' + fileUrl);
+
+      const logger = this.logger;
+
+      return await this.httpService.request({
+        url: fileUrl,
+        responseType: 'arraybuffer',
       })
-      .catch(reason => {
-        Sentry.captureException(reason);
-        console.error(reason);
-        return Promise.reject(reason);
-      });
+        .toPromise()
+        .then(value => {
+          return fs.writeFile(`${downloadFolder}/${fileName}`, value.data, function(err) {
+            logger.debug('  - ZIP has been fetched');
+
+            if (err) {
+              logger.error(err);
+              Sentry.captureException(err);
+              return reject(err);
+            } else {
+              setTimeout(() => {
+                logger.debug('  - Returning resolve');
+                resolve(null);
+              }, 500);
+            }
+          });
+        })
+        .catch(reason => {
+          Sentry.captureException(reason);
+          console.error(reason);
+          return Promise.reject(reason);
+        });
+    });
   }
 
   private async unpackageZip(downloadFolder: string, fileName: string) {
-    this.logger.debug(' - Unzipping zip');
+    return new Promise((resolve, reject) => {
+      this.logger.debug(' - Unzipping zip');
 
-    return new Promise((resolve) => {
       fs.createReadStream(`${downloadFolder}/${fileName}`)
         .pipe(unzipper.Extract({ path: `${downloadFolder}/unpackage` }))
         .on('close', () => {
-          return Promise.resolve();
+          this.logger.debug('  - Closed');
+          return resolve(null);
         })
         .on('error', (e) => {
           Sentry.captureException(e);
-          console.error(e);
-          return Promise.reject();
+          this.logger.error(e);
+          return reject(e);
         })
         .on('end', () => {
-          return Promise.reject();
+          this.logger.debug('  - End');
+          return reject();
         });
     });
   }

@@ -55,8 +55,8 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: this.getInfo().parkType === ParkType.ZOO,
       supportsTranslations: false,
-      textType: "UNDEFINED",
-supportsEvents: false,
+      textType: 'UNDEFINED',
+      supportsEvents: false,
     };
   }
 
@@ -106,11 +106,12 @@ supportsEvents: false,
         // console.error(reason.response.data);
         // console.error(reason.request.headers);
 
-        Sentry.withScope(function (scope) {
-          scope.setFingerprint(['get', url, String(reason.response.status)]);
-          scope.setTransactionName('get-six-flags-data');
-          scope.captureException(reason);
-        });
+        Sentry.captureException(reason);
+        // Sentry.withScope(function (scope) {
+        //   scope.setFingerprint(['get', url, String(reason.response.status)]);
+        // scope.setTransactionName('get-six-flags-data');
+        // scope.captureException(reason);
+        // });
 
         return null;
       });

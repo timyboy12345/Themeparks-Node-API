@@ -38,7 +38,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇫🇷 Walibi Rhône-Alpes | 🎡 | True | True | False | True | False |
 | 🇫🇷 Disneyland Paris | 🎡 | True | True | True | True | False |
 | 🇫🇷 Walt Disney Studios Park | 🎡 | True | True | True | True | False |
-| 🇫🇷 Parc Asterix | 🎡 | True | True | True | False | False |
+| 🇫🇷 Parc Asterix | 🎡 | True | True | True | True | False |
 | 🇫🇷 Futuroscope | 🎡 | True | True | True | True | False |
 | 🇫🇷 Marineland Cote D'azure | 🎡 | True | True | True | True | False |
 | 🇫🇷 Puy de Fou | 🎡 | False | True | True | False | False |

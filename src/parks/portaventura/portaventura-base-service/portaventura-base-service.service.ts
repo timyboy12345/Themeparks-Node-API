@@ -40,7 +40,7 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
-      textType: "UNDEFINED",
+      textType: 'UNDEFINED',
     };
   }
 
@@ -127,12 +127,13 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
       .then((r) => r.data.filter((r) => !shouldFilter || r.park === this.getParkName()))
       .catch((exception) => {
         console.error(exception);
+        Sentry.captureException(exception);
 
-        Sentry.withScope(function (scope) {
-          // scope.setFingerprint(['get', url, String(exception.statusCode)]);
-          scope.setTransactionName('get-portaventura-data');
-          scope.captureException(exception);
-        });
+        // Sentry.withScope(function (scope) {
+        // scope.setFingerprint(['get', url, String(exception.statusCode)]);
+        // scope.setTransactionName('get-portaventura-data');
+        // scope.captureException(exception);
+        // });
 
         throw exception;
       });
