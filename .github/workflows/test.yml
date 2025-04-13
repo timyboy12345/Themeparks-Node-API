@@ -8,10 +8,6 @@ on:
       - main/*
       - feature/*
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,7 +42,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - uses: Infisical/secrets-action@v1.0.9
         with:
-          method: "oidc"
+          method: "universal"
           identity-id: "24be0d94-b43a-41c4-812c-1e8654d9ce1e"
           domain: "https://eu.infisical.com"
           env-slug: "dev"
