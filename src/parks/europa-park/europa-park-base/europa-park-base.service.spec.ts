@@ -11,8 +11,8 @@ describe('EuropaParkBaseService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [EuropaParkBaseService, EuropaParkTransferService, LocaleModule],
-      imports: [HttpModule, ConfigModule.forRoot(), CacheModule.register()],
+      providers: [EuropaParkBaseService, EuropaParkTransferService],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule, CacheModule.register()],
     }).compile();
 
     service = module.get<EuropaParkBaseService>(EuropaParkBaseService);
