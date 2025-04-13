@@ -40,7 +40,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: Infisical/secrets-action@v1.0.9
+      - name: Import Secrets from Infisical
+        uses: Infisical/secrets-action@v1.0.9
         with:
           method: "universal"
           identity-id: "24be0d94-b43a-41c4-812c-1e8654d9ce1e"
