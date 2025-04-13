@@ -14,7 +14,7 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        node-version: [ 18.15 ]
+        node-version: [ 22.14 ]
 
     steps:
       - uses: actions/checkout@v4
@@ -22,11 +22,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Copy .env file
-        run: 'echo "$ENV_FILE" > ./.env'
-        shell: bash
-        env:
-          ENV_FILE: ${{ secrets.CICD_ENV_FILE }}
+      - name: Import Secrets from Infisical
+        uses: Infisical/secrets-action@v1.0.9
+        with:
+          method: "universal"
+          identity-id: "24be0d94-b43a-41c4-812c-1e8654d9ce1e"
+          domain: "https://eu.infisical.com"
+          env-slug: "dev"
+          project-slug: "themepark-planner-k-cq1"
+          export-type: "file"
+          client-id: ${{ secrets.INFISICAL_CLIENT_ID }}
+          client-secret: ${{ secrets.INFISICAL_CLIENT_SECRET }}
       - run: npm ci
       - run: npm test
   deploy:
@@ -37,15 +43,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 18
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-      - name: Copy .env file
-        run: 'echo "$ENV_FILE" > ./.env'
-        shell: bash
-        env:
-          ENV_FILE: ${{ secrets.PRODUCTION_ENV_FILE }}
+          node-version: 22
+      - name: Import Secrets from Infisical
+        uses: Infisical/secrets-action@v1.0.9
+        with:
+          method: "universal"
+          identity-id: "24be0d94-b43a-41c4-812c-1e8654d9ce1e"
+          domain: "https://eu.infisical.com"
+          env-slug: "prod"
+          project-slug: "themepark-planner-k-cq1"
+          export-type: "file"
+          client-id: ${{ secrets.INFISICAL_CLIENT_ID }}
+          client-secret: ${{ secrets.INFISICAL_CLIENT_SECRET }}
       - name: Install NPM packages
         run: npm ci
       - name: Build
@@ -59,6 +71,8 @@ jobs:
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
       - name: Add Server To Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Publish .env
+        run: scp -r .env ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/tp.arendz.nl/.env
       - name: Publish files
         run: scp -r dist/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/tp.arendz.nl/dist
       - name: Restart Themeparks Server
