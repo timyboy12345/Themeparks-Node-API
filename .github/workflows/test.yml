@@ -5,6 +5,8 @@ on:
     branches:
       - master
       - main
+      - main/*
+      - feature/*
 
 jobs:
   build:
@@ -13,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [ 18.15 ]
+        node-version: [ 22.14 ]
 
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +32,7 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        node-version: [ 18.15 ]
+        node-version: [ 22.14 ]
 
     steps:
       - uses: actions/checkout@v4
@@ -38,10 +40,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Copy .env file
-        run: 'echo "$ENV_FILE" > ./.env'
-        shell: bash
-        env:
-          ENV_FILE: ${{ secrets.CICD_ENV_FILE }}
+      - name: Import Secrets from Infisical
+        uses: Infisical/secrets-action@v1.0.9
+        with:
+          method: "universal"
+          identity-id: "24be0d94-b43a-41c4-812c-1e8654d9ce1e"
+          domain: "https://eu.infisical.com"
+          env-slug: "dev"
+          project-slug: "themepark-planner-k-cq1"
+          export-type: "file"
+          client-id: ${{ secrets.INFISICAL_CLIENT_ID }}
+          client-secret: ${{ secrets.INFISICAL_CLIENT_SECRET }}
       - run: npm ci
       - run: npm test
