@@ -62,7 +62,7 @@ export class PuyDeFouGeneralService extends ThroughPoisThemeParkService {
         .catch(reason => {
           Sentry.captureException(reason);
           console.error(reason);
-          throw new InternalServerErrorException(reason);
+          throw new InternalServerErrorException("Could not download SQL file");
         });
     }
 
