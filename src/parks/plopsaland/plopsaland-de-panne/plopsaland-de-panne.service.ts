@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { PlopsalandDePanneTokenInterface } from './interfaces/plopsaland-de-panne-token.interface';
@@ -9,6 +9,7 @@ import {
 import { PlopsalandDePanneTransferService } from './plopsaland-de-panne-transfer/plopsaland-de-panne-transfer.service';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { HttpService } from '@nestjs/axios';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class PlopsalandDePanneService extends ThemeParkService {
@@ -21,7 +22,7 @@ export class PlopsalandDePanneService extends ThemeParkService {
     return {
       id: 'plopsaland-de-panne',
       name: 'Plopsalande de Panne',
-      image: 'https://www.plopsalanddepanne.be/sites/default/files/public/brand/logos/Plopsaland%20De%20Panne.jpg',
+      image: 'https://www.old.plopsa.com/sites/default/files/public/brand/logos/Plopsaland%20De%20Panne.jpg',
       description: 'Plopsaland De Panne is een themapark van Studio 100 in de Belgische plaats De Panne, aan de Noordzeekust en de Franse grens. De kusttram heeft een halte voor de ingang. Het themapark is genoemd naar de kinderprogramma\'s Kabouter Plop en Samson en Gert van Studio 100.',
       countryCode: 'be',
       parkType: ParkType.THEMEPARK,
@@ -102,7 +103,7 @@ supportsEvents: false,
       return;
     }
 
-    const url = `https://www.plopsalanddepanne.be/nl/api/v1.0/details/all/plopsaland-de-panne/page?access_token=${token.accessToken}`;
+    const url = `https://www.old.plopsa.com/nl/api/v1.0/details/all/plopsaland-de-panne/page?access_token=${token.accessToken}`;
 
     return this
       .httpService
@@ -110,6 +111,11 @@ supportsEvents: false,
       .toPromise()
       .then(response => {
         return response.data;
+      })
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException("Could not fetch food and shops");
       });
   }
 
@@ -120,7 +126,7 @@ supportsEvents: false,
       return;
     }
 
-    const url = `https://www.plopsalanddepanne.be/nl/api/v1.0/details/all/plopsaland-de-panne/attraction?access_token=${token.accessToken}`;
+    const url = `https://www.old.plopsa.com/nl/api/v1.0/details/all/plopsaland-de-panne/attraction?access_token=${token.accessToken}`;
 
     return this
       .httpService
@@ -128,6 +134,11 @@ supportsEvents: false,
       .toPromise()
       .then(response => {
         return response.data;
+      })
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException("Could not fetch attractions");
       });
   }
 
@@ -138,7 +149,7 @@ supportsEvents: false,
       return;
     }
 
-    const url = `https://www.plopsalanddepanne.be/nl/api/v1.0/details/all/plopsaland-de-panne/event?access_token=${token.accessToken}`;
+    const url = `https://www.old.plopsa.com/nl/api/v1.0/details/all/plopsaland-de-panne/event?access_token=${token.accessToken}`;
 
     return this
       .httpService
@@ -146,6 +157,11 @@ supportsEvents: false,
       .toPromise()
       .then(response => {
         return response.data;
+      })
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException("Could not fetch events");
       });
   }
 
@@ -157,14 +173,15 @@ supportsEvents: false,
 
     return this
       .httpService
-      .post<PlopsalandDePanneTokenInterface>('https://www.plopsalanddepanne.be/nl/api/v1.0/token/0001', body)
+      .post<PlopsalandDePanneTokenInterface>('https://www.old.plopsa.com/nl/api/v1.0/token/0001', body)
       .toPromise()
       .then(value => {
         return value.data;
       })
-      .catch(reason => {
-        console.error(reason);
-        return null;
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException("Could not fetch token");
       });
   }
 }

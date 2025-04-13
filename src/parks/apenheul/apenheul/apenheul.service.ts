@@ -65,13 +65,14 @@ export class ApenheulService extends ThemeParkService {
 
   public async getAnimals(): Promise<Poi[]> {
     const baseUrl = this.baseUrl;
-    const url = `${baseUrl}/umbraco/api/overview/get?alias=aapABC&nodeId=2471&page=0&pageSize=200&searchString=`;
+    const url = `${baseUrl}/api/overview/get?pageId=1620&culture=nl-NL&skip=12&take=50&sortBy=1&orderByDescending=false`;
 
     return this.httpService
       .get<ApenheulAapABCResponseInterface>(url)
       .toPromise()
       .then((response) => {
-        return this.transferService.transferPoisToPois(response.data.Items);
+        console.log(response.data)
+        return this.transferService.transferPoisToPois(response.data.items);
       })
       .catch((reason) => {
         Sentry.captureException(reason);

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { CompanyService } from '../../_services/company/company.service';
 import { Company, ParkType, ThemePark } from '../../_interfaces/park.interface';
@@ -7,6 +7,8 @@ import { SixflagsThemeparksResponseInterface } from './interfaces/sixflags-theme
 import { SixFlagsGeneralParkService } from './parks/six-flags-general-park/six-flags-general-park.service';
 import { SixflagsTransferService } from './sixflags-transfer/sixflags-transfer.service';
 import { HttpService } from '@nestjs/axios';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class SixflagsService extends CompanyService {
@@ -15,7 +17,8 @@ export class SixflagsService extends CompanyService {
 
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
-              private readonly sixflagsTransferService: SixflagsTransferService) {
+              private readonly sixflagsTransferService: SixflagsTransferService,
+              @Inject(CACHE_MANAGER) private readonly cache: Cache) {
     super();
 
     this._sixflagsApiUrl = this.configService.get('SIXFLAGS_API_URL');
@@ -23,7 +26,18 @@ export class SixflagsService extends CompanyService {
   }
 
   async getParkServices(): Promise<ThemeParkService[]> {
-    return (await this.getParksResponse()).parks.map(park => {
+    const k = `sixflags_parks`;
+
+    let parks: any = await this.cache.get(k);
+
+    if (parks === undefined) {
+      parks = await this.getParksResponse();
+
+      // Save POI data for 24 hours, as this requests takes incredibly long
+      await this.cache.set(k, parks, 1000 * 60 * 60 * 24);
+    }
+
+    return parks.parks.map((park: any) => {
       let countryCode: string;
 
       switch (park.country) {
@@ -48,14 +62,14 @@ export class SixflagsService extends CompanyService {
         image: image,
         name: park.name,
         parkType: parkType,
-        company: Company.SIXFLAGS
+        company: Company.SIXFLAGS,
       };
 
       if (park.renderLocation) {
         parkInfo.location = {
           lat: park.renderLocation.latitude,
-          lng: park.renderLocation.longitude
-        }
+          lng: park.renderLocation.longitude,
+        };
       }
 
       if (park.image) {

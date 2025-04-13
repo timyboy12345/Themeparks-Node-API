@@ -4,6 +4,7 @@ import { SixFlagsGeneralParkService } from './parks/six-flags-general-park/six-f
 import { SixflagsTransferService } from './sixflags-transfer/sixflags-transfer.service';
 import { SixflagsService } from './sixflags.service';
 import { HttpModule } from '@nestjs/axios';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { HttpModule } from '@nestjs/axios';
       cache: false,
       ignoreEnvFile: false,
     }),
+    CacheModule.register(),
   ],
   exports: [SixflagsService],
   providers: [SixflagsTransferService, SixFlagsGeneralParkService, SixflagsService],

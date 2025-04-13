@@ -7,7 +7,7 @@ export class EuropaParkService extends EuropaParkBaseService {
   getInfo(): ThemePark {
     return {
       id: 'europa-park',
-      timezone: 'Europa/Berlin',
+      timezone: 'Europe/Berlin',
       parkType: ParkType.THEMEPARK,
       countryCode: 'de',
       description: 'Europa-Park, geopend in 1975, is een attractiepark bij Rust in de Duitse deelstaat Baden-Württemberg. Het thema is het werelddeel Europa met haar verschillende landen. In 2023 was het na het Disneyland (Park) in Parijs het meest bezochte attractiepark van Europa',

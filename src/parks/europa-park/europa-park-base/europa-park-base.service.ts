@@ -1,17 +1,22 @@
-import { Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
+import { Inject, Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
 import { ThroughPoisThemeParkService } from '../../../_services/themepark/through-pois-theme-park.service';
-import { Poi } from '../../../_interfaces/poi.interface';
+import { Poi, PoiStatus } from '../../../_interfaces/poi.interface';
 import { HttpService } from '@nestjs/axios';
 import { EuropaParkTransferService } from '../europa-park-transfer/europa-park-transfer.service';
 import * as Sentry from '@sentry/node';
 import * as moment from 'moment';
 import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.interface';
+import { LocaleService } from '../../../_services/locale/locale.service';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class EuropaParkBaseService extends ThroughPoisThemeParkService {
   constructor(private readonly http: HttpService,
-              private readonly transfer: EuropaParkTransferService) {
+              private readonly transfer: EuropaParkTransferService,
+              private readonly localeService: LocaleService,
+              @Inject(CACHE_MANAGER) private readonly cache: Cache) {
     super();
   }
 
@@ -26,7 +31,7 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: false,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimesHistory: true,
       supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: true,
@@ -46,17 +51,15 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
     return await this.http.post('https://account.mackone.de/token-srv/token', body)
       .toPromise()
       .then((res) => {
-        return res.data.access_token
+        return res.data.access_token;
       })
       .catch((e) => {
-        Sentry.captureException(e)
-        console.error(e)
-      })
-
-    // return Promise.resolve('eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk5OTQ5YmQ5LTY5MzEtNGFlNy1hYmU2LWY4MGI0OWYzYjcxMSJ9.eyJhdWQiOiI4NjQyYjIwNy1jMThiLTRlMDYtODYwZi1jNjhmMzdkODRiMjUiLCJhdXRoX3RpbWUiOjE3NDIyNDQ5NDEsImV4cCI6MTc0MjMzMTM0MSwiaWF0IjoxNzQyMjQ0OTQxLCJpc3MiOiJodHRwczovL2FjY291bnQubWFja29uZS5kZSIsImp0aSI6ImU3ZmIwMGY5LWJiNjMtNGQ1ZS1iMWQ2LWMyYzgyMGNkMGMyOCIsInNjb3BlcyI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJhZGRyZXNzIiwiY2lkYWFzOnJlZ2lzdGVyIiwib2ZmbGluZV9hY2Nlc3MiXSwic2lkIjoiYTVlMmY0NWEtNDI5Ny00YTdlLWE1MTMtMGYzMTZkYmMxMTA0Iiwic3ViIjoiQU5PTllNT1VTIiwidWFfaGFzaCI6ImU2NjgzZTQ4MDUwYzYxMTQwMzA5NDM5OTY3MGYyZGZlIn0.qus_XQ33v7iKD0XBTCZZGhiiF6yc_EFQXvK-na5S8-sJkn6zxV217nsbldqXaSFq_sxvr9j_6s18PeOcYOdrJhtdxiE3sZddJZiP6DTL9DVhQmDFo1ON9Z5vMI_tNPo2bs9x7WZxeeZOV0mr0qeWSuMLOnuPwe13hEWcS9njNbM');
+        Sentry.captureException(e);
+        console.error(e);
+      });
   }
 
-  private async request<T>(url: string): Promise<any> {
+  private async request<T>(url: string, locale: string): Promise<any> {
     const token = await this.getToken();
 
     return await this.http.get<T>(url, {
@@ -65,7 +68,7 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
       },
       headers: {
         'JWTAuthorization': 'Bearer ' + token,
-        'Accept-Language': 'nl',
+        'Accept-Language': locale,
       },
     })
       .toPromise()
@@ -78,12 +81,85 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
   }
 
   async getPois(): Promise<Poi[]> {
-    const data = await this.request('https://tickets.mackinternational.de/api/v2/poi-group');
-    return this.transfer.transferDataObjectToPois(data, this.getParkName());
+    let locale = 'en';
+    switch (this.localeService.getLocale()) {
+      case 'nl':
+        locale = 'nl';
+        break;
+      case 'de':
+        locale = 'de';
+        break;
+      case 'fr':
+        locale = 'fr';
+        break;
+      default:
+        break;
+    }
+
+    const k = `europapark_pois_${locale}`;
+
+    let pois: any[] = await this.cache.get(k);
+
+    if (pois === undefined) {
+      const data = await this.request('https://tickets.mackinternational.de/api/v2/poi-group', locale);
+      pois = this.transfer.transferDataObjectToPois(data, this.getParkName());
+
+      // Save POI data for 24 hours, as this requests takes incredibly long
+      await this.cache.set(k, pois, 1000 * 60 * 60 * 24);
+    }
+
+    // TODO: Are show times also included in this request?
+    const waitTimesResponse = await this.request('https://tickets.mackinternational.de/api/v1/waitingtimes', locale);
+    const waitTimes = waitTimesResponse.waitingtimes;
+
+    pois.map((poi) => {
+      const code = poi.original.code;
+
+      if (code === undefined) return poi;
+
+      const wt = waitTimes.find((wt) => wt.code == code);
+
+      // console.log(code);
+      // console.log(wt);
+
+      if (wt) {
+        let time = undefined;
+        let status = PoiStatus.UNDEFINED;
+
+        switch (wt.time) {
+          case 999:
+            status = PoiStatus.DOWN;
+            break;
+          case 777:
+            status = PoiStatus.UNDEFINED;
+            break;
+          case 333:
+          case 222:
+            status = PoiStatus.CLOSED;
+            break;
+          case 1:
+            status = PoiStatus.OPEN;
+            time = 0;
+            break;
+          default:
+            time = wt.time;
+            status = PoiStatus.OPEN;
+            break;
+        }
+
+        // console.log(` - Time: ${time} / ${status}`);
+        poi.currentWaitTime = time;
+        poi.state = status;
+      }
+
+      return poi;
+    });
+
+    return pois;
   }
 
   async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
-    const data = await this.request<any>(`https://tickets.mackinternational.de/api/v1/opentime/${this.getParkName()}/de`);
+    const data = await this.request<any>(`https://tickets.mackinternational.de/api/v1/opentime/${this.getParkName()}/de`, 'de');
     const times = data.opentime;
 
     const dates = [];
@@ -124,6 +200,6 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
       });
     }
 
-    return dates
+    return dates;
   }
 }

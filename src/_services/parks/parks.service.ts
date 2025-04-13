@@ -198,6 +198,7 @@ export class ParksService {
       const p = await this._companies[i].getParkServices()
         .catch(reason => {
           Sentry.captureException(reason);
+          console.error(reason);
           return [];
         });
 

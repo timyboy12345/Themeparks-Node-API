@@ -3,6 +3,7 @@ import { SixflagsService } from './sixflags.service';
 import { SixflagsTransferService } from './sixflags-transfer/sixflags-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('SixflagsService', () => {
   let service: SixflagsService;
@@ -10,7 +11,7 @@ describe('SixflagsService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [SixflagsService, SixflagsTransferService],
-      imports: [HttpModule, ConfigModule.forRoot()]
+      imports: [HttpModule, ConfigModule.forRoot(), CacheModule.register()],
     }).compile();
 
     service = module.get<SixflagsService>(SixflagsService);

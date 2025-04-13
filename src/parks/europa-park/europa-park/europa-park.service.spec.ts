@@ -3,6 +3,8 @@ import { EuropaParkService } from './europa-park.service';
 import { EuropaParkTransferService } from '../europa-park-transfer/europa-park-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../../_services/locale/locale.module';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('EuropaParkService', () => {
   let service: EuropaParkService;
@@ -10,7 +12,7 @@ describe('EuropaParkService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [EuropaParkService, EuropaParkTransferService],
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule, CacheModule.register()],
     }).compile();
 
     service = module.get<EuropaParkService>(EuropaParkService);

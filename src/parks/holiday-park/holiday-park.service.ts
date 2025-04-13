@@ -23,6 +23,7 @@ export class HolidayParkService extends ThemeParkService {
               private readonly localeService: LocaleService) {
     super();
 
+
     this._holidayParkApiUrl = this.configService.get('HOLIDAY_PARK_API_URL');
     // this._holidayParkApiToken = this.configService.get('HOLIDAY_PARK_API_TOKEN');
   }
@@ -32,7 +33,7 @@ export class HolidayParkService extends ThemeParkService {
       id: 'holiday-park',
       name: 'Holiday Park',
       description: 'Holiday Park is een attractiepark gelegen in Haßloch in de Duitse deelstaat Rijnland-Palts. Het maakt sinds 2010 deel uit van de pretparken van de Plopsa-groep.',
-      image: 'https://www.holidaypark.de/sites/default/files/public/brand/logos/Holiday%20Park.jpg',
+      image: 'https://www.plopsa.com/sites/default/files/styles/io_600/public/images/2025-03/HPH_BigFMExpeditionGeforce_Hero.jpg.webp?itok=qmh0aJ4O',
       countryCode: 'de',
       parkType: ParkType.THEMEPARK,
       location: {
@@ -129,7 +130,7 @@ export class HolidayParkService extends ThemeParkService {
   }
 
   private getToken() {
-    const url = 'https://www.holidaypark.de/de/api/v1.0/token/0001';
+    const url = 'https://www.old.plopsa.com/de/api/v1.0/token/0001';
 
     return this.httpService.post<HolidayParkTokenInterface>(url, { 'clientSecret': '6YqyzzOsaNkxDkHmwhgK%%2Fw%%3D%%3D', 'clientId': '7xfwRB8iK1tbf3cYiABI%%2Fw%%3D%%3D' })
       .toPromise()

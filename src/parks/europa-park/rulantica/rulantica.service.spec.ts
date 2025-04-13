@@ -3,6 +3,8 @@ import { RulanticaService } from './rulantica.service';
 import { EuropaParkTransferService } from '../europa-park-transfer/europa-park-transfer.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { CacheModule } from '@nestjs/cache-manager';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('RulanticaService', () => {
   let service: RulanticaService;
@@ -10,7 +12,7 @@ describe('RulanticaService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [RulanticaService, EuropaParkTransferService],
-      imports: [HttpModule, ConfigModule.forRoot()],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule, CacheModule.register()],
     }).compile();
 
     service = module.get<RulanticaService>(RulanticaService);

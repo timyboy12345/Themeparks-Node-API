@@ -3,6 +3,7 @@ import { TransferService } from '../../../_services/transfer/transfer.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { EuropaParkPoiInterface } from '../interfaces/europa-park-poi.interface';
+import * as sluggo from 'sluggo';
 
 @Injectable()
 export class EuropaParkTransferService extends TransferService {
@@ -33,7 +34,7 @@ export class EuropaParkTransferService extends TransferService {
     const p: Poi = {
       category: PoiCategory.UNDEFINED,
       description: poi.description,
-      id: poi.id.toString(),
+      id: sluggo(poi.name),
       original: poi,
       subTitle: poi.excerpt,
       title: poi.name,
@@ -75,8 +76,10 @@ export class EuropaParkTransferService extends TransferService {
       p.image_url = poi.image.large;
     }
 
-    if (poi.galleryMedias) {
+    if (poi.galleryMedias && poi.galleryMedias.length > 0) {
       p.images = poi.galleryMedias.map((m) => m.xlarge);
+    } else if (poi.image) {
+      p.images = [poi.image.xlarge];
     }
 
     if (poi.youtube) {

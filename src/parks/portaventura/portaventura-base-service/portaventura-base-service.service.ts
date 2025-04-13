@@ -1,4 +1,4 @@
-import { Injectable, NotImplementedException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotImplementedException } from '@nestjs/common';
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { HttpService } from '@nestjs/axios';
@@ -98,7 +98,7 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
   }
 
   async request(route: string, useLocale = true, shouldFilter = true): Promise<any[]> {
-    const url = this._apiUrl + '/' + route;
+    const url = 'https://api-v2.adventurelabs.xyz' + '/' + route;
     let lang: string;
     switch (this.locale.getLocale()) {
       case 'es':
@@ -117,10 +117,13 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
     return this.http.get(url, {
       params: params,
       headers: {
+        'X-App-Environment': 'production',
         'Authorization': 'Bearer ' + this.getAuthToken(),
         'Content-Type': 'application/json',
-        'User-Agent': 'PortAventura/441 CFNetwork/1496.0.7 Darwin/23.5.0',
+        'Accept': '*/*',
+        'User-Agent': 'PortAventura/633 CFNetwork/3826.400.120 Darwin/24.3.0',
         'Host': 'api.adventurelabs.xyz',
+        'X-App-Version': '5.2.2',
       },
     })
       .toPromise()
@@ -128,14 +131,7 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
       .catch((exception) => {
         console.error(exception);
         Sentry.captureException(exception);
-
-        // Sentry.withScope(function (scope) {
-        // scope.setFingerprint(['get', url, String(exception.statusCode)]);
-        // scope.setTransactionName('get-portaventura-data');
-        // scope.captureException(exception);
-        // });
-
-        throw exception;
+        throw new InternalServerErrorException("Could not fetch data from PortAventura");
       });
   }
 }
