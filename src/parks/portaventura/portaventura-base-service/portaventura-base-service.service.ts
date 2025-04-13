@@ -12,6 +12,7 @@ import * as Sentry from '@sentry/node';
 @Injectable()
 export class PortaventuraBaseServiceService extends ThemeParkService {
   private readonly _apiUrl = null;
+  private readonly _apiToken = null;
 
   constructor(private readonly http: HttpService,
               private readonly config: ConfigService,
@@ -20,6 +21,7 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
     super();
 
     this._apiUrl = config.get('PORTAVENTURA_API_URL');
+    this._apiToken = config.get('PORTAVENTURA_API_TOKEN');
   }
 
   getSupports(): ThemeParkSupports {
@@ -45,7 +47,7 @@ export class PortaventuraBaseServiceService extends ThemeParkService {
   }
 
   public getAuthToken() {
-    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE4ODMzOTk2LCJleHAiOjE3MjE0MjU5OTZ9.QlIFeolcJrY90wVAd-Py8ooYZBsnKpaHww2yVmlbe00';
+    return this._apiToken;
   }
 
   public getParkName() {

@@ -12,7 +12,8 @@ import { LocaleService } from '../../../_services/locale/locale.service';
 
 @Injectable()
 export class SafariparkService extends ThroughPoisThemeParkService {
-  private readonly apiUrl;
+  private readonly _apiUrl: string;
+  private readonly _apiToken: string;
 
   constructor(private readonly httpService: HttpService,
               private readonly transferService: BeekseBergenTransferService,
@@ -20,7 +21,8 @@ export class SafariparkService extends ThroughPoisThemeParkService {
               private readonly localeService: LocaleService) {
     super();
 
-    this.apiUrl = this.configService.get('BEEKSE_BERGEN_API_URL');
+    this._apiUrl = this.configService.get('BEEKSE_BERGEN_API_URL');
+    this._apiToken = this.configService.get('BEEKSE_BERGEN_API_TOKEN');
   }
 
   getInfo(): ThemePark {
@@ -124,11 +126,9 @@ export class SafariparkService extends ThroughPoisThemeParkService {
       url += `&filters%5Bcategories%5D%5Bid%5D%5B$in%5D%5B0%5D=${category}`;
     }
 
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjE2MzQyLCJ0ZW5hbnQiOjEsImlhdCI6MTcxOTk5MzUzOCwiZXhwIjoxNzUxNTUxMTM4fQ.PHulhXTPfRURWXRfwvrrYfhKUCgYnTrYd_0-Ok-NGL4';
-
     return this.httpService.get<BeekseBergenLocationsResponseInterface>(url, {
       headers: {
-        'Authorization': 'Bearer ' + token,
+        'Authorization': 'Bearer ' + this._apiToken,
       },
     })
       .toPromise()

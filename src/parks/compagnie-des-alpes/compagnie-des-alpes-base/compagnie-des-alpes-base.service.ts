@@ -14,12 +14,14 @@ import * as Sentry from '@sentry/node';
 import { BellewaerdeWaitTimeInterface } from '../interfaces/cda-wait-time-response.interface';
 import { CompagnieDesAlpesTransferService } from '../compagnie-des-alpes-transfer/compagnie-des-alpes-transfer.service';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class CompagnieDesAlpesBaseService extends ThemeParkService {
   constructor(private http: HttpService,
               private transfer: CompagnieDesAlpesTransferService,
-              private locale: LocaleService) {
+              private locale: LocaleService,
+              private config: ConfigService) {
     super();
   }
 
@@ -78,7 +80,7 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
   }
 
   public getApiKey(): string {
-    return 'r6uko7sdv4dq-btw';
+    return this.config.get('COMPAGNIE_DES_ALPES_API_KEY');
   }
 
   public getUserAgent(): string {
