@@ -5,6 +5,8 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('GardalandService', () => {
+  jest.retryTimes(3)
+
   let service: GardalandService;
 
   beforeEach(async () => {

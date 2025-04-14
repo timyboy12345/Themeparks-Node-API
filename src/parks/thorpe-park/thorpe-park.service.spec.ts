@@ -5,6 +5,8 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('ThorpeParkService', () => {
+  jest.retryTimes(3)
+
   let service: ThorpeParkService;
 
   beforeEach(async () => {

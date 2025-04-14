@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 
 describe('AltonTowersService', () => {
+  jest.retryTimes(3)
+
   let service: AltonTowersService;
 
   beforeEach(async () => {

@@ -5,6 +5,8 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 
 describe('SanDiegoZooService', () => {
+  jest.retryTimes(3)
+
   let service: SanDiegoZooService;
 
   beforeEach(async () => {

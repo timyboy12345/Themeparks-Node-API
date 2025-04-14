@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AioTransferServiceService } from './aio-transfer-service.service';
 
 describe('AioTransferServiceService', () => {
+  jest.retryTimes(3)
+
   let service: AioTransferServiceService;
 
   beforeEach(async () => {

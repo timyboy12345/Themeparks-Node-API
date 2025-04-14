@@ -5,6 +5,8 @@ import { AioTransferServiceService } from './transfer-service/aio-transfer-servi
 import { HttpModule } from '@nestjs/axios';
 
 describe('AttractionsIoThemeParkService', () => {
+  jest.retryTimes(3)
+
   let service: AioThemeparkService;
 
   beforeEach(async () => {

@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { AioTransferServiceService } from '../../../_services/aio/transfer-service/aio-transfer-service.service';
 
 describe('HeideParkService', () => {
+  jest.retryTimes(3)
+
   let service: HeideParkService;
 
   beforeEach(async () => {

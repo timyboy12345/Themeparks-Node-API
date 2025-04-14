@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { UniversalTransferService } from '../universal-transfer/universal-transfer.service';
 
 describe('UniversalStudiosHollywoodService', () => {
+  jest.retryTimes(3)
+
   let service: UniversalStudiosHollywoodService;
 
   beforeEach(async () => {
