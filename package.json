@@ -1,6 +1,6 @@
 {
   "name": "themeparks-node-api",
-  "version": "0.6.20",
+  "version": "0.6.21",
   "description": "An API which can retrieve theme park wait times.",
   "author": "Tim Arendsen",
   "private": false,
@@ -16,7 +16,7 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest --verbose --detectOpenHandles --forceExit --testTimeout 15000 --maxWorkers=5",
+    "test": "jest --verbose --detectOpenHandles --forceExit --testTimeout 15000 --maxWorkers=3",
     "test:watch": "jest --watch --testTimeout 15000",
     "test:cov": "jest --coverage --testTimeout 15000",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",

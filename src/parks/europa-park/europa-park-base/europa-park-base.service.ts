@@ -10,14 +10,22 @@ import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.in
 import { LocaleService } from '../../../_services/locale/locale.service';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class EuropaParkBaseService extends ThroughPoisThemeParkService {
+  private readonly _clientId: string;
+  private readonly _clientSecret: string;
+
   constructor(private readonly http: HttpService,
               private readonly transfer: EuropaParkTransferService,
               private readonly localeService: LocaleService,
+              private readonly config: ConfigService,
               @Inject(CACHE_MANAGER) private readonly cache: Cache) {
     super();
+
+    this._clientId = config.get('EUROPA_PARK_CLIENT_ID');
+    this._clientSecret = config.get('EUROPA_PARK_CLIENT_SECRET');
   }
 
   getSupports(): ThemeParkSupports {
@@ -47,7 +55,8 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
   }
 
   private async getToken(): Promise<string> {
-    const body = 'client_id=8642b207-c18b-4e06-860f-c68f37d84b25&client_secret=7ae7ada2-04ee-47af-aa0a-163581787d26&grant_type=client_credentials';
+    const body = `client_id=${this._clientId}&client_secret=${this._clientSecret}&grant_type=client_credentials`;
+
     return await this.http.post('https://account.mackone.de/token-srv/token', body)
       .toPromise()
       .then((res) => {
@@ -124,7 +133,7 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
 
       if (wt) {
         let time = undefined;
-        let status = PoiStatus.UNDEFINED;
+        let status: PoiStatus;
 
         switch (wt.time) {
           case 999:
