@@ -1,6 +1,6 @@
 {
   "name": "themeparks-node-api",
-  "version": "0.6.19",
+  "version": "0.6.20",
   "description": "An API which can retrieve theme park wait times.",
   "author": "Tim Arendsen",
   "private": false,
@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.2",
-    "@nestjs/schematics": "^10.1.1",
+    "@nestjs/schematics": "^10.1.3",
     "@nestjs/testing": "^10.3.9",
     "@types/cache-manager": "^4.0.6",
     "@types/cron": "^2.0.1",

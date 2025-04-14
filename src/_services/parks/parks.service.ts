@@ -12,12 +12,10 @@ import { PortaventuraService } from '../../parks/portaventura/portaventura/porta
 import { FerrariLandService } from '../../parks/portaventura/ferrariland/ferrariland.service';
 import { BellewaerdeService } from '../../parks/bellewaerde/bellewaerde/bellewaerde.service';
 import { DippieDoeService } from '../../parks/dippiedoe/dippie-doe.service';
-import { HolidayParkService } from '../../parks/holiday-park/holiday-park.service';
 import { HellendoornService } from '../../parks/hellendoorn/hellendoorn.service';
 import { CompanyService } from '../company/company.service';
 import { SixflagsService } from '../../parks/sixflags/sixflags.service';
 import { BobbejaanlandService } from '../../parks/parques-reunidos/bobbejaanland/bobbejaanland.service';
-import { PlopsalandDePanneService } from '../../parks/plopsaland/plopsaland-de-panne/plopsaland-de-panne.service';
 import { HansaParkService } from '../../parks/hansa-park/hansa-park.service';
 import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouwehands-dierenpark.service';
 import { WildlandsService } from '../../parks/wildlands/wildlands.service';
@@ -65,6 +63,8 @@ import { DjursSommerlandService } from '../../parks/djurs-sommerland/djurs-somme
 import { PuyDeFouService } from '../../parks/puy-de-fou/puy-de-fou.service';
 import { EuropaParkService } from '../../parks/europa-park/europa-park/europa-park.service';
 import { RulanticaService } from '../../parks/europa-park/rulantica/rulantica.service';
+import { PlopsalandDePanneService } from '../../parks/plopsa/plopsaland-de-panne/plopsaland-de-panne.service';
+import { HolidayParkService } from '../../parks/plopsa/holiday-park/holiday-park.service';
 
 @Injectable()
 export class ParksService {
@@ -86,11 +86,9 @@ export class ParksService {
     private readonly _bellewaerdeService: BellewaerdeService,
     // private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
     private readonly _dippieDoeService: DippieDoeService,
-    private readonly _holidayParkService: HolidayParkService,
     private readonly _hellendoornService: HellendoornService,
     private readonly _sixflagsService: SixflagsService,
     private readonly _bobbejaanlandService: BobbejaanlandService,
-    private readonly _plopsalandDePanneService: PlopsalandDePanneService,
     private readonly _hansaParkService: HansaParkService,
     private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
     private readonly _wildlandsService: WildlandsService,
@@ -130,6 +128,8 @@ export class ParksService {
     private readonly _puyDeFou: PuyDeFouService,
     private readonly _europaParkService: EuropaParkService,
     private readonly _rulanticaService: RulanticaService,
+    private readonly _plopsalandDePanneService: PlopsalandDePanneService,
+    private readonly _holidayParkService: HolidayParkService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);

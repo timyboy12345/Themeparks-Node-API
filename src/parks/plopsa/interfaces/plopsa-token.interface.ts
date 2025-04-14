@@ -1,4 +1,4 @@
-export interface PlopsalandDePanneTokenInterface {
+export interface PlopsaTokenInterface {
   'accessToken': string,
   'expiresOn': number,
   'tokenType': string,

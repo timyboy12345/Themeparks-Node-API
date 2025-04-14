@@ -1,17 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { HolidayParkAttraction } from '../interfaces/holiday-park-attraction.interface';
+import {
+  PlopsaDetailsInterface,
+  PlopsaDetailsResponseItemInterface,
+} from '../interfaces/plopsa-details.interface';
+import * as moment from 'moment-timezone';
+import { TransferService } from '../../../_services/transfer/transfer.service';
 import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
-import { HolidayParkAttractionsResponseInterface } from '../interfaces/holiday-park-attractions-response.interface';
-import { RideCategory } from '../../../_interfaces/ride-category.interface';
-import { HolidayParkPageResponseInterface } from '../interfaces/holiday-park-page-response.interface';
-import { TransferService } from '../../../_services/transfer/transfer.service';
-import * as moment from 'moment-timezone';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
+import { RideCategory } from '../../../_interfaces/ride-category.interface';
 
 @Injectable()
-export class HolidayParkTransferService extends TransferService {
-  public transferPoiToPoi(holidayParkAttraction: HolidayParkAttraction): Poi {
+export class PlopsaTransferService extends TransferService {
+  public transferPoiToPoi(holidayParkAttraction: PlopsaDetailsResponseItemInterface): Poi {
     let category: PoiCategory;
 
     switch (holidayParkAttraction.type) {
@@ -65,8 +66,8 @@ export class HolidayParkTransferService extends TransferService {
     return poi;
   }
 
-  public transferRidesToPois(responseInterface: HolidayParkAttractionsResponseInterface, locale?: string): Poi[] {
-    const pois: HolidayParkAttraction[] = [];
+  public transferRidesToPois(responseInterface: PlopsaDetailsInterface, locale?: string): Poi[] {
+    const pois: PlopsaDetailsResponseItemInterface[] = [];
 
     if (locale === 'de') {
       for (let key in responseInterface.de.attraction) {
@@ -89,8 +90,8 @@ export class HolidayParkTransferService extends TransferService {
     return pois.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
   }
 
-  public transferShopsToPois(responseInterface: HolidayParkPageResponseInterface, locale?: string): Poi[] {
-    const shops: HolidayParkAttraction[] = [];
+  public transferShopsToPois(responseInterface: PlopsaDetailsInterface, locale?: string): Poi[] {
+    const shops: PlopsaDetailsResponseItemInterface[] = [];
 
     if (locale === 'de') {
       for (let key in responseInterface.de.shop) {
@@ -113,8 +114,8 @@ export class HolidayParkTransferService extends TransferService {
     return shops.map(holidayParkAttraction => this.transferPoiToPoi(holidayParkAttraction));
   }
 
-  public transferRestaurantsToPois(responseInterface: HolidayParkPageResponseInterface, locale?: string): Poi[] {
-    const restaurants: HolidayParkAttraction[] = [];
+  public transferRestaurantsToPois(responseInterface: PlopsaDetailsInterface, locale?: string): Poi[] {
+    const restaurants: PlopsaDetailsResponseItemInterface[] = [];
 
     if (locale === 'de') {
       for (let key in responseInterface.de.food) {
@@ -137,8 +138,8 @@ export class HolidayParkTransferService extends TransferService {
     return restaurants.map(holidayParkRestaurant => this.transferPoiToPoi(holidayParkRestaurant));
   }
 
-  transferShowsToPois(responseInterface: HolidayParkPageResponseInterface, locale?: string): Poi[] {
-    const shows: HolidayParkAttraction[] = [];
+  transferShowsToPois(responseInterface: PlopsaDetailsInterface, locale?: string): Poi[] {
+    const shows: PlopsaDetailsResponseItemInterface[] = [];
 
     if (locale === 'de') {
       for (let key in responseInterface.de.show) {
@@ -161,11 +162,11 @@ export class HolidayParkTransferService extends TransferService {
     return shows.map(holidayParkShow => this.transferShowToPoi(holidayParkShow));
   }
 
-  transferShowToPoi(holidayParkShow: HolidayParkAttraction): Poi {
+  transferShowToPoi(holidayParkShow: PlopsaDetailsResponseItemInterface): Poi {
     const show = this.transferPoiToPoi(holidayParkShow);
 
     const today = moment().tz('Europe/Berlin').format('YYYY-MM-DD');
-    const timeBlockData: [] = holidayParkShow.timeblocks[today];
+    const timeBlockData: any[] = holidayParkShow.timeblocks[today];
     const shows: ShowTime[] = [];
 
     if (timeBlockData) {
@@ -206,7 +207,7 @@ export class HolidayParkTransferService extends TransferService {
       currentDateTimezone: moment().tz('Europe/Berlin').format(),
       timezone: 'Europe/Berlin',
       currentDate: today,
-      showTimes: shows
+      showTimes: shows,
     };
 
     return show;

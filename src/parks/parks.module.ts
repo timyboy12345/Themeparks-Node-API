@@ -3,7 +3,6 @@ import { EftelingModule } from './efteling/efteling.module';
 import { ToverlandModule } from './toverland/toverland.module';
 import { PhantasialandModule } from './phantasialand/phantasialand.module';
 import { ParcAsterixModule } from './parc-asterix/parc-asterix.module';
-import { HolidayParkModule } from './holiday-park/holiday-park.module';
 import { DippiedoeModule } from './dippiedoe/dippiedoe.module';
 import { DisneyModule } from './disney/disney.module';
 import { WalibiModule } from './walibi/walibi.module';
@@ -11,7 +10,6 @@ import { PortaventuraModule } from './portaventura/portaventura.module';
 import { SixflagsModule } from './sixflags/sixflags.module';
 import { BellewaerdeModule } from './bellewaerde/bellewaerde.module';
 import { HellendoornModule } from './hellendoorn/hellendoorn.module';
-import { PlopsalandDePanneModule } from './plopsaland/plopsaland-de-panne/plopsaland-de-panne.module';
 import { EuropaParkModule } from './europa-park/europa-park.module';
 import { HansaParkModule } from './hansa-park/hansa-park.module';
 import { OuwehandsDierenparkModule } from './ouwehands-dierenpark/ouwehands-dierenpark.module';
@@ -42,9 +40,10 @@ import { MerlinEntertainmentsModule } from './merlin-entertainments/merlin-enter
 import { PairiDaizaModule } from './pairi-daiza/pairi-daiza.module';
 import { DjursSommerlandModule } from './djurs-sommerland/djurs-sommerland.module';
 import { PuyDeFouModule } from './puy-de-fou/puy-de-fou.module';
+import { PlopsaModule } from './plopsa/plopsa.module';
 
 @Module({
-  exports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule, SanDiegoZooModule, ChessingtonResortModule, BlijdorpModule, ApenheulModule, EnergylandiaModule, FamilyparkModule, BeekseBergenModule, ParquesReunidosModule, FuturoscopeModule, HersheyparkModule, SeaworldModule, UniversalModule, CompagnieDesAlpesModule, MerlinEntertainmentsModule, PairiDaizaModule, DjursSommerlandModule, PuyDeFouModule],
-  imports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, HolidayParkModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, PlopsalandDePanneModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule, SanDiegoZooModule, ChessingtonResortModule, BlijdorpModule, ApenheulModule, EnergylandiaModule, FamilyparkModule, BeekseBergenModule, ParquesReunidosModule, FuturoscopeModule, HersheyparkModule, SeaworldModule, UniversalModule, CompagnieDesAlpesModule, MerlinEntertainmentsModule, PairiDaizaModule, DjursSommerlandModule, PuyDeFouModule],
+  exports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule, SanDiegoZooModule, ChessingtonResortModule, BlijdorpModule, ApenheulModule, EnergylandiaModule, FamilyparkModule, BeekseBergenModule, ParquesReunidosModule, FuturoscopeModule, HersheyparkModule, SeaworldModule, UniversalModule, CompagnieDesAlpesModule, MerlinEntertainmentsModule, PairiDaizaModule, DjursSommerlandModule, PuyDeFouModule, PlopsaModule],
+  imports: [EftelingModule, ToverlandModule, PhantasialandModule, ParcAsterixModule, DippiedoeModule, DisneyModule, WalibiModule, PortaventuraModule, SixflagsModule, BellewaerdeModule, HellendoornModule, EuropaParkModule, HansaParkModule, OuwehandsDierenparkModule, WildlandsModule, LisebergModule, HerschendModule, CedarfairModule, ParqueWarnerModule, GronaLundModule, TivoliModule, ThorpeParkModule, AltonTowersModule, PaultonsParkModule, SanDiegoZooModule, ChessingtonResortModule, BlijdorpModule, ApenheulModule, EnergylandiaModule, FamilyparkModule, BeekseBergenModule, ParquesReunidosModule, FuturoscopeModule, HersheyparkModule, SeaworldModule, UniversalModule, CompagnieDesAlpesModule, MerlinEntertainmentsModule, PairiDaizaModule, DjursSommerlandModule, PuyDeFouModule, PlopsaModule],
 })
 export class ParksModule {}

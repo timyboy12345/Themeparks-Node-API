@@ -1,17 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlopsalandDePanneService } from './plopsaland-de-panne.service';
+import { PlopsaTransferService } from '../plopsa-transfer/plopsa-transfer.service';
 import { HttpModule } from '@nestjs/axios';
-import { PlopsalandDePanneTransferService } from './plopsaland-de-panne-transfer/plopsaland-de-panne-transfer.service';
+import { ConfigModule } from '@nestjs/config';
+import { LocaleModule } from '../../../_services/locale/locale.module';
 
 describe('PlopsalandDePanneService', () => {
   let service: PlopsalandDePanneService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PlopsalandDePanneService, PlopsalandDePanneTransferService],
-      imports: [
-        HttpModule,
-      ]
+      providers: [PlopsalandDePanneService, PlopsaTransferService],
+      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
     }).compile();
 
     service = module.get<PlopsalandDePanneService>(PlopsalandDePanneService);
