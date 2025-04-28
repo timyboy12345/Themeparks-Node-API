@@ -212,6 +212,11 @@ export interface Poi {
   currentWaitTime?: number;
 
   /**
+   * Other queues, like Single Rider and Virtual Queue
+   */
+  alternativeQueues?: AlternativeQueue[];
+
+  /**
    * The current status of this ride
    */
   state?: PoiStatus;
@@ -276,4 +281,20 @@ export enum PoiStatus {
   MAINTENANCE = 'MAINTENANCE',
   OPENS_LATER_TODAY = 'OPENS_LATER_TODAY',
   UNDEFINED = 'UNDEFINED',
+}
+
+export interface AlternativeQueue {
+  id: string,
+  minutes?: number,
+  type: 'SINGLE_RIDER' | 'VIRTUAL_QUEUE',
+  state?: 'FULL' | 'NOT_IN_USE' | 'OPEN' | 'CLOSED',
+  original_state?: string,
+  window_start?: string,
+  window_end?: string,
+  geofences: {
+    name?: string,
+    lat: number,
+    lng: number,
+    radius?: number,
+  }[]
 }

@@ -42,6 +42,7 @@ export interface EftelingOpeningTimesAttraction {
   'Id': string,
   'Type': string,
   'OpeningHours': string,
+  'Empire': string,
   'State': string,
   'OpeningTimes'?: EftelingOpeningTimesAttractionOpeningTime[]
   'PastOpeningTimes'?: EftelingOpeningTimesAttractionOpeningTime[]
@@ -49,6 +50,11 @@ export interface EftelingOpeningTimesAttraction {
   'ShowTimes'?: EftelingOpeningTimesAttractionShowTimes[]
   'PastShowTimes'?: EftelingOpeningTimesAttractionShowTimes[]
   'WaitingTime': string,
+  'VirtualQueue': {
+    'State': 'enabled' | 'full' | 'walkin',
+    'WaitingTime': number,
+    'Geofences': '[{"desc":"Danse Macabre Plein","latitude":51.6484438,"longitude":5.0485892,"radius":40}]'
+  }
 }
 
 export interface EftelingOpeningTimesAttractionOpeningTime {

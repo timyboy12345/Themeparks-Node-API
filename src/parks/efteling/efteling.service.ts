@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
-import { Poi, PoiStatus } from '../../_interfaces/poi.interface';
+import { AlternativeQueue, Poi, PoiStatus } from '../../_interfaces/poi.interface';
 import { EftelingPoisResponse } from './interfaces/efteling-pois-response.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
@@ -61,10 +61,11 @@ export class EftelingService extends ThroughPoisThemeParkService {
       supportsShowTimes: true,
       supportsShows: true,
       supportsTranslations: false,
-      textType: "UNDEFINED",
+      textType: 'UNDEFINED',
     };
   }
 
+  // TODO: Fix time zone, as no time zone is currently used
   public getPois(): Promise<Poi[]> {
     return this.request().then(poisResponse => {
       const pois = poisResponse.data.hits.hit.map(pois => this.eftelingTransferService.transferPoiToPoi(pois));
@@ -101,6 +102,37 @@ export class EftelingService extends ThroughPoisThemeParkService {
 
             if (attractionInfo.WaitingTime) {
               poi.currentWaitTime = parseInt(attractionInfo.WaitingTime);
+            }
+
+            if (attractionInfo.VirtualQueue) {
+              const data: any[] = JSON.parse(attractionInfo.VirtualQueue.Geofences);
+
+              const q: AlternativeQueue = {
+                id: 'virtual_queue',
+                type: 'VIRTUAL_QUEUE',
+                original_state: attractionInfo.VirtualQueue.State,
+                geofences: data ? data.map((d) => {
+                  return {
+                    name: d.desc,
+                    lat: d.latitude,
+                    lng: d.longitude,
+                    radius: d.radius,
+                  };
+                }) : [],
+              };
+
+              if (attractionInfo.VirtualQueue.State === 'full') {
+                q.state = 'FULL';
+              } else if (attractionInfo.VirtualQueue.State === 'enabled') {
+                const start = moment().add(attractionInfo.VirtualQueue.WaitingTime, 'minutes');
+                q.state = 'OPEN';
+                q.window_start = start.format();
+                q.window_end = start.add(15, 'minutes').format();
+              } else if (attractionInfo.VirtualQueue.State === 'walkin') {
+                q.state = 'NOT_IN_USE';
+              }
+
+              poi.alternativeQueues.push(q);
             }
 
             if (attractionInfo.OpeningTimes && attractionInfo.OpeningTimes.length > 0) {

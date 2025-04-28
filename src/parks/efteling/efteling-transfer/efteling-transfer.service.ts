@@ -91,6 +91,7 @@ export class EftelingTransferService extends TransferService {
       area: eftelingPoi.fields.empire,
       images: images,
       state: s,
+      alternativeQueues: [],
     };
 
     if (lat !== 0 && lng !== 0) {
