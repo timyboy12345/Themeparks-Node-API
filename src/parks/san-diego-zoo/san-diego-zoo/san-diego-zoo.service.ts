@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { AioThemeparkService } from '../../../_services/aio/aio-themepark.service';
-import { AttractionsIoAppDetailsInterface } from '../../../_interfaces/attractions-io/attractions-io-app-details.interface';
+import {
+  AttractionsIoAppDetailsInterface,
+} from '../../../_interfaces/attractions-io/attractions-io-app-details.interface';
 import { ParkType, ThemePark } from '../../../_interfaces/park.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { ThemeParkSupports } from '../../../_interfaces/park-supports.interface';
-import supports = CSS.supports;
 
 @Injectable()
 export class SanDiegoZooService extends AioThemeparkService {
@@ -13,11 +14,11 @@ export class SanDiegoZooService extends AioThemeparkService {
       id: 'san-diego-zoo',
       name: 'San Diego Zoo',
       countryCode: 'us',
-      image: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/ed/ff/00.jpg',
-      description: 'De San Diego Zoo is een dierentuin in San Diego in het zuiden van de Amerikaanse staat Californië. Er verblijven zo\'n 4000 dieren van meer dan 800 verschillende diersoorten. De San Diego Zoo stond bekend om zijn reuzenpanda’s vanaf 1996. In april 2019 zijn de panda’s terug naar China gegaan.',
+      image: undefined,
+      description: undefined,
       location: {
-        lat: 32.735317,
-        lng: -117.149048
+        lat: 0,
+        lng: 0
       },
       parkType: ParkType.ZOO,
       timezone: 'America/Los_Angeles'
@@ -31,38 +32,38 @@ export class SanDiegoZooService extends AioThemeparkService {
   }
 
   getInstallationRequestBody(): string {
-    return "--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n" +
+    return "\n" +
+      "--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n" +
       "Content-Disposition: form-data; name=\"user_identifier\"\n" +
       "\n" +
-      "33D6D8E2-83B8-4F6C-A201-0E90E5ADB4C5\n" +
+      "5A097C66-1395-4DF4-972D-12AF239B6051\n" +
       "--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n" +
       "Content-Disposition: form-data; name=\"device_identifier\"\n" +
       "\n" +
-      "B016B80D-B206-4078-8E79-1BD14A93E856\n" +
+      "E386B179-170D-4DDA-BB9F-2B3C977BD59D\n" +
       "--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n" +
       "Content-Disposition: form-data; name=\"app_version\"\n" +
       "\n" +
-      "3.1\n" +
+      "1.1.27\n" +
       "--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc\n" +
       "Content-Disposition: form-data; name=\"app_build\"\n" +
       "\n" +
-      "132\n" +
-      "--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc--\n" +
-      "\n"
+      "71\n" +
+      "--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc--\n"
   }
 
   getApiKey(): string {
-    return "dba0df18-ab39-5a1c-9a4a-fc1dc2b0cc84"
+    return "b7c9895f-2486-544f-a623-a43340051f78"
   }
 
   getAppDetails(): AttractionsIoAppDetailsInterface {
     return {
-      latestUpdate: "2021-09-20T04:24:51+02:00",
+      latestUpdate: "2025-04-10T21:01:44+02:00",
       platform: 'iOS',
       platformVersion: '14.8',
       contentType: 'multipart/form-data; boundary=s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc',
-      userAgent: 'San%20Diego%20Zoo/132 CFNetwork/1240.0.4 Darwin/20.6.0',
-      appBuild: '132'
+      userAgent: 'Safari%20Park/71 CFNetwork/3826.500.111.2.2 Darwin/24.4.0',
+      appBuild: '71'
     }
   }
 
@@ -117,6 +118,8 @@ export class SanDiegoZooService extends AioThemeparkService {
       case 1755:
         // Theaters
         return PoiCategory.SHOW;
+      case 1553: // Drinking Fountain
+        return PoiCategory.WATER_FOUNTAIN;
       case 1369:
         // Upgraded Experiences
       case 1373:

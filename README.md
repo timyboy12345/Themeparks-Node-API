@@ -66,6 +66,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Dollywood | 🎡 | True | False | False | False | False |
 | 🇺🇸 Silver Dollar City | 🎡 | True | False | False | False | False |
 | 🇺🇸 San Diego Zoo | 🦁 | True | True | True | True | False |
+| 🇺🇸 San Diego Zoo Safari Park | 🦁 | True | True | True | True | False |
 | 🇺🇸 Hersheypark | 🎡 | True | True | True | True | False |
 | 🇺🇸 Six Flags Over Texas | 🎡 | True | True | True | True | False |
 | 🇺🇸 Six Flags Over Georgia | 🎡 | True | True | True | True | False |

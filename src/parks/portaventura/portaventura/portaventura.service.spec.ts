@@ -22,13 +22,12 @@ describe('PortaventuraService', () => {
     expect(service).toBeDefined();
   });
 
-  // TODO: Fix these parks
-  // it('should return info', () => {
-  //   expect(service.getInfo().id).toBeDefined();
-  // });
-  //
-  // it('should return a list of POIs', async () => {
-  //   const data = await service.getPois();
-  //   expect(data).toBeInstanceOf(Array);
-  // });
+  it('should return info', () => {
+    expect(service.getInfo().id).toBeDefined();
+  });
+
+  it('should return a list of POIs', async () => {
+    const data = await service.getPois();
+    expect(data).toBeInstanceOf(Array);
+  });
 });

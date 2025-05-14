@@ -5,12 +5,14 @@ import { ParksService } from '../../_services/parks/parks.service';
 import { Cache } from 'cache-manager';
 import { ParkType } from '../../_interfaces/park.interface';
 import { CACHE_MANAGER, CacheInterceptor } from '@nestjs/cache-manager';
+import { HttpService } from '@nestjs/axios';
 
 @ApiTags('Themeparks')
 @Controller('parks')
 export class ParksController {
   constructor(private readonly parksService: ParksService,
-              @Inject(CACHE_MANAGER) private cacheManager: Cache) {
+              @Inject(CACHE_MANAGER) private cacheManager: Cache,
+              private readonly http: HttpService) {
   }
 
   @Get('')
@@ -83,6 +85,32 @@ export class ParksController {
     });
 
     return lines.join('\n');
+  }
+
+  @Get('/check-images')
+  @Header('content-type', 'text/json')
+  async getCheckImages() {
+    let parks = await this.parksService.getParks();
+
+    parks = parks.filter((p) => p.getInfo().image);
+
+    const success = [];
+    const failed = [];
+
+    for (let i = parks.length - 1; i >= 0; i--) {
+      await this.http.get(parks[i].getFullInfo().image).toPromise()
+        .then(() => {
+          success.push(parks[i].getInfo());
+        })
+        .catch((e) => {
+          success.push({ ...parks[i].getInfo(), error: e });
+        });
+    }
+
+    return {
+      failed,
+      success,
+    };
   }
 
   /**

@@ -65,6 +65,9 @@ import { EuropaParkService } from '../../parks/europa-park/europa-park/europa-pa
 import { RulanticaService } from '../../parks/europa-park/rulantica/rulantica.service';
 import { PlopsalandDePanneService } from '../../parks/plopsa/plopsaland-de-panne/plopsaland-de-panne.service';
 import { HolidayParkService } from '../../parks/plopsa/holiday-park/holiday-park.service';
+import {
+  SanDiegoSafariParkService
+} from '../../parks/san-diego-zoo/san-diego-safari-park/san-diego-safari-park.service';
 
 @Injectable()
 export class ParksService {
@@ -106,6 +109,7 @@ export class ParksService {
     private readonly _altonTowersService: AltonTowersService,
     private readonly _paultonsParkService: PaultonsParkService,
     private readonly _sanDiegoZooService: SanDiegoZooService,
+    private readonly _sanDiegoZooSafariParkService: SanDiegoSafariParkService,
     private readonly _chessingtonResort: ChessingtonResortService,
     private readonly _blijdorpService: BlijdorpService,
     private readonly _apenheulService: ApenheulService,
@@ -163,6 +167,7 @@ export class ParksService {
     this._parks.push(_altonTowersService);
     this._parks.push(_paultonsParkService);
     this._parks.push(_sanDiegoZooService);
+    this._parks.push(_sanDiegoZooSafariParkService);
     this._parks.push(_chessingtonResort);
     this._parks.push(_blijdorpService);
     this._parks.push(_apenheulService);
