@@ -9,7 +9,7 @@ export class BushGardensWilliamsburgService extends SeaworldBaseService {
       countryCode: 'us',
       description: 'Busch Gardens Williamsburg is een pretpark van 422 hectare in James City County nabij Williamsburg, Virginia, Verenigde Staten. Het park ligt ongeveer 60 mijl ten noordwesten van Virginia Beach, is ontwikkeld door Anheuser-Busch en is eigendom van SeaWorld Parks & Entertainment.',
       id: 'bush-gardens-williamsburg',
-      image: 'https://buschgardens.com/williamsburg/-/media/media-migration/busch-gardens-williamsburg/images/homepage/seasonal/fall/2023/featured-story/660x410_bgw_fall_homepage_coasters_featured_story.ashx',
+      image: 'https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/WilliamsburgVA/BGW_19_Social_Media_Images_16_626cab62-6f08-44a3-b441-524f835bbd22.jpg',
       name: 'Bush Gardens Williamsburg',
       parkType: ParkType.THEMEPARK,
       company: Company.SEAWORLD,

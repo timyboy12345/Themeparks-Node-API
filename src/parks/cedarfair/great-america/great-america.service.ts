@@ -15,8 +15,8 @@ export class GreatAmericaService extends CedarfairBaseService{
       countryCode: 'us',
       timezone: 'America/Los_Angeles',
       description: 'California\'s Great America is een attractiepark in de Amerikaanse stad Santa Clara (Californië). Het pretpark is in het bezit van en wordt uitgebaat door de firma Cedar Fair Entertainment Company uit Ohio.',
-      image: 'https://drupal8-prod.visitcalifornia.com/sites/drupal8-prod.visitcalifornia.com/files/styles/fluid_1200/public/GreatAmerica_CourtesyGreatAmerica_1280x642.jpg?itok=pu0lKHY9',
-      name: 'California\'s Great Adventure',
+      image: 'https://external-preview.redd.it/KgaCbi6Y0K6ndiqqtv9RiL1ATB6cF8lF0IUxtHf2tMg.jpg?auto=webp&s=667649ec33b6205b1e73d30c8d7463cef747fdc5',
+      name: 'California\'s Great America',
       company: Company.CEDAR_FAIR
     }
   }

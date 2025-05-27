@@ -10,7 +10,7 @@ export class SeaworldSanAntonioService extends SeaworldBaseService {
       id: 'seaworld-san-antonio',
       name: 'Seaworld San Antonio',
       description: 'SeaWorld San Antonio is een 250 hectare groot zeezoogdierenpark, oceanarium en dierenthemapark in het Westover Hills District van San Antonio, Texas, aan de westkant van de stad. Het is het grootste van de drie parken in de SeaWorld-keten die eigendom is van en beheerd wordt door SeaWorld Parks & Entertainment.',
-      image: 'https://seaworld.com/orlando/-/media/seaworld-orlando/images/landing-pages/2-parks/seaworld-and-aquatica_1900x600.ashx',
+      image: 'https://assets.simpleviewinc.com/simpleview/image/upload/crm/sanantoniotx/SeaWorld-Banner_CC3F1C85-5056-BFCE-A8355C4E28F5857F-cc3f1be65056bfc_cc3f2ced-5056-bfce-a85a4f59c700585a.jpg',
       parkType: ParkType.THEMEPARK,
       company: Company.SEAWORLD,
       location: {

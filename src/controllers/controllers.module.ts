@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { ParksController } from './parks/parks.controller';
 import { ParksService } from '../_services/parks/parks.service';
 import { ConfigModule } from '@nestjs/config';
@@ -30,10 +30,11 @@ import { PushController } from './push/push.controller';
     ParksModule,
     DatabaseModule,
     LocaleModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [
     ParksService,
+    Logger,
   ],
 })
 export class ControllersModule {

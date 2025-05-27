@@ -1,7 +1,7 @@
 export interface BellewaerdeWaitTimeInterface {
   'id': string,
-  'open': string,
-  'close': string,
-  'wait': string,
+  'time': number,
+  'status': 'open' | 'closed' | string,
+  'customText': null
   'shows'?: { start: string, duration: string }[]
 }

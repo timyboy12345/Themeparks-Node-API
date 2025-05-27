@@ -9,7 +9,7 @@ export class SeaworldSanDiegoService extends SeaworldBaseService {
       countryCode: 'us',
       description: 'SeaWorld San Diego is een pretpark rond zeezoogdieren in San Diego, in het zuidwesten van de Amerikaanse staat Californië. Het is het oudste park van de SeaWorld-keten.',
       id: 'seaworld-san-diego',
-      image: 'https://seaworld.com/san-diego/-/media/seaworld-san-diego/images/featured-story/750x450-swc-dolphin-adventures.ashx?version=1_202209200306&h=450&w=750&la=en&hash=01150F399E0A90CB78170A48F5F7D318F77E3FF9',
+      image: 'https://seaworld.com/san-diego/-/media/migrated-media/seaworld-san-diego/images/featured-story/750x450-swc-dolphin-adventures.jpg?h=450&w=750&la=en&hash=FFBEF45F207DD036AB02C55968CED159',
       name: 'Seaworld San Diego',
       parkType: ParkType.THEMEPARK,
       company: Company.SEAWORLD,

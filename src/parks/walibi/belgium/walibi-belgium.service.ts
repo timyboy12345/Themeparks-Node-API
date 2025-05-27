@@ -29,6 +29,10 @@ export class WalibiBelgiumService extends CompagnieDesAlpesBaseService {
     return 'https://www.walibi.be';
   }
 
+  supportsLiveWaitTimes(): boolean {
+    return true;
+  }
+
   getRealTimeURL(): string {
     return 'https://www.walibi.be/api/wbe/waitingtimes.v1.json';
   }

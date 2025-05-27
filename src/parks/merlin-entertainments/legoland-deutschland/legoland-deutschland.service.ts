@@ -12,7 +12,7 @@ export class LegolandDeutschlandService extends AioThemeparkService {
       id: 'legoland_deutschland',
       name: 'LegoLand Deutschland',
       description: 'Legoland Duitsland (of: Legoland Deutschland) ligt in het Duitse plaatsje Günzburg in de deelstaat Beieren. De omvang van Legoland Duitsland en het grote attractie aanbod zorgen ervoor dat je na een dag zeker nog niet uitgekeken bent!',
-      image: 'https://r-cf.bstatic.com/images/hotel/max1024x768/229/229051043.jpg',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Legoland_Deutschland.jpg',
       countryCode: 'de',
       parkType: ParkType.THEMEPARK,
       company: Company.MERLIN_ENTERTAINMENTS,

@@ -11,7 +11,7 @@ export class BellewaerdeService extends CompagnieDesAlpesBaseService {
       id: 'bellewaerde',
       name: 'Bellewaerde',
       description: 'Bellewaerde is een pret- en dierenpark bij Ieper, gelegen in de Belgische provincie West-Vlaanderen. Het park is in handen van het Franse Compagnie des Alpes, waar de Walibiparken ook deel van uitmaken. Bellewaerde telt 54 hectare grond en is vooral beroemd om zijn vele dieren en de aandacht voor thematisering.',
-      image: 'https://www.bellewaerde.be/sites/default/files/home/2021-03/wakala-home_0.jpg',
+      image: 'https://www.bellewaerde.be/content/dam/blw/nl/algemeen/afbeeldingen/keyvisuals/2024/mundo-amazonia.jpg/_jcr_content/renditions/social.png',
       countryCode: 'be',
       parkType: ParkType.THEMEPARK,
       timezone: 'Europe/Berlin',

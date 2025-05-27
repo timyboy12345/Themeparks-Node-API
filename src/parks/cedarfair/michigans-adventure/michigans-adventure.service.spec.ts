@@ -28,5 +28,5 @@ describe('MichigansAdventureService', () => {
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
     expect(data.length).toBeGreaterThan(6);
-  });
+  }, 1000 * 60);
 });

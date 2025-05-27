@@ -29,10 +29,6 @@ export class WalibiFranceService extends CompagnieDesAlpesBaseService {
     return 'https://www.walibi.fr';
   }
 
-  getRealTimeURL(): string {
-    return null;
-  }
-
   getLocaleCode(l): string {
     switch (l) {
       // case 'fr':

@@ -1,4 +1,13 @@
-import { Controller, Get, Header, Inject, Query, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Header,
+  Inject,
+  Logger,
+  MethodNotAllowedException,
+  Query,
+  UseInterceptors,
+} from '@nestjs/common';
 import { ApiOkResponse, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ParkDto } from '../../_dtos/park.dto';
 import { ParksService } from '../../_services/parks/parks.service';
@@ -6,13 +15,16 @@ import { Cache } from 'cache-manager';
 import { ParkType } from '../../_interfaces/park.interface';
 import { CACHE_MANAGER, CacheInterceptor } from '@nestjs/cache-manager';
 import { HttpService } from '@nestjs/axios';
+import { ConfigService } from '@nestjs/config';
 
 @ApiTags('Themeparks')
 @Controller('parks')
 export class ParksController {
   constructor(private readonly parksService: ParksService,
               @Inject(CACHE_MANAGER) private cacheManager: Cache,
-              private readonly http: HttpService) {
+              private readonly http: HttpService,
+              private readonly logger: Logger,
+              private readonly config: ConfigService) {
   }
 
   @Get('')
@@ -90,22 +102,31 @@ export class ParksController {
   @Get('/check-images')
   @Header('content-type', 'text/json')
   async getCheckImages() {
+    if (this.config.get('ENVIRONMENT') !== 'dev') {
+      throw new MethodNotAllowedException('Not allowed in development');
+    }
+
     let parks = await this.parksService.getParks();
 
     parks = parks.filter((p) => p.getInfo().image);
 
+    this.logger.debug(' - Testing Theme Park Images');
     const success = [];
     const failed = [];
 
     for (let i = parks.length - 1; i >= 0; i--) {
       await this.http.get(parks[i].getFullInfo().image).toPromise()
         .then(() => {
+          this.logger.debug(`  - ${parks[i].getFullInfo().name}${parks[i].getInfo().company ? ` (${parks[i].getInfo().company})` : ''} was successfully fetched`);
           success.push(parks[i].getInfo());
         })
         .catch((e) => {
-          success.push({ ...parks[i].getInfo(), error: e });
+          this.logger.error(`  - ${parks[i].getFullInfo().name}${parks[i].getInfo().company ? ` (${parks[i].getInfo().company})` : ''} is invalid`);
+          failed.push({ ...parks[i].getInfo(), error: e });
         });
     }
+
+    this.logger.debug(` - Tested ${success.length + failed.length} images, ${failed.length} failed.`);
 
     return {
       failed,

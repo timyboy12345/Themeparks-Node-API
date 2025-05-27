@@ -98,7 +98,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇺🇸 Carowinds | 🎡 | True | True | True | True | False |
 | 🇺🇸 Cedar Point | 🎡 | True | True | True | True | False |
 | 🇺🇸 Dorney Park | 🎡 | True | True | True | True | False |
-| 🇺🇸 California's Great Adventure | 🎡 | True | True | True | True | False |
+| 🇺🇸 California's Great America | 🎡 | True | True | True | True | False |
 | 🇺🇸 King's Dominion | 🎡 | True | True | True | True | False |
 | 🇺🇸 Kings Island | 🎡 | True | True | True | True | False |
 | 🇺🇸 Knotts Berry Farm | 🎡 | True | True | True | True | False |

@@ -2,14 +2,10 @@ import { Injectable, InternalServerErrorException, NotImplementedException } fro
 import { ThemeParkService } from '../../../_services/themepark/theme-park.service';
 import { HttpService } from '@nestjs/axios';
 import { LocaleService } from '../../../_services/locale/locale.service';
-import { Poi } from '../../../_interfaces/poi.interface';
+import { Poi, PoiStatus } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
-import {
-  CdaOpeningHoursResponseInterface,
-} from '../interfaces/cda-opening-hours-response.interface';
-import {
-  CDAAttractionResponseInterface,
-} from '../interfaces/cda-attractions-response.interface';
+import { CdaOpeningHoursResponseInterface } from '../interfaces/cda-opening-hours-response.interface';
+import { CDAAttractionResponseInterface } from '../interfaces/cda-attractions-response.interface';
 import * as Sentry from '@sentry/node';
 import { BellewaerdeWaitTimeInterface } from '../interfaces/cda-wait-time-response.interface';
 import { CompagnieDesAlpesTransferService } from '../compagnie-des-alpes-transfer/compagnie-des-alpes-transfer.service';
@@ -35,8 +31,8 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
-      supportsRideWaitTimes: true,
-      supportsRideWaitTimesHistory: false,
+      supportsRideWaitTimes: this.supportsLiveWaitTimes(),
+      supportsRideWaitTimesHistory: this.supportsLiveWaitTimes(),
       supportsRides: true,
       supportsShopOpeningTimes: false,
       supportsShops: true,
@@ -45,6 +41,10 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
       supportsTranslations: false,
       textType: 'UNDEFINED',
     };
+  }
+
+  public supportsLiveWaitTimes() {
+    return false;
   }
 
   public supportsShows() {
@@ -107,17 +107,11 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
 
   async getRides(): Promise<Poi[]> {
     const raw = await (this.request('attractions'));
-    const rides = this.transfer.transferRidesToPois(raw);
+    let rides = this.transfer.transferRidesToPois(raw);
 
-    let supportsWaitTimes = false;
-    try {
-      this.getRealTimeURL();
-    } catch {
-      supportsWaitTimes = false;
-    }
-
-    if (supportsWaitTimes) {
-      const waitTimes = await this.getWaitTimes()
+    if (this.supportsLiveWaitTimes()) {
+      const waitTimes: BellewaerdeWaitTimeInterface[] = await this.getWaitTimes()
+        .then((r) => r)
         .catch((exception) => {
           Sentry.captureException(exception);
           console.error(exception);
@@ -125,15 +119,26 @@ export class CompagnieDesAlpesBaseService extends ThemeParkService {
           return [];
         });
 
+      rides = rides.map((r) => {
+        const live = waitTimes.find((w) => w.id === r.id);
 
-      waitTimes.forEach((w) => {
-        rides.map((r) => {
-          if (r.id === w.id) {
-            r.currentWaitTime = parseInt(w.wait);
+        if (live) {
+          if (live.time === 300 || live.status === 'closed') {
+            return {
+              ...r,
+              state: PoiStatus.CLOSED,
+              currentWaitTime: null,
+            }
           }
 
-          return r;
-        });
+          return {
+            ...r,
+            state: PoiStatus.OPEN,
+            currentWaitTime: live.time,
+          };
+        }
+
+        return r;
       });
     }
 
