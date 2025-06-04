@@ -9,6 +9,7 @@ import { Poi } from '../../../_interfaces/poi.interface';
 import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 import { ShowTime } from '../../../_interfaces/showtimes.interface';
 import { RideCategory } from '../../../_interfaces/ride-category.interface';
+import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.interface';
 
 @Injectable()
 export class PlopsaTransferService extends TransferService {
@@ -213,13 +214,28 @@ export class PlopsaTransferService extends TransferService {
     return show;
   }
 
-  // public HolidayParkShowsResponseToPois(holidayParkAttractionsResponse: HolidayParkPageResponseInterface): Poi[] {
-  //   const pois: HolidayParkAttraction[] = [];
-  //
-  //   for (let key in holidayParkAttractionsResponse.en.) {
-  //     pois.push(holidayParkAttractionsResponse.en.food[key]);
-  //   }
-  //
-  //   return pois.map(holidayParkAttraction => this.HolidayParkAttractionToPoi(holidayParkAttraction));
-  // }
+  transferOpeningTimesToOpeningTimes(openingTimes: any, locale?: string): ThemeParkOpeningTimes[] {
+    const o: ThemeParkOpeningTimes[] = []
+
+    const months = Object.entries(openingTimes.data)
+
+    for (let [k, v] of months) {
+      for (const [key, value] of Object.entries<any>(v)) {
+        o.push({
+          date: key,
+          openingTimes: (value.slots ?? []).map((s) => {
+            return {
+              open: s.start_time,
+              openTime: s.start_time.split('T')[1].slice(0, 8),
+              close: s.end_time,
+              closeTime: s.end_time.split('T')[1].slice(0, 8),
+            }
+          })
+        })
+      }
+    }
+
+
+    return o
+  }
 }

@@ -68,6 +68,9 @@ import { HolidayParkService } from '../../parks/plopsa/holiday-park/holiday-park
 import {
   SanDiegoSafariParkService
 } from '../../parks/san-diego-zoo/san-diego-safari-park/san-diego-safari-park.service';
+import {
+  PlopsaIndoorCoevordenService
+} from '../../parks/plopsa/plopsa-indoor-coevorden/plopsa-indoor-coevorden.service';
 
 @Injectable()
 export class ParksService {
@@ -134,6 +137,7 @@ export class ParksService {
     private readonly _rulanticaService: RulanticaService,
     private readonly _plopsalandDePanneService: PlopsalandDePanneService,
     private readonly _holidayParkService: HolidayParkService,
+    private readonly _plopsaIndoorCoevorden: PlopsaIndoorCoevordenService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -186,6 +190,7 @@ export class ParksService {
     this._parks.push(_djursSommerlandService);
     this._parks.push(_europaParkService);
     this._parks.push(_rulanticaService);
+    this._parks.push(_plopsaIndoorCoevorden);
 
     this._companies = [];
     this._companies.push(_sixflagsService);

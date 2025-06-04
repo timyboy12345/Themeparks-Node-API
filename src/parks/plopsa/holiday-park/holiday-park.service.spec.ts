@@ -30,4 +30,10 @@ describe('HolidayParkService', () => {
     expect(data).toBeInstanceOf(Array);
     expect(data.length).toBeGreaterThan(6);
   }, 1000 * 60);
+
+  it('should return a list of Opening Times', async () => {
+    const data = await service.getOpeningTimes();
+    expect(data).toBeInstanceOf(Array);
+    expect(data.length).toBeGreaterThan(6);
+  }, 1000 * 60);
 });

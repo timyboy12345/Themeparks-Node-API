@@ -5,10 +5,10 @@ Using this API, you can request waiting times from theme parks all around the wo
 Feel free to add new parks.
 
 ## Example
-To view the API, please go to [the example API](https://tp.arendz.nl/api) at https://tp.arendz.nl. This API is always up-to-date with the latest master-branch of this repo.
+To view the API, please go to [the example API](https://tp.arendz.nl/api) at https://tp.arendz.nl. This API is always up to date with the latest main branch of this repo.
 
 ### Supported parks
-In the table below you will find the parks that are currently supported and the functions that they support. This list of included and non-included functions is also included in the API.
+In the table below, you will find the parks that are currently supported and the functions that they support. This list of included and non-included functions is also included in the API.
 
 | Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support | Halloween Support |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -60,6 +60,7 @@ In the table below you will find the parks that are currently supported and the 
 | 🇳🇱 Apenheul | 🦁 | False | False | False | False | False |
 | 🇳🇱 Safaripark Beekse Bergen | 🦁 | True | True | False | True | False |
 | 🇳🇱 Speelland Beekse Bergen | 🎡 | True | True | False | True | False |
+| 🇳🇱 Plopsa Indoor Coevorden | 🎡 | True | True | True | True | False |
 | 🇵🇱 Energylandia | 🎡 | True | False | True | False | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True | False |
 | 🇸🇪 Grona Lund | 🎡 | True | False | False | False | False |
@@ -262,4 +263,4 @@ export interface Poi {
 ```
 
 ### Api URLs
-Since the data of themeparks is copyrighted, API url's aren't included in this documentation. These can be retrieved by doing some research on your own and filling out the `.env` file. 
+Since the data of themeparks is copyrighted, API urls aren't included in this documentation. These can be retrieved by doing some research on your own and filling out the `.env` file. We use Infisical to sync environment variables.

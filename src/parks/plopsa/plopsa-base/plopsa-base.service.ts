@@ -9,6 +9,8 @@ import { PlopsaTransferService } from '../plopsa-transfer/plopsa-transfer.servic
 import { PlopsaTokenInterface } from '../interfaces/plopsa-token.interface';
 import { ConfigService } from '@nestjs/config';
 import { LocaleService } from '../../../_services/locale/locale.service';
+import { ThemeParkOpeningTimes } from '../../../_interfaces/park-openingtimes.interface';
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class PlopsaBaseService extends ThemeParkService {
@@ -31,22 +33,22 @@ export class PlopsaBaseService extends ThemeParkService {
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
-      supportsShowTimes: false,
-      supportsRestaurantOpeningTimes: false,
-      supportsPois: true,
+      supportsEvents: false,
+      supportsOpeningTimes: true,
+      supportsOpeningTimesHistory: false,
       supportsPoiLocations: false,
-      supportsShopOpeningTimes: false,
-      supportsShops: true,
-      supportsRides: true,
-      supportsShows: true,
+      supportsPois: true,
+      supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
       supportsRideWaitTimes: true,
-      supportsOpeningTimesHistory: false,
-      supportsOpeningTimes: false,
       supportsRideWaitTimesHistory: true,
+      supportsRides: true,
+      supportsShopOpeningTimes: false,
+      supportsShops: true,
+      supportsShowTimes: false,
+      supportsShows: true,
       supportsTranslations: false,
-      textType: 'UNDEFINED',
-      supportsEvents: false,
+      textType: 'HTML',
     };
   }
 
@@ -121,9 +123,31 @@ export class PlopsaBaseService extends ThemeParkService {
   private getToken() {
     const url = 'https://www.old.plopsa.com/de/api/v1.0/token/0001';
 
-    return this.httpService.post<PlopsaTokenInterface>(url, { 'clientSecret': this._clientSecret, 'clientId': this._clientId })
+    return this.httpService.post<PlopsaTokenInterface>(url, {
+      'clientSecret': this._clientSecret,
+      'clientId': this._clientId,
+    })
       .toPromise()
       .then((r) => r.data.accessToken)
+      .catch((e) => {
+        Sentry.captureException(e);
+        console.error(e);
+        throw new InternalServerErrorException();
+      });
+  }
+
+  async getOpeningTimes(): Promise<ThemeParkOpeningTimes[]> {
+    const url = this.config.get('PLOPSA_NEW_API_URL');
+
+    const start = moment().tz(this.getInfo().timezone).format('YYYY-MM-DD');
+    const end = moment().tz(this.getInfo().timezone).add('30', 'days').format('YYYY-MM-DD');
+
+    // TODO: Remove this once Plopsa Deutschland is fully used by Plopsa
+    const slug = this.getInfo().id === 'holiday-park' ? 'plopsaland-deutschland' : this.getInfo().id;
+
+    return this.httpService.get<PlopsaTokenInterface>(`${url}/nl/${slug}/api/opening-hours-calendar?start=${start}&end=${end}`)
+      .toPromise()
+      .then(this.transferService.transferOpeningTimesToOpeningTimes)
       .catch((e) => {
         Sentry.captureException(e);
         console.error(e);

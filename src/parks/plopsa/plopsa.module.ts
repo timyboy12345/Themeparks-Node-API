@@ -6,6 +6,7 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { LocaleModule } from '../../_services/locale/locale.module';
 import { PlopsaTransferService } from './plopsa-transfer/plopsa-transfer.service';
+import { PlopsaIndoorCoevordenService } from './plopsa-indoor-coevorden/plopsa-indoor-coevorden.service';
 
 @Module({
   imports: [
@@ -13,8 +14,8 @@ import { PlopsaTransferService } from './plopsa-transfer/plopsa-transfer.service
     ConfigModule.forRoot(),
     LocaleModule,
   ],
-  providers: [PlopsaBaseService, PlopsalandDePanneService, HolidayParkService, PlopsaTransferService],
-  exports: [PlopsalandDePanneService, HolidayParkService],
+  providers: [PlopsaBaseService, PlopsalandDePanneService, HolidayParkService, PlopsaTransferService, PlopsaIndoorCoevordenService],
+  exports: [PlopsalandDePanneService, HolidayParkService, PlopsaIndoorCoevordenService],
 })
 export class PlopsaModule {
 }

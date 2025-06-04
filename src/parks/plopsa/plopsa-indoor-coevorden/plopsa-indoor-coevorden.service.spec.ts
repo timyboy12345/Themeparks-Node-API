@@ -1,20 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PlopsalandDePanneService } from './plopsaland-de-panne.service';
+import { PlopsaIndoorCoevordenService } from './plopsa-indoor-coevorden.service';
 import { PlopsaTransferService } from '../plopsa-transfer/plopsa-transfer.service';
-import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { LocaleModule } from '../../../_services/locale/locale.module';
+import { HttpModule } from '@nestjs/axios';
 
-describe('PlopsalandDePanneService', () => {
-  let service: PlopsalandDePanneService;
+describe('PlopsaIndoorCoevordenService', () => {
+  let service: PlopsaIndoorCoevordenService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PlopsalandDePanneService, PlopsaTransferService],
-      imports: [HttpModule, ConfigModule.forRoot(), LocaleModule],
+      providers: [PlopsaIndoorCoevordenService, PlopsaTransferService],
+      imports: [ConfigModule.forRoot(), LocaleModule, HttpModule],
     }).compile();
 
-    service = module.get<PlopsalandDePanneService>(PlopsalandDePanneService);
+    service = module.get<PlopsaIndoorCoevordenService>(PlopsaIndoorCoevordenService);
   });
 
   it('should be defined', () => {

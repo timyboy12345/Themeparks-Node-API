@@ -11,6 +11,7 @@ export class HolidayParkService extends PlopsaBaseService{
       description: 'Holiday Park is een attractiepark gelegen in Haßloch in de Duitse deelstaat Rijnland-Palts. Het maakt sinds 2010 deel uit van de pretparken van de Plopsa-groep.',
       image: 'https://www.plopsa.com/sites/default/files/styles/io_600/public/images/2025-03/HPH_BigFMExpeditionGeforce_Hero.jpg.webp?itok=qmh0aJ4O',
       countryCode: 'de',
+      timezone: 'Europe/Berlin',
       parkType: ParkType.THEMEPARK,
       location: {
         lat: 49.318498726,
