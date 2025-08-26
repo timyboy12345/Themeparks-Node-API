@@ -71,6 +71,7 @@ import {
 import {
   PlopsaIndoorCoevordenService
 } from '../../parks/plopsa/plopsa-indoor-coevorden/plopsa-indoor-coevorden.service';
+import { ArtisService } from '../../parks/artis/artis.service';
 
 @Injectable()
 export class ParksService {
@@ -138,6 +139,7 @@ export class ParksService {
     private readonly _plopsalandDePanneService: PlopsalandDePanneService,
     private readonly _holidayParkService: HolidayParkService,
     private readonly _plopsaIndoorCoevorden: PlopsaIndoorCoevordenService,
+    private readonly _artis: ArtisService,
   ) {
     this._parks = [];
     this._parks.push(_eftelingService);
@@ -191,6 +193,7 @@ export class ParksService {
     this._parks.push(_europaParkService);
     this._parks.push(_rulanticaService);
     this._parks.push(_plopsaIndoorCoevorden);
+    this._parks.push(_artis);
 
     this._companies = [];
     this._companies.push(_sixflagsService);

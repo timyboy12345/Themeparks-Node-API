@@ -61,7 +61,12 @@ export class MeilisearchService {
 
       this.logger.debug(`  - Fetched ${ps.length} pois for ${parks[i].getInfo().name}`);
 
-      pois = pois.concat(ps.map((p: Poi) => {
+      // Only save valid POIs
+      const validPois = ps.filter((p) => p.id && p.id.length > 2);
+
+      // TODO: Support multi-language parks
+      // Loop through all valid POIs
+      pois = pois.concat(validPois.map((p: Poi) => {
         return {
           id: parks[i].getInfo().id + '_' + p.id.toLowerCase().replace(/[^0-9a-z\-]/gi, ''),
           title: p.title,

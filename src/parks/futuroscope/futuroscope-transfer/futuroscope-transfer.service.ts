@@ -39,7 +39,7 @@ export class FuturoscopeTransferService extends TransferService{
 
     const p: Poi  = {
       category: category,
-      id: poi.id,
+      id: poi.id.toString(),
       original: poi,
       title: poi.title,
       description: poi.details[0].text,
