@@ -61,6 +61,7 @@ In the table below, you will find the parks that are currently supported and the
 | 🇳🇱 Safaripark Beekse Bergen | 🦁 | True | True | False | True | False |
 | 🇳🇱 Speelland Beekse Bergen | 🎡 | True | True | False | True | False |
 | 🇳🇱 Plopsa Indoor Coevorden | 🎡 | True | True | True | True | False |
+| 🇳🇱 ARTIS | 🦁 | False | False | True | False | False |
 | 🇵🇱 Energylandia | 🎡 | True | False | True | False | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True | False |
 | 🇸🇪 Grona Lund | 🎡 | True | False | False | False | False |
