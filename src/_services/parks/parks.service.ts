@@ -94,7 +94,7 @@ export class ParksService {
     // private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
     private readonly _dippieDoeService: DippieDoeService,
     private readonly _hellendoornService: HellendoornService,
-    private readonly _sixflagsService: SixflagsService,
+    // private readonly _sixflagsService: SixflagsService,
     private readonly _bobbejaanlandService: BobbejaanlandService,
     private readonly _hansaParkService: HansaParkService,
     private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
@@ -196,7 +196,7 @@ export class ParksService {
     this._parks.push(_artis);
 
     this._companies = [];
-    this._companies.push(_sixflagsService);
+    // this._companies.push(_sixflagsService);
     this._companies.push(_cedarFairService);
     this._companies.push(_seaworldCompanyService);
     this._companies.push(_universalService);

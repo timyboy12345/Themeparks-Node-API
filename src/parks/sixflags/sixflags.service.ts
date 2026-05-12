@@ -15,6 +15,7 @@ export class SixflagsService extends CompanyService {
   private readonly _sixflagsApiUrl: string;
   private readonly _sixflagsApiToken: string;
 
+  // TODO: Fix SixFlags implementation
   constructor(private readonly httpService: HttpService,
               private readonly configService: ConfigService,
               private readonly sixflagsTransferService: SixflagsTransferService,
