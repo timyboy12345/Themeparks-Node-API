@@ -19,7 +19,7 @@ export class MeilisearchService {
   }
 
   // @Cron(new Date(Date.now() + 10 * 1000))
-  @Cron(CronExpression.EVERY_WEEK)
+  @Cron(CronExpression.EVERY_DAY_AT_3AM)
   private async importMeiliSearch() {
     this.logger.debug('Started importing POIs to MeiliSearch');
 
@@ -86,7 +86,7 @@ export class MeilisearchService {
 
     this.logger.debug(` - Found ${pois.length} POIs`);
 
-    await client.index('pois').addDocuments(pois)
+    await client.index('pois').addDocuments(pois, { primaryKey: 'id' })
       .then((res) => this.logger.debug(JSON.stringify(res)))
       .catch((e) => {
         Sentry.captureException(e);

@@ -33,7 +33,6 @@ export class FamilyparkService extends ThroughPoisThemeParkService {
     };
   }
 
-  // TODO: Familypark App does include restaurants and opening times
   getSupports(): ThemeParkSupports {
     return {
       supportsAnimals: false,
@@ -43,28 +42,37 @@ export class FamilyparkService extends ThroughPoisThemeParkService {
       supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
-      supportsRestaurants: false,
+      supportsRestaurants: true,
       supportsRideWaitTimes: false,
       supportsRideWaitTimesHistory: false,
       supportsRides: true,
       supportsShopOpeningTimes: false,
-      supportsShops: false,
+      supportsShops: true,
       supportsShowTimes: false,
       supportsShows: false,
-      supportsTranslations: false,
-      textType: 'UNDEFINED',
+      supportsTranslations: true,
+      textType: 'HTML',
     };
   }
 
   async getPois(): Promise<Poi[]> {
     const locale = this.locale.getLocale() === 'de' ? 'de' : 'en';
+    const url = `https://aem.familypark.at/api/fmp/${locale}/mobileapptabs.v1.json`
 
-    return this.http.get(`https://leisure.intermaps.com/maps/familypark/data?category=2,3&objectType=271,272,273,274,275&lang=${locale}`)
+    return this.http.get(url, {
+      headers: {
+        'User-Agent': 'Familypark/2121 CFNetwork/3860.500.112 Darwin/25.4.0',
+        'x-api-key': 'r6uko7sdv4dq-btw',
+        'host': 'aem.familypark.at',
+        'accept': '*/*',
+        'accept-language': 'nl-NL,nl;q=0.9',
+      },
+    })
       .toPromise()
-      .then((res) => this.transfer.transferPoisToPois(res.data.features))
+      .then((res) => this.transfer.transferDataObjectToPois(res.data))
       .catch((e) => {
         Sentry.captureException(e);
         throw new InternalServerErrorException(e);
-      })
+      });
   }
 }

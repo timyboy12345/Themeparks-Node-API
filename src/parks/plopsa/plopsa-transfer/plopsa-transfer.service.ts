@@ -217,7 +217,7 @@ export class PlopsaTransferService extends TransferService {
   transferOpeningTimesToOpeningTimes(openingTimes: any, locale?: string): ThemeParkOpeningTimes[] {
     const o: ThemeParkOpeningTimes[] = []
 
-    const months = Object.entries(openingTimes.data)
+    const months = Object.entries(openingTimes.data.schedule)
 
     for (let [k, v] of months) {
       for (const [key, value] of Object.entries<any>(v)) {
