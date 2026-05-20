@@ -46,5 +46,5 @@ describe('BlogPostsController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
-  });
+  }, 1000 * 10);
 });

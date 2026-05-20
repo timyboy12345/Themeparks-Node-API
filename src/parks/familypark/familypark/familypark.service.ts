@@ -72,6 +72,7 @@ export class FamilyparkService extends ThroughPoisThemeParkService {
       .then((res) => this.transfer.transferDataObjectToPois(res.data))
       .catch((e) => {
         Sentry.captureException(e);
+        console.error(e)
         throw new InternalServerErrorException(e);
       });
   }

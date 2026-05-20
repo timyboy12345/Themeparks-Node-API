@@ -12,13 +12,13 @@ In the table below, you will find the parks that are currently supported and the
 
 | Park | Type | Ride Support | Restaurants Support | Shows Support | Shops Support | Halloween Support |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 🇦🇹 Familypark | 🎡 | True | False | False | False | False |
+| 🇦🇹 Familypark | 🎡 | True | True | False | True | False |
 | 🇧🇪 Walibi Belgium | 🎡 | True | True | False | True | False |
 | 🇧🇪 Bellewaerde | 🎡 | True | True | True | True | False |
 | 🇧🇪 Bobbejaanland | 🎡 | True | True | False | True | False |
 | 🇧🇪 Plopsalande de Panne | 🎡 | True | True | True | True | False |
 | 🇧🇪 Pairi Daiza | 🦁 | False | True | True | True | False |
-| 🇨🇦 La Ronde, Montreal | 🎡 | True | True | True | True | False |
+| 🇨🇦 La Ronde | 🎡 | True | True | True | True | False |
 | 🇩🇪 Phantasialand | 🎡 | True | True | True | True | False |
 | 🇩🇪 Holiday Park | 🎡 | True | True | True | True | False |
 | 🇩🇪 Hansa Park | 🎡 | True | True | True | True | False |
@@ -63,6 +63,7 @@ In the table below, you will find the parks that are currently supported and the
 | 🇳🇱 Plopsa Indoor Coevorden | 🎡 | True | True | True | True | False |
 | 🇳🇱 ARTIS | 🦁 | False | False | True | False | False |
 | 🇵🇱 Energylandia | 🎡 | True | False | True | False | False |
+| 🇸🇦 Six Flags Qiddiya City | 🎡 | True | True | True | True | False |
 | 🇸🇪 Liseberg | 🎡 | True | True | False | True | False |
 | 🇸🇪 Grona Lund | 🎡 | True | False | False | False | False |
 | 🇺🇸 Dollywood | 🎡 | True | False | False | False | False |
@@ -70,43 +71,47 @@ In the table below, you will find the parks that are currently supported and the
 | 🇺🇸 San Diego Zoo | 🦁 | True | True | True | True | False |
 | 🇺🇸 San Diego Zoo Safari Park | 🦁 | True | True | True | True | False |
 | 🇺🇸 Hersheypark | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Over Texas | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Over Georgia | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags St. Louis | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Great Adventure | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Magic Mountain | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Great America | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Fiesta Texas | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Arlington | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Los Angeles | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Chicago | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags America | 🎡 | True | True | True | True | False |
+| 🇺🇸 Castaway Bay | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Great Escape | 🌊 | True | True | True | True | False |
+| 🇺🇸 Sawmill Creek Resort | 🎡 | True | True | True | True | False |
 | 🇺🇸 Six Flags Discovery Kingdom | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags New England | 🎡 | True | True | True | True | False |
+| 🇺🇸 Six Flags Great America | 🌊 | True | True | True | True | False |
+| 🇺🇸 Worlds of Fun | 🌊 | True | True | True | True | False |
+| 🇺🇸 California’s Great America | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Over Texas | 🌊 | True | True | True | True | False |
+| 🇺🇸 Hurricane Harbor, Oaxtepec | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Mexico | 🎡 | True | True | True | True | False |
+| 🇺🇸 Valleyfair | 🌊 | True | True | True | True | False |
+| 🇺🇸 Schlitterbahn Galveston | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Over Georgia | 🌊 | True | True | True | True | False |
+| 🇺🇸 Hurricane Harbor, Rockford | 🌊 | True | True | True | True | False |
+| 🇺🇸 Hurricane Harbor, Splashtown | 🌊 | True | True | True | True | False |
+| 🇺🇸 Knott's Berry Farm | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags White Water | 🌊 | True | True | True | True | False |
+| 🇺🇸 Canada's Wonderland | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Savannah Sunset Resort & Spa | 🎡 | True | True | True | True | False |
+| 🇺🇸 Michigan’s Adventure | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags St. Louis | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Magic Mountain | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Darien Lake | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Great Adventure | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Fiesta Texas | 🌊 | True | True | True | True | False |
+| 🇺🇸 Hurricane Harbor, Concord | 🌊 | True | True | True | True | False |
+| 🇺🇸 Hurricane Harbor, Oklahoma City | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags New England | 🌊 | True | True | True | True | False |
+| 🇺🇸 Hurricane Harbor, Phoenix | 🌊 | True | True | True | True | False |
+| 🇺🇸 Carowinds | 🌊 | True | True | True | True | False |
+| 🇺🇸 Frontier City | 🎡 | True | True | True | True | False |
+| 🇺🇸 Schlitterbahn New Braunfels | 🌊 | True | True | True | True | False |
+| 🇺🇸 Kings Dominion | 🌊 | True | True | True | True | False |
+| 🇺🇸 Cedar Point | 🌊 | True | True | True | True | False |
+| 🇺🇸 Kings Island | 🌊 | True | True | True | True | False |
+| 🇺🇸 Dorney Park | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Hurricane Harbor, Los Angeles | 🎡 | True | True | True | True | False |
+| 🇺🇸 Six Flags Hurricane Harbor, Chicago | 🌊 | True | True | True | True | False |
+| 🇺🇸 Six Flags Darien Lake Hotel & Campground | 🎡 | True | True | True | True | False |
 | 🇺🇸 Six Flags Hurricane Harbor, Jackson | 🌊 | True | True | True | True | False |
-| 🇺🇸 The Great Escape | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags White Water, Atlanta | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags México | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Oaxtepec | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Concord | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Frontier City | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Oklahoma City | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Darien Lake | 🎡 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Phoenix | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, SplashTown | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Hurricane Harbor, Rockford | 🌊 | True | True | True | True | False |
-| 🇺🇸 Six Flags Wild Safari, Jackson | 🎡 | True | True | True | True | False |
-| 🇺🇸 Canada's Wonderland | 🎡 | True | True | True | True | False |
-| 🇺🇸 Carowinds | 🎡 | True | True | True | True | False |
-| 🇺🇸 Cedar Point | 🎡 | True | True | True | True | False |
-| 🇺🇸 Dorney Park | 🎡 | True | True | True | True | False |
-| 🇺🇸 California's Great America | 🎡 | True | True | True | True | False |
-| 🇺🇸 King's Dominion | 🎡 | True | True | True | True | False |
-| 🇺🇸 Kings Island | 🎡 | True | True | True | True | False |
-| 🇺🇸 Knotts Berry Farm | 🎡 | True | True | True | True | False |
-| 🇺🇸 Michigans Adventure | 🎡 | True | True | True | True | False |
-| 🇺🇸 Valley Fair | 🎡 | True | True | True | True | False |
-| 🇺🇸 Worlds of Fun | 🎡 | True | True | True | True | False |
+| 🇺🇸 Hurricane Harbor, Arlington | 🌊 | True | True | True | True | False |
 | 🇺🇸 Seaworld San Antonio | 🎡 | True | True | True | True | False |
 | 🇺🇸 Seaworld San Diego | 🎡 | True | True | True | True | False |
 | 🇺🇸 Seaworld Orlando | 🎡 | True | True | True | True | False |

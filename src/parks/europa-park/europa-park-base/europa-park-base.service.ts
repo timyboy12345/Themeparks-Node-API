@@ -121,7 +121,8 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
     const waitTimesResponse = await this.request('https://tickets.mackinternational.de/api/v1/waitingtimes', locale);
     const waitTimes = waitTimesResponse.waitingtimes;
 
-    pois.map((poi) => {
+    // Filter out any POIs that do not have their original set
+    pois.filter((s) => s.original).map((poi) => {
       const code = poi.original.code;
 
       if (code === undefined) return poi;

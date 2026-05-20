@@ -21,11 +21,7 @@ import { OuwehandsDierenparkService } from '../../parks/ouwehands-dierenpark/ouw
 import { WildlandsService } from '../../parks/wildlands/wildlands.service';
 import { LisebergService } from '../../parks/liseberg/liseberg.service';
 import { SilverDollarCityService } from '../../parks/herschend/silver-dollar-city/silver-dollar-city.service';
-import { CarowindsService } from '../../parks/cedarfair/carowinds/carowinds.service';
-import { GreatAmericaService } from '../../parks/cedarfair/great-america/great-america.service';
-import { CedarpointService } from '../../parks/cedarfair/cedarpoint/cedarpoint.service';
 import { ParqueWarnerService } from '../../parks/parque-warner/parque-warner.service';
-import { CedarFairService } from '../../parks/cedarfair/cedar-fair.service';
 import { GronaLundService } from '../../parks/grona-lund/grona-lund.service';
 import { TivoliService } from '../../parks/tivoli/tivoli.service';
 import { ThorpeParkService } from '../../parks/thorpe-park/thorpe-park.service';
@@ -94,7 +90,7 @@ export class ParksService {
     // private readonly _bellewaerdeAquaparkService: BellewaerdeAquaparkService,
     private readonly _dippieDoeService: DippieDoeService,
     private readonly _hellendoornService: HellendoornService,
-    // private readonly _sixflagsService: SixflagsService,
+    private readonly _sixflagsService: SixflagsService,
     private readonly _bobbejaanlandService: BobbejaanlandService,
     private readonly _hansaParkService: HansaParkService,
     private readonly _ouwehandsDierenparkService: OuwehandsDierenparkService,
@@ -102,11 +98,7 @@ export class ParksService {
     private readonly _lisebergService: LisebergService,
     private readonly _dollywoodService: DollywoodService,
     private readonly _silverDollarCityService: SilverDollarCityService,
-    private readonly _carowindsService: CarowindsService,
-    private readonly _greatAdventureService: GreatAmericaService,
-    private readonly _cedarPointService: CedarpointService,
     private readonly _parqueWarnerService: ParqueWarnerService,
-    private readonly _cedarFairService: CedarFairService,
     private readonly _gronaLundService: GronaLundService,
     private readonly _tivoliService: TivoliService,
     private readonly _thorpeParkService: ThorpeParkService,
@@ -196,8 +188,7 @@ export class ParksService {
     this._parks.push(_artis);
 
     this._companies = [];
-    // this._companies.push(_sixflagsService);
-    this._companies.push(_cedarFairService);
+    this._companies.push(_sixflagsService);
     this._companies.push(_seaworldCompanyService);
     this._companies.push(_universalService);
     this._companies.push(_merlinEntertainmentsService);

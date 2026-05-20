@@ -159,12 +159,16 @@ export class FamilyparkTransferService extends TransferService {
     //   });
     // }
 
+    const shortDescription = poi.shortDescription?.length > 100
+      ? poi.shortDescription.slice(0, poi.shortDescription.indexOf(' ', 100)) + '...'
+      : poi.shortDescription;
+
     return {
       category: category,
       original: poi,
       title: poi.title,
       id: poi.technicalName,
-      subTitle: poi.subtitle || poi.shortDescription,
+      subTitle: shortDescription?.replace(/<\/?[^>]+(>|$)/g, ''),
       description: poi.description || poi.statusDescription,
       location: {
         lat: poi.latitude,

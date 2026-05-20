@@ -1,29 +1,29 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../../../_interfaces/park-supports.interface';
 import { ConfigService } from '@nestjs/config';
 import { Poi } from '../../../../_interfaces/poi.interface';
-import { AxiosBasicCredentials, AxiosError } from 'axios';
-import { SixflagsMapResponseInterface } from '../../interfaces/sixflags-map-response.interface';
+import { AxiosError } from 'axios';
 import { SixflagsTransferService } from '../../sixflags-transfer/sixflags-transfer.service';
 import { PoiCategory } from '../../../../_interfaces/poi-categories.enum';
-import { SixflagsTokenResponseInterface } from '../../interfaces/sixflags-token-response.interface';
 import { HttpService } from '@nestjs/axios';
 import * as Sentry from '@sentry/node';
+import { SixflagsCedarPoiInterface } from '../../interfaces/sixflags-cedar-poi.interface';
 
+// TODO: See what more the new Six Flags app is capable of
 @Injectable()
 export class SixFlagsGeneralParkService extends ThemeParkService {
   private _parkInfo: ThemePark;
   private _parkId: string;
-  private readonly _sixflagsApiToken: string;
+  private readonly _baseUrl: string;
 
   constructor(private readonly configService: ConfigService,
               private readonly httpService: HttpService,
               private readonly sixflagsTransferService: SixflagsTransferService) {
     super();
 
-    this._sixflagsApiToken = this.configService.get('SIXFLAGS_API_TOKEN');
+    this._baseUrl = this.configService.get('SIX_FLAGS_CEDAR_BASE_API_URL');
   }
 
   setInfo(info: ThemePark) {
@@ -40,7 +40,7 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
 
   getSupports(): ThemeParkSupports {
     return {
-      supportsPoiLocations: false,
+      supportsPoiLocations: true,
       supportsPois: true,
       supportsRestaurantOpeningTimes: false,
       supportsRestaurants: true,
@@ -55,21 +55,21 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
       supportsOpeningTimes: false,
       supportsAnimals: this.getInfo().parkType === ParkType.ZOO,
       supportsTranslations: false,
-      textType: 'UNDEFINED',
+      textType: 'HTML',
       supportsEvents: false,
     };
   }
 
   async getPois(): Promise<Poi[]> {
-    return this.request<SixflagsMapResponseInterface>(`park/${this._parkId}/map`).then((response) => {
-      let pois: Poi[] = [];
-
-      for (const [key, value] of Object.entries(response)) {
-        pois = pois.concat(this.sixflagsTransferService.transferPoisToPois(value ?? []));
-      }
-
-      return pois;
-    });
+    return this.request<SixflagsCedarPoiInterface[]>(`poi/park/${this._parkId}`)
+      .then((res) => {
+        return this.sixflagsTransferService.transferPoisToPois(res)
+      })
+      .catch((reason) => {
+        Sentry.captureException(reason);
+        console.error(reason);
+        throw new InternalServerErrorException("Six Flags data could not be parsed");
+      });
   }
 
   async getRestaurants(): Promise<Poi[]> {
@@ -89,59 +89,16 @@ export class SixFlagsGeneralParkService extends ThemeParkService {
   }
 
   private async request<T>(url: string): Promise<T> {
-    const fullUrl = this.configService.get('SIXFLAGS_API_URL') + '/' + url;
+    const fullUrl = this._baseUrl + '/' + url;
 
-    const token = await this.getToken();
-    const headers = {
-      Authorization: `Bearer ${token}`,
-    };
-
-    return this.httpService.get<T>(fullUrl, { headers: headers })
+    return this.httpService.get<T>(fullUrl)
       .toPromise()
       .then(value => {
         return value.data;
       })
       .catch((reason: AxiosError) => {
-        // Sentry.captureException(reason);
-        // console.error(reason.response.data);
-        // console.error(reason.request.headers);
-
         Sentry.captureException(reason);
-        // Sentry.withScope(function (scope) {
-        //   scope.setFingerprint(['get', url, String(reason.response.status)]);
-        // scope.setTransactionName('get-six-flags-data');
-        // scope.captureException(reason);
-        // });
-
-        return null;
-      });
-  }
-
-  private async getToken(): Promise<string> {
-    const fullUrl = this.configService.get('SIXFLAGS_AUTH_URL');
-
-    const headers = {
-      Authorization: `Bearer ${this._sixflagsApiToken}`,
-    };
-
-    const auth: AxiosBasicCredentials = {
-      username: this.configService.get('SIXFLAGS_AUTH_USERNAME'),
-      password: this.configService.get('SIXFLAGS_AUTH_PASSWORD'),
-    };
-
-    const body = 'grant_type=client_credentials&scope=mobileApp';
-
-    return this.httpService
-      .post<SixflagsTokenResponseInterface>(fullUrl, body, { headers: headers, auth: auth })
-      .toPromise()
-      .then(value => {
-        return value.data.access_token;
-      })
-      .catch((reason: AxiosError) => {
-        Sentry.captureException(reason);
-        // console.log(reason.response.data);
-        // console.log(reason.request.headers);
-        return null;
+        throw new InternalServerErrorException("Six Flags data could not be fetched");
       });
   }
 }
