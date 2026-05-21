@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ThemeParkService } from '../../_services/themepark/theme-park.service';
 import { ParkType, ThemePark } from '../../_interfaces/park.interface';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
@@ -7,6 +7,7 @@ import { Poi } from '../../_interfaces/poi.interface';
 import { PairiDaizaResponse } from './interfaces/PairiDaizaResponse';
 import { PairiDaizaTransferService } from './pairi-daiza-transfer/pairi-daiza-transfer.service';
 import { LocaleService } from '../../_services/locale/locale.service';
+import * as Sentry from '@sentry/node';
 
 @Injectable()
 export class PairiDaizaService extends ThemeParkService {
@@ -90,6 +91,11 @@ export class PairiDaizaService extends ThemeParkService {
 
     return await this.http.get<PairiDaizaResponse>(url + '/' + endpoint)
       .toPromise()
-      .then((res) => res.data.ServiceResultData);
+      .then((res) => res.data.ServiceResultData)
+      .catch((exception) => {
+        Sentry.captureException(exception);
+        console.error(exception);
+        throw new InternalServerErrorException("Error while fetching data from Pairi Daiza API");
+      });
   }
 }

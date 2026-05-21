@@ -23,15 +23,24 @@ describe('SixFlagsGeneralParkService', () => {
     expect(service).toBeDefined();
   });
 
-  // it('should return info', () => {
-  //   service.setParkId('1');
-  //   expect(service.getInfo().id).toBeDefined();
-  // });
-
   it('should return a list of POIs', async () => {
-    service.setParkId('1');
+    service.setParkId('924');
     const data = await service.getPois();
     expect(data).toBeInstanceOf(Array);
     expect(data.length).toBeGreaterThan(6);
+  }, 1000 * 60);
+
+  it('should return a list of Events', async () => {
+    service.setParkId('924');
+    const data = await service.getEvents();
+    expect(data).toBeInstanceOf(Array);
+    expect(data.length).toBeGreaterThan(2);
+  }, 1000 * 60);
+
+  it('should return a list of opening hours', async () => {
+    service.setParkId('924');
+    const data = await service.getOpeningTimes();
+    expect(data).toBeInstanceOf(Array);
+    expect(data.length).toBeGreaterThan(2);
   }, 1000 * 60);
 });

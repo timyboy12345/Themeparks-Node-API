@@ -40,22 +40,55 @@ export interface SixflagsCedarPoiInterface {
   'waitTimeEnabled': false
 
   // Attraction specific data
-  "uuid": "b508d596-bec1-4587-a09b-8a3a04c32a23",
-  "cardDescription": null,
-  "thrillLevel": 5,
-  "image": "https://cdn.sanity.io/images/bsnrdz4t/production/c1cab6ae3841d94eb1317474c23edc149e6822b1-2000x1125.webp",
-  "imageSource": "sanity",
-  "mediaGallery": [
+  'uuid': 'b508d596-bec1-4587-a09b-8a3a04c32a23',
+  'cardDescription': null,
+  'thrillLevel': 5,
+  'image': 'https://cdn.sanity.io/images/bsnrdz4t/production/c1cab6ae3841d94eb1317474c23edc149e6822b1-2000x1125.webp',
+  'imageSource': 'sanity',
+  'mediaGallery': [
     {
-      "type": "video",
-      "videoService": "youtube",
-      "link": "https://www.youtube.com/watch?v=bhVK08bQOy0"
+      'type': 'video',
+      'videoService': 'youtube',
+      'link': 'https://www.youtube.com/watch?v=bhVK08bQOy0'
     }
   ],
-  "enableCardLink": null,
-  "usage": "both",
-  "poiSubcategory": null,
-  "screamiumExperience": null,
-  "signatureEventPOIType": null,
-  "requiresHauntedAttractionsPass": null,
+  'enableCardLink': null,
+  'usage': 'both',
+  'poiSubcategory': null,
+  'screamiumExperience': null,
+  'signatureEventPOIType': null,
+  'requiresHauntedAttractionsPass': null,
+
+  // Restaurant specific data
+  'seating': [
+    {
+      'id': 58,
+      'name': 'Indoor'
+    }
+  ],
+  'dietary': [
+    {
+      'id': 51,
+      'name': 'Gluten Free'
+    },
+    {
+      'id': 53,
+      'name': 'Others'
+    }
+  ],
+  'foodTypes': [
+    {
+      'id': 55,
+      'name': 'Meals'
+    }
+  ],
+  'diningPlans': [
+    {
+      'id': 76,
+      'name': 'All Dining Plans'
+    }
+  ],
+  'isAcceptDiningPlan': true,
+  'isMobileOrderEligible': false,
+  'isTastingLocation': false,
 }
