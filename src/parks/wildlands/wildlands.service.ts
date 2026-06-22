@@ -24,7 +24,7 @@ export class WildlandsService extends ThemeParkService {
     return {
       id: 'wildlands',
       name: 'Wildlands',
-      image: 'https://media.nu.nl/m/ikrx3sva9qsa_wd1280.jpg/gemeente-emmen-neemt-schulden-van-dierenpark-wildlands-over.jpg',
+      image: 'https://www.wildlands.nl/image.php?file=/uploads/Wildlands_safari_neushoorns_1280x720_17623.jpg&width=1280&factor=0.56&signature=9df5d6df',
       description: 'Wildlands, voluit Wildlands Adventure Zoo Emmen, is een dierenpark in Emmen. Het park heeft een oppervlakte van 24 hectare en is opgedeeld in drie themagebieden. In \'Jungola\' staat de jungle centraal, in \'Serenga\' de savanne en de woestijn en in \'Nortica\' het poolgebied.',
       countryCode: 'nl',
       parkType: ParkType.ZOO,

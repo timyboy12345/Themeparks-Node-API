@@ -14,7 +14,7 @@ export class LegolandBillundService extends AioThemeparkService {
       id: 'legoland-billund',
       name: 'LegoLand Billund',
       description: 'Achtbanen en familieritten in pretpark met themagebieden en miniatuurwereld gemaakt van Lego.',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Legoland_Billund_%286751086171%29.jpg/800px-Legoland_Billund_%286751086171%29.jpg',
+      image: 'https://www.legoland.dk/media/rksjmvkc/148-legoland__k1a3129_final_1920x1080.jpg?format=jpg',
       countryCode: 'dk',
       parkType: ParkType.THEMEPARK,
       company: Company.MERLIN_ENTERTAINMENTS,
@@ -65,7 +65,7 @@ export class LegolandBillundService extends AioThemeparkService {
       'Content-Disposition: form-data; name="app_build"\n' +
       '\n' +
       '222\n' +
-      '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc--\n'
+      '--s47UC4ujBvwu4tUZny16oB9EYPIK2lYen2gqiaI3cG8N2xg2xG4CuZ88uVFUzeVBcHglTSA5twz4fJCrDwgWt1vy0Ff8gIwp3DPc--\n';
   }
 
   getApiKey(): string {
@@ -88,94 +88,55 @@ export class LegolandBillundService extends AioThemeparkService {
     switch (category) {
       case 587:
       case 588:
+      case 858:
+      case 863:
+      case 859:
+      case 862:
+      case 860:
         return PoiCategory.ATTRACTION;
       case 589:
+      case 620:
+      case 817:
+      case 886:
+      case 915:
       case 1039:
       case 1040:
       case 1041:
+      case 3075:
+      case 887:
         return PoiCategory.RESTAURANT;
       case 590:
+      case 818:
         return PoiCategory.SHOP;
       case 607:
         return PoiCategory.SHOW;
+      case 654:
+        return PoiCategory.HOTEL;
       case 608:
+      case 823:
+      case 5720:
         return PoiCategory.GUEST_SERVICES;
       case 610:
         return PoiCategory.TOILETS;
       case 687:
+      case 885:
         return PoiCategory.MEET_AND_GREET;
       case 1030:
+      case 802:
         return PoiCategory.PLAYGROUND;
       case 2082:
         return PoiCategory.SMOKING_AREA;
+      case 621:
+      case 884:
+        return PoiCategory.SHOW;
+      case 3852:
+        return PoiCategory.WATER_FOUNTAIN;
       case 1031:
       // Discover & Wonder
       case 1033:
+      default:
         // Create
         return PoiCategory.UNDEFINED;
-      // {
-      //   "_id": 1034,
-      //   "Name": {
-      //   "en-GB": "Refreshing",
-      //     "de-DE": "Abkühlen"
-      // },
-      //   "Icon": "4b70c315-9f3e-5ede-a5c3-32d473133c3d",
-      //   "Parent": 587
-      // },
-      // {
-      //   "_id": 1035,
-      //   "Name": {
-      //   "en-GB": "Above the clouds",
-      //     "de-DE": "Hoch hinaus"
-      // },
-      //   "Icon": "9ade07d7-12b8-5ee0-96b4-9a41fe4c3e49",
-      //   "Parent": 588
-      // },
-      // {
-      //   "_id": 1036,
-      //   "Name": {
-      //   "en-GB": "Thrilling ",
-      //     "de-DE": "Rasanter Fahrspaß"
-      // },
-      //   "Icon": "b1bfe74d-4e88-576c-9466-9e3c5bd11638",
-      //   "Parent": 588
-      // },
-      // {
-      //   "_id": 1037,
-      //   "Name": {
-      //   "en-GB": "Splashy",
-      //     "de-DE": "Wasserspaß"
-      // },
-      //   "Icon": "7748d219-81db-5a62-b776-54bbee19dfd8",
-      //   "Parent": 588
-      // },
-      // {
-      //   "_id": 1038,
-      //   "Name": {
-      //   "en-GB": "Fun",
-      //     "de-DE": "Fahrspaß"
-      // },
-      //   "Icon": "167c08cb-4da9-51ab-ae6a-9fb65073281e",
-      //   "Parent": 588
-      // },
-      // {
-      //   "_id": 1042,
-      //   "Name": {
-      //   "en-GB": "Cinema",
-      //     "de-DE": "Kino"
-      // },
-      //   "Icon": "e44d8ffb-14fc-5c45-9c22-faca10edc5fa",
-      //   "Parent": 607
-      // },
-      // {
-      //   "_id": 1673,
-      //   "Name": {
-      //   "de-DE": "LEGO® MYTHICA",
-      //     "en-GB": "LEGO® MYTHICA"
-      // },
-      //   "Icon": "b1d1231e-45a4-58f0-a7d0-8e80a892c48d",
-      //   "Parent": null
-      // }
     }
   }
 }

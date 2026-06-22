@@ -11,7 +11,7 @@ export class MovieParkService extends ParquesReunidosParkService {
       countryCode: 'de',
       description: 'Movie Park Germany is een attractiepark gelegen nabij de Duitse plaats Bottrop. In het park draait alles om de filmwereld. Veel attracties en themagebieden zijn hier ook naar gethematiseerd.',
       id: 'movie-park-germany',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Eingangspforte_moviepark.png/1200px-Eingangspforte_moviepark.png',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Eingangspforte_moviepark.png',
       location: { lat: 51.6205885, lng: 6.9722368 },
       name: 'Movie Park Germany',
       parkType: ParkType.THEMEPARK,

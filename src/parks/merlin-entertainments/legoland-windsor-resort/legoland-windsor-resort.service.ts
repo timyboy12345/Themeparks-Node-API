@@ -15,7 +15,7 @@ export class LegolandWindsorResortService extends AioThemeparkService {
       name: 'Legoland Windsor Resort',
       company: Company.MERLIN_ENTERTAINMENTS,
       description: 'Legoland Windsor is een kindergericht pretpark in Windsor in Engeland. Het park is gethematiseerd rond het speelgoed Lego. Het park opende in 1996 op de site van het vroegere Windsor Safari Park, als het tweede LEGO Group Legoland',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/8/81/Entrance_to_Legoland_Windsor.jpg',
+      image: 'https://www.legoland.co.uk/media/zuxph0k2/kids-at-drench-towers.png',
       timezone: 'Europe/London',
       parkType: ParkType.THEMEPARK,
       countryCode: 'gb',

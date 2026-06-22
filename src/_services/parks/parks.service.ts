@@ -217,8 +217,8 @@ export class ParksService {
     const park = parks.find(park => park.getFullInfo().id == id);
 
     if (park == null && throwError) {
-      throw new HttpException('Park not found', 404, {
-        cause: new Error('Park not found'),
+      throw new HttpException(`Park (${id}) not found`, 404, {
+        cause: new Error(`Park (${id}) not found`),
       });
     }
 

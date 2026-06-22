@@ -82,6 +82,7 @@ export class LegolandDeutschlandService extends AioThemeparkService {
     switch (category) {
       case 587:
       case 588:
+      case 1031:
         return PoiCategory.ATTRACTION;
       case 589:
       case 1039:
@@ -102,7 +103,6 @@ export class LegolandDeutschlandService extends AioThemeparkService {
         return PoiCategory.PLAYGROUND;
       case 2082:
         return PoiCategory.SMOKING_AREA;
-      case 1031:
       // Discover & Wonder
       case 1033:
         // Create

@@ -105,7 +105,7 @@ export class EuropaParkBaseService extends ThroughPoisThemeParkService {
         break;
     }
 
-    const k = `europapark_pois_${locale}`;
+    const k = `europapark_${this.getParkName()}_pois_${locale}`;
 
     let pois: any[] = await this.cache.get(k);
 

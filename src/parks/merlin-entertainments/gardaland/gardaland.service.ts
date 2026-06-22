@@ -14,7 +14,7 @@ export class GardalandService extends AioThemeparkService {
       countryCode: 'it',
       description: 'Gardaland is een resort bij Castelnuovo del Garda aan het Gardameer. Het attractiepark werd geopend in juli 1975 en is sindsdien, met meer dan 2,5 miljoen bezoekers per jaar, uitgegroeid tot het grootste en populairste attractiepark in Italië',
       id: 'gardaland',
-      image: 'https://www.gardaland.it/media/1wzlpokx/panoramiche-006.jpg',
+      image: 'https://www.gardaland.it/media/ljhe1ugi/copertina-bluetornado.jpg?rxy=0.79,0.22518518518518518&format=webp&quality=80&width=1920&height=1080',
       name: 'Gardaland',
       parkType: ParkType.THEMEPARK,
       company: Company.MERLIN_ENTERTAINMENTS,

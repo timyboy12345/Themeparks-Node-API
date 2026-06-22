@@ -2,7 +2,9 @@ import { Injectable, InternalServerErrorException, NotImplementedException } fro
 import { ConfigService } from '@nestjs/config';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 import { PoiCategory } from '../../_interfaces/poi-categories.enum';
-import { AttractionsIoAppDetailsInterface } from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
+import {
+  AttractionsIoAppDetailsInterface,
+} from '../../_interfaces/attractions-io/attractions-io-app-details.interface';
 import { AioTransferServiceService } from './transfer-service/aio-transfer-service.service';
 import { ThroughPoisThemeParkService } from '../themepark/through-pois-theme-park.service';
 import { ThemeParkSupports } from '../../_interfaces/park-supports.interface';
@@ -45,7 +47,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       supportsRideWaitTimesHistory: false,
       supportsPois: true,
       supportsTranslations: false,
-      textType: "UNDEFINED",
+      textType: 'UNDEFINED',
       supportsEvents: false,
     };
   }
@@ -82,7 +84,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       'Content-Type': settings.contentType,
     };
 
-    console.debug(" - AIO: Fetching Token");
+    console.debug(` - AIO ${this.getInfo().name}: Fetching Token`);
 
     const config: AxiosRequestConfig = { headers: headers };
 
@@ -94,7 +96,7 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       )
       .toPromise()
       .then(value => {
-        console.debug(` - AIO: API Key is ${value.data.token}`)
+        console.debug(` - AIO ${this.getInfo().name}: API Key is ${value.data.token}`);
         this._tempToken = value.data.token;
         return this._tempToken;
       })
@@ -128,36 +130,44 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
       maxRedirects: 0,
     };
 
-    console.debug(` - AIO: Fetching Data Package URL for ${settings.latestUpdate}`);
+    console.debug(` - AIO ${this.getInfo().name}: Fetching Data Package URL for ${settings.latestUpdate}`);
 
     return new Promise((resolve, reject) => {
-      this.httpService
-        .get(
-          this._attractionsIoApiUrl + '/data',
-          config,
-        )
-        .toPromise()
-        .then(() => {
-          // When the call is successful, a redirect status code was not given
-          // This means something went wrong
-          console.error('SUCCESS BUT ACTUALLY AN ERROR');
-          reject();
-        })
-        .catch((reason: AxiosError) => {
-          if (reason.response.status === 303) {
-            const headers = reason.response.headers;
-            resolve(headers.location);
-            return;
-          }
+      const attemptFetch = (retry = false) => {
+        this.httpService
+          .get(
+            this._attractionsIoApiUrl + '/data',
+            config,
+          )
+          .toPromise()
+          .then(() => {
+            if (!retry) {
+              console.error(' - SUCCESS BUT ACTUALLY AN ERROR. Retrying after 5 seconds...');
+              setTimeout(() => attemptFetch(true), 5000);
+            } else {
+              Sentry.captureException(`Error while fetching ${this.getInfo().name} ZIP`)
+              console.error(' - SUCCESS BUT ACTUALLY AN ERROR after retry');
+              reject();
+            }
+          })
+          .catch((reason: AxiosError) => {
+            if (reason.response.status === 303) {
+              const headers = reason.response.headers;
+              resolve(headers.location);
+              return;
+            }
 
-        console.error('FAILED');
-        console.error(`${reason.response.status} / ${reason.response.statusText}`);
-        console.error(reason.response.data);
-        console.error(reason.response.headers);
-        Sentry.captureException(reason);
-        reject(reason);
-      });
-    })
+            console.error(' - FAILED');
+            console.error(`${reason.response.status} / ${reason.response.statusText}`);
+            console.error(reason.response.data);
+            console.error(reason.response.headers);
+            Sentry.captureException(reason);
+            reject(reason);
+          });
+      };
+
+      attemptFetch();
+    });
   }
 
   /**
@@ -216,14 +226,30 @@ export class AioThemeparkService extends ThroughPoisThemeParkService {
     return 'en-GB';
   }
 
+  private formatDuration(milliseconds: number): string {
+    const seconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(seconds / 60) % 60;
+    const hours = Math.floor(seconds / 3600) % 24;
+    const days = Math.floor(seconds / 86400);
+
+    return `${days} days, ${hours} hours and ${minutes} minutes`;
+  }
+
   async getPois(): Promise<Poi[]> {
     const inputPath = `${__dirname}/../../../storage/aio/${this.getInstallationDirectory()}.zip`;
     const outputPath = `${__dirname}/../../../storage/aio/${this.getInstallationDirectory()}-output/`;
 
-    // TODO: Add a system that invalidates old information (fs.stat or fs.statSync?)
     const settingsExists = fs.existsSync(`${outputPath}/records.json`);
+    const zipIsOld = settingsExists ? (Date.now() - fs.statSync(inputPath).mtime.getTime()) > 30 * 24 * 60 * 60 * 1000 : true;
 
-    if (!settingsExists) {
+    if (settingsExists) {
+      const milliSeconds = Date.now() - fs.statSync(inputPath).mtime.getTime();
+      const formattedDuration = this.formatDuration(milliSeconds);
+
+      console.log(` - AIO ${this.getInfo().name}: Zip is ${formattedDuration} old, downloading: ${zipIsOld}`);
+    }
+
+    if (!settingsExists || zipIsOld) {
       const url = await this.getDataUrl()
         .then((value) => {
           return value;

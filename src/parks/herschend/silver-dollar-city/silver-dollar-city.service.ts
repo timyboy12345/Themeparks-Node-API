@@ -10,7 +10,7 @@ export class SilverDollarCityService extends HerschendBaseService {
       id: 'silver-dollar-city',
       name: 'Silver Dollar City',
       description: 'Silver Dollar City is een 61 hectare groot pretpark in Stone County, Missouri, in de buurt van de steden Branson en Branson West. Het park ligt langs Missouri Route 76 op het schiereiland Indian Point van Table Rock Lake. Silver Dollar City werd geopend op 1 mei 1960.',
-      image: 'https://www.explorebranson.com/sites/default/files/styles/hero/public/articles/adc-header.jpg?itok=HVr5m2Nd',
+      image: 'https://www.silverdollarcity.com/media/54ojomzt/omc_general_wildfiresunset_600x400.png',
       timezone: 'America/Chicago',
       countryCode: 'us',
       parkType: ParkType.THEMEPARK,

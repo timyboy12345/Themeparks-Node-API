@@ -9,7 +9,7 @@ export class SeaworldOrlandoService extends SeaworldBaseService {
       countryCode: 'us',
       description: 'SeaWorld Orlando is een attractiepark in Orlando te Florida. SeaWorld Orlando is opgedeeld in 2 delen: een dierendeel en een attractiedeel. Beide delen vormen één park',
       id: 'seaworld-orlando',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Journey_to_Atlantis_-_SeaWorld_Orlando.jpg',
+      image: 'https://www.orlandomagazine.com/content/uploads/2022/04/j/m/seaworld-7023-ice-breaker-square-copy-2.jpg?amp=1',
       name: 'Seaworld Orlando',
       parkType: ParkType.THEMEPARK,
       company: Company.SEAWORLD,

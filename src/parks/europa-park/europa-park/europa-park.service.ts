@@ -11,7 +11,7 @@ export class EuropaParkService extends EuropaParkBaseService {
       parkType: ParkType.THEMEPARK,
       countryCode: 'de',
       description: 'Europa-Park, geopend in 1975, is een attractiepark bij Rust in de Duitse deelstaat Baden-Württemberg. Het thema is het werelddeel Europa met haar verschillende landen. In 2023 was het na het Disneyland (Park) in Parijs het meest bezochte attractiepark van Europa',
-      image: 'https://corporate.europapark.com/typo3temp/_processed_/csm_corporate_europa-park_210997ef71.jpg',
+      image: 'https://www.europapark.de/sites/default/files/media_image/2026-02/panorama_europa-park_1.jpg',
       name: 'Europa Park',
       location: {
         lat: 48.26608365626527,

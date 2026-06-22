@@ -12,7 +12,7 @@ export class WalibiFranceService extends CompagnieDesAlpesBaseService {
       name: 'Walibi Rhône-Alpes',
       description: 'Walibi Rhône-Alpes is een pretpark in Zuid-Frankrijk dat eigendom is van de Compagnie des Alpes. Het trekt jaarlijks zo\'n 400.000 bezoekers. Het park telt ongeveer dertig attracties.',
       countryCode: 'fr',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/EqWalizer.jpg/1024px-EqWalizer.jpg',
+      image: 'https://www.walibi.fr/adobe/dynamicmedia/deliver/dm-aid--144fb382-9e49-4f46-bcff-f910a24749aa/walibi-ra-2022-0055.jpg?preferwebp=true&quality=85',
       parkType: ParkType.THEMEPARK,
       location: {
         lat: 45.62165,

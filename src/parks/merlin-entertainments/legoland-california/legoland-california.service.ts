@@ -104,10 +104,13 @@ export class LegolandCaliforniaService extends AioThemeparkService {
       case 646:
       // Miniland Sector
       case 974:
+      case 5992:
         return PoiCategory.ATTRACTION;
       case 3809:
         return PoiCategory.AQUARIUM;
       case 1011:
+      case 5649:
+      case 6000:
         return PoiCategory.RESTAURANT;
       // TO GO spots
       case 4768:
@@ -132,6 +135,8 @@ export class LegolandCaliforniaService extends AioThemeparkService {
         return PoiCategory.PLAYGROUND;
       case 1019:
         return PoiCategory.FIRSTAID;
+      case 1014:
+        return PoiCategory.PAID_ACTIVITY;
       default:
         return PoiCategory.UNDEFINED;
     }

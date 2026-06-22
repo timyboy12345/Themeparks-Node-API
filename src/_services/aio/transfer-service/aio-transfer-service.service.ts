@@ -5,6 +5,7 @@ import {
   AioRecordsInterface,
   AioRecordsItemInterface,
 } from '../../../_interfaces/attractions-io/aio-records.interface';
+import { PoiCategory } from '../../../_interfaces/poi-categories.enum';
 
 @Injectable()
 export class AioTransferServiceService extends TransferService {
@@ -59,8 +60,10 @@ export class AioTransferServiceService extends TransferService {
     return this.transferPoisToPois(data.Item);
   }
 
+  // TODO: We should keep track of parks that have a lot if ID's not recognized, as that may be a sign a lot of new IDs have been implemented
   private getCategoryById(id: number) {
-    return this.getCategory(id);
+    const category = this.getCategory(id);
+    return category ?? PoiCategory.UNDEFINED;
   }
 
   private getProperty(poi: AioRecordsItemInterface, property: string): string {

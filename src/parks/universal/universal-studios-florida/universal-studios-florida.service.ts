@@ -9,7 +9,7 @@ export class UniversalStudiosFloridaService extends UniversalBaseService {
       countryCode: 'us',
       description: 'Universal Studios Florida is een attractiepark in Orlando in de Verenigde Staten. Het park maakt deel uit van het Universal Orlando Resort en is het tweede attractiepark van Universal ter wereld. Het park is vernoemd naar de filmmaatschappij Universal Studios',
       id: 'universal-studios-orlando',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/c/c4/USF_Entrance.jpg',
+      image: 'https://www.universalorlando.com/contentdata/uor/en/us/files/Images/gds/usf-universal-studios-florida-arch-b.jpg',
       name: 'Universal Studios Orlando',
       parkType: ParkType.THEMEPARK,
       company: Company.UNIVERSAL,

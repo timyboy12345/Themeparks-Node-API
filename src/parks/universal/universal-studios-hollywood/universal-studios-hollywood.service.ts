@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UniversalBaseService } from '../universal-base/universal-base.service';
-import { Company, ThemePark } from '../../../_interfaces/park.interface';
+import { Company, ParkType, ThemePark } from '../../../_interfaces/park.interface';
 
 @Injectable()
 export class UniversalStudiosHollywoodService extends UniversalBaseService {
@@ -9,9 +9,9 @@ export class UniversalStudiosHollywoodService extends UniversalBaseService {
       countryCode: 'us',
       description: 'Universal Studios Hollywood is een filmstudio en een themapark in Universal City. Woody Woodpecker is de mascotte van Universal Studios Hollywood en de rest van de Universal Studios Parks. Wikipedia',
       id: 'universal-studios-hollywood',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Rolled_out_red_carpet_at_Universal_Studios_Hollywood.JPG/1024px-Rolled_out_red_carpet_at_Universal_Studios_Hollywood.JPG',
+      image: 'https://www.universalstudioshollywood.com/contentdata/ush/en/us/files/images/ush-arch-front-gate-evening-red-carpet-B1.jpg',
       name: 'Universal Studios Hollywood',
-      parkType: undefined,
+      parkType: ParkType.THEMEPARK,
       company: Company.UNIVERSAL,
       location: {
         lat: 34.1381345602379,
