@@ -1,13 +1,13 @@
-import { PoiOpeningTime } from './poi-openingtimes.interface';
-import { PoiCategory } from './poi-categories.enum';
-import { WaitingTimes } from './waitingtimes.interface';
-import { ShowTimes } from './showtimes.interface';
-import { RideCategory } from './ride-category.interface';
-import { Translation } from './translation.interface';
-import { PoiMenuItemInterface } from './poi-menu-item.interface';
-import { PoiFact } from './poi-fact.interface';
-import { PoiVideo } from './poi-video.interface';
-import { EventCategory } from './event.category';
+import { PoiOpeningTime } from "./poi-openingtimes.interface";
+import { PoiCategory } from "./poi-categories.enum";
+import { WaitingTimes } from "./waitingtimes.interface";
+import { ShowTimes } from "./showtimes.interface";
+import { RideCategory } from "./ride-category.interface";
+import { Translation } from "./translation.interface";
+import { PoiMenuItemInterface } from "./poi-menu-item.interface";
+import { PoiFact } from "./poi-fact.interface";
+import { PoiVideo } from "./poi-video.interface";
+import { EventCategory } from "./event.category";
 
 export interface Poi {
   /**
@@ -91,24 +91,24 @@ export interface Poi {
    * The location on the world map where this ride is located
    */
   location?: {
-    lat: number,
-    lng: number
-  },
+    lat: number;
+    lng: number;
+  };
 
   /**
    * The location on the world map where the entrance for this ride is located
    */
   entrance?: {
-    lat: number,
-    lng: number
+    lat: number;
+    lng: number;
   };
 
   /**
    * The location on the world map where the exit for this ride is located
    */
   exit?: {
-    lat: number,
-    ln: number
+    lat: number;
+    ln: number;
   };
 
   /**
@@ -255,10 +255,10 @@ export interface Poi {
   /**
    * The type of currency used to calculate price
    */
-  priceType?: 'tokens' | 'local_currency';
+  priceType?: "tokens" | "local_currency";
 
   /**
-   * The name of the price type, so 'euros', 'dollars', 'tokens' or something simular
+   * The name of the price type, so 'euros', 'dollars', 'tokens' or something similar
    */
   priceName?: string;
 
@@ -274,27 +274,27 @@ export interface Poi {
 }
 
 export enum PoiStatus {
-  OPEN = 'OPEN',
-  CLOSED = 'CLOSED',
-  CLOSED_TODAY = 'CLOSED_TODAY',
-  DOWN = 'DOWN',
-  MAINTENANCE = 'MAINTENANCE',
-  OPENS_LATER_TODAY = 'OPENS_LATER_TODAY',
-  UNDEFINED = 'UNDEFINED',
+  OPEN = "OPEN",
+  CLOSED = "CLOSED",
+  CLOSED_TODAY = "CLOSED_TODAY",
+  DOWN = "DOWN",
+  MAINTENANCE = "MAINTENANCE",
+  OPENS_LATER_TODAY = "OPENS_LATER_TODAY",
+  UNDEFINED = "UNDEFINED",
 }
 
 export interface AlternativeQueue {
-  id: string,
-  minutes?: number,
-  type: 'SINGLE_RIDER' | 'VIRTUAL_QUEUE',
-  state?: 'FULL' | 'NOT_IN_USE' | 'OPEN' | 'CLOSED',
-  original_state?: string,
-  window_start?: string,
-  window_end?: string,
+  id: string;
+  minutes?: number;
+  type: "SINGLE_RIDER" | "VIRTUAL_QUEUE";
+  state?: "FULL" | "NOT_IN_USE" | "OPEN" | "CLOSED";
+  original_state?: string;
+  window_start?: string;
+  window_end?: string;
   geofences: {
-    name?: string,
-    lat: number,
-    lng: number,
-    radius?: number,
-  }[]
+    name?: string;
+    lat: number;
+    lng: number;
+    radius?: number;
+  }[];
 }
